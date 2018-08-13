@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries/>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Grenades decrease Stewy</Description>
+      <Address>0067561B</Address>
+      <ModuleName>FGUY.exe</ModuleName>
+      <ModuleNameOffset>27561B</ModuleNameOffset>
+      <Before>
+        <Byte>7D</Byte>
+        <Byte>0D</Byte>
+        <Byte>8B</Byte>
+        <Byte>C7</Byte>
+        <Byte>5F</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>86</Byte>
+        <Byte>64</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

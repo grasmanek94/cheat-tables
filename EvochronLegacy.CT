@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1125664233" RealAddress="0644E7B6"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>0644E7B6</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [0F751711],7D2B7500
+
+exit:
+jmp returnhere
+
+0644E7B6:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+0644E7B6:
+mov [0F751711],eax
+//Alt: db A3 11 17 75 0F
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

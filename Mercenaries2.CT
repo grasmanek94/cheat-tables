@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="19">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Cash"</Description>
+      <LastState Value="1000000000" Activated="1" RealAddress="014DCC7C"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Mercenaries2.exe+10DCC7C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Cash"</Description>
+      <LastState Value="1000000000" Activated="1" RealAddress="01578AB4"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Mercenaries2.exe+1178AB4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Cash"</Description>
+      <LastState Value="1000000000" Activated="1" RealAddress="0157C01C"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Mercenaries2.exe+117C01C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Cash"</Description>
+      <LastState Value="1000000000" Activated="1" RealAddress="0157C264"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Mercenaries2.exe+117C264</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Oil"</Description>
+      <LastState Value="4000" Activated="1" RealAddress="014DCC80"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Mercenaries2.exe+10DCC80</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Oil"</Description>
+      <LastState Value="4000" Activated="1" RealAddress="01578AB8"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Mercenaries2.exe+1178AB8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Oil"</Description>
+      <LastState Value="4000" Activated="1" RealAddress="0157C268"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Mercenaries2.exe+117C268</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Ammo down for mg</Description>
+      <Address>0051E9B3</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>11E9B3</ModuleNameOffset>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>81</Byte>
+        <Byte>46</Byte>
+        <Byte>30</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>4B</Byte>
+        <Byte>54</Byte>
+        <Byte>80</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Oild Change</Description>
+      <Address>005DF6C7</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>1DF6C7</ModuleNameOffset>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>48</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>79</Byte>
+        <Byte>07</Byte>
+        <Byte>C7</Byte>
+        <Byte>40</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Money Change</Description>
+      <Address>005DF4FE</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>1DF4FE</ModuleNameOffset>
+      <Before>
+        <Byte>A1</Byte>
+        <Byte>54</Byte>
+        <Byte>60</Byte>
+        <Byte>17</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>50</Byte>
+        <Byte>2C</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+        <Byte>5E</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of Drops</Description>
+      <Address>00865F5B</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>465F5B</ModuleNameOffset>
+      <Before>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+        <Byte>8B</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>0B</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
+        <Byte>53</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Access of drops</Description>
+      <Address>00865DC3</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>465DC3</ModuleNameOffset>
+      <Before>
+        <Byte>F8</Byte>
+        <Byte>85</Byte>
+        <Byte>FF</Byte>
+        <Byte>75</Byte>
+        <Byte>72</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>4D</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+        <Byte>5F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change helicopter hp</Description>
+      <Address>0052239A</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>12239A</ModuleNameOffset>
+      <Before>
+        <Byte>77</Byte>
+        <Byte>03</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>40</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4D</Byte>
+        <Byte>04</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change helicopter instant hp</Description>
+      <Address>00523605</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>123605</ModuleNameOffset>
+      <Before>
+        <Byte>77</Byte>
+        <Byte>03</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>40</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>C6</Byte>
+        <Byte>B9</Byte>
+        <Byte>C8</Byte>
+        <Byte>EF</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

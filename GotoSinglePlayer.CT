@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="19">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Landing Page == 0"</Description>
+      <LastState Value="0" RealAddress="7FF7A5A646E8"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>GTA5.exe+1E846E8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Startup Flow == 0"</Description>
+      <LastState Value="0" RealAddress="7FF7A5A64528"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>GTA5.exe+1E84528</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

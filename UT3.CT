@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="18">
+  <CheatEntries/>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Ammo</Description>
+      <Address>00BC3E8D</Address>
+      <ModuleName>UT3.exe</ModuleName>
+      <ModuleNameOffset>7C3E8D</ModuleNameOffset>
+      <Before>
+        <Byte>0C</Byte>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>08</Byte>
+        <Byte>C2</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

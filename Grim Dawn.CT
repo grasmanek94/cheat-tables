@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Active Trainer"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+aobscanmodule(health,Game.dll,F3 0F 58 81 a0 08 00 00 F3 0F 5F C2 F3 0F 5D C1)
+registersymbol(health)
+
+registersymbol(skillE)
+registersymbol(attrpE)
+registersymbol(cashE)
+registersymbol(expE)
+registersymbol(healthE)
+registersymbol(manaE)
+label(skillE)
+label(attrpE)
+label(cashE)
+label(expE)
+label(healthE)
+label(manaE)
+//Grim Dawn
+//
+registersymbol(PlayerID)
+label(PlayerID)
+//Game.GAME::Character::GetCurrentLife+15
+//Game.GAME::Character::GetCurrentLifeInt+3
+//Game.GAME::Character::GetPotentialLife+57
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+push eax
+lea eax,[ecx+000008A0-1c]
+mov [PlayerID],eax
+pop eax
+cmp [healthE],0
+je originalcode
+movss  [ecx+000008A0],xmm1
+//health
+
+//cmp [manaE],0
+//je originalcode
+//mana
+originalcode:
+addss xmm0,[ecx+000008A0]
+jmp returnhere
+skillE:
+dd 0
+attrpE:
+dd 0
+cashE:
+dd 0
+expE:
+dd 0
+healthE:
+dd 0
+manaE:
+dd 0
+PlayerID:
+dd 0
+health://"Game.dll"+2A9B5:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+/////////////////////////////////////////////////////////////////
+alloc(newmem5,2048)
+label(returnhere5)
+label(originalcode5)
+aobscanmodule(manaaob,Game.dll,F3 0F 10 46 30 F3 0F 5E C4 F3 0F 11 44 24 14 FF 75 08 8B CE)
+registersymbol(manaaob)
+
+newmem5: //this is allocated memory, you have read,write,execute access
+//place your code here
+cmp [manaE],0
+je originalcode5
+cmp [PlayerID],esi
+jne originalcode5
+movss [esi+30],xmm4
+originalcode5:
+movss xmm0,[esi+30]
+jmp returnhere5
+manaaob://"Game.dll"+4FBAE:
+jmp newmem5
+returnhere5:
+//Game.GAME::CharacterBio::Update+18E
+//////////////////////////////////////////////////////////////////
+alloc(newmem1,2048)
+label(returnhere1)
+label(originalcode1)
+aobscanmodule(exp,Game.dll,8B 81 BC 0D 00 00 C3)
+registersymbol(exp)
+newmem1: //this is allocated memory, you have read,write,execute access
+//place your code here
+//Game.GAME::Character::GetExperiencePoints
+cmp [expE],0
+je originalcode1
+add [ecx+00000DBC],#100000000
+mov [expE],0
+originalcode1:
+mov eax,[ecx+00000DBC]
+jmp returnhere1
+exp://"Game.dll"+25430:
+jmp newmem1
+nop
+returnhere1:
+/////////////////////////////////////////////////////////////////
+alloc(newmem2,2048)
+label(returnhere2)
+label(originalcode2)
+aobscanmodule(skillpoints,Game.dll,8B 81 c4 0D 00 00 C3)
+registersymbol(skillpoints)
+newmem2: //this is allocated memory, you have read,write,execute access
+//place your code here
+cmp [skillE],0
+je originalcode2
+add [ecx+00000DC4],#10000
+mov [skillE],0
+originalcode2:
+mov eax,[ecx+00000DC4]
+jmp returnhere2
+skillpoints://"Game.dll"+25510:
+jmp newmem2
+nop
+returnhere2:
+//Game.GAME::Character::GetSkillPoints
+/////////////////////////////////////////////////////////////////
+alloc(newmem3,2048)
+label(returnhere3)
+label(originalcode3)
+aobscanmodule(attrpoints,Game.dll,8B 81 C0 0D 00 00 C3)
+registersymbol(attrpoints)
+newmem3: //this is allocated memory, you have read,write,execute access
+//place your code here
+cmp [attrpE],0
+je originalcode3
+add [ecx+00000DC0],#10000
+mov [attrpE],0
+originalcode3:
+mov eax,[ecx+00000DC0]
+
+jmp returnhere3
+attrpoints://"Game.dll"+254A0:
+jmp newmem3
+nop
+returnhere3:
+//Game.GAME::Character::GetModifierPoints
+/////////////////////////////////////////////////////////////////
+alloc(newmem4,2048)
+label(returnhere4)
+label(originalcode4)//8B 81 DC 0C 00 00 C3
+aobscanmodule(cash,Game.dll,8B 81 50 0D 00 00 C3)
+registersymbol(cash)
+newmem4: //this is allocated memory, you have read,write,execute access
+//place your code here
+cmp [cashE],0
+je originalcode4
+add [ecx+00000D50],#100000
+mov [cashE],0
+originalcode4:
+mov eax,[ecx+00000D50]
+//Game.GAME::Character::GetCurrentMoney
+
+jmp returnhere4
+
+cash://"Game.dll"+25DC0:
+jmp newmem4
+nop
+returnhere4:
+/////////////////////////////////////////////////////////////////
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+health://
+db F3 0F 58 81 a0 08 00 00
+//Alt: db D9 81 AC 08 00 00
+unregistersymbol(health)
+dealloc(newmem1)
+exp://
+mov eax,[ecx+00000Dbc]
+//Alt: db 8B 81 C8 0C 00 00
+unregistersymbol(exp)
+dealloc(newmem2)
+skillpoints://
+mov eax,[ecx+00000DC4]
+//Alt: db 8B 81 D0 0C 00 00
+unregistersymbol(skillpoints)
+dealloc(newmem3)
+attrpoints://
+mov eax,[ecx+00000DC0]
+//Alt: db 8B 81 CC 0C 00 00
+unregistersymbol(attrpoints)
+dealloc(newmem4)
+cash://
+mov eax,[ecx+00000D50]
+//Alt: db 8B 81 68 0C 00 00
+unregistersymbol(cash)
+unregistersymbol(skillE)
+unregistersymbol(attrpE)
+unregistersymbol(cashE)
+unregistersymbol(expE)
+unregistersymbol(healthE)
+unregistersymbol(manaE)
+
+dealloc(newmem5)
+manaaob://
+movss xmm0,[esi+30]
+//Alt: db F3 0F 10 5E 34
+unregistersymbol(manaaob)
+
+
+
+
+
+
+
+
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Inf.Health"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+healthE:
+dd 1
+
+ 
+ 
+[DISABLE]
+healthE:
+dd 0
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Inf.Mana"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+manaE:
+dd 1
+
+ 
+ 
+[DISABLE]
+manaE:
+dd 0
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Instant Skill Cooldown"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+aobscanmodule(cooldown,Game.dll,89 83 FC 00 00 00 8B 35 * * * * 8b 8e)
+registersymbol(cooldown)
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+xor eax,eax
+mov [ebx+000000Fc],eax
+jmp returnhere
+
+cooldown://"Game.dll"+292493:
+jmp newmem
+nop
+returnhere:
+
+
+ //Game.GAME::Skill::Update+13
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+cooldown://
+  db 89 83 FC 00 00 00
+  unregistersymbol(cooldown)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Inf.Devotion Points"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+aobscanmodule(devotion,Game.dll,8B 81 C8 0D 00 00 C3)
+registersymbol(devotion)
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+mov [ecx+00000DC8],64
+mov eax,[ecx+00000DC8]
+jmp returnhere
+
+devotion://"Game.dll"+34350:
+jmp newmem
+nop
+returnhere:
+
+//Game.GAME::Character::GetDevotionPoints
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+devotion://
+ db 8B 81 C8 0D 00 00
+ unregistersymbol(devotion)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Add Cash 100K"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+cashE:
+dd 1
+
+ 
+ 
+[DISABLE]
+cashE:
+dd 1
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Add Exp 10000"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+expE:
+dd 1
+
+ 
+ 
+[DISABLE]
+expE:
+dd 1
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Add Skill Points 100"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+skillE:
+dd 1
+
+ 
+ 
+[DISABLE]
+skillE:
+dd 1
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Add Attribute Points 100"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+attrpE:
+dd 1
+
+ 
+ 
+[DISABLE]
+attrpE:
+dd 1
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>move</Description>
+      <Address>6EA683D9</Address>
+      <ModuleName>Engine.dll</ModuleName>
+      <ModuleNameOffset>1F83D9</ModuleNameOffset>
+      <Before>
+        <Byte>68</Byte>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+        <Byte>D6</Byte>
+        <Byte>07</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>0A</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>move</Description>
+      <Address>6EA686DB</Address>
+      <ModuleName>Engine.dll</ModuleName>
+      <ModuleNameOffset>1F86DB</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>47</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>47</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>F6</Byte>
+        <Byte>46</Byte>
+        <Byte>3C</Byte>
+        <Byte>02</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>HP Change</Description>
+      <Address>6E2C7419</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>57419</ModuleNameOffset>
+      <Before>
+        <Byte>E1</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5D</Byte>
+        <Byte>E2</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>66</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>E0</Byte>
+        <Byte>F3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>HP Change</Description>
+      <Address>668C8A53</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>58A53</ModuleNameOffset>
+      <Before>
+        <Byte>E7</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5D</Byte>
+        <Byte>E3</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>61</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>79</Byte>
+        <Byte>7C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>HP Change</Description>
+      <Address>668C8D71</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>58D71</ModuleNameOffset>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5D</Byte>
+        <Byte>E3</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>61</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>E5</Byte>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Item take</Description>
+      <Address>6E43DE96</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>1CDE96</ModuleNameOffset>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>EC</Byte>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>81</Byte>
+        <Byte>3C</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>81</Byte>
+        <Byte>28</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Item Add</Description>
+      <Address>6E43DDDF</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>1CDDDF</ModuleNameOffset>
+      <Before>
+        <Byte>C2</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>8E</Byte>
+        <Byte>3C</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>86</Byte>
+        <Byte>28</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Cubicle Score Change</Description>
+      <Address>6E4BFDE5</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>24FDE5</ModuleNameOffset>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>FB</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>83</Byte>
+        <Byte>E8</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>5B</Byte>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+        <Byte>0C</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Cubicle Tribute Change</Description>
+      <Address>6E4FDBF3</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>28DBF3</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>5F</Byte>
+        <Byte>0F</Byte>
+        <Byte>49</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>86</Byte>
+        <Byte>58</Byte>
+        <Byte>0D</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>8B</Byte>
+        <Byte>E5</Byte>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>PlayerID</Name>
+      <Address>0C0F0047</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+  <Comments>aobscanmodule(,,)
+registersymbol()
+aobscan(,)
+registersymbol() 
+  
+</Comments>
+  <LuaScript>
+</LuaScript>
+</CheatTable>

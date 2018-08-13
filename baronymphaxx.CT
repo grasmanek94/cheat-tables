@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"HP"</Description>
+      <LastState Value="20" RealAddress="15046D20"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>barony.exe+1568DC</Address>
+      <Offsets>
+        <Offset>110</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>722</ID>
+      <Description>"MP"</Description>
+      <LastState Value="50" RealAddress="15046D2C"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>barony.exe+1568DC</Address>
+      <Offsets>
+        <Offset>11C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>721</ID>
+      <Description>"MP"</Description>
+      <LastState Value="50" RealAddress="15046D30"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>barony.exe+1568DC</Address>
+      <Offsets>
+        <Offset>120</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Disable Mana Check"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+cmp ecx, ecx
+jmp returnhere
+
+originalcode:
+cmp ecx,[eax+0000011C]
+
+exit:
+jmp returnhere
+
+"barony.exe"+AE6F7:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"barony.exe"+AE6F7:
+cmp ecx,[eax+0000011C]
+//Alt: db 3B 88 1C 01 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Do not overdraw"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [eax+0000011C],00000000
+
+exit:
+jmp returnhere
+
+"barony.exe"+62F35:
+jmp newmem
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"barony.exe"+62F35:
+mov [ebp-08],ecx
+mov [eax+0000011C],00000000
+//Alt: db 89 4D F8 C7 80 1C 01 00 00 00 00 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>720</ID>
+      <Description>"Enable Instant Cast"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [edi+C],3 // insta cast
+mov [edi+14],0 // insta cast
+mov [edi+10],1 // insta cast
+mov [edi+24],0 // don't consume mana
+jmp returnhere
+
+originalcode:
+mov [edi+14],eax
+call barony.exe+B5EB0
+
+exit:
+jmp returnhere
+
+"barony.exe"+AD89E:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"barony.exe"+AD89E:
+mov [edi+14],eax
+call barony.exe+B5EB0
+//Alt: db 89 47 14 E8 0A 86 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>529</ID>
+      <Description>"svflags(63rec)"</Description>
+      <LastState Value="62" RealAddress="00D848B4"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>barony.exe+1448B4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>727</ID>
+      <Description>"lang"</Description>
+      <LastState RealAddress="01060758"/>
+      <VariableType>String</VariableType>
+      <Length>64</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>"barony.exe"+00151D34</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>904</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>728</ID>
+      <Description>"lang"</Description>
+      <LastState Value="01060758" RealAddress="0104D744"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"barony.exe"+00151D34</Address>
+      <Offsets>
+        <Offset>904</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>729</ID>
+      <Description>"Ignore Death"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+jmp barony.exe+1118C0
+originalcode:
+jne barony.exe+1118C0
+
+exit:
+jmp returnhere
+
+"barony.exe"+1115BC:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"barony.exe"+1115BC:
+jne barony.exe+1118C0
+//Alt: db 0F 85 FE 02 00 00
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Ignore Death</Description>
+      <Address>00D5204D</Address>
+      <ModuleName>barony.exe</ModuleName>
+      <ModuleNameOffset>11204D</ModuleNameOffset>
+      <Before>
+        <Byte>F9</Byte>
+        <Byte>10</Byte>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>82</Byte>
+        <Byte>1C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>15</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ignore Death</Description>
+      <Address>00D51BC5</Address>
+      <ModuleName>barony.exe</ModuleName>
+      <ModuleNameOffset>111BC5</ModuleNameOffset>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>D8</Byte>
+        <Byte>68</Byte>
+        <Byte>D9</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>1C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+        <Byte>5B</Byte>
+        <Byte>8B</Byte>
+        <Byte>E5</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ignore Death</Description>
+      <Address>00D51D8F</Address>
+      <ModuleName>barony.exe</ModuleName>
+      <ModuleNameOffset>111D8F</ModuleNameOffset>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>D8</Byte>
+        <Byte>68</Byte>
+        <Byte>D9</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>1C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>04</Byte>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ignore Death</Description>
+      <Address>00D52030</Address>
+      <ModuleName>barony.exe</ModuleName>
+      <ModuleNameOffset>112030</ModuleNameOffset>
+      <Before>
+        <Byte>F9</Byte>
+        <Byte>10</Byte>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>82</Byte>
+        <Byte>10</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ignore Death</Description>
+      <Address>00D51B8C</Address>
+      <ModuleName>barony.exe</ModuleName>
+      <ModuleNameOffset>111B8C</ModuleNameOffset>
+      <Before>
+        <Byte>68</Byte>
+        <Byte>D9</Byte>
+        <Byte>00</Byte>
+        <Byte>0F</Byte>
+        <Byte>C9</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>10</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+        <Byte>5B</Byte>
+        <Byte>8B</Byte>
+        <Byte>E5</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ignore Death</Description>
+      <Address>00D51D4F</Address>
+      <ModuleName>barony.exe</ModuleName>
+      <ModuleNameOffset>111D4F</ModuleNameOffset>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>D8</Byte>
+        <Byte>68</Byte>
+        <Byte>D9</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>10</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>04</Byte>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ignore Death</Description>
+      <Address>00D65A44</Address>
+      <ModuleName>barony.exe</ModuleName>
+      <ModuleNameOffset>125A44</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>86</Byte>
+        <Byte>10</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>1E</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C7</Byte>
+        <Byte>86</Byte>
+        <Byte>14</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Ignore Death</Description>
+      <Address>00C99A6E</Address>
+      <ModuleName>barony.exe</ModuleName>
+      <ModuleNameOffset>59A6E</ModuleNameOffset>
+      <Before>
+        <Byte>14</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>F6</Byte>
+      </Before>
+      <Actual>
+        <Byte>83</Byte>
+        <Byte>80</Byte>
+        <Byte>10</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>F6</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>80</Byte>
+        <Byte>20</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"barony.exe"+AE6F7</Address>
+      <Comment>ecx=required mana, eax+11c = current mana
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"barony.exe"+AE6FD</Address>
+      <Comment>jump if req mana &lt;= current mana?
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
+</CheatTable>

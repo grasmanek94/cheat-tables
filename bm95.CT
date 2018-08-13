@@ -1,0 +1,3550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Player 1"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00461BC4"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*0</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>826</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>827</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>828</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>829</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>831</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1086</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>830</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1087</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>98</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>93</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1088</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>102</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>832</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>836</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>833</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>838</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>835</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>839</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>834</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>837</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>120</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>122</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>841</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>842</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1089</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1094</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1092</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1091</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1093</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1095</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1090</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1096</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>279</ID>
+          <Description>"+0"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00461BC4"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>22</ID>
+              <Description>"+0"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461BC4"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>23</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+1</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>8</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>10</ID>
+                  <Description>"Somethign win/death"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>11</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+5</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>12</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+6</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>13</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+7</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>14</ID>
+                  <Description>"Something win/death"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>15</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+9</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>17</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+B</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>18</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>19</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+D</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>20</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+E</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>21</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+F</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>24</ID>
+              <Description>"+10"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461BD4"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+10</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>27</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>28</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>29</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>30</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+5</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>31</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+6</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>32</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+7</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>33</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>34</ID>
+                  <Description>"Winner?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+9</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>35</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>36</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+B</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41</ID>
+              <Description>"+20"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461BE4"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+20</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>46</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>47</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+5</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>48</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+6</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>49</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+7</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>50</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>51</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+9</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>52</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>53</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+B</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>55</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+D</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>56</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+E</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>57</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+F</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>58</ID>
+              <Description>"+30"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461BF4"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+30</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>61</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>62</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>63</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>64</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+5</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>69</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>70</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+B</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>71</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>72</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+D</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>73</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+E</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>74</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+F</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>75</ID>
+              <Description>"+40"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461C04"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+40</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>76</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>77</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+1</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>78</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>79</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>80</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>81</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+5</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>82</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+6</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>83</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+7</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>84</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>85</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+9</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>86</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>87</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+B</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>89</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+D</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>91</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+F</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>92</ID>
+              <Description>"+50"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461C14"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+50</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>94</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+1</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>95</ID>
+                  <Description>"Something with animation / movement"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>96</ID>
+                  <Description>"Something with animation / movement"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>97</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>101</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>109</ID>
+              <Description>"+60"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461C24"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+60</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>111</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+1</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>112</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>113</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>114</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>116</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+6</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>117</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+7</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>118</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>119</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+9</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>124</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+E</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>125</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+F</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>126</ID>
+              <Description>"+70"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461C34"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+70</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>127</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>128</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+1</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>129</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>130</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>131</ID>
+                  <Description>"Something with walking / animation"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>132</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+5</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>133</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+6</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>134</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+7</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>137</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>138</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+B</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>141</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+E</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>142</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+F</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>143</ID>
+              <Description>"+80"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461C44"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+80</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>144</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>145</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+1</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>146</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>147</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>155</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+B</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>157</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+D</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>158</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+E</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>159</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+F</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>160</ID>
+              <Description>"+90"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00461C54"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+90</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>161</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>162</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+1</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>163</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>164</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+3</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>165</ID>
+                  <Description>"Crashes when set to 1"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>166</ID>
+                  <Description>"Crashes when set to 1"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+5</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>167</ID>
+                  <Description>"?"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+6</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>168</ID>
+                  <Description>"Crashes when set to 1"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>+7</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>843</ID>
+      <Description>"Player 2"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00461C5C"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*1</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1165</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1166</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1167</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1168</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1169</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1170</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1171</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1172</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1173</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1174</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1175</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1176</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1177</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1178</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1179</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1180</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1181</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1182</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1183</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1184</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1185</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1186</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1187</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1188</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1189</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1190</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1191</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1192</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1193</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1194</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1195</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1196</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1197</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1198</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1199</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1200</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1201</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>870</ID>
+      <Description>"Player 3"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00461CF4"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*2</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1202</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1203</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1204</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1205</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1206</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1207</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1208</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1209</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1210</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1211</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1212</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1213</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1214</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1215</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1216</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1217</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1218</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1219</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1220</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1221</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1222</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1223</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1224</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1225</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1226</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1227</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1228</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1229</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1230</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1231</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1232</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1233</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1234</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1235</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1236</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1237</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1238</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>897</ID>
+      <Description>"Player 4"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00461D8C"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*3</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1239</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1240</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1241</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1242</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1243</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1244</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1245</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1246</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1247</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1248</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1249</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1250</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1251</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1252</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1253</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1254</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1255</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1256</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1257</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1258</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1259</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1260</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1261</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1262</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1263</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1264</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1265</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1266</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1267</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1268</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1269</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1270</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1271</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1272</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1273</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1274</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1275</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>924</ID>
+      <Description>"Player 5"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00461E24"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*4</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1276</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1277</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1278</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1279</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1280</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1281</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1282</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1283</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1284</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1285</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1286</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1287</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1288</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1289</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1290</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1291</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1292</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1293</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1294</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1295</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1296</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1297</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1298</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1299</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1300</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1301</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1302</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1303</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1304</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1305</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1306</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1307</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1308</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1309</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1310</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1311</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1312</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>951</ID>
+      <Description>"Player 6"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00461EBC"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*5</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1313</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1314</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1315</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1316</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1317</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1318</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1319</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1320</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1321</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1322</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1323</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1324</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1325</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1326</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1327</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1328</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1329</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1330</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1331</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1332</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1333</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1334</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1335</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1336</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1338</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1339</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1340</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1341</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1342</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1343</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1344</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1345</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1346</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1347</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1348</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1349</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>978</ID>
+      <Description>"Player 7"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00461F54"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*6</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1350</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1351</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1352</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1353</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1354</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1355</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1356</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1357</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1358</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1359</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1360</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1361</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1362</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1363</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1364</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1365</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1366</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1367</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1368</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1369</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1370</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1371</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1372</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1373</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1374</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1375</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1376</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1377</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1378</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1379</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1380</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1381</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1382</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1383</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1384</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1385</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1386</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1005</ID>
+      <Description>"Player 8"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00461FEC"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*7</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1387</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1388</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1389</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1390</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1391</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1392</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1393</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1394</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1395</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1396</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1397</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1398</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1399</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1400</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1401</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1402</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1403</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1404</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1405</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1406</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1407</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1408</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1409</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1410</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1411</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1412</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1413</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1414</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1415</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1416</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1417</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1418</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1419</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1420</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1421</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1422</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1423</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1032</ID>
+      <Description>"Player 9"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00462084"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*8</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1424</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1425</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1426</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1427</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1428</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1429</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1430</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1431</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1432</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1433</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1434</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1435</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1436</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1437</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1438</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1439</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1440</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1441</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1442</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1443</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1444</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1445</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1446</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1447</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1448</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1449</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1450</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1451</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1452</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1453</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1454</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1455</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1456</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1457</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1458</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1459</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1460</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1059</ID>
+      <Description>"Player 10"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="0046211C"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+61BC4+98*9</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1461</ID>
+          <Description>"Alive"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1462</ID>
+          <Description>"PlayerType(0-Off,1-AI,2-Human)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1463</ID>
+          <Description>"Human Controls Keyboard Selection"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1464</ID>
+          <Description>"Position.x"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1465</ID>
+          <Description>"Position.y"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1466</ID>
+          <Description>"Direction(0-U,1-R,2-D,3-L)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+2C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1467</ID>
+          <Description>"? (2b counter+)"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1468</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+36</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1469</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1470</ID>
+          <Description>"Bomb Lay Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1471</ID>
+          <Description>"Action Pressed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+39</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1472</ID>
+          <Description>"Animation ID"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+4E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1473</ID>
+          <Description>"Animation Frame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1474</ID>
+          <Description>"Trigger Bombs Layed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+55</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1475</ID>
+          <Description>"Bombs"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1476</ID>
+          <Description>"Speed"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1477</ID>
+          <Description>"Flames"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+57</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1478</ID>
+          <Description>"HasKick"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+59</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1479</ID>
+          <Description>"HasBox"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1480</ID>
+          <Description>"HasThrow"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1481</ID>
+          <Description>"HasMultibomb"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1482</ID>
+          <Description>"HasGoldFlame"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1483</ID>
+          <Description>"HasTrigger"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+5F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1484</ID>
+          <Description>"HasJelly"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1485</ID>
+          <Description>"Powerups Collected"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>+65</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1486</ID>
+          <Description>"Score"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1487</ID>
+          <Description>"Kills"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+6C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1488</ID>
+          <Description>"Current Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1489</ID>
+          <Description>"Max Ilness Timer"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>+7C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1490</ID>
+          <Description>"Slowmo Moving"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1491</ID>
+          <Description>"Super Speed"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+85</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1492</ID>
+          <Description>"Block Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1493</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+87</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1494</ID>
+          <Description>"Small Flames"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1495</ID>
+          <Description>"Automatic Bomb Laying"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+89</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1496</ID>
+          <Description>"Fast Explosions"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1497</ID>
+          <Description>"Inverted Controls"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>+8C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1108</ID>
+      <Description>"Bombs"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>bm95.exe+6220C</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1131</ID>
+          <Description>"0"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1150</ID>
+              <Description>"Exists(1=Y,2=DUD)"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1160</ID>
+              <Description>"Bomb Type(0=Normal,1=Trigger,2=Jelly)"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1159</ID>
+              <Description>"Active? (9=Y)"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1156</ID>
+              <Description Activated="1">"Position.x"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+1C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1155</ID>
+              <Description Activated="1">"Position.y"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+20</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1162</ID>
+              <Description>"Animation Tick"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+30</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1163</ID>
+              <Description>"Animation Frame"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>+32</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1164</ID>
+              <Description>"Always 255"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>+33</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1157</ID>
+              <Description>"FromPlayer"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>+3C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1158</ID>
+              <Description>"FromPlayer"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>+3E</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1161</ID>
+              <Description>"Creation Time"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+40</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1153</ID>
+              <Description>"Current Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1151</ID>
+              <Description>"Max Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+4A</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1152</ID>
+              <Description>"?"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>+4C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1111</ID>
+          <Description>"1"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000098"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*1</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1112</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1127</ID>
+          <Description>"2"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000130"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*2</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1128</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1125</ID>
+          <Description>"3"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="000001C8"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*3</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1126</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1123</ID>
+          <Description>"4"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000260"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*4</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1124</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1121</ID>
+          <Description>"5"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="000002F8"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*5</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1122</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1119</ID>
+          <Description>"6"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000390"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*6</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1120</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1117</ID>
+          <Description>"7"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000428"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*7</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1118</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1115</ID>
+          <Description>"8"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="000004C0"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1116</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1113</ID>
+          <Description>"9"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000558"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*9</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1114</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1129</ID>
+          <Description>"10"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000980"/>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+98*10</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1130</ID>
+              <Description>"Timer"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of add [edx+74],eax</Description>
+      <Address>0041FE73</Address>
+      <ModuleName>bm95.exe</ModuleName>
+      <ModuleNameOffset>1FE73</ModuleNameOffset>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>8B</Byte>
+        <Byte>55</Byte>
+        <Byte>F4</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>42</Byte>
+        <Byte>74</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>F4</Byte>
+        <Byte>E8</Byte>
+        <Byte>06</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of cmp dword ptr [eax+74],00</Description>
+      <Address>0041EC98</Address>
+      <ModuleName>bm95.exe</ModuleName>
+      <ModuleNameOffset>1EC98</ModuleNameOffset>
+      <Before>
+        <Byte>45</Byte>
+        <Byte>D4</Byte>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>D4</Byte>
+      </Before>
+      <Actual>
+        <Byte>83</Byte>
+        <Byte>78</Byte>
+        <Byte>74</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>8E</Byte>
+        <Byte>E6</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of sub dword ptr [eax+74],64</Description>
+      <Address>0041F26F</Address>
+      <ModuleName>bm95.exe</ModuleName>
+      <ModuleNameOffset>1F26F</ModuleNameOffset>
+      <Before>
+        <Byte>46</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>D4</Byte>
+      </Before>
+      <Actual>
+        <Byte>83</Byte>
+        <Byte>68</Byte>
+        <Byte>74</Byte>
+        <Byte>64</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>D4</Byte>
+        <Byte>83</Byte>
+        <Byte>78</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

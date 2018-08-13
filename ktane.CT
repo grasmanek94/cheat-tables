@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="19">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="600" RealAddress="0FC63D74"/>
+      <VariableType>Float</VariableType>
+      <Address>0FC63D74</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [eax+0C]</Description>
+      <Address>13C60E49</Address>
+      <ModuleName/>
+      <ModuleNameOffset>0</ModuleNameOffset>
+      <Before>
+        <Byte>C4</Byte>
+        <Byte>10</Byte>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>FC</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>58</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>0C</Byte>
+        <Byte>FF</Byte>
+        <Byte>75</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [eax+0C]</Description>
+      <Address>13C3D2E9</Address>
+      <ModuleName/>
+      <ModuleNameOffset>0</ModuleNameOffset>
+      <Before>
+        <Byte>C4</Byte>
+        <Byte>10</Byte>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>FC</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>58</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>0C</Byte>
+        <Byte>FF</Byte>
+        <Byte>75</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

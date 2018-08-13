@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="18">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"?"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1A2</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"W0"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1A0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"W2"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1A4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"W3"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1A6</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"W4"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1A8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"W5"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1AA</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"W6"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1AC</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"W7"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1AE</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"W8"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1B0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"W9"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1B2</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"W10"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1B4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"W1"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1B8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"?"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1B6</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"Steroids"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1BA</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"HP(GUI)"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1BC</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"Scuba Gear"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1BE</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"HoloDuke"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"Jetpack"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1C2</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"?"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1C4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"?"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1C6</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"NightVision"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1C8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"?"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1CA</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"?"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1CC</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"Proactive Boots"</Description>
+      <LastState Value="??" Activated="1" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1CE</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>34</ID>
+      <Description>"?"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1D0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"?"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <Color>80000008</Color>
+      <VariableType>2 Bytes</VariableType>
+      <Address>"eduke32.exe"+0F8C656C</Address>
+      <Offsets>
+        <Offset>1D2</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"GodMode"</Description>
+      <LastState Value="??" Activated="1" RealAddress="0FF61BBF"/>
+      <Color>80000008</Color>
+      <VariableType>Byte</VariableType>
+      <Address>eduke32.exe+FB61BBF</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Info about this table:
+</Comments>
+</CheatTable>

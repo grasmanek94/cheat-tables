@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="18">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="99" Activated="1" RealAddress="0091B084"/>
+      <Color>80000008</Color>
+      <VariableType>Float</VariableType>
+      <Address>Game.exe+51B084</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

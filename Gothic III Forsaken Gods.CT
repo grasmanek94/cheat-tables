@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="18">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Unlim Item"</Description>
+      <LastState Activated="1"/>
+      <Color>80000008</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [ebx+3C],77359400
+cmp dword ptr [edi+0C],00
+jmp exit
+
+originalcode:
+sub [ebx+3C],ebp
+cmp dword ptr [edi+0C],00
+
+exit:
+jmp returnhere
+
+"Game.dll"+DCF08:
+jmp newmem
+nop
+nop
+returnhere:
+
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Game.dll"+DCF08:
+sub [ebx+3C],ebp
+cmp dword ptr [edi+0C],00
+//Alt: db 29 6B 3C 83 7F 0C 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Unlim Gold"</Description>
+      <LastState Activated="1"/>
+      <Color>80000008</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+mov [esi+3C],77359400
+cmp dword ptr [esi+3C],00
+jmp exit
+
+originalcode:
+sub [esi+3C],ebx
+cmp dword ptr [esi+3C],00
+
+exit:
+jmp returnhere
+
+"Game.dll"+CDC17:
+jmp newmem
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Game.dll"+CDC17:
+sub [esi+3C],ebx
+cmp dword ptr [esi+3C],00
+//Alt: db 29 5E 3C 83 7E 3C 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No description"</Description>
+      <LastState Value="25010" Activated="0" RealAddress="E0679A24"/>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>E0679A24</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"No description"</Description>
+      <LastState Value="2000000000" Activated="0" RealAddress="E0679A28"/>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>E0679A28</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Unlim Learn Points"</Description>
+      <LastState Activated="1"/>
+      <Color>80000008</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [esi+58],77359400
+push Game.gCHUDPage::`vftable'+52C
+originalcode:
+
+exit:
+jmp returnhere
+
+"Game.dll"+8FC5E:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Game.dll"+8FC5E:
+mov [esi+58],ecx
+push Game.gCHUDPage::`vftable'+52C
+//Alt: db 89 4E 58 68 20 4B BF 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"No description"</Description>
+      <LastState Value="32766" Activated="0" RealAddress="E0D33CAC"/>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>E0D33CAC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"No description"</Description>
+      <LastState Value="32766" Activated="0" RealAddress="E0D33CAC"/>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>E0D33CAC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Max Base Value On Change"</Description>
+      <LastState Activated="1"/>
+      <Color>80000008</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+mov [esi+14],77359400
+push Game.gCHUDPage::`vftable'+494
+jmp exit
+
+originalcode:
+mov [esi+14],ecx
+push Game.gCHUDPage::`vftable'+494
+
+exit:
+jmp returnhere
+
+"Game.dll"+177CCC:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Game.dll"+177CCC:
+mov [esi+14],ecx
+push Game.gCHUDPage::`vftable'+494
+//Alt: db 89 4E 14 68 88 4A BF 00
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Decrease Gold</Description>
+      <Address>0099DC17</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>CDC17</ModuleNameOffset>
+      <Before>
+        <Byte>69</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>5E</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>7E</Byte>
+        <Byte>3C</Byte>
+        <Byte>00</Byte>
+        <Byte>7F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Decrease Item</Description>
+      <Address>009ACF08</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>DCF08</ModuleNameOffset>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>6B</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>7F</Byte>
+        <Byte>0C</Byte>
+        <Byte>00</Byte>
+        <Byte>74</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Increase Exp</Description>
+      <Address>0095FC2E</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>8FC2E</ModuleNameOffset>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>5C</Byte>
+        <Byte>6A</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4E</Byte>
+        <Byte>54</Byte>
+      </Actual>
+      <After>
+        <Byte>68</Byte>
+        <Byte>1C</Byte>
+        <Byte>4B</Byte>
+        <Byte>BF</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Punkty Nauki Change</Description>
+      <Address>0095FC5E</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>8FC5E</ModuleNameOffset>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>5C</Byte>
+        <Byte>6A</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4E</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>68</Byte>
+        <Byte>20</Byte>
+        <Byte>4B</Byte>
+        <Byte>BF</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change Kowadlo Skill</Description>
+      <Address>00A47CCC</Address>
+      <ModuleName>Game.dll</ModuleName>
+      <ModuleNameOffset>177CCC</ModuleNameOffset>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>5C</Byte>
+        <Byte>6A</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4E</Byte>
+        <Byte>14</Byte>
+      </Actual>
+      <After>
+        <Byte>68</Byte>
+        <Byte>88</Byte>
+        <Byte>4A</Byte>
+        <Byte>BF</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

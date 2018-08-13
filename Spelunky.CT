@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="19">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Ropes"</Description>
+      <LastState Value="99" Activated="1" RealAddress="086E86C0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Spelunky.exe"+00135458</Address>
+      <Offsets>
+        <Offset>14</Offset>
+        <Offset>280</Offset>
+        <Offset>30</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"?????????????????"</Description>
+      <LastState Value="0" RealAddress="086E86C4"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Spelunky.exe"+00135458</Address>
+      <Offsets>
+        <Offset>18</Offset>
+        <Offset>280</Offset>
+        <Offset>30</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Bombd"</Description>
+      <LastState Value="99" Activated="1" RealAddress="086E86BC"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Spelunky.exe"+00135458</Address>
+      <Offsets>
+        <Offset>10</Offset>
+        <Offset>280</Offset>
+        <Offset>30</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"MNEYSYSYS"</Description>
+      <LastState Value="99999999" RealAddress="086E86B8"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Spelunky.exe"+00135458</Address>
+      <Offsets>
+        <Offset>C</Offset>
+        <Offset>280</Offset>
+        <Offset>30</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"No description"</Description>
+      <LastState Value="90" RealAddress="086E86AC"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>086E86AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"No description"</Description>
+      <LastState Value="50" RealAddress="086E86B0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>086E86B0</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

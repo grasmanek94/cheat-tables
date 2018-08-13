@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="18">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <LastState Value="82" Activated="0" RealAddress="94B7405C"/>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>94B7405C</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Build Update</Description>
+      <Address>7FE646EA</Address>
+      <ModuleName/>
+      <ModuleNameOffset>0</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>0C</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>0C</Byte>
+        <Byte>FF</Byte>
+        <Byte>75</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

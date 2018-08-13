@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="19">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Batteries"</Description>
+      <LastState Value="99" Activated="1" RealAddress="004C5720"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Battery.exe+C5720</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"Super Batteries"</Description>
+      <LastState Value="99" Activated="1" RealAddress="004C5724"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Battery.exe+C5724</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"Empty Batteries"</Description>
+      <LastState Value="0" Activated="1" RealAddress="004C5728"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Battery.exe+C5728</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Life"</Description>
+      <LastState Value="8000" Activated="1" RealAddress="004C5640"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Battery.exe+C5640</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Life 7000"</Description>
+      <LastState Value="8000" Activated="1" RealAddress="004C5644"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Battery.exe+C5644</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Lives"</Description>
+      <LastState Value="99" Activated="1" RealAddress="004C56F8"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Battery.exe+C56F8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Unlimited running time for replaced batteries"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [ecx+Battery.exe+B11E0],al
+
+exit:
+jmp returnhere
+
+"Battery.exe"+6945:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Battery.exe"+6945:
+dec al
+mov [ecx+Battery.exe+B11E0],al
+//Alt: db FE C8 88 81 E0 11 4B 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"X pos"</Description>
+      <LastState Value="20000000" RealAddress="004C55EC"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Battery.exe+C55EC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"Y pos"</Description>
+      <LastState Value="197931392" RealAddress="004C55F0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Battery.exe+C55F0</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

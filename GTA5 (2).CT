@@ -1,0 +1,1821 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>414</ID>
+      <Description>"&lt;--- Click to Open  | Made by enough007 for mpgh"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(get_ptr,GTA5.exe,48 8B 81 E0 03 00 00 48 8B) //Thanks to Zanzer
+alloc(newmem,$1000,get_ptr) // By Lobix300
+alloc(some_ptr,8)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov qword ptr [some_ptr],rcx
+  mov rax,[rcx+000003E0]
+  jmp return
+
+get_ptr:
+  jmp code
+  nop
+  nop
+return:
+registersymbol(get_ptr)
+registersymbol(some_ptr)
+
+{$lua}
+autoAssemble([[
+aobscanmodule(LightsPTR,GTA5.exe,4C 89 0D xx xx xx xx 44 xx xx xx xx xx xx 8B 00 2B C1 48 8D)
+registersymbol(LightsPTR)
+]])
+local addr = getAddress("LightsPTR")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("LightsPTR")
+registerSymbol("LightsPTR", addr, true)
+
+autoAssemble([[
+aobscanmodule(GetPointerAddressA,GTA5.exe,48 8B 8C C2 xx xx xx xx 48 85 C9 74 19)
+registersymbol(GetPointerAddressA)
+]])
+local addr = getAddress("GetPointerAddressA")
+addr = addr + 4
+addr = readInteger(addr)
+addr = addr + getAddress("GTA5.exe")
+unregisterSymbol("GetPointerAddressA")
+registerSymbol("GetPointerAddressA", addr, true)
+
+autoAssemble([[
+aobscanmodule(WorldPTR,GTA5.exe,48 8B 05 ? ? ? ? 45 ? ? ? ? 48 8B 48 08 48 85 C9 74 07)
+registersymbol(WorldPTR)
+]])
+local addr = getAddress("WorldPTR")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("WorldPTR")
+registerSymbol("WorldPTR", addr, true)
+
+autoAssemble([[
+aobscanmodule(playersPTR,GTA5.exe,48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B C8 E8 ? ? ? ? 48 8B CF)
+registersymbol(playersPTR)
+]])
+local addr = getAddress("playersPTR")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("playersPTR")
+registerSymbol("playersPTR", addr, true)
+
+
+[DISABLE]
+{$asm}
+get_ptr:
+  db 48 8B 81 E0 03 00 00
+unregisterSymbol(playersPTR)
+unregisterSymbol(WorldPTR)
+unregisterSymbol(LightsPTR)
+unregisterSymbol(GetPointerAddressA)
+unregistersymbol(get_ptr)
+unregistersymbol(some_ptr)
+dealloc(newmem)
+dealloc(some_ptr)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>489</ID>
+          <Description>"Online Player Count"</Description>
+          <LastState Value="0" RealAddress="7FF65F380D58"/>
+          <Color>FF00FF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>playersPTR</Address>
+          <Offsets>
+            <Offset>178</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>719</ID>
+          <Description>"Anti AFK"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>715</ID>
+              <Description>"1st warning (2 min)"</Description>
+              <LastState Value="300000" RealAddress="1FD4ED702C0"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>2C0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>716</ID>
+              <Description>"2nd warning (5 min)"</Description>
+              <LastState Value="600000" RealAddress="1FD4ED702C8"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>2C8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>717</ID>
+              <Description>"3rd warning (10 min)"</Description>
+              <LastState Value="900000" RealAddress="1FD4ED702D0"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>2D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>718</ID>
+              <Description>"4th warning (15 min)"</Description>
+              <LastState Value="140000" RealAddress="1FD4ED702D8"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>2D8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>680</ID>
+          <Description>"Random Tunables"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>681</ID>
+              <Description>"SHOP_SALES_ACTIVE"</Description>
+              <LastState Value="0" RealAddress="1FD4ED70200"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>200</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>683</ID>
+              <Description>"GOOD_BOY_CASH_AWARD"</Description>
+              <LastState Value="2000" RealAddress="1FD4ED702A8"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>2A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>708</ID>
+              <Description>"MAX_BET"</Description>
+              <LastState Value="10000" RealAddress="1FD4ED70328"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointeraddressA+8</Address>
+              <Offsets>
+                <Offset>328</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>707</ID>
+              <Description>"MIN_BET"</Description>
+              <LastState Value="100" RealAddress="1FD4ED70330"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointeraddressA+8</Address>
+              <Offsets>
+                <Offset>330</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>684</ID>
+              <Description>"MAX_HEALTH_MULTIPLIER"</Description>
+              <LastState Value="1" RealAddress="1FD4ED70350"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>350</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>685</ID>
+              <Description>"MIN_HEALTH_MULTIPLIER"</Description>
+              <LastState Value="1" RealAddress="1FD4ED70358"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>358</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>686</ID>
+              <Description>"HEALTH_REGEN_RATE_MULTIPLIER"</Description>
+              <LastState Value="1" RealAddress="1FD4ED70360"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>360</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>687</ID>
+              <Description>"HEALTH_REGEN_MAX_MULTIPLIER"</Description>
+              <LastState Value="1" RealAddress="1FD4ED70368"/>
+              <Color>000080</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>368</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>688</ID>
+              <Description>"MAX_ARMOR_MULTIPLIER"</Description>
+              <LastState Value="1" RealAddress="1FD4ED70378"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>378</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>689</ID>
+              <Description>"IMPROMTU_RACE_MULTIPLIER"</Description>
+              <LastState Value="1.401298464E-41" RealAddress="1FD4ED70530"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>530</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>690</ID>
+              <Description>"IMPROMPTU_DM_MULTIPLIER"</Description>
+              <LastState Value="1" RealAddress="1FD4ED70540"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>540</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>710</ID>
+              <Description>"BOUNTY_AWARD_LVL_1_MODIFIER"</Description>
+              <LastState Value="0" RealAddress="1FD4ED74900"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointeraddressA+8</Address>
+              <Offsets>
+                <Offset>4900</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>711</ID>
+              <Description>"BOUNTY_AWARD_LVL_2_MODIFIER"</Description>
+              <LastState Value="0" RealAddress="1FD4ED74908"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointeraddressA+8</Address>
+              <Offsets>
+                <Offset>4908</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>712</ID>
+              <Description>"BOUNTY_AWARD_LVL_3_MODIFIER"</Description>
+              <LastState Value="2000" RealAddress="1FD4ED74910"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointeraddressA+8</Address>
+              <Offsets>
+                <Offset>4910</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>713</ID>
+              <Description>"BOUNTY_AWARD_LVL_4_MODIFIER"</Description>
+              <LastState Value="4000" RealAddress="1FD4ED74918"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointeraddressA+8</Address>
+              <Offsets>
+                <Offset>4918</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>714</ID>
+              <Description>"BOUNTY_AWARD_LVL_5_MODIFIER"</Description>
+              <LastState Value="6000" RealAddress="1FD4ED74920"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointeraddressA+8</Address>
+              <Offsets>
+                <Offset>4920</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>693</ID>
+              <Description>"IS_SALE_ON_IN_TATTOO_SHOP"</Description>
+              <LastState Value="1" RealAddress="1FD4ED74C70"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>4C70</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>694</ID>
+              <Description>"IS_SALE_ON_IN_MASK_SHOP"</Description>
+              <LastState Value="1" RealAddress="1FD4ED74C78"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>4C78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>695</ID>
+              <Description>"IS_SALE_ON_IN_CLOTHING_SHOP"</Description>
+              <LastState Value="1" RealAddress="1FD4ED74C88"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>4C88</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>696</ID>
+              <Description>"IS_SALE_ON_IN_HAIR_SHOP"</Description>
+              <LastState Value="0" RealAddress="1FD4ED74C90"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>4C90</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>697</ID>
+              <Description>"IS_SALE_ON_IN_CAR_MOD_SHOP"</Description>
+              <LastState Value="0" RealAddress="1FD4ED74C98"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>4C98</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>698</ID>
+              <Description>"SURVIVAL_CASH_REWARD    (Multiplier Reward = Value x2)"</Description>
+              <LastState Value="0" RealAddress="1FD4ED79CB8"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>9CB8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>699</ID>
+              <Description>"DISABLE_CRATE_DROPS"</Description>
+              <LastState Value="3765535182" RealAddress="1FD4ED79E48"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>9E48</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>700</ID>
+              <Description>"DISABLE_ARMOURED_TRUCK"</Description>
+              <LastState Value="891629655" RealAddress="1FD4ED79E50"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>9E50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>701</ID>
+              <Description>"DISABLE_HIGH_PRIORITY_VEHICLE"</Description>
+              <LastState Value="1482920896" RealAddress="1FD4ED79E58"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>9E58</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>702</ID>
+              <Description>"DISABLE_JOYRIDER"</Description>
+              <LastState Value="1000804068" RealAddress="1FD4ED79E60"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>9E60</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>703</ID>
+              <Description>"ENABLE_PLAYLIST_EVENT_GIFT"</Description>
+              <LastState Value="7" RealAddress="1FD4ED79E68"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>9E68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>704</ID>
+              <Description>"TURN_OFF_SPECIAL_CRATES"</Description>
+              <LastState Value="820" RealAddress="1FD4ED7C520"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>C520</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>705</ID>
+              <Description>"BLOCK_SELLING_VEHICLES"</Description>
+              <LastState Value="2500" RealAddress="1FD4ED7CA10"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>CA10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>706</ID>
+              <Description>"DISABLE_PLANE_TAKEDOWN_EVENT"</Description>
+              <LastState Value="185" RealAddress="1FD4ED7CA18"/>
+              <Color>008000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>CA18</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>415</ID>
+          <Description>"Mods"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>195</ID>
+              <Description>"Teleport to Waypoint (Buggy)"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+(function()
+  local waypoint = readPointer("waypoint_ptr");
+  if readFloat(waypoint) == 0 then
+    return
+  end
+  local player = readPointer("some_ptr");
+  local address = readPointer(player + 0x3E0);
+  if address == 0 then
+    address = readPointer(player + 0x3D8);
+  end
+  address = readPointer(address + 0x30);
+  writeFloat(address + 0x58, 100.0) -- readFloat(address + 0x58) + 20.0
+  writeBytes(address + 0x50, readBytes(waypoint + 0x20, 8))
+end)()
+assert(false)
+
+[DISABLE]
+{$lua}
+
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>35</Key>
+                  </Keys>
+                  <Description>Tele</Description>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>720</ID>
+              <Description>"Unlimited Ammo"</Description>
+              <LastState Activated="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(ammo,GTA5.exe,41 2B D1 E8)
+ammo:
+  db 90 90 90
+registersymbol(ammo)
+
+[DISABLE]
+ammo:
+  db 41 2B D1
+unregistersymbol(ammo)
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>100</Key>
+                  </Keys>
+                  <Description>Unlimited Munitions</Description>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>101</Key>
+                  </Keys>
+                  <Description>Disable Unlimited Munitions</Description>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>28</ID>
+              <Description>"Unlimited Magazine"</Description>
+              <LastState Activated="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(clip,GTA5.exe,41 2B C9 3B C8 0F)
+clip:
+  db 90 90 90
+registersymbol(clip)
+
+[DISABLE]
+clip:
+  db 41 2B C9
+unregistersymbol(clip)
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>102</Key>
+                  </Keys>
+                  <Description>Unlimited Ammo Clip</Description>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>103</Key>
+                  </Keys>
+                  <Description>Disable Unlimited Ammo Clip</Description>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>135</ID>
+              <Description>"Name Changer"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <Color>000000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+unregisterSymbol("namead")
+autoAssemble([[
+aobscanmodule(namead,GTA5.exe,48 8B 05 ?? ?? ?? ?? C3 8A D1)
+registersymbol(namead)
+]])
+local addr = getAddress("namead")
+addr = addr + readInteger(addr + 3)
+addr = addr + 7
+unregisterSymbol("namead")
+registerSymbol("namead", addr, true)
+{$asm}
+aobscanmodule(GetNameAddress,GTA5.exe,48 8B 43 5C 48 89 47 5C)
+alloc(newmem,$1000,GetNameAddress)
+alloc(pname2,8)
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov rax,[rbx+5C]
+  mov [rdi+5C],rax
+  mov [pname2],rbx
+  jmp return
+
+GetNameAddress:
+  jmp code
+  nop
+  nop
+  nop
+return:
+registersymbol(GetNameAddress)
+registersymbol(pname2)
+
+aobscanmodule(GetChatAddress,GTA5.exe,48 8B 81 A8 00 00 00 48 85 C0 74 09 48 8B 88 60 01 00 00) // should be unique
+alloc(newmem1,$1000,GetChatAddress)
+alloc(chatname,8)
+label(code1)
+label(return1)
+
+newmem1:
+
+code1:
+  mov rax,[rcx+000000A8]
+  mov [chatname],rax
+  jmp return1
+
+GetChatAddress:
+  jmp code1
+  nop
+  nop
+return1:
+registersymbol(GetChatAddress)
+registersymbol(chatname)
+
+[DISABLE]
+
+GetNameAddress:
+  db 48 8B 43 5C 48 89 47 5C
+unregistersymbol(pname2)
+unregistersymbol(GetNameAddress)
+dealloc(newmem)
+dealloc(pnam2)
+
+GetChatAddress:
+  db 48 8B 81 A8 00 00 00
+unregistersymbol(chatname)
+unregistersymbol(GetChatAddress)
+dealloc(newmem1)
+dealloc(chatname)
+{$lua}
+unregisterSymbol("namead")
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>38</ID>
+                  <Description>"Change your name here -&gt;"</Description>
+                  <Options moRecursiveSetValue="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>000000</Color>
+                  <VariableType>String</VariableType>
+                  <Length>12</Length>
+                  <Unicode>0</Unicode>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>7FF63C851000</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>68</ID>
+                      <Description>""</Description>
+                      <Color>000000</Color>
+                      <VariableType>String</VariableType>
+                      <Length>12</Length>
+                      <Unicode>0</Unicode>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>7FF63C841000</Address>
+                      <Offsets>
+                        <Offset>7C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>79</ID>
+                      <Description>""</Description>
+                      <Color>000000</Color>
+                      <VariableType>String</VariableType>
+                      <Length>12</Length>
+                      <Unicode>0</Unicode>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>GTA5.exe+262DA68</Address>
+                      <Offsets>
+                        <Offset>5C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"Recovery and Money"</Description>
+          <Options moHideChildren="1"/>
+          <LastState RealAddress="1FD5DA70E78"/>
+          <Color>FFFF00</Color>
+          <VariableType>String</VariableType>
+          <Length>0</Length>
+          <Unicode>0</Unicode>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>WorldPTR</Address>
+          <Offsets>
+            <Offset>8</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>585</ID>
+              <Description>"DLC Unlocks (UNTESTED)"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>0080FF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>586</ID>
+                  <Description>"Halloween"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0080FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>563</ID>
+                      <Description>"[Special Shirts]"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <Color>0080FF</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>587</ID>
+                          <Description>"UNLOCK_VINEWOOD_ZOMBIE_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83A90"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13A90</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>588</ID>
+                          <Description>"UNLOCK_KNIFE_AFTER_DARK_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83A98"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13A98</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>589</ID>
+                          <Description>"UNLOCK_THE_SIMIAN_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AA0"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AA0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>590</ID>
+                          <Description>"UNLOCK_ZOMBIE_LIBERALS_IN_THE_MIDWEST_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AA8"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AA8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>591</ID>
+                          <Description>"UNLOCK_TWILIGHT_KNIFE_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AB0"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AB0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>592</ID>
+                          <Description>"UNLOCK_BUTCHERY_AND_OTHER_HOBBIES_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AB8"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AB8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>593</ID>
+                          <Description>"UNLOCK_CHEERLEADER_MASSACRE_3_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AC0"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AC0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>594</ID>
+                          <Description>"UNLOCK_CANNIBAL_CLOWN_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AC8"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AC8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>595</ID>
+                          <Description>"UNLOCK_HOT_SERIAL_KILLER_STEPMOM_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AD0"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AD0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>596</ID>
+                          <Description>"UNLOCK_SPLATTER_AND_SHOT_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AD8"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AD8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>597</ID>
+                          <Description>"UNLOCK_MEATHOOK_FOR_MOMMY_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AE0"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AE0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>598</ID>
+                          <Description>"UNLOCK_PSYCHO_SWINGERS_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AE8"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AE8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>599</ID>
+                          <Description>"UNLOCK_VAMPIRES_ON_THE_BEACH_SHIRT"</Description>
+                          <LastState Value="1065353216" RealAddress="1FD4ED83AF0"/>
+                          <Color>008000</Color>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>GetPointerAddressA+8</Address>
+                          <Offsets>
+                            <Offset>13AF0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>600</ID>
+                      <Description>"ENABLE_HALLOWEEN_VEHICLES"</Description>
+                      <LastState Value="715000" RealAddress="1FD4ED82950"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>12950</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>601</ID>
+                      <Description>"ENABLE_HALLOWEEN_MASK"</Description>
+                      <LastState Value="225000" RealAddress="1FD4ED82958"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>12958</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>602</ID>
+                      <Description>"ENABLE_HALLOWEEN_FACE_PAINTS"</Description>
+                      <LastState Value="695000" RealAddress="1FD4ED82960"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>12960</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>603</ID>
+                      <Description>"ENAB:E_HALLOWEEN_ORNAMENTS"</Description>
+                      <LastState Value="2200000" RealAddress="1FD4ED82968"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>12968</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>604</ID>
+                      <Description>"ENABLE_HALLOWEEN_HORNS"</Description>
+                      <LastState Value="1750000" RealAddress="1FD4ED82970"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>12970</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>605</ID>
+                  <Description>"Video editor"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0080FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>606</ID>
+                      <Description>"UNLOCK_MELTDOWN_SHIRT"</Description>
+                      <LastState Value="10400" RealAddress="1FD4ED826B8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126B8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>607</ID>
+                      <Description>"UNLOCK_VINEWOOD_ZOMBIE_SHIRT"</Description>
+                      <LastState Value="10512" RealAddress="1FD4ED826C0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126C0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>608</ID>
+                      <Description>"UNLOCK_I_MARRIED_MY_DAD_SHIRT"</Description>
+                      <LastState Value="10388" RealAddress="1FD4ED826C8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126C8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>609</ID>
+                      <Description>"UNLOCK_DIE_ALREADY_4_SHIRT"</Description>
+                      <LastState Value="10736" RealAddress="1FD4ED826D0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126D0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>610</ID>
+                      <Description>"UNLOCK_THE_SHOULDER_OF_ORION_II_SHIRT"</Description>
+                      <LastState Value="10800" RealAddress="1FD4ED826D8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126D8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>611</ID>
+                      <Description>"UNLOCK_NELSON_IN_NAPLES_SHIRT"</Description>
+                      <LastState Value="5900" RealAddress="1FD4ED826E0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126E0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>612</ID>
+                      <Description>"UNLOCK_THE_MANY_WIVES_OF_ALFREDO_SMITH_SHIRT"</Description>
+                      <LastState Value="5650" RealAddress="1FD4ED826E8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126E8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>613</ID>
+                      <Description>"UNLOCK_AN_AMERICAN_DIVORCE_SHIRT"</Description>
+                      <LastState Value="5875" RealAddress="1FD4ED826F0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126F0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>614</ID>
+                      <Description>"UNLOCK_THE_LONELIEST_ROBOT_SHIRT"</Description>
+                      <LastState Value="4850" RealAddress="1FD4ED826F8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>126F8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>615</ID>
+                      <Description>"UNLOCK_CAPOLAVORO_SHIRT"</Description>
+                      <LastState Value="4925" RealAddress="1FD4ED82700"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>12700</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>616</ID>
+                  <Description>"Christmas"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0080FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>618</ID>
+                      <Description>"ENABLE_CHRISTMAS2015_MASK"</Description>
+                      <LastState Value="60000" RealAddress="1FD4ED83E00"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13E00</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>619</ID>
+                      <Description>"ENABLE_CHRISTMAS2015_CLOTHING"</Description>
+                      <LastState Value="13000" RealAddress="1FD4ED83E10"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13E10</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>620</ID>
+                      <Description>"GIVE_SEASONAL_GIFT (2)"</Description>
+                      <LastState Value="1625" RealAddress="1FD4ED84150"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>14150</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>621</ID>
+                      <Description>"GIVE_SEASONAL_GIFT (3)"</Description>
+                      <LastState Value="1820" RealAddress="1FD4ED84158"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>14158</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>623</ID>
+                      <Description>"ENABLE_CHRISTMAS2015_HORNS"</Description>
+                      <LastState Value="24250" RealAddress="1FD4ED84C20"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>14C20</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>622</ID>
+                      <Description>"GIVE_CHRISTMAS_DAY2015_GIFTS"</Description>
+                      <LastState Value="1755" RealAddress="1FD4ED84160"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>14160</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>624</ID>
+                      <Description>"TURN_SNOW_ON_OFF"</Description>
+                      <LastState Value="1065353216" RealAddress="1FD4ED79848"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>9848</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>625</ID>
+                      <Description>"ENABLE_CONTENT"</Description>
+                      <LastState Value="4294967295" RealAddress="1FD4ED79878"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>9878</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>626</ID>
+                      <Description>"GIVE_CHRISTMAS_DAY2014_GIFT"</Description>
+                      <LastState Value="1072064102" RealAddress="1FD4ED7DC18"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>DC18</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>627</ID>
+                      <Description>"DISABLE_SNOWBALLS"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E280"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E280</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>628</ID>
+                      <Description>"DISABLE_CHRISTMAS_TREE_PERISHING_SQUARE_SNOW"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E288"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E288</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>629</ID>
+                      <Description>"DISABLE_CHRISTMAS_TREE_PERISHING_SQUARE"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E290"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E290</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>630</ID>
+                      <Description>"DISABLE_CHRISTMAS_TREE_APARTMENT"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E298"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E298</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>631</ID>
+                      <Description>"DISABLE_CHRISTMAS_CLOTHING"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E2A0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E2A0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>632</ID>
+                      <Description>"DISABLE_CHRISTMAS_MASKS"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E2A8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E2A8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>633</ID>
+                      <Description>"DISABLE_CHRISTMAS_VEHICLES"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E2B0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E2B0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>564</ID>
+                      <Description>"GIVE_SEASONAL_GIFT"</Description>
+                      <LastState Value="1100" RealAddress="1FD4ED84148"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>14148</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>634</ID>
+                      <Description>"MAX_NUMBER_OF_SNOWBALLS"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E2B8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E2B8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>635</ID>
+                      <Description>"PICK_UP_NUMBER_OF_SNOWBALLS"</Description>
+                      <LastState Value="15000" RealAddress="1FD4ED7E2C0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>E2C0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>636</ID>
+                  <Description>"4th of July"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0080FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>652</ID>
+                      <Description>"UNLOCK_STATUE_OF_HAPPINESS_SHIRT"</Description>
+                      <LastState Value="300" RealAddress="1FD4ED7C2B0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C2B0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>647</ID>
+                      <Description>"UNLOCK_BENEDICT_HAT"</Description>
+                      <LastState Value="110" RealAddress="1FD4ED7C288"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C288</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>648</ID>
+                      <Description>"UNLOCK_J_LAGER_HAT"</Description>
+                      <LastState Value="140" RealAddress="1FD4ED7C290"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C290</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>649</ID>
+                      <Description>"UNLOCK_PATRIOT_HAT"</Description>
+                      <LastState Value="235" RealAddress="1FD4ED7C298"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C298</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>646</ID>
+                      <Description>"UNLOCK_PISSWASSER_HAT"</Description>
+                      <LastState Value="150" RealAddress="1FD4ED7C280"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C280</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>650</ID>
+                      <Description>"UNLOCK_BLARNEYS_HAT"</Description>
+                      <LastState Value="130" RealAddress="1FD4ED7C2A0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C2A0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>651</ID>
+                      <Description>"UNLOCK_SUPA_WET_HAT"</Description>
+                      <LastState Value="155" RealAddress="1FD4ED7C2A8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C2A8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>637</ID>
+                      <Description>"ENABLE_INDEPENDENCE_PACK"</Description>
+                      <LastState Value="1250" RealAddress="1FD4ED7C150"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C150</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>638</ID>
+                      <Description>"INDEPENDENCE_DAY_DEACTIVATE_FIREWORKS_LAUNCHER"</Description>
+                      <LastState Value="130" RealAddress="1FD4ED7C198"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C198</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>639</ID>
+                      <Description>"INDEPENDENCE_DAY_DEACTIVATE_FIREWORKS_PLACEABLE"</Description>
+                      <LastState Value="150" RealAddress="1FD4ED7C1A0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C1A0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>640</ID>
+                      <Description>"ENABLE_VEHICLE_SOVEREIGN"</Description>
+                      <LastState Value="5840" RealAddress="1FD4ED7C1C0"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C1C0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>641</ID>
+                      <Description>"ENABLE_VEHICLE_MONSTER"</Description>
+                      <LastState Value="2840" RealAddress="1FD4ED7C1C8"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C1C8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>642</ID>
+                      <Description>"DEACTIVATE_CLOTHING_INDEPENDENCEDAY_GROUP"</Description>
+                      <LastState Value="6.516037859E-42" RealAddress="1FD4ED7C1D0"/>
+                      <Color>008000</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C1D0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>643</ID>
+                      <Description>"DEACTIVATE_HAIR_MAKEUP_INDEPENDENCEDAY_GROUP"</Description>
+                      <LastState Value="3.783505854E-42" RealAddress="1FD4ED7C1D8"/>
+                      <Color>008000</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>C1D8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>653</ID>
+                  <Description>"Low Rider"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0080FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>654</ID>
+                      <Description>"UNLOCK_MAGNETICS_SCRIPT_HAT"</Description>
+                      <LastState Value="1069547520" RealAddress="1FD4ED83A40"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A40</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>655</ID>
+                      <Description>"UNLOCK_MAGNETICS_BLOCK_HAT"</Description>
+                      <LastState Value="1065353216" RealAddress="1FD4ED83A48"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A48</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>656</ID>
+                      <Description>"UNLOCK_LOW_SANTOS_HAT"</Description>
+                      <LastState Value="1075838976" RealAddress="1FD4ED83A50"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A50</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>657</ID>
+                      <Description>"UNLOCK_BOARS_HAT"</Description>
+                      <LastState Value="1069547520" RealAddress="1FD4ED83A58"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A58</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>658</ID>
+                      <Description>"UNLOCK_BENNY'S_HAT"</Description>
+                      <LastState Value="1065353216" RealAddress="1FD4ED83A60"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A60</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>659</ID>
+                      <Description>"UNLOCK_WESTSIDE_HAT"</Description>
+                      <LastState Value="420000" RealAddress="1FD4ED83A68"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A68</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>660</ID>
+                      <Description>"UNLOCK_EASTSIDE_HAT"</Description>
+                      <LastState Value="30000" RealAddress="1FD4ED83A70"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A70</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>661</ID>
+                      <Description>"UNLOCK_STRAWBERRY_HAT"</Description>
+                      <LastState Value="10" RealAddress="1FD4ED83A78"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A78</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>662</ID>
+                      <Description>"UNLOCK_BLACK_SA_HAT"</Description>
+                      <LastState Value="1065353216" RealAddress="1FD4ED83A80"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A80</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>663</ID>
+                      <Description>"UNLOCK_DAVIS_HAT"</Description>
+                      <LastState Value="1065353216" RealAddress="1FD4ED83A88"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>13A88</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>730</ID>
+                  <Description>"Finance and Felony"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>4080FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>731</ID>
+                      <Description>"ENABLE_VEHICLE_X80_PROTO"</Description>
+                      <LastState Value="1950" RealAddress="1FD4ED86C38"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>16C38</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>732</ID>
+                      <Description>"ENABLE_VEHICLE_SEVEN70"</Description>
+                      <LastState Value="1075" RealAddress="1FD4ED86C40"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>16C40</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>733</ID>
+                      <Description>"ENABLE_VEHICLE_811"</Description>
+                      <LastState Value="1630" RealAddress="1FD4ED86C48"/>
+                      <Color>008000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>GetPointerAddressA+8</Address>
+                      <Offsets>
+                        <Offset>16C48</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>729</ID>
+              <Description>"Money Making Methods (UNTESTED)"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>4080FF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>691</ID>
+                  <Description>"WIN_RACE_MULTIPLIER"</Description>
+                  <LastState Value="0" RealAddress="1FD4ED74B50"/>
+                  <Color>008000</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>4B50</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>692</ID>
+                  <Description>"WIN_DM_MULTIPLIER"</Description>
+                  <LastState Value="1.681558157E-39" RealAddress="1FD4ED74B58"/>
+                  <Color>008000</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>4B58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>727</ID>
+                  <Description>"PARACHUTING_TIME_PERIOD_CASH_REWARD_MODIFIER_1"</Description>
+                  <LastState Value="10" RealAddress="1FD4ED793B8"/>
+                  <Color>008000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>93B8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>728</ID>
+                  <Description>"PARACHUTING_PERCENTAGE_CASH_REWARD_MODIFIER_1"</Description>
+                  <LastState Value="1" RealAddress="1FD4ED793B0"/>
+                  <Color>008000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>93B0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>726</ID>
+                  <Description>"PARACHUTING_TIME_PERIOD_CASH_REWARD_MODIFIER_2"</Description>
+                  <LastState Value="2" RealAddress="1FD4ED793C0"/>
+                  <Color>008000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>93C0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>721</ID>
+                  <Description>"PARACHUTING_PERCENTAGE_CASH_REWARD_MODIFIER_2"</Description>
+                  <LastState Value="23" RealAddress="1FD4ED793C8"/>
+                  <Color>008000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>93C8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>722</ID>
+                  <Description>"PARACHUTING_TIME_PERIOD_CASH_REWARD_MODIFIER_3"</Description>
+                  <LastState Value="4" RealAddress="1FD4ED793D0"/>
+                  <Color>008000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>93D0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>723</ID>
+                  <Description>"PARACHUTING_PERCENTAGE_CASH_REWARD_MODIFIER_3"</Description>
+                  <LastState Value="53" RealAddress="1FD4ED793D8"/>
+                  <Color>008000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>93D8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>724</ID>
+                  <Description>"PARACHUTING_TIME_PERIOD_CASH_REWARD_MODIFIER_4"</Description>
+                  <LastState Value="6" RealAddress="1FD4ED793E0"/>
+                  <Color>008000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>93E0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>725</ID>
+                  <Description>"PARACHUTING_PERCENTAGE_CASH_REWARD_MODIFIER_4"</Description>
+                  <LastState Value="80" RealAddress="1FD4ED793E8"/>
+                  <Color>008000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>93E8</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>682</ID>
+              <Description>"RP MULTIPLIER"</Description>
+              <LastState Value="1" RealAddress="1FD4ED70010"/>
+              <Color>008000</Color>
+              <VariableType>Float</VariableType>
+              <Address>GetPointerAddressA+8</Address>
+              <Offsets>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>independ</Name>
+      <Address>CC5DA4C218</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>nokickaddress</Name>
+      <Address>CC5DA40410</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>wintherclothes</Name>
+      <Address>E19F3CE060</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>imbored</Name>
+      <Address>7FF7A4C71E0D</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>GettingPointer</Name>
+      <Address>7FF7A4C71E26</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>GetPTR</Name>
+      <Address>140561E29</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>get_ptr</Name>
+      <Address> 7FF65CF68AAF</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>clip</Name>
+      <Address> 7FF65DBD983C</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>ammo</Name>
+      <Address> 7FF65DBD9881</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+</CheatTable>

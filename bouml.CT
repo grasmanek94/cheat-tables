@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>0</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :jne bouml.exe+480EAB</Description>
+      <Address>0088126E</Address>
+      <ModuleName>bouml.exe</ModuleName>
+      <ModuleNameOffset>48126E</ModuleNameOffset>
+      <Before>
+        <Byte>12</Byte>
+        <Byte>FD</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>85</Byte>
+        <Byte>37</Byte>
+        <Byte>FC</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>E9</Byte>
+        <Byte>87</Byte>
+        <Byte>FD</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

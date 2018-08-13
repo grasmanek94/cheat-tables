@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="19">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="41F80000" Activated="1" RealAddress="1AFFFC04"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1AFFFC04</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1106771968" RealAddress="1AFFFC04"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1AFFFC04</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No description"</Description>
+      <LastState Value="16384" RealAddress="182D2082"/>
+      <VariableType>2 Bytes</VariableType>
+      <Address>182D2082</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"No description"</Description>
+      <LastState Value="16864" RealAddress="1B013B5E"/>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1B013B5E</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"No description"</Description>
+      <LastState Value="16384" RealAddress="49B1F6A2"/>
+      <VariableType>2 Bytes</VariableType>
+      <Address>49B1F6A2</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"No description"</Description>
+      <LastState Value="16256" RealAddress="1B013B46"/>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1B013B46</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov eax,1106771968
+originalcode:
+
+push esi
+mov esi,[esp+0C]
+
+exit:
+jmp returnhere
+
+"GRAW2.exe"+38BE51:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GRAW2.exe"+38BE51:
+mov eax,[ecx+08]
+push esi
+mov esi,[esp+0C]
+//Alt: db 8B 41 08 56 8B 74 24 0C
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov eax,[ecx+08]</Description>
+      <Address>0078BE51</Address>
+      <ModuleName>GRAW2.exe</ModuleName>
+      <ModuleNameOffset>38BE51</ModuleNameOffset>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>51</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>56</Byte>
+        <Byte>8B</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>0C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [esi+08]</Description>
+      <Address>0078BA22</Address>
+      <ModuleName>GRAW2.exe</ModuleName>
+      <ModuleNameOffset>38BA22</ModuleNameOffset>
+      <Before>
+        <Byte>11</Byte>
+        <Byte>50</Byte>
+        <Byte>FF</Byte>
+        <Byte>52</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>5E</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[ecx+08]</Description>
+      <Address>0078BE51</Address>
+      <ModuleName>GRAW2.exe</ModuleName>
+      <ModuleNameOffset>38BE51</ModuleNameOffset>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>51</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>56</Byte>
+        <Byte>8B</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>0C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [esi+08]</Description>
+      <Address>0078BA22</Address>
+      <ModuleName>GRAW2.exe</ModuleName>
+      <ModuleNameOffset>38BA22</ModuleNameOffset>
+      <Before>
+        <Byte>11</Byte>
+        <Byte>50</Byte>
+        <Byte>FF</Byte>
+        <Byte>52</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>5E</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>Info about this table:
+</Comments>
+</CheatTable>
