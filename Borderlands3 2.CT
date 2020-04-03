@@ -1,0 +1,1573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <Forms>
+    <Info Class="TCEForm" Encoding="Ascii85">b($/Y!ax+-,YT?-KMR-cd..PtNF$M0q[K@z2e]BohZ%BbfUxty-1#nsolCb*TUun^=%w2^bG}}Hp5vtP[=D+O^aE3.HIXaTieP2PyW4pHp5:yoyChW]@5L^!]O?U%)^0{go:NI65eg2^@hOGofRlxiy4Roc/e(_#ry#cu4cW$UB_D^czq*UXd)}e1]mxfyxTaSdHQP)T0xGl?fP+Ag]-x1Mej72QRGTN+0Xn]#kC[A!6anQ[KH!m;_5*.S/b.oIcVv{fwzaM[nC}LB2ZUuqdN#VmJznCX;!*l!D.}Ek77b2etw@M?D!:LPtIBsz]J4ahOUyw4=acL*k{!z41U+a*a,ztjQ{^aFn4!HND]_ZH8Q5_r#Ubb;3sgebRy6Hu^Q[wCf^8zLegYyf3}eca9V3vL$t_=w1QvU:HAYE46u[^iC%YQoyDsUyir#xX+Hj8[tfF544a1ya0;+3g%JroFxnORPT${w1</Info>
+  </Forms>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"[ Enable ]"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <Color>000080</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( retGetGamePlayers, Borderlands3.exe, 488B00488B004885C074??488B40??4885C074??48 )
+registersymbol( retGetGamePlayers )
+label( retGetGamePlayers_o )
+registersymbol( retGetGamePlayers_o )
+
+alloc( Hook, 0x1000, Borderlands3.exe )
+
+label( LocalPlayer )
+registersymbol( LocalPlayer )
+label( OakPlayerController )
+registersymbol( OakPlayerController )
+label( OakDeveloperPerks )
+registersymbol( OakDeveloperPerks )
+
+Hook:
+retGetGamePlayers_o:
+readmem( retGetGamePlayers, 6 )
+mov [LocalPlayer],rax
+mov rcx,[rax+30]
+test rcx,rcx
+je short @f
+  mov [OakPlayerController],rcx
+  mov rcx,[rcx+488]               // if OakCharacter valid (we're in game world)
+  test rcx,rcx
+  je short @f
+    mov rcx,[rax+30]              // get OakPlayerController back
+    mov rcx,[rcx+1988]            // offset to OakDeveloperPerks
+    test rcx,rcx                  // check if not NULL first
+    je short @f
+      mov [OakDeveloperPerks],rcx // store it
+      test byte ptr [rcx+C8],40   // flip UWorld_destroy bool
+      jne short @f
+        or byte ptr [rcx+C8],40
+@@:
+jmp retGetGamePlayers+6
+
+align 10 CC
+
+LocalPlayer:
+dq 0
+
+align 10 CC
+
+OakPlayerController:
+dq 0
+
+align 10 CC
+
+OakDeveloperPerks:
+dq 0
+
+retGetGamePlayers:
+jmp Hook
+db 90
+
+[DISABLE]
+
+retGetGamePlayers:
+readmem( retGetGamePlayers_o, 6 )
+
+unregistersymbol( OakDeveloperPerks )
+unregistersymbol( OakPlayerController )
+unregistersymbol( LocalPlayer )
+
+dealloc( Hook )
+
+unregistersymbol( retGetGamePlayers_o )
+unregistersymbol( retGetGamePlayers )
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Restore 'god', 'playersonly', 'fly', 'ghost', 'walk'"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{$STRICT}
+
+{$lua}
+
+if syntaxcheck then return end
+
+[ENABLE]
+
+local gameProcess = "Borderlands3.exe"
+local gameModule = getAddress( gameProcess )
+
+autoAssemble([[
+
+  alloc( ReCode, 0x1000, Borderlands3.exe )
+  registersymbol( ReCode )
+
+  label( UCheatManager_PlayersOnly )
+  registersymbol( UCheatManager_PlayersOnly )
+  label( UCharacter_ClientCheatWalk_Implementation )
+  registersymbol( UCharacter_ClientCheatWalk_Implementation )
+  label( UCharacter_ClientCheatFly_Implementation )
+  registersymbol( UCharacter_ClientCheatFly_Implementation )
+  label( UCharacter_ClientCheatGhost_Implementation )
+  registersymbol( UCharacter_ClientCheatGhost_Implementation )
+
+  label( Init )
+  registersymbol( Init )
+  label( Init_exit )
+  label( ConstructUFunctions )
+  registersymbol( ConstructUFunctions )
+  label( Z_Construct_UClass_UCheatManager_Statics_FuncInfo )
+  registersymbol( Z_Construct_UClass_UCheatManager_Statics_FuncInfo )
+  label( Z_Construct_UFunction_UCheatManager_God )
+  registersymbol( Z_Construct_UFunction_UCheatManager_God )
+  label( Z_Construct_UFunction_UCheatManager_Ghost )
+  registersymbol( Z_Construct_UFunction_UCheatManager_Ghost )
+  label( Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams )
+  registersymbol( Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams )
+  label( Z_Construct_UFunction_UCheatManager_Ghost_Statics_FuncParams )
+  registersymbol( Z_Construct_UFunction_UCheatManager_Ghost_Statics_FuncParams )
+  label( UFunction_God )
+  registersymbol( UFunction_God )
+  label( UFunction_Ghost )
+  registersymbol( UFunction_Ghost )
+
+  label( pszGod )
+  label( pszGhost )
+  label( pszSpawnAwesomeItems )
+
+  CreateThread( Init )
+
+  ReCode:
+
+  UCheatManager_PlayersOnly:
+  push rdi
+  sub rsp,20
+  mov rax,[rcx]
+  mov rdi,rcx
+  call qword ptr [rax+148]        // UCheatManager::GetWorld
+  test byte ptr [rax+830],0x80
+  jne short @f
+    mov rax,[rdi]
+    mov rcx,rdi
+    call qword ptr [rax+148]      // UCheatManager::GetWorld
+    test [rax+830],0x100
+    jne short @f
+      mov rax,[rdi]
+      mov rcx,rdi
+      mov [rsp+30],rbx
+      call qword ptr [rax+148]    // UCheatManager::GetWorld
+      mov rdx,[rdi]
+      mov rcx,rdi
+      mov rbx,rax
+      call qword ptr [rdx+148]    // UCheatManager::GetWorld
+      mov ecx,[rbx+830]
+      mov rbx,[rsp+30]
+      not ecx
+      xor ecx,[rax+830]
+      and ecx,0x100
+      xor [rax+830],ecx
+      add rsp,20
+      pop rdi
+      ret
+  @@:
+  mov rax,[rdi]
+  mov rcx,rdi
+  call qword ptr [rax+148]        // UCheatManager::GetWorld
+  mov rcx,rdi
+  and [rax+830],0xFFFFFF7F
+  mov rax,[rdi]
+  call qword ptr [rax+148]        // UCheatManager::GetWorld
+  and [rax+830],0xFFFFFEFF
+  add rsp,20
+  pop rdi
+  ret
+
+  align 10 CC
+
+  UCharacter_ClientCheatFly_Implementation:
+  push rbx
+  sub rsp,20
+  mov dl,1
+  mov rbx,rcx
+  call Borderlands3.exe+1F7F1C0  // AActor::SetActorEnableCollision
+  mov rax,[rbx+4C8]
+  test rax,rax
+  je short @f
+    or [rax+4B4],400
+    xor r8d,r8d
+    mov rcx,[rbx+4C8]
+    lea edx,[r8+5]
+    mov rax,[rcx]
+    add rsp,20
+    pop rbx
+    jmp qword ptr [rax+5A0]       // UCharacterMovementComponent::SetMovementMode
+  @@:
+  add rsp,20
+  pop rbx
+  ret
+
+  align 10 CC
+
+  UCharacter_ClientCheatGhost_Implementation:
+  push rbx
+  sub rsp,20
+  xor edx,edx
+  mov rbx,rcx
+  call Borderlands3.exe+1F7F1C0  // AActor::SetActorEnableCollision
+  mov rax,[rbx+4C8]
+  test rax,rax
+  je short @f
+    or [rax+4B4],400
+    xor r8d,r8d
+    mov rcx,[rbx+4C8]
+    lea edx,[r8+5]
+    mov rax,[rcx]
+    add rsp,20
+    pop rbx
+    jmp qword ptr [rax+5A0]       // UCharacterMovementComponent::SetMovementMode
+  @@:
+  add rsp,20
+  pop rbx
+  ret
+
+  align 10 CC
+
+  UCharacter_ClientCheatWalk_Implementation:
+  push rbx
+  sub rsp,20
+  mov dl,1
+  mov rbx,rcx
+  call Borderlands3.exe+1F7F1C0  // AActor::SetActorEnableCollision
+  mov rax,[rbx+4C8]
+  test rax,rax
+  je short @f
+    and [rax+4B4],BFF
+    xor r8d,r8d
+    mov rcx,[rbx+4C8]
+    lea edx,[r8+3]
+    mov rax,[rcx]
+    add rsp,20
+    pop rbx
+    jmp qword ptr [rax+5A0]       // UCharacterMovementComponent::SetMovementMode
+  @@:
+  add rsp,20
+  pop rbx
+  ret
+
+  align 10 CC
+
+  Init:
+  sub rsp,28
+  xor r9d,r9d
+  lea r8,[pszSpawnAwesomeItems]
+  mov rax,[OakPlayerController]
+  mov rax,[rax+1970]
+  test rax,rax                          // if this is NULL by the time the user enables this script, abort
+  je short Init_exit
+    mov rdx,[rax+10]                    // 0x20: BlueprintGeneratedClass BP_DevPerks.BP_DevPerks_C
+    mov rcx,[Borderlands3.exe+64D6EA0]  // 0x10: Class CoreUObject.Function
+    call Borderlands3.exe+14F9D80       // StaticFindObject
+    test rax,rax
+    je short @f
+      mov dword ptr [rax+88],4020600    // patch UFunction flags
+    @@:
+    call ConstructUFunctions
+  Init_exit:
+  add rsp,28
+  ret
+
+  align 10 CC
+
+  ConstructUFunctions:
+  sub rsp,178
+  mov r8d,2                                                   // uint32 NumFunctions
+  lea rdx,[Z_Construct_UClass_UCheatManager_Statics_FuncInfo] // FClassFunctionLinkInfo* Functions
+  mov rcx,[Borderlands3.exe+6607640]                          // Class Engine.CheatManager
+  call Borderlands3.exe+14785A0                               // UClass::CreateLinkAndAddChildFunctionsToMap
+  add rsp,178
+  ret
+
+  align 10 CC
+
+  Z_Construct_UFunction_UCheatManager_God:
+  sub rsp,28
+  mov rax,[UFunction_God]
+  test rax,rax
+  jne short @f
+    lea rdx,[Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams]
+    lea rcx,[UFunction_God]
+    call Borderlands3.exe+14E7540 // UE4CodeGen_Private::ConstructUFunction
+    mov rax,[UFunction_God]
+  @@:
+  add rsp,28
+  ret
+
+  align 10 CC
+
+  Z_Construct_UFunction_UCheatManager_Ghost:
+  sub rsp,28
+  mov rax,[UFunction_Ghost]
+  test rax,rax
+  jne short @f
+    lea rdx,[Z_Construct_UFunction_UCheatManager_Ghost_Statics_FuncParams]
+    lea rcx,[UFunction_Ghost]
+    call Borderlands3.exe+14E7540 // UE4CodeGen_Private::ConstructUFunction
+    mov rax,[UFunction_Ghost]
+  @@:
+  add rsp,28
+  ret
+
+  align 10 CC
+
+  UFunction_God:
+  dq 0
+
+  align 10 CC
+
+  UFunction_Ghost:
+  dq 0
+
+  align 10 CC
+
+  pszGod:
+  db 'God',0
+
+  align 10 CC
+
+  pszGhost:
+  db 'Ghost',0
+
+  align 10 CC
+
+  pszSpawnAwesomeItems:
+  db 'S',0,'p',0,'a',0,'w',0,'n',0,'A',0,'w',0,'e',0,'s',0,'o',0,'m',0,'e',0,'I',0,'t',0,'e',0,'m',0,'s',0,0,0
+
+  align 10 CC
+
+  Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams:
+  dq Borderlands3.exe+265A7C0 // 0x00 -&gt; Z_Construct_UClass_UCheatManager
+  dq pszGod                   // 0x08
+  dq 0x45                     // 0x10
+  dq 0                        // 0x18
+  dq 04020600                 // 0x20
+  dq 0                        // 0x28
+  dq 0                        // 0x30
+  dq 0                        // 0x38
+  dq 0
+
+  align 10 CC
+
+  Z_Construct_UFunction_UCheatManager_Ghost_Statics_FuncParams:
+  dq Borderlands3.exe+265A7C0 // 0x00 -&gt; Z_Construct_UClass_UCheatManager
+  dq pszGhost                 // 0x08
+  dq 0x45                     // 0x10
+  dq 0                        // 0x18
+  dq 04020600                 // 0x20
+  dq 0                        // 0x28
+  dq 0                        // 0x30
+  dq 0                        // 0x38
+  dq 0
+
+  align 10 CC
+
+  Z_Construct_UClass_UCheatManager_Statics_FuncInfo:
+  dq Z_Construct_UFunction_UCheatManager_God      // 0x00
+  dq pszGod                                       // 0x08
+  dq Z_Construct_UFunction_UCheatManager_Ghost    // 0x10
+  dq pszGhost                                     // 0x18
+  dq 0
+
+]])
+
+-- might need some Sleep
+
+Sleep( 2000 )
+
+-- restore the execs in God and Ghost UFunctions
+
+local UFunction_God = readQword( getAddressSafe( "UFunction_God" ) )
+local UFunction_Ghost = readQword( getAddressSafe( "UFunction_Ghost" ) )
+-- UCheatManager::execGod
+local UCheatManager_execGod = gameModule + 0x2689790
+-- UCheatManager::execGhost
+local UCheatManager_execGhost = gameModule + 0x26898D0
+writeQword( UFunction_God + 0xB0, UCheatManager_execGod )
+writeQword( UFunction_Ghost + 0xB0, UCheatManager_execGhost )
+
+-- patch the UCheatManager functions back in
+
+-- OakPlayerController
+local OakPlayerController = readQword( getAddressSafe( "OakPlayerController" ) )
+-- OakCheatManager
+local OakCheatManager = readQword( OakPlayerController + 0x5A8 )
+-- member-functions pointer
+local mf_OakCheatManager = readQword( OakCheatManager )
+-- UCheatManager::Fly
+local UCheatManager_Fly = gameModule + 0x20525D0
+-- UCheatManager::Walk
+local UCheatManager_Walk = gameModule + 0x2065930
+-- UCheatManager::Ghost
+local UCheatManager_Ghost = gameModule + 0x2055920
+-- UCheatManager::God
+local UCheatManager_God = gameModule + 0x2055A30
+-- UCheatManager::PlayersOnly
+local UCheatManager_PlayersOnly = getAddressSafe( "UCheatManager_PlayersOnly" )
+fullAccess( mf_OakCheatManager + 0x2A0, 8 )
+writeQword( mf_OakCheatManager + 0x2A0, UCheatManager_Fly )
+fullAccess( mf_OakCheatManager + 0x2A8, 8 )
+writeQword( mf_OakCheatManager + 0x2A8, UCheatManager_Walk )
+fullAccess( mf_OakCheatManager + 0x2B0, 8 )
+writeQword( mf_OakCheatManager + 0x2B0, UCheatManager_Ghost )
+fullAccess( mf_OakCheatManager + 0x2B8, 8 )
+writeQword( mf_OakCheatManager + 0x2B8, UCheatManager_God )
+fullAccess( mf_OakCheatManager + 0x2F8, 8 )
+writeQword( mf_OakCheatManager + 0x2F8, UCheatManager_PlayersOnly )
+
+-- patch the UOakChararacter ClientCheat functions back in
+
+-- OakCharacter
+local OakCharacter = readQword( OakPlayerController + 0x488 )
+-- member-functions pointer
+local mf_OakCharacter = readQword( OakCharacter )
+-- ACharacter::ClientCheatWalk_Implementation
+local UCharacter_ClientCheatWalk_Implementation = getAddressSafe( "UCharacter_ClientCheatWalk_Implementation" )
+-- ACharacter::ClientCheatFly_Implementation
+local UCharacter_ClientCheatFly_Implementation = getAddressSafe( "UCharacter_ClientCheatFly_Implementation" )
+-- ACharacter::ClientCheatGhost_Implementation
+local UCharacter_ClientCheatGhost_Implementation = getAddressSafe( "UCharacter_ClientCheatGhost_Implementation" )
+fullAccess( mf_OakCharacter + 0x928, 8 )
+writeQword( mf_OakCharacter + 0x928, UCharacter_ClientCheatWalk_Implementation )
+fullAccess( mf_OakCharacter + 0x930, 8 )
+writeQword( mf_OakCharacter + 0x930, UCharacter_ClientCheatFly_Implementation )
+fullAccess( mf_OakCharacter + 0x938, 8 )
+writeQword( mf_OakCharacter + 0x938, UCharacter_ClientCheatGhost_Implementation )
+
+[DISABLE]
+
+{$asm}
+
+unregistersymbol( UFunction_Ghost )
+unregistersymbol( UFunction_God )
+unregistersymbol( Z_Construct_UFunction_UCheatManager_Ghost_Statics_FuncParams )
+unregistersymbol( Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams )
+unregistersymbol( Z_Construct_UFunction_UCheatManager_Ghost )
+unregistersymbol( Z_Construct_UFunction_UCheatManager_God )
+unregistersymbol( Z_Construct_UClass_UCheatManager_Statics_FuncInfo )
+unregistersymbol( ConstructUFunctions )
+
+unregistersymbol( UCharacter_ClientCheatGhost_Implementation )
+unregistersymbol( UCharacter_ClientCheatFly_Implementation )
+unregistersymbol( UCharacter_ClientCheatWalk_Implementation )
+unregistersymbol( UCheatManager_PlayersOnly )
+
+dealloc( ReCode )
+unregistersymbol( ReCode )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Infinite Clip Ammo"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( OnFire, Borderlands3.exe, 40534883EC??488B01488BD948896C24 )
+registersymbol( OnFire )
+label( OnFire_o )
+registersymbol( OnFire_o )
+
+alloc( Hook, 0x1000, Borderlands3.exe )
+
+Hook:
+push rax
+mov rax,[rcx+1A8]     // BPWeap_SR_DAL_C
+test rax,rax
+jne short @f
+  mov rax,[rcx+118]   // BPWeap_SR_DAL_C
+@@:
+cmp [rax+4A0],0       // OakCharacter
+je short @f
+  mov rax,[rax+4A8]
+  mov rax,[rax-8E8]   // OakPlayerController
+  cmp rax,[OakPlayerController]
+  jne short @f
+    pop rax
+    ret              // no ammo processing
+@@:
+pop rax
+OnFire_o:
+readmem( OnFire, 6 )
+jmp OnFire+6
+
+OnFire:
+jmp Hook
+db 90
+
+[DISABLE]
+
+OnFire:
+readmem( OnFire_o, 6 )
+
+dealloc( Hook )
+unregistersymbol( OnFire )
+unregistersymbol( OnFire_o )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"Rig 'UPlayer::Exec'"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( hUPlayer_Exec, Borderlands3.exe, 488D4C24??E8????????30C04883C4??415F415E415D5F5E5D5BC3 )
+registersymbol( hUPlayer_Exec )
+label( hUPlayer_Exec_o )
+registersymbol( hUPlayer_Exec_o )
+
+alloc( Hook, 0x1000, Borderlands3.exe )
+label( Hook_true )
+
+Hook:
+// [ObjectProperty BPCont_Player.BPCont_Player_C.DeveloperPerks + 0x44] = 0x1970
+// r14 = OakPlayerController
+mov rcx,[r14+1970]
+test rcx,rcx
+je short @f
+  mov rax,[rcx]
+  mov r9,rdi
+  mov r8,rbp
+  mov rdx,rsi
+  call qword ptr [rax+220] // UObject::ProcessConsoleExec
+  test al,al
+  jne short Hook_true
+hUPlayer_Exec_o:
+readmem( hUPlayer_Exec, 5 )
+jmp hUPlayer_Exec+5
+
+Hook_true:
+jmp hUPlayer_Exec+1B
+
+hUPlayer_Exec:
+jmp Hook
+
+[DISABLE]
+
+hUPlayer_Exec:
+readmem( hUPlayer_Exec_o, 5 )
+
+dealloc( Hook )
+unregistersymbol( hUPlayer_Exec_o )
+unregistersymbol( hUPlayer_Exec )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16241</ID>
+          <Description>"Assemble execOpenDebugMenu"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+alloc( execOpenDebugMenu, 0x1000, Borderlands3.exe )
+registersymbol( execOpenDebugMenu )
+
+label( szCheatMenuData )
+label( szGbxCheatSettings )
+
+label( @L00000001 )
+label( @L00000002 )
+label( @L00000003 )
+label( @L00000004 )
+label( @L00000005 )
+label( @L00000006 )
+
+execOpenDebugMenu:
+
+	mov [rsp+10],rbp
+	mov [rsp+18],rsi
+	push rdi
+	sub rsp,50
+	mov rax,[rcx]
+	mov rdi,rcx
+	call qword ptr [rax+F90]
+	xor ebp,ebp
+	mov rsi,rax
+	mov [rsp+40],rbp
+	mov [rsp+48],rbp
+	test rax,rax
+	je @L00000006
+	mov rcx,[Borderlands3.exe+63C5F20]        // GConfig
+	test rcx,rcx
+	je @L00000006
+	lea rax,[Borderlands3.exe+63D2110]        // path to Engine.ini
+	lea r9,[rsp+40]
+	mov [rsp+20],rax
+	lea r8,[szCheatMenuData]                  // L"CheatMenuData"
+	lea rdx,[szGbxCheatSettings]              // L"GbxCheatSettings"
+	call Borderlands3.exe+13A37C0             // FConfigCacheIni::GetString
+	test al,al
+	je @L00000005
+	cmp [rsp+48],ebp
+	mov [rsp+60],rbx
+	lea rbx,[Borderlands3.exe+3DBFD28]
+	cmovne rbx,[rsp+40]
+	call Borderlands3.exe+2C141F0             // GbxUmgMenuData::GetPrivateStaticClass
+	mov byte ptr [rsp+30],1
+	xor r9d,r9d
+	mov [rsp+28],rbp
+	mov r8,rbx
+	xor edx,edx
+	mov [rsp+20],ebp
+	mov rcx,rax
+	call Borderlands3.exe+14FA600             // StaticLoadObject
+	mov rbx,rax
+	test rax,rax
+	je short @L00000004
+	cmp [rax+48],rbp
+	je short @L00000002
+	call Borderlands3.exe+2C14140             // GbxUmgMenu::GetPrivateStaticClass
+	mov rdx,[rbx+48]
+	mov rcx,rdx
+	test rdx,rdx
+	je short @L00000002
+
+@L00000001:
+	cmp rcx,rax
+	je short @L00000003
+	mov rcx,[rcx+30]
+	test rcx,rcx
+	jne short @L00000001
+
+@L00000002:
+	mov rdx,rbp
+
+@L00000003:
+	mov rcx,[rdi+A68]
+	call Borderlands3.exe+2BB9D60
+	test al,al
+	jne short @L00000004
+	mov rdx,rbx
+	mov rcx,rsi
+	call Borderlands3.exe+2BD4B80
+
+@L00000004:
+	mov rbx,[rsp+60]
+
+@L00000005:
+	mov rcx,[rsp+40]
+	test rcx,rcx
+	je short @L00000006
+	call Borderlands3.exe+134A7A0             // FMemory::Free
+
+@L00000006:
+	mov rbp,[rsp+68]
+	mov rsi,[rsp+70]
+	add rsp,50
+	pop rdi
+	ret
+
+align 10 CC
+
+szCheatMenuData:
+db 'C',0,'h',0,'e',0,'a',0,'t',0,'M',0,'e',0,'n',0,'u',0,'D',0,'a',0,'t',0,'a',0,0,0
+
+align 10 CC
+
+szGbxCheatSettings:
+db 'G',0,'b',0,'x',0,'C',0,'h',0,'e',0,'a',0,'t',0,'S',0,'e',0,'t',0,'t',0,'i',0,'n',0,'g',0,'s',0,0,0
+
+[DISABLE]
+
+dealloc( execOpenDebugMenu )
+unregistersymbol( execOpenDebugMenu )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16225</ID>
+          <Description>"Item Spawner"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Activated="1"/>
+          <Color>FF0000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+alloc( UEThread, 0x1000, Borderlands3.exe )
+registersymbol( UEThread )
+CreateThread( UEThread )
+label( UEThreadOff )
+registersymbol( UEThreadOff )
+label( UEThread_loop )
+
+label( SpawnItem_do )
+
+label( iAmount )
+registersymbol( iAmount )
+label( ppItemPoolArr )
+registersymbol( ppItemPoolArr )
+label( pItemPool )
+registersymbol( pItemPool )
+
+UEThread:
+sub rsp,28
+
+UEThread_loop:
+mov rcx,A
+call Sleep
+
+cmp [UEThreadOff],1
+jne short @f
+  add rsp,28
+  mov [UEThreadOff],2
+  ret
+@@:
+
+  mov rcx,6E // VK_DECIMAL
+  call GetAsyncKeyState
+  test ax,ax
+  je short @f
+
+    call short SpawnItem_do
+    mov rcx,C8
+    call Sleep
+
+  @@:
+  jmp short UEThread_loop
+
+align 10 CC
+
+SpawnItem_do:
+sub rsp,38
+mov r8d,[iAmount]              // item amount
+lea rdx,[ppItemPoolArr]        // pointer to pointer to ItemPoolArr
+mov rcx,[OakDeveloperPerks]    // UObject
+call Borderlands3.exe+BAF140   // SpawnItems_Internal
+add rsp,38
+ret
+
+align 10 CC
+
+iAmount:
+dd 1
+
+align 10 CC
+
+ppItemPoolArr:
+dq pItemPool
+dd 1                         // dwArrSize (expand this to &gt; 1 if you add more items in pItemPool
+
+align 10 CC
+
+pItemPool:
+dq 0
+dq 0
+
+UEThreadOff:
+dd 0
+
+[DISABLE]
+
+
+{$lua}
+
+if( syntaxcheck == false ) then --actual execution
+  local starttime = getTickCount()
+
+if readInteger( "UEThreadOff" ) == 0 then --could be 2 already
+  writeInteger( "UEThreadOff", 1 ) --tell the thread to kill itself
+end
+
+while( getTickCount() &lt; starttime + 1000 ) and ( readInteger( "UEThreadOff" ) ~= 2 ) do --wait till it has finished
+  sleep( 20 )
+end
+
+if( getTickCount() &gt; starttime + 1000 ) then --could happen when the window is shown
+  showMessage( 'Disabling the thread failed!' )
+  error( 'Thread disabling failed!' )
+end
+  sleep( 1 )
+end
+
+{$asm}
+
+unregistersymbol( pItemPool )
+unregistersymbol( ppItemPoolArr )
+unregistersymbol( iAmount )
+
+unregistersymbol( UEThreadOff )
+unregistersymbol( UEThread )
+dealloc( UEThread )
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16226</ID>
+              <Description>"iAmount"</Description>
+              <LastState Value="1" RealAddress="13FFD00B0"/>
+              <Color>FF8080</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>iAmount</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16227</ID>
+              <Description>"pItemPool"</Description>
+              <LastState Value="0000000063C79DC0" RealAddress="13FFD00D0"/>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>FF8080</Color>
+              <VariableType>8 Bytes</VariableType>
+              <Address>pItemPool</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"[ Debug ]"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>0080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"LocalPlayer"</Description>
+          <LastState Value="000000005FC7C800" RealAddress="13FFF0060"/>
+          <ShowAsHex>1</ShowAsHex>
+          <Color>8000FF</Color>
+          <VariableType>8 Bytes</VariableType>
+          <Address>LocalPlayer</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"OakPlayerController"</Description>
+          <LastState Value="0000000045A3C720" RealAddress="13FFF0070"/>
+          <ShowAsHex>1</ShowAsHex>
+          <Color>8000FF</Color>
+          <VariableType>8 Bytes</VariableType>
+          <Address>OakPlayerController</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5</ID>
+              <Description>"OakCharacter"</Description>
+              <LastState Value="0000000078A6CCD0" RealAddress="45A3CBA8"/>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>8000FF</Color>
+              <VariableType>8 Bytes</VariableType>
+              <Address>OakPlayerController</Address>
+              <Offsets>
+                <Offset>488</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9</ID>
+                  <Description>"bGod"</Description>
+                  <LastState Value="C2" RealAddress="78A6CD61"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>8000FF</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>OakPlayerController</Address>
+                  <Offsets>
+                    <Offset>91</Offset>
+                    <Offset>488</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16224</ID>
+                  <Description>"Level"</Description>
+                  <LastState Value="38" RealAddress="4C2A73E4"/>
+                  <Color>8000FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>OakPlayerController</Address>
+                  <Offsets>
+                    <Offset>1A4</Offset>
+                    <Offset>2A18</Offset>
+                    <Offset>488</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16185</ID>
+                  <Description>"CWeapon"</Description>
+                  <LastState Value="000000006FCF20E0" RealAddress="77F94AE8"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>8000FF</Color>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>OakPlayerController</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                    <Offset>1508</Offset>
+                    <Offset>488</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>16186</ID>
+                      <Description>"Fire Rate (Calculated)"</Description>
+                      <LastState Value="14.23697948" RealAddress="5996D79C"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>21C</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16188</ID>
+                      <Description>"Fire Rate"</Description>
+                      <LastState Value="13.20684624" RealAddress="5996D7A0"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>220</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16221</ID>
+                      <Description>"Bullets To Fire"</Description>
+                      <LastState Value="0" RealAddress="5996D7A8"/>
+                      <Color>8000FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>228</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16217</ID>
+                      <Description>"Fire Delay (Calculated)"</Description>
+                      <LastState Value="0.3462749422" RealAddress="5996D7B4"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>234</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16218</ID>
+                      <Description>"Fire Delay"</Description>
+                      <LastState Value="0.3462749422" RealAddress="5996D7B8"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>238</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16222</ID>
+                      <Description>"dwClipToSpend"</Description>
+                      <LastState Value="1" RealAddress="5996D864"/>
+                      <Color>8000FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>2E4</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16190</ID>
+                      <Description>"Damage (Calculated)"</Description>
+                      <LastState Value="136.0813141" RealAddress="5996D89C"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>31C</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16189</ID>
+                      <Description>"Damage"</Description>
+                      <LastState Value="129.0481873" RealAddress="5996D8A0"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>320</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16193</ID>
+                      <Description>"Accuracy (Calculated)"</Description>
+                      <LastState Value="2.301374912" RealAddress="5996D874"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>2F4</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16194</ID>
+                      <Description>"Accuracy"</Description>
+                      <LastState Value="2.301374912" RealAddress="5996D878"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>2F8</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16200</ID>
+                      <Description>"Weapon Handling (Calculated)"</Description>
+                      <LastState Value="0.4768500626" RealAddress="5996D880"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>300</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16199</ID>
+                      <Description>"Weapon Handling"</Description>
+                      <LastState Value="0.4768500626" RealAddress="5996D884"/>
+                      <Color>8000FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>304</Offset>
+                        <Offset>470</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16207</ID>
+                      <Description>"RecoilPatternComponent"</Description>
+                      <LastState Value="000000004ECD8000" RealAddress="B1074550"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>8000FF</Color>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>320</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16208</ID>
+                          <Description>"RecoilPatternData"</Description>
+                          <LastState Value="000000005EF8CB80" RealAddress="4ECD81A0"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>8000FF</Color>
+                          <VariableType>8 Bytes</VariableType>
+                          <Address>OakPlayerController</Address>
+                          <Offsets>
+                            <Offset>1A0</Offset>
+                            <Offset>10</Offset>
+                            <Offset>320</Offset>
+                            <Offset>8</Offset>
+                            <Offset>1508</Offset>
+                            <Offset>488</Offset>
+                          </Offsets>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>16209</ID>
+                              <Description>"dwRecoilVal"</Description>
+                              <LastState Value="8" RealAddress="5EF8CBB8"/>
+                              <Color>8000FF</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>OakPlayerController</Address>
+                              <Offsets>
+                                <Offset>38</Offset>
+                                <Offset>1A0</Offset>
+                                <Offset>10</Offset>
+                                <Offset>320</Offset>
+                                <Offset>8</Offset>
+                                <Offset>1508</Offset>
+                                <Offset>488</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16210</ID>
+                      <Description>"WeaponSwayComponent"</Description>
+                      <LastState Value="00000000456A56B0" RealAddress="B1074560"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <Color>8000FF</Color>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>OakPlayerController</Address>
+                      <Offsets>
+                        <Offset>20</Offset>
+                        <Offset>320</Offset>
+                        <Offset>8</Offset>
+                        <Offset>1508</Offset>
+                        <Offset>488</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16211</ID>
+                          <Description>"SwayPatternData"</Description>
+                          <LastState Value="00000000494B4DA0" RealAddress="456A5838"/>
+                          <ShowAsHex>1</ShowAsHex>
+                          <Color>8000FF</Color>
+                          <VariableType>8 Bytes</VariableType>
+                          <Address>OakPlayerController</Address>
+                          <Offsets>
+                            <Offset>188</Offset>
+                            <Offset>20</Offset>
+                            <Offset>320</Offset>
+                            <Offset>8</Offset>
+                            <Offset>1508</Offset>
+                            <Offset>488</Offset>
+                          </Offsets>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>16213</ID>
+                              <Description>"dwSwayVal"</Description>
+                              <LastState Value="1229669056" RealAddress="494B4DD8"/>
+                              <Color>8000FF</Color>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>OakPlayerController</Address>
+                              <Offsets>
+                                <Offset>38</Offset>
+                                <Offset>188</Offset>
+                                <Offset>20</Offset>
+                                <Offset>320</Offset>
+                                <Offset>8</Offset>
+                                <Offset>1508</Offset>
+                                <Offset>488</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16212</ID>
+                          <Description>"fSwayVal"</Description>
+                          <LastState Value="6.171906982E-40" RealAddress="456A5888"/>
+                          <Color>8000FF</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>OakPlayerController</Address>
+                          <Offsets>
+                            <Offset>1D8</Offset>
+                            <Offset>20</Offset>
+                            <Offset>320</Offset>
+                            <Offset>8</Offset>
+                            <Offset>1508</Offset>
+                            <Offset>488</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>4</ID>
+              <Description>"OakCheatManager"</Description>
+              <LastState Value="0000000059C26780" RealAddress="45A3CCC8"/>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>8000FF</Color>
+              <VariableType>8 Bytes</VariableType>
+              <Address>OakPlayerController</Address>
+              <Offsets>
+                <Offset>5A8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"OakDeveloperPerks"</Description>
+          <LastState Value="000000004527AF80" RealAddress="13FFF0080"/>
+          <ShowAsHex>1</ShowAsHex>
+          <Color>8000FF</Color>
+          <VariableType>8 Bytes</VariableType>
+          <Address>OakDeveloperPerks</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"Unreal Engine 'god' :)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$STRICT}
+
+{$lua}
+
+if syntaxcheck then return end
+
+[ENABLE]
+
+local t = getAddressSafe( "OakPlayerController" )
+t = readQword( t )
+t = readQword( t + 0x488 ) -- OakCharacter
+local u = readBytes( t + 0x91 )
+u = u &amp; 0xBF
+writeBytes( t + 0x91, u )
+
+[DISABLE]
+
+local t = getAddressSafe( "OakPlayerController" )
+t = readQword( t )
+t = readQword( t + 0x488 ) -- OakCharacter
+local u = readBytes( t + 0x91 )
+u = u | 0x40
+writeBytes( t + 0x91, u )
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Init &amp; Link 'god' UFunction"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+alloc( ZConstructGodThread, 0x1000, Borderlands3.exe )
+registersymbol( ZConstructGodThread )
+CreateThread( ZConstructGodThread )
+
+label( pReturnFunction )
+label( pszGod )
+label( Z_Construct_UFunction_UCheatManager_God )
+registersymbol( Z_Construct_UFunction_UCheatManager_God )
+label( Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams )
+registersymbol( Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams )
+label( aZ_Construct_UFunction_UCheatManager_God )
+registersymbol( aZ_Construct_UFunction_UCheatManager_God )
+
+ZConstructGodThread:
+db EB FE
+sub rsp,178
+mov r8d,1
+lea rdx,[aZ_Construct_UFunction_UCheatManager_God]
+mov rcx,[Borderlands3.exe+66026A0]
+call Borderlands3.exe+147F3A0 // UClass::CreateLinkAndAddChildFunctionsToMap
+add rsp,178
+ret
+
+align 10 CC
+
+Z_Construct_UFunction_UCheatManager_God:
+  sub rsp,28
+  mov rax,[pReturnFunction]
+  test rax,rax
+  jne short @f
+    lea rdx,[Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams]
+    lea rcx,[pReturnFunction]
+    call Borderlands3.exe+14EE340 // UE4CodeGen_Private::ConstructUFunction
+    mov rax,[pReturnFunction]
+  @@:
+  add rsp,28
+  ret
+
+align 10 CC
+
+pReturnFunction:
+dq 0
+
+align 10 CC
+
+pszGod:
+db 'God',0
+
+align 10 CC
+
+Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams:
+dq Borderlands3.exe+2661100 // 0x0 - Z_Construct_UClass_UCheatManager
+dq pszGod                   // 0x8
+dq 0x45                     // 0x10
+dq 0                        // 0x18
+dq 04020600                 // 0x20
+dq 0                        // 0x28
+dq 0                        // 0x30
+dq 0                        // 0x38
+
+align 10 CC
+
+aZ_Construct_UFunction_UCheatManager_God:
+dq Z_Construct_UFunction_UCheatManager_God      // 0x0
+dq pszGod                                       // 0x8
+
+align 10 CC
+
+[DISABLE]
+
+unregistersymbol( Z_Construct_UFunction_UCheatManager_God )
+unregistersymbol( aZ_Construct_UFunction_UCheatManager_God )
+unregistersymbol( Z_Construct_UFunction_UCheatManager_God_Statics_FuncParams )
+unregistersymbol( ZConstructGodThread )
+dealloc( ZConstructGodThread )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Test_StaticFindUObject"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+alloc( UEThread, 0x1000, Borderlands3.exe )
+registersymbol( UEThread )
+CreateThread( UEThread )
+label( UEThreadOff )
+registersymbol( UEThreadOff )
+label( UEThread_loop )
+
+label( FindUObject_do )
+
+UEThread:
+sub rsp,28
+
+UEThread_loop:
+mov rcx,A
+call Sleep
+
+cmp [UEThreadOff],1
+jne short @f
+  add rsp,28
+  mov [UEThreadOff],2
+  ret
+@@:
+
+  mov rcx,6E // VK_DECIMAL
+  call GetAsyncKeyState
+  test ax,ax
+  je short @f
+
+    call short FindUObject_do
+    mov rcx,C8
+    call Sleep
+
+  @@:
+  jmp short UEThread_loop
+
+align 10 CC
+
+FindUObject_do:
+sub rsp,28
+xor r9d,r9d
+lea r8,[szSpawnAwesomeItems]
+mov rax,[OakPlayerController]
+mov rax,[rax+1970]
+mov rdx,[rax+10]                    // 0x20: BlueprintGeneratedClass BP_DevPerks.BP_DevPerks_C
+mov rcx,[Borderlands3.exe+64D2020]  // 0x10: Class CoreUObject.Function
+call Borderlands3.exe+1500B80       // StaticFindObject
+add rsp,28
+ret
+
+align 10 CC
+
+szSpawnAwesomeItems:
+db 'S',0,'p',0,'a',0,'w',0,'n',0,'A',0,'w',0,'e',0,'s',0,'o',0,'m',0,'e',0,'I',0,'t',0,'e',0,'m',0,'s',0,0,0
+
+align 10 CC
+
+UEThreadOff:
+dd 0
+
+[DISABLE]
+
+
+{$lua}
+
+if( syntaxcheck == false ) then --actual execution
+  local starttime = getTickCount()
+
+if readInteger( "UEThreadOff" ) == 0 then --could be 2 already
+  writeInteger( "UEThreadOff", 1 ) --tell the thread to kill itself
+end
+
+while( getTickCount() &lt; starttime + 1000 ) and ( readInteger( "UEThreadOff" ) ~= 2 ) do --wait till it has finished
+  sleep( 20 )
+end
+
+if( getTickCount() &gt; starttime + 1000 ) then --could happen when the window is shown
+  showMessage( 'Disabling the thread failed!' )
+  error( 'Thread disabling failed!' )
+end
+  sleep( 1 )
+end
+
+{$asm}
+
+unregistersymbol( UEThreadOff )
+unregistersymbol( UEThread )
+dealloc( UEThread )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"UFunction SpawnAwesomeItems"</Description>
+          <LastState Value="00000001448AC078" RealAddress="282DDD80"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>8 Bytes</VariableType>
+          <Address>282DDD80</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16</ID>
+              <Description>"UFlags"</Description>
+              <LastState Value="0C020000" RealAddress="282DDE08"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+88</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16229</ID>
+              <Description>"UFunction_ByteCode"</Description>
+              <LastState Value="1C 30 86 2C 18 00 00 00 00 16 04 0B 53 00 00 00 00 00 00 00 00 00 00 00 70 69 D3 27 00 00 00 00 D0 41 5F 46 01 00 00 00 40 41 5F 46 01 00 00 00 00 00 00 00 01 00 01 00 00 62 D3 27 00 00 00 00 00 00 00 00 06 00 01 00 90 69 D3 27 00 00 00 00 00 00 00 00 03 00 01 00 B0 69 D3 27 00 00 00 00 00 00 00 00 00 00 00 00 20 6C D3 27 00 00 00 00 59 00 61 00 77 00 00 00 00 00 3D 6D 00 00 00 00 00 00 00 00 00 00 00 00 A0 50 D3 27 00 00 00 00 00 00 00 00 03 00 01 00 50 70 D3 27 00 00 00 00 00 00 00 00 01 00 01 00 30 54 D3 27" RealAddress="27D36980"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>172</ByteLength>
+              <Address>+48</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>16230</ID>
+                  <Description>"ItemPoolData_1_1 (ItemPoolData ItemPool_Artifacts_05_Legendary.ItemPool_Artifacts_05_Legendary)"</Description>
+                  <LastState Value="000000000000530B" RealAddress="27D3698B"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+B</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16231</ID>
+                  <Description>"ItemPoolData_1_2 (ItemPoolData ItemPool_ClassMods_05_Legendary.ItemPool_ClassMods_05_Legendary)"</Description>
+                  <LastState Value="27D3697000000000" RealAddress="27D36994"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+14</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16232</ID>
+                  <Description>"ItemPoolData_1_3 (ItemPoolData ItemPool_GrenadeMods_05_Legendary.ItemPool_GrenadeMods_05_Legendary)"</Description>
+                  <LastState Value="01465F41D0000000" RealAddress="27D3699D"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+1D</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16233</ID>
+                  <Description>"ItemPoolData_1_4 (ItemPoolData ItemPool_Shields_05_Legendary.ItemPool_Shields_05_Legendary)"</Description>
+                  <LastState Value="0001465F41400000" RealAddress="27D369A6"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+26</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16234</ID>
+                  <Description>"ItemPoolData_1_5 (ItemPoolData ItemPool_Guns_Legendary.ItemPool_Guns_Legendary)"</Description>
+                  <LastState Value="0100010000000000" RealAddress="27D369AF"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+2F</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16235</ID>
+                  <Description>"ItemPoolData_1_6 (ItemPoolData ItemPool_Guns_Legendary.ItemPool_Guns_Legendary)"</Description>
+                  <LastState Value="0000000027D36200" RealAddress="27D369B8"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+38</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16236</ID>
+                  <Description>"ItemPoolData_1_7 (ItemPoolData ItemPool_Guns_Legendary.ItemPool_Guns_Legendary)"</Description>
+                  <LastState Value="9000010006000000" RealAddress="27D369C1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+41</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16237</ID>
+                  <Description>"ItemPoolData_1_8 (ItemPoolData ItemPool_Guns_Legendary.ItemPool_Guns_Legendary)"</Description>
+                  <LastState Value="00000000000027D3" RealAddress="27D369CA"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+4A</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16238</ID>
+                  <Description>"ItemPoolData_2_1 (ItemPoolData ItemPool_Eridium_Stack.ItemPool_Eridium_Stack)"</Description>
+                  <LastState Value="00006D3D00000000" RealAddress="27D369F6"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+76</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16239</ID>
+                  <Description>"ItemPoolData_2_2 (ItemPoolData ItemPool_Eridium.ItemPool_Eridium)"</Description>
+                  <LastState Value="0000000000000000" RealAddress="27D369FF"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+7F</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16240</ID>
+                  <Description>"ItemPoolData_2_3 (ItemPoolData ItemPool_Money_Rich.ItemPool_Money_Rich)"</Description>
+                  <LastState Value="0000000027D350A0" RealAddress="27D36A08"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+88</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Signature>
+    <SignedHash HashSize="132">0FjVo*O2oCav+$a5$nJydnYwfWOf14=VMNC4z]K.){NI#ma]=nYD/0N25^!*3SwFsM:]=-l;8F;;lRahqOt,J5Gyt$Fj?(;p^Cq1rLL/OV6*[BSYPnMtbbx%cR#ES;(kl+!bsx]VMd#7K[;l4NRq:C#H:{*X%FZRi[$Jm</SignedHash>
+    <PublicKey Size="3019">5dZ*HQ*y;zWn;@=c[34DZbD@YZHxc]07XMnH9]OY004,YdAcuzstQ.NhpCaQg6AIpKI?^QXluZR?y1@F5,b8P_8TaZPM}UYAu^tzILzkaeRya)Q_$+F-OiKgDNRcNHE^..L2(s2e#y#x)It_%SOsCw-_,ww=o.JqtVdFTsjG#Rp;qE#U{+d2.i5@Lc/Fbs[q5_W1MTu/vLRr=.^{-t004/lPDc$28VUda01Zh/L^b0%03ZMW03Zkk0001UdV2H#000JJOGiWi^^a60_De66lK:n!32.bRa^vGf6951U69E94oEQKA00)qQO,@Rc1R4/[FZfxb0000ACP[p:R9M5UmwR.8*s?FT:l9ON$t93WAYiZrfnY+NpcsS(7Ing-5+RJ(xFod-K1NnsA213!OtGTXL07HdgX!;S3)i:qhL:Ev89^KSMKlsh7C^9Z0)sw=]}3ax?0_JL?)[j9S,hKA^nl@oz0ZEEy{xVkv+E8CZ[DkMm8s9]ZT}.,4PC@GeR*B5$Gv/j$KP;BAArPfYVbc/d7huzG[NH3^NVBDXm_UAL_,.s0NnZ=6!UGJ[-kWIBQI25e}wPCpC_x2o}fAKx?5!xfb^B0aZcX-^HVI+s;%WX7u)u5Qoi+L/nj0LKl/f*UhuvHN8HZX#=-${=E^dBrECDzqyCPx]VoLNZmI#0+zo/Z,Z_t#Gw/V5@Uvz^RDienHsP*+$J.UYB7fo:;E80ULjV3BRPwh_F!CJCnePD5?mS@djEdLT^R$?NW,u/:N!GY0^D)0VW=!+Nw}Z#Ne_Tg3P_H!xG8?Co4pjnp?758mUndGyqS9}QZrZcn?V?HL[$rZHT]iOy(P{Ylu^]I[=fU[uFO4!oKmNp1PO8xTvkg_.2QsaJp}!TY3QY)=-aIen/Ho-HXSX2-dt71_Kx,MsdFIr0J%Ea;sJh;t@}S62TQh{q@E;LY835;hwse^o:b]XjQ{3YU#h$jsLqC+*%H.btRzQ)IM(Y+?#2S21kXvD)5Af+xFAb?IH8za}o(A/I7sOUyJ34W,eXCPkTpoI0SNqp{eItO[s*@+z,e6!.tN$Ro/SYtYq-$X22+fUv^ikEBYU$:@I*!6tC=M%dN@OUE^qwoDC;J?:$MZ92rb3.v)2M:meSg,.cYNIpf[0lN4j{X1-)%dc5@v3L%*6S-3+0RehP1!c-t0E)/P24]9{wJf[!y-DhbM^)8D]mhmUIz7Nx/UMWQwOwx6(L;vuSJz]NJX6pb[_/huz/p*[cL;cLCD%b:bA+vOYFWxpWDXnqYS/=b[wJ;G7Gp4h[c;%sF_I1LZ@cv?@x;o){kKg3?6,08LFk*/.1Wgu*E!Wl.6$QQjPMC6#3Xv^7kv-H7ykYGYp@%Dk,7rF)DQ5VCIF*g:Jb-Uq_6gL}]TE,y$5[+[P!H,hltTua*V^Ltsd^l^qe=g)ldPBL[Uif13w2$%v.:PMca6bqh}biEd2ZTSES^(bkV*mJfaqJ{3t=6CHNo);*JGSON*-;DBh*UXmjcw6USPX7%6=LQy6RJLTE%ybGej#PQ4OmX#(BQ%a4#+Bs(^NpyCnz0b,1_hzlHRzQOn=IDSn(t3H:;RGY9[5Q$OX/]z%1jwT8:S@0aB2z]H_(f(*koyb,phGde%Fu%-/s*K^+OP^wQzR7h@hRkkw0qUg@xR@3Ojt;nW1E9jJj!pXcQbf]=,q]c[:R%Kq3JZg9XhYkLXSd#{w?QI7OAp5uu45/myj]pJ-g8l*]V]jy-A7g-(R=hh,TKv39ticjJ,,G)W5UjPY-Fk]7DO1l#$Cxf./Pur2t^^TeU-3s[b+kbim)8k.ms10p?J[/oJo(32sOlJReLv1H[D968_/aLl0Ea*TXPA[)5IJL?;{?v9f7?_B8TOdp:7R619wNI.D)%TbU1#8D}_P;}Y;rMd(@v4/QreTt=0j){2.fErnDsujxvD$^:UP9(h[KVYkyCI@*4%uy/ut8N_/QtDTuR)(1thEaJxN,}V2qPi-1re}ga)z]F@D}VDXKzqXH]iUm#R2Fd2C[FOXptDO6iz_eHH-2qV*DPl];;W1,+H6%S=tl.IfFhj]DswzDw^:ljsc@LQP9O8nfl:2TG34(M?=+a(zai1=U#q#s6xj*Qh.sm!67qZL[]XLdU!y0Yur0{e^#lt*aOD+WDYL-L%?ZW!iu[(zDZheLsZgFk7{5dhYfdn)6/[BW,T:Cez^a!RqiWUYrN(.KL;HhGx(h6fWf)U]qjG{J-fcRb2fD5/3?^%u84#MFYEp*SdkmVt0NqgM];h@Cm=h$@zCSs9%Y}?,TmWHubp/NE*j}SX-xLLTeZ9-cF3DiWq/+VUcNAvNGI*F]@ezO.Qs+-e;IIIYG3P#b.BJ#h7i][.F}Bf6+)F*;vd5eeAqWOHq(L)ABUP7{hUrW^-40H7Tc5eQ/GxY7]Te5-mS,,=-9N.]J5HlJlEn^8^]-K(w3(+VXIKm#BuTr1J@K]gj!0H67Yyw06G.o=]$2wM*Q1/x[An]w$Bnn?v[,Fz.oJ{7)G{x$9@B]jZA5osPXBFo:0831Isc4Y.B]y%JgKZUQ=woOIFs;NSbUuQJ8im-]{8i/XgUmS=FvJOD,dXR20^BNNqC6P[^nKjoc/0$O]}9lNvgnCT1E)=K%*26pD%c#aUp;Fc5QYRsC@F:#2fbCoNS48h[Lq.k#eqb,Y/Gf*QRp87$}.1#?ICB4DYVC?LfeuEDJ(aP0KbTVF.$)/x%(iBC7KpL]WkvUf[u_W-n*?mTPa6QHpZH!pbQf^jPrfs,LO,qdj$lTDR?rgr],;y*D2^IHur0B+h{Hg$Ezk[}GpuK]RTgSQ:Juko?Z{1kYPV3:dhPQi[}n9ebRMhVf/Ll#+-2q@(Jq@@/:63N-(/[U-5IdouefS}FgViR)?XOMT%UHp#7q^OfdlQ:;f3W;4V_w50^i8EA7.xz3DogS*TDA-JqByZe/eIM;7%8lh?_j0.q_j#c11E,%blNv/4)Z2buN#rACXt?-uk#[?_r;%+@k!comiNK1MQ)hNalvxZa)*7LO]g^BEm.7diuhm0YydKu)SmPl73%nYi^M)ZOF6,YWEGP1lv@m=R0UGi1zH=AeI:6f1I:g)i=V3p*uQ{_5N)7=d[dv#meg[f.xaF_ZsOo:hfASo0nLt$4L/lO^Lk%0iD?*5c@7Agsk;$hZ79{ID^bJ;Xby(h;$N}udf$@6E):w(}_edh.dX6?_12yvTiUp7jF7k#1tPA_MlWsW$=tV^{-6bM]3H5m#C:5S9aPoUWn=?$11Si(oO=wIA*+P2#sy$29qJ$Z}73bt6cY)90[y($vm9%0S:eWMV!Nr3R8PgKWG(t25otTL{HZ)wo%.E;]PU1PUVB!$si2[rY;wVXnGZeGdA?0exj6C$H20IRm%%WS)7?BJkNf3+96X=3)+e+J1)n[W!*c;g8kt(2+!lu^flK}KK7*COo/JbYu?g0kZP^?b/o%Ci_gvuNny%:(Q!:f{YR=8)}RSo8l_%}ETti,g?mb:@6-^ZzJ(Jug;Zb7t{IR^-1%lLf%DfcjvD6MOaAS;M]j:*YIz03=4]gZy(mMY8Biqwl$tj?(Xe?U1xaHqX8!KXWj/CCmK[i?u?r=}{6sx2F76]}M3VK!Mw9)+!^P0000/MNUMnLSTY}00001XZi^(F#=O7]eM)7uRBu%n]bT=vOZV1$D.[G6uNS!4t$sN=:117^ai4HQvZM(kYLB]Ys8SuD.VIgPmfTD1pvGokqOhgjAgO*Y#0E1?:$y5^EJx7Gxdyyt[}hApw9;jcA{^5=3e{GlwM!%@D:iDnVkgGP7rDABB?5$ww(b</PublicKey>
+  </Signature>
+</CheatTable>

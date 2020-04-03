@@ -1,0 +1,55 @@
+
+Effect	Effect
+add_exp [number]	Add Indicated Experience To Selected Hero
+add_money 1	adds max resources & cash
+show_player_money [player number]	Display Indicated Player's Resources
+show_hero_mp	Display Selected Hero's Movement Points
+@Win()	Instant win of the map.
+@OpenCircleFog(0, 0, 0, 9999, PLAYER_1);	Reveals the whole map
+add_all_spells	Selected Hero Has All Spells
+clear_money	Set All Resources To 0
+add_gold [number]	Set Gold Quantity
+Cheat code: set_hero_luck_morale [luck number] [morale number]	Set Luck And Morale For Selected Hero
+@ClearTheFog(0, 0, 0, 9999, PLAYER_1);	Shows the amount of enemys.
+
+
+Effect	Effect
+add_skill 13	Against Assault
+add_all_spells	All the magics
+add_skill 6	Assault
+add_skill 16	Avenger
+add_army 6, 0	Creatures Demons Level 1
+add_army 6, 1	Creatures Demons Level 2
+add_army 5, 0	Creatures Died Level 1
+add_army 5, 1	Creatures Died Level 2
+add_army 7, 0	Creatures Dwarfs Level 1
+add_army 7, 1	Creatures Dwarfs Level 2
+add_army 2, 0	Creatures Elfs Level 1
+add_army 2, 1	Creatures Elfs Level 2
+add_army 1, 0	Creatures Human Level 1
+add_army 1, 1	Creatures Human Level 2
+add_army 3, 0	Creatures Magic Level 1
+add_army 3, 1	Creatures Magic Level 2
+add_army 4, 0	Creatures Marshes Level 1
+add_army 4, 1	Creatures Marshes Level 2
+add_skill 7	Defense
+add_skill #	Every skill in small letter
+add_exp 1215939194	Experience for level 40
+add_skill 3	Illustration
+add_skill 14	Invocation Demonia
+add_skill 151	Knowledge of the Runes
+add_skill 4	Leadership
+add_skill 1	Logistics
+add_skill 5	Luck
+set_hero_luck_morale 10 10	Luck and Morale
+add_skill 2	Machinate of War
+add_skill 18	Magic invocation
+add_skill 12	Magic of The Convocation
+add_skill 10	Magic of The Darkness
+add_skill 9	Magic of The Destruction
+add_skill 11	Magic of The Light
+add_skill 17	Maker
+add_money	Money 100,000 glod and Resources all 100
+add_skill 8	Mysticism
+add_skill 15	Negromancia
+enable_cheats	To use the cheats

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="103" RealAddress="7871F160"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>7871F160</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Hunger :mov [esi+28],ax</Description>
+      <Address>0111244E</Address>
+      <ModuleName>dontstarve_steam.exe</ModuleName>
+      <ModuleNameOffset>B244E</ModuleNameOffset>
+      <Before>
+        <Byte>28</Byte>
+        <Byte>74</Byte>
+        <Byte>11</Byte>
+        <Byte>8B</Byte>
+        <Byte>CE</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>46</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>B9</Byte>
+        <Byte>5A</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"AllItems600a"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(aobscanresult)
+registersymbol(aobscanresult)
+aobscan(aob1, 48 63 40 24 89 45 CC 48 8B CD)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rax+24],258 // 600
+
+originalcode:
+
+movsxd  rax,dword ptr [rax+24]
+mov [rbp-34],eax
+
+exit:
+jmp returnhere
+
+aob1:
+aobscanresult:
+jmp newmem
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+aobscanresult:
+movsxd  rax,dword ptr [rax+24]
+mov [rbp-34],eax
+
+unregistersymbol(aobscanresult)
+//Alt: db 48 63 40 24 44 03 F8
+/*
+234047C9B10 - 49 63 CE              - movsxd  rcx,r14d
+234047C9B13 - 39 48 18              - cmp [rax+18],ecx
+234047C9B16 - 0F86 44000000         - jbe 234047C9B60
+234047C9B1C - 48 8D 44 C8 20        - lea rax,[rax+rcx*8+20]
+234047C9B21 - 48 8B 00              - mov rax,[rax]
+234047C9B24 - 48 8B 40 10           - mov rax,[rax+10]
+234047C9B28 - 48 8B C8              - mov rcx,rax
+234047C9B2B - 83 39 00              - cmp dword ptr [rcx],00 { 0 }
+
+&gt;&gt;&gt;&gt;&gt; 234047C9B2E - 48 63 40 24           - movsxd  rax,dword ptr [rax+24]
+
+234047C9B32 - 44 03 F8              - add r15d,eax
+234047C9B35 - 41 FF C6              - inc r14d
+234047C9B38 - 48 63 47 20           - movsxd  rax,dword ptr [rdi+20]
+234047C9B3C - 44 3B F0              - cmp r14d,eax
+234047C9B3F - 0F8C 63FFFFFF         - jl 234047C9AA8
+234047C9B45 - 49 8B C7              - mov rax,r15
+234047C9B48 - 48 8B 34 24           - mov rsi,[rsp]
+234047C9B4C - 48 8B 7C 24 08        - mov rdi,[rsp+08]
+234047C9B51 - 4C 8B 74 24 10        - mov r14,[rsp+10]
+234047C9B56 - 4C 8B 7C 24 18        - mov r15,[rsp+18]
+234047C9B5B - 48 83 C4 28           - add rsp,28 { 40 }
+*/
+/*
+193058B1251 - 49 8B 85 A8000000     - mov rax,[r13+000000A8]
+193058B1258 - 48 89 45 98           - mov [rbp-68],rax
+193058B125C - 49 8B 44 24 10        - mov rax,[r12+10]
+193058B1261 - 48 8B C8              - mov rcx,rax
+193058B1264 - 83 39 00              - cmp dword ptr [rcx],00 { 0 }
+
+&gt;&gt;&gt;&gt; 193058B1267 - 48 63 40 24           - movsxd  rax,dword ptr [rax+24]
+
+193058B126B - 89 45 CC              - mov [rbp-34],eax
+193058B126E - 48 8B CD              - mov rcx,rbp
+193058B1271 - 48 83 C1 CC           - add rcx,-34 { 204 }
+193058B1275 - 48 83 EC 20           - sub rsp,20 { 32 }
+193058B1279 - 49 BB A0F1941E93010000 - mov r11,000001931E94F1A0 { [EC8B4855] }
+193058B1283 - 41 FF D3              - call r11
+
+*/
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"AllItems600b(in slots)"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(aobscanresult)
+registersymbol(aobscanresult)
+aobscan(aob1, 83 3F 00 48 63 4F 24) // or 83 3F 00 48 63 4F 24 3B C1 ?
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rdi+24],258
+
+originalcode:
+movsxd  rcx,dword ptr [rdi+24]
+cmp eax,ecx
+
+exit:
+jmp returnhere
+
+aob1+3:
+aobscanresult:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+aobscanresult:
+movsxd  rcx,dword ptr [rdi+24]
+cmp eax,ecx
+
+unregistersymbol(aobscanresult)
+//Alt: db 48 63 4F 24 3B C1
+/*
+234355C8237 - 48 85 C0              - test rax,rax
+234355C823A - 74 16                 - je 234355C8252
+234355C823C - 49 63 87 2C010000     - movsxd  rax,dword ptr [r15+0000012C]
+234355C8243 - 83 3F 00              - cmp dword ptr [rdi],00 { 0 }
+
+&gt;&gt;&gt; 234355C8246 - 48 63 4F 24           - movsxd  rcx,dword ptr [rdi+24]
+
+234355C824A - 3B C1                 - cmp eax,ecx
+234355C824C - 0F84 53000000         - je 234355C82A5
+234355C8252 - 49 8B 87 A8000000     - mov rax,[r15+000000A8]
+234355C8259 - 48 89 45 D8           - mov [rbp-28],rax
+234355C825D - 83 3F 00              - cmp dword ptr [rdi],00 { 0 }
+234355C8260 - 48 63 47 24           - movsxd  rax,dword ptr [rdi+24]
+
+*/
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"AllRelationMin899"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+label(aobscanresult)
+registersymbol(aobscanresult)
+aobscan(aob1, 48 63 48 34 48 89 8D 68 FF FF FF)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rax+34], 383
+
+originalcode:
+movsxd  rcx,dword ptr [rax+34]
+mov [rbp-00000098],rcx
+
+exit:
+jmp returnhere
+
+aob1:
+aobscanresult:
+jmp newmem
+nop
+nop
+nop
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+aobscanresult:
+movsxd  rcx,dword ptr [rax+34]
+mov [rbp-00000098],rcx
+
+unregistersymbol(aobscanresult)
+//Alt: db 48 63 48 34 48 89 8D 68 FF FF FF
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"UnlimitedCrafting"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(aobscanresult)
+registersymbol(aobscanresult)
+aobscan(aob1, 48 8B 40 10 48 63 80 80 00 00 00 3B C6 0F 85 29 00 00 00)
+
+aob1+D:
+aobscanresult:
+nop
+nop
+nop
+nop
+nop
+nop
+
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+aobscanresult:
+db 0F 85 29 00 00 00
+
+unregistersymbol(aobscanresult)
+/*
+234047C9AF6 - 83 39 00              - cmp dword ptr [rcx],00 { 0 }
+234047C9AF9 - 48 8B 40 10           - mov rax,[rax+10]
+234047C9AFD - 48 63 80 80000000     - movsxd  rax,dword ptr [rax+00000080]
+234047C9B04 - 3B C6                 - cmp eax,esi
+
+&gt;&gt;&gt;&gt; 234047C9B06 - 0F85 29000000         - jne 234047C9B35
+
+234047C9B0C - 48 8B 47 18           - mov rax,[rdi+18]
+234047C9B10 - 49 63 CE              - movsxd  rcx,r14d
+234047C9B13 - 39 48 18              - cmp [rax+18],ecx
+234047C9B16 - 0F86 44000000         - jbe 234047C9B60
+234047C9B1C - 48 8D 44 C8 20        - lea rax,[rax+rcx*8+20]
+*/
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"UnlimitedRunning"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(aobscanresult)
+registersymbol(aobscanresult)
+aobscan(aob1, F3 0F 11 28 48 8B CF 48 83 EC 20)
+
+aob1:
+aobscanresult:
+nop
+nop
+nop
+nop
+
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+aobscanresult:
+db F3 0F 11 28
+
+unregistersymbol(aobscanresult)
+/*
+1545295154E - 39 48 18              - cmp [rax+18],ecx
+15452951551 - 0F86 2B000000         - jbe 15452951582
+15452951557 - 48 8D 44 88 20        - lea rax,[rax+rcx*4+20]
+1545295155C - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 15452951560 - F3 0F11 28            - movss [rax],xmm5
+
+15452951564 - 48 8B CF              - mov rcx,rdi
+15452951567 - 48 83 EC 20           - sub rsp,20 { 32 }
+1545295156B - 49 BB D015955254010000 - mov r11,00000154529515D0 { [EC8B4855] }
+15452951575 - 41 FF D3              - call r11
+15452951578 - 48 83 C4 20           - add rsp,20 { 32 }
+1545295157C - 48 8B 7D F8           - mov rdi,[rbp-08]
+15452951580 - C9                    - leave
+
+*/
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"No description"</Description>
+      <LastState Value="3181.600098" RealAddress="20888F4E8E0"/>
+      <VariableType>Float</VariableType>
+      <Address>20888F4E8E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"No description"</Description>
+      <LastState Value="406" RealAddress="20888F4E8E4"/>
+      <VariableType>Float</VariableType>
+      <Address>20888F4E8E0+4</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

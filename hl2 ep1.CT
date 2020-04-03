@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"Health"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : hl2.exe
+  Version: 
+  Date   : 2017-11-24
+  Author : Aamir
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(Health,server.dll,8B BF 88 00 00 00 33 C0) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+alloc(_health,8)
+registersymbol(_health)
+
+_health:
+ dd 0
+
+newmem:
+
+code:
+  push edx
+  mov edx,edi
+  mov [_health],edx
+  pop edx
+  mov edi,[edi+00000088]
+  jmp return
+
+Health:
+  jmp newmem
+  nop
+return:
+registersymbol(Health)
+
+{$Lua}
+htimer = createTimer()
+htimer.setInterval(10)
+htimer.onTimer = function(myhealth)
+writeInteger('[_health]+88', 999)
+end
+{$asm}
+
+[DISABLE]
+
+{$lua}
+htimer.destroy()
+{$asm}
+
+Health:
+  db 8B BF 88 00 00 00
+
+unregistersymbol(Health)
+dealloc(newmem)
+dealloc(_health)
+unregistersymbol(_health)
+{
+// ORIGINAL CODE - INJECTION POINT: "server.dll"+220FC7
+
+"server.dll"+220FA2: E8 D9 F9 FF FF           -  call server.dll+220980
+"server.dll"+220FA7: 33 D2                    -  xor edx,edx
+"server.dll"+220FA9: 38 97 8C 00 00 00        -  cmp [edi+0000008C],dl
+"server.dll"+220FAF: 8D 44 24 10              -  lea eax,[esp+10]
+"server.dll"+220FB3: 0F 94 C2                 -  sete dl
+"server.dll"+220FB6: 50                       -  push eax
+"server.dll"+220FB7: 56                       -  push esi
+"server.dll"+220FB8: 8D 8D E4 05 00 00        -  lea ecx,[ebp+000005E4]
+"server.dll"+220FBE: 89 54 24 18              -  mov [esp+18],edx
+"server.dll"+220FC2: E8 19 FA FF FF           -  call server.dll+2209E0
+// ---------- INJECTING HERE ----------
+"server.dll"+220FC7: 8B BF 88 00 00 00        -  mov edi,[edi+00000088]
+// ---------- DONE INJECTING  ----------
+"server.dll"+220FCD: 33 C0                    -  xor eax,eax
+"server.dll"+220FCF: 85 FF                    -  test edi,edi
+"server.dll"+220FD1: 0F 9C C0                 -  setl al
+"server.dll"+220FD4: 8D 4C 24 10              -  lea ecx,[esp+10]
+"server.dll"+220FD8: 51                       -  push ecx
+"server.dll"+220FD9: 56                       -  push esi
+"server.dll"+220FDA: 8D 8D 68 06 00 00        -  lea ecx,[ebp+00000668]
+"server.dll"+220FE0: 83 E8 01                 -  sub eax,01
+"server.dll"+220FE3: 23 C7                    -  and eax,edi
+"server.dll"+220FE5: 89 44 24 18              -  mov [esp+18],eax
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"Aux"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : hl2.exe
+  Version: 
+  Date   : 2017-11-24
+  Author : Aamir
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(Aux,server.dll,D9 81 D0 0D 00 00 56 D8) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [ecx+00000DD0],(float)100
+  fld dword ptr [ecx+00000DD0]
+  jmp return
+
+Aux:
+  jmp newmem
+  nop
+return:
+registersymbol(Aux)
+
+[DISABLE]
+
+Aux:
+  db D9 81 D0 0D 00 00
+
+unregistersymbol(Aux)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "server.dll"+3278E0
+
+"server.dll"+3278CB: CC                             -  int 3 
+"server.dll"+3278CC: CC                             -  int 3 
+"server.dll"+3278CD: CC                             -  int 3 
+"server.dll"+3278CE: CC                             -  int 3 
+"server.dll"+3278CF: CC                             -  int 3 
+"server.dll"+3278D0: A1 F8 63 74 22                 -  mov eax,[server.dll+7463F8]
+"server.dll"+3278D5: 83 78 2C 00                    -  cmp dword ptr [eax+2C],00
+"server.dll"+3278D9: 74 05                          -  je server.dll+3278E0
+"server.dll"+3278DB: B0 01                          -  mov al,01
+"server.dll"+3278DD: C2 04 00                       -  ret 0004
+// ---------- INJECTING HERE ----------
+"server.dll"+3278E0: D9 81 D0 0D 00 00              -  fld dword ptr [ecx+00000DD0]
+// ---------- DONE INJECTING  ----------
+"server.dll"+3278E6: 56                             -  push esi
+"server.dll"+3278E7: D8 64 24 08                    -  fsub dword ptr [esp+08]
+"server.dll"+3278EB: 8D B1 D0 0D 00 00              -  lea esi,[ecx+00000DD0]
+"server.dll"+3278F1: D9 54 24 08                    -  fst dword ptr [esp+08]
+"server.dll"+3278F5: D9 06                          -  fld dword ptr [esi]
+"server.dll"+3278F7: DA E9                          -  fucompp 
+"server.dll"+3278F9: DF E0                          -  fnstsw ax
+"server.dll"+3278FB: F6 C4 44                       -  test ah,44
+"server.dll"+3278FE: 7B 10                          -  jnp server.dll+327910
+"server.dll"+327900: 8B 56 FC                       -  mov edx,[esi-04]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"Suit/Armor"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : hl2.exe
+  Version: 
+  Date   : 2017-11-24
+  Author : Aamir
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(Armor,server.dll,8B 86 F8 0B 00 00 3B 86 D0) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [esi+00000BF8], #999
+  mov eax,[esi+00000BF8]
+  jmp return
+
+Armor:
+  jmp newmem
+  nop
+return:
+registersymbol(Armor)
+
+[DISABLE]
+
+Armor:
+  db 8B 86 F8 0B 00 00
+
+unregistersymbol(Armor)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "server.dll"+216831
+
+"server.dll"+216810: 74 1F                 -  je server.dll+216831
+"server.dll"+216812: 8D 54 24 20           -  lea edx,[esp+20]
+"server.dll"+216816: 68 C8 FD 58 22        -  push server.dll+58FDC8
+"server.dll"+21681B: 52                    -  push edx
+"server.dll"+21681C: E8 AF A1 F6 FF        -  call server.dll+1809D0
+"server.dll"+216821: 83 C4 08              -  add esp,08
+"server.dll"+216824: E8 F7 A1 F6 FF        -  call server.dll+180A20
+"server.dll"+216829: 53                    -  push ebx
+"server.dll"+21682A: 8B CF                 -  mov ecx,edi
+"server.dll"+21682C: E8 8F 96 0A 00        -  call server.dll+2BFEC0
+// ---------- INJECTING HERE ----------
+"server.dll"+216831: 8B 86 F8 0B 00 00     -  mov eax,[esi+00000BF8]
+// ---------- DONE INJECTING  ----------
+"server.dll"+216837: 3B 86 D0 0B 00 00     -  cmp eax,[esi+00000BD0]
+"server.dll"+21683D: 74 3E                 -  je server.dll+21687D
+"server.dll"+21683F: 89 86 D0 0B 00 00     -  mov [esi+00000BD0],eax
+"server.dll"+216845: 8B 0D 74 FD 6B 22     -  mov ecx,[server.dll+6BFD74]
+"server.dll"+21684B: 68 C0 FD 58 22        -  push server.dll+58FDC0
+"server.dll"+216850: E8 6B 94 0C 00        -  call server.dll+2DFCC0
+"server.dll"+216855: 83 F8 FF              -  cmp eax,-01
+"server.dll"+216858: 74 23                 -  je server.dll+21687D
+"server.dll"+21685A: 8D 44 24 20           -  lea eax,[esp+20]
+"server.dll"+21685E: 68 C0 FD 58 22        -  push server.dll+58FDC0
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"Ammo"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(Ammo,server.dll,8B 06 8B 4C 24 08 57 8B F8 2B 39 3B C7 74 35 80 BE 30) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+alloc(_ammo,8)
+registersymbol(_ammo)
+
+_ammo:
+ dd 0
+
+newmem:
+
+code:
+  mov eax,[esi]
+  mov [_ammo],esi
+  mov ecx,[esp+08]
+  jmp return
+
+Ammo:
+  jmp newmem
+  nop
+return:
+registersymbol(Ammo)
+
+{$Lua}
+Atimer = createTimer()
+Atimer.setInterval(10)
+Atimer.onTimer = function(myammo)
+writeInteger('[_ammo]', 999)
+end
+{$asm}
+
+[DISABLE]
+
+{$lua}
+Atimer.destroy()
+{$asm}
+
+Ammo:
+  db 8B 06 8B 4C 24 08
+
+unregistersymbol(Ammo)
+dealloc(newmem)
+dealloc(_ammo)
+unregistersymbol(_ammo)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "server.dll"+DE883
+
+"server.dll"+DE873: 8B 07                 -  mov eax,[edi]
+"server.dll"+DE875: 89 06                 -  mov [esi],eax
+"server.dll"+DE877: 5F                    -  pop edi
+"server.dll"+DE878: 8B C6                 -  mov eax,esi
+"server.dll"+DE87A: 5E                    -  pop esi
+"server.dll"+DE87B: C2 04 00              -  ret 0004
+"server.dll"+DE87E: CC                    -  int 3 
+"server.dll"+DE87F: CC                    -  int 3 
+"server.dll"+DE880: 56                    -  push esi
+"server.dll"+DE881: 8B F1                 -  mov esi,ecx
+// ---------- INJECTING HERE ----------
+"server.dll"+DE883: 8B 06                 -  mov eax,[esi]
+"server.dll"+DE885: 8B 4C 24 08           -  mov ecx,[esp+08]
+// ---------- DONE INJECTING  ----------
+"server.dll"+DE889: 57                    -  push edi
+"server.dll"+DE88A: 8B F8                 -  mov edi,eax
+"server.dll"+DE88C: 2B 39                 -  sub edi,[ecx]
+"server.dll"+DE88E: 3B C7                 -  cmp eax,edi
+"server.dll"+DE890: 74 35                 -  je server.dll+DE8C7
+"server.dll"+DE892: 80 BE 30 FD FF FF 00  -  cmp byte ptr [esi-000002D0],00
+"server.dll"+DE899: 8D 86 4C FB FF FF     -  lea eax,[esi-000004B4]
+"server.dll"+DE89F: 74 10                 -  je server.dll+DE8B1
+"server.dll"+DE8A1: C6 80 E8 01 00 00 01  -  mov byte ptr [eax+000001E8],01
+"server.dll"+DE8A8: 89 3E                 -  mov [esi],edi
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"gernades/total ammo"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : hl2.exe
+  Version: 
+  Date   : 2017-11-25
+  Author : Aamir
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(Ammo2,server.dll,8B 84 B7 28 06 00 00 5F 5E C2 04 00 CC CC CC CC CC CC CC CC CC 8B) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov eax,[edi+esi*4+00000628]
+  mov [edi+esi*4+00000628],#999
+  jmp return
+
+Ammo2:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(Ammo2)
+
+[DISABLE]
+
+Ammo2:
+  db 8B 84 B7 28 06 00 00
+
+unregistersymbol(Ammo2)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "server.dll"+E1C6B
+
+"server.dll"+E1C4E: 33 C0                 -  xor eax,eax
+"server.dll"+E1C50: 5E                    -  pop esi
+"server.dll"+E1C51: C2 04 00              -  ret 0004
+"server.dll"+E1C54: 56                    -  push esi
+"server.dll"+E1C55: E8 26 0C 24 00        -  call server.dll+322880
+"server.dll"+E1C5A: 8B C8                 -  mov ecx,eax
+"server.dll"+E1C5C: E8 6F 73 FE FF        -  call server.dll+C8FD0
+"server.dll"+E1C61: 83 F8 FE              -  cmp eax,-02
+"server.dll"+E1C64: B8 E7 03 00 00        -  mov eax,000003E7
+"server.dll"+E1C69: 74 07                 -  je server.dll+E1C72
+// ---------- INJECTING HERE ----------
+"server.dll"+E1C6B: 8B 84 B7 28 06 00 00  -  mov eax,[edi+esi*4+00000628]
+// ---------- DONE INJECTING  ----------
+"server.dll"+E1C72: 5F                    -  pop edi
+"server.dll"+E1C73: 5E                    -  pop esi
+"server.dll"+E1C74: C2 04 00              -  ret 0004
+"server.dll"+E1C77: CC                    -  int 3 
+"server.dll"+E1C78: CC                    -  int 3 
+"server.dll"+E1C79: CC                    -  int 3 
+"server.dll"+E1C7A: CC                    -  int 3 
+"server.dll"+E1C7B: CC                    -  int 3 
+"server.dll"+E1C7C: CC                    -  int 3 
+"server.dll"+E1C7D: CC                    -  int 3 
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"Teleport"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(Teleport,server.dll,8B 97 94 02 00 00 89 56 64) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(save)
+label(load)
+alloc(_Xaxis,8)
+alloc(_Yaxis,8)
+alloc(_Zaxis,8)
+alloc(_Zaddaxis,8)
+alloc(_SavePosition,8)
+alloc(_LoadPosition,8)
+
+registersymbol(_SavePosition)
+registersymbol(_LoadPosition)
+
+_Xaxis:
+ dd 0
+
+_Yaxis:
+ dd 0
+
+_Zaxis:
+ dd 0
+
+_Zaddaxis:
+ dq (float)35
+
+_SavePosition:
+dd 0
+
+_LoadPosition:
+dd 0
+
+newmem:
+ cmp [_SavePosition], 1
+ je save
+ cmp [_LoadPosition], 1
+ je load
+ jmp code
+
+save:
+ mov [_SavePosition], 0
+ fld [edi+294]
+ fstp [_Xaxis]
+ fld [edi+298]
+ fstp [_Yaxis]
+ fld [edi+29C]
+ fstp [_Zaxis]
+ jmp code
+
+load:
+mov [_LoadPosition], 0
+ fld [_Xaxis]
+ fstp [edi+294]
+ fld [_Yaxis]
+ fstp [edi+298]
+ fld [_Zaxis]
+ fadd [_Zaddaxis]
+ fstp [edi+29C]
+ jmp code
+
+code:
+  mov edx,[edi+00000294]
+  jmp return
+
+Teleport:
+  jmp newmem
+  nop
+return:
+registersymbol(Teleport)
+
+[DISABLE]
+
+Teleport:
+  db 8B 97 94 02 00 00
+
+unregistersymbol(Teleport)
+dealloc(newmem)
+dealloc(_Xaxis,8)
+dealloc(_Yaxis,8)
+dealloc(_Zaxis,8)
+dealloc(_Zaddaxis,8)
+dealloc(_SavePosition,8)
+dealloc(_LoadPosition,8)
+unregistersymbol(_SavePosition)
+unregistersymbol(_LoadPosition)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "server.dll"+21DA08
+
+"server.dll"+21D9E9: 8B CF              -  mov ecx,edi
+"server.dll"+21D9EB: FF 52 08           -  call dword ptr [edx+08]
+"server.dll"+21D9EE: 8B 00              -  mov eax,[eax]
+"server.dll"+21D9F0: 89 46 04           -  mov [esi+04],eax
+"server.dll"+21D9F3: 8B 8F A8 00 00 00  -  mov ecx,[edi+000000A8]
+"server.dll"+21D9F9: C1 E9 0B           -  shr ecx,0B
+"server.dll"+21D9FC: F6 C1 01           -  test cl,01
+"server.dll"+21D9FF: 74 07              -  je server.dll+21DA08
+"server.dll"+21DA01: 8B CF              -  mov ecx,edi
+"server.dll"+21DA03: E8 58 32 ED FF     -  call server.dll+F0C60
+// ---------- INJECTING HERE ----------
+"server.dll"+21DA08: 8B 97 94 02 00 00  -  mov edx,[edi+00000294]
+// ---------- DONE INJECTING  ----------
+"server.dll"+21DA0E: 89 56 64           -  mov [esi+64],edx
+"server.dll"+21DA11: 8B 87 98 02 00 00  -  mov eax,[edi+00000298]
+"server.dll"+21DA17: 89 46 68           -  mov [esi+68],eax
+"server.dll"+21DA1A: 8B 8F 9C 02 00 00  -  mov ecx,[edi+0000029C]
+"server.dll"+21DA20: 89 4E 6C           -  mov [esi+6C],ecx
+"server.dll"+21DA23: 8B 87 F4 0C 00 00  -  mov eax,[edi+00000CF4]
+"server.dll"+21DA29: 83 F8 FF           -  cmp eax,-01
+"server.dll"+21DA2C: 74 7F              -  je server.dll+21DAAD
+"server.dll"+21DA2E: 8B 15 08 CC 68 22  -  mov edx,[server.dll+68CC08]
+"server.dll"+21DA34: 8B C8              -  mov ecx,eax
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"Load Position"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_loadposition</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>221</Key>
+              </Keys>
+              <Value>1</Value>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"Save Position"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_saveposition</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>219</Key>
+              </Keys>
+              <Value>1</Value>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>44</ID>
+      <Description>"Rapidfire buggy"</Description>
+      <Options moHideChildren="1" moActivateChildrenAsWell="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : hl2.exe
+  Version: 
+  Date   : 2017-11-25
+  Author : Aamir
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(Rapidfire,server.dll,00 CC CC 56 57 8B 7C 24 0C D9 07 8B F1 D9 06 DA E9 DF E0 F6 C4 44 7B 39 80 BE 74 FD) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+alloc(_Rvalue1,8)
+registersymbol(_Rvalue1)
+
+_Rvalue1:
+ dq (float)1000
+
+newmem:
+  push eax
+  mov eax,esi
+  cmp [_Rvalue1],eax
+  pop eax
+  jb @f
+  push ebx
+  mov ebx,esi
+  mov [_Rvalue1],ebx
+  pop ebx
+
+  @@:
+  cmp [_Rvalue1],(float)0
+  jbe code
+  push eax
+  mov eax,[_Rvalue1]
+  mov esi,eax
+  pop eax
+
+code:
+  fld dword ptr [esi]
+  fucompp 
+  fnstsw ax
+  jmp return
+
+Rapidfire+0D:
+  jmp newmem
+  nop
+return:
+registersymbol(Rapidfire)
+
+[DISABLE]
+
+Rapidfire+0D:
+  db D9 06 DA E9 DF E0
+
+unregistersymbol(Rapidfire)
+dealloc(newmem)
+dealloc(_Rvalue1)
+unregistersymbol(_Rvalue1)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "server.dll"+E4FCA
+
+"server.dll"+E4FB8: 8B C6                 -  mov eax,esi
+"server.dll"+E4FBA: 5E                    -  pop esi
+"server.dll"+E4FBB: C2 04 00              -  ret 0004
+"server.dll"+E4FBE: CC                    -  int 3 
+"server.dll"+E4FBF: CC                    -  int 3 
+"server.dll"+E4FC0: 56                    -  push esi
+"server.dll"+E4FC1: 57                    -  push edi
+"server.dll"+E4FC2: 8B 7C 24 0C           -  mov edi,[esp+0C]
+"server.dll"+E4FC6: D9 07                 -  fld dword ptr [edi]
+"server.dll"+E4FC8: 8B F1                 -  mov esi,ecx
+// ---------- INJECTING HERE ----------
+"server.dll"+E4FCA: D9 06                 -  fld dword ptr [esi]
+"server.dll"+E4FCC: DA E9                 -  fucompp 
+"server.dll"+E4FCE: DF E0                 -  fnstsw ax
+// ---------- DONE INJECTING  ----------
+"server.dll"+E4FD0: F6 C4 44              -  test ah,44
+"server.dll"+E4FD3: 7B 39                 -  jnp server.dll+E500E
+"server.dll"+E4FD5: 80 BE 74 FD FF FF 00  -  cmp byte ptr [esi-0000028C],00
+"server.dll"+E4FDC: 8D 86 90 FB FF FF     -  lea eax,[esi-00000470]
+"server.dll"+E4FE2: 74 12                 -  je server.dll+E4FF6
+"server.dll"+E4FE4: C6 80 E8 01 00 00 01  -  mov byte ptr [eax+000001E8],01
+"server.dll"+E4FEB: 8B 07                 -  mov eax,[edi]
+"server.dll"+E4FED: 89 06                 -  mov [esi],eax
+"server.dll"+E4FEF: 5F                    -  pop edi
+"server.dll"+E4FF0: 8B C6                 -  mov eax,esi
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>45</ID>
+          <Description>"Freeze this"</Description>
+          <VariableType>Float</VariableType>
+          <Address>_rvalue1</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

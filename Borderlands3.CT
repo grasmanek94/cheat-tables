@@ -1,0 +1,3461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>37</ID>
+      <Description>"Unlimited Health"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+aobscanmodule(health,Borderlands3.exe,F3 0F 10 89 A0 00 00 00 F3 0F 10) // should be unique
+alloc(newmem,$1000,health)
+
+label(code)
+label(return)
+
+label(player_struct)
+registersymbol(player_struct)
+
+newmem:
+code:
+  mov [player_struct], rcx
+  mov [rcx+A0], (float)999.0
+  movss xmm1,[rcx+000000A0]
+  jmp return
+
+player_struct:
+dq 0
+
+health:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(health)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+health:
+  db F3 0F 10 89 A0 00 00 00
+
+unregistersymbol(health)
+unregistersymbol(player_struct)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+21A1DE95
+
+"Borderlands3.exe"+21A1DE72: 80 78 48 00              -  cmp byte ptr [rax+48],00
+"Borderlands3.exe"+21A1DE76: 74 15                    -  je Borderlands3.exe+21A1DE8D
+"Borderlands3.exe"+21A1DE78: F3 0F 10 59 20           -  movss xmm3,[rcx+20]
+"Borderlands3.exe"+21A1DE7D: 0F 28 C3                 -  movaps xmm0,xmm3
+"Borderlands3.exe"+21A1DE80: F3 0F 2C C0              -  cvttss2si eax,xmm0
+"Borderlands3.exe"+21A1DE84: 66 0F 6E D0              -  movd xmm2,eax
+"Borderlands3.exe"+21A1DE88: 0F 5B D2                 -  cvtdq2ps xmm2,xmm2
+"Borderlands3.exe"+21A1DE8B: EB 08                    -  jmp Borderlands3.exe+21A1DE95
+"Borderlands3.exe"+21A1DE8D: F3 0F 10 51 20           -  movss xmm2,[rcx+20]
+"Borderlands3.exe"+21A1DE92: 0F 28 DA                 -  movaps xmm3,xmm2
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+21A1DE95: F3 0F 10 89 A0 00 00 00  -  movss xmm1,[rcx+000000A0]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+21A1DE9D: F3 0F 10 25 AB 06 3A E2  -  movss xmm4,[Borderlands3.exe+3DBE550]
+"Borderlands3.exe"+21A1DEA5: 0F 28 C1                 -  movaps xmm0,xmm1
+"Borderlands3.exe"+21A1DEA8: F3 0F 5C 41 14           -  subss xmm0,[rcx+14]
+"Borderlands3.exe"+21A1DEAD: F3 0F 10 2D 47 25 3D E2  -  movss xmm5,[Borderlands3.exe+3DF03FC]
+"Borderlands3.exe"+21A1DEB5: 0F 54 C4                 -  andps xmm0,xmm4
+"Borderlands3.exe"+21A1DEB8: 0F 2F C5                 -  comiss xmm0,xmm5
+"Borderlands3.exe"+21A1DEBB: 73 0B                    -  jae Borderlands3.exe+21A1DEC8
+"Borderlands3.exe"+21A1DEBD: 0F 2F CB                 -  comiss xmm1,xmm3
+"Borderlands3.exe"+21A1DEC0: 73 06                    -  jae Borderlands3.exe+21A1DEC8
+"Borderlands3.exe"+21A1DEC2: C6 02 00                 -  mov byte ptr [rdx],00
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"Unlimited Ammo"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+aobscanmodule(ammo,Borderlands3.exe,F3 0F 10 BB A0 00 00 00 44) // should be unique
+alloc(newmem,$1000,ammo)
+
+label(code)
+label(return)
+
+newmem:
+code:
+  cmp dword ptr [rsp+A0], 3
+  jne @F
+
+  mov [rbx+000000A0], (float)999.0
+  jmp return
+
+@@:
+  movss xmm7,[rbx+000000A0]
+  jmp return
+
+ammo:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(ammo)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+ammo:
+  db F3 0F 10 BB A0 00 00 00
+
+unregistersymbol(ammo)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+21A3EAA5
+
+"Borderlands3.exe"+21A3EA70: E8 BB 62 78 E0           -  call Borderlands3.exe+21C4D30
+"Borderlands3.exe"+21A3EA75: 84 C0                    -  test al,al
+"Borderlands3.exe"+21A3EA77: 0F 84 A4 02 00 00        -  je Borderlands3.exe+21A3ED21
+"Borderlands3.exe"+21A3EA7D: 0F 29 BC 24 80 00 00 00  -  movaps [rsp+00000080],xmm7
+"Borderlands3.exe"+21A3EA85: 48 89 D9                 -  mov rcx,rbx
+"Borderlands3.exe"+21A3EA88: 44 0F 29 44 24 70        -  movaps [rsp+70],xmm8
+"Borderlands3.exe"+21A3EA8E: 44 0F 29 4C 24 60        -  movaps [rsp+60],xmm9
+"Borderlands3.exe"+21A3EA94: 44 0F 29 5C 24 40        -  movaps [rsp+40],xmm11
+"Borderlands3.exe"+21A3EA9A: 44 0F 29 64 24 30        -  movaps [rsp+30],xmm12
+"Borderlands3.exe"+21A3EAA0: E8 5B 55 00 E1           -  call Borderlands3.exe+2A44000
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+21A3EAA5: F3 0F 10 BB A0 00 00 00  -  movss xmm7,[rbx+000000A0]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+21A3EAAD: 44 0F 28 E0              -  movaps xmm12,xmm0
+"Borderlands3.exe"+21A3EAB1: 0F 2E BB E0 00 00 00     -  ucomiss xmm7,[rbx+000000E0]
+"Borderlands3.exe"+21A3EAB8: F3 44 0F 10 43 38        -  movss xmm8,[rbx+38]
+"Borderlands3.exe"+21A3EABE: 45 0F 57 C9              -  xorps xmm9,xmm9
+"Borderlands3.exe"+21A3EAC2: F3 0F 10 73 44           -  movss xmm6,[rbx+44]
+"Borderlands3.exe"+21A3EAC7: F3 41 0F 5C F0           -  subss xmm6,xmm8
+"Borderlands3.exe"+21A3EACC: 75 06                    -  jne Borderlands3.exe+21A3EAD4
+"Borderlands3.exe"+21A3EACE: 41 0F 2E F1              -  ucomiss xmm6,xmm9
+"Borderlands3.exe"+21A3EAD2: 74 16                    -  je Borderlands3.exe+21A3EAEA
+"Borderlands3.exe"+21A3EAD4: 48 89 D9                 -  mov rcx,rbx
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>39</ID>
+      <Description>"No Reload"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+aobscanmodule(norelaod,Borderlands3.exe,89 BB C0 01 00 00 48 8B 7C) // should be unique
+
+norelaod:
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+
+registersymbol(norelaod)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+norelaod:
+  db 89 BB C0 01 00 00
+
+unregistersymbol(norelaod)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+2D66A3A
+
+"Borderlands3.exe"+2D66A19: 0F 4E F8           -  cmovle edi,eax
+"Borderlands3.exe"+2D66A1C: 8B 83 C0 01 00 00  -  mov eax,[rbx+000001C0]
+"Borderlands3.exe"+2D66A22: 2B C6              -  sub eax,esi
+"Borderlands3.exe"+2D66A24: 79 0F              -  jns Borderlands3.exe+2D66A35
+"Borderlands3.exe"+2D66A26: 8B FD              -  mov edi,ebp
+"Borderlands3.exe"+2D66A28: 89 AB C0 01 00 00  -  mov [rbx+000001C0],ebp
+"Borderlands3.exe"+2D66A2E: 48 8B 7C 24 40     -  mov rdi,[rsp+40]
+"Borderlands3.exe"+2D66A33: EB 57              -  jmp Borderlands3.exe+2D66A8C
+"Borderlands3.exe"+2D66A35: 3B C7              -  cmp eax,edi
+"Borderlands3.exe"+2D66A37: 0F 4C F8           -  cmovl edi,eax
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+2D66A3A: 89 BB C0 01 00 00  -  mov [rbx+000001C0],edi
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+2D66A40: 48 8B 7C 24 40     -  mov rdi,[rsp+40]
+"Borderlands3.exe"+2D66A45: EB 45              -  jmp Borderlands3.exe+2D66A8C
+"Borderlands3.exe"+2D66A47: FF 90 18 04 00 00  -  call qword ptr [rax+00000418]
+"Borderlands3.exe"+2D66A4D: 48 8B 13           -  mov rdx,[rbx]
+"Borderlands3.exe"+2D66A50: 48 8B CB           -  mov rcx,rbx
+"Borderlands3.exe"+2D66A53: 85 C0              -  test eax,eax
+"Borderlands3.exe"+2D66A55: 7E 08              -  jle Borderlands3.exe+2D66A5F
+"Borderlands3.exe"+2D66A57: FF 92 18 04 00 00  -  call qword ptr [rdx+00000418]
+"Borderlands3.exe"+2D66A5D: EB 06              -  jmp Borderlands3.exe+2D66A65
+"Borderlands3.exe"+2D66A5F: FF 92 40 04 00 00  -  call qword ptr [rdx+00000440]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16182</ID>
+      <Description>"Unlimited Grenades"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+aobscanmodule(grenades,Borderlands3.exe,F3 0F 10 88 A0 00 00 00 84 DB) // should be unique
+
+grenades:
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+registersymbol(grenades)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+grenades:
+db F3 0F 10 88 A0 00 00 00
+
+unregistersymbol(grenades)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16180</ID>
+      <Description>"Super Accuracy"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+aobscanmodule(accuracy,Borderlands3.exe,0F 28 F3 FF ?? ?? ?? ?? ?? 84 DB) // should be unique
+
+accuracy+3:
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+return:
+registersymbol(accuracy)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+accuracy+3:
+  db FF 90 20 08 00 00
+
+unregistersymbol(accuracy)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+8FE5CAB
+
+"Borderlands3.exe"+8FE5C80: 48 83 EC 70                                -  sub rsp,70
+"Borderlands3.exe"+8FE5C84: 0F B6 9C 24 A0 00 00 00                    -  movzx ebx,byte ptr [rsp+000000A0]
+"Borderlands3.exe"+8FE5C8C: 48 8D B9 88 F2 FF FF                       -  lea rdi,[rcx-00000D78]
+"Borderlands3.exe"+8FE5C93: 48 8B 07                                   -  mov rax,[rdi]
+"Borderlands3.exe"+8FE5C96: 4C 89 C5                                   -  mov rbp,r8
+"Borderlands3.exe"+8FE5C99: 48 89 CE                                   -  mov rsi,rcx
+"Borderlands3.exe"+8FE5C9C: 0F 29 74 24 60                             -  movaps [rsp+60],xmm6
+"Borderlands3.exe"+8FE5CA1: 44 0F B6 C3                                -  movzx r8d,bl
+"Borderlands3.exe"+8FE5CA5: 48 89 F9                                   -  mov rcx,rdi
+"Borderlands3.exe"+8FE5CA8: 0F 28 F3                                   -  movaps xmm6,xmm3
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+8FE5CAB: FF 90 20 08 00 00                          -  call qword ptr [rax+00000820]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+8FE5CB1: 84 DB                                      -  test bl,bl
+"Borderlands3.exe"+8FE5CB3: 0F 85 99 00 00 00                          -  jne Borderlands3.exe+8FE5D52
+"Borderlands3.exe"+8FE5CB9: 48 83 BE D0 FB FF FF 00                    -  cmp qword ptr [rsi-00000430],00
+"Borderlands3.exe"+8FE5CC1: 0F 84 8B 00 00 00                          -  je Borderlands3.exe+8FE5D52
+"Borderlands3.exe"+8FE5CC7: 48 8B 07                                   -  mov rax,[rdi]
+"Borderlands3.exe"+8FE5CCA: 48 89 F9                                   -  mov rcx,rdi
+"Borderlands3.exe"+8FE5CCD: FF 90 78 07 00 00                          -  call qword ptr [rax+00000778]
+"Borderlands3.exe"+8FE5CD3: 84 C0                                      -  test al,al
+"Borderlands3.exe"+8FE5CD5: 74 7B                                      -  je Borderlands3.exe+8FE5D52
+"Borderlands3.exe"+8FE5CD7: 48 8D 54 24 40                             -  lea rdx,[rsp+40]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Golden Keys"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-14
+  Author : STN
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(goldenkeyss,Borderlands3.exe,c3 48 85 c0 74 ?? 8B 40 08 c3) // should be unique
+alloc(newmem,$1000,goldenkeyss)
+
+label(code)
+label(return)
+label(goldenkeysval)
+registersymbol(goldenkeysval)
+
+newmem:
+
+code:
+  reassemble(goldenkeyss+4)
+  push rbx
+  mov rbx, [goldenkeysval]
+  mov [rax+08], rbx
+  pop rbx
+  mov eax,[rax+08]
+  jmp return
+
+goldenkeysval:
+dd #999
+
+goldenkeyss+4:
+  jmp newmem
+return:
+registersymbol(goldenkeyss)
+
+[DISABLE]
+
+goldenkeyss+4:
+  db 74 F8 8B 40 08
+
+unregistersymbol(goldenkeyss)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+8D42A1C
+
+"Borderlands3.exe"+8D42A03: 4C 39 C0                    -  cmp rax,r8
+"Borderlands3.exe"+8D42A06: 74 0E                       -  je Borderlands3.exe+8D42A16
+"Borderlands3.exe"+8D42A08: 48 39 10                    -  cmp [rax],rdx
+"Borderlands3.exe"+8D42A0B: 74 0C                       -  je Borderlands3.exe+8D42A19
+"Borderlands3.exe"+8D42A0D: 48 83 C0 10                 -  add rax,10
+"Borderlands3.exe"+8D42A11: 4C 39 C0                    -  cmp rax,r8
+"Borderlands3.exe"+8D42A14: 75 F2                       -  jne Borderlands3.exe+8D42A08
+"Borderlands3.exe"+8D42A16: 31 C0                       -  xor eax,eax
+"Borderlands3.exe"+8D42A18: C3                          -  ret 
+"Borderlands3.exe"+8D42A19: 48 85 C0                    -  test rax,rax
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+8D42A1C: 74 F8                       -  je Borderlands3.exe+8D42A16
+"Borderlands3.exe"+8D42A1E: 8B 40 08                    -  mov eax,[rax+08]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+8D42A21: C3                          -  ret 
+"Borderlands3.exe"+8D42A22: 9D                          -  popfq 
+"Borderlands3.exe"+8D42A23: 41 55                       -  push r13
+"Borderlands3.exe"+8D42A25: 4C 8D 2D E4 61 71 17        -  lea r13,[Borderlands3.exe+20458C10]
+"Borderlands3.exe"+8D42A2C: 4C 87 2C 24                 -  xchg [rsp],r13
+"Borderlands3.exe"+8D42A30: C3                          -  ret 
+"Borderlands3.exe"+8D42A31: 48 D1 D8                    -  rcr rax,1
+"Borderlands3.exe"+8D42A34: 48 03 04 24                 -  add rax,[rsp]
+"Borderlands3.exe"+8D42A38: 4C 89 1C 24                 -  mov [rsp],r11
+"Borderlands3.exe"+8D42A3C: 48 F7 D0                    -  not rax
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Golden Keys Amount"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>goldenkeysval</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"Gold "</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-14
+  Author : FCE
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(goldd,Borderlands3.exe,49 8B 96 B8 06 00 00 48) // should be unique
+alloc(newmem,$1000,goldd)
+
+label(code)
+label(return)
+label(goldvalue)
+registersymbol(goldvalue)
+
+newmem:
+mov rdx,[r13+00000228]
+test rdx, rdx
+je code
+mov rcx, [goldvalue]
+mov [rdx+18], rcx
+code:
+  mov rdx,[r14+000006B8]
+  jmp return
+
+goldvalue:
+dd #999999999
+
+goldd:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(goldd)
+
+[DISABLE]
+
+goldd:
+  db 49 8B 96 B8 06 00 00
+
+unregistersymbol(goldd)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+96AAF3D
+
+"Borderlands3.exe"+96AAEFD: F3 41 0F 10 8E C4 08 00 00  -  movss xmm1,[r14+000008C4]
+"Borderlands3.exe"+96AAF06: E8 65 91 69 F7              -  call Borderlands3.exe+D44070
+"Borderlands3.exe"+96AAF0B: 49 8B 86 B0 0E 00 00        -  mov rax,[r14+00000EB0]
+"Borderlands3.exe"+96AAF12: F3 41 0F 10 8E C8 08 00 00  -  movss xmm1,[r14+000008C8]
+"Borderlands3.exe"+96AAF1B: 48 8B 48 10                 -  mov rcx,[rax+10]
+"Borderlands3.exe"+96AAF1F: E8 4C 87 69 F7              -  call Borderlands3.exe+D43670
+"Borderlands3.exe"+96AAF24: 49 8B 86 B0 0E 00 00        -  mov rax,[r14+00000EB0]
+"Borderlands3.exe"+96AAF2B: F3 41 0F 10 8E CC 08 00 00  -  movss xmm1,[r14+000008CC]
+"Borderlands3.exe"+96AAF34: 48 8B 48 10                 -  mov rcx,[rax+10]
+"Borderlands3.exe"+96AAF38: E8 B3 68 69 F7              -  call Borderlands3.exe+D417F0
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+96AAF3D: 49 8B 96 B8 06 00 00        -  mov rdx,[r14+000006B8]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+96AAF44: 48 85 D2                    -  test rdx,rdx
+"Borderlands3.exe"+96AAF47: 74 14                       -  je Borderlands3.exe+96AAF5D
+"Borderlands3.exe"+96AAF49: 4C 89 E9                    -  mov rcx,r13
+"Borderlands3.exe"+96AAF4C: E8 2F 64 64 F9              -  call Borderlands3.exe+2CF1380
+"Borderlands3.exe"+96AAF51: 49 8B 96 B8 06 00 00        -  mov rdx,[r14+000006B8]
+"Borderlands3.exe"+96AAF58: 41 89 C0                    -  mov r8d,eax
+"Borderlands3.exe"+96AAF5B: EB 03                       -  jmp Borderlands3.exe+96AAF60
+"Borderlands3.exe"+96AAF5D: 41 89 D8                    -  mov r8d,ebx
+"Borderlands3.exe"+96AAF60: 49 8B 86 B0 0E 00 00        -  mov rax,[r14+00000EB0]
+"Borderlands3.exe"+96AAF67: 41 B1 01                    -  mov r9l,01
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Gold Amount"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>goldvalue</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Eridium"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-14
+  Author : FCE
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(eridium,Borderlands3.exe,49 8B 96 B0 06 00 00) // should be unique
+alloc(newmem,$1000,eridium)
+
+label(code)
+label(return)
+label(eridiumvalue)
+registersymbol(eridiumvalue)
+
+newmem:
+mov rdx,[r13+00000228]
+test rdx, rdx
+je code
+add rdx, 40
+mov rcx, [eridiumvalue]
+mov [rdx+18], #99999999
+code:
+  mov rdx,[r14+000006B0]
+  jmp return
+
+eridiumvalue:
+dd #99999999
+
+eridium:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(eridium)
+
+[DISABLE]
+
+eridium:
+  db 49 8B 96 B0 06 00 00
+
+unregistersymbol(eridium)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+96AAD73
+
+"Borderlands3.exe"+96AAD44: FF 50 08              -  call qword ptr [rax+08]
+"Borderlands3.exe"+96AAD47: 4D 39 A6 98 0E 00 00  -  cmp [r14+00000E98],r12
+"Borderlands3.exe"+96AAD4E: 0F 84 DA 00 00 00     -  je Borderlands3.exe+96AAE2E
+"Borderlands3.exe"+96AAD54: 49 8B 8E A0 0E 00 00  -  mov rcx,[r14+00000EA0]
+"Borderlands3.exe"+96AAD5B: 48 85 C9              -  test rcx,rcx
+"Borderlands3.exe"+96AAD5E: 0F 84 CA 00 00 00     -  je Borderlands3.exe+96AAE2E
+"Borderlands3.exe"+96AAD64: 31 C0                 -  xor eax,eax
+"Borderlands3.exe"+96AAD66: F0 0F B1 59 08        - lock  cmpxchg [rcx+08],ebx
+"Borderlands3.exe"+96AAD6B: 85 C0                 -  test eax,eax
+"Borderlands3.exe"+96AAD6D: 0F 8E BB 00 00 00     -  jng Borderlands3.exe+96AAE2E
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+96AAD73: 49 8B 96 B0 06 00 00  -  mov rdx,[r14+000006B0]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+96AAD7A: 0F 57 C0              -  xorps xmm0,xmm0
+"Borderlands3.exe"+96AAD7D: F3 0F 7F 45 E0        -  movdqu [rbp-20],xmm0
+"Borderlands3.exe"+96AAD82: 48 85 D2              -  test rdx,rdx
+"Borderlands3.exe"+96AAD85: 74 0A                 -  je Borderlands3.exe+96AAD91
+"Borderlands3.exe"+96AAD87: 4C 89 E9              -  mov rcx,r13
+"Borderlands3.exe"+96AAD8A: E8 F1 65 64 F9        -  call Borderlands3.exe+2CF1380
+"Borderlands3.exe"+96AAD8F: EB 02                 -  jmp Borderlands3.exe+96AAD93
+"Borderlands3.exe"+96AAD91: 89 D8                 -  mov eax,ebx
+"Borderlands3.exe"+96AAD93: 4C 8D 4D E0           -  lea r9,[rbp-20]
+"Borderlands3.exe"+96AAD97: 45 31 C0              -  xor r8d,r8d
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"Eridium Amount"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>eridiumvalue</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"Unlimited Ammo / Grenades - CJBok"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(ammo,Borderlands3.exe,F3 0F 10 BB A0 00 00 00 44)
+alloc(newmem,$1000,ammo)
+
+label(return)
+label(exit)
+registersymbol(ammo)
+
+// 16 0    3 grenades
+// 17 1      health
+// 19 3  200 pistol
+// 1A 4   80 shotgun
+// 1B 5  360 sub
+// 1C 6  280 rifle
+// 1D 7   48 sniper
+// 1E 8   12 rockets
+
+newmem:
+//  cmp dword ptr [rsp+A0], 0,3,4,5,6,7,8
+cmp dword ptr [rbx],16
+je @F
+cmp dword ptr [rbx],19
+je @F
+cmp dword ptr [rbx],1A
+je @F
+cmp dword ptr [rbx],1B
+je @F
+cmp dword ptr [rbx],1C
+je @F
+cmp dword ptr [rbx],1D
+je @F
+cmp dword ptr [rbx],1E
+je @F
+jmp exit
+@@:
+push rcx
+mov ecx,[rbx+000000AC]
+mov [rbx+000000A0],ecx
+pop rcx
+exit:
+movss xmm7,[rbx+000000A0]
+jmp return
+
+
+ammo:
+jmp newmem
+nop
+nop
+nop
+return:
+
+
+[DISABLE]
+ammo:
+db F3 0F 10 BB A0 00 00 00
+
+unregistersymbol(ammo)
+dealloc(newmem)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>62</ID>
+      <Description>"Idlehands88 Cheats"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Highlighted Skill Level"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <Color>808000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-13
+  Author : Idlehands88
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_Skills,Borderlands3.exe,41 8B 41 28 89 43 08) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+8B2C883)
+
+registersymbol(p_skills)
+label(p_skills)
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [p_skills],r9
+  mov eax,[r9+28]
+  mov [rbx+08],eax
+  jmp return
+
+p_skills:
+dq
+
+INJECT_Skills:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT_Skills)
+
+[DISABLE]
+
+INJECT_Skills:
+  db 41 8B 41 28 89 43 08
+
+unregistersymbol(p_skills)
+unregistersymbol(INJECT_Skills)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+8B2C883
+
+"Borderlands3.exe"+8B2C867: 4C 89 DA                    -  mov rdx,r11
+"Borderlands3.exe"+8B2C86A: 4D 85 C9                    -  test r9,r9
+"Borderlands3.exe"+8B2C86D: 74 4E                       -  je Borderlands3.exe+8B2C8BD
+"Borderlands3.exe"+8B2C86F: 48 85 D2                    -  test rdx,rdx
+"Borderlands3.exe"+8B2C872: 74 49                       -  je Borderlands3.exe+8B2C8BD
+"Borderlands3.exe"+8B2C874: 4D 85 DB                    -  test r11,r11
+"Borderlands3.exe"+8B2C877: 74 44                       -  je Borderlands3.exe+8B2C8BD
+"Borderlands3.exe"+8B2C879: 49 83 7B 08 00              -  cmp qword ptr [r11+08],00
+"Borderlands3.exe"+8B2C87E: 74 3D                       -  je Borderlands3.exe+8B2C8BD
+"Borderlands3.exe"+8B2C880: 4C 89 13                    -  mov [rbx],r10
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+8B2C883: 41 8B 41 28                 -  mov eax,[r9+28]
+"Borderlands3.exe"+8B2C887: 89 43 08                    -  mov [rbx+08],eax
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+8B2C88A: 41 8B 41 2C                 -  mov eax,[r9+2C]
+"Borderlands3.exe"+8B2C88E: 89 43 0C                    -  mov [rbx+0C],eax
+"Borderlands3.exe"+8B2C891: 41 80 79 24 00              -  cmp byte ptr [r9+24],00
+"Borderlands3.exe"+8B2C896: 74 06                       -  je Borderlands3.exe+8B2C89E
+"Borderlands3.exe"+8B2C898: 0F B6 42 31                 -  movzx eax,byte ptr [rdx+31]
+"Borderlands3.exe"+8B2C89C: EB 04                       -  jmp Borderlands3.exe+8B2C8A2
+"Borderlands3.exe"+8B2C89E: 0F B6 42 30                 -  movzx eax,byte ptr [rdx+30]
+"Borderlands3.exe"+8B2C8A2: 88 43 10                    -  mov [rbx+10],al
+"Borderlands3.exe"+8B2C8A5: 41 0F B6 41 24              -  movzx eax,byte ptr [r9+24]
+"Borderlands3.exe"+8B2C8AA: 88 43 11                    -  mov [rbx+11],al
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>8</ID>
+              <Description>"Level"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>p_skills</Address>
+              <Offsets>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Vending Machine Timers"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <Color>808000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-13
+  Author : Idlehands88
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_VetRewardTimer,Borderlands3.exe,F3 0F 10 81 B8 06 00 00) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+90F3EE0)
+
+registersymbol(p_vettimer)
+label(p_vettimer)
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [p_vettimer],rcx
+  movss xmm0,[rcx+000006B8]
+  jmp return
+
+p_vettimer:
+dq
+
+INJECT_VetRewardTimer:
+  jmp newmem
+  nop 3
+return:
+registersymbol(INJECT_VetRewardTimer)
+
+[DISABLE]
+
+INJECT_VetRewardTimer:
+  db F3 0F 10 81 B8 06 00 00
+
+unregistersymbol(p_vettimer)
+unregistersymbol(INJECT_VetRewardTimer)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+90F3EE0
+
+"Borderlands3.exe"+90F3EB8: 4C 8B 2C 24              -  mov r13,[rsp]
+"Borderlands3.exe"+90F3EBC: 4C 89 14 24              -  mov [rsp],r10
+"Borderlands3.exe"+90F3EC0: 4C 8D 15 67 08 03 0B     -  lea r10,[Borderlands3.exe+1412472E]
+"Borderlands3.exe"+90F3EC7: 4C 87 14 24              -  xchg [rsp],r10
+"Borderlands3.exe"+90F3ECB: C3                       -  ret 
+"Borderlands3.exe"+90F3ECC: 0F 1F 40 00              -  nop [rax+00]
+"Borderlands3.exe"+90F3ED0: 40 57                    -  push rdi
+"Borderlands3.exe"+90F3ED2: 48 83 EC 40              -  sub rsp,40
+"Borderlands3.exe"+90F3ED6: 80 B9 28 01 00 00 03     -  cmp byte ptr [rcx+00000128],03
+"Borderlands3.exe"+90F3EDD: 48 89 CF                 -  mov rdi,rcx
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+90F3EE0: F3 0F 10 81 B8 06 00 00  -  movss xmm0,[rcx+000006B8]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+90F3EE8: F3 0F 5C C1              -  subss xmm0,xmm1
+"Borderlands3.exe"+90F3EEC: 0F 29 74 24 30           -  movaps [rsp+30],xmm6
+"Borderlands3.exe"+90F3EF1: 0F 57 F6                 -  xorps xmm6,xmm6
+"Borderlands3.exe"+90F3EF4: F3 0F 5F C6              -  maxss xmm0,xmm6
+"Borderlands3.exe"+90F3EF8: F3 0F 11 81 B8 06 00 00  -  movss [rcx+000006B8],xmm0
+"Borderlands3.exe"+90F3F00: 0F 85 B8 01 00 00        -  jne Borderlands3.exe+90F40BE
+"Borderlands3.exe"+90F3F06: 48 8B 01                 -  mov rax,[rcx]
+"Borderlands3.exe"+90F3F09: FF 90 48 01 00 00        -  call qword ptr [rax+00000148]
+"Borderlands3.exe"+90F3F0F: 48 85 C0                 -  test rax,rax
+"Borderlands3.exe"+90F3F12: 0F 84 A6 01 00 00        -  je Borderlands3.exe+90F40BE
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>11</ID>
+              <Description>"Time"</Description>
+              <VariableType>Float</VariableType>
+              <Address>p_vettimer</Address>
+              <Offsets>
+                <Offset>6B8</Offset>
+              </Offsets>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>111</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"Guardian Rank"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <Color>808000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-13
+  Author : oseda
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_Guardian,Borderlands3.exe,4C 63 A0 7C 01 00 00) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+9602A13)
+
+registersymbol(p_guardian)
+label(p_guardian)
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [p_guardian],rax
+  movsxd  r12,dword ptr [rax+0000017C]
+  jmp return
+
+p_guardian:
+dq
+
+INJECT_Guardian:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT_Guardian)
+
+[DISABLE]
+
+INJECT_Guardian:
+  db 4C 63 A0 7C 01 00 00
+
+unregistersymbol(p_guardian)
+unregistersymbol(INJECT_Guardian)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+9602A13
+
+"Borderlands3.exe"+96029ED: 83 F8 01              -  cmp eax,01
+"Borderlands3.exe"+96029F0: 75 0E                 -  jne Borderlands3.exe+9602A00
+"Borderlands3.exe"+96029F2: 48 8B 03              -  mov rax,[rbx]
+"Borderlands3.exe"+96029F5: BA 01 00 00 00        -  mov edx,00000001
+"Borderlands3.exe"+96029FA: 48 89 D9              -  mov rcx,rbx
+"Borderlands3.exe"+96029FD: FF 50 08              -  call qword ptr [rax+08]
+"Borderlands3.exe"+9602A00: 4C 89 F9              -  mov rcx,r15
+"Borderlands3.exe"+9602A03: E8 68 9D F0 F7        -  call Borderlands3.exe+150C770
+"Borderlands3.exe"+9602A08: 48 8D 97 70 0C 00 00  -  lea rdx,[rdi+00000C70]
+"Borderlands3.exe"+9602A0F: 48 8D 4D 38           -  lea rcx,[rbp+38]
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+9602A13: 4C 63 A0 7C 01 00 00  -  movsxd  r12,dword ptr [rax+0000017C]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+9602A1A: E8 31 08 D7 F7        -  call Borderlands3.exe+1373250
+"Borderlands3.exe"+9602A1F: 49 89 C6              -  mov r14,rax
+"Borderlands3.exe"+9602A22: 44 89 6D 78           -  mov [rbp+78],r13d
+"Borderlands3.exe"+9602A26: 48 8D 45 78           -  lea rax,[rbp+78]
+"Borderlands3.exe"+9602A2A: 44 88 AD A0 00 00 00  -  mov [rbp+000000A0],r13l
+"Borderlands3.exe"+9602A31: 48 89 44 24 40        -  mov [rsp+40],rax
+"Borderlands3.exe"+9602A36: 48 8D 85 A8 00 00 00  -  lea rax,[rbp+000000A8]
+"Borderlands3.exe"+9602A3D: 48 89 44 24 48        -  mov [rsp+48],rax
+"Borderlands3.exe"+9602A42: 49 8B 0E              -  mov rcx,[r14]
+"Borderlands3.exe"+9602A45: 0F 28 44 24 40        -  movaps xmm0,[rsp+40]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"Level"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>p_guardian</Address>
+              <Offsets>
+                <Offset>178</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>19</ID>
+              <Description>"Experience"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>p_guardian</Address>
+              <Offsets>
+                <Offset>180</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>20</ID>
+              <Description>"Tokens"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>p_guardian</Address>
+              <Offsets>
+                <Offset>17C</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"Guardian Stat Levels"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <Color>808000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-13
+  Author : oseda
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_GuardianStats,Borderlands3.exe,66 0F 6E 40 08 48) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+938BC98)
+
+registersymbol(p_guardianstats)
+label(p_guardianstats)
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [p_guardianstats],rax
+  movd xmm0,[rax+08]
+  jmp return
+
+p_guardianstats:
+dq
+
+INJECT_GuardianStats:
+  jmp newmem
+return:
+registersymbol(INJECT_GuardianStats)
+
+[DISABLE]
+
+INJECT_GuardianStats:
+  db 66 0F 6E 40 08
+
+unregistersymbol(p_guardianstats)
+unregistersymbol(INJECT_GuardianStats)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+938BC98
+
+"Borderlands3.exe"+938BC75: 48 8B 5C 24 30                 -  mov rbx,[rsp+30]
+"Borderlands3.exe"+938BC7A: 48 8B 74 24 38                 -  mov rsi,[rsp+38]
+"Borderlands3.exe"+938BC7F: 48 83 C4 20                    -  add rsp,20
+"Borderlands3.exe"+938BC83: 5F                             -  pop rdi
+"Borderlands3.exe"+938BC84: C3                             -  ret 
+"Borderlands3.exe"+938BC85: 48 85 C0                       -  test rax,rax
+"Borderlands3.exe"+938BC88: 74 DC                          -  je Borderlands3.exe+938BC66
+"Borderlands3.exe"+938BC8A: 48 8B 5C 24 30                 -  mov rbx,[rsp+30]
+"Borderlands3.exe"+938BC8F: 48 8B 74 24 38                 -  mov rsi,[rsp+38]
+"Borderlands3.exe"+938BC94: C6 47 08 FF                    -  mov byte ptr [rdi+08],-01
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+938BC98: 66 0F 6E 40 08                 -  movd xmm0,[rax+08]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+938BC9D: 48 89 F8                       -  mov rax,rdi
+"Borderlands3.exe"+938BCA0: 0F 5B C0                       -  cvtdq2ps xmm0,xmm0
+"Borderlands3.exe"+938BCA3: F3 0F 11 07                    -  movss [rdi],xmm0
+"Borderlands3.exe"+938BCA7: C6 47 08 00                    -  mov byte ptr [rdi+08],00
+"Borderlands3.exe"+938BCAB: 48 83 C4 20                    -  add rsp,20
+"Borderlands3.exe"+938BCAF: 5F                             -  pop rdi
+"Borderlands3.exe"+938BCB0: C3                             -  ret 
+"Borderlands3.exe"+938BCB1: CC                             -  int 3 
+"Borderlands3.exe"+938BCB2: 48 31 FF                       -  xor rdi,rdi
+"Borderlands3.exe"+938BCB5: 48 03 3C 24                    -  add rdi,[rsp]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"Enforcer"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>56</ID>
+                  <Description>"Critical Damage"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-1B8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>53</ID>
+                  <Description>"Grenade Damage"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-158</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>52</ID>
+                  <Description>"Gun Damage"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-138</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>51</ID>
+                  <Description>"Gun Fire Rate"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-118</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>49</ID>
+                  <Description>"Melee Damage"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-D8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>42</ID>
+                  <Description>"Vehicle Damage"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"Survivor"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>55</ID>
+                  <Description>"FFYL Duration"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-198</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>54</ID>
+                  <Description>"FFYL Movement Speed"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-178</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>50</ID>
+                  <Description>"Max Health"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-F8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>45</ID>
+                  <Description>"Shield Capacity"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>44</ID>
+                  <Description>"Shield Recharge Delay"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>43</ID>
+                  <Description>"Shield Recharge Rate"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-18</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>61</ID>
+              <Description>"Hunter"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>58</ID>
+                  <Description>"Accuracy"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-1F8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>57</ID>
+                  <Description>"Action Skill Cooldown"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-1D8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>48</ID>
+                  <Description>"Luck (Rare Drop Rate)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-B8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>47</ID>
+                  <Description>"Recoil Reduction"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-98</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>46</ID>
+                  <Description>"Reload Speed"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>p_guardianstats</Address>
+                  <Offsets>
+                    <Offset>-78</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>65</ID>
+          <Description>"Unlimited Bag Slots"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-14
+  Author : Idlehands88
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_InventorySize,Borderlands3.exe,8B 81 A8 02 00 00 C3) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+22793940)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+000002A8],#0
+  mov eax,[rcx+000002A8]
+  jmp return
+
+INJECT_InventorySize:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT_InventorySize)
+
+[DISABLE]
+
+INJECT_InventorySize:
+  db 8B 81 A8 02 00 00
+
+unregistersymbol(INJECT_InventorySize)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+22793940
+
+"Borderlands3.exe"+22793918: 48 21 F2                       -  and rdx,rsi
+"Borderlands3.exe"+2279391B: 50                             -  push rax
+"Borderlands3.exe"+2279391C: 48 C1 C2 05                    -  rol rdx,05
+"Borderlands3.exe"+22793920: 48 0F AC FF 28                 -  shrd rdi,rdi,28
+"Borderlands3.exe"+22793925: 48 C7 C6 FF FF FF 00           -  mov rsi,00FFFFFF
+"Borderlands3.exe"+2279392C: 48 8D 15 DD D0 E4 ED           -  lea rdx,[Borderlands3.exe+105E0A10]
+"Borderlands3.exe"+22793933: 48 89 D0                       -  mov rax,rdx
+"Borderlands3.exe"+22793936: 48 87 04 24                    -  xchg [rsp],rax
+"Borderlands3.exe"+2279393A: C3                             -  ret 
+"Borderlands3.exe"+2279393B: 67 0F 1F 40 00                 -  nop [rax+00]
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+22793940: 8B 81 A8 02 00 00              -  mov eax,[rcx+000002A8]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+22793946: C3                             -  ret 
+"Borderlands3.exe"+22793947: 48 8D 2D 51 71 AF 00           -  lea rbp,[Borderlands3.exe+2328AA9F]
+"Borderlands3.exe"+2279394E: 11 CB                          -  adc ebx,ecx
+"Borderlands3.exe"+22793950: 48 8D 64 24 F8                 -  lea rsp,[rsp-08]
+"Borderlands3.exe"+22793955: 48 89 1C 24                    -  mov [rsp],rbx
+"Borderlands3.exe"+22793959: 48 8B 1D 83 1A 6B F4           -  mov rbx,[Borderlands3.exe+16E453E3]
+"Borderlands3.exe"+22793960: 48 0F 44 1D 83 1A 6B F4        -  cmove rbx,[Borderlands3.exe+16E453EB]
+"Borderlands3.exe"+22793968: 48 87 1C 24                    -  xchg [rsp],rbx
+"Borderlands3.exe"+2279396C: C3                             -  ret 
+"Borderlands3.exe"+2279396D: C7                             -  db -39
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16214</ID>
+          <Description>"Unlimited Bank Slots"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-15
+  Author : Idlehands88
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_BankSlots,Borderlands3.exe,8B 81 A8 02 00 00 C3) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+22793940)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+000002A8],#0
+  mov eax,[rcx+000002A8]
+  jmp return
+
+INJECT_BankSlots:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT_BankSlots)
+
+[DISABLE]
+
+INJECT_BankSlots:
+  db 8B 81 A8 02 00 00
+
+unregistersymbol(INJECT_BankSlots)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+22793940
+
+"Borderlands3.exe"+22793918: 48 21 F2                       -  and rdx,rsi
+"Borderlands3.exe"+2279391B: 50                             -  push rax
+"Borderlands3.exe"+2279391C: 48 C1 C2 05                    -  rol rdx,05
+"Borderlands3.exe"+22793920: 48 0F AC FF 28                 -  shrd rdi,rdi,28
+"Borderlands3.exe"+22793925: 48 C7 C6 FF FF FF 00           -  mov rsi,00FFFFFF
+"Borderlands3.exe"+2279392C: 48 8D 15 DD D0 E4 ED           -  lea rdx,[Borderlands3.exe+105E0A10]
+"Borderlands3.exe"+22793933: 48 89 D0                       -  mov rax,rdx
+"Borderlands3.exe"+22793936: 48 87 04 24                    -  xchg [rsp],rax
+"Borderlands3.exe"+2279393A: C3                             -  ret 
+"Borderlands3.exe"+2279393B: 67 0F 1F 40 00                 -  nop [rax+00]
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+22793940: 8B 81 A8 02 00 00              -  mov eax,[rcx+000002A8]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+22793946: C3                             -  ret 
+"Borderlands3.exe"+22793947: 48 8D 2D 51 71 AF 00           -  lea rbp,[Borderlands3.exe+2328AA9F]
+"Borderlands3.exe"+2279394E: 11 CB                          -  adc ebx,ecx
+"Borderlands3.exe"+22793950: 48 8D 64 24 F8                 -  lea rsp,[rsp-08]
+"Borderlands3.exe"+22793955: 48 89 1C 24                    -  mov [rsp],rbx
+"Borderlands3.exe"+22793959: 48 8B 1D 83 1A 6B F4           -  mov rbx,[Borderlands3.exe+16E453E3]
+"Borderlands3.exe"+22793960: 48 0F 44 1D 83 1A 6B F4        -  cmove rbx,[Borderlands3.exe+16E453EB]
+"Borderlands3.exe"+22793968: 48 87 1C 24                    -  xchg [rsp],rbx
+"Borderlands3.exe"+2279396C: C3                             -  ret 
+"Borderlands3.exe"+2279396D: C7                             -  db -39
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>63</ID>
+      <Description>"As Fl4k, limitless rakk things?? - Tuft"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+assert(Borderlands3.exe+8B6090C,FF 90 E0 03 00 00 48 89 D9)
+
+Borderlands3.exe+8B6090C:
+db 90 90 90 90 90 90
+
+
+[DISABLE]
+
+Borderlands3.exe+8B6090C:
+db FF 90 E0 03 00 00
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+8B6090C
+
+"Borderlands3.exe"+8B608E5: 44 8A 97 43 1D B1 70                 -  mov r10l,[rdi+70B11D43]
+"Borderlands3.exe"+8B608EC: 5F                                   -  pop rdi
+"Borderlands3.exe"+8B608ED: 56                                   -  push rsi
+"Borderlands3.exe"+8B608EE: E9 6E F5 86 13                       -  jmp Borderlands3.exe+1C3CFE61
+"Borderlands3.exe"+8B608F3: C6                                   -  db -3A
+"Borderlands3.exe"+8B608F4: 66 66 66 2E 0F 1F 84 00 00 00 00 00  -  nop cs:[rax+rax+00000000]
+"Borderlands3.exe"+8B60900: 40 53                                -  push rbx
+"Borderlands3.exe"+8B60902: 48 83 EC 20                          -  sub rsp,20
+"Borderlands3.exe"+8B60906: 48 8B 01                             -  mov rax,[rcx]
+"Borderlands3.exe"+8B60909: 48 89 CB                             -  mov rbx,rcx
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+8B6090C: FF 90 E0 03 00 00                    -  call qword ptr [rax+000003E0]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+8B60912: 48 89 D9                             -  mov rcx,rbx
+"Borderlands3.exe"+8B60915: 84 C0                                -  test al,al
+"Borderlands3.exe"+8B60917: 0F 84 C1 00 00 00                    -  je Borderlands3.exe+8B609DE
+"Borderlands3.exe"+8B6091D: E8 EE 28 28 FA                       -  call Borderlands3.exe+2DE3210
+"Borderlands3.exe"+8B60922: 48 89 D9                             -  mov rcx,rbx
+"Borderlands3.exe"+8B60925: 83 F8 03                             -  cmp eax,03
+"Borderlands3.exe"+8B60928: 7D 0A                                -  jnl Borderlands3.exe+8B60934
+"Borderlands3.exe"+8B6092A: 48 83 C4 20                          -  add rsp,20
+"Borderlands3.exe"+8B6092E: 5B                                   -  pop rbx
+"Borderlands3.exe"+8B6092F: E9 DC 17 64 F8                       -  jmp Borderlands3.exe+11A2110
+}
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"XP multiplier x ?"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-14
+  Author : cfe
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(aobXPmul,Borderlands3.exe,8D 34 19 48 8D 8F 10 02 00 00) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+93CAE8E)
+
+label(code)
+label(return)
+label(dMul)
+registersymbol(dMul)
+newmem:
+
+code:
+  push eax
+  mov eax,[dMul]
+  imul rbx,eax
+  pop eax
+  lea esi,[rcx+rbx] // rcx = current : rbx = add
+  lea rcx,[rdi+00000210]
+  jmp return
+dMul:
+dd 1
+aobXPmul:
+  jmp newmem
+  nop 5
+return:
+registersymbol(aobXPmul)
+
+[DISABLE]
+
+aobXPmul:
+  db 8D 34 19 48 8D 8F 10 02 00 00
+
+unregistersymbol(aobXPmul)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+93CAE8E
+
+"Borderlands3.exe"+93CAE79: 31 C0                    -  xor eax,eax
+"Borderlands3.exe"+93CAE7B: 85 C9                    -  test ecx,ecx
+"Borderlands3.exe"+93CAE7D: 0F 4E C8                 -  cmovle ecx,eax
+"Borderlands3.exe"+93CAE80: 89 F0                    -  mov eax,esi
+"Borderlands3.exe"+93CAE82: 29 D8                    -  sub eax,ebx
+"Borderlands3.exe"+93CAE84: 39 C1                    -  cmp ecx,eax
+"Borderlands3.exe"+93CAE86: 7E 06                    -  jle Borderlands3.exe+93CAE8E
+"Borderlands3.exe"+93CAE88: 89 F3                    -  mov ebx,esi
+"Borderlands3.exe"+93CAE8A: 29 CB                    -  sub ebx,ecx
+"Borderlands3.exe"+93CAE8C: EB 03                    -  jmp Borderlands3.exe+93CAE91
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+93CAE8E: 8D 34 19                 -  lea esi,[rcx+rbx]
+"Borderlands3.exe"+93CAE91: 48 8D 8F 10 02 00 00     -  lea rcx,[rdi+00000210]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+93CAE98: 89 B7 D8 01 00 00        -  mov [rdi+000001D8],esi
+"Borderlands3.exe"+93CAE9E: 48 8D 54 24 20           -  lea rdx,[rsp+20]
+"Borderlands3.exe"+93CAEA3: 89 5C 24 20              -  mov [rsp+20],ebx
+"Borderlands3.exe"+93CAEA7: 44 88 7C 24 24           -  mov [rsp+24],r15l
+"Borderlands3.exe"+93CAEAC: 44 88 74 24 25           -  mov [rsp+25],r14l
+"Borderlands3.exe"+93CAEB1: E8 2A A8 07 F7           -  call Borderlands3.exe+4456E0
+"Borderlands3.exe"+93CAEB6: 48 8D 8F 20 02 00 00     -  lea rcx,[rdi+00000220]
+"Borderlands3.exe"+93CAEBD: 44 89 64 24 20           -  mov [rsp+20],r12d
+"Borderlands3.exe"+93CAEC2: 48 8D 54 24 20           -  lea rdx,[rsp+20]
+"Borderlands3.exe"+93CAEC7: 44 88 7C 24 24           -  mov [rsp+24],r15l
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"x?"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>dMul</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16198</ID>
+      <Description>"Chiados scripts"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Money Pointer - Thanks Chiados"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-13
+  Author : Iscariot
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(infmoney,Borderlands3.exe,8B 41 18 48 8D 8A 18 03 00 00) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+227642E9)
+
+label(code)
+label(return)
+label(cash)
+
+registersymbol(cash)
+
+newmem:
+  mov [cash],rcx
+
+code:
+  mov eax,[rcx+18]
+  lea rcx,[rdx+00000318]
+  jmp return
+
+cash:
+  dq 0
+
+infmoney:
+  jmp newmem
+  nop 5
+return:
+registersymbol(infmoney)
+
+[DISABLE]
+
+infmoney:
+  db 8B 41 18 48 8D 8A 18 03 00 00
+unregistersymbol(cash)
+unregistersymbol(infmoney)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+227642E9
+
+"Borderlands3.exe"+227642BB: 3B 82 30 02 00 00        -  cmp eax,[rdx+00000230]
+"Borderlands3.exe"+227642C1: 7D 3E                    -  jnl Borderlands3.exe+22764301
+"Borderlands3.exe"+227642C3: 48 89 C1                 -  mov rcx,rax
+"Borderlands3.exe"+227642C6: C7 44 24 34 01 00 00 00  -  mov [rsp+34],00000001
+"Borderlands3.exe"+227642CE: 48 C1 E1 06              -  shl rcx,06
+"Borderlands3.exe"+227642D2: 48 03 8A 28 02 00 00     -  add rcx,[rdx+00000228]
+"Borderlands3.exe"+227642D9: 8B 41 0C                 -  mov eax,[rcx+0C]
+"Borderlands3.exe"+227642DC: 89 44 24 20              -  mov [rsp+20],eax
+"Borderlands3.exe"+227642E0: 48 8B 41 10              -  mov rax,[rcx+10]
+"Borderlands3.exe"+227642E4: 48 89 44 24 28           -  mov [rsp+28],rax
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+227642E9: 8B 41 18                 -  mov eax,[rcx+18]
+"Borderlands3.exe"+227642EC: 48 8D 8A 18 03 00 00     -  lea rcx,[rdx+00000318]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+227642F3: 48 8D 54 24 20           -  lea rdx,[rsp+20]
+"Borderlands3.exe"+227642F8: 89 44 24 30              -  mov [rsp+30],eax
+"Borderlands3.exe"+227642FC: E8 DF 13 CE DD           -  call Borderlands3.exe+4456E0
+"Borderlands3.exe"+22764301: 48 83 C7 04              -  add rdi,04
+"Borderlands3.exe"+22764305: 48 FF C3                 -  inc rbx
+"Borderlands3.exe"+22764308: 48 39 EB                 -  cmp rbx,rbp
+"Borderlands3.exe"+2276430B: 75 A3                    -  jne Borderlands3.exe+227642B0
+"Borderlands3.exe"+2276430D: 48 8B 4E 08              -  mov rcx,[rsi+08]
+"Borderlands3.exe"+22764311: E8 1A 39 92 DF           -  call Borderlands3.exe+2087C30
+"Borderlands3.exe"+22764316: 48 8B 7C 24 78           -  mov rdi,[rsp+78]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>36</ID>
+              <Description>"Amount"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>cash</Address>
+              <Offsets>
+                <Offset>18</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16197</ID>
+          <Description>"Infinite Vehicle Boost"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-13
+  Author : Iscariot
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(vboost,Borderlands3.exe,F3 0F 11 83 A0 00 00 00 77) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+21A3EC15)
+
+label(code)
+label(return)
+
+newmem:
+  mov [rbx+A0],(float)100.0
+
+code:
+  //movss [rbx+000000A0],xmm0
+  jmp return
+
+vboost:
+  jmp newmem
+  nop 3
+return:
+registersymbol(vboost)
+
+[DISABLE]
+
+vboost:
+  db F3 0F 11 83 A0 00 00 00
+
+unregistersymbol(vboost)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+21A3EC15
+
+"Borderlands3.exe"+21A3EBF1: 74 1C                       -  je Borderlands3.exe+21A3EC0F
+"Borderlands3.exe"+21A3EBF3: 0F 28 C6                    -  movaps xmm0,xmm6
+"Borderlands3.exe"+21A3EBF6: F3 0F 2C C0                 -  cvttss2si eax,xmm0
+"Borderlands3.exe"+21A3EBFA: 66 0F 6E C0                 -  movd xmm0,eax
+"Borderlands3.exe"+21A3EBFE: 0F 5B C0                    -  cvtdq2ps xmm0,xmm0
+"Borderlands3.exe"+21A3EC01: F3 0F 5C F0                 -  subss xmm6,xmm0
+"Borderlands3.exe"+21A3EC05: F3 0F 11 B3 E8 00 00 00     -  movss [rbx+000000E8],xmm6
+"Borderlands3.exe"+21A3EC0D: EB 03                       -  jmp Borderlands3.exe+21A3EC12
+"Borderlands3.exe"+21A3EC0F: 0F 28 C6                    -  movaps xmm0,xmm6
+"Borderlands3.exe"+21A3EC12: 0F 2F D3                    -  comiss xmm2,xmm3
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+21A3EC15: F3 0F 11 83 A0 00 00 00     -  movss [rbx+000000A0],xmm0
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+21A3EC1D: 77 61                       -  ja Borderlands3.exe+21A3EC80
+"Borderlands3.exe"+21A3EC1F: F3 0F 10 4B 2C              -  movss xmm1,[rbx+2C]
+"Borderlands3.exe"+21A3EC24: 41 0F 2F C9                 -  comiss xmm1,xmm9
+"Borderlands3.exe"+21A3EC28: 76 20                       -  jna Borderlands3.exe+21A3EC4A
+"Borderlands3.exe"+21A3EC2A: 48 85 C9                    -  test rcx,rcx
+"Borderlands3.exe"+21A3EC2D: 74 3D                       -  je Borderlands3.exe+21A3EC6C
+"Borderlands3.exe"+21A3EC2F: F3 0F 10 05 31 F7 37 E2     -  movss xmm0,[Borderlands3.exe+3DBE368]
+"Borderlands3.exe"+21A3EC37: F3 0F 5C C1                 -  subss xmm0,xmm1
+"Borderlands3.exe"+21A3EC3B: F3 0F 59 C3                 -  mulss xmm0,xmm3
+"Borderlands3.exe"+21A3EC3F: 0F 28 D8                    -  movaps xmm3,xmm0
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16186</ID>
+          <Description>"Skill Points"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Borderlands3.exe
+  Version: 
+  Date   : 2019-09-13
+  Author : Iscariot
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(skillp,Borderlands3.exe,8B 90 60 01 00 00 48 83) // should be unique
+alloc(newmem,$1000,"Borderlands3.exe"+95CCB49)
+
+label(code)
+label(return)
+label(_skill)
+
+registersymbol(_skill)
+
+newmem:
+  mov [_skill],rax
+
+code:
+  mov edx,[rax+00000160]
+  jmp return
+
+_skill:
+  dq 0
+
+skillp:
+  jmp newmem
+  nop
+return:
+registersymbol(skillp)
+
+[DISABLE]
+
+skillp:
+  db 8B 90 60 01 00 00
+unregistersymbol(_skill)
+unregistersymbol(skillp)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+95CCB49
+
+"Borderlands3.exe"+95CCB22: 48 8D 04 D1           -  lea rax,[rcx+rdx*8]
+"Borderlands3.exe"+95CCB26: EB 02                 -  jmp Borderlands3.exe+95CCB2A
+"Borderlands3.exe"+95CCB28: 31 C0                 -  xor eax,eax
+"Borderlands3.exe"+95CCB2A: F7 40 08 00 00 00 30  -  test [rax+08],30000000
+"Borderlands3.exe"+95CCB31: 75 26                 -  jne Borderlands3.exe+95CCB59
+"Borderlands3.exe"+95CCB33: 48 8B 0B              -  mov rcx,[rbx]
+"Borderlands3.exe"+95CCB36: 48 8B 81 28 07 00 00  -  mov rax,[rcx+00000728]
+"Borderlands3.exe"+95CCB3D: 48 85 C0              -  test rax,rax
+"Borderlands3.exe"+95CCB40: 74 17                 -  je Borderlands3.exe+95CCB59
+"Borderlands3.exe"+95CCB42: 44 8B 81 64 07 00 00  -  mov r8d,[rcx+00000764]
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+95CCB49: 8B 90 60 01 00 00     -  mov edx,[rax+00000160]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+95CCB4F: 48 83 C4 20           -  add rsp,20
+"Borderlands3.exe"+95CCB53: 5B                    -  pop rbx
+"Borderlands3.exe"+95CCB54: E9 47 DB 79 F7        -  jmp Borderlands3.exe+D6A6A0
+"Borderlands3.exe"+95CCB59: 48 83 C4 20           -  add rsp,20
+"Borderlands3.exe"+95CCB5D: 5B                    -  pop rbx
+"Borderlands3.exe"+95CCB5E: C3                    -  ret 
+"Borderlands3.exe"+95CCB5F: CC                    -  int 3 
+"Borderlands3.exe"+95CCB60: 4C 8B 24 24           -  mov r12,[rsp]
+"Borderlands3.exe"+95CCB64: 48 83 EC F8           -  sub rsp,-08
+"Borderlands3.exe"+95CCB68: 9D                    -  popfq 
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16187</ID>
+              <Description>"Amount"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_skill</Address>
+              <Offsets>
+                <Offset>160</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16199</ID>
+      <Description>"Zanzer"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>168</ID>
+          <Description>"Tooltip Pointer (save &amp; load after updating level)"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+aobscanmodule(tooltip,Borderlands3.exe,48 8B 13 48 89 D9 48 89 C7 FF 92 08)
+alloc(newmem,$1000,tooltip)
+
+label(code)
+label(return)
+label(tooltipPtr)
+
+newmem:
+  mov rdx,tooltipPtr
+  mov [rdx],rax
+code:
+  mov rdx,[rbx]
+  mov rcx,rbx
+  jmp return
+
+tooltipPtr:
+  dq 0
+
+tooltip:
+  jmp newmem
+  nop
+return:
+registersymbol(tooltip)
+registersymbol(tooltipPtr)
+
+[DISABLE]
+tooltip:
+  db 48 8B 13 48 89 D9
+unregistersymbol(tooltip)
+unregistersymbol(tooltipPtr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+972C41B
+
+"Borderlands3.exe"+972C3F5: 41 FF 90 28 06 00 00  -  call qword ptr [r8+00000628]
+"Borderlands3.exe"+972C3FC: 48 89 C3              -  mov rbx,rax
+"Borderlands3.exe"+972C3FF: 48 85 C0              -  test rax,rax
+"Borderlands3.exe"+972C402: 74 3E                 -  je Borderlands3.exe+972C442
+"Borderlands3.exe"+972C404: 8B 4C 24 30           -  mov ecx,[rsp+30]
+"Borderlands3.exe"+972C408: E8 63 36 D3 F7        -  call Borderlands3.exe+145FA70
+"Borderlands3.exe"+972C40D: 48 85 C0              -  test rax,rax
+"Borderlands3.exe"+972C410: 74 30                 -  je Borderlands3.exe+972C442
+"Borderlands3.exe"+972C412: 8B 4C 24 30           -  mov ecx,[rsp+30]
+"Borderlands3.exe"+972C416: E8 55 36 D3 F7        -  call Borderlands3.exe+145FA70
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+972C41B: 48 8B 13              -  mov rdx,[rbx]
+"Borderlands3.exe"+972C41E: 48 89 D9              -  mov rcx,rbx
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+972C421: 48 89 C7              -  mov rdi,rax
+"Borderlands3.exe"+972C424: FF 92 08 04 00 00     -  call qword ptr [rdx+00000408]
+"Borderlands3.exe"+972C42A: 48 8B 17              -  mov rdx,[rdi]
+"Borderlands3.exe"+972C42D: 48 89 F9              -  mov rcx,rdi
+"Borderlands3.exe"+972C430: 89 C3                 -  mov ebx,eax
+"Borderlands3.exe"+972C432: FF 92 08 04 00 00     -  call qword ptr [rdx+00000408]
+"Borderlands3.exe"+972C438: 48 8B 7D 68           -  mov rdi,[rbp+68]
+"Borderlands3.exe"+972C43C: 39 C3                 -  cmp ebx,eax
+"Borderlands3.exe"+972C43E: 41 0F 9D D4           -  setge r12l
+"Borderlands3.exe"+972C442: 4D 39 B7 F0 01 00 00  -  cmp [r15+000001F0],r14
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>166</ID>
+              <Description>"Base Address"</Description>
+              <LastState RealAddress="00000000"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>tooltipPtr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>162</ID>
+                  <Description>"Saved Level"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+1A4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>167</ID>
+                  <Description>"Level Req Display"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+1A8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>163</ID>
+                  <Description>"Item Score Display"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+204</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>207</ID>
+                  <Description>"Type"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+208</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>208</ID>
+                  <Description>"Balance"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+210</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>209</ID>
+                  <Description>"Manufacturer"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+218</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>183</ID>
+                  <Description>"Component Count"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+228</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>191</ID>
+                  <Description>"Component List"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+220</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>194</ID>
+                  <Description>"Components Address"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+220</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>197</ID>
+                  <Description>"Annointed Count"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+238</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>195</ID>
+                  <Description>"Annointed List"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+230</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>196</ID>
+                  <Description>"Annointed Address"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+230</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>175</ID>
+                  <Description>"Sell Price"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+1FC</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16200</ID>
+          <Description>"Mouseover Inventory Pointer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">//"Borderlands3.exe"+96A678B
+[ENABLE]
+aobscanmodule(mouseover,Borderlands3.exe,48 8B B4 24 08 02 00 00 84)
+alloc(newmem,$1000,mouseover)
+
+label(code)
+label(return)
+label(mouseoverPtr)
+
+newmem:
+  cmp rsi,0
+  je code
+  push rbx
+  mov rbx,mouseoverPtr
+  mov [rbx],rsi
+  pop rbx
+code:
+  mov rsi,[rsp+00000208]
+  jmp return
+
+mouseoverPtr:
+  dq 0
+
+mouseover:
+  jmp newmem
+  nop 3
+return:
+registersymbol(mouseover)
+registersymbol(mouseoverPtr)
+
+[DISABLE]
+mouseover:
+  db 48 8B B4 24 08 02 00 00
+unregistersymbol(mouseover)
+unregistersymbol(mouseoverPtr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+96A678B
+
+"Borderlands3.exe"+96A676D: EB 02                    -  jmp Borderlands3.exe+96A6771
+"Borderlands3.exe"+96A676F: 30 C0                    -  xor al,al
+"Borderlands3.exe"+96A6771: 84 C0                    -  test al,al
+"Borderlands3.exe"+96A6773: 75 03                    -  jne Borderlands3.exe+96A6778
+"Borderlands3.exe"+96A6775: 4C 89 E6                 -  mov rsi,r12
+"Borderlands3.exe"+96A6778: 48 89 D9                 -  mov rcx,rbx
+"Borderlands3.exe"+96A677B: E8 E0 FE 6B F7           -  call Borderlands3.exe+D66660
+"Borderlands3.exe"+96A6780: 48 89 C2                 -  mov rdx,rax
+"Borderlands3.exe"+96A6783: 48 89 F1                 -  mov rcx,rsi
+"Borderlands3.exe"+96A6786: E8 65 01 92 F7           -  call Borderlands3.exe+FC68F0
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+96A678B: 48 8B B4 24 08 02 00 00  -  mov rsi,[rsp+00000208]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+96A6793: 84 C0                    -  test al,al
+"Borderlands3.exe"+96A6795: 74 0D                    -  je Borderlands3.exe+96A67A4
+"Borderlands3.exe"+96A6797: 48 8D 55 58              -  lea rdx,[rbp+58]
+"Borderlands3.exe"+96A679B: 48 8D 4D 80              -  lea rcx,[rbp-80]
+"Borderlands3.exe"+96A679F: E8 BC A0 C9 F7           -  call Borderlands3.exe+1340860
+"Borderlands3.exe"+96A67A4: 48 89 D9                 -  mov rcx,rbx
+"Borderlands3.exe"+96A67A7: E8 64 71 50 F9           -  call Borderlands3.exe+2BAD910
+"Borderlands3.exe"+96A67AC: 48 85 C0                 -  test rax,rax
+"Borderlands3.exe"+96A67AF: 74 0D                    -  je Borderlands3.exe+96A67BE
+"Borderlands3.exe"+96A67B1: 48 3B 83 78 0D 00 00     -  cmp rax,[rbx+00000D78]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16201</ID>
+              <Description>"Base Address"</Description>
+              <LastState RealAddress="00000000"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>mouseoverPtr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16202</ID>
+              <Description>"Weapon (show/hide)"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>16203</ID>
+                  <Description>"Weapon"</Description>
+                  <LastState RealAddress="00000000"/>
+                  <VariableType>String</VariableType>
+                  <Length>0</Length>
+                  <Unicode>0</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>mouseoverPtr</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>698</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>16204</ID>
+                      <Description>"Pointer"</Description>
+                      <LastState RealAddress="00000000"/>
+                      <VariableType>String</VariableType>
+                      <Length>0</Length>
+                      <Unicode>0</Unicode>
+                      <CodePage>0</CodePage>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>+8</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>206</ID>
+                          <Description>"Switch Weapons After Updating"</Description>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <Color>008000</Color>
+                          <GroupHeader>1</GroupHeader>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>201</ID>
+                          <Description>"Fire Rate"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+220</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16205</ID>
+                          <Description>"Ammo Per Shot"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+2E4</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16206</ID>
+                          <Description>"Damage"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+320</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>203</ID>
+                          <Description>"Accuracy (0=best)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+2F8</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>205</ID>
+                          <Description>"Handling (0=best)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+304</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16207</ID>
+                      <Description>"Pointer"</Description>
+                      <LastState RealAddress="00000000"/>
+                      <VariableType>String</VariableType>
+                      <Length>0</Length>
+                      <Unicode>0</Unicode>
+                      <CodePage>0</CodePage>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>+10</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16208</ID>
+                          <Description>"Magazine Size"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>+1B4</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>68</ID>
+          <Description>"Experience Pointer (pause and unpause to populate)"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">//"Borderlands3.exe"+96AC097
+[ENABLE]
+aobscanmodule(experience,Borderlands3.exe,8B 80 D8 01 00 00 89 86)
+alloc(newmem,$1000,experience)
+
+label(code)
+label(return)
+label(experiencePtr)
+label(experienceAuto)
+
+newmem:
+  push rbx
+  mov rbx,experiencePtr
+  mov [rbx],rax
+  mov rbx,experienceAuto
+  cmp byte ptr [rbx],1
+  jne code
+  mov ebx,[rsi+754]
+  cmp ebx,[rax+1D8]
+  jle code
+  mov [rax+1D8],ebx
+code:
+  pop rbx
+  mov eax,[rax+000001D8]
+  jmp return
+
+experiencePtr:
+  dq 0
+
+experienceAuto:
+  db 0
+
+experience:
+  jmp newmem
+  nop
+return:
+registersymbol(experience)
+registersymbol(experiencePtr)
+registersymbol(experienceAuto)
+
+[DISABLE]
+experience:
+  db 8B 80 D8 01 00 00
+unregistersymbol(experience)
+unregistersymbol(experiencePtr)
+unregistersymbol(experienceAuto)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+96AC097
+
+"Borderlands3.exe"+96AC060: 48 81 EC 90 00 00 00                    -  sub rsp,00000090
+"Borderlands3.exe"+96AC067: 48 89 CE                                -  mov rsi,rcx
+"Borderlands3.exe"+96AC06A: 0F B6 FA                                -  movzx edi,dl
+"Borderlands3.exe"+96AC06D: 48 81 C1 30 07 00 00                    -  add rcx,00000730
+"Borderlands3.exe"+96AC074: E8 B7 20 E6 F7                          -  call Borderlands3.exe+150E130
+"Borderlands3.exe"+96AC079: 84 C0                                   -  test al,al
+"Borderlands3.exe"+96AC07B: 0F 84 A4 00 00 00                       -  je Borderlands3.exe+96AC125
+"Borderlands3.exe"+96AC081: 48 8D 8E 30 07 00 00                    -  lea rcx,[rsi+00000730]
+"Borderlands3.exe"+96AC088: C7 86 48 07 00 00 00 00 00 00           -  mov [rsi+00000748],00000000
+"Borderlands3.exe"+96AC092: E8 D9 06 E6 F7                          -  call Borderlands3.exe+150C770
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+96AC097: 8B 80 D8 01 00 00                       -  mov eax,[rax+000001D8]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+96AC09D: 89 86 50 07 00 00                       -  mov [rsi+00000750],eax
+"Borderlands3.exe"+96AC0A3: 48 8B 05 2E D5 F6 FC                    -  mov rax,[Borderlands3.exe+66195D8]
+"Borderlands3.exe"+96AC0AA: 48 85 C0                                -  test rax,rax
+"Borderlands3.exe"+96AC0AD: 75 0C                                   -  jne Borderlands3.exe+96AC0BB
+"Borderlands3.exe"+96AC0AF: E8 6C 8F 3D F9                          -  call Borderlands3.exe+2A85020
+"Borderlands3.exe"+96AC0B4: 48 8B 05 1D D5 F6 FC                    -  mov rax,[Borderlands3.exe+66195D8]
+"Borderlands3.exe"+96AC0BB: 48 8B 88 C8 00 00 00                    -  mov rcx,[rax+000000C8]
+"Borderlands3.exe"+96AC0C2: 48 85 C9                                -  test rcx,rcx
+"Borderlands3.exe"+96AC0C5: 74 1C                                   -  je Borderlands3.exe+96AC0E3
+"Borderlands3.exe"+96AC0C7: 8B 96 50 07 00 00                       -  mov edx,[rsi+00000750]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>69</ID>
+              <Description>"Base Address"</Description>
+              <LastState RealAddress="00000000"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>experiencePtr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>70</ID>
+                  <Description>"Experience"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+1D8</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>85</ID>
+              <Description>"Level After Each Kill"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+experienceAuto:
+db 1
+ 
+[DISABLE]
+experienceAuto:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"Skill Points Pointer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">//"Borderlands3.exe"+95CCB49
+[ENABLE]
+aobscanmodule(skills,Borderlands3.exe,8B 90 60 01 00 00 48 83)
+alloc(newmem,$1000,skills)
+
+label(code)
+label(return)
+label(skillsPtr)
+
+newmem:
+  mov rdx,skillsPtr
+  mov [rdx],rax
+code:
+  mov edx,[rax+00000160]
+  jmp return
+
+skillsPtr:
+  dq 0
+
+skills:
+  jmp newmem
+  nop
+return:
+registersymbol(skills)
+registersymbol(skillsPtr)
+
+[DISABLE]
+skills:
+  db 8B 90 60 01 00 00
+unregistersymbol(skills)
+unregistersymbol(skillsPtr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+95CCB49
+
+"Borderlands3.exe"+95CCB22: 48 8D 04 D1           -  lea rax,[rcx+rdx*8]
+"Borderlands3.exe"+95CCB26: EB 02                 -  jmp Borderlands3.exe+95CCB2A
+"Borderlands3.exe"+95CCB28: 31 C0                 -  xor eax,eax
+"Borderlands3.exe"+95CCB2A: F7 40 08 00 00 00 30  -  test [rax+08],30000000
+"Borderlands3.exe"+95CCB31: 75 26                 -  jne Borderlands3.exe+95CCB59
+"Borderlands3.exe"+95CCB33: 48 8B 0B              -  mov rcx,[rbx]
+"Borderlands3.exe"+95CCB36: 48 8B 81 28 07 00 00  -  mov rax,[rcx+00000728]
+"Borderlands3.exe"+95CCB3D: 48 85 C0              -  test rax,rax
+"Borderlands3.exe"+95CCB40: 74 17                 -  je Borderlands3.exe+95CCB59
+"Borderlands3.exe"+95CCB42: 44 8B 81 64 07 00 00  -  mov r8d,[rcx+00000764]
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+95CCB49: 8B 90 60 01 00 00     -  mov edx,[rax+00000160]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+95CCB4F: 48 83 C4 20           -  add rsp,20
+"Borderlands3.exe"+95CCB53: 5B                    -  pop rbx
+"Borderlands3.exe"+95CCB54: E9 47 DB 79 F7        -  jmp Borderlands3.exe+D6A6A0
+"Borderlands3.exe"+95CCB59: 48 83 C4 20           -  add rsp,20
+"Borderlands3.exe"+95CCB5D: 5B                    -  pop rbx
+"Borderlands3.exe"+95CCB5E: C3                    -  ret 
+"Borderlands3.exe"+95CCB5F: CC                    -  int 3 
+"Borderlands3.exe"+95CCB60: 4C 8B 24 24           -  mov r12,[rsp]
+"Borderlands3.exe"+95CCB64: 48 83 EC F8           -  sub rsp,-08
+"Borderlands3.exe"+95CCB68: 9D                    -  popfq 
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"Base Address"</Description>
+              <LastState RealAddress="00000000"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>skillsPtr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>94</ID>
+                  <Description>"Total Points"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+160</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16209</ID>
+          <Description>"Guardian Pointers (open guardian menu to populate)"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">//"Borderlands3.exe"+9602A13
+[ENABLE]
+aobscanmodule(guardian,Borderlands3.exe,4C 63 A0 7C 01 00 00)
+alloc(newmem,$1000,guardian)
+
+label(code)
+label(return)
+label(guardianPtr)
+
+newmem:
+  mov r12,guardianPtr
+  mov [r12],rax
+code:
+  movsxd  r12,dword ptr [rax+0000017C]
+  jmp return
+
+guardianPtr:
+  dq 0
+
+guardian:
+  jmp newmem
+  nop 2
+return:
+registersymbol(guardian)
+registersymbol(guardianPtr)
+
+[DISABLE]
+guardian:
+  db 4C 63 A0 7C 01 00 00
+unregistersymbol(guardian)
+unregistersymbol(guardianPtr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+9602A13
+
+"Borderlands3.exe"+96029ED: 83 F8 01              -  cmp eax,01
+"Borderlands3.exe"+96029F0: 75 0E                 -  jne Borderlands3.exe+9602A00
+"Borderlands3.exe"+96029F2: 48 8B 03              -  mov rax,[rbx]
+"Borderlands3.exe"+96029F5: BA 01 00 00 00        -  mov edx,00000001
+"Borderlands3.exe"+96029FA: 48 89 D9              -  mov rcx,rbx
+"Borderlands3.exe"+96029FD: FF 50 08              -  call qword ptr [rax+08]
+"Borderlands3.exe"+9602A00: 4C 89 F9              -  mov rcx,r15
+"Borderlands3.exe"+9602A03: E8 68 9D F0 F7        -  call Borderlands3.exe+150C770
+"Borderlands3.exe"+9602A08: 48 8D 97 70 0C 00 00  -  lea rdx,[rdi+00000C70]
+"Borderlands3.exe"+9602A0F: 48 8D 4D 38           -  lea rcx,[rbp+38]
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+9602A13: 4C 63 A0 7C 01 00 00  -  movsxd  r12,dword ptr [rax+0000017C]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+9602A1A: E8 31 08 D7 F7        -  call Borderlands3.exe+1373250
+"Borderlands3.exe"+9602A1F: 49 89 C6              -  mov r14,rax
+"Borderlands3.exe"+9602A22: 44 89 6D 78           -  mov [rbp+78],r13d
+"Borderlands3.exe"+9602A26: 48 8D 45 78           -  lea rax,[rbp+78]
+"Borderlands3.exe"+9602A2A: 44 88 AD A0 00 00 00  -  mov [rbp+000000A0],r13l
+"Borderlands3.exe"+9602A31: 48 89 44 24 40        -  mov [rsp+40],rax
+"Borderlands3.exe"+9602A36: 48 8D 85 A8 00 00 00  -  lea rax,[rbp+000000A8]
+"Borderlands3.exe"+9602A3D: 48 89 44 24 48        -  mov [rsp+48],rax
+"Borderlands3.exe"+9602A42: 49 8B 0E              -  mov rcx,[r14]
+"Borderlands3.exe"+9602A45: 0F 28 44 24 40        -  movaps xmm0,[rsp+40]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16210</ID>
+              <Description>"Base Address"</Description>
+              <LastState RealAddress="00000000"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>guardianPtr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>16211</ID>
+                  <Description>"Rank"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+178</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16212</ID>
+                  <Description>"Tokens"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+17C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16213</ID>
+                  <Description>"Experience"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+180</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>66</ID>
+          <Description>"Vending Machine Timer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+aobscanmodule(vending,Borderlands3.exe,F3 0F 10 81 B8 06 00 00)
+alloc(newmem,$1000,vending)
+
+label(code)
+label(return)
+label(vendingPtr)
+
+newmem:
+  push rax
+  mov rax,vendingPtr
+  mov [rax],rcx
+  pop rax
+code:
+  movss xmm0,[rcx+000006B8]
+  jmp return
+
+vendingPtr:
+  dq 0
+
+vending:
+  jmp newmem
+  nop 3
+return:
+registersymbol(vending)
+registersymbol(vendingPtr)
+
+[DISABLE]
+vending:
+  db F3 0F 10 81 B8 06 00 00
+unregistersymbol(vending)
+unregistersymbol(vendingPtr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+90F3EE0
+
+"Borderlands3.exe"+90F3EB8: 4C 8B 2C 24              -  mov r13,[rsp]
+"Borderlands3.exe"+90F3EBC: 4C 89 14 24              -  mov [rsp],r10
+"Borderlands3.exe"+90F3EC0: 4C 8D 15 67 08 03 0B     -  lea r10,[Borderlands3.exe+1412472E]
+"Borderlands3.exe"+90F3EC7: 4C 87 14 24              -  xchg [rsp],r10
+"Borderlands3.exe"+90F3ECB: C3                       -  ret 
+"Borderlands3.exe"+90F3ECC: 0F 1F 40 00              -  nop [rax+00]
+"Borderlands3.exe"+90F3ED0: 40 57                    -  push rdi
+"Borderlands3.exe"+90F3ED2: 48 83 EC 40              -  sub rsp,40
+"Borderlands3.exe"+90F3ED6: 80 B9 28 01 00 00 03     -  cmp byte ptr [rcx+00000128],03
+"Borderlands3.exe"+90F3EDD: 48 89 CF                 -  mov rdi,rcx
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+90F3EE0: F3 0F 10 81 B8 06 00 00  -  movss xmm0,[rcx+000006B8]
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+90F3EE8: F3 0F 5C C1              -  subss xmm0,xmm1
+"Borderlands3.exe"+90F3EEC: 0F 29 74 24 30           -  movaps [rsp+30],xmm6
+"Borderlands3.exe"+90F3EF1: 0F 57 F6                 -  xorps xmm6,xmm6
+"Borderlands3.exe"+90F3EF4: F3 0F 5F C6              -  maxss xmm0,xmm6
+"Borderlands3.exe"+90F3EF8: F3 0F 11 81 B8 06 00 00  -  movss [rcx+000006B8],xmm0
+"Borderlands3.exe"+90F3F00: 0F 85 B8 01 00 00        -  jne Borderlands3.exe+90F40BE
+"Borderlands3.exe"+90F3F06: 48 8B 01                 -  mov rax,[rcx]
+"Borderlands3.exe"+90F3F09: FF 90 48 01 00 00        -  call qword ptr [rax+00000148]
+"Borderlands3.exe"+90F3F0F: 48 85 C0                 -  test rax,rax
+"Borderlands3.exe"+90F3F12: 0F 84 A6 01 00 00        -  je Borderlands3.exe+90F40BE
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"Timer"</Description>
+              <LastState RealAddress="00000000"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>vendingPtr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>138</ID>
+                  <Description>"Vending Machine Timer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>+6B8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>139</ID>
+                  <Description>"Mayhem Mode"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+674</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72</ID>
+          <Description>"Game Summary Pointers (cannot edit)"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">//"Borderlands3.exe"+96AC067
+[ENABLE]
+aobscanmodule(summary,Borderlands3.exe,48 89 CE 0F B6 FA 48 81)
+alloc(newmem,$1000,summary)
+
+label(code)
+label(return)
+label(summaryPtr)
+
+newmem:
+  mov rsi,summaryPtr
+  mov [rsi],rcx
+code:
+  mov rsi,rcx
+  movzx edi,dl
+  jmp return
+
+summaryPtr:
+  dq 0
+
+summary:
+  jmp newmem
+  nop
+return:
+registersymbol(summary)
+registersymbol(summaryPtr)
+
+[DISABLE]
+summary:
+  db 48 89 CE 0F B6 FA
+unregistersymbol(summary)
+unregistersymbol(summaryPtr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Borderlands3.exe"+96AC067
+
+"Borderlands3.exe"+96AC033: 4C 89 0C 24                             -  mov [rsp],r9
+"Borderlands3.exe"+96AC037: 4C 8D 0D B2 28 92 FF                    -  lea r9,[Borderlands3.exe+8FCE8F0]
+"Borderlands3.exe"+96AC03E: 4C 87 0C 24                             -  xchg [rsp],r9
+"Borderlands3.exe"+96AC042: C3                                      -  ret 
+"Borderlands3.exe"+96AC043: 66 66 66 66 2E 0F 1F 84 00 00 00 00 00  -  nop cs:[rax+rax+00000000]
+"Borderlands3.exe"+96AC050: 48 89 5C 24 10                          -  mov [rsp+10],rbx
+"Borderlands3.exe"+96AC055: 48 89 6C 24 18                          -  mov [rsp+18],rbp
+"Borderlands3.exe"+96AC05A: 48 89 74 24 20                          -  mov [rsp+20],rsi
+"Borderlands3.exe"+96AC05F: 57                                      -  push rdi
+"Borderlands3.exe"+96AC060: 48 81 EC 90 00 00 00                    -  sub rsp,00000090
+// ---------- INJECTING HERE ----------
+"Borderlands3.exe"+96AC067: 48 89 CE                                -  mov rsi,rcx
+"Borderlands3.exe"+96AC06A: 0F B6 FA                                -  movzx edi,dl
+// ---------- DONE INJECTING  ----------
+"Borderlands3.exe"+96AC06D: 48 81 C1 30 07 00 00                    -  add rcx,00000730
+"Borderlands3.exe"+96AC074: E8 B7 20 E6 F7                          -  call Borderlands3.exe+150E130
+"Borderlands3.exe"+96AC079: 84 C0                                   -  test al,al
+"Borderlands3.exe"+96AC07B: 0F 84 A4 00 00 00                       -  je Borderlands3.exe+96AC125
+"Borderlands3.exe"+96AC081: 48 8D 8E 30 07 00 00                    -  lea rcx,[rsi+00000730]
+"Borderlands3.exe"+96AC088: C7 86 48 07 00 00 00 00 00 00           -  mov [rsi+00000748],00000000
+"Borderlands3.exe"+96AC092: E8 D9 06 E6 F7                          -  call Borderlands3.exe+150C770
+"Borderlands3.exe"+96AC097: E9 64 3F 93 F6                          -  jmp 13FFE0000
+"Borderlands3.exe"+96AC09C: 90                                      -  nop 
+"Borderlands3.exe"+96AC09D: 89 86 50 07 00 00                       -  mov [rsi+00000750],eax
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>73</ID>
+              <Description>"Base Address"</Description>
+              <LastState RealAddress="00000000"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>summaryPtr</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>78</ID>
+                  <Description>"Character Progression"</Description>
+                  <LastState RealAddress="0000074C"/>
+                  <VariableType>String</VariableType>
+                  <Length>0</Length>
+                  <Unicode>0</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>+74C</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>74</ID>
+                      <Description>"Current Level"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>77</ID>
+                      <Description>"Current Experience"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>75</ID>
+                      <Description>"Experience Needed"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>76</ID>
+                      <Description>"Previous Experience"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+C</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>79</ID>
+                  <Description>"Guardian Progression"</Description>
+                  <LastState RealAddress="00000764"/>
+                  <VariableType>String</VariableType>
+                  <Length>0</Length>
+                  <Unicode>0</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>+764</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>80</ID>
+                      <Description>"Tokens"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>81</ID>
+                      <Description>"Rank"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>82</ID>
+                      <Description>"Experience Needed"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>83</ID>
+                      <Description>"Previous Experience"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>84</ID>
+                      <Description>"Current Experience"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>+14</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>140</ID>
+          <Description>"Unrandomizer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+aobscanmodule(random,ucrtbase.dll,00 8B C1 48 83 C4 28)
+alloc(newmem,$1000,random)
+
+label(code)
+label(return)
+label(randomPtr)
+
+newmem:
+  mov rax,randomPtr
+  cmp byte ptr [rax],1
+  jne code
+  mov ecx,dword ptr [rax+1]
+code:
+  mov eax,ecx
+  add rsp,28
+  jmp return
+
+randomPtr:
+  dq 0
+
+random+01:
+  jmp newmem
+  nop
+return:
+registersymbol(random)
+registersymbol(randomPtr)
+
+[DISABLE]
+random+01:
+  db 8B C1 48 83 C4 28
+unregistersymbol(random)
+unregistersymbol(randomPtr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "ucrtbase.dll"+136B2
+
+"ucrtbase.dll"+1368D: CC                    -  int 3 
+"ucrtbase.dll"+1368E: CC                    -  int 3 
+"ucrtbase.dll"+1368F: CC                    -  int 3 
+"ucrtbase.dll"+13690: 48 83 EC 28           -  sub rsp,28
+"ucrtbase.dll"+13694: E8 77 E2 FF FF        -  call ucrtbase.dll+11910
+"ucrtbase.dll"+13699: 69 48 28 FD 43 03 00  -  imul ecx,[rax+28],000343FD
+"ucrtbase.dll"+136A0: 81 C1 C3 9E 26 00     -  add ecx,00269EC3
+"ucrtbase.dll"+136A6: 89 48 28              -  mov [rax+28],ecx
+"ucrtbase.dll"+136A9: C1 E9 10              -  shr ecx,10
+"ucrtbase.dll"+136AC: 81 E1 FF 7F 00 00     -  and ecx,00007FFF
+// ---------- INJECTING HERE ----------
+"ucrtbase.dll"+136B2: 8B C1                 -  mov eax,ecx
+"ucrtbase.dll"+136B4: 48 83 C4 28           -  add rsp,28
+// ---------- DONE INJECTING  ----------
+"ucrtbase.dll"+136B8: C3                    -  ret 
+"ucrtbase.dll"+136B9: CC                    -  int 3 
+"ucrtbase.dll"+136BA: CC                    -  int 3 
+"ucrtbase.dll"+136BB: CC                    -  int 3 
+"ucrtbase.dll"+136BC: CC                    -  int 3 
+"ucrtbase.dll"+136BD: CC                    -  int 3 
+"ucrtbase.dll"+136BE: CC                    -  int 3 
+"ucrtbase.dll"+136BF: CC                    -  int 3 
+"ucrtbase.dll"+136C0: 48 8D 0D C9 FF FF FF  -  lea rcx,[ucrtbase.dll+13690]
+"ucrtbase.dll"+136C7: E9 A0 F3 FF FF        -  jmp ucrtbase.dll+12A6C
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>142</ID>
+              <Description>"Activate"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+randomPtr:
+db 1
+ 
+[DISABLE]
+randomPtr:
+db 1
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>141</ID>
+              <Description>"Seed"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>randomPtr+1</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16215</ID>
+      <Description>"Agasio"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>16218</ID>
+          <Description>"Unrandomizer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+aobscanmodule(random,ucrtbase.dll,00 8B C1 48 83 C4 28)
+alloc(newmem,$1000,random)
+
+label(code)
+label(return)
+label(randomPtr)
+
+newmem:
+  mov rax,randomPtr
+  cmp byte ptr [rax],1
+  jne code
+  mov ecx,dword ptr [rax+1]
+code:
+  mov eax,ecx
+  add rsp,28
+  jmp return
+
+randomPtr:
+  dq 0
+
+random+01:
+  jmp newmem
+  nop
+return:
+registersymbol(random)
+registersymbol(randomPtr)
+
+[DISABLE]
+random+01:
+  db 8B C1 48 83 C4 28
+unregistersymbol(random)
+unregistersymbol(randomPtr)
+dealloc(newmem)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16219</ID>
+              <Description>"Activate"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+randomPtr:
+db 1
+ 
+[DISABLE]
+randomPtr:
+db 0
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>107</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16220</ID>
+              <Description>"Seed"</Description>
+              <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">26800:legendary grenade (tink hijinx)
+22000:legendary shield(tink hijinx)
+22854:legendary weapon(loot boxer)
+23182:weapon skin(loot boxer)
+24165:weapon trinket(loot boxer)
+32686:e-tech weapon(loot boxer)
+27750:legendary weapon(Vault line)
+32767:relic(Vault line)
+22400:legendary class mod(cash trap slot)
+22500:skin(cash trap slot)
+24000:head(cash trap slot)
+</DropDownList>
+              <VariableType>4 Bytes</VariableType>
+              <Address>randomPtr+1</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16221</ID>
+      <Description>"CJBok"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>16222</ID>
+          <Description>"ENABLE (Health / Shield / Ammo / Grenades / Money / Eridium / Golden Keys"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+// AMMO/HP/SHIELD ====================================================
+aobscanmodule(GetMaxAmmoAOB,Borderlands3.exe,F3 0F 11 83 AC 00 00 00 48 83)
+alloc(GetMaxAmmoMEM,512,GetMaxAmmoAOB)
+label(return)
+label(_slot)
+label(fone)
+label(_flags)
+registersymbol(_slot)
+registersymbol(_flags)
+registersymbol(GetMaxAmmoAOB)
+
+
+GetMaxAmmoAOB:
+  jmp GetMaxAmmoMEM
+  nop 3
+return:
+
+GetMaxAmmoMEM:
+  movss [rbx+000000AC],xmm0
+  push rax
+  push rdx
+  push rcx
+  mov eax,[rsp+138]
+  cmp eax,00
+  jne @exit
+  mov [_slot],rbx
+
+// Loop Stats
+  mov ecx,09
+@lp:
+  mov eax,09
+  sub eax,ecx
+  mov edx,eax
+  lea rdx,[_flags]
+  cmp byte ptr [rdx+rax],01
+  jl @continue
+  xorps xmm10,xmm10
+  cmp byte ptr [rdx+rax],01
+  jne @nosubtract
+  movss xmm10,[fone]
+@nosubtract:
+  imul eax,F8
+  lea rdx,[rbx+eax]
+  test rdx,rdx
+  je @continue
+  movss xmm0,[rdx+000000AC]
+  comiss xmm0,[fone]
+  jle @continue
+  subss xmm0,xmm10
+  movss [rdx+000000A0],xmm0
+@continue:
+  loop @lp
+
+@exit:
+  xorps xmm10,xmm10
+  pop rcx
+  pop rdx
+  pop rax
+  jmp return
+
+_flags:
+  dq 0 0
+_slot:
+  dq 0
+fone:
+  dd (float)1.0
+
+
+// CURRENCY ==========================================================
+aobscanmodule(GetCurrencyAOB,Borderlands3.exe,48 85 C0 74 F8 8B 40 08)
+alloc(GetCurrencyMEM,$1000,GetCurrencyAOB)
+label(GetCurrencyRET)
+label(_goldenkeys)
+label(_currency)
+registersymbol(GetCurrencyAOB)
+registersymbol(_goldenkeys)
+registersymbol(_currency)
+
+
+GetCurrencyAOB:
+  jmp GetCurrencyMEM
+GetCurrencyRET:
+
+GetCurrencyMEM:
+  test rax,rax
+  jne @f
+  xor eax,eax
+  ret
+@@:
+  push rax
+  mov [_goldenkeys],rax
+  test r13,r13
+  je @f
+  mov rax,[r13+00000228]
+  test rax,rax
+  je @f
+  mov [_currency],rax
+@@:
+  pop rax
+  mov eax,[rax+08]
+  ret
+
+_goldenkeys:
+  dq 0
+_currency:
+  dq 0
+
+
+[DISABLE]
+// AMMO/HP/SHIELD ====================================================
+GetMaxAmmoAOB:
+  db F3 0F 11 83 AC 00 00 00
+
+unregistersymbol(_slot)
+unregistersymbol(_flags)
+unregistersymbol(GetMaxAmmoAOB)
+dealloc(GetMaxAmmoMEM)
+
+// CURRENCY ==========================================================
+GetCurrencyAOB:
+  db 48 85 C0 74 F8
+
+unregistersymbol(_currency)
+unregistersymbol(_goldenkeys)
+unregistersymbol(GetCurrencyAOB)
+dealloc(GetCurrencyMEM)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16243</ID>
+              <Description>"Inf Health"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">00:OFF
+02:ON
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>1</ByteLength>
+              <Address>_flags+1</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16244</ID>
+              <Description>"Inf Shield"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">00:OFF
+02:ON
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>1</ByteLength>
+              <Address>_flags+2</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16241</ID>
+              <Description>"Inf Ammo"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">00 00 00 00 00 00:OFF
+01 01 01 01 01 01:ON
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>6</ByteLength>
+              <Address>_flags+3</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16242</ID>
+              <Description>"Inf Grenades"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">00:OFF
+01:ON
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>1</ByteLength>
+              <Address>_flags+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16238</ID>
+              <Description>"Golden Keys"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_goldenkeys</Address>
+              <Offsets>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16239</ID>
+              <Description>"Money"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_currency</Address>
+              <Offsets>
+                <Offset>18</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16240</ID>
+              <Description>"Eridium"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_currency</Address>
+              <Offsets>
+                <Offset>58</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16229</ID>
+              <Description>"DEBUG"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>808080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>16234</ID>
+                  <Description>"FLAGS"</Description>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>16</ByteLength>
+                  <Address>_flags</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16196</ID>
+                  <Description>"PLAYER STATS"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>16185</ID>
+                      <Description>"Health"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>[_slot]+A0+F8*1</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16235</ID>
+                      <Description>"Shield"</Description>
+                      <VariableType>Float</VariableType>
+                      <Address>[_slot]+A0+F8*2</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16195</ID>
+                  <Description>"AMMO"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>16236</ID>
+                      <Description>"PISTOL"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>0</ByteLength>
+                      <Address>[_slot]+F8*3</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16245</ID>
+                          <Description>"CURRENT"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+A0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16246</ID>
+                          <Description>"MAX (base)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+20</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16247</ID>
+                          <Description>"MAX"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+AC</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16248</ID>
+                      <Description>"SMG"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>0</ByteLength>
+                      <Address>[_slot]+F8*5</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16249</ID>
+                          <Description>"CURRENT"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+A0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16250</ID>
+                          <Description>"MAX (base)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+20</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16251</ID>
+                          <Description>"MAX"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+AC</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16252</ID>
+                      <Description>"ASSAULT"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>0</ByteLength>
+                      <Address>[_slot]+F8*6</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16253</ID>
+                          <Description>"CURRENT"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+A0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16254</ID>
+                          <Description>"MAX (base)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+20</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16255</ID>
+                          <Description>"MAX"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+AC</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16256</ID>
+                      <Description>"SHOTGUN"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>0</ByteLength>
+                      <Address>[_slot]+F8*4</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16257</ID>
+                          <Description>"CURRENT"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+A0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16258</ID>
+                          <Description>"MAX (base)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+20</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16216</ID>
+                          <Description>"MAX"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+AC</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16217</ID>
+                      <Description>"HEAVY"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>0</ByteLength>
+                      <Address>[_slot]+F8*8</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16259</ID>
+                          <Description>"CURRENT"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+A0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16260</ID>
+                          <Description>"MAX (base)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+20</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16261</ID>
+                          <Description>"MAX"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+AC</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16262</ID>
+                      <Description>"SNIPER"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>0</ByteLength>
+                      <Address>[_slot]+F8*7</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16263</ID>
+                          <Description>"CURRENT"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+A0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16223</ID>
+                          <Description>"MAX (base)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+20</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16224</ID>
+                          <Description>"MAX"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+AC</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>16225</ID>
+                      <Description>"GRENADES"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>Array of byte</VariableType>
+                      <ByteLength>0</ByteLength>
+                      <Address>[_slot]+F8*0</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>16226</ID>
+                          <Description>"CURRENT"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+A0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16227</ID>
+                          <Description>"MAX (base)"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+20</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>16228</ID>
+                          <Description>"MAX"</Description>
+                          <VariableType>Float</VariableType>
+                          <Address>+AC</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16264</ID>
+      <Description>"rjenkins8142"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>16265</ID>
+          <Description>"Slots Unrandomizer (Press Numpad Plus to auto-spin)"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{$lua}
+
+function SlotsUnrandomizer()
+  randomPtr = readBytes('randomPtr', 1, false)
+  if randomPtr == nil or randomPtr == 1 or randomPtr == true then beep(); return end
+
+  playSound(findTableFile('Activate'))
+
+  -- Enable (set randomPtr to 1)
+  writeBytes("randomPtr", 1)
+  
+  -- wait a bit
+  sleep(100)
+
+  -- Press E key
+  doKeyPress(VK_E)
+
+  -- wait a bit
+  sleep(200)
+
+  -- Disable (set randomPtr to 0)
+  writeBytes("randomPtr", 0)
+
+  playSound(findTableFile('Deactivate'))
+
+end
+
+hkey = createHotkey("SlotsUnrandomizer", VK_ADD)
+hkey.OnHotkey = SlotsUnrandomizer
+hkey.setKeys(VK_ADD)
+
+{$asm}
+
+[ENABLE]
+aobscanmodule(random,ucrtbase.dll,00 8B C1 48 83 C4 28)
+alloc(newmem,$1000,random)
+
+label(code)
+label(return)
+label(randomPtr)
+
+newmem:
+  mov rax,randomPtr
+  cmp byte ptr [rax],1
+  jne code
+  mov ecx,dword ptr [rax+1]
+code:
+  mov eax,ecx
+  add rsp,28
+  jmp return
+
+randomPtr:
+  dq 0
+
+random+01:
+  jmp newmem
+  nop
+return:
+registersymbol(random)
+registersymbol(randomPtr)
+
+[DISABLE]
+random+01:
+  db 8B C1 48 83 C4 28
+unregistersymbol(random)
+unregistersymbol(randomPtr)
+dealloc(newmem)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16266</ID>
+              <Description>"Seed"</Description>
+              <DropDownList DisplayValueAsItem="1">26800:legendary grenade (tink hijinx)
+22000:legendary shield(tink hijinx)
+22773:purple weapon(loot boxer)
+22854:legendary weapon(loot boxer)
+32686:e-tech weapon(loot boxer)
+23182:weapon skin(loot boxer)
+24165:weapon trinket(loot boxer)
+27750:legendary weapon(Vault line)
+32767:relic(Vault line)
+22400:legendary class mod(cash trap slot)
+22500:skin(cash trap slot)
+24000:head(cash trap slot)
+</DropDownList>
+              <VariableType>4 Bytes</VariableType>
+              <Address>randomPtr+1</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"Borderlands3.exe"+96AAD8F</Address>
+      <Comment>eridium
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
+</CheatTable>

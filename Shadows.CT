@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>72361</ID>
+      <Description>"Party Member Stats Base Address Scan Initialization (Activate This First)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <Color>800000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+registersymbol(partymemberstats_basepointer)
+registersymbol(partymemberstats_update_enable)
+registersymbol(partymemberstats_set_enable)
+registersymbol(partymemberstats_statsset_enable)
+registersymbol(partymemberstats_hpsoulsset_enable)
+registersymbol(partymemberstats_silverset_enable)
+registersymbol(partymemberstats_skillcooldownsset_enable)
+registersymbol(partymemberstats_skillpointsset_enable)
+
+alloc(partymemberstats_basepointer, 4)
+alloc(partymemberstats_update_enable, 4)
+alloc(partymemberstats_set_enable, 4)
+alloc(partymemberstats_statsset_enable, 4)
+alloc(partymemberstats_hpsoulsset_enable, 4)
+alloc(partymemberstats_silverset_enable, 4)
+alloc(partymemberstats_skillcooldownsset_enable, 4)
+alloc(partymemberstats_skillpointsset_enable, 4)
+
+
+[DISABLE]
+unregistersymbol(partymemberstats_basepointer)
+unregistersymbol(partymemberstats_update_enable)
+unregistersymbol(partymemberstats_set_enable)
+unregistersymbol(partymemberstats_statsset_enable)
+unregistersymbol(partymemberstats_hpsoulsset_enable)
+unregistersymbol(partymemberstats_silverset_enable)
+unregistersymbol(partymemberstats_skillcooldownsset_enable)
+unregistersymbol(partymemberstats_skillpointsset_enable)
+
+dealloc(partymemberstats_basepointer)
+dealloc(partymemberstats_update_enable)
+dealloc(partymemberstats_set_enable)
+dealloc(partymemberstats_statsset_enable)
+dealloc(partymemberstats_hpsoulsset_enable)
+dealloc(partymemberstats_silverset_enable)
+dealloc(partymemberstats_skillcooldownsset_enable)
+dealloc(partymemberstats_skillpointsset_enable)
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>72418</ID>
+          <Description>"Party Member Stats Base Address Scan (To Update: Select Party Member)"</Description>
+          <LastState Activated="1"/>
+          <Color>804000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+label(partymemberstats_savedAOB)
+label(partymemberstats_returnhere)
+label(partymemberstats_originalcode)
+label(partymemberstats_exit)
+
+label(partymemberstats_update_exit)
+label(partymemberstats_set_exit)
+label(partymemberstatsstats_set_exit)
+label(partymemberstats_hpsoulsset_exit)
+label(partymemberstats_silverset_exit)
+label(partymemberstats_skillcooldownsset_exit)
+label(partymemberstats_skillpointsset_exit)
+
+registersymbol(partymemberstats_savedAOB)
+
+//Shadows.exe+16F300 - E8 DB5EFAFF           - call Shadows.exe+1151E0
+//Shadows.exe+16F305 - 8B 40 68              - mov eax,[eax+68]
+//Shadows.exe+16F308 - F3 0F10 80 2C060000   - movss xmm0,[eax+0000062C]
+//Shadows.exe+16F310 - 0F2E 44 24 28         - ucomiss xmm0,[esp+28]
+//Shadows.exe+16F315 - 9F                    - lahf
+//Shadows.exe+16F316 - F3 0F11 44 24 30      - movss [esp+30],xmm0
+aobscan(partymemberstats_searchedAOB, F3 0F 10 80 ?? ?? ?? ?? 0F 2E 44 24 ??)
+
+alloc(partymemberstats_newmem, 2048)
+
+
+partymemberstats_newmem:
+cmp dword ptr [partymemberstats_update_enable], #0
+je partymemberstats_update_exit
+mov [partymemberstats_basepointer], eax
+partymemberstats_update_exit:
+
+cmp dword ptr [partymemberstats_set_enable], #0
+je partymemberstats_set_exit
+partymemberstats_set_exit:
+
+cmp dword ptr [partymemberstats_statsset_enable], #0
+je partymemberstatsstats_set_exit
+mov [eax+26c], (float)1000
+mov [eax+620], (float)1000
+mov [eax+654], (float)1000
+mov [eax+658], (float)1000
+mov [eax+65c], (float)100
+mov [eax+660], (float)1000
+mov [eax+68c], (float)1000
+mov [eax+690], (float)1000
+mov [eax+694], (float)1000
+mov [eax+698], (float)1000
+mov [eax+69c], (float)1000
+mov [eax+6a0], (float)1000
+mov [eax+6a4], (float)1000
+mov [eax+6a8], (float)1000
+mov [eax+6ac], (float)1000
+mov [eax+6b0], (float)1000
+mov [eax+6b4], (float)1000
+mov [eax+6b8], (float)1000
+mov [eax+6bc], (float)1000
+mov [eax+6e4], (float)1000
+mov [eax+6ec], (float)1000
+mov [eax+6f0], (float)1000
+mov [eax+6f4], (float)1000
+partymemberstatsstats_set_exit:
+
+cmp dword ptr [partymemberstats_hpsoulsset_enable], #0
+je partymemberstats_hpsoulsset_exit
+fld [eax+630]
+fstp [eax+62c]
+mov [eax+63c], (float)9999999
+partymemberstats_hpsoulsset_exit:
+
+cmp dword ptr [partymemberstats_silverset_enable], #0
+je partymemberstats_silverset_exit
+mov [eax+1020], #9999999
+partymemberstats_silverset_exit:
+
+cmp dword ptr [partymemberstats_skillcooldownsset_enable], #0
+je partymemberstats_skillcooldownsset_exit
+mov [eax+15e4], (float)0
+mov [eax+15e8], (float)0
+mov [eax+15ec], (float)0
+mov [eax+15f0], (float)0
+mov [eax+15f4], (float)0
+mov [eax+15f8], (float)0
+partymemberstats_skillcooldownsset_exit:
+
+cmp dword ptr [partymemberstats_skillpointsset_enable], #0
+je partymemberstats_skillpointsset_exit
+mov [eax+168c], #0
+partymemberstats_skillpointsset_exit:
+
+
+partymemberstats_originalcode:
+db F3 0F 10 80 2C 06 00 00
+//movss xmm0,[eax+0000062C]
+
+
+partymemberstats_exit:
+jmp partymemberstats_returnhere
+
+
+partymemberstats_searchedAOB:
+partymemberstats_savedAOB:
+jmp partymemberstats_newmem
+nop
+nop
+nop
+partymemberstats_returnhere:
+
+
+[DISABLE]
+partymemberstats_savedAOB:
+db F3 0F 10 80 2C 06 00 00
+//movss xmm0,[eax+0000062C]
+
+unregistersymbol(partymemberstats_savedAOB)
+
+dealloc(partymemberstats_newmem)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72460</ID>
+          <Description>"Party Member Stats Set to Massive?"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="1" RealAddress="0072000C"/>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>partymemberstats_statsset_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72459</ID>
+          <Description>"Party Member Hit Points, Souls Essence Set to Max?"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="00720010"/>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>partymemberstats_hpsoulsset_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72458</ID>
+          <Description>"Party Member Silver Set to 9999999?"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="00720014"/>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>partymemberstats_silverset_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72568</ID>
+          <Description>"Party Member Skill Cooldowns Set to 0?"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="00720018"/>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>partymemberstats_skillcooldownsset_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72461</ID>
+          <Description>"Party Member Skill Points Used Set to 0?"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="0" RealAddress="0072001C"/>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>partymemberstats_skillpointsset_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72365</ID>
+          <Description>"Party Member Stats Update Base Address?"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <LastState Value="1" RealAddress="00720004"/>
+          <Color>FF8000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>partymemberstats_update_enable</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72366</ID>
+          <Description>"Party Member Stats"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>72367</ID>
+              <Description>"Base Address"</Description>
+              <LastState Value="16194908" RealAddress="40A87588"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72447</ID>
+              <Description>"Name"</Description>
+              <LastState RealAddress="40A875D8"/>
+              <VariableType>String</VariableType>
+              <Length>10</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72419</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="40A877F0"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>268</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72569</ID>
+              <Description>"Movement Speed"</Description>
+              <LastState Value="1000" RealAddress="40A877F4"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>26C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72374</ID>
+              <Description>"Experience"</Description>
+              <LastState Value="1000000000" RealAddress="40A87BA0"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>618</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72428</ID>
+              <Description>"Base Hit Points"</Description>
+              <LastState Value="1000" RealAddress="40A87BA8"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>620</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72448</ID>
+              <Description>"Max Hit Points"</Description>
+              <LastState Value="54500" RealAddress="40A87BB0"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>628</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72463</ID>
+              <Description>"Current Hit Points"</Description>
+              <LastState Value="54500" RealAddress="40A87BB4"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>62C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72462</ID>
+              <Description>"Max Hit Points"</Description>
+              <LastState Value="54500" RealAddress="40A87BB8"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>630</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72445</ID>
+              <Description>"Hit Points per Endurance"</Description>
+              <LastState Value="50" RealAddress="40A87BC0"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>638</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72449</ID>
+              <Description>"Soul Essence"</Description>
+              <LastState Value="61" RealAddress="40A87BC4"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>63C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72420</ID>
+              <Description>"Base Strength"</Description>
+              <LastState Value="1000" RealAddress="40A87BDC"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>654</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72421</ID>
+              <Description>"Base Endurance"</Description>
+              <LastState Value="1000" RealAddress="40A87BE0"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>658</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72422</ID>
+              <Description>"Base Dexterity"</Description>
+              <LastState Value="100" RealAddress="40A87BE4"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>65C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72423</ID>
+              <Description>"Base Willpower"</Description>
+              <LastState Value="1000" RealAddress="40A87BE8"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>660</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72424</ID>
+              <Description>"Strength per level"</Description>
+              <LastState Value="2" RealAddress="40A87BEC"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>664</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72425</ID>
+              <Description>"Endurance per level"</Description>
+              <LastState Value="2" RealAddress="40A87BF0"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>668</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72426</ID>
+              <Description>"Dexterity per level"</Description>
+              <LastState Value="2" RealAddress="40A87BF4"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>66C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72427</ID>
+              <Description>"Willpower per level"</Description>
+              <LastState Value="2" RealAddress="40A87BF8"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>670</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72429</ID>
+              <Description>"Fire Resistance"</Description>
+              <LastState Value="1000" RealAddress="40A87C14"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>68C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72437</ID>
+              <Description>"Water Resistance"</Description>
+              <LastState Value="1000" RealAddress="40A87C18"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>690</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72438</ID>
+              <Description>"Air Resistance"</Description>
+              <LastState Value="1000" RealAddress="40A87C1C"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>694</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72439</ID>
+              <Description>"Earth Resistance"</Description>
+              <LastState Value="1000" RealAddress="40A87C20"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>698</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72440</ID>
+              <Description>"Poison Resistance"</Description>
+              <LastState Value="1000" RealAddress="40A87C24"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>69C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72441</ID>
+              <Description>"Piercing Resistance"</Description>
+              <LastState Value="1000" RealAddress="40A87C28"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72442</ID>
+              <Description>"Crushing Resistance"</Description>
+              <LastState Value="1000" RealAddress="40A87C2C"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6A4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72443</ID>
+              <Description>"Slashing Resistance"</Description>
+              <LastState Value="1000" RealAddress="40A87C30"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72446</ID>
+              <Description>"Weapon Critical Chance"</Description>
+              <LastState Value="1000" RealAddress="40A87C34"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6AC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72436</ID>
+              <Description>"Base Critical Multiplier"</Description>
+              <LastState Value="1000" RealAddress="40A87C38"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72432</ID>
+              <Description>"Base Evasion"</Description>
+              <LastState Value="1000" RealAddress="40A87C3C"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6B4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72430</ID>
+              <Description>"Base Block"</Description>
+              <LastState Value="1000" RealAddress="40A87C40"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6B8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72431</ID>
+              <Description>"Knockback Chance"</Description>
+              <LastState Value="1000" RealAddress="40A87C44"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6BC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72433</ID>
+              <Description>"Regeneration Rate"</Description>
+              <LastState Value="1000" RealAddress="40A87C6C"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6E4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72444</ID>
+              <Description>"Lifesteal"</Description>
+              <LastState Value="1000" RealAddress="40A87C74"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6EC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72434</ID>
+              <Description>"Return Damage"</Description>
+              <LastState Value="1000" RealAddress="40A87C78"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6F0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72435</ID>
+              <Description>"Slay Chance"</Description>
+              <LastState Value="1000" RealAddress="40A87C7C"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>6F4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72452</ID>
+              <Description>"Silver"</Description>
+              <LastState Value="4294967295" RealAddress="40A885A8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>1020</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72457</ID>
+              <Description>"Skill Cooldown 1"</Description>
+              <LastState Value="0" RealAddress="40A88B6C"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>15E4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72563</ID>
+              <Description>"Skill Cooldown 2"</Description>
+              <LastState Value="2.369427828E-38" RealAddress="40A88B70"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>15E8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72564</ID>
+              <Description>"Skill Cooldown 3"</Description>
+              <LastState Value="2.369427828E-38" RealAddress="40A88B74"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>15EC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72565</ID>
+              <Description>"Skill Cooldown 4"</Description>
+              <LastState Value="2.369427828E-38" RealAddress="40A88B78"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>15F0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72566</ID>
+              <Description>"Skill Cooldown 5"</Description>
+              <LastState Value="2.369427828E-38" RealAddress="40A88B7C"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>15F4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72567</ID>
+              <Description>"Skill Cooldown 6"</Description>
+              <LastState Value="2.369427828E-38" RealAddress="40A88B80"/>
+              <VariableType>Float</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>15F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72561</ID>
+              <Description>"Skill Points Used"</Description>
+              <LastState Value="4294967295" RealAddress="40A88C14"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>168C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72578</ID>
+              <Description>"Skill Points Used"</Description>
+              <LastState Value="15" Activated="1" RealAddress="40A88D98"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>partymemberstats_basepointer</Address>
+              <Offsets>
+                <Offset>1810</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72570</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1000000000" RealAddress="2B6E1CA0"/>
+      <VariableType>Float</VariableType>
+      <Address>2B6E1CA0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72571</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1000000000" RealAddress="2F22FCA8"/>
+      <VariableType>Float</VariableType>
+      <Address>2F22FCA8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72572</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1000000000" RealAddress="38A6EA70"/>
+      <VariableType>Float</VariableType>
+      <Address>38A6EA70</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72573</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1000000000" RealAddress="40A87BA0"/>
+      <VariableType>Float</VariableType>
+      <Address>40A87BA0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72574</ID>
+      <Description>"No description"</Description>
+      <LastState Value="16" RealAddress="00120170"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00120170</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72575</ID>
+      <Description>"No description"</Description>
+      <LastState Value="95" RealAddress="1BC81B68"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1BC81B68</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72576</ID>
+      <Description>"No description"</Description>
+      <LastState Value="15" RealAddress="40A88D98"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>40A88D98</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72577</ID>
+      <Description>"No description"</Description>
+      <LastState Value="94" RealAddress="4C642F0C"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>4C642F0C</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

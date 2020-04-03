@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Ammo"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(Ammo,server.dll+C9431,83 BE 74 04 00 00 00 7F 4E)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+registersymbol(Ammo)
+
+newmem:
+
+code:
+	mov [esi+00000474], #999
+	cmp dword ptr [esi+00000474],00
+	jmp return
+
+Ammo:
+	jmp code
+	nop
+	nop
+
+return:
+
+
+[DISABLE]
+
+Ammo:
+	cmp dword ptr [esi+00000474],00
+
+unregistersymbol(Ammo)
+dealloc(newmem)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"No spread"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(NoSpread,server.dll+CAA17,D9 9E 94 04 00 00 8B 82)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+registersymbol(NoSpread)
+
+newmem:
+
+code:
+    fstp dword ptr [esi+00000494]
+    mov dword ptr [esi+00000494],#0
+	jmp return
+
+NoSpread:
+	jmp code
+	nop
+
+return:
+
+
+[DISABLE]
+
+NoSpread:
+	fstp dword ptr [esi+00000494]
+
+unregistersymbol(NoSpread)
+dealloc(newmem)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"Rapidfire"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : hl2.exe
+  Version: 1.0
+  Date   : 11-26-17
+  Author : [open aamaker.lua and paste Author]
+
+  This script does blah blah blah
+  
+  Made by AA Maker Lua plugin ;)
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,server.dll+3967D1,8B 31 3B 30 75 12 83 EA 04 83 C0 04 83 C1 04 83 FA 04 73 EC 85 D2 74 5D 0F B6 31 0F B6 28 2B F5 75 45 83 EA 01 83 C0 01 83 C1 01 85 D2 74 46 0F B6 31 0F B6 28 2B F5 75 2E 83 EA 01 83 C0 01 83 C1 01 85 D2 74 2F 0F B6 31 0F B6 28 2B F5 75 17 83 EA 01 83 C0 01 83 C1 01 85 D2 74 18 0F B6 31 0F B6 00 2B F0 74 0E 85 F6 B8 01 00 00 00 7F 07 83 C8 FF EB 02 33 C0 85 C0 5E 5D 74 33 80 BF 24 FC FF FF 00 8D 87 D0 FB FF FF 74 0F 80 48 58 01 D9)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+registersymbol(INJECT)
+
+newmem:
+
+code:
+	mov [ecx],#100
+	mov esi,[ecx]
+	cmp esi,[eax]
+	//jne server.dll+3967E9
+	jmp return
+
+INJECT:
+	jmp code
+	nop
+
+return:
+
+
+[DISABLE]
+
+INJECT:
+	mov esi,[ecx]
+	cmp esi,[eax]
+	jne server.dll+3967E9
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: server.dll+3967D1
+
+server.dll+3967BE: CC - int 3 
+server.dll+3967BF: CC - int 3 
+server.dll+3967C0: 53 - push ebx
+server.dll+3967C1: 8B 5C 24 08  - mov ebx,[esp+08]
+server.dll+3967C5: 57 - push edi
+server.dll+3967C6: 55 - push ebp
+server.dll+3967C7: 8B F9  - mov edi,ecx
+server.dll+3967C9: BA 04000000 - mov edx,00000004
+server.dll+3967CE: 8B C3  - mov eax,ebx
+server.dll+3967D0: 56 - push esi
+// ---------- INJECTING HERE ----------
+server.dll+3967D1: 8B 31  - mov esi,[ecx]
+server.dll+3967D3: 3B 30  - cmp esi,[eax]
+server.dll+3967D5: 75 12 - jne 148467E9
+// ---------- DONE INJECTING  ----------
+server.dll+3967D7: 83 EA 04 - sub edx,04
+server.dll+3967DA: 83 C0 04 - add eax,04
+server.dll+3967DD: 83 C1 04 - add ecx,04
+server.dll+3967E0: 83 FA 04 - cmp edx,04
+server.dll+3967E3: 73 EC - jae 148467D1
+server.dll+3967E5: 85 D2  - test edx,edx
+server.dll+3967E7: 74 5D - je 14846846
+server.dll+3967E9: 0FB6 31  - movzx esi,byte ptr [ecx]
+server.dll+3967EC: 0FB6 28  - movzx ebp,byte ptr [eax]
+server.dll+3967EF: 2B F5  - sub esi,ebp
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"gernades/total ammo"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : hl2.exe
+  Version: 1.0
+  Date   : 11-26-17
+  Author : [open aamaker.lua and paste Author]
+
+  This script does blah blah blah
+  
+  Made by AA Maker Lua plugin ;)
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,server.dll+C69BB,8B 84 B7 98 06 00 00 5F)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+registersymbol(INJECT)
+
+newmem:
+
+code:
+	mov [edi+esi*4+00000698],#999
+	mov eax,[edi+esi*4+00000698]
+	jmp return
+
+INJECT:
+	jmp code
+	nop
+	nop
+
+return:
+
+
+[DISABLE]
+
+INJECT:
+	mov eax,[edi+esi*4+00000698]
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: server.dll+C69BB
+
+server.dll+C699E: 33 C0  - xor eax,eax
+server.dll+C69A0: 5E - pop esi
+server.dll+C69A1: C2 0400 - ret 0004
+server.dll+C69A4: 56 - push esi
+server.dll+C69A5: E8 E6CE1D00 - call 145C3890
+server.dll+C69AA: 8B C8  - mov ecx,eax
+server.dll+C69AC: E8 4FC4FEFF - call 143D2E00
+server.dll+C69B1: 83 F8 FE - cmp eax,-02
+server.dll+C69B4: B8 E7030000 - mov eax,000003E7
+server.dll+C69B9: 74 07 - je 143E69C2
+// ---------- INJECTING HERE ----------
+server.dll+C69BB: 8B 84 B7 98060000  - mov eax,[edi+esi*4+00000698]
+// ---------- DONE INJECTING  ----------
+server.dll+C69C2: 5F - pop edi
+server.dll+C69C3: 5E - pop esi
+server.dll+C69C4: C2 0400 - ret 0004
+server.dll+C69C7: CC - int 3 
+server.dll+C69C8: CC - int 3 
+server.dll+C69C9: CC - int 3 
+server.dll+C69CA: CC - int 3 
+server.dll+C69CB: CC - int 3 
+server.dll+C69CC: CC - int 3 
+server.dll+C69CD: CC - int 3 
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>122</ID>
+      <Description>"Teleport"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>
+[ENABLE]
+
+aobscanmodule(Teleport,server.dll+1C6795,8B 8E 44 02 00 00 8B 86 4C 02 00 00 8B 96 48 02 00 00 55)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+registersymbol(Teleport)
+label(save)
+label(load)
+alloc(_Xaxis,8)
+alloc(_Yaxis,8)
+alloc(_Zaxis,8)
+alloc(_Zaddaxis,8)
+alloc(_SavePosition,8)
+alloc(_LoadPosition,8)
+
+registersymbol(_SavePosition)
+registersymbol(_LoadPosition)
+
+_Xaxis:
+ dd 0
+
+_Yaxis:
+ dd 0
+
+_Zaxis:
+ dd 0
+
+_Zaddaxis:
+ dq (float)35
+
+_SavePosition:
+dd 0
+
+_LoadPosition:
+dd 0
+
+newmem:
+ cmp [_SavePosition], 1
+ je save
+ cmp [_LoadPosition], 1
+ je load
+ jmp code
+
+save:
+ mov [_SavePosition], 0
+ fld [esi+244]
+ fstp [_Xaxis]
+ fld [esi+248]
+ fstp [_Yaxis]
+ fld [esi+24C]
+ fstp [_Zaxis]
+ jmp code
+
+load:
+mov [_LoadPosition], 0
+ fld [_Xaxis]
+ fstp [esi+244]
+ fld [_Yaxis]
+ fstp [esi+248]
+ fld [_Zaxis]
+ fadd [_Zaddaxis]
+ fstp [esi+24C]
+ jmp code
+
+code:
+	mov ecx,[esi+00000244]
+	jmp return
+
+Teleport:
+	jmp newmem
+	nop
+
+return:
+
+
+[DISABLE]
+
+Teleport:
+	mov ecx,[esi+00000244]
+
+unregistersymbol(Teleport)
+dealloc(newmem)
+dealloc(_Xaxis,8)
+dealloc(_Yaxis,8)
+dealloc(_Zaxis,8)
+dealloc(_Zaddaxis,8)
+dealloc(_SavePosition,8)
+dealloc(_LoadPosition,8)
+unregistersymbol(_SavePosition)
+unregistersymbol(_LoadPosition)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>123</ID>
+          <Description>"Save"</Description>
+          <LastState Value="0" RealAddress="00601020"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_saveposition</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>219</Key>
+              </Keys>
+              <Value>1</Value>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>124</ID>
+          <Description>"Load"</Description>
+          <LastState Value="0" RealAddress="00601028"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_loadposition</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>221</Key>
+              </Keys>
+              <Value>1</Value>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>Rapidfire</Name>
+      <Address>138B0000</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"server.dll"+28071</Address>
+      <Comment>ammo test 1
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"server.dll"+3967D1</Address>
+      <Comment>Rapidfire
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
+</CheatTable>

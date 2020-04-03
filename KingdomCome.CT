@@ -1,0 +1,4517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <Forms>
+    <UDF1 Class="TCEForm" Encoding="Ascii85">b/+8)lRy+*a0n=RX(tY6zdAaTINE9bYQ2oK+v^mG2GC1qQx0Jb+}R6clf0Oh(Uoz][!Pc?2WWeRSFnfQ^tq1XXU8x=-#d0f[rg/p)}Zu)lkNl)w0?ZOC5Tmu*@EcKRc]$.[dbajQ_sDvT%My*)ysl1n,cG3ulJkv9X6]*DQuL{T$:n([b(cd9pCBRreB!^o_1Uvrd$Vr(cj6%1XttPXZLcv2rk0=]f0Pb@S58GW[$zo-dGEs4eEj}?FsNzN(b.jahXArd0p}M.MQ?HujiU4[,TO:6h^GSAy/WIKb:L;WA:hgMV5hPJ]@de,3-EY=7P5{p*TcmWIrc%LTteiIj_[t34h:SZ0PX/S+ZCp$e6E$#F0HD^gQOZH%rL$;i[aF$yZf-[;wB;+:C-Rc{+tZ1uxlDNg_-Pt)K8{b8p,k6B2JpOdtlD+jlx!LsF-tW;BUoVF6YXE$l}BKBIE9O9k#*cUA+@SG}baHTd1[r[W0*L/{rg+VU0R?VTZFQ}je{Zvi{;%WT^4g=u@JG3bub3m}Jm8m(XKPxlj$D?@I_8pb}</UDF1>
+    <UDF2 Class="TCEForm" Encoding="Ascii85">Rgz6[6EP5mH]#VK^XiTL7fwbL2{ByvN}MJpRobXU^RrK)9MN:lvO9^]-rAFX?RyLd@OrcmKVWu}g6fOy?jH*aUb]Iz!Du+m8._/=1MA9#@S#05!V!*,^LzXIkn*1V-$6LCRrozv^6ZNQ.m20ohl/IXsL],XHKE}u;Xq64UL4f$V:Qevn;HGLJG^sLYVhrFPXEwa9azJ=egQ5*jvt=$C({UN$:CkD=pd-wT4[#ax$Qqo(F%zBj23qtfnII]L+lfEm(erwNbpkQjQM#An*oh]$5)p{#^B4r4EkQej!f:b)b{j$b!;A:35.4-WQc^SxJD=La$#LBdUkb#.InVH;BhE+^Dibtl[kSIdfIo8qeO3-0,ml4RUEzXcB/^z7jy{7h[?9w?hBCj$(_*xoD/ObsGC!U*?+Kx?_t^CrPg$nvE*)KVhi}a:42nOCuk5SGyyRDkX:qSQzeh#x}f3XT(U/teW7P4$@2*$+uSmFVfOC+[D,p3O{{!jw:(OrSUa46o91:;CAu6lRa)!:jujW:XCC#UZs{4$4@CvMLtyJ3N{7(Kn26(ldYRg=0.W2CLsB1zmDgf_d?f)-/=@z/::lZWR^?=@nTREEIQL4u,WIur8#{Lq/smrvboDcLI%f#ksnK@!oe@A}x)r:A:p=8U2FKyg*^=A])BxdS0}vn-</UDF2>
+  </Forms>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2717</ID>
+      <Description>"Activate Table"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//Player Data Pointer
+aobscanmodule(base_player,WHGame.DLL,4C 8B 02 49 8B 90 A8 00 00 00)
+alloc(newmem_player,$1000,base_player)
+alloc(pointer_player,8)
+label(code_player)
+label(return_player)
+pointer_player:
+  dd 0
+newmem_player:
+  push rdi
+  lea rdi,[r9-238]
+  mov [pointer_player],rdi
+  pop rdi
+  jne code_player
+code_player:
+  mov r8,[rdx]
+  mov rdx,[r8+000000A8]
+  jmp return_player
+base_player:
+  jmp newmem_player
+  nop
+  nop
+  nop
+  nop
+  nop
+return_player:
+  registersymbol(base_player)
+  registersymbol(pointer_player)
+
+//Reputation Data Pointer
+aobscanmodule(base_reputation,WHGame.DLL,0F 28 F1 48 8D 14 40)
+alloc(newmem_reputation,$1000,base_reputation)
+alloc(pointer_reputation,8)
+label(code_reputation)
+label(return_reputation)
+pointer_reputation:
+  dd 0
+newmem_reputation:
+  mov [pointer_reputation],rbx
+  jne code_reputation
+code_reputation:
+  movaps xmm6,xmm1
+  lea rdx,[rax+rax*2]
+  jmp return_reputation
+base_reputation:
+  jmp newmem_reputation
+  nop
+  nop
+return_reputation:
+  registersymbol(base_reputation)
+  registersymbol(pointer_reputation)
+
+//Position Data Pointer
+aobscanmodule(base_position,WHGame.DLL,4D 03 C8 4D 8B D1)
+alloc(newmem_position,$1000,base_position)
+alloc(pointer_position,8)
+label(code_position)
+label(return_position)
+pointer_position:
+  dd 0
+newmem_position:
+  mov [pointer_position],rcx
+code_position:
+  add r9,r8
+  mov r10,r9
+  jmp return_position
+base_position:
+  jmp newmem_position
+  nop
+return_position:
+  registersymbol(base_position)
+  registersymbol(pointer_position)
+
+//Horse and Enemy Data Pointer
+aobscanmodule(base_horse,WHGame.DLL,33 D2 85 DB 74 64)
+alloc(newmem_horse,$1000,base_horse)
+alloc(pointer_horse,8)
+label(code_horse)
+label(return_horse)
+pointer_horse:
+  dd 0
+newmem_horse:
+  mov [pointer_horse],rcx
+  jne code_horse
+code_horse:
+  xor edx,edx
+  test ebx,ebx
+  jmp return_horse
+base_horse:
+  jmp newmem_horse
+  nop
+return_horse:
+  registersymbol(base_horse)
+  registersymbol(pointer_horse)
+
+//Dice Pointer
+aobscanmodule(base_dice,WHGame.DLL,48 8B 01 FF 50 08 48 8B 8B ?? 05 00 00 0F 28 CE E8)
+alloc(newmem_dice,$1000,base_dice)
+alloc(pointer_dice,8)
+label(code_dice)
+label(return_dice)
+newmem_dice:
+  mov [pointer_dice],rcx
+  jne code_dice
+code_dice:
+  mov rax,[rcx]
+  call qword ptr [rax+08]
+  jmp return_dice
+base_dice:
+  jmp newmem_dice
+  nop
+return_dice:
+  registersymbol(base_dice)
+  registersymbol(pointer_dice)
+
+[DISABLE]
+base_player:
+  db 4C 8B 02 49 8B 90 A8 00 00 00
+  unregistersymbol(base_player)
+  unregistersymbol(pointer_player)
+  dealloc(newmem_player)
+
+base_reputation:
+  db 0F 28 F1 48 8D 14 40
+  unregistersymbol(base_reputation)
+  unregistersymbol(pointer_reputation)
+  dealloc(newmem_reputation)
+
+base_position:
+  db 4D 03 C8 4D 8B D1
+  unregistersymbol(base_position)
+  unregistersymbol(pointer_position)
+  dealloc(newmem_position)
+
+base_horse:
+  db 33 D2 85 DB 74 64
+  unregistersymbol(base_horse)
+  unregistersymbol(pointer_horse)
+  dealloc(newmem_horse)
+
+base_dice:
+  db 48 8B 01 FF 50 08
+  unregistersymbol(base_dice)
+  unregistersymbol(pointer_dice)
+  dealloc(newmem_dice)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>103</ID>
+          <Description>"Character Vitals"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>133</ID>
+              <Description>"Health"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_player</Address>
+              <Offsets>
+                <Offset>4A4</Offset>
+                <Offset>1d8</Offset>
+                <Offset>50</Offset>
+                <Offset>20</Offset>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>132</ID>
+              <Description>"Stamina"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_player</Address>
+              <Offsets>
+                <Offset>4A8</Offset>
+                <Offset>1d8</Offset>
+                <Offset>50</Offset>
+                <Offset>20</Offset>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>131</ID>
+              <Description>"Energy"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_player</Address>
+              <Offsets>
+                <Offset>4AC</Offset>
+                <Offset>1d8</Offset>
+                <Offset>50</Offset>
+                <Offset>20</Offset>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>130</ID>
+              <Description>"Nourishment"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_player</Address>
+              <Offsets>
+                <Offset>4B0</Offset>
+                <Offset>1d8</Offset>
+                <Offset>50</Offset>
+                <Offset>20</Offset>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2775</ID>
+          <Description>"Character Scripts"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2885</ID>
+              <Description>"Activate"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>3</ID>
+                  <Description>"Infinite Weight"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(Weight,WHGame.DLL,F3 0F 58 40 1C F3 0F 11)
+alloc(newmem,$1000,Weight)
+label(code)
+label(return)
+newmem:
+  addss xmm0,[rax+0C]
+  jmp return
+code:
+  addss xmm0,[rax+1C]
+  jmp return
+Weight:
+  jmp newmem
+return:
+  registersymbol(Weight)
+
+[DISABLE]
+Weight:
+  db F3 0F 58 40 1C
+  unregistersymbol(Weight)
+  dealloc(newmem)
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>192</ID>
+                  <Description>"Armor does not Effect Speed"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(speed,WHGame.DLL,F3 0F 11 43 20 48 8B D7)
+alloc(newmem,$1000,speed)
+label(code)
+label(return)
+newmem:
+code:
+  mov [esp-4],(float)-8.066665649
+  movss xmm0, [esp-4]
+  movss [rbx+20],xmm0
+  jmp return
+speed:
+  jmp newmem
+return:
+  registersymbol(speed)
+
+[DISABLE]
+speed:
+  db F3 0F 11 43 20
+  unregistersymbol(speed)
+  dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>163</ID>
+                  <Description>"Max Charisma (20)"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(charisma,WHGame.DLL,F3 45 0F 11 6D 00 * * * * 7D)
+alloc(newmem,$1000,charisma)
+label(code)
+label(return)
+newmem:
+code:
+  mov [esp-4],(float)20.00
+  movss xmm13, [esp-4]
+  movss [r13+00],xmm13
+  jmp return
+charisma:
+  jmp newmem
+  nop
+return:
+  registersymbol(charisma)
+
+[DISABLE]
+charisma:
+  db F3 45 0F 11 6D 00
+ unregistersymbol(charisma)
+ dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>182</ID>
+                  <Description>"0 Visibility"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(visibility,WHGame.DLL,F3 45 0F 11 55 04 * * * * * * 45 89 75)
+alloc(newmem,$1000,visibility)
+label(code)
+label(return)
+newmem:
+code:
+  mov [esp+4],(float)-2
+  movss xmm10, [esp+4]
+  movss [r13+04],xmm10
+  jmp return
+visibility:
+  jmp newmem
+  nop
+return:
+registersymbol(visibility)
+
+[DISABLE]
+visibility:
+  db F3 45 0F 11 55 04
+  unregistersymbol(visibility)
+  dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>183</ID>
+                  <Description>"0 Conpicuous"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(conspic,WHGame.DLL,F3 45 0F 11 4D 08 45)
+alloc(newmem,$1000,conspic)
+label(code)
+label(return)
+newmem:
+code:
+  mov [esp-4],(float)-2
+  movss xmm9, [esp-4]
+  movss [r13+08],xmm9
+  jmp return
+conspic:
+  jmp newmem
+  nop
+return:
+  registersymbol(conspic)
+
+[DISABLE]
+conspic:
+  db F3 45 0F 11 4D 08
+  unregistersymbol(conspic)
+  dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>216</ID>
+                  <Description>"0 Noise"</Description>
+                  <LastState/>
+                  <Color>000000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(noise,WHGame.DLL,F3 0F 11 47 14 F3 0F 10 45 7F)
+alloc(newmem,$1000,noise)
+label(code)
+label(return)
+newmem:
+code:
+  mov [esp+4],(float)0.00
+  movss xmm0, [esp+4]
+  movss [rdi+14],xmm0
+  jmp return
+noise:
+  jmp newmem
+return:
+  registersymbol(noise)
+
+[DISABLE]
+noise:
+  db F3 0F 11 47 14
+  unregistersymbol(noise)
+  dealloc(newmem)
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>203</ID>
+          <Description>"Horse Pointers"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>201</ID>
+              <Description>"Health"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_horse</Address>
+              <Offsets>
+                <Offset>4A4</Offset>
+                <Offset>8</Offset>
+                <Offset>90</Offset>
+                <Offset>110</Offset>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>202</ID>
+              <Description>"Stamina"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_horse</Address>
+              <Offsets>
+                <Offset>4A8</Offset>
+                <Offset>8</Offset>
+                <Offset>90</Offset>
+                <Offset>110</Offset>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>215</ID>
+          <Description>"Enemy Pointers"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>213</ID>
+              <Description>"Health"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_horse</Address>
+              <Offsets>
+                <Offset>49C</Offset>
+                <Offset>8</Offset>
+                <Offset>90</Offset>
+                <Offset>110</Offset>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>214</ID>
+              <Description>"Stamina"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_horse</Address>
+              <Offsets>
+                <Offset>4A0</Offset>
+                <Offset>8</Offset>
+                <Offset>90</Offset>
+                <Offset>110</Offset>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>91</ID>
+          <Description>"Skill Points"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>86</ID>
+              <Description>"Main"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>pointer_player</Address>
+              <Offsets>
+                <Offset>64</Offset>
+                <Offset>680</Offset>
+                <Offset>1d8</Offset>
+                <Offset>50</Offset>
+                <Offset>20</Offset>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>90</ID>
+              <Description>"Stats"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>136</ID>
+                  <Description>"Strength"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>89</ID>
+                  <Description>"Agility"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>12</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88</ID>
+                  <Description>"Vitality"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>14</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>87</ID>
+                  <Description>"Speech"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>16</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"Skills"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>104</ID>
+                  <Description>"Alchemy"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>30</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106</ID>
+                  <Description>"Drinking"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>3E</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>109</ID>
+                  <Description>"Herbalism"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>56</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>95</ID>
+                  <Description>"Horsemanship"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>26</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110</ID>
+                  <Description>"Hunting"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>40</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>94</ID>
+                  <Description>"Lockpicking"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>2C</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>107</ID>
+                  <Description>"Maintenance"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>34</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>105</ID>
+                  <Description>"Pickpocket"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>2E</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>108</ID>
+                  <Description>"Reading"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>58</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>92</ID>
+                  <Description>"Stealth"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>24</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>111</ID>
+              <Description>"Combat"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>113</ID>
+                  <Description>"Defense"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>42</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>112</ID>
+                  <Description>"Warfare"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>28</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115</ID>
+                  <Description>"Axe"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>46</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>2895</ID>
+                  <Description>"Bow"</Description>
+                  <Color>0000FF</Color>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>4A</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>114</ID>
+                  <Description>"Mace"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>4E</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>116</ID>
+                  <Description>"Sword"</Description>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>2894</ID>
+                  <Description>"Unarmed (Someday)"</Description>
+                  <Color>0000FF</Color>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                    <Offset>680</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>170</ID>
+          <Description>"Experience Pointers"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>53</ID>
+              <Description>"Stats"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>45</ID>
+                  <Description>"pStrength_LVL"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>454</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>46</ID>
+                      <Description>"pStrength_EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>458</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>47</ID>
+                  <Description>"pAgility_LVL"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>45C</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>48</ID>
+                      <Description>"pAgility_EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>460</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>49</ID>
+                  <Description>"pVitality_LVL"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>464</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>50</ID>
+                      <Description>"pVitality_EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>468</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>51</ID>
+                  <Description>"pSpeech_LVL"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>46C</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>52</ID>
+                      <Description>"pSpeech_EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>470</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>54</ID>
+              <Description>"Combat"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>72</ID>
+                  <Description>"Defence"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>558</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>73</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>55C</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>2874</ID>
+                  <Description>"Warfare"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>4F0</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>2893</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>4F4</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>76</ID>
+                  <Description>"Axe"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>568</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>77</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>56C</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>78</ID>
+                  <Description>"Bow"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>570</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>79</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>574</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>80</ID>
+                  <Description>"Mace"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>588</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>81</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>58C</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>74</ID>
+                  <Description>"Sword"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>560</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>75</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>564</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>82</ID>
+                  <Description>"Unarmed"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>5A0</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>83</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>5A4</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>55</ID>
+              <Description>"Skills"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>64</ID>
+                  <Description>"Alchemy"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>510</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>65</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>514</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>68</ID>
+                  <Description>"Drinking"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>548</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>69</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>54C</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>84</ID>
+                  <Description>"Herbalism"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>5A8</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>85</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>5AC</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>58</ID>
+                  <Description>"Horsemanship"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>4E8</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>57</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>4EC</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>70</ID>
+                  <Description>"Hunting"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>550</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>71</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>554</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>60</ID>
+                  <Description>"Lockpicking"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>500</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>61</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>504</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>66</ID>
+                  <Description>"Maintenance"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>520</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>67</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>524</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>62</ID>
+                  <Description>"Pickpocketing"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>508</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>63</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>50C</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>168</ID>
+                  <Description>"Reading"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>5B0</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>169</ID>
+                      <Description>"EXP"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>5B4</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>2901</ID>
+                  <Description>"Stealth"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_player</Address>
+                  <Offsets>
+                    <Offset>4E0</Offset>
+                    <Offset>1d8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>59</ID>
+                      <Description>"EXP"</Description>
+                      <Color>000000</Color>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>7</BitStart>
+                      <BitLength>10</BitLength>
+                      <ShowAsBinary>0</ShowAsBinary>
+                      <Address>pointer_player</Address>
+                      <Offsets>
+                        <Offset>4E4</Offset>
+                        <Offset>1d8</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2884</ID>
+          <Description>"Dice Cheats 1.3.1 and newer"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>148</ID>
+              <Description>"Player"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>142</ID>
+                  <Description>"Round Score"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_dice</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>408</Offset>
+                    <Offset>28</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>139</ID>
+                  <Description>"Total Score"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_dice</Address>
+                  <Offsets>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>408</Offset>
+                    <Offset>28</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>149</ID>
+              <Description>"Opponent"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>154</ID>
+                  <Description>"Round Score"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_dice</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>30</Offset>
+                    <Offset>408</Offset>
+                    <Offset>28</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>153</ID>
+                  <Description>"Total Score"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_dice</Address>
+                  <Offsets>
+                    <Offset>50</Offset>
+                    <Offset>30</Offset>
+                    <Offset>408</Offset>
+                    <Offset>28</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1772</ID>
+          <Description>"Position"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1771</ID>
+              <Description>"Pos X"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_position</Address>
+              <Offsets>
+                <Offset>A8</Offset>
+                <Offset>38</Offset>
+                <Offset>108</Offset>
+                <Offset>B8</Offset>
+                <Offset>48</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1769</ID>
+              <Description>"Pos Y"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_position</Address>
+              <Offsets>
+                <Offset>AC</Offset>
+                <Offset>38</Offset>
+                <Offset>108</Offset>
+                <Offset>B8</Offset>
+                <Offset>48</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1770</ID>
+              <Description>"Pos Z"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_position</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>38</Offset>
+                <Offset>108</Offset>
+                <Offset>B8</Offset>
+                <Offset>48</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2719</ID>
+          <Description>"Faction Reputation"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2479</ID>
+              <Description>"[ID: 1] Samopesh villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2480</ID>
+              <Description>"[ID: 1] Samopesh villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2481</ID>
+              <Description>"[ID: 2] Samopesh bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>20</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2482</ID>
+              <Description>"[ID: 2] Samopesh bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>20</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2483</ID>
+              <Description>"[ID: 3] Rattay traders Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2484</ID>
+              <Description>"[ID: 3] Rattay traders Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2485</ID>
+              <Description>"[ID: 4] Merhojed villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2486</ID>
+              <Description>"[ID: 4] Merhojed villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2487</ID>
+              <Description>"[ID: 11] Player's faction Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2488</ID>
+              <Description>"[ID: 11] Player's faction Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2489</ID>
+              <Description>"[ID: 12] Cumans Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>80</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2490</ID>
+              <Description>"[ID: 12] Cumans Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>80</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2491</ID>
+              <Description>"[ID: 13] Merhojed soldiers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>98</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2492</ID>
+              <Description>"[ID: 13] Merhojed soldiers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>98</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2493</ID>
+              <Description>"[ID: 16] Duelists Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2494</ID>
+              <Description>"[ID: 16] Duelists Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2495</ID>
+              <Description>"[ID: 17] Talmberg villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>C8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2496</ID>
+              <Description>"[ID: 17] Talmberg villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>C8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2497</ID>
+              <Description>"[ID: 18] Talmberg soldiers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2498</ID>
+              <Description>"[ID: 18] Talmberg soldiers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2499</ID>
+              <Description>"[ID: 19] Pribyslavitz bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2500</ID>
+              <Description>"[ID: 19] Pribyslavitz bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2501</ID>
+              <Description>"[ID: 20] Pribyslavitz Cumans Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>110</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2502</ID>
+              <Description>"[ID: 20] Pribyslavitz Cumans Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>110</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2503</ID>
+              <Description>"[ID: 21] Morcock's gang Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>128</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2504</ID>
+              <Description>"[ID: 21] Morcock's gang Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>128</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2505</ID>
+              <Description>"[ID: 22] Ledetchko bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>140</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2506</ID>
+              <Description>"[ID: 22] Ledetchko bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>140</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2507</ID>
+              <Description>"[ID: 23] Ledetchko villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>158</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2508</ID>
+              <Description>"[ID: 23] Ledetchko villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>158</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2509</ID>
+              <Description>"[ID: 24] Neuhof villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>170</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2510</ID>
+              <Description>"[ID: 24] Neuhof villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>170</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2511</ID>
+              <Description>"[ID: 25] Neuhof bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>188</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2512</ID>
+              <Description>"[ID: 25] Neuhof bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>188</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2513</ID>
+              <Description>"[ID: 26] Talmberg fugitive Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>1A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2514</ID>
+              <Description>"[ID: 26] Talmberg fugitive Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>1A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2515</ID>
+              <Description>"[ID: 27] Rattay Citizens Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>1B8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2516</ID>
+              <Description>"[ID: 27] Rattay Citizens Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>1B8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2517</ID>
+              <Description>"[ID: 28] placeholder Enemy Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>1D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2518</ID>
+              <Description>"[ID: 28] placeholder Enemy Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>1D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2519</ID>
+              <Description>"[ID: 29] placeholder Friend Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>1E8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2520</ID>
+              <Description>"[ID: 29] placeholder Friend Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>1E8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2521</ID>
+              <Description>"[ID: 31] Skalitz refugees - Rattay Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>200</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2522</ID>
+              <Description>"[ID: 31] Skalitz refugees - Rattay Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>200</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2523</ID>
+              <Description>"[ID: 32] Kuttenberg executioner Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>218</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2524</ID>
+              <Description>"[ID: 32] Kuttenberg executioner Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>218</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2525</ID>
+              <Description>"[ID: 33] Vranik bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>230</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2526</ID>
+              <Description>"[ID: 33] Vranik bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>230</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2527</ID>
+              <Description>"[ID: 37] Skalitz refugees - Sasau Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>248</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2528</ID>
+              <Description>"[ID: 37] Skalitz refugees - Sasau Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>248</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2529</ID>
+              <Description>"[ID: 38] Skalitz villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>260</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2530</ID>
+              <Description>"[ID: 38] Skalitz villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>260</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2531</ID>
+              <Description>"[ID: 39] Sasau Monastery monks Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>278</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2532</ID>
+              <Description>"[ID: 39] Sasau Monastery monks Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>278</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2533</ID>
+              <Description>"[ID: 40] Sasau villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>290</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2534</ID>
+              <Description>"[ID: 40] Sasau villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>290</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2535</ID>
+              <Description>"[ID: 41] Crossroads villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>2A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2536</ID>
+              <Description>"[ID: 41] Crossroads villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>2A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2537</ID>
+              <Description>"[ID: 42] Rattay's countrysides Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>2C0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2538</ID>
+              <Description>"[ID: 42] Rattay's countrysides Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>2C0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2539</ID>
+              <Description>"[ID: 43] Highland villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>2D8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2540</ID>
+              <Description>"[ID: 43] Highland villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>2D8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2541</ID>
+              <Description>"[ID: 44] Wolflin soldiers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>2F0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2542</ID>
+              <Description>"[ID: 44] Wolflin soldiers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>2F0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2543</ID>
+              <Description>"[ID: 45] Bernard soldiers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>308</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2544</ID>
+              <Description>"[ID: 45] Bernard soldiers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>308</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2545</ID>
+              <Description>"[ID: 46] Rattay Soldiers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>320</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2546</ID>
+              <Description>"[ID: 46] Rattay Soldiers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>320</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2547</ID>
+              <Description>"[ID: 47] Talmberg masons Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>338</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2548</ID>
+              <Description>"[ID: 47] Talmberg masons Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>338</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2549</ID>
+              <Description>"[ID: 48] Uzhitz villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>350</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2550</ID>
+              <Description>"[ID: 48] Uzhitz villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>350</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2551</ID>
+              <Description>"[ID: 49] Cuman captive Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>368</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2552</ID>
+              <Description>"[ID: 49] Cuman captive Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>368</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2553</ID>
+              <Description>"[ID: 50] Sasau Monastery public Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>380</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2554</ID>
+              <Description>"[ID: 50] Sasau Monastery public Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>380</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2555</ID>
+              <Description>"[ID: 51] Toth's bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>398</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2556</ID>
+              <Description>"[ID: 51] Toth's bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>398</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2557</ID>
+              <Description>"[ID: 52] Event bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>3B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2558</ID>
+              <Description>"[ID: 52] Event bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>3B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2559</ID>
+              <Description>"[ID: 53] Event Cumans Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>3C8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2560</ID>
+              <Description>"[ID: 53] Event Cumans Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>3C8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2561</ID>
+              <Description>"[ID: 54] Event soldiers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>3E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2562</ID>
+              <Description>"[ID: 54] Event soldiers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>3E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2563</ID>
+              <Description>"[ID: 55] Event civilians Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>3F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2564</ID>
+              <Description>"[ID: 55] Event civilians Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>3F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2565</ID>
+              <Description>"[ID: 56] Counterfeiter mercenaries Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>410</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2566</ID>
+              <Description>"[ID: 56] Counterfeiter mercenaries Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>410</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2567</ID>
+              <Description>"[ID: 57] Rovna villagers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>428</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2568</ID>
+              <Description>"[ID: 57] Rovna villagers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>428</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2569</ID>
+              <Description>"[ID: 58] Abductors Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>440</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2570</ID>
+              <Description>"[ID: 58] Abductors Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>440</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2571</ID>
+              <Description>"[ID: 59] Ulrich Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>458</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2572</ID>
+              <Description>"[ID: 59] Ulrich Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>458</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2573</ID>
+              <Description>"[ID: 60] Neuhof Ginger bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>470</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2574</ID>
+              <Description>"[ID: 60] Neuhof Ginger bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>470</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2575</ID>
+              <Description>"[ID: 61] Talmberg captives Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>488</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2576</ID>
+              <Description>"[ID: 61] Talmberg captives Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>488</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2577</ID>
+              <Description>"[ID: 62] Counterfeiting workshop mercenaries Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>4A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2578</ID>
+              <Description>"[ID: 62] Counterfeiting workshop mercenaries Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>4A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2579</ID>
+              <Description>"[ID: 63] Conquest (attackers) Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>4B8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2580</ID>
+              <Description>"[ID: 63] Conquest (attackers) Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>4B8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2581</ID>
+              <Description>"[ID: 64] Conquest (defenders) Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>4D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2582</ID>
+              <Description>"[ID: 64] Conquest (defenders) Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>4D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2583</ID>
+              <Description>"[ID: 65] Caste Unpopular Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>4E8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2584</ID>
+              <Description>"[ID: 65] Caste Unpopular Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>4E8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2585</ID>
+              <Description>"[ID: 66] Caste DudeBestFriends Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>500</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2586</ID>
+              <Description>"[ID: 66] Caste DudeBestFriends Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>500</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2587</ID>
+              <Description>"[ID: 67] Wanderers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>518</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2588</ID>
+              <Description>"[ID: 67] Wanderers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>518</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2589</ID>
+              <Description>"[ID: 68] Sazava bandits Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>530</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2590</ID>
+              <Description>"[ID: 68] Sazava bandits Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>530</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2591</ID>
+              <Description>"[ID: 69] Caste Hated Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>548</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2592</ID>
+              <Description>"[ID: 69] Caste Hated Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>548</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2593</ID>
+              <Description>"[ID: 70] Bandit Camp - Rattay Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>560</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2594</ID>
+              <Description>"[ID: 70] Bandit Camp - Rattay Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>560</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2595</ID>
+              <Description>"[ID: 71] Bandit Camp - Vranik Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>578</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2596</ID>
+              <Description>"[ID: 71] Bandit Camp - Vranik Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>578</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2597</ID>
+              <Description>"[ID: 72] Bandit Camp - Neuhof Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>590</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2598</ID>
+              <Description>"[ID: 72] Bandit Camp - Neuhof Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>590</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2599</ID>
+              <Description>"[ID: 73] Bandit Camp - Ledetchko Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>5A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2600</ID>
+              <Description>"[ID: 73] Bandit Camp - Ledetchko Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>5A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2601</ID>
+              <Description>"[ID: 74] Bandit Camp - Crossroads Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>5C0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2602</ID>
+              <Description>"[ID: 74] Bandit Camp - Crossroads Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>5C0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2603</ID>
+              <Description>"[ID: 75] Bandit Camp - Uzhitz Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>5D8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2604</ID>
+              <Description>"[ID: 75] Bandit Camp - Uzhitz Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>5D8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2605</ID>
+              <Description>"[ID: 76] Bandit Camp - Pribyslavitz Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>5F0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2606</ID>
+              <Description>"[ID: 76] Bandit Camp - Pribyslavitz Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>5F0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2607</ID>
+              <Description>"[ID: 77] Bandit Camp - Uzhitz 2 Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>608</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2608</ID>
+              <Description>"[ID: 77] Bandit Camp - Uzhitz 2 Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>608</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2609</ID>
+              <Description>"[ID: 78] Bandit Camp - Highland Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>620</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2610</ID>
+              <Description>"[ID: 78] Bandit Camp - Highland Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>620</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2611</ID>
+              <Description>"[ID: 79] Bandit Camp - Skalitz Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>638</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2612</ID>
+              <Description>"[ID: 79] Bandit Camp - Skalitz Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>638</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2613</ID>
+              <Description>"[ID: 80] Bandit Camp - Skalitz 2 Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>650</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2614</ID>
+              <Description>"[ID: 80] Bandit Camp - Skalitz 2 Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>650</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2615</ID>
+              <Description>"[ID: 81] Sasau Monastery spawn guards Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>668</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2616</ID>
+              <Description>"[ID: 81] Sasau Monastery spawn guards Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>668</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2617</ID>
+              <Description>"[ID: 82] Bandit Camp - Samopesh Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>680</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2618</ID>
+              <Description>"[ID: 82] Bandit Camp - Samopesh Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>680</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2619</ID>
+              <Description>"[ID: 83] Skalitz mines Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>698</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2620</ID>
+              <Description>"[ID: 83] Skalitz mines Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>698</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2621</ID>
+              <Description>"[ID: 84] stableHorses Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>6B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2622</ID>
+              <Description>"[ID: 84] stableHorses Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>6B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2623</ID>
+              <Description>"[ID: 85] Generic civilians Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>6C8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2624</ID>
+              <Description>"[ID: 85] Generic civilians Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>6C8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2625</ID>
+              <Description>"[ID: 86] Sheep in Wolfs poachers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>6E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2626</ID>
+              <Description>"[ID: 86] Sheep in Wolfs poachers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>6E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2627</ID>
+              <Description>"[ID: 87] Sheep in Wolfs rangers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>6F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2628</ID>
+              <Description>"[ID: 87] Sheep in Wolfs rangers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>6F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2629</ID>
+              <Description>"[ID: 88] Millers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>710</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2630</ID>
+              <Description>"[ID: 88] Millers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>710</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2631</ID>
+              <Description>"[ID: 89] Kunesh Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>728</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2632</ID>
+              <Description>"[ID: 89] Kunesh Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>728</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2633</ID>
+              <Description>"[ID: 90] escapeToTalmberk_seekers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>740</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2634</ID>
+              <Description>"[ID: 90] escapeToTalmberk_seekers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>740</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2635</ID>
+              <Description>"[ID: 91] Animals Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>758</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2636</ID>
+              <Description>"[ID: 91] Animals Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>758</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2637</ID>
+              <Description>"[ID: 92] Awakening (dream) Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>770</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2638</ID>
+              <Description>"[ID: 92] Awakening (dream) Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>770</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2639</ID>
+              <Description>"[ID: 93] Devilplay (devils) Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>788</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2640</ID>
+              <Description>"[ID: 93] Devilplay (devils) Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>788</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2641</ID>
+              <Description>"[ID: 94] Rovna looters Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>7A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2642</ID>
+              <Description>"[ID: 94] Rovna looters Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>7A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2643</ID>
+              <Description>"[ID: 95] Counterfeiting workers Reputation"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>7B8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2644</ID>
+              <Description>"[ID: 95] Counterfeiting workers Anger"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_reputation</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>7B8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>193</ID>
+          <Description>"Enable Cheats in Console"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(VariableExec,WHGame.DLL,81 E3 02 00 00 03)
+alloc(newmem,$1000,VariableExec)
+label(code)
+label(return)
+newmem:
+code:
+  and ebx,03000000
+  jmp return
+VariableExec:
+  jmp newmem
+  nop
+return:
+  registersymbol(VariableExec)
+
+aobscanmodule(FunctionExec,WHGame.DLL,F7 47 18 02 00 00 03)
+alloc(newmem2,$1000,FunctionExec)
+label(code2)
+label(return2)
+newmem2:
+code2:
+  test [rdi+18],3000000
+  jmp return2
+FunctionExec:
+  jmp newmem2
+  nop
+  nop
+return2:
+  registersymbol(FunctionExec)
+
+[DISABLE]
+VariableExec:
+  db 81 E3 02 00 00 03
+  unregistersymbol(VariableExec)
+  dealloc(newmem)
+
+FunctionExec:
+  db F7 47 18 02 00 00 03
+  unregistersymbol(FunctionExec)
+  dealloc(newmem2)
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2679</ID>
+      <Description>"Teleport Locations"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+UDF1.Show()
+
+[DISABLE]
+{$lua}
+UDF1.Hide()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2873</ID>
+      <Description>"Table Contributors"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+UDF2.Show()
+
+[DISABLE]
+{$lua}
+UDF2.Hide()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2900</ID>
+      <Description>"OLD SCRIPTS + DEBUG [JANGAN GUNAKAN!! | DON'T USE THIS]"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>0000FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>2897</ID>
+          <Description>"Auto Assemble script"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : KingdomCome.exe
+  Version: 
+  Date   : 2018-07-06
+  Author : Vee
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscan(pengali,WHGame.dll,01 4F 04 80 00 00) // should be unique
+alloc(newmem,$1000,pengali)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  add [rdi+04],ecx
+  add byte ptr [rax],00
+  jmp return
+
+pengali:
+  jmp newmem
+  nop
+return:
+registersymbol(pengali)
+
+[DISABLE]
+
+pengali:
+  db 01 4F 04 80 00 00
+
+unregistersymbol(pengali)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 227008DC6FC
+
+227008DC6E5: 00 00              -  add [rax],al
+227008DC6E7: 00 00              -  add [rax],al
+227008DC6E9: 00 00              -  add [rax],al
+227008DC6EB: 00 01              -  add [rcx],al
+227008DC6ED: 00 00              -  add [rax],al
+227008DC6EF: 00 5C 95 EC        -  add [rbp+rdx*4-14],bl
+227008DC6F3: 3E 01 00           -  add [rax],eax
+227008DC6F6: 00 00              -  add [rax],al
+227008DC6F8: D0 43 54           -  rol byte ptr [rbx+54],1
+227008DC6FB: D8                 - db D8  // SHORTENED TO HIT INJECTION FROM:  fadd dword ptr [rcx]
+// ---------- INJECTING HERE ----------
+227008DC6FC: 01 4F 04           -  add [rdi+04],ecx
+227008DC6FF: 80 00 00           -  add byte ptr [rax],00
+// ---------- DONE INJECTING  ----------
+227008DC702: 00 00              -  add [rax],al
+227008DC704: 00 00              -  add [rax],al
+227008DC706: 00 00              -  add [rax],al
+227008DC708: 01 00              -  add [rax],eax
+227008DC70A: 00 00              -  add [rax],al
+227008DC70C: 00 00              -  add [rax],al
+227008DC70E: 00 00              -  add [rax],al
+227008DC710: 01 00              -  add [rax],eax
+227008DC712: 00 00              -  add [rax],al
+227008DC714: 00 00              -  add [rax],al
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2898</ID>
+          <Description>"Auto Assemble script"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : KingdomCome.exe
+  Version: 
+  Date   : 2018-07-06
+  Author : Vee
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscan(pengkalian,01 4F 04 80 00 00) // should be unique
+alloc(newmem,$1000,227008DC6FC)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  add [rdi+04],ecx
+  add byte ptr [rax],00
+  jmp return
+
+pengkalian:
+  jmp newmem
+  nop
+return:
+registersymbol(pengkalian)
+
+[DISABLE]
+
+pengkalian:
+  db 01 4F 04 80 00 00
+
+unregistersymbol(pengkalian)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 227008DC6FC
+
+227008DC6E5: 00 00              -  add [rax],al
+227008DC6E7: 00 00              -  add [rax],al
+227008DC6E9: 00 00              -  add [rax],al
+227008DC6EB: 00 01              -  add [rcx],al
+227008DC6ED: 00 00              -  add [rax],al
+227008DC6EF: 00 5C 95 EC        -  add [rbp+rdx*4-14],bl
+227008DC6F3: 3E 01 00           -  add [rax],eax
+227008DC6F6: 00 00              -  add [rax],al
+227008DC6F8: D0 43 54           -  rol byte ptr [rbx+54],1
+227008DC6FB: D8                 - db D8  // SHORTENED TO HIT INJECTION FROM:  fadd dword ptr [rcx]
+// ---------- INJECTING HERE ----------
+227008DC6FC: 01 4F 04           -  add [rdi+04],ecx
+227008DC6FF: 80 00 00           -  add byte ptr [rax],00
+// ---------- DONE INJECTING  ----------
+227008DC702: 00 00              -  add [rax],al
+227008DC704: 00 00              -  add [rax],al
+227008DC706: 00 00              -  add [rax],al
+227008DC708: 01 00              -  add [rax],eax
+227008DC70A: 00 00              -  add [rax],al
+227008DC70C: 00 00              -  add [rax],al
+227008DC70E: 00 00              -  add [rax],al
+227008DC710: 01 00              -  add [rax],eax
+227008DC712: 00 00              -  add [rax],al
+227008DC714: 00 00              -  add [rax],al
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2886</ID>
+          <Description>"Position 2 (Ignore)"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2887</ID>
+              <Description>"Pos X"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_position</Address>
+              <Offsets>
+                <Offset>14</Offset>
+                <Offset>38</Offset>
+                <Offset>108</Offset>
+                <Offset>B8</Offset>
+                <Offset>48</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2888</ID>
+              <Description>"Pos Y"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_position</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>38</Offset>
+                <Offset>108</Offset>
+                <Offset>B8</Offset>
+                <Offset>48</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2889</ID>
+              <Description>"Pos Z"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pointer_position</Address>
+              <Offsets>
+                <Offset>1C</Offset>
+                <Offset>38</Offset>
+                <Offset>108</Offset>
+                <Offset>B8</Offset>
+                <Offset>48</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2896</ID>
+          <Description>"XP Multiplier - Combat and Skills"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : KingdomCome.exe
+  Version: 
+  Date   : 2018-07-04
+  Author : Vee
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscan(pengkalian,01 4F 04 8* ** 00 00 00 48 00 46 00)
+//aobscan(pengkalian,WHGame.dll,01 4F 04 80 03 00) // should be unique
+alloc(newmem,$1000,pengkalian)
+alloc(xp,4)
+label(code)
+label(return)
+label(pengali)
+///////////
+xp:
+  dd 2
+newmem:
+  cmp [rdi+3c3],0
+  je pengali
+pengali:
+  imul ecx,[xp]
+code:
+  add [rdi+04],ecx
+  add byte ptr [rbx],00
+  jmp return
+
+pengkalian:
+  jmp newmem
+  nop
+return:
+registersymbol(xp)
+registersymbol(pengkalian)
+
+[DISABLE]
+
+pengkalian:
+  db 01 4F 04 80 03 00
+unregistersymbol(xp)
+unregistersymbol(pengkalian)
+dealloc(newmem)
+dealloc(xp)
+{
+// ORIGINAL CODE - INJECTION POINT: 19E059539EC
+
+19E059539D9: 00 00                       -  add [rax],al
+19E059539DB: 00 00                       -  add [rax],al
+19E059539DD: 00 00                       -  add [rax],al
+19E059539DF: 00 00                       -  add [rax],al
+19E059539E1: 00 00                       -  add [rax],al
+19E059539E3: 00 00                       -  add [rax],al
+19E059539E5: 00 00                       -  add [rax],al
+19E059539E7: 00 03                       -  add [rbx],al
+19E059539E9: 00 00                       -  add [rax],al
+19E059539EB: 44 01 4F                    - db 44 01 4F  // SHORTENED TO HIT INJECTION FROM:  add [rdi+04],r9d
+// ---------- INJECTING HERE ----------
+19E059539EE: 04 80                       -  add al,-80
+19E059539F0: 03 00                       -  add eax,[rax]
+// ---------- DONE INJECTING  ----------
+19E059539F2: 00 00                       -  add [rax],al
+19E059539F4: 48 00 46 00                 -  add [rsi+00],al
+19E059539F8: 01 00                       -  add [rax],eax
+19E059539FA: 00 00                       -  add [rax],al
+19E059539FC: 00 00                       -  add [rax],al
+19E059539FE: 00 00                       -  add [rax],al
+19E05953A00: 00 00                       -  add [rax],al
+19E05953A02: 00 00                       -  add [rax],al
+19E05953A04: 08 00                       -  or [rax],al
+19E05953A06: 00 00                       -  add [rax],al
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2899</ID>
+              <Description>"Auto Assemble script"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : KingdomCome.exe
+  Version: 
+  Date   : 2018-07-06
+  Author : Vee
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscan(pengkalian,01 4F 04 80 00 00) // should be unique
+alloc(newmem,$1000,pengkalian)
+alloc(xp,4)
+label(code)
+label(return)
+label(pengali)
+///////////
+xp:
+  dd 2
+newmem:
+  cmp [rdi+3c3],0
+  je pengali
+pengali:
+  imul ecx,[xp]
+code:
+  add [rdi+04],ecx
+  add byte ptr [rbx],00
+  jmp return
+
+pengkalian:
+  jmp newmem
+  nop
+return:
+registersymbol(xp)
+registersymbol(pengkalian)
+
+[DISABLE]
+
+pengkalian:
+  db 01 4F 04 80 00 00
+
+unregistersymbol(xp)
+unregistersymbol(pengkalian)
+dealloc(xp)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 227008DC6FC
+
+227008DC6E5: 00 00              -  add [rax],al
+227008DC6E7: 00 00              -  add [rax],al
+227008DC6E9: 00 00              -  add [rax],al
+227008DC6EB: 00 01              -  add [rcx],al
+227008DC6ED: 00 00              -  add [rax],al
+227008DC6EF: 00 5C 95 EC        -  add [rbp+rdx*4-14],bl
+227008DC6F3: 3E 01 00           -  add [rax],eax
+227008DC6F6: 00 00              -  add [rax],al
+227008DC6F8: D0 43 54           -  rol byte ptr [rbx+54],1
+227008DC6FB: D8                 - db D8  // SHORTENED TO HIT INJECTION FROM:  fadd dword ptr [rcx]
+// ---------- INJECTING HERE ----------
+227008DC6FC: 01 4F 04           -  add [rdi+04],ecx
+227008DC6FF: 80 00 00           -  add byte ptr [rax],00
+// ---------- DONE INJECTING  ----------
+227008DC702: 00 00              -  add [rax],al
+227008DC704: 00 00              -  add [rax],al
+227008DC706: 00 00              -  add [rax],al
+227008DC708: 01 00              -  add [rax],eax
+227008DC70A: 00 00              -  add [rax],al
+227008DC70C: 00 00              -  add [rax],al
+227008DC70E: 00 00              -  add [rax],al
+227008DC710: 01 00              -  add [rax],eax
+227008DC712: 00 00              -  add [rax],al
+227008DC714: 00 00              -  add [rax],al
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>253</ID>
+                  <Description>"Active Combat and Skills Experience Multiplier"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>xp</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>101</Key>
+                      </Keys>
+                      <Value>5</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>96</Key>
+                      </Keys>
+                      <Value>10</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>257</ID>
+          <Description>"XP Multiplier - Stats"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>250</ID>
+              <Description>"Active Stats Experience Multiplier"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>xp1</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>101</Key>
+                  </Keys>
+                  <Value>5</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>96</Key>
+                  </Keys>
+                  <Value>10</Value>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>249</ID>
+              <Description>"Multiplier X2"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(stats,WHGame.DLL,01 4F 04 83 26 00)
+alloc(newmem,$1000,stats)
+alloc(xp1,4)
+label(code)
+label(return)
+label(mult)
+xp1:
+  dd 2
+newmem:
+  cmp [rdi+3C3],0
+  je mult
+mult:
+  imul ecx,[xp1]
+code:
+  add [rdi+04],ecx
+  and dword ptr [rsi],00
+  jmp return
+stats:
+  jmp newmem
+  nop
+return:
+  registersymbol(stats)
+  registersymbol(xp1)
+
+[DISABLE]
+stats:
+  db 01 4F 04 83 26 00
+  unregistersymbol(stats)
+  unregistersymbol(xp1)
+  dealloc(newmem)
+  dealloc(xp1)
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>51</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>258</ID>
+              <Description>"Multiplier X4"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(stats,WHGame.DLL,01 4F 04 83 26 00)
+alloc(newmem,$1000,stats)
+alloc(xp1,4)
+label(code)
+label(return)
+label(mult)
+xp1:
+  dd 4
+newmem:
+  cmp [rdi+3C3],0
+  je mult
+mult:
+  imul ecx,[xp1]
+code:
+  add [rdi+04],ecx
+  and dword ptr [rsi],00
+  jmp return
+stats:
+  jmp newmem
+  nop
+return:
+  registersymbol(stats)
+  registersymbol(xp1)
+
+[DISABLE]
+stats:
+  db 01 4F 04 83 26 00
+  unregistersymbol(stats)
+  unregistersymbol(xp1)
+  dealloc(newmem)
+  dealloc(xp1)
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>51</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>259</ID>
+              <Description>"Multiplier X8"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(stats,WHGame.DLL,01 4F 04 83 26 00)
+alloc(newmem,$1000,stats)
+alloc(xp1,4)
+label(code)
+label(return)
+label(mult)
+xp1:
+  dd 8
+newmem:
+  cmp [rdi+3C3],0
+  je mult
+mult:
+  imul ecx,[xp1]
+code:
+  add [rdi+04],ecx
+  and dword ptr [rsi],00
+  jmp return
+stats:
+  jmp newmem
+  nop
+return:
+  registersymbol(stats)
+  registersymbol(xp1)
+
+[DISABLE]
+stats:
+  db 01 4F 04 83 26 00
+  unregistersymbol(stats)
+  unregistersymbol(xp1)
+  dealloc(newmem)
+  dealloc(xp1)
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>51</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>260</ID>
+              <Description>"Multiplier X16"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(stats,WHGame.DLL,01 4F 04 83 26 00)
+alloc(newmem,$1000,stats)
+alloc(xp1,4)
+label(code)
+label(return)
+label(mult)
+xp1:
+  dd 10
+newmem:
+  cmp [rdi+3C3],0
+  je mult
+mult:
+  imul ecx,[xp1]
+code:
+  add [rdi+04],ecx
+  and dword ptr [rsi],00
+  jmp return
+stats:
+  jmp newmem
+  nop
+return:
+  registersymbol(stats)
+  registersymbol(xp1)
+
+[DISABLE]
+stats:
+  db 01 4F 04 83 26 00
+  unregistersymbol(stats)
+  unregistersymbol(xp1)
+  dealloc(newmem)
+  dealloc(xp1)
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>51</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>261</ID>
+              <Description>"Multiplier X100"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(stats,WHGame.DLL,01 4F 04 83 26 00)
+alloc(newmem,$1000,stats)
+alloc(xp1,4)
+label(code)
+label(return)
+label(mult)
+xp1:
+  dd 64
+newmem:
+  cmp [rdi+3C3],0
+  je mult
+mult:
+  imul ecx,[xp1]
+code:
+  add [rdi+04],ecx
+  and dword ptr [rsi],00
+  jmp return
+stats:
+  jmp newmem
+  nop
+return:
+  registersymbol(stats)
+  registersymbol(xp1)
+
+[DISABLE]
+stats:
+  db 01 4F 04 83 26 00
+  unregistersymbol(stats)
+  unregistersymbol(xp1)
+  dealloc(newmem)
+  dealloc(xp1)
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>51</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>246</ID>
+          <Description>"(BUGGED) Infinite Vitals (Health, Stamina, Energy, Nourishment)"</Description>
+          <LastState/>
+          <Color>0000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(vitals,WHGame.DLL,F3 0F 11 B4 B3 ** 04 00 00)// F3 0F 11 B4 B3 9C 04 00 00 =&gt; old
+alloc(newmem,$1000,vitals)
+label(code)
+label(return)
+newmem:
+//  cmp [rbx+274],(float)1
+//  mov [rbx+4A4],(float)1000
+  mov [rbx+4A8],(float)101
+//  mov [rbx+4AC],(float)1000
+//  mov [rbx+4B0],(float)1000
+//  je return
+code:
+//  movss [rbx+rsi*4+0000049C],xmm6
+  jmp return
+vitals:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+return:
+  registersymbol(vitals)
+
+[DISABLE]
+vitals:
+  db F3 0F 11 B4 B3 9C 04 00 00
+  unregistersymbol(vitals)
+  dealloc(newmem)
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>49</Key>
+              </Keys>
+              <ID>0</ID>
+              <ActivateSound>Activate</ActivateSound>
+              <DeactivateSound>Deactivate</DeactivateSound>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>143</ID>
+          <Description>"Dice Cheats 1.2.5"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2769</ID>
+              <Description>"Player"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>2770</ID>
+                  <Description>"Round Score"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_dice</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>3F8</Offset>
+                    <Offset>28</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>2771</ID>
+                  <Description>"Total Score"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_dice</Address>
+                  <Offsets>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>3F8</Offset>
+                    <Offset>28</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2772</ID>
+              <Description>"Opponent"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>2773</ID>
+                  <Description>"Round Score"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_dice</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>30</Offset>
+                    <Offset>3F8</Offset>
+                    <Offset>28</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>2774</ID>
+                  <Description>"Total Score"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>pointer_dice</Address>
+                  <Offsets>
+                    <Offset>50</Offset>
+                    <Offset>30</Offset>
+                    <Offset>3F8</Offset>
+                    <Offset>28</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Base_Code :mov r8,[rdx]</Description>
+      <Address>7FFC4025FB63</Address>
+      <ModuleName>WHGame.DLL</ModuleName>
+      <ModuleNameOffset>2BFB63</ModuleNameOffset>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>88</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>02</Byte>
+      </Actual>
+      <After>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>90</Byte>
+        <Byte>A8</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Base_Reputaion_Code :movaps xmm6,xmm1</Description>
+      <Address>7FFF6D49A917</Address>
+      <ModuleName>WHGame.DLL</ModuleName>
+      <ModuleNameOffset>4FA917</ModuleNameOffset>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>F1</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>14</Byte>
+        <Byte>40</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Base_Pos_Code :add r9,r8</Description>
+      <Address>7FFC40493274</Address>
+      <ModuleName>WHGame.DLL</ModuleName>
+      <ModuleNameOffset>4F3274</ModuleNameOffset>
+      <Before>
+        <Byte>38</Byte>
+        <Byte>49</Byte>
+        <Byte>C1</Byte>
+        <Byte>E1</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>4D</Byte>
+        <Byte>03</Byte>
+        <Byte>C8</Byte>
+      </Actual>
+      <After>
+        <Byte>4D</Byte>
+        <Byte>8B</Byte>
+        <Byte>D1</Byte>
+        <Byte>4D</Byte>
+        <Byte>2B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Base_horse_Code :xor edx,edx</Description>
+      <Address>7FFF6D2D99AE</Address>
+      <ModuleName>WHGame.DLL</ModuleName>
+      <ModuleNameOffset>3399AE</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>5A</Byte>
+        <Byte>44</Byte>
+      </Before>
+      <Actual>
+        <Byte>33</Byte>
+        <Byte>D2</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>DB</Byte>
+        <Byte>74</Byte>
+        <Byte>64</Byte>
+        <Byte>49</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Base_Dice_Code :mov rax,[rcx]</Description>
+      <Address>7FFC405055D3</Address>
+      <ModuleName>WHGame.DLL</ModuleName>
+      <ModuleNameOffset>5655D3</ModuleNameOffset>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>28</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>FF</Byte>
+        <Byte>50</Byte>
+        <Byte>08</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>memPointerTest</Name>
+      <Address>19D059A0000</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+  <Comments>Special thanks to:
+The Mogician
+qweasdzxc17
+Crage
+soulofshiba
+Cenness
+Expired6978
+gideon25
+Techniv
+</Comments>
+  <LuaScript>
+</LuaScript>
+</CheatTable>

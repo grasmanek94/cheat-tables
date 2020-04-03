@@ -1,0 +1,2494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"   Cell Stage"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>25</ID>
+          <Description>"     Infinite Health"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CellStageHealth,SporeApp.exe,F3 0F 2A 87 44 02 00 00)
+globalalloc(CellStageHealthValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [CellStageHealthValue],edi
+  mov [edi+00000244],(int)1000
+  cvtsi2ss xmm0,[edi+00000244]
+  jmp return
+
+CellStageHealth:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(CellStageHealth)
+
+[DISABLE]
+
+CellStageHealth:
+  db F3 0F 2A 87 44 02 00 00
+
+unregistersymbol(CellStageHealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+A2D5C8
+
+"SporeApp.exe"+A2D5A4: E8 E7 A8 D1 FF           -  call SporeApp.exe+747E90
+"SporeApp.exe"+A2D5A9: 8B F8                    -  mov edi,eax
+"SporeApp.exe"+A2D5AB: A1 3C 14 5D 02           -  mov eax,[SporeApp.exe+127143C]
+"SporeApp.exe"+A2D5B0: 8B 88 90 00 00 00        -  mov ecx,[eax+00000090]
+"SporeApp.exe"+A2D5B6: 6A 01                    -  push 01
+"SporeApp.exe"+A2D5B8: 68 6E C4 8A 01           -  push SporeApp.exe+54C46E
+"SporeApp.exe"+A2D5BD: E8 CE BD 9B FF           -  call SporeApp.exe+3E9390
+"SporeApp.exe"+A2D5C2: 8B F0                    -  mov esi,eax
+"SporeApp.exe"+A2D5C4: 85 FF                    -  test edi,edi
+"SporeApp.exe"+A2D5C6: 74 66                    -  je SporeApp.exe+A2D62E
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+A2D5C8: F3 0F 2A 87 44 02 00 00  -  cvtsi2ss xmm0,[edi+00000244]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+A2D5D0: F3 0F 59 05 BC A7 36 02  -  mulss xmm0,[SporeApp.exe+100A7BC]
+"SporeApp.exe"+A2D5D8: F3 0F 11 44 24 0C        -  movss [esp+0C],xmm0
+"SporeApp.exe"+A2D5DE: 85 F6                    -  test esi,esi
+"SporeApp.exe"+A2D5E0: 0F 84 9E 00 00 00        -  je SporeApp.exe+A2D684
+"SporeApp.exe"+A2D5E6: 8B 16                    -  mov edx,[esi]
+"SporeApp.exe"+A2D5E8: 8B 82 F0 00 00 00        -  mov eax,[edx+000000F0]
+"SporeApp.exe"+A2D5EE: 6A 00                    -  push 00
+"SporeApp.exe"+A2D5F0: 68 90 FE 65 06           -  push 0665FE90
+"SporeApp.exe"+A2D5F5: 8B CE                    -  mov ecx,esi
+"SporeApp.exe"+A2D5F7: FF D0                    -  call eax
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1691</ID>
+          <Description>"     Infinite Budget"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CellStageSwimAreaValue,SporeApp.exe,8B 84 24 8C 01 00 00 3B)
+alloc(newmem,$100)
+label(return)
+
+aobscanmodule(CellStageBudget,SporeApp.exe,8B 04 90 33 C9)
+alloc(newmem2,$100)
+label(return2)
+
+newmem:
+  mov [esp+0000018C],(int)1000
+  mov eax,[esp+0000018C]
+  jmp return
+
+CellStageSwimAreaValue:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(CellStageSwimAreaValue)
+
+newmem2:
+  mov [eax+edx*4],(int)1000
+  mov eax,[eax+edx*4]
+  xor ecx,ecx
+  jmp return2
+
+CellStageBudget:
+  jmp newmem2
+
+return2:
+registersymbol(CellStageBudget)
+[DISABLE]
+
+CellStageSwimAreaValue:
+  db 8B 84 24 8C 01 00 00
+
+unregistersymbol(CellStageSwimAreaValue)
+dealloc(newmem)
+
+CellStageBudget:
+  db 8B 04 90 33 C9
+
+unregistersymbol(CellStageBudget)
+dealloc(newmem2)
+
+{                        CellStageSwimAreaValue
+
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+9FE90D
+
+"SporeApp.exe"+9FE8F0: 81 EC 74 01 00 00        -  sub esp,00000174
+"SporeApp.exe"+9FE8F6: 53                       -  push ebx
+"SporeApp.exe"+9FE8F7: 55                       -  push ebp
+"SporeApp.exe"+9FE8F8: 56                       -  push esi
+"SporeApp.exe"+9FE8F9: 57                       -  push edi
+"SporeApp.exe"+9FE8FA: 8B F9                    -  mov edi,ecx
+"SporeApp.exe"+9FE8FC: 8B 4F 10                 -  mov ecx,[edi+10]
+"SporeApp.exe"+9FE8FF: E8 AC 07 9D FF           -  call SporeApp.exe+3CF0B0
+"SporeApp.exe"+9FE904: E8 D7 F5 9D FF           -  call SporeApp.exe+3DDEE0
+"SporeApp.exe"+9FE909: D9 5C 24 18              -  fstp dword ptr [esp+18]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+9FE90D: 8B 84 24 8C 01 00 00     -  mov eax,[esp+0000018C]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+9FE914: 3B 47 34                 -  cmp eax,[edi+34]
+"SporeApp.exe"+9FE917: 0F 84 96 03 00 00        -  je SporeApp.exe+9FECB3
+"SporeApp.exe"+9FE91D: 8B 4F 08                 -  mov ecx,[edi+08]
+"SporeApp.exe"+9FE920: 6A 01                    -  push 01
+"SporeApp.exe"+9FE922: 68 01 10 CD AB           -  push ABCD1001
+"SporeApp.exe"+9FE927: E8 64 AA 9E FF           -  call SporeApp.exe+3E9390
+"SporeApp.exe"+9FE92C: 8B F0                    -  mov esi,eax
+"SporeApp.exe"+9FE92E: 85 F6                    -  test esi,esi
+"SporeApp.exe"+9FE930: 0F 84 73 03 00 00        -  je SporeApp.exe+9FECA9
+"SporeApp.exe"+9FE936: B8 34 54 54 01           -  mov eax,SporeApp.exe+1225434
+}
+
+{                        CellStageBudget
+
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+196BC7
+
+"SporeApp.exe"+196BAF: CC                 -  int 3
+"SporeApp.exe"+196BB0: 8B 41 08           -  mov eax,[ecx+08]
+"SporeApp.exe"+196BB3: 8B 4C 24 04        -  mov ecx,[esp+04]
+"SporeApp.exe"+196BB7: 8B 04 88           -  mov eax,[eax+ecx*4]
+"SporeApp.exe"+196BBA: C2 04 00           -  ret 0004
+"SporeApp.exe"+196BBD: CC                 -  int 3
+"SporeApp.exe"+196BBE: CC                 -  int 3
+"SporeApp.exe"+196BBF: CC                 -  int 3
+"SporeApp.exe"+196BC0: 8B 41 08           -  mov eax,[ecx+08]
+"SporeApp.exe"+196BC3: 8B 54 24 04        -  mov edx,[esp+04]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+196BC7: 8B 04 90           -  mov eax,[eax+edx*4]
+"SporeApp.exe"+196BCA: 33 C9              -  xor ecx,ecx
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+196BCC: 3B 44 24 08        -  cmp eax,[esp+08]
+"SporeApp.exe"+196BD0: 0F 9D C1           -  setge cl
+"SporeApp.exe"+196BD3: 8A C1              -  mov al,cl
+"SporeApp.exe"+196BD5: C2 08 00           -  ret 0008
+"SporeApp.exe"+196BD8: CC                 -  int 3
+"SporeApp.exe"+196BD9: CC                 -  int 3
+"SporeApp.exe"+196BDA: CC                 -  int 3
+"SporeApp.exe"+196BDB: CC                 -  int 3
+"SporeApp.exe"+196BDC: CC                 -  int 3
+"SporeApp.exe"+196BDD: CC                 -  int 3
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"   Creature Stage"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"     Full Stomach"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CreatureStageHunger,SporeApp.exe,D9 81 B4 0B 00 00)
+globalalloc(CreatureStageHungerValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [CreatureStageHungerValue],ecx
+  mov dword ptr [ecx+00000BB4],(float)100.0
+  fld dword ptr [ecx+00000BB4]
+  jmp return
+
+CreatureStageHunger:
+  jmp newmem
+  nop
+return:
+registersymbol(CreatureStageHunger)
+
+[DISABLE]
+
+CreatureStageHunger:
+  db D9 81 B4 0B 00 00
+
+unregistersymbol(CreatureStageHunger)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+7E1FA0
+
+"SporeApp.exe"+7E1F8F: F3 0F 11 81 B4 0B 00 00  -  movss [ecx+00000BB4],xmm0
+"SporeApp.exe"+7E1F97: C3                       -  ret 
+"SporeApp.exe"+7E1F98: CC                       -  int 3 
+"SporeApp.exe"+7E1F99: CC                       -  int 3 
+"SporeApp.exe"+7E1F9A: CC                       -  int 3 
+"SporeApp.exe"+7E1F9B: CC                       -  int 3 
+"SporeApp.exe"+7E1F9C: CC                       -  int 3 
+"SporeApp.exe"+7E1F9D: CC                       -  int 3 
+"SporeApp.exe"+7E1F9E: CC                       -  int 3 
+"SporeApp.exe"+7E1F9F: CC                       -  int 3 
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+7E1FA0: D9 81 B4 0B 00 00        -  fld dword ptr [ecx+00000BB4]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+7E1FA6: C3                       -  ret 
+"SporeApp.exe"+7E1FA7: CC                       -  int 3 
+"SporeApp.exe"+7E1FA8: CC                       -  int 3 
+"SporeApp.exe"+7E1FA9: CC                       -  int 3 
+"SporeApp.exe"+7E1FAA: CC                       -  int 3 
+"SporeApp.exe"+7E1FAB: CC                       -  int 3 
+"SporeApp.exe"+7E1FAC: CC                       -  int 3 
+"SporeApp.exe"+7E1FAD: CC                       -  int 3 
+"SporeApp.exe"+7E1FAE: CC                       -  int 3 
+"SporeApp.exe"+7E1FAF: CC                       -  int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1863</ID>
+          <Description>"     Full Stomach (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-23
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,SporeApp.exe,F3 0F 10 86 BC 0B 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [esi+00000BBC],(float)100
+  movss xmm0,[esi+00000BBC]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db F3 0F 10 86 BC 0B 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+80D620
+
+"SporeApp.exe"+80D605: 3B C3                    -  cmp eax,ebx
+"SporeApp.exe"+80D607: 73 0C                    -  jae SporeApp.exe+80D615
+"SporeApp.exe"+80D609: D9 05 00 7A D9 01        -  fld dword ptr [SporeApp.exe+1287A00]
+"SporeApp.exe"+80D60F: 51                       -  push ecx
+"SporeApp.exe"+80D610: D9 1C 24                 -  fstp dword ptr [esp]
+"SporeApp.exe"+80D613: EB 55                    -  jmp SporeApp.exe+80D66A
+"SporeApp.exe"+80D615: 8B CF                    -  mov ecx,edi
+"SporeApp.exe"+80D617: E8 04 E3 3D 00           -  call SporeApp.exe+BEB920
+"SporeApp.exe"+80D61C: 84 C0                    -  test al,al
+"SporeApp.exe"+80D61E: 75 27                    -  jne SporeApp.exe+80D647
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+80D620: F3 0F 10 86 BC 0B 00 00  -  movss xmm0,[esi+00000BBC]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+80D628: 0F 2E 05 00 7A D9 01     -  ucomiss xmm0,[SporeApp.exe+1287A00]
+"SporeApp.exe"+80D62F: 9F                       -  lahf 
+"SporeApp.exe"+80D630: F6 C4 44                 -  test ah,44
+"SporeApp.exe"+80D633: 7A 12                    -  jp SporeApp.exe+80D647
+"SporeApp.exe"+80D635: 83 BE 34 0B 00 00 01     -  cmp dword ptr [esi+00000B34],01
+"SporeApp.exe"+80D63C: 75 33                    -  jne SporeApp.exe+80D671
+"SporeApp.exe"+80D63E: 8B CF                    -  mov ecx,edi
+"SporeApp.exe"+80D640: E8 5B 5C FB FF           -  call SporeApp.exe+7C32A0
+"SporeApp.exe"+80D645: EB 2A                    -  jmp SporeApp.exe+80D671
+"SporeApp.exe"+80D647: 8B CF                    -  mov ecx,edi
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>679</ID>
+          <Description>"     Infinite Sprint"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CreatureStageSprint,SporeApp.exe,8B 8E AC 0B 00 00 33)
+globalalloc(CreatureStageSprintValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [CreatureStageSprintValue],esi
+  mov [esi+00000BAC],(int)0
+  mov ecx,[esi+00000BAC]
+  jmp return
+
+CreatureStageSprint:
+  jmp newmem
+  nop
+return:
+registersymbol(CreatureStageSprint)
+
+[DISABLE]
+
+CreatureStageSprint:
+  db 8B 8E AC 0B 00 00
+
+unregistersymbol(CreatureStageSprint)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+7F0EE1
+
+"SporeApp.exe"+7F0EC3: 56                       -  push esi
+"SporeApp.exe"+7F0EC4: 8B F1                    -  mov esi,ecx
+"SporeApp.exe"+7F0EC6: 8B 86 50 0B 00 00        -  mov eax,[esi+00000B50]
+"SporeApp.exe"+7F0ECC: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+7F0ECE: C1 E9 09                 -  shr ecx,09
+"SporeApp.exe"+7F0ED1: F6 C1 01                 -  test cl,01
+"SporeApp.exe"+7F0ED4: 75 0B                    -  jne SporeApp.exe+7F0EE1
+"SporeApp.exe"+7F0ED6: C1 E8 08                 -  shr eax,08
+"SporeApp.exe"+7F0ED9: A8 01                    -  test al,01
+"SporeApp.exe"+7F0EDB: 0F 84 75 01 00 00        -  je SporeApp.exe+7F1056
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+7F0EE1: 8B 8E AC 0B 00 00        -  mov ecx,[esi+00000BAC]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+7F0EE7: 33 D2                    -  xor edx,edx
+"SporeApp.exe"+7F0EE9: 57                       -  push edi
+"SporeApp.exe"+7F0EEA: 38 96 A8 0B 00 00        -  cmp [esi+00000BA8],dl
+"SporeApp.exe"+7F0EF0: 0F 84 01 01 00 00        -  je SporeApp.exe+7F0FF7
+"SporeApp.exe"+7F0EF6: 8B 86 18 0B 00 00        -  mov eax,[esi+00000B18]
+"SporeApp.exe"+7F0EFC: 3B 88 C8 05 00 00        -  cmp ecx,[eax+000005C8]
+"SporeApp.exe"+7F0F02: 77 5A                    -  ja SporeApp.exe+7F0F5E
+"SporeApp.exe"+7F0F04: F3 0F 10 80 B0 06 00 00  -  movss xmm0,[eax+000006B0]
+"SporeApp.exe"+7F0F0C: 0F 57 C9                 -  xorps xmm1,xmm1
+"SporeApp.exe"+7F0F0F: 0F 2F C1                 -  comiss xmm0,xmm1
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1874</ID>
+          <Description>"     Infinite Sprint (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-23
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECTB,SporeApp.exe,8B 93 B4 0B 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [ebx+00000BB4],0
+  mov edx,[ebx+00000BB4]
+  jmp return
+
+INJECTB:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECTB)
+
+[DISABLE]
+
+INJECTB:
+  db 8B 93 B4 0B 00 00
+
+unregistersymbol(INJECTB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+92BD7D
+
+"SporeApp.exe"+92BD60: 85 C9                    -  test ecx,ecx
+"SporeApp.exe"+92BD62: 7D 06                    -  jnl SporeApp.exe+92BD6A
+"SporeApp.exe"+92BD64: D8 05 C0 4F B0 01        -  fadd dword ptr [SporeApp.exe+FF4FC0]
+"SporeApp.exe"+92BD6A: D9 EE                    -  fldz 
+"SporeApp.exe"+92BD6C: 0F 57 C0                 -  xorps xmm0,xmm0
+"SporeApp.exe"+92BD6F: D9 C9                    -  fxch st(1)
+"SporeApp.exe"+92BD71: F3 0F 11 44 24 38        -  movss [esp+38],xmm0
+"SporeApp.exe"+92BD77: DB F1                    -  fcomi st(0),st(1)
+"SporeApp.exe"+92BD79: DD D9                    -  fstp st(1)
+"SporeApp.exe"+92BD7B: 76 54                    -  jna SporeApp.exe+92BDD1
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+92BD7D: 8B 93 B4 0B 00 00        -  mov edx,[ebx+00000BB4]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+92BD83: DB 83 B4 0B 00 00        -  fild dword ptr [ebx+00000BB4]
+"SporeApp.exe"+92BD89: 85 D2                    -  test edx,edx
+"SporeApp.exe"+92BD8B: 7D 06                    -  jnl SporeApp.exe+92BD93
+"SporeApp.exe"+92BD8D: D8 05 C0 4F B0 01        -  fadd dword ptr [SporeApp.exe+FF4FC0]
+"SporeApp.exe"+92BD93: D8 E9                    -  fsubr st(0),st(1)
+"SporeApp.exe"+92BD95: F3 0F 11 44 24 0C        -  movss [esp+0C],xmm0
+"SporeApp.exe"+92BD9B: F3 0F 10 05 40 37 B6 01  -  movss xmm0,[SporeApp.exe+1053740]
+"SporeApp.exe"+92BDA3: F3 0F 11 44 24 38        -  movss [esp+38],xmm0
+"SporeApp.exe"+92BDA9: DE F1                    -  fdivrp st(1),st(0)
+"SporeApp.exe"+92BDAB: D9 5C 24 20              -  fstp dword ptr [esp+20]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"     Infinite Health"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CreatureStageHealth,SporeApp.exe,F3 0F 10 86 D8 05 00 00 F3 0F 11)
+globalalloc(CreatureStageHealthValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [CreatureStageHealthValue],esi
+  mov [esi+000005D8],(float)5000.0
+  movss xmm0,[esi+000005D8]
+  jmp return
+
+CreatureStageHealth:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(CreatureStageHealth)
+
+[DISABLE]
+
+CreatureStageHealth:
+  db F3 0F 10 86 D8 05 00 00
+
+unregistersymbol(CreatureStageHealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+9022CA
+
+"SporeApp.exe"+9022B6: 76 04                    -  jna SporeApp.exe+9022BC
+"SporeApp.exe"+9022B8: B0 01                    -  mov al,01
+"SporeApp.exe"+9022BA: EB 02                    -  jmp SporeApp.exe+9022BE
+"SporeApp.exe"+9022BC: 32 C0                    -  xor al,al
+"SporeApp.exe"+9022BE: 8B 17                    -  mov edx,[edi]
+"SporeApp.exe"+9022C0: 50                       -  push eax
+"SporeApp.exe"+9022C1: 8B 42 7C                 -  mov eax,[edx+7C]
+"SporeApp.exe"+9022C4: 6A 02                    -  push 02
+"SporeApp.exe"+9022C6: 8B CF                    -  mov ecx,edi
+"SporeApp.exe"+9022C8: FF D0                    -  call eax
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+9022CA: F3 0F 10 86 D8 05 00 00  -  movss xmm0,[esi+000005D8]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+9022D2: F3 0F 11 44 24 18        -  movss [esp+18],xmm0
+"SporeApp.exe"+9022D8: F3 0F 10 44 24 18        -  movss xmm0,[esp+18]
+"SporeApp.exe"+9022DE: F3 0F 2D C0              -  cvtss2si eax,xmm0
+"SporeApp.exe"+9022E2: F3 0F 2A C8              -  cvtsi2ss xmm1,eax
+"SporeApp.exe"+9022E6: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+9022E8: 83 C1 01                 -  add ecx,01
+"SporeApp.exe"+9022EB: 0F 2E C8                 -  ucomiss xmm1,xmm0
+"SporeApp.exe"+9022EE: 0F 42 C1                 -  cmovb eax,ecx
+"SporeApp.exe"+9022F1: 8B 4D 58                 -  mov ecx,[ebp+58]
+"SporeApp.exe"+9022F4: 6A 01                    -  push 01
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1860</ID>
+          <Description>"     Infinite Health (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-22
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,SporeApp.exe,F3 0F 10 86 E0 05 00 00 F3 0F 11) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [esi+000005E0],(float)5555
+  movss xmm0,[esi+000005E0]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db F3 0F 10 86 E0 05 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+92DECA
+
+"SporeApp.exe"+92DEB6: 76 04                    -  jna SporeApp.exe+92DEBC
+"SporeApp.exe"+92DEB8: B0 01                    -  mov al,01
+"SporeApp.exe"+92DEBA: EB 02                    -  jmp SporeApp.exe+92DEBE
+"SporeApp.exe"+92DEBC: 32 C0                    -  xor al,al
+"SporeApp.exe"+92DEBE: 8B 17                    -  mov edx,[edi]
+"SporeApp.exe"+92DEC0: 50                       -  push eax
+"SporeApp.exe"+92DEC1: 8B 42 7C                 -  mov eax,[edx+7C]
+"SporeApp.exe"+92DEC4: 6A 02                    -  push 02
+"SporeApp.exe"+92DEC6: 8B CF                    -  mov ecx,edi
+"SporeApp.exe"+92DEC8: FF D0                    -  call eax
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+92DECA: F3 0F 10 86 E0 05 00 00  -  movss xmm0,[esi+000005E0]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+92DED2: F3 0F 11 44 24 18        -  movss [esp+18],xmm0
+"SporeApp.exe"+92DED8: F3 0F 10 44 24 18        -  movss xmm0,[esp+18]
+"SporeApp.exe"+92DEDE: F3 0F 2D C0              -  cvtss2si eax,xmm0
+"SporeApp.exe"+92DEE2: F3 0F 2A C8              -  cvtsi2ss xmm1,eax
+"SporeApp.exe"+92DEE6: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+92DEE8: 83 C1 01                 -  add ecx,01
+"SporeApp.exe"+92DEEB: 0F 2E C8                 -  ucomiss xmm1,xmm0
+"SporeApp.exe"+92DEEE: 0F 42 C1                 -  cmovb eax,ecx
+"SporeApp.exe"+92DEF1: 8B 4D 58                 -  mov ecx,[ebp+58]
+"SporeApp.exe"+92DEF4: 6A 01                    -  push 01
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"     Infinite Budget"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CreatureStageBudget,SporeApp.exe,8B 04 90 33 C9)
+globalalloc(CreatureStageBudgetValue,8)
+alloc(newmem,$100)
+
+label(return)
+label(IncreaseBudget)
+
+newmem:
+  cmp [eax+edx*4],(int)1000
+  jb IncreaseBudget
+  mov eax,[eax+edx*4]
+  xor ecx,ecx
+  jmp return
+
+IncreaseBudget:
+  mov [CreatureStageBudgetValue],eax
+  mov [eax+edx*4],(int)1000
+  mov eax,[eax+edx*4]
+  xor ecx,ecx
+  jmp return
+
+CreatureStageBudget:
+  jmp newmem
+return:
+registersymbol(CreatureStageBudget)
+
+[DISABLE]
+
+CreatureStageBudget:
+  db 8B 04 90 33 C9
+
+unregistersymbol(CreatureStageBudget)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+196BC7
+
+"SporeApp.exe"+196BAF: CC                 -  int 3 
+"SporeApp.exe"+196BB0: 8B 41 08           -  mov eax,[ecx+08]
+"SporeApp.exe"+196BB3: 8B 4C 24 04        -  mov ecx,[esp+04]
+"SporeApp.exe"+196BB7: 8B 04 88           -  mov eax,[eax+ecx*4]
+"SporeApp.exe"+196BBA: C2 04 00           -  ret 0004
+"SporeApp.exe"+196BBD: CC                 -  int 3 
+"SporeApp.exe"+196BBE: CC                 -  int 3 
+"SporeApp.exe"+196BBF: CC                 -  int 3 
+"SporeApp.exe"+196BC0: 8B 41 08           -  mov eax,[ecx+08]
+"SporeApp.exe"+196BC3: 8B 54 24 04        -  mov edx,[esp+04]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+196BC7: 8B 04 90           -  mov eax,[eax+edx*4]
+"SporeApp.exe"+196BCA: 33 C9              -  xor ecx,ecx
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+196BCC: 3B 44 24 08        -  cmp eax,[esp+08]
+"SporeApp.exe"+196BD0: 0F 9D C1           -  setge cl
+"SporeApp.exe"+196BD3: 8A C1              -  mov al,cl
+"SporeApp.exe"+196BD5: C2 08 00           -  ret 0008
+"SporeApp.exe"+196BD8: CC                 -  int 3 
+"SporeApp.exe"+196BD9: CC                 -  int 3 
+"SporeApp.exe"+196BDA: CC                 -  int 3 
+"SporeApp.exe"+196BDB: CC                 -  int 3 
+"SporeApp.exe"+196BDC: CC                 -  int 3 
+"SporeApp.exe"+196BDD: CC                 -  int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"     One Touch Kills"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CreatureStageKills,SporeApp.exe,F3 0F 10 46 38 F3 0F 5C 44)
+globalalloc(CreatureStageKillsValue,8)
+alloc(Separate,$100)
+
+label(return)
+label(Enemies)
+label(YourHealth)
+
+Separate:
+  cmp [esi+718],1
+  jne Enemies
+
+  cmp [esi+38],(float)4000
+  jb Enemies
+
+YourHealth:
+  mov [CreatureStageKillsValue],esi
+  movss xmm0,[esi+38]
+  jmp return
+
+Enemies:
+  mov [esi+38],0
+  movss xmm0,[esi+38]
+  jmp return
+
+CreatureStageKills:
+  jmp Separate
+return:
+registersymbol(CreatureStageKills)
+
+[DISABLE]
+
+CreatureStageKills:
+  db F3 0F 10 46 38
+
+unregistersymbol(CreatureStageKills)
+dealloc(Separate)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+7D35D6
+718 1 jne
+72c 1 jne
+"SporeApp.exe"+7D35C2: FF D2                    -  call edx
+"SporeApp.exe"+7D35C4: D9 5E 38                 -  fstp dword ptr [esi+38]
+"SporeApp.exe"+7D35C7: 5F                       -  pop edi
+"SporeApp.exe"+7D35C8: 5E                       -  pop esi
+"SporeApp.exe"+7D35C9: 5D                       -  pop ebp
+"SporeApp.exe"+7D35CA: 5B                       -  pop ebx
+"SporeApp.exe"+7D35CB: 83 C4 48                 -  add esp,48
+"SporeApp.exe"+7D35CE: C2 14 00                 -  ret 0014
+"SporeApp.exe"+7D35D1: 83 FF 0B                 -  cmp edi,0B
+"SporeApp.exe"+7D35D4: 74 74                    -  je SporeApp.exe+7D364A
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+7D35D6: F3 0F 10 46 38           -  movss xmm0,[esi+38]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+7D35DB: F3 0F 5C 44 24 5C        -  subss xmm0,[esp+5C]
+"SporeApp.exe"+7D35E1: F3 0F 10 0D 58 29 18 02  -  movss xmm1,[SporeApp.exe+1032958]
+"SporeApp.exe"+7D35E9: 0F 2F C8                 -  comiss xmm1,xmm0
+"SporeApp.exe"+7D35EC: F3 0F 11 46 38           -  movss [esi+38],xmm0
+"SporeApp.exe"+7D35F1: 76 57                    -  jna SporeApp.exe+7D364A
+"SporeApp.exe"+7D35F3: 8B 06                    -  mov eax,[esi]
+"SporeApp.exe"+7D35F5: 8B 50 0C                 -  mov edx,[eax+0C]
+"SporeApp.exe"+7D35F8: 8B CE                    -  mov ecx,esi
+"SporeApp.exe"+7D35FA: FF D2                    -  call edx
+"SporeApp.exe"+7D35FC: 50                       -  push eax
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"     Inf. Pack Healths"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CreatureStagePackHealth,SporeApp.exe,D9 86 18 05 00 00 8B)
+globalalloc(CreatureStagePackHealthValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [CreatureStagePackHealthValue],esi
+  mov dword ptr [esi+00000518],(float)5000.0
+  fld dword ptr [esi+00000518]
+  jmp return
+
+CreatureStagePackHealth:
+  jmp newmem
+  nop
+return:
+registersymbol(CreatureStagePackHealth)
+
+[DISABLE]
+
+CreatureStagePackHealth:
+  db D9 86 18 05 00 00
+
+unregistersymbol(CreatureStagePackHealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+7DED05
+
+"SporeApp.exe"+7DECE2: 8B 50 6C              -  mov edx,[eax+6C]
+"SporeApp.exe"+7DECE5: 8B CE                 -  mov ecx,esi
+"SporeApp.exe"+7DECE7: FF D2                 -  call edx
+"SporeApp.exe"+7DECE9: D9 5C 24 54           -  fstp dword ptr [esp+54]
+"SporeApp.exe"+7DECED: 8B 86 90 0A 00 00     -  mov eax,[esi+00000A90]
+"SporeApp.exe"+7DECF3: C1 E8 08              -  shr eax,08
+"SporeApp.exe"+7DECF6: C6 44 24 25 00        -  mov byte ptr [esp+25],00
+"SporeApp.exe"+7DECFB: A8 01                 -  test al,01
+"SporeApp.exe"+7DECFD: 74 49                 -  je SporeApp.exe+7DED48
+"SporeApp.exe"+7DECFF: 8B 96 E0 04 00 00     -  mov edx,[esi+000004E0]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+7DED05: D9 86 18 05 00 00     -  fld dword ptr [esi+00000518]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+7DED0B: 8B 42 58              -  mov eax,[edx+58]
+"SporeApp.exe"+7DED0E: D9 5C 24 20           -  fstp dword ptr [esp+20]
+"SporeApp.exe"+7DED12: 8D 8E E0 04 00 00     -  lea ecx,[esi+000004E0]
+"SporeApp.exe"+7DED18: C6 86 F0 0E 00 00 00  -  mov byte ptr [esi+00000EF0],00
+"SporeApp.exe"+7DED1F: FF D0                 -  call eax
+"SporeApp.exe"+7DED21: D9 44 24 20           -  fld dword ptr [esp+20]
+"SporeApp.exe"+7DED25: D9 C9                 -  fxch st(1)
+"SporeApp.exe"+7DED27: DF F1                 -  fcomip st(0),st(1)
+"SporeApp.exe"+7DED29: DD D8                 -  fstp st(0)
+"SporeApp.exe"+7DED2B: 76 16                 -  jna SporeApp.exe+7DED43
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1869</ID>
+          <Description>"     Inf. Pack Healths (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-23
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECTS,SporeApp.exe,D9 86 20 05 00 00 8B) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [esi+00000520],(float)5555
+  fld dword ptr [esi+00000520]
+  jmp return
+
+INJECTS:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECTS)
+
+[DISABLE]
+
+INJECTS:
+  db D9 86 20 05 00 00
+
+unregistersymbol(INJECTS)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+808885
+
+"SporeApp.exe"+808862: 8B 50 74              -  mov edx,[eax+74]
+"SporeApp.exe"+808865: 8B CE                 -  mov ecx,esi
+"SporeApp.exe"+808867: FF D2                 -  call edx
+"SporeApp.exe"+808869: D9 5C 24 54           -  fstp dword ptr [esp+54]
+"SporeApp.exe"+80886D: 8B 86 98 0A 00 00     -  mov eax,[esi+00000A98]
+"SporeApp.exe"+808873: C1 E8 08              -  shr eax,08
+"SporeApp.exe"+808876: C6 44 24 25 00        -  mov byte ptr [esp+25],00
+"SporeApp.exe"+80887B: A8 01                 -  test al,01
+"SporeApp.exe"+80887D: 74 49                 -  je SporeApp.exe+8088C8
+"SporeApp.exe"+80887F: 8B 96 E8 04 00 00     -  mov edx,[esi+000004E8]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+808885: D9 86 20 05 00 00     -  fld dword ptr [esi+00000520]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+80888B: 8B 42 58              -  mov eax,[edx+58]
+"SporeApp.exe"+80888E: D9 5C 24 20           -  fstp dword ptr [esp+20]
+"SporeApp.exe"+808892: 8D 8E E8 04 00 00     -  lea ecx,[esi+000004E8]
+"SporeApp.exe"+808898: C6 86 F8 0E 00 00 00  -  mov byte ptr [esi+00000EF8],00
+"SporeApp.exe"+80889F: FF D0                 -  call eax
+"SporeApp.exe"+8088A1: D9 44 24 20           -  fld dword ptr [esp+20]
+"SporeApp.exe"+8088A5: D9 C9                 -  fxch st(1)
+"SporeApp.exe"+8088A7: DF F1                 -  fcomip st(0),st(1)
+"SporeApp.exe"+8088A9: DD D8                 -  fstp st(0)
+"SporeApp.exe"+8088AB: 76 16                 -  jna SporeApp.exe+8088C3
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>51</ID>
+          <Description>"     No Attack Cooldowns"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CreatureStageCooldowns,SporeApp.exe,C1 E6 04 D9 44 0E 04)
+globalalloc(CreatureStageCooldownsValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  shl esi,04
+  mov [CreatureStageCooldownsValue],esi
+  mov [esi+ecx+04],(float)1.00
+  fld dword ptr [esi+ecx+04]
+  jmp return
+
+CreatureStageCooldowns:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(CreatureStageCooldowns)
+
+[DISABLE]
+
+CreatureStageCooldowns:
+  db C1 E6 04 D9 44 0E 04
+
+unregistersymbol(CreatureStageCooldowns)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+91DA47
+
+"SporeApp.exe"+91DA28: 74 3D              -  je SporeApp.exe+91DA67
+"SporeApp.exe"+91DA2A: 8B 74 24 08        -  mov esi,[esp+08]
+"SporeApp.exe"+91DA2E: 85 F6              -  test esi,esi
+"SporeApp.exe"+91DA30: 7C 1E              -  jl SporeApp.exe+91DA50
+"SporeApp.exe"+91DA32: 8B 88 20 0C 00 00  -  mov ecx,[eax+00000C20]
+"SporeApp.exe"+91DA38: 8B 80 24 0C 00 00  -  mov eax,[eax+00000C24]
+"SporeApp.exe"+91DA3E: 2B C1              -  sub eax,ecx
+"SporeApp.exe"+91DA40: C1 F8 04           -  sar eax,04
+"SporeApp.exe"+91DA43: 3B F0              -  cmp esi,eax
+"SporeApp.exe"+91DA45: 7D 09              -  jnl SporeApp.exe+91DA50
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+91DA47: C1 E6 04           -  shl esi,04
+"SporeApp.exe"+91DA4A: D9 44 0E 04        -  fld dword ptr [esi+ecx+04]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+91DA4E: 5E                 -  pop esi
+"SporeApp.exe"+91DA4F: C3                 -  ret 
+"SporeApp.exe"+91DA50: E8 BB 3E E1 FF     -  call SporeApp.exe+731910
+"SporeApp.exe"+91DA55: 3D 02 4C 65 01     -  cmp eax,SporeApp.exe+2F4C02
+"SporeApp.exe"+91DA5A: 75 0B              -  jne SporeApp.exe+91DA67
+"SporeApp.exe"+91DA5C: 56                 -  push esi
+"SporeApp.exe"+91DA5D: E8 3E 6C FD FF     -  call SporeApp.exe+8F46A0
+"SporeApp.exe"+91DA62: 83 C4 04           -  add esp,04
+"SporeApp.exe"+91DA65: 5E                 -  pop esi
+"SporeApp.exe"+91DA66: C3                 -  ret 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1704</ID>
+          <Description>"     Single Kill Extinct Species"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(HuntQuest,SporeApp.exe,8B 40 0C C2 04 00)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [eax+0C],(int)10
+  mov eax,[eax+0C]
+  ret 0004
+  jmp return
+
+HuntQuest:
+  jmp newmem
+  nop
+return:
+registersymbol(HuntQuest)
+
+[DISABLE]
+
+HuntQuest:
+  db 8B 40 0C C2 04 00
+
+unregistersymbol(HuntQuest)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+77A4FD
+
+"SporeApp.exe"+77A4EA: CC                    -  int 3 
+"SporeApp.exe"+77A4EB: CC                    -  int 3 
+"SporeApp.exe"+77A4EC: CC                    -  int 3 
+"SporeApp.exe"+77A4ED: CC                    -  int 3 
+"SporeApp.exe"+77A4EE: CC                    -  int 3 
+"SporeApp.exe"+77A4EF: CC                    -  int 3 
+"SporeApp.exe"+77A4F0: 8B 44 24 04           -  mov eax,[esp+04]
+"SporeApp.exe"+77A4F4: 50                    -  push eax
+"SporeApp.exe"+77A4F5: 83 C1 20              -  add ecx,20
+"SporeApp.exe"+77A4F8: E8 E3 F5 FF FF        -  call SporeApp.exe+779AE0
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+77A4FD: 8B 40 0C              -  mov eax,[eax+0C]
+"SporeApp.exe"+77A500: C2 04 00              -  ret 0004
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+77A503: CC                    -  int 3 
+"SporeApp.exe"+77A504: CC                    -  int 3 
+"SporeApp.exe"+77A505: CC                    -  int 3 
+"SporeApp.exe"+77A506: CC                    -  int 3 
+"SporeApp.exe"+77A507: CC                    -  int 3 
+"SporeApp.exe"+77A508: CC                    -  int 3 
+"SporeApp.exe"+77A509: CC                    -  int 3 
+"SporeApp.exe"+77A50A: CC                    -  int 3 
+"SporeApp.exe"+77A50B: CC                    -  int 3 
+"SporeApp.exe"+77A50C: CC                    -  int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>681</ID>
+      <Description>"   Tribal Stage"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>688</ID>
+          <Description>"     Tribe Stomach Full"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(TribeStageHunger,SporeApp.exe,D9 81 B4 0B 00 00)
+globalalloc(TribeStageHungerValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [TribeStageHungerValue],ecx
+  mov [ecx+00000BB4],(float)100.0
+  fld dword ptr [ecx+00000BB4]
+  jmp return
+
+TribeStageHunger:
+  jmp newmem
+  nop
+return:
+registersymbol(TribeStageHunger)
+
+[DISABLE]
+
+TribeStageHunger:
+  db D9 81 B4 0B 00 00
+
+unregistersymbol(TribeStageHunger)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+7E1FA0
+
+"SporeApp.exe"+7E1F8F: F3 0F 11 81 B4 0B 00 00  -  movss [ecx+00000BB4],xmm0
+"SporeApp.exe"+7E1F97: C3                       -  ret 
+"SporeApp.exe"+7E1F98: CC                       -  int 3 
+"SporeApp.exe"+7E1F99: CC                       -  int 3 
+"SporeApp.exe"+7E1F9A: CC                       -  int 3 
+"SporeApp.exe"+7E1F9B: CC                       -  int 3 
+"SporeApp.exe"+7E1F9C: CC                       -  int 3 
+"SporeApp.exe"+7E1F9D: CC                       -  int 3 
+"SporeApp.exe"+7E1F9E: CC                       -  int 3 
+"SporeApp.exe"+7E1F9F: CC                       -  int 3 
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+7E1FA0: D9 81 B4 0B 00 00        -  fld dword ptr [ecx+00000BB4]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+7E1FA6: C3                       -  ret 
+"SporeApp.exe"+7E1FA7: CC                       -  int 3 
+"SporeApp.exe"+7E1FA8: CC                       -  int 3 
+"SporeApp.exe"+7E1FA9: CC                       -  int 3 
+"SporeApp.exe"+7E1FAA: CC                       -  int 3 
+"SporeApp.exe"+7E1FAB: CC                       -  int 3 
+"SporeApp.exe"+7E1FAC: CC                       -  int 3 
+"SporeApp.exe"+7E1FAD: CC                       -  int 3 
+"SporeApp.exe"+7E1FAE: CC                       -  int 3 
+"SporeApp.exe"+7E1FAF: CC                       -  int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1879</ID>
+          <Description>"     Tribe Stomach Full (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-23
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECTD,SporeApp.exe,0F 2F 86 BC 0B 00 00 5F) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [esi+00000BBC],(float)100
+  comiss xmm0,[esi+00000BBC]
+  jmp return
+
+INJECTD:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(INJECTD)
+
+[DISABLE]
+
+INJECTD:
+  db 0F 2F 86 BC 0B 00 00
+
+unregistersymbol(INJECTD)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+80D679
+
+"SporeApp.exe"+80D647: 8B CF                    -  mov ecx,edi
+"SporeApp.exe"+80D649: E8 32 5C FB FF           -  call SporeApp.exe+7C3280
+"SporeApp.exe"+80D64E: F3 0F 10 86 B8 0B 00 00  -  movss xmm0,[esi+00000BB8]
+"SporeApp.exe"+80D656: F3 0F 59 44 24 10        -  mulss xmm0,[esp+10]
+"SporeApp.exe"+80D65C: F3 0F 58 86 BC 0B 00 00  -  addss xmm0,dword ptr [esi+00000BBC]
+"SporeApp.exe"+80D664: 51                       -  push ecx
+"SporeApp.exe"+80D665: F3 0F 11 04 24           -  movss [esp],xmm0
+"SporeApp.exe"+80D66A: 8B CE                    -  mov ecx,esi
+"SporeApp.exe"+80D66C: E8 BF E4 FF FF           -  call SporeApp.exe+80BB30
+"SporeApp.exe"+80D671: F3 0F 10 05 40 37 B6 01  -  movss xmm0,[SporeApp.exe+1053740]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+80D679: 0F 2F 86 BC 0B 00 00     -  comiss xmm0,[esi+00000BBC]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+80D680: 5F                       -  pop edi
+"SporeApp.exe"+80D681: 5B                       -  pop ebx
+"SporeApp.exe"+80D682: 76 30                    -  jna SporeApp.exe+80D6B4
+"SporeApp.exe"+80D684: 8B 96 A8 05 00 00        -  mov edx,[esi+000005A8]
+"SporeApp.exe"+80D68A: F3 0F 10 05 1C 7A D9 01  -  movss xmm0,[SporeApp.exe+1287A1C]
+"SporeApp.exe"+80D692: F3 0F 59 44 24 08        -  mulss xmm0,[esp+08]
+"SporeApp.exe"+80D698: 8B 42 18                 -  mov eax,[edx+18]
+"SporeApp.exe"+80D69B: 6A 00                    -  push 00
+"SporeApp.exe"+80D69D: 68 10 D9 D9 01           -  push SporeApp.exe+128D910
+"SporeApp.exe"+80D6A2: 6A 05                    -  push 05
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>695</ID>
+          <Description>"     Infinite Tribe Health"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(TribeStageHealth,SporeApp.exe,0F 2F 81 D8 05 00 00)
+globalalloc(TribeStageHealthValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [TribeStageHealthValue],ecx
+  mov [ecx+000005D8],(float)1000
+  comiss xmm0,[ecx+000005D8]
+  jmp return
+
+TribeStageHealth:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(TribeStageHealth)
+
+[DISABLE]
+
+TribeStageHealth:
+  db 0F 2F 81 D8 05 00 00
+
+unregistersymbol(TribeStageHealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+97AB3C
+
+"SporeApp.exe"+97AB28: CC                       -  int 3 
+"SporeApp.exe"+97AB29: CC                       -  int 3 
+"SporeApp.exe"+97AB2A: CC                       -  int 3 
+"SporeApp.exe"+97AB2B: CC                       -  int 3 
+"SporeApp.exe"+97AB2C: CC                       -  int 3 
+"SporeApp.exe"+97AB2D: CC                       -  int 3 
+"SporeApp.exe"+97AB2E: CC                       -  int 3 
+"SporeApp.exe"+97AB2F: CC                       -  int 3 
+"SporeApp.exe"+97AB30: 8B 4C 24 04              -  mov ecx,[esp+04]
+"SporeApp.exe"+97AB34: F3 0F 10 05 8C 51 37 02  -  movss xmm0,[SporeApp.exe+104518C]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+97AB3C: 0F 2F 81 D8 05 00 00     -  comiss xmm0,[ecx+000005D8]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+97AB43: 72 3F                    -  jb SporeApp.exe+97AB84
+"SporeApp.exe"+97AB45: 80 B9 56 0B 00 00 00     -  cmp byte ptr [ecx+00000B56],00
+"SporeApp.exe"+97AB4C: 75 36                    -  jne SporeApp.exe+97AB84
+"SporeApp.exe"+97AB4E: E8 2D E8 E7 FF           -  call SporeApp.exe+7F9380
+"SporeApp.exe"+97AB53: 85 C0                    -  test eax,eax
+"SporeApp.exe"+97AB55: 74 2D                    -  je SporeApp.exe+97AB84
+"SporeApp.exe"+97AB57: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+97AB59: E8 32 9B EE FF           -  call SporeApp.exe+864690
+"SporeApp.exe"+97AB5E: 83 F8 02                 -  cmp eax,02
+"SporeApp.exe"+97AB61: 73 13                    -  jae SporeApp.exe+97AB76
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1876</ID>
+          <Description>"     Infinite Tribe Health (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-23
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECTV,SporeApp.exe,0F 2F 81 E0 05 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [ecx+000005E0],(float)5555
+  comiss xmm0,[ecx+000005E0]
+  jmp return
+
+INJECTV:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(INJECTV)
+
+[DISABLE]
+
+INJECTV:
+  db 0F 2F 81 E0 05 00 00
+
+unregistersymbol(INJECTV)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+9A641C
+
+"SporeApp.exe"+9A6408: CC                       -  int 3 
+"SporeApp.exe"+9A6409: CC                       -  int 3 
+"SporeApp.exe"+9A640A: CC                       -  int 3 
+"SporeApp.exe"+9A640B: CC                       -  int 3 
+"SporeApp.exe"+9A640C: CC                       -  int 3 
+"SporeApp.exe"+9A640D: CC                       -  int 3 
+"SporeApp.exe"+9A640E: CC                       -  int 3 
+"SporeApp.exe"+9A640F: CC                       -  int 3 
+"SporeApp.exe"+9A6410: 8B 4C 24 04              -  mov ecx,[esp+04]
+"SporeApp.exe"+9A6414: F3 0F 10 05 6C C1 B8 01  -  movss xmm0,[SporeApp.exe+107C16C]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+9A641C: 0F 2F 81 E0 05 00 00     -  comiss xmm0,[ecx+000005E0]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+9A6423: 72 3F                    -  jb SporeApp.exe+9A6464
+"SporeApp.exe"+9A6425: 80 B9 5E 0B 00 00 00     -  cmp byte ptr [ecx+00000B5E],00
+"SporeApp.exe"+9A642C: 75 36                    -  jne SporeApp.exe+9A6464
+"SporeApp.exe"+9A642E: E8 7D CC E7 FF           -  call SporeApp.exe+8230B0
+"SporeApp.exe"+9A6433: 85 C0                    -  test eax,eax
+"SporeApp.exe"+9A6435: 74 2D                    -  je SporeApp.exe+9A6464
+"SporeApp.exe"+9A6437: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+9A6439: E8 C2 90 EE FF           -  call SporeApp.exe+88F500
+"SporeApp.exe"+9A643E: 83 F8 02                 -  cmp eax,02
+"SporeApp.exe"+9A6441: 73 13                    -  jae SporeApp.exe+9A6456
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>718</ID>
+          <Description>"     Infinite Food Collected"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(TribeStageFoodCollected,SporeApp.exe,F3 0F 10 8A 2C 01 00 00)
+globalalloc(TribeStageFoodCollectedValue,8)
+alloc(newmem,$100)
+label(return)
+label(EverythingElse)
+
+newmem:
+  cmp [esp+384],5
+  jne EverythingElse
+  mov [TribeStageFoodCollectedValue],edx
+  mov [edx+0000012C],(float)100
+  movss xmm1,[edx+0000012C]
+  jmp return
+
+EverythingElse:
+  movss xmm1,[edx+0000012C]
+  jmp return
+
+TribeStageFoodCollected:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(TribeStageFoodCollected)
+
+"SporeApp.exe"+80B5F6:
+  db 90 90 90 90 90 90 90 90
+
+[DISABLE]
+
+"SporeApp.exe"+80B5F6:
+  db F3 0F 11 81 2C 01 00 00
+
+TribeStageFoodCollected:
+  db F3 0F 10 8A 2C 01 00 00
+
+unregistersymbol(TribeStageFoodCollected)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+8C2E62
+
+"SporeApp.exe"+8C2E44: 0F 57 C0                 -  xorps xmm0,xmm0
+"SporeApp.exe"+8C2E47: F3 0F 11 04 24           -  movss [esp],xmm0
+"SporeApp.exe"+8C2E4C: 3B 41 08                 -  cmp eax,[ecx+08]
+"SporeApp.exe"+8C2E4F: 74 2C                    -  je SporeApp.exe+8C2E7D
+"SporeApp.exe"+8C2E51: 8B 49 08                 -  mov ecx,[ecx+08]
+"SporeApp.exe"+8C2E54: 3B C1                    -  cmp eax,ecx
+"SporeApp.exe"+8C2E56: 74 25                    -  je SporeApp.exe+8C2E7D
+"SporeApp.exe"+8C2E58: EB 06                    -  jmp SporeApp.exe+8C2E60
+"SporeApp.exe"+8C2E5A: 8D 9B 00 00 00 00        -  lea ebx,[ebx+00000000]
+"SporeApp.exe"+8C2E60: 8B 10                    -  mov edx,[eax]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+8C2E62: F3 0F 10 8A 2C 01 00 00  -  movss xmm1,[edx+0000012C]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+8C2E6A: 83 C0 04                 -  add eax,04
+"SporeApp.exe"+8C2E6D: F3 0F 58 C8              -  addss xmm1,xmm0
+"SporeApp.exe"+8C2E71: 0F 28 C1                 -  movaps xmm0,xmm1
+"SporeApp.exe"+8C2E74: F3 0F 11 04 24           -  movss [esp],xmm0
+"SporeApp.exe"+8C2E79: 3B C1                    -  cmp eax,ecx
+"SporeApp.exe"+8C2E7B: 75 E3                    -  jne SporeApp.exe+8C2E60
+"SporeApp.exe"+8C2E7D: D9 04 24                 -  fld dword ptr [esp]
+"SporeApp.exe"+8C2E80: 59                       -  pop ecx
+"SporeApp.exe"+8C2E81: C3                       -  ret 
+"SporeApp.exe"+8C2E82: CC                       -  int 3 
+}
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+80B5F6
+decrease
+"SporeApp.exe"+80B5D4: F3 0F 10 44 24 08        -  movss xmm0,[esp+08]
+"SporeApp.exe"+80B5DA: 89 81 24 01 00 00        -  mov [ecx+00000124],eax
+"SporeApp.exe"+80B5E0: F3 0F 11 81 2C 01 00 00  -  movss [ecx+0000012C],xmm0
+"SporeApp.exe"+80B5E8: C2 08 00                 -  ret 0008
+"SporeApp.exe"+80B5EB: CC                       -  int 3
+"SporeApp.exe"+80B5EC: CC                       -  int 3
+"SporeApp.exe"+80B5ED: CC                       -  int 3
+"SporeApp.exe"+80B5EE: CC                       -  int 3
+"SporeApp.exe"+80B5EF: CC                       -  int 3
+"SporeApp.exe"+80B5F0: F3 0F 10 44 24 04        -  movss xmm0,[esp+04]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+80B5F6: F3 0F 11 81 2C 01 00 00  -  movss [ecx+0000012C],xmm0
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+80B5FE: C2 04 00                 -  ret 0004
+"SporeApp.exe"+80B601: CC                       -  int 3
+"SporeApp.exe"+80B602: CC                       -  int 3
+"SporeApp.exe"+80B603: CC                       -  int 3
+"SporeApp.exe"+80B604: CC                       -  int 3
+"SporeApp.exe"+80B605: CC                       -  int 3
+"SporeApp.exe"+80B606: CC                       -  int 3
+"SporeApp.exe"+80B607: CC                       -  int 3
+"SporeApp.exe"+80B608: CC                       -  int 3
+"SporeApp.exe"+80B609: CC                       -  int 3
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1887</ID>
+          <Description>"     Infinite Food Collected (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-23
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECTL,SporeApp.exe,F3 0F 10 8A 34 01 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [edx+00000134],(float)100
+  movss xmm1,[edx+00000134]
+  jmp return
+
+INJECTL:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(INJECTL)
+
+"SporeApp.exe"+835CA6:
+  db 90 90 90 90 90 90 90 90
+
+[DISABLE]
+
+INJECTL:
+  db F3 0F 10 8A 34 01 00 00
+
+unregistersymbol(INJECTL)
+dealloc(newmem)
+
+ "SporeApp.exe"+835CA6:
+  db F3 0F 11 81 34 01 00 00
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+8EE502
+
+"SporeApp.exe"+8EE4E4: 0F 57 C0                 -  xorps xmm0,xmm0
+"SporeApp.exe"+8EE4E7: F3 0F 11 04 24           -  movss [esp],xmm0
+"SporeApp.exe"+8EE4EC: 3B 41 08                 -  cmp eax,[ecx+08]
+"SporeApp.exe"+8EE4EF: 74 2C                    -  je SporeApp.exe+8EE51D
+"SporeApp.exe"+8EE4F1: 8B 49 08                 -  mov ecx,[ecx+08]
+"SporeApp.exe"+8EE4F4: 3B C1                    -  cmp eax,ecx
+"SporeApp.exe"+8EE4F6: 74 25                    -  je SporeApp.exe+8EE51D
+"SporeApp.exe"+8EE4F8: EB 06                    -  jmp SporeApp.exe+8EE500
+"SporeApp.exe"+8EE4FA: 8D 9B 00 00 00 00        -  lea ebx,[ebx+00000000]
+"SporeApp.exe"+8EE500: 8B 10                    -  mov edx,[eax]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+8EE502: F3 0F 10 8A 34 01 00 00  -  movss xmm1,[edx+00000134]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+8EE50A: 83 C0 04                 -  add eax,04
+"SporeApp.exe"+8EE50D: F3 0F 58 C8              -  addss xmm1,xmm0
+"SporeApp.exe"+8EE511: 0F 28 C1                 -  movaps xmm0,xmm1
+"SporeApp.exe"+8EE514: F3 0F 11 04 24           -  movss [esp],xmm0
+"SporeApp.exe"+8EE519: 3B C1                    -  cmp eax,ecx
+"SporeApp.exe"+8EE51B: 75 E3                    -  jne SporeApp.exe+8EE500
+"SporeApp.exe"+8EE51D: D9 04 24                 -  fld dword ptr [esp]
+"SporeApp.exe"+8EE520: 59                       -  pop ecx
+"SporeApp.exe"+8EE521: C3                       -  ret 
+"SporeApp.exe"+8EE522: CC                       -  int 3 
+}
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+835CA6
+
+"SporeApp.exe"+835C84: F3 0F 10 44 24 08        -  movss xmm0,[esp+08]
+"SporeApp.exe"+835C8A: 89 81 2C 01 00 00        -  mov [ecx+0000012C],eax
+"SporeApp.exe"+835C90: F3 0F 11 81 34 01 00 00  -  movss [ecx+00000134],xmm0
+"SporeApp.exe"+835C98: C2 08 00                 -  ret 0008
+"SporeApp.exe"+835C9B: CC                       -  int 3
+"SporeApp.exe"+835C9C: CC                       -  int 3
+"SporeApp.exe"+835C9D: CC                       -  int 3
+"SporeApp.exe"+835C9E: CC                       -  int 3
+"SporeApp.exe"+835C9F: CC                       -  int 3
+"SporeApp.exe"+835CA0: F3 0F 10 44 24 04        -  movss xmm0,[esp+04]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+835CA6: F3 0F 11 81 34 01 00 00  -  movss [ecx+00000134],xmm0
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+835CAE: C2 04 00                 -  ret 0004
+"SporeApp.exe"+835CB1: CC                       -  int 3
+"SporeApp.exe"+835CB2: CC                       -  int 3
+"SporeApp.exe"+835CB3: CC                       -  int 3
+"SporeApp.exe"+835CB4: CC                       -  int 3
+"SporeApp.exe"+835CB5: CC                       -  int 3
+"SporeApp.exe"+835CB6: CC                       -  int 3
+"SporeApp.exe"+835CB7: CC                       -  int 3
+"SporeApp.exe"+835CB8: CC                       -  int 3
+"SporeApp.exe"+835CB9: CC                       -  int 3
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>727</ID>
+      <Description>"   Civilization Stage"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>729</ID>
+          <Description>"     Infinite Incomes"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CivilizationStageIncomes,SporeApp.exe,F3 0F 10 86 98 00 00 00 F3 0F 11 44 24 20)
+globalalloc(CivilizationStageIncomesValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [esi+00000098],(float)100000.0
+  mov [CivilizationStageIncomesValue],esi
+  movss xmm0,[esi+00000098]
+  jmp return
+
+CivilizationStageIncomes:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(CivilizationStageIncomes)
+
+"SporeApp.exe"+7C5B55:
+  db 90 90 90 90 90 90 90 90
+
+[DISABLE]
+
+"SporeApp.exe"+7C5B55:
+  db F3 0F 11 81 98 00 00 00
+
+CivilizationStageIncomes:
+  db F3 0F 10 86 98 00 00 00
+
+unregistersymbol(CivilizationStageIncomes)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+8BF45D
+
+"SporeApp.exe"+8BF43E: E8 AD 4B E5 FF           -  call SporeApp.exe+713FF0
+"SporeApp.exe"+8BF443: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+8BF445: E8 B6 E3 E3 FF           -  call SporeApp.exe+6FD800
+"SporeApp.exe"+8BF44A: 8B CF                    -  mov ecx,edi
+"SporeApp.exe"+8BF44C: 8B F0                    -  mov esi,eax
+"SporeApp.exe"+8BF44E: E8 DD F7 FF FF           -  call SporeApp.exe+8BEC30
+"SporeApp.exe"+8BF453: 83 7F 64 00              -  cmp dword ptr [edi+64],00
+"SporeApp.exe"+8BF457: 74 46                    -  je SporeApp.exe+8BF49F
+"SporeApp.exe"+8BF459: 85 F6                    -  test esi,esi
+"SporeApp.exe"+8BF45B: 74 42                    -  je SporeApp.exe+8BF49F
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+8BF45D: F3 0F 10 86 98 00 00 00  -  movss xmm0,[esi+00000098]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+8BF465: F3 0F 11 44 24 20        -  movss [esp+20],xmm0
+"SporeApp.exe"+8BF46B: F3 0F 10 44 24 20        -  movss xmm0,[esp+20]
+"SporeApp.exe"+8BF471: F3 0F 2D C0              -  cvtss2si eax,xmm0
+"SporeApp.exe"+8BF475: F3 0F 2A C8              -  cvtsi2ss xmm1,eax
+"SporeApp.exe"+8BF479: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+8BF47B: 83 E9 01                 -  sub ecx,01
+"SporeApp.exe"+8BF47E: 0F 2E C1                 -  ucomiss xmm0,xmm1
+"SporeApp.exe"+8BF481: 0F 42 C1                 -  cmovb eax,ecx
+"SporeApp.exe"+8BF484: 8B 77 64                 -  mov esi,[edi+64]
+"SporeApp.exe"+8BF487: 50                       -  push eax
+}
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+7C5B55
+decreases incomes
+"SporeApp.exe"+7C5B39: CC                       -  int 3
+"SporeApp.exe"+7C5B3A: CC                       -  int 3
+"SporeApp.exe"+7C5B3B: CC                       -  int 3
+"SporeApp.exe"+7C5B3C: CC                       -  int 3
+"SporeApp.exe"+7C5B3D: CC                       -  int 3
+"SporeApp.exe"+7C5B3E: CC                       -  int 3
+"SporeApp.exe"+7C5B3F: CC                       -  int 3
+"SporeApp.exe"+7C5B40: 80 B9 89 00 00 00 00     -  cmp byte ptr [ecx+00000089],00
+"SporeApp.exe"+7C5B47: F3 0F 10 81 98 00 00 00  -  movss xmm0,[ecx+00000098]
+"SporeApp.exe"+7C5B4F: F3 0F 5C 44 24 04        -  subss xmm0,[esp+04]
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+7C5B55: F3 0F 11 81 98 00 00 00  -  movss [ecx+00000098],xmm0
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+7C5B5D: 75 34                    -  jne SporeApp.exe+7C5B93
+"SporeApp.exe"+7C5B5F: 0F 57 C9                 -  xorps xmm1,xmm1
+"SporeApp.exe"+7C5B62: 0F 2F C8                 -  comiss xmm1,xmm0
+"SporeApp.exe"+7C5B65: 76 2C                    -  jna SporeApp.exe+7C5B93
+"SporeApp.exe"+7C5B67: F3 0F 10 91 AC 04 00 00  -  movss xmm2,[ecx+000004AC]
+"SporeApp.exe"+7C5B6F: F3 0F 58 D0              -  addss xmm2,xmm0
+"SporeApp.exe"+7C5B73: F3 0F 58 91 B0 04 00 00  -  addss xmm2,[ecx+000004B0]
+"SporeApp.exe"+7C5B7B: F3 0F 11 91 98 00 00 00  -  movss [ecx+00000098],xmm2
+"SporeApp.exe"+7C5B83: F3 0F 11 89 AC 04 00 00  -  movss [ecx+000004AC],xmm1
+"SporeApp.exe"+7C5B8B: F3 0F 11 89 B0 04 00 00  -  movss [ecx+000004B0],xmm1
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1845</ID>
+          <Description>"     Infinite Vehicle Health"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CivilizationStageHealth,SporeApp.exe,D8 7E 38 5E C3)
+globalalloc(CivilizationStageHealthValue,8)
+alloc(newmem,$100)
+label(return)
+label(EverythingElse)
+label(VehicleHealths)
+
+newmem:
+  cmp [esp+2c4],113
+  jne EverythingElse
+
+VehicleHealths:
+  mov [esi+38],(float)1000
+  fdivr dword ptr [esi+38]
+  pop esi
+  ret
+  jmp return
+
+EverythingElse:
+  fdivr dword ptr [esi+38]
+  pop esi
+  ret 
+  jmp return
+
+CivilizationStageHealth:
+  jmp newmem
+return:
+registersymbol(CivilizationStageHealth)
+
+[DISABLE]
+
+CivilizationStageHealth:
+  db D8 7E 38 5E C3
+
+unregistersymbol(CivilizationStageHealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+7D2A4A
+
+  //cmp [esp+344],1A
+  //cmp [esp+38c],1
+  //cmp [esp+3e8],5
+  //cmp [esp+478],15
+  //cmp [esp+49c],1
+  //cmp [esp+a0c],3
+  //cmp [esp+50],F
+  //cmp [esp+60],16D7B40
+  //cmp [esp+b0],2710
+  //cmp [esp+1d8],FFFFFFFF
+  //cmp [esp+250],FFFFFFFF
+
+"SporeApp.exe"+7D2A3B: CC                       -  int 3 
+"SporeApp.exe"+7D2A3C: CC                       -  int 3 
+"SporeApp.exe"+7D2A3D: CC                       -  int 3 
+"SporeApp.exe"+7D2A3E: CC                       -  int 3 
+"SporeApp.exe"+7D2A3F: CC                       -  int 3 
+"SporeApp.exe"+7D2A40: 56                       -  push esi
+"SporeApp.exe"+7D2A41: 8B F1                    -  mov esi,ecx
+"SporeApp.exe"+7D2A43: 8B 06                    -  mov eax,[esi]
+"SporeApp.exe"+7D2A45: 8B 50 58                 -  mov edx,[eax+58]
+"SporeApp.exe"+7D2A48: FF D2                    -  call edx
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+7D2A4A: D8 7E 38                 -  fdivr dword ptr [esi+38]
+"SporeApp.exe"+7D2A4D: 5E                       -  pop esi
+"SporeApp.exe"+7D2A4E: C3                       -  ret 
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+7D2A4F: CC                       -  int 3 
+"SporeApp.exe"+7D2A50: 81 EC 18 0A 00 00        -  sub esp,00000A18
+"SporeApp.exe"+7D2A56: 53                       -  push ebx
+"SporeApp.exe"+7D2A57: 56                       -  push esi
+"SporeApp.exe"+7D2A58: 8B B4 24 24 0A 00 00     -  mov esi,[esp+00000A24]
+"SporeApp.exe"+7D2A5F: 8B 06                    -  mov eax,[esi]
+"SporeApp.exe"+7D2A61: 8B 50 20                 -  mov edx,[eax+20]
+"SporeApp.exe"+7D2A64: 57                       -  push edi
+"SporeApp.exe"+7D2A65: 8B F9                    -  mov edi,ecx
+"SporeApp.exe"+7D2A67: 8B CE                    -  mov ecx,esi
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>734</ID>
+      <Description>"   Space Stage"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>736</ID>
+          <Description>"     Infinite Health"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(SpaceStageHealth,SporeApp.exe,D9 81 38 05 00 00)
+globalalloc(SpaceStageHealthValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [SpaceStageHealthValue],ecx
+  fld dword ptr [ecx+0000052c]
+  fst dword ptr [ecx+00000538]
+  jmp return
+
+SpaceStageHealth:
+  jmp newmem
+  nop
+return:
+registersymbol(SpaceStageHealth)
+
+[DISABLE]
+
+SpaceStageHealth:
+  db D9 81 38 05 00 00
+
+unregistersymbol(SpaceStageHealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+80CD41
+
+"SporeApp.exe"+80CD2E: CC                       -  int 3 
+"SporeApp.exe"+80CD2F: CC                       -  int 3 
+"SporeApp.exe"+80CD30: 81 C1 B0 07 00 00        -  add ecx,000007B0
+"SporeApp.exe"+80CD36: E9 65 31 3B 00           -  jmp SporeApp.exe+BBFEA0
+"SporeApp.exe"+80CD3B: CC                       -  int 3 
+"SporeApp.exe"+80CD3C: CC                       -  int 3 
+"SporeApp.exe"+80CD3D: CC                       -  int 3 
+"SporeApp.exe"+80CD3E: CC                       -  int 3 
+"SporeApp.exe"+80CD3F: CC                       -  int 3 
+"SporeApp.exe"+80CD40: 51                       -  push ecx
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+80CD41: D9 81 38 05 00 00        -  fld dword ptr [ecx+00000538]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+80CD47: 8B 81 00 05 00 00        -  mov eax,[ecx+00000500]
+"SporeApp.exe"+80CD4D: 8B 50 58                 -  mov edx,[eax+58]
+"SporeApp.exe"+80CD50: D9 1C 24                 -  fstp dword ptr [esp]
+"SporeApp.exe"+80CD53: 81 C1 00 05 00 00        -  add ecx,00000500
+"SporeApp.exe"+80CD59: FF D2                    -  call edx
+"SporeApp.exe"+80CD5B: D8 0D B8 4B 31 02        -  fmul dword ptr [SporeApp.exe+1034BB8]
+"SporeApp.exe"+80CD61: D9 04 24                 -  fld dword ptr [esp]
+"SporeApp.exe"+80CD64: D9 C9                    -  fxch st(1)
+"SporeApp.exe"+80CD66: DF F1                    -  fcomip st(0),st(1)
+"SporeApp.exe"+80CD68: DD D8                    -  fstp st(0)
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1907</ID>
+          <Description>"     Infinite Health (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-23
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECTG,SporeApp.exe,D9 81 40 05 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  fld dword ptr [ecx+00000534]
+  fst dword ptr [ecx+00000540]
+  jmp return
+
+INJECTG:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECTG)
+
+[DISABLE]
+
+INJECTG:
+  db D9 81 40 05 00 00
+
+unregistersymbol(INJECTG)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+837421
+
+"SporeApp.exe"+83740E: CC                       -  int 3 
+"SporeApp.exe"+83740F: CC                       -  int 3 
+"SporeApp.exe"+837410: 81 C1 B8 07 00 00        -  add ecx,000007B8
+"SporeApp.exe"+837416: E9 05 45 3B 00           -  jmp SporeApp.exe+BEB920
+"SporeApp.exe"+83741B: CC                       -  int 3 
+"SporeApp.exe"+83741C: CC                       -  int 3 
+"SporeApp.exe"+83741D: CC                       -  int 3 
+"SporeApp.exe"+83741E: CC                       -  int 3 
+"SporeApp.exe"+83741F: CC                       -  int 3 
+"SporeApp.exe"+837420: 51                       -  push ecx
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+837421: D9 81 40 05 00 00        -  fld dword ptr [ecx+00000540]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+837427: 8B 81 08 05 00 00        -  mov eax,[ecx+00000508]
+"SporeApp.exe"+83742D: 8B 50 58                 -  mov edx,[eax+58]
+"SporeApp.exe"+837430: D9 1C 24                 -  fstp dword ptr [esp]
+"SporeApp.exe"+837433: 81 C1 08 05 00 00        -  add ecx,00000508
+"SporeApp.exe"+837439: FF D2                    -  call edx
+"SporeApp.exe"+83743B: D8 0D 00 BB B7 01        -  fmul dword ptr [SporeApp.exe+106BB00]
+"SporeApp.exe"+837441: D9 04 24                 -  fld dword ptr [esp]
+"SporeApp.exe"+837444: D9 C9                    -  fxch st(1)
+"SporeApp.exe"+837446: DF F1                    -  fcomip st(0),st(1)
+"SporeApp.exe"+837448: DD D8                    -  fstp st(0)
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1662</ID>
+          <Description>"     Infinite Energy"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(SpaceStageEnergy,SporeApp.exe,D9 86 EC 07 00 00)
+globalalloc(SpaceStageEnergyValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [SpaceStageEnergyValue],esi
+  fld dword ptr [esi+000007F0]
+  fst dword ptr [esi+000007EC]
+  jmp return
+
+SpaceStageEnergy:
+  jmp newmem
+  nop
+return:
+registersymbol(SpaceStageEnergy)
+
+[DISABLE]
+
+SpaceStageEnergy:
+  db D9 86 EC 07 00 00
+
+unregistersymbol(SpaceStageEnergy)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+80E57C
+
+"SporeApp.exe"+80E55A: 84 C0                          -  test al,al
+"SporeApp.exe"+80E55C: 75 1D                          -  jne SporeApp.exe+80E57B
+"SporeApp.exe"+80E55E: 68 E7 69 62 06                 -  push 066269E7
+"SporeApp.exe"+80E563: 8B CF                          -  mov ecx,edi
+"SporeApp.exe"+80E565: E8 E6 E9 03 00                 -  call SporeApp.exe+84CF50
+"SporeApp.exe"+80E56A: 68 21 39 21 73                 -  push 73213921
+"SporeApp.exe"+80E56F: E8 3C C0 42 00                 -  call SporeApp.exe+C3A5B0
+"SporeApp.exe"+80E574: 8B C8                          -  mov ecx,eax
+"SporeApp.exe"+80E576: E8 95 36 43 00                 -  call SporeApp.exe+C41C10
+"SporeApp.exe"+80E57B: 5F                             -  pop edi
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+80E57C: D9 86 EC 07 00 00              -  fld dword ptr [esi+000007EC]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+80E582: 5E                             -  pop esi
+"SporeApp.exe"+80E583: 83 C4 14                       -  add esp,14
+"SporeApp.exe"+80E586: C2 04 00                       -  ret 0004
+"SporeApp.exe"+80E589: CC                             -  int 3 
+"SporeApp.exe"+80E58A: CC                             -  int 3 
+"SporeApp.exe"+80E58B: CC                             -  int 3 
+"SporeApp.exe"+80E58C: CC                             -  int 3 
+"SporeApp.exe"+80E58D: CC                             -  int 3 
+"SporeApp.exe"+80E58E: CC                             -  int 3 
+"SporeApp.exe"+80E58F: CC                             -  int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1904</ID>
+          <Description>"     Infinite Energy (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-23
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECTR,SporeApp.exe,D9 86 F4 07 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  fld dword ptr [esi+000007F8]
+  fst dword ptr [esi+000007F4]
+  jmp return
+
+INJECTR:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECTR)
+
+[DISABLE]
+
+INJECTR:
+  db D9 86 F4 07 00 00
+
+unregistersymbol(INJECTR)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+838C4C
+
+"SporeApp.exe"+838C2A: 84 C0                          -  test al,al
+"SporeApp.exe"+838C2C: 75 1D                          -  jne SporeApp.exe+838C4B
+"SporeApp.exe"+838C2E: 68 E7 69 62 06                 -  push 066269E7
+"SporeApp.exe"+838C33: 8B CF                          -  mov ecx,edi
+"SporeApp.exe"+838C35: E8 56 F1 03 00                 -  call SporeApp.exe+877D90
+"SporeApp.exe"+838C3A: 68 21 39 21 73                 -  push 73213921
+"SporeApp.exe"+838C3F: E8 6C DA 42 00                 -  call SporeApp.exe+C666B0
+"SporeApp.exe"+838C44: 8B C8                          -  mov ecx,eax
+"SporeApp.exe"+838C46: E8 B5 50 43 00                 -  call SporeApp.exe+C6DD00
+"SporeApp.exe"+838C4B: 5F                             -  pop edi
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+838C4C: D9 86 F4 07 00 00              -  fld dword ptr [esi+000007F4]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+838C52: 5E                             -  pop esi
+"SporeApp.exe"+838C53: 83 C4 14                       -  add esp,14
+"SporeApp.exe"+838C56: C2 04 00                       -  ret 0004
+"SporeApp.exe"+838C59: CC                             -  int 3 
+"SporeApp.exe"+838C5A: CC                             -  int 3 
+"SporeApp.exe"+838C5B: CC                             -  int 3 
+"SporeApp.exe"+838C5C: CC                             -  int 3 
+"SporeApp.exe"+838C5D: CC                             -  int 3 
+"SporeApp.exe"+838C5E: CC                             -  int 3 
+"SporeApp.exe"+838C5F: CC                             -  int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1709</ID>
+          <Description>"     Infinite Usables"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(SpaceStageResources,SporeApp.exe,83 79 7C 00 7F 06)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [ecx+7C],(int)99
+  cmp dword ptr [ecx+7C],00
+  jg SporeApp.exe+C22339
+  jmp return
+
+SpaceStageResources:
+  jmp newmem
+  nop
+return:
+registersymbol(SpaceStageResources)
+
+SporeApp.exe+C20BE6:
+  db 90 90 90
+
+"SporeApp.exe"+C24307:
+  db 90 90 90
+
+[DISABLE]
+
+SporeApp.exe+C20BE6:
+  db 89 41 7c
+
+"SporeApp.exe"+C24307:
+  db 29 46 7c
+
+SpaceStageResources:
+  db 83 79 7C 00 7F 06
+
+unregistersymbol(SpaceStageResources)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+C2232D
+
+"SporeApp.exe"+C2231A: CC                       -  int 3 
+"SporeApp.exe"+C2231B: CC                       -  int 3 
+"SporeApp.exe"+C2231C: CC                       -  int 3 
+"SporeApp.exe"+C2231D: CC                       -  int 3 
+"SporeApp.exe"+C2231E: CC                       -  int 3 
+"SporeApp.exe"+C2231F: CC                       -  int 3 
+"SporeApp.exe"+C22320: 8B 81 74 01 00 00        -  mov eax,[ecx+00000174]
+"SporeApp.exe"+C22326: C1 E8 05                 -  shr eax,05
+"SporeApp.exe"+C22329: A8 01                    -  test al,01
+"SporeApp.exe"+C2232B: 74 0C                    -  je SporeApp.exe+C22339
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+C2232D: 83 79 7C 00              -  cmp dword ptr [ecx+7C],00
+"SporeApp.exe"+C22331: 7F 06                    -  jg SporeApp.exe+C22339
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+C22333: B8 01 00 00 00           -  mov eax,00000001
+"SporeApp.exe"+C22338: C3                       -  ret 
+"SporeApp.exe"+C22339: 33 C0                    -  xor eax,eax
+"SporeApp.exe"+C2233B: C3                       -  ret 
+"SporeApp.exe"+C2233C: CC                       -  int 3 
+"SporeApp.exe"+C2233D: CC                       -  int 3 
+"SporeApp.exe"+C2233E: CC                       -  int 3 
+"SporeApp.exe"+C2233F: CC                       -  int 3 
+"SporeApp.exe"+C22340: 51                       -  push ecx
+"SporeApp.exe"+C22341: 56                       -  push esi
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1658</ID>
+          <Description>"     Infinite Currency"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(SpaceStageCurrency,SporeApp.exe,8B 81 D0 00 00 00 C3)
+globalalloc(SpaceStageCurrencyValue,8)
+alloc(newmem,$100)
+
+label(return)
+label(EverythingElse)
+
+newmem:
+  cmp [ecx+4C],5
+  jne EverythingElse
+  mov [SpaceStageCurrencyValue],ecx
+  mov [ecx+000000D0],(int)10000000
+  mov eax,[ecx+000000D0]
+  jmp return
+
+EverythingElse:
+  mov eax,[ecx+000000D0]
+  jmp return
+
+SpaceStageCurrency:
+  jmp newmem
+  nop
+return:
+registersymbol(SpaceStageCurrency)
+
+[DISABLE]
+
+SpaceStageCurrency:
+  db 8B 81 D0 00 00 00
+
+unregistersymbol(SpaceStageCurrency)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+806A60
+
+"SporeApp.exe"+806A56: CC                    -  int 3 
+"SporeApp.exe"+806A57: CC                    -  int 3 
+"SporeApp.exe"+806A58: CC                    -  int 3 
+"SporeApp.exe"+806A59: CC                    -  int 3 
+"SporeApp.exe"+806A5A: CC                    -  int 3 
+"SporeApp.exe"+806A5B: CC                    -  int 3 
+"SporeApp.exe"+806A5C: CC                    -  int 3 
+"SporeApp.exe"+806A5D: CC                    -  int 3 
+"SporeApp.exe"+806A5E: CC                    -  int 3 
+"SporeApp.exe"+806A5F: CC                    -  int 3 
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+806A60: 8B 81 D0 00 00 00     -  mov eax,[ecx+000000D0]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+806A66: C3                    -  ret 
+"SporeApp.exe"+806A67: CC                    -  int 3 
+"SporeApp.exe"+806A68: CC                    -  int 3 
+"SporeApp.exe"+806A69: CC                    -  int 3 
+"SporeApp.exe"+806A6A: CC                    -  int 3 
+"SporeApp.exe"+806A6B: CC                    -  int 3 
+"SporeApp.exe"+806A6C: CC                    -  int 3 
+"SporeApp.exe"+806A6D: CC                    -  int 3 
+"SporeApp.exe"+806A6E: CC                    -  int 3 
+"SporeApp.exe"+806A6F: CC                    -  int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1759</ID>
+          <Description>"     Instant Trade Route"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(TradeRoute,SporeApp.exe,F3 0F 10 46 14 F3 0F 10 0D)
+globalalloc(TradeRouteValue,8)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [TradeRouteValue],esi
+  mov [esi+14],(float)100
+  movss xmm0,[esi+14]
+  jmp return
+
+TradeRoute:
+  jmp newmem
+return:
+registersymbol(TradeRoute)
+
+[DISABLE]
+
+TradeRoute:
+  db F3 0F 10 46 14
+
+unregistersymbol(TradeRoute)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+C0D036
+
+"SporeApp.exe"+C0CFFF: E8 AC 71 FF FF              -  call SporeApp.exe+C041B0
+"SporeApp.exe"+C0D004: D9 5C 24 30                 -  fstp dword ptr [esp+30]
+"SporeApp.exe"+C0D008: E8 B3 67 FF FF              -  call SporeApp.exe+C037C0
+"SporeApp.exe"+C0D00D: 8B C8                       -  mov ecx,eax
+"SporeApp.exe"+C0D00F: E8 EC 71 FF FF              -  call SporeApp.exe+C04200
+"SporeApp.exe"+C0D014: D9 5C 24 10                 -  fstp dword ptr [esp+10]
+"SporeApp.exe"+C0D018: F3 0F 10 84 24 CC 00 00 00  -  movss xmm0,[esp+000000CC]
+"SporeApp.exe"+C0D021: F3 0F 5F 44 24 30           -  maxss xmm0,[esp+30]
+"SporeApp.exe"+C0D027: F3 0F 5D 44 24 10           -  minss xmm0,[esp+10]
+"SporeApp.exe"+C0D02D: F3 0F 11 84 24 CC 00 00 00  -  movss [esp+000000CC],xmm0
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+C0D036: F3 0F 10 46 14              -  movss xmm0,[esi+14]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+C0D03B: F3 0F 10 0D 24 64 2B 01     -  movss xmm1,[SporeApp.exe+FB6424]
+"SporeApp.exe"+C0D043: 0F 2F C1                    -  comiss xmm0,xmm1
+"SporeApp.exe"+C0D046: F3 0F 11 44 24 58           -  movss [esp+58],xmm0
+"SporeApp.exe"+C0D04C: 72 04                       -  jb SporeApp.exe+C0D052
+"SporeApp.exe"+C0D04E: B1 01                       -  mov cl,01
+"SporeApp.exe"+C0D050: EB 02                       -  jmp SporeApp.exe+C0D054
+"SporeApp.exe"+C0D052: 32 C9                       -  xor cl,cl
+"SporeApp.exe"+C0D054: 8B 84 24 08 01 00 00        -  mov eax,[esp+00000108]
+"SporeApp.exe"+C0D05B: DB 84 24 08 01 00 00        -  fild dword ptr [esp+00000108]
+"SporeApp.exe"+C0D062: 85 C0                       -  test eax,eax
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1842</ID>
+      <Description>"   Adventure Stage"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1839</ID>
+          <Description>"     Adventure Cooldown"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(AdventureCooldown,SporeApp.exe,D9 44 0E 04 5E)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [esi+ecx+04],(float)1
+  fld dword ptr [esi+ecx+04]
+  pop esi
+  jmp return
+
+AdventureCooldown:
+  jmp newmem
+return:
+registersymbol(AdventureCooldown)
+
+[DISABLE]
+
+AdventureCooldown:
+  db D9 44 0E 04 5E
+
+unregistersymbol(AdventureCooldown)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+91DA4A
+
+"SporeApp.exe"+91DA2A: 8B 74 24 08        -  mov esi,[esp+08]
+"SporeApp.exe"+91DA2E: 85 F6              -  test esi,esi
+"SporeApp.exe"+91DA30: 7C 1E              -  jl SporeApp.exe+91DA50
+"SporeApp.exe"+91DA32: 8B 88 20 0C 00 00  -  mov ecx,[eax+00000C20]
+"SporeApp.exe"+91DA38: 8B 80 24 0C 00 00  -  mov eax,[eax+00000C24]
+"SporeApp.exe"+91DA3E: 2B C1              -  sub eax,ecx
+"SporeApp.exe"+91DA40: C1 F8 04           -  sar eax,04
+"SporeApp.exe"+91DA43: 3B F0              -  cmp esi,eax
+"SporeApp.exe"+91DA45: 7D 09              -  jnl SporeApp.exe+91DA50
+"SporeApp.exe"+91DA47: C1 E6 04           -  shl esi,04
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+91DA4A: D9 44 0E 04        -  fld dword ptr [esi+ecx+04]
+"SporeApp.exe"+91DA4E: 5E                 -  pop esi
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+91DA4F: C3                 -  ret 
+"SporeApp.exe"+91DA50: E8 BB 3E E1 FF     -  call SporeApp.exe+731910
+"SporeApp.exe"+91DA55: 3D 02 4C 65 01     -  cmp eax,SporeApp.exe+4A4C02
+"SporeApp.exe"+91DA5A: 75 0B              -  jne SporeApp.exe+91DA67
+"SporeApp.exe"+91DA5C: 56                 -  push esi
+"SporeApp.exe"+91DA5D: E8 3E 6C FD FF     -  call SporeApp.exe+8F46A0
+"SporeApp.exe"+91DA62: 83 C4 04           -  add esp,04
+"SporeApp.exe"+91DA65: 5E                 -  pop esi
+"SporeApp.exe"+91DA66: C3                 -  ret 
+"SporeApp.exe"+91DA67: D9 EE              -  fldz 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1837</ID>
+          <Description>"     Adventure Captain Health"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(AdventureCreatureHealth,SporeApp.exe,F3 0F 10 87 D8 05 00 00 F3 0F 11)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  mov [edi+000005D8],(float)1000
+  movss xmm0,[edi+000005D8]
+  jmp return
+
+AdventureCreatureHealth:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(AdventureCreatureHealth)
+
+[DISABLE]
+
+AdventureCreatureHealth:
+  db F3 0F 10 87 D8 05 00 00
+
+unregistersymbol(AdventureCreatureHealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+AE4E90
+
+"SporeApp.exe"+AE4E7C: 76 04                    -  jna SporeApp.exe+AE4E82
+"SporeApp.exe"+AE4E7E: B1 01                    -  mov cl,01
+"SporeApp.exe"+AE4E80: EB 02                    -  jmp SporeApp.exe+AE4E84
+"SporeApp.exe"+AE4E82: 32 C9                    -  xor cl,cl
+"SporeApp.exe"+AE4E84: 8B 10                    -  mov edx,[eax]
+"SporeApp.exe"+AE4E86: 51                       -  push ecx
+"SporeApp.exe"+AE4E87: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+AE4E89: 8B 42 7C                 -  mov eax,[edx+7C]
+"SporeApp.exe"+AE4E8C: 6A 02                    -  push 02
+"SporeApp.exe"+AE4E8E: FF D0                    -  call eax
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+AE4E90: F3 0F 10 87 D8 05 00 00  -  movss xmm0,[edi+000005D8]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+AE4E98: F3 0F 11 44 24 78        -  movss [esp+78],xmm0
+"SporeApp.exe"+AE4E9E: F3 0F 10 44 24 78        -  movss xmm0,[esp+78]
+"SporeApp.exe"+AE4EA4: F3 0F 2D C0              -  cvtss2si eax,xmm0
+"SporeApp.exe"+AE4EA8: F3 0F 2A C8              -  cvtsi2ss xmm1,eax
+"SporeApp.exe"+AE4EAC: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+AE4EAE: 83 C1 01                 -  add ecx,01
+"SporeApp.exe"+AE4EB1: 0F 2E C8                 -  ucomiss xmm1,xmm0
+"SporeApp.exe"+AE4EB4: 0F 42 C1                 -  cmovb eax,ecx
+"SporeApp.exe"+AE4EB7: 8B 4D 5C                 -  mov ecx,[ebp+5C]
+"SporeApp.exe"+AE4EBA: 6A 01                    -  push 01
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1916</ID>
+          <Description>"     Adventure Captain Health (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-24
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECTL,SporeApp.exe,F3 0F 10 87 E0 05 00 00 F3 0F 11) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [edi+5E0],(float)55555
+  movss xmm0,[edi+000005E0]
+  jmp return
+
+INJECTL:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(INJECTL)
+
+[DISABLE]
+
+INJECTL:
+  db F3 0F 10 87 E0 05 00 00
+
+unregistersymbol(INJECTL)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+B10C70
+
+"SporeApp.exe"+B10C5C: 76 04                    -  jna SporeApp.exe+B10C62
+"SporeApp.exe"+B10C5E: B1 01                    -  mov cl,01
+"SporeApp.exe"+B10C60: EB 02                    -  jmp SporeApp.exe+B10C64
+"SporeApp.exe"+B10C62: 32 C9                    -  xor cl,cl
+"SporeApp.exe"+B10C64: 8B 10                    -  mov edx,[eax]
+"SporeApp.exe"+B10C66: 51                       -  push ecx
+"SporeApp.exe"+B10C67: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+B10C69: 8B 42 7C                 -  mov eax,[edx+7C]
+"SporeApp.exe"+B10C6C: 6A 02                    -  push 02
+"SporeApp.exe"+B10C6E: FF D0                    -  call eax
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+B10C70: F3 0F 10 87 E0 05 00 00  -  movss xmm0,[edi+000005E0]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+B10C78: F3 0F 11 44 24 78        -  movss [esp+78],xmm0
+"SporeApp.exe"+B10C7E: F3 0F 10 44 24 78        -  movss xmm0,[esp+78]
+"SporeApp.exe"+B10C84: F3 0F 2D C0              -  cvtss2si eax,xmm0
+"SporeApp.exe"+B10C88: F3 0F 2A C8              -  cvtsi2ss xmm1,eax
+"SporeApp.exe"+B10C8C: 8B C8                    -  mov ecx,eax
+"SporeApp.exe"+B10C8E: 83 C1 01                 -  add ecx,01
+"SporeApp.exe"+B10C91: 0F 2E C8                 -  ucomiss xmm1,xmm0
+"SporeApp.exe"+B10C94: 0F 42 C1                 -  cmovb eax,ecx
+"SporeApp.exe"+B10C97: 8B 4D 5C                 -  mov ecx,[ebp+5C]
+"SporeApp.exe"+B10C9A: 6A 01                    -  push 01
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1841</ID>
+          <Description>"     Adventure Captain Energy"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(AdventureCreatureEnergy,SporeApp.exe,0F 2F 86 50 0E 00 00 76)
+alloc(newmem,$100)
+label(return)
+
+newmem:
+  fld dword ptr [esi+00000E54]
+  fstp dword ptr [esi+00000E50]
+  comiss xmm0,[esi+00000E50]
+  jmp return
+
+AdventureCreatureEnergy:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(AdventureCreatureEnergy)
+
+[DISABLE]
+
+AdventureCreatureEnergy:
+  db 0F 2F 86 50 0E 00 00
+
+unregistersymbol(AdventureCreatureEnergy)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+8F3D0F
+
+"SporeApp.exe"+8F3CEC: 8B 44 24 0C                    -  mov eax,[esp+0C]
+"SporeApp.exe"+8F3CF0: 8B 92 B4 00 00 00              -  mov edx,[edx+000000B4]
+"SporeApp.exe"+8F3CF6: 55                             -  push ebp
+"SporeApp.exe"+8F3CF7: 50                             -  push eax
+"SporeApp.exe"+8F3CF8: 8B CE                          -  mov ecx,esi
+"SporeApp.exe"+8F3CFA: FF D2                          -  call edx
+"SporeApp.exe"+8F3CFC: 8B E8                          -  mov ebp,eax
+"SporeApp.exe"+8F3CFE: F3 0F 10 85 04 01 00 00        -  movss xmm0,[ebp+00000104]
+"SporeApp.exe"+8F3D06: 0F 2F 05 1C E6 1F 02           -  comiss xmm0,[SporeApp.exe+104E61C]
+"SporeApp.exe"+8F3D0D: 76 11                          -  jna SporeApp.exe+8F3D20
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+8F3D0F: 0F 2F 86 50 0E 00 00           -  comiss xmm0,[esi+00000E50]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+8F3D16: 76 08                          -  jna SporeApp.exe+8F3D20
+"SporeApp.exe"+8F3D18: 5D                             -  pop ebp
+"SporeApp.exe"+8F3D19: B8 01 00 00 00                 -  mov eax,00000001
+"SporeApp.exe"+8F3D1E: 5E                             -  pop esi
+"SporeApp.exe"+8F3D1F: C3                             -  ret 
+"SporeApp.exe"+8F3D20: 53                             -  push ebx
+"SporeApp.exe"+8F3D21: 57                             -  push edi
+"SporeApp.exe"+8F3D22: 8B CE                          -  mov ecx,esi
+"SporeApp.exe"+8F3D24: E8 97 16 EF FF                 -  call SporeApp.exe+7E53C0
+"SporeApp.exe"+8F3D29: 8B CE                          -  mov ecx,esi
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1913</ID>
+          <Description>"     Adventure Captain Energy (Steam)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SporeApp.exe
+  Version: 
+  Date   : 2018-08-24
+  Author : D1g1
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,SporeApp.exe,D9 87 58 0E 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  fld dword ptr [edi+E5C]
+  fst dword ptr [edi+00000E58]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db D9 87 58 0E 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SporeApp.exe"+B10CDA
+
+"SporeApp.exe"+B10CBF: 52                       -  push edx
+"SporeApp.exe"+B10CC0: 50                       -  push eax
+"SporeApp.exe"+B10CC1: E8 0A 0F 97 FF           -  call SporeApp.exe+481BD0
+"SporeApp.exe"+B10CC6: 8B 16                    -  mov edx,[esi]
+"SporeApp.exe"+B10CC8: 8B 92 80 00 00 00        -  mov edx,[edx+00000080]
+"SporeApp.exe"+B10CCE: 83 C4 10                 -  add esp,10
+"SporeApp.exe"+B10CD1: 8D 44 24 20              -  lea eax,[esp+20]
+"SporeApp.exe"+B10CD5: 50                       -  push eax
+"SporeApp.exe"+B10CD6: 8B CE                    -  mov ecx,esi
+"SporeApp.exe"+B10CD8: FF D2                    -  call edx
+// ---------- INJECTING HERE ----------
+"SporeApp.exe"+B10CDA: D9 87 58 0E 00 00        -  fld dword ptr [edi+00000E58]
+// ---------- DONE INJECTING  ----------
+"SporeApp.exe"+B10CE0: 51                       -  push ecx
+"SporeApp.exe"+B10CE1: D8 B7 5C 0E 00 00        -  fdiv dword ptr [edi+00000E5C]
+"SporeApp.exe"+B10CE7: 8B 4D 5C                 -  mov ecx,[ebp+5C]
+"SporeApp.exe"+B10CEA: D9 54 24 18              -  fst dword ptr [esp+18]
+"SporeApp.exe"+B10CEE: D9 1C 24                 -  fstp dword ptr [esp]
+"SporeApp.exe"+B10CF1: 68 A0 95 3A 07           -  push 073A95A0
+"SporeApp.exe"+B10CF6: E8 A5 05 EF FF           -  call SporeApp.exe+A012A0
+"SporeApp.exe"+B10CFB: 8B 4D 5C                 -  mov ecx,[ebp+5C]
+"SporeApp.exe"+B10CFE: 6A 01                    -  push 01
+"SporeApp.exe"+B10D00: 68 E0 95 3A 07           -  push 073A95E0
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

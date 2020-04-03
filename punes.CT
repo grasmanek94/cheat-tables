@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Mario P1"</Description>
+      <LastState Value="0" RealAddress="0181E65A"/>
+      <VariableType>Byte</VariableType>
+      <Address>punes.exe+141E65A</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Mario P2"</Description>
+      <LastState Value="17" RealAddress="0181E661"/>
+      <VariableType>Byte</VariableType>
+      <Address>punes.exe+141E661</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Battle City Tank 1"</Description>
+      <LastState Value="98" RealAddress="0181E020"/>
+      <VariableType>Byte</VariableType>
+      <Address>punes.exe+141E020</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Battle City Tank 2"</Description>
+      <LastState Value="98" RealAddress="0181E021"/>
+      <VariableType>Byte</VariableType>
+      <Address>punes.exe+141E021</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Battle City Tank 3"</Description>
+      <LastState Value="98" RealAddress="0181E022"/>
+      <VariableType>Byte</VariableType>
+      <Address>punes.exe+141E022</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Battle City Tank 4"</Description>
+      <LastState Value="0" RealAddress="0181E023"/>
+      <VariableType>Byte</VariableType>
+      <Address>punes.exe+141E023</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

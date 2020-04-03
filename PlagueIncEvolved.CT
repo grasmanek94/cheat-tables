@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <LastState Value="968" RealAddress="5D9D555C"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>5D9D555C</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>DNA Points</Description>
+      <AddressString>PlagueExternal.dll+1464</AddressString>
+      <Before>
+        <Byte>8A</Byte>
+        <Byte>C4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>42</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>5D</Byte>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>DNA Points</Description>
+      <AddressString>PlagueExternal.dll+21A5</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>4F</Byte>
+        <Byte>28</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>47</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>01</Byte>
+        <Byte>87</Byte>
+        <Byte>C4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

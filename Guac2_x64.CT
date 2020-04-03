@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Instant Respawn (COOP)"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"Guac2_x64.exe"+432ADB) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rbx+38],0
+jmp returnhere
+
+originalcode:
+movss [rbx+38],xmm0
+
+exit:
+jmp returnhere
+
+"Guac2_x64.exe"+432ADB:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Guac2_x64.exe"+432ADB:
+movss [rbx+38],xmm0
+//Alt: db F3 0F 11 43 38
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Infinite Stamina"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"Guac2_x64.exe"+4349D6) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rcx+rax*4+000000BC],42C60000
+jmp returnhere
+
+originalcode:
+movss [rcx+rax*4+000000BC],xmm0
+
+exit:
+jmp returnhere
+
+"Guac2_x64.exe"+4349D6:
+jmp newmem
+nop
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Guac2_x64.exe"+4349D6:
+movss [rcx+rax*4+000000BC],xmm0
+//Alt: db F3 0F 11 84 81 BC 00 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"Unlimited Times Power"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+"Guac2_x64.exe"+1EA4A6:
+nop
+nop
+nop
+
+"Guac2_x64.exe"+1EB1A4:
+nop
+nop
+nop
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+"Guac2_x64.exe"+1EA4A6:
+inc [rax+rcx*4]
+//Alt: db FF 04 88 F3 C3
+
+"Guac2_x64.exe"+1EB1A4:
+inc [rax+rcx*4]
+//Alt: db FF 04 88 4C 89 A3 38 08 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"Always 999 Combo"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"Guac2_x64.exe"+432C55)
+//alloc(newmem2,2048,"Guac2_x64.exe"+42C87A)
+label(returnhere)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rdi],3E7
+mov [rbp+50],r9d
+jmp returnhere
+
+//newmem2: //this is allocated memory, you have read,write,execute access
+//mov qword ptr [rdi+20],3E7
+
+exit:
+jmp returnhere
+
+"Guac2_x64.exe"+432C55:
+jmp newmem
+nop
+nop
+
+/*"Guac2_x64.exe"+42C87A:
+jmp newmem2
+nop
+nop
+nop*/
+
+returnhere:
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+//dealloc(newmem2)
+"Guac2_x64.exe"+432C55:
+mov [rdi],r8d
+mov [rbp+50],r9d
+//Alt: db 44 89 07 44 89 4D 50
+
+//"Guac2_x64.exe"+42C87A:
+//mov qword ptr [rdi+20],00000000
+//Alt: db 48 C7 47 20 00 00 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"Combo Timer Left"</Description>
+      <LastState Value="3.049974442" RealAddress="14071A710"/>
+      <VariableType>Float</VariableType>
+      <Address>Guac2_x64.exe+71A710</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"Hit Combo"</Description>
+      <LastState Value="999" RealAddress="14071A6D0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Guac2_x64.exe+71A6D0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"Bomb Timer Disable"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"Guac2_x64.exe"+52F482) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+  cmp rcx,0
+  jne originalcode
+  mov [rbx+6C],(Float)1
+  movss xmm1,[rbx+6C]
+  jmp returnhere
+
+originalcode:
+movss xmm1,[rbx+6C]
+
+exit:
+jmp returnhere
+
+"Guac2_x64.exe"+52F482:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Guac2_x64.exe"+52F482:
+movss xmm1,[rbx+6C]
+//Alt: db F3 0F 10 4B 6C
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"EverythingGodMode"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"Guac2_x64.exe"+382DC3) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+  mov r11d,[rdi+0000011C]
+  mov [rdi+00000120],r11d
+jmp returnhere
+originalcode:
+mov [rdi+00000120],r11d
+
+exit:
+jmp returnhere
+
+"Guac2_x64.exe"+382DC3:
+jmp newmem
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Guac2_x64.exe"+382DC3:
+mov [rdi+00000120],r11d
+//Alt: db 44 89 9F 20 01 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"EverythingGodMode2"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"Guac2_x64.exe"+382E1D) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+  mov eax,[rdi+0000011C]
+  mov [rdi+00000120],eax
+jmp returnhere
+originalcode:
+mov [rdi+00000120],eax
+
+exit:
+jmp returnhere
+
+"Guac2_x64.exe"+382E1D:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"Guac2_x64.exe"+382E1D:
+mov [rdi+00000120],eax
+//Alt: db 89 87 20 01 00 00
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Respawn timer</Description>
+      <Address>140432ADB</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>432ADB</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>43</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>50</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Health change</Description>
+      <Address>140382DC3</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>382DC3</ModuleNameOffset>
+      <Before>
+        <Byte>23</Byte>
+        <Byte>DA</Byte>
+        <Byte>45</Byte>
+        <Byte>0B</Byte>
+        <Byte>D9</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>9F</Byte>
+        <Byte>20</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>8B</Byte>
+        <Byte>87</Byte>
+        <Byte>1C</Byte>
+        <Byte>01</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Health change</Description>
+      <Address>140382E1D</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>382E1D</ModuleNameOffset>
+      <Before>
+        <Byte>23</Byte>
+        <Byte>C0</Byte>
+        <Byte>41</Byte>
+        <Byte>0B</Byte>
+        <Byte>C3</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>87</Byte>
+        <Byte>20</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>87</Byte>
+        <Byte>A0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Stamina Change</Description>
+      <Address>1404349D6</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>4349D6</ModuleNameOffset>
+      <Before>
+        <Byte>5C</Byte>
+        <Byte>C2</Byte>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>84</Byte>
+        <Byte>81</Byte>
+        <Byte>BC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>76</Byte>
+        <Byte>10</Byte>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>9C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Use Power</Description>
+      <Address>1401EA4A6</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>1EA4A6</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>C9</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>04</Byte>
+        <Byte>88</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Reset Power</Description>
+      <Address>1401EA5DB</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>1EA5DB</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>49</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>5C</Byte>
+        <Byte>01</Byte>
+        <Byte>FC</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>FF</Byte>
+        <Byte>CA</Byte>
+        <Byte>75</Byte>
+        <Byte>EC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Compare Power Value 2</Description>
+      <Address>1401C6176</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>1C6176</ModuleNameOffset>
+      <Before>
+        <Byte>86</Byte>
+        <Byte>28</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>39</Byte>
+        <Byte>0C</Byte>
+        <Byte>90</Byte>
+      </Actual>
+      <After>
+        <Byte>72</Byte>
+        <Byte>47</Byte>
+        <Byte>41</Byte>
+        <Byte>80</Byte>
+        <Byte>BE</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Compare Power Value 1</Description>
+      <Address>1401E02CD</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>1E02CD</ModuleNameOffset>
+      <Before>
+        <Byte>12</Byte>
+        <Byte>5A</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>42</Byte>
+        <Byte>39</Byte>
+        <Byte>04</Byte>
+        <Byte>81</Byte>
+      </Actual>
+      <After>
+        <Byte>72</Byte>
+        <Byte>33</Byte>
+        <Byte>42</Byte>
+        <Byte>80</Byte>
+        <Byte>BC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Compare Power Value 3</Description>
+      <Address>1401F0970</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>1F0970</ModuleNameOffset>
+      <Before>
+        <Byte>8F</Byte>
+        <Byte>28</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>39</Byte>
+        <Byte>04</Byte>
+        <Byte>91</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>83</Byte>
+        <Byte>F6</Byte>
+        <Byte>FE</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Increment Power Use</Description>
+      <Address>1401EB1A4</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>1EB1A4</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>C9</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>04</Byte>
+        <Byte>88</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>89</Byte>
+        <Byte>A3</Byte>
+        <Byte>38</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Hit Combo Change</Description>
+      <Address>140432C55</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>432C55</ModuleNameOffset>
+      <Before>
+        <Byte>15</Byte>
+        <Byte>C3</Byte>
+        <Byte>77</Byte>
+        <Byte>2E</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>4D</Byte>
+        <Byte>50</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Reset Combo</Description>
+      <Address>14042C87A</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>42C87A</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>83</Byte>
+        <Byte>7F</Byte>
+        <Byte>68</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>C7</Byte>
+        <Byte>47</Byte>
+        <Byte>20</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>74</Byte>
+        <Byte>07</Byte>
+        <Byte>C7</Byte>
+        <Byte>47</Byte>
+        <Byte>68</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Timer Increace</Description>
+      <Address>14033D07A</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>33D07A</ModuleNameOffset>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>10</Byte>
+        <Byte>1D</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>83</Byte>
+        <Byte>10</Byte>
+        <Byte>1D</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>83</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Direction Change Position X</Description>
+      <Address>14050B28F</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>50B28F</ModuleNameOffset>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>70</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>20</Byte>
+        <Byte>F3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Position X Update (NW?)</Description>
+      <Address>14050B7DF</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>50B7DF</ModuleNameOffset>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>50</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>20</Byte>
+        <Byte>E8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Position X Update</Description>
+      <Address>140524960</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>524960</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>4F</Byte>
+        <Byte>2C</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>47</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4F</Byte>
+        <Byte>2C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Position Y Update</Description>
+      <Address>140524965</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>524965</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>47</Byte>
+        <Byte>28</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4F</Byte>
+        <Byte>2C</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>BF</Byte>
+        <Byte>AC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Health Access</Description>
+      <Address>140432530</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>432530</ModuleNameOffset>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>1B</Byte>
+        <Byte>00</Byte>
+        <Byte>74</Byte>
+        <Byte>11</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>80</Byte>
+        <Byte>20</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5E</Byte>
+        <Byte>C1</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Health Access 2</Description>
+      <Address>140339A99</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>339A99</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>01</Byte>
+        <Byte>74</Byte>
+        <Byte>0E</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>B0</Byte>
+        <Byte>20</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5E</Byte>
+        <Byte>F0</Byte>
+        <Byte>EB</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Bomb Decrease Timer</Description>
+      <Address>14052F499</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>52F499</ModuleNameOffset>
+      <Before>
+        <Byte>5C</Byte>
+        <Byte>C8</Byte>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>F9</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4B</Byte>
+        <Byte>6C</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>82</Byte>
+        <Byte>85</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Bomb Decrease Timer 2</Description>
+      <Address>14052F482</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>52F482</ModuleNameOffset>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>A7</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>4B</Byte>
+        <Byte>6C</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C6</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Bomb Decrease Timer 3 (1s tick)</Description>
+      <Address>1405332EB</Address>
+      <ModuleName>Guac2_x64.exe</ModuleName>
+      <ModuleNameOffset>5332EB</ModuleNameOffset>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>3B</Byte>
+        <Byte>C6</Byte>
+        <Byte>74</Byte>
+        <Byte>3E</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>42</Byte>
+        <Byte>6C</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>43</Byte>
+        <Byte>6C</Byte>
+        <Byte>77</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"Player"</Description>
+      <LastState RealAddress="15CA527C"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>String</VariableType>
+      <Length>0</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>"H5_Game.exe"+00C97540</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>20</Offset>
+        <Offset>14</Offset>
+        <Offset>3C</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"Heroes"</Description>
+          <LastState RealAddress="15CA5444"/>
+          <VariableType>String</VariableType>
+          <Length>0</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>+1C8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"0"</Description>
+              <LastState RealAddress="15CA5444"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>+300*0</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>37</ID>
+                  <Description>"Exp"</Description>
+                  <LastState Value="7274604" RealAddress="15CA54A4"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>20</ID>
+              <Description>"1"</Description>
+              <LastState RealAddress="15CA5744"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>+300*1</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>21</ID>
+                  <Description>"Exp"</Description>
+                  <LastState Value="7667822" RealAddress="15CA57A4"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>44</ID>
+          <Description>"Heroes Data"</Description>
+          <LastState RealAddress="00740073"/>
+          <VariableType>String</VariableType>
+          <Length>0</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>+18</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"0"</Description>
+              <LastState RealAddress="92FF501C"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>47</ID>
+                  <Description>"Movement Points"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+108</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>50</ID>
+                  <Description>"MP - N"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+10C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>51</ID>
+                  <Description>"MP - N"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+110</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>52</ID>
+                  <Description>"MP - N"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+114</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>53</ID>
+                  <Description>"Mana"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+118</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>54</ID>
+                  <Description>"Mana?"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+11C</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>55</ID>
+              <Description>"1"</Description>
+              <LastState RealAddress="00000094"/>
+              <VariableType>String</VariableType>
+              <Length>0</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>+4</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>56</ID>
+                  <Description>"Movement Points"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+108</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>57</ID>
+                  <Description>"MP - N"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+10C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>58</ID>
+                  <Description>"MP - N"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+110</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>59</ID>
+                  <Description>"MP - N"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+114</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>60</ID>
+                  <Description>"Mana"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+118</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>61</ID>
+                  <Description>"Mana?"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+11C</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"Gold"</Description>
+          <LastState Value="6619250" RealAddress="15CA52D0"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+54</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"Gems"</Description>
+          <LastState Value="7340127" RealAddress="15CA52CC"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"Sulfur"</Description>
+          <LastState Value="7929957" RealAddress="15CA52C8"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+4C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Crystal"</Description>
+          <LastState Value="7012468" RealAddress="15CA52C4"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+48</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"Mercury"</Description>
+          <LastState Value="365580960" RealAddress="15CA52C0"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+44</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Ore"</Description>
+          <LastState Value="0" RealAddress="15CA52BC"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+40</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"Wood"</Description>
+          <LastState Value="100" RealAddress="15CA52B8"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+3C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

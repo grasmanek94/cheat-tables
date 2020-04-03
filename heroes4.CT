@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="580" RealAddress="10D5BDD4"/>
+      <VariableType>2 Bytes</VariableType>
+      <Address>10D5BDD4</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Hero Movement</Description>
+      <Address>00494A7C</Address>
+      <ModuleName>heroes4.exe</ModuleName>
+      <ModuleNameOffset>94A7C</ModuleNameOffset>
+      <Before>
+        <Byte>F6</Byte>
+        <Byte>57</Byte>
+        <Byte>8D</Byte>
+        <Byte>7A</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>B9</Byte>
+        <Byte>0F</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>A5</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>5F</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
