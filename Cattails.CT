@@ -36,14 +36,14 @@
         <CheatEntry>
           <ID>53</ID>
           <Description>"Current Food (MAX 350)"</Description>
-          <LastState Value="154" RealAddress="12954AF0"/>
+          <LastState Value="350" Activated="1" RealAddress="12954AF0"/>
           <VariableType>Double</VariableType>
           <Address>+490</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>54</ID>
           <Description>"?"</Description>
-          <LastState Value="780" RealAddress="12954D50"/>
+          <LastState Value="896" RealAddress="12954D50"/>
           <VariableType>Double</VariableType>
           <Address>+6F0</Address>
         </CheatEntry>
@@ -57,27 +57,27 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"Hour [0, 1, 24)"</Description>
-          <LastState Value="12" RealAddress="12954D70"/>
+          <LastState Value="8" RealAddress="12954D70"/>
           <VariableType>Double</VariableType>
           <Address>+710</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>83</ID>
           <Description>"Days Total"</Description>
-          <LastState Value="32" RealAddress="12954D80"/>
+          <LastState Value="37" RealAddress="12954D80"/>
           <VariableType>Double</VariableType>
           <Address>+720</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>82</ID>
           <Description>"Current Day Of Season [1,10]"</Description>
-          <LastState Value="2" RealAddress="12954D90"/>
+          <LastState Value="7" RealAddress="12954D90"/>
           <VariableType>Double</VariableType>
           <Address>+730</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>85</ID>
-          <Description>"year?"</Description>
+          <Description>"Year"</Description>
           <LastState Value="2" RealAddress="12954DA0"/>
           <VariableType>Double</VariableType>
           <Address>+740</Address>
@@ -113,7 +113,7 @@
         <CheatEntry>
           <ID>60</ID>
           <Description>"Miauw Tokens"</Description>
-          <LastState Value="1999988466" RealAddress="129552D0"/>
+          <LastState Value="1999988489" RealAddress="129552D0"/>
           <VariableType>Double</VariableType>
           <Address>+C70</Address>
         </CheatEntry>
@@ -162,14 +162,14 @@
         <CheatEntry>
           <ID>63</ID>
           <Description>"Coins Displayed"</Description>
-          <LastState Value="9995979" RealAddress="12955340"/>
+          <LastState Value="9993671" RealAddress="12955340"/>
           <VariableType>Double</VariableType>
           <Address>+CE0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>64</ID>
           <Description>"Coins Has"</Description>
-          <LastState Value="9995979" RealAddress="12955350"/>
+          <LastState Value="9993671" RealAddress="12955350"/>
           <VariableType>Double</VariableType>
           <Address>+CF0</Address>
         </CheatEntry>
@@ -189,7 +189,7 @@
         </CheatEntry>
         <CheatEntry>
           <ID>68</ID>
-          <Description>"Slots"</Description>
+          <Description>"Slots (60 max?)"</Description>
           <LastState Value="60" RealAddress="129557F0"/>
           <VariableType>Double</VariableType>
           <Address>+1190</Address>
@@ -197,18 +197,58 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>107</ID>
+      <Description>"Reputation [8C A0 40 00 00 00 00 00 00 00 00 00 00 00 00 00 94 A0 40] + 1FB"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="12629285"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>12629285</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>108</ID>
+          <Description>"Mountain"</Description>
+          <LastState Value="1000" RealAddress="12629480"/>
+          <VariableType>Double</VariableType>
+          <Address>+1FB</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>109</ID>
+          <Description>"Forest"</Description>
+          <LastState Value="1000" RealAddress="12629490"/>
+          <VariableType>Double</VariableType>
+          <Address>+20B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110</ID>
+          <Description>"Mystic"</Description>
+          <LastState Value="1000" RealAddress="126294A0"/>
+          <VariableType>Double</VariableType>
+          <Address>+21B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>111</ID>
+          <Description>"Player Colony? R/O"</Description>
+          <LastState Value="1000" RealAddress="126294B0"/>
+          <VariableType>Double</VariableType>
+          <Address>+22B</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>102</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0" Activated="1" RealAddress="11E833D0"/>
+      <VariableType>Double</VariableType>
+      <Address>11E833D0</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>90</ID>
       <Description>"Call Friends Timer"</Description>
       <LastState Value="0" Activated="1" RealAddress="11E83150"/>
       <VariableType>Double</VariableType>
       <Address>11E83150</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>91</ID>
-      <Description>"No description"</Description>
-      <LastState Value="1000" RealAddress="18CE4A50"/>
-      <VariableType>Double</VariableType>
-      <Address>18CE4A50</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
