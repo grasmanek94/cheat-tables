@@ -10,7 +10,7 @@
       <Address>-800</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>24</ID>
+      <ID>121</ID>
       <Description>"AOBHelper"</Description>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>Array of byte</VariableType>
@@ -28,7 +28,7 @@
       <CheatEntries>
         <CheatEntry>
           <ID>114</ID>
-          <Description>""</Description>
+          <Description>"Correction"</Description>
           <LastState Value="" RealAddress="12954660"/>
           <VariableType>Array of byte</VariableType>
           <ByteLength>0</ByteLength>
@@ -217,50 +217,191 @@
       <Address>12629285</Address>
       <CheatEntries>
         <CheatEntry>
-          <ID>108</ID>
-          <Description>"Mountain"</Description>
-          <LastState Value="1000" RealAddress="12629480"/>
-          <VariableType>Double</VariableType>
+          <ID>115</ID>
+          <Description>"Correction"</Description>
+          <LastState Value="" RealAddress="12629480"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
           <Address>+1FB</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>109</ID>
-          <Description>"Forest"</Description>
-          <LastState Value="1000" RealAddress="12629490"/>
-          <VariableType>Double</VariableType>
-          <Address>+20B</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>110</ID>
-          <Description>"Mystic"</Description>
-          <LastState Value="1000" RealAddress="126294A0"/>
-          <VariableType>Double</VariableType>
-          <Address>+21B</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>111</ID>
-          <Description>"Player Colony? R/O"</Description>
-          <LastState Value="1000" RealAddress="126294B0"/>
-          <VariableType>Double</VariableType>
-          <Address>+22B</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>116</ID>
+              <Description>"Mountain"</Description>
+              <LastState Value="1000" RealAddress="12629480"/>
+              <VariableType>Double</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>109</ID>
+              <Description>"Forest"</Description>
+              <LastState Value="1000" RealAddress="12629490"/>
+              <VariableType>Double</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>110</ID>
+              <Description>"Mystic"</Description>
+              <LastState Value="1000" RealAddress="126294A0"/>
+              <VariableType>Double</VariableType>
+              <Address>+20</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>111</ID>
+              <Description>"Player Colony? R/O"</Description>
+              <LastState Value="1000" RealAddress="126294B0"/>
+              <VariableType>Double</VariableType>
+              <Address>+30</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>112</ID>
-      <Description>"Call Allies Timer [01 00 00 00 00 00 00 00 00 D4 97 40 00 00 00 00]"</Description>
-      <LastState Value="" RealAddress="11E8318C"/>
+      <ID>118</ID>
+      <Description>"Sprint Skill AOB [07 00 00 00 01 00 00 00 00 00 00 00 00 CC 97 40 00]"</Description>
+      <LastState Value="07 00 00 00 01 00 00 00 00 00 00 00 00 CC 97 40 00" RealAddress="11E832C8"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>Array of byte</VariableType>
-      <ByteLength>0</ByteLength>
-      <Address>11E8318C</Address>
+      <ByteLength>17</ByteLength>
+      <Address>11E832C8</Address>
       <CheatEntries>
         <CheatEntry>
-          <ID>113</ID>
-          <Description>"Timer"</Description>
-          <LastState Value="0" Activated="1" RealAddress="11E83150"/>
-          <VariableType>Double</VariableType>
-          <Address>-3C</Address>
+          <ID>119</ID>
+          <Description>"Correction"</Description>
+          <LastState Value="" RealAddress="11E83650"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+388</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>126</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82110"/>
+              <VariableType>Double</VariableType>
+              <Address>-1540</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>153</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82250"/>
+              <VariableType>Double</VariableType>
+              <Address>-1400</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>151</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82390"/>
+              <VariableType>Double</VariableType>
+              <Address>-12C0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>150</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E824D0"/>
+              <VariableType>Double</VariableType>
+              <Address>-1180</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>149</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82610"/>
+              <VariableType>Double</VariableType>
+              <Address>-1040</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>148</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82750"/>
+              <VariableType>Double</VariableType>
+              <Address>-F00</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>141</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82890"/>
+              <VariableType>Double</VariableType>
+              <Address>-DC0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>143</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E829D0"/>
+              <VariableType>Double</VariableType>
+              <Address>-C80</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>140</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82B10"/>
+              <VariableType>Double</VariableType>
+              <Address>-B40</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>142</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82C50"/>
+              <VariableType>Double</VariableType>
+              <Address>-A00</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>134</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82D90"/>
+              <VariableType>Double</VariableType>
+              <Address>-8C0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>133</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E82ED0"/>
+              <VariableType>Double</VariableType>
+              <Address>-780</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>132</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E83010"/>
+              <VariableType>Double</VariableType>
+              <Address>-640</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>122</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E83150"/>
+              <VariableType>Double</VariableType>
+              <Address>-500</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>139</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E83290"/>
+              <VariableType>Double</VariableType>
+              <Address>-3C0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>124</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E833D0"/>
+              <VariableType>Double</VariableType>
+              <Address>-280</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>120</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E83510"/>
+              <VariableType>Double</VariableType>
+              <Address>-140</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>154</ID>
+              <Description>"Timer"</Description>
+              <LastState Value="0" RealAddress="11E83650"/>
+              <VariableType>Double</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
