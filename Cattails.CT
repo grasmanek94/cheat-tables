@@ -13,7 +13,7 @@
       <ID>203</ID>
       <Description>"Player/World Stats"</Description>
       <Options moHideChildren="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 luacall(aobscanall('PlayerBase', '20 AC 40 07 00 00 00 00'))
@@ -25,7 +25,7 @@ luacall(aobcleanup('PlayerBase'))
         <CheatEntry>
           <ID>114</ID>
           <Description>"Correction"</Description>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="12ABE660"/>
           <VariableType>Array of byte</VariableType>
           <ByteLength>0</ByteLength>
           <Address>PlayerBase0+3B</Address>
@@ -33,144 +33,168 @@ luacall(aobcleanup('PlayerBase'))
             <CheatEntry>
               <ID>52</ID>
               <Description>"Speed Boost Multiplier"</Description>
+              <LastState Value="0" RealAddress="12ABE660"/>
               <VariableType>Double</VariableType>
               <Address>+0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>53</ID>
               <Description>"Current Food (MAX 350)"</Description>
+              <LastState Value="346" RealAddress="12ABEAF0"/>
               <VariableType>Double</VariableType>
               <Address>+490</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>54</ID>
               <Description>"?"</Description>
+              <LastState Value="883" RealAddress="12ABED50"/>
               <VariableType>Double</VariableType>
               <Address>+6F0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>84</ID>
               <Description>"Minute [0, 5, 60)"</Description>
+              <LastState Value="20" RealAddress="12ABED60"/>
               <VariableType>Double</VariableType>
               <Address>+700</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>55</ID>
               <Description>"Hour [0, 1, 24)"</Description>
+              <LastState Value="20" RealAddress="12ABED70"/>
               <VariableType>Double</VariableType>
               <Address>+710</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>83</ID>
               <Description>"Days Total"</Description>
+              <LastState Value="36" RealAddress="12ABED80"/>
               <VariableType>Double</VariableType>
               <Address>+720</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>82</ID>
               <Description>"Current Day Of Season [1,10]"</Description>
+              <LastState Value="6" RealAddress="12ABED90"/>
               <VariableType>Double</VariableType>
               <Address>+730</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>85</ID>
               <Description>"Year"</Description>
+              <LastState Value="2" RealAddress="12ABEDA0"/>
               <VariableType>Double</VariableType>
               <Address>+740</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>56</ID>
               <Description>"Foraging"</Description>
+              <LastState Value="10" RealAddress="12ABF290"/>
               <VariableType>Double</VariableType>
               <Address>+C30</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>57</ID>
               <Description>"Swimming"</Description>
+              <LastState Value="10" RealAddress="12ABF2A0"/>
               <VariableType>Double</VariableType>
               <Address>+C40</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>58</ID>
               <Description>"Fighting (Dmg)"</Description>
+              <LastState Value="10" RealAddress="12ABF2B0"/>
               <VariableType>Double</VariableType>
               <Address>+C50</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>59</ID>
               <Description>"Hunting"</Description>
+              <LastState Value="10" RealAddress="12ABF2C0"/>
               <VariableType>Double</VariableType>
               <Address>+C60</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>60</ID>
               <Description>"Miauw Tokens"</Description>
+              <LastState Value="1999988485" RealAddress="12ABF2D0"/>
               <VariableType>Double</VariableType>
               <Address>+C70</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>71</ID>
               <Description>"Quest Tokens Display"</Description>
+              <LastState Value="9999844" RealAddress="12ABF2E0"/>
               <VariableType>Double</VariableType>
               <Address>+C80</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>72</ID>
               <Description>"Quest Tokens Has"</Description>
+              <LastState Value="9999844" RealAddress="12ABF2F0"/>
               <VariableType>Double</VariableType>
               <Address>+C90</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>61</ID>
               <Description>"Mole Coins Displayed"</Description>
+              <LastState Value="9987176" RealAddress="12ABF300"/>
               <VariableType>Double</VariableType>
               <Address>+CA0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>62</ID>
               <Description>"Mole Coins Has"</Description>
+              <LastState Value="9987176" RealAddress="12ABF310"/>
               <VariableType>Double</VariableType>
               <Address>+CB0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>88</ID>
               <Description>"Festival Tokens Display"</Description>
+              <LastState Value="9999868" RealAddress="12ABF320"/>
               <VariableType>Double</VariableType>
               <Address>+CC0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>89</ID>
               <Description>"Festival Tokens as"</Description>
+              <LastState Value="9999868" RealAddress="12ABF330"/>
               <VariableType>Double</VariableType>
               <Address>+CD0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>63</ID>
               <Description>"Coins Displayed"</Description>
+              <LastState Value="9993671" RealAddress="12ABF340"/>
               <VariableType>Double</VariableType>
               <Address>+CE0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>64</ID>
               <Description>"Coins Has"</Description>
+              <LastState Value="9993671" RealAddress="12ABF350"/>
               <VariableType>Double</VariableType>
               <Address>+CF0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>65</ID>
               <Description>"Current HP"</Description>
+              <LastState Value="200" RealAddress="12ABF3D0"/>
               <VariableType>Double</VariableType>
               <Address>+D70</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>66</ID>
               <Description>"Max HP"</Description>
+              <LastState Value="200" RealAddress="12ABF3E0"/>
               <VariableType>Double</VariableType>
               <Address>+D80</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>68</ID>
               <Description>"Slots (60 max?)"</Description>
+              <LastState Value="60" RealAddress="12ABF7F0"/>
               <VariableType>Double</VariableType>
               <Address>+1190</Address>
             </CheatEntry>
@@ -180,9 +204,9 @@ luacall(aobcleanup('PlayerBase'))
     </CheatEntry>
     <CheatEntry>
       <ID>600</ID>
-      <Description>"Reputation"</Description>
+      <Description>"Reputation / Slots"</Description>
       <Options moHideChildren="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 luacall(aobscanall('ReputationBase', '8C A0 40 00 00 00 00 00 00 00 00 00 00 00 00 00 94 A0 40'))
@@ -193,8 +217,8 @@ luacall(aobcleanup('ReputationBase'))
       <CheatEntries>
         <CheatEntry>
           <ID>115</ID>
-          <Description>"Correction"</Description>
-          <LastState Value="" RealAddress="00000000"/>
+          <Description>"Correction (Reputation)"</Description>
+          <LastState Value="" RealAddress="12799480"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>0</ByteLength>
@@ -203,25 +227,72 @@ luacall(aobcleanup('ReputationBase'))
             <CheatEntry>
               <ID>116</ID>
               <Description>"Mountain"</Description>
+              <LastState Value="1000" RealAddress="12799480"/>
               <VariableType>Double</VariableType>
               <Address>+0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>109</ID>
               <Description>"Forest"</Description>
+              <LastState Value="1000" RealAddress="12799490"/>
               <VariableType>Double</VariableType>
               <Address>+10</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>110</ID>
               <Description>"Mystic"</Description>
+              <LastState Value="1000" RealAddress="127994A0"/>
               <VariableType>Double</VariableType>
               <Address>+20</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>111</ID>
               <Description>"Player Colony? R/O"</Description>
+              <LastState Value="1000" RealAddress="127994B0"/>
               <VariableType>Double</VariableType>
+              <Address>+30</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>652</ID>
+          <Description>"Correction (Equipment Slots, put Equip Value in here to equip)"</Description>
+          <LastState Value="" RealAddress="127A0000"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>ReputationBase0+6D7B</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>653</ID>
+              <Description>"Slot 0 Equipment"</Description>
+              <LastState Value="00000000120C97F0" RealAddress="127A0000"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>8 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>654</ID>
+              <Description>"Slot 1 Equipment"</Description>
+              <LastState Value="00000000120C8B80" RealAddress="127A0010"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>8 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>655</ID>
+              <Description>"Slot 2 Equipment"</Description>
+              <LastState Value="00000000120CA620" RealAddress="127A0020"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>8 Bytes</VariableType>
+              <Address>+20</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>656</ID>
+              <Description>"Slot 3 Equipment"</Description>
+              <LastState Value="00000000120CA630" RealAddress="127A0030"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>8 Bytes</VariableType>
               <Address>+30</Address>
             </CheatEntry>
           </CheatEntries>
@@ -232,7 +303,7 @@ luacall(aobcleanup('ReputationBase'))
       <ID>573</ID>
       <Description>"Active Skills"</Description>
       <Options moHideChildren="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 luacall(aobscanall('SkillsBase', '07 00 00 00 01 00 00 00 00 00 00 00 00 CC 97 40 00'))
@@ -244,7 +315,7 @@ luacall(aobcleanup('SkillsBase'))
         <CheatEntry>
           <ID>119</ID>
           <Description>"Correction"</Description>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" RealAddress="1200C7F0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>0</ByteLength>
@@ -252,9 +323,9 @@ luacall(aobcleanup('SkillsBase'))
           <CheatEntries>
             <CheatEntry>
               <ID>126</ID>
-              <Description>"?"</Description>
+              <Description>"Warp: Island"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFEAC0"/>
+              <LastState Value="" Activated="1" RealAddress="1200B2B0"/>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
               <Address>-1540</Address>
@@ -262,38 +333,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>499</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200B270"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>500</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200B290"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>572</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200B2B0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>501</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="9000" RealAddress="1200B310"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>502</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="1" RealAddress="1200B370"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>648</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C8B80" RealAddress="1200B390"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>503</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFEAC0"/>
+                  <LastState Value="" RealAddress="1200B2B0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -301,6 +385,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>504</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8C00" RealAddress="1200B280"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -308,6 +393,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>505</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8BE0" RealAddress="1200B2A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -315,6 +401,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>506</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8A90" RealAddress="1200B2E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -322,6 +409,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>507</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8C50" RealAddress="1200B300"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -329,6 +417,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>508</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8AF0" RealAddress="1200B320"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -336,6 +425,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>509</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8B00" RealAddress="1200B330"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -343,6 +433,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>510</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8B20" RealAddress="1200B340"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -350,6 +441,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>511</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8B40" RealAddress="1200B360"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -357,6 +449,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>512</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8B60" RealAddress="1200B380"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -364,6 +457,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>513</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8B80" RealAddress="1200B390"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -371,12 +465,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>514</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200B3B0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>515</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8D90" RealAddress="1200B3C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -384,6 +480,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>516</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200B3D0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -391,6 +488,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>517</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8D70" RealAddress="1200B3E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -401,9 +499,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>153</ID>
-              <Description>"?"</Description>
+              <Description>"Warp: Prairie"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFEC00"/>
+              <LastState Value="" Activated="1" RealAddress="1200B3F0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -412,38 +510,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>537</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200B3B0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>538</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200B3D0"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>571</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200B3F0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>539</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="9000" RealAddress="1200B450"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>540</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="1" RealAddress="1200B4B0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>647</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C8D10" RealAddress="1200B4D0"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>541</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFEC00"/>
+                  <LastState Value="" RealAddress="1200B3F0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -451,6 +562,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>542</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8D90" RealAddress="1200B3C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -458,6 +570,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>543</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8D70" RealAddress="1200B3E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -465,6 +578,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>544</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8C20" RealAddress="1200B420"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -472,6 +586,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>545</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8DE0" RealAddress="1200B440"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -479,6 +594,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>546</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8C80" RealAddress="1200B460"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -486,6 +602,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>547</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8C90" RealAddress="1200B470"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -493,6 +610,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>548</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8CB0" RealAddress="1200B480"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -500,6 +618,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>549</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8CD0" RealAddress="1200B4A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -507,6 +626,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>550</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8CF0" RealAddress="1200B4C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -514,6 +634,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>551</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8D10" RealAddress="1200B4D0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -521,12 +642,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>552</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200B4F0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>553</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8F20" RealAddress="1200B500"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -534,6 +657,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>554</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200B510"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -541,6 +665,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>555</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8F00" RealAddress="1200B520"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -551,9 +676,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>151</ID>
-              <Description>"?"</Description>
+              <Description>"Warp: Canyon"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFED40"/>
+              <LastState Value="" Activated="1" RealAddress="1200B530"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -562,38 +687,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>518</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200B4F0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>519</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200B510"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>570</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200B530"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>520</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="9000" RealAddress="1200B590"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>521</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="1" RealAddress="1200B5F0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>646</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C8EA0" RealAddress="1200B610"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>522</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFED40"/>
+                  <LastState Value="" RealAddress="1200B530"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -601,6 +739,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>523</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8F20" RealAddress="1200B500"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -608,6 +747,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>524</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8F00" RealAddress="1200B520"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -615,6 +755,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>525</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8DB0" RealAddress="1200B560"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -622,6 +763,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>526</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8F70" RealAddress="1200B580"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -629,6 +771,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>527</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8E10" RealAddress="1200B5A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -636,6 +779,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>528</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8E20" RealAddress="1200B5B0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -643,6 +787,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>529</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8E40" RealAddress="1200B5C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -650,6 +795,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>530</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8E60" RealAddress="1200B5E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -657,6 +803,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>531</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8E80" RealAddress="1200B600"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -664,6 +811,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>532</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8EA0" RealAddress="1200B610"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -671,12 +819,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>533</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200B630"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>534</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C90B0" RealAddress="1200B640"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -684,6 +834,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>535</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200B650"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -691,6 +842,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>536</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9090" RealAddress="1200B660"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -701,9 +853,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>150</ID>
-              <Description>"?"</Description>
+              <Description>"Warp: Temple"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFEE80"/>
+              <LastState Value="" Activated="1" RealAddress="1200B670"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -712,38 +864,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>271</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200B630"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>272</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200B650"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>569</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200B670"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>273</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="9000" RealAddress="1200B6D0"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>274</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200B730"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>645</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C9030" RealAddress="1200B750"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>275</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFEE80"/>
+                  <LastState Value="" RealAddress="1200B670"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -751,6 +916,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>276</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C90B0" RealAddress="1200B640"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -758,6 +924,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>277</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9090" RealAddress="1200B660"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -765,6 +932,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>278</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8F40" RealAddress="1200B6A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -772,6 +940,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>279</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9100" RealAddress="1200B6C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -779,6 +948,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>280</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8FA0" RealAddress="1200B6E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -786,6 +956,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>281</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8FB0" RealAddress="1200B6F0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -793,6 +964,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>282</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8FD0" RealAddress="1200B700"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -800,6 +972,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>283</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C8FF0" RealAddress="1200B720"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -807,6 +980,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>284</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9010" RealAddress="1200B740"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -814,6 +988,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>285</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9030" RealAddress="1200B750"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -821,12 +996,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>286</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200B770"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>287</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9240" RealAddress="1200B780"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -834,6 +1011,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>288</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200B790"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -841,6 +1019,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>289</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9200" RealAddress="1200B7A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -851,9 +1030,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>149</ID>
-              <Description>"?"</Description>
+              <Description>"Return Home"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFEFC0"/>
+              <LastState Value="" Activated="1" RealAddress="1200B7B0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -862,38 +1041,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>480</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200B770"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>481</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200B790"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>568</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200B7B0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>482</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="9000" RealAddress="1200B810"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>483</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200B870"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>644</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C91C0" RealAddress="1200B890"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>484</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFEFC0"/>
+                  <LastState Value="" RealAddress="1200B7B0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -901,6 +1093,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>485</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9240" RealAddress="1200B780"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -908,6 +1101,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>486</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9200" RealAddress="1200B7A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -915,6 +1109,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>487</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C90D0" RealAddress="1200B7E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -922,6 +1117,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>488</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9290" RealAddress="1200B800"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -929,6 +1125,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>489</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9130" RealAddress="1200B820"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -936,6 +1133,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>490</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9140" RealAddress="1200B830"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -943,6 +1141,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>491</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9160" RealAddress="1200B840"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -950,6 +1149,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>492</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9180" RealAddress="1200B860"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -957,6 +1157,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>493</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C91A0" RealAddress="1200B880"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -964,6 +1165,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>494</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C91C0" RealAddress="1200B890"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -971,12 +1173,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>495</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200B8B0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>496</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C93D0" RealAddress="1200B8C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -984,6 +1188,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>497</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200B8D0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -991,6 +1196,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>498</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000124A5370" RealAddress="1200B8E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -1001,9 +1207,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>148</ID>
-              <Description>"?"</Description>
+              <Description>"Bug Bait"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF100"/>
+              <LastState Value="" Activated="1" RealAddress="1200B8F0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -1012,38 +1218,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>461</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200B8B0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>462</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200B8D0"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>567</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="6000.49505999989" RealAddress="1200B8F0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>463</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="14400" RealAddress="1200B950"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>464</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="1" RealAddress="1200B9B0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>643</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C9350" RealAddress="1200B9D0"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>465</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFF100"/>
+                  <LastState Value="" RealAddress="1200B8F0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -1051,6 +1270,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>466</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C93D0" RealAddress="1200B8C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -1058,6 +1278,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>467</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000124A5370" RealAddress="1200B8E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -1065,6 +1286,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>468</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9260" RealAddress="1200B920"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -1072,6 +1294,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>469</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9420" RealAddress="1200B940"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -1079,6 +1302,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>470</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C92C0" RealAddress="1200B960"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -1086,6 +1310,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>471</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C92D0" RealAddress="1200B970"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -1093,6 +1318,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>472</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C92F0" RealAddress="1200B980"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -1100,6 +1326,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>473</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9310" RealAddress="1200B9A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -1107,6 +1334,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>474</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9330" RealAddress="1200B9C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -1114,6 +1342,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>475</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9350" RealAddress="1200B9D0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -1121,12 +1350,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>476</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200B9F0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>477</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9690" RealAddress="1200BA00"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -1134,6 +1365,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>478</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200BA10"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -1141,6 +1373,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>479</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9390" RealAddress="1200BA20"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -1151,9 +1384,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>141</ID>
-              <Description>"?"</Description>
+              <Description>"Shield"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF240"/>
+              <LastState Value="" Activated="1" RealAddress="1200BA30"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -1162,38 +1395,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>442</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200B9F0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>443</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200BA10"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>566</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200BA30"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>444</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="4800" RealAddress="1200BA90"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>445</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="1" RealAddress="1200BAF0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>642</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C94D0" RealAddress="1200BB10"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>446</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFF240"/>
+                  <LastState Value="" RealAddress="1200BA30"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -1201,6 +1447,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>447</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9690" RealAddress="1200BA00"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -1208,6 +1455,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>448</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9390" RealAddress="1200BA20"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -1215,6 +1463,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>449</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C93F0" RealAddress="1200BA60"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -1222,6 +1471,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>450</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C95A0" RealAddress="1200BA80"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -1229,6 +1479,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>451</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9450" RealAddress="1200BAA0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -1236,6 +1487,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>452</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9460" RealAddress="1200BAB0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -1243,6 +1495,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>453</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9480" RealAddress="1200BAC0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -1250,6 +1503,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>454</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C94A0" RealAddress="1200BAE0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -1257,6 +1511,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>455</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C94C0" RealAddress="1200BB00"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -1264,6 +1519,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>456</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C94D0" RealAddress="1200BB10"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -1271,12 +1527,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>457</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200BB30"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>458</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C96E0" RealAddress="1200BB40"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -1284,6 +1542,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>459</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200BB50"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -1291,6 +1550,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>460</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C96C0" RealAddress="1200BB60"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -1301,9 +1561,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>143</ID>
-              <Description>"?"</Description>
+              <Description>"Pinecone Toss"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF380"/>
+              <LastState Value="" Activated="1" RealAddress="1200BB70"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -1312,38 +1572,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>423</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200BB30"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>424</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200BB50"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>565</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200BB70"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>425</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="1320" RealAddress="1200BBD0"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>426</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="1" RealAddress="1200BC30"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>641</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C9660" RealAddress="1200BC50"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>427</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFF380"/>
+                  <LastState Value="" RealAddress="1200BB70"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -1351,6 +1624,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>428</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C96E0" RealAddress="1200BB40"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -1358,6 +1632,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>429</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C96C0" RealAddress="1200BB60"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -1365,6 +1640,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>430</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9570" RealAddress="1200BBA0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -1372,6 +1648,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>431</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9730" RealAddress="1200BBC0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -1379,6 +1656,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>432</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C95D0" RealAddress="1200BBE0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -1386,6 +1664,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>433</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C95E0" RealAddress="1200BBF0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -1393,6 +1672,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>434</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9600" RealAddress="1200BC00"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -1400,6 +1680,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>435</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9620" RealAddress="1200BC20"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -1407,6 +1688,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>436</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9640" RealAddress="1200BC40"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -1414,6 +1696,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>437</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9660" RealAddress="1200BC50"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -1421,12 +1704,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>438</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200BC70"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>439</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9870" RealAddress="1200BC80"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -1434,6 +1719,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>440</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200BC90"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -1441,6 +1727,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>441</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9850" RealAddress="1200BCA0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -1451,9 +1738,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>140</ID>
-              <Description>"?"</Description>
+              <Description>"Study Prey"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF4C0"/>
+              <LastState Value="" Activated="1" RealAddress="1200BCB0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -1462,38 +1749,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>404</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200BC70"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>405</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200BC90"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>564</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200BCB0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>406</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="3600" RealAddress="1200BD10"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>407</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200BD70"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>640</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C97F0" RealAddress="1200BD90"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>408</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFF4C0"/>
+                  <LastState Value="" RealAddress="1200BCB0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -1501,6 +1801,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>409</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9870" RealAddress="1200BC80"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -1508,6 +1809,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>410</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9850" RealAddress="1200BCA0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -1515,6 +1817,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>411</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9700" RealAddress="1200BCE0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -1522,6 +1825,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>412</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C98C0" RealAddress="1200BD00"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -1529,6 +1833,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>413</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9760" RealAddress="1200BD20"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -1536,6 +1841,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>414</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9770" RealAddress="1200BD30"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -1543,6 +1849,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>415</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9790" RealAddress="1200BD40"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -1550,6 +1857,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>416</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C97B0" RealAddress="1200BD60"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -1557,6 +1865,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>417</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C97D0" RealAddress="1200BD80"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -1564,6 +1873,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>418</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C97F0" RealAddress="1200BD90"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -1571,12 +1881,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>419</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200BDB0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>420</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9A00" RealAddress="1200BDC0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -1584,6 +1896,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>421</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200BDD0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -1591,6 +1904,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>422</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C99E0" RealAddress="1200BDE0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -1601,9 +1915,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>142</ID>
-              <Description>"?"</Description>
+              <Description>"Mortal Wound"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF600"/>
+              <LastState Value="" Activated="1" RealAddress="1200BDF0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -1612,38 +1926,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>385</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200BDB0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>386</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200BDD0"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>563</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200BDF0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>387</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="14400" RealAddress="1200BE50"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>388</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200BEB0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>639</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C9980" RealAddress="1200BED0"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>389</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFF600"/>
+                  <LastState Value="" RealAddress="1200BDF0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -1651,6 +1978,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>390</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9A00" RealAddress="1200BDC0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -1658,6 +1986,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>391</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C99E0" RealAddress="1200BDE0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -1665,6 +1994,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>392</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9890" RealAddress="1200BE20"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -1672,6 +2002,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>393</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9A50" RealAddress="1200BE40"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -1679,6 +2010,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>394</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C98F0" RealAddress="1200BE60"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -1686,6 +2018,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>395</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9900" RealAddress="1200BE70"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -1693,6 +2026,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>396</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9920" RealAddress="1200BE80"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -1700,6 +2034,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>397</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9940" RealAddress="1200BEA0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -1707,6 +2042,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>398</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9960" RealAddress="1200BEC0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -1714,6 +2050,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>399</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9980" RealAddress="1200BED0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -1721,12 +2058,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>400</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200BEF0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>401</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9B90" RealAddress="1200BF00"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -1734,6 +2073,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>402</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200BF10"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -1741,6 +2081,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>403</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9B70" RealAddress="1200BF20"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -1751,9 +2092,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>134</ID>
-              <Description>"?"</Description>
+              <Description>"Heal Allies"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF740"/>
+              <LastState Value="" Activated="1" RealAddress="1200BF30"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -1762,38 +2103,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>366</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200BEF0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>367</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200BF10"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>562</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200BF30"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>368</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="3600" RealAddress="1200BF90"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>369</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200BFF0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>638</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C9B10" RealAddress="1200C010"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>370</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFF740"/>
+                  <LastState Value="" RealAddress="1200BF30"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -1801,6 +2155,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>371</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9B90" RealAddress="1200BF00"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -1808,6 +2163,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>372</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9B70" RealAddress="1200BF20"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -1815,6 +2171,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>373</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9A20" RealAddress="1200BF60"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -1822,6 +2179,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>374</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9BE0" RealAddress="1200BF80"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -1829,6 +2187,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>375</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9A80" RealAddress="1200BFA0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -1836,6 +2195,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>376</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9A90" RealAddress="1200BFB0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -1843,6 +2203,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>377</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9AB0" RealAddress="1200BFC0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -1850,6 +2211,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>378</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9AD0" RealAddress="1200BFE0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -1857,6 +2219,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>379</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9AF0" RealAddress="1200C000"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -1864,6 +2227,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>380</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9B10" RealAddress="1200C010"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -1871,12 +2235,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>381</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200C030"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>382</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9D20" RealAddress="1200C040"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -1884,6 +2250,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>383</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200C050"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -1891,6 +2258,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>384</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9D00" RealAddress="1200C060"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -1901,9 +2269,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>133</ID>
-              <Description>"?"</Description>
+              <Description>"Deep Cuts"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF880"/>
+              <LastState Value="" Activated="1" RealAddress="1200C070"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -1912,32 +2280,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>347</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200C030"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>348</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200C050"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
+                  <ID>601</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200C070"/>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
                   <ID>349</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="5400" RealAddress="1200C0D0"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>350</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200C130"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>637</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C9CA0" RealAddress="1200C150"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>351</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFF880"/>
+                  <LastState Value="" RealAddress="1200C070"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -1945,6 +2332,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>352</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9D20" RealAddress="1200C040"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -1952,6 +2340,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>353</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9D00" RealAddress="1200C060"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -1959,6 +2348,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>354</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9BB0" RealAddress="1200C0A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -1966,6 +2356,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>355</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9D70" RealAddress="1200C0C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -1973,6 +2364,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>356</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9C10" RealAddress="1200C0E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -1980,6 +2372,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>357</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9C20" RealAddress="1200C0F0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -1987,6 +2380,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>358</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9C40" RealAddress="1200C100"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -1994,6 +2388,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>359</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9C60" RealAddress="1200C120"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -2001,6 +2396,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>360</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9C80" RealAddress="1200C140"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -2008,6 +2404,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>361</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9CA0" RealAddress="1200C150"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -2015,12 +2412,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>362</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200C170"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>363</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9EB0" RealAddress="1200C180"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -2028,6 +2427,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>364</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200C190"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -2035,6 +2435,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>365</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9E90" RealAddress="1200C1A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -2045,9 +2446,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>132</ID>
-              <Description>"?"</Description>
+              <Description>"Lion's Roar"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF9C0"/>
+              <LastState Value="" Activated="1" RealAddress="1200C1B0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -2056,38 +2457,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>328</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200C170"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>329</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200C190"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>561</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200C1B0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>330</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="7200" RealAddress="1200C210"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>331</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200C270"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>636</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C9E30" RealAddress="1200C290"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>332</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFF9C0"/>
+                  <LastState Value="" RealAddress="1200C1B0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -2095,6 +2509,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>333</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9EB0" RealAddress="1200C180"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -2102,6 +2517,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>334</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9E90" RealAddress="1200C1A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -2109,6 +2525,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>335</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9D40" RealAddress="1200C1E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -2116,6 +2533,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>336</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9F00" RealAddress="1200C200"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -2123,6 +2541,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>337</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9DA0" RealAddress="1200C220"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -2130,6 +2549,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>338</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9DB0" RealAddress="1200C230"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -2137,6 +2557,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>339</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9DD0" RealAddress="1200C240"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -2144,6 +2565,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>340</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9DF0" RealAddress="1200C260"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -2151,6 +2573,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>341</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9E10" RealAddress="1200C280"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -2158,6 +2581,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>342</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9E30" RealAddress="1200C290"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -2165,12 +2589,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>343</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200C2B0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>344</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA040" RealAddress="1200C2C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -2178,6 +2604,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>345</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200C2D0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -2185,6 +2612,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>346</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA020" RealAddress="1200C2E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -2195,9 +2623,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>122</ID>
-              <Description>"?"</Description>
+              <Description>"Summon Allies"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFFB00"/>
+              <LastState Value="" Activated="1" RealAddress="1200C2F0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -2206,38 +2634,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>309</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200C2B0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>310</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200C2D0"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>560</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200C2F0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>311</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="18000" RealAddress="1200C350"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>312</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200C3B0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>635</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120C9FC0" RealAddress="1200C3D0"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>313</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFFB00"/>
+                  <LastState Value="" RealAddress="1200C2F0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -2245,6 +2686,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>314</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA040" RealAddress="1200C2C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -2252,6 +2694,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>315</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA020" RealAddress="1200C2E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -2259,6 +2702,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>316</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9ED0" RealAddress="1200C320"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -2266,6 +2710,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>317</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA090" RealAddress="1200C340"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -2273,6 +2718,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>318</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9F30" RealAddress="1200C360"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -2280,6 +2726,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>319</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9F40" RealAddress="1200C370"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -2287,6 +2734,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>320</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9F60" RealAddress="1200C380"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -2294,6 +2742,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>321</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9F80" RealAddress="1200C3A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -2301,6 +2750,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>322</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9FA0" RealAddress="1200C3C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -2308,6 +2758,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>323</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120C9FC0" RealAddress="1200C3D0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -2315,12 +2766,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>324</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200C3F0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>325</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA1D0" RealAddress="1200C400"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -2328,6 +2781,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>326</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200C410"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -2335,6 +2789,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>327</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA1B0" RealAddress="1200C420"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -2345,9 +2800,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>139</ID>
-              <Description>"?"</Description>
+              <Description>"Wild Slash"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFFC40"/>
+              <LastState Value="" Activated="1" RealAddress="1200C430"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -2356,38 +2811,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>290</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200C3F0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>291</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200C410"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>559</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200C430"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>292</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="1200" RealAddress="1200C490"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>293</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200C4F0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>634</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120CA150" RealAddress="1200C510"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>294</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFFC40"/>
+                  <LastState Value="" RealAddress="1200C430"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -2395,6 +2863,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>295</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA1D0" RealAddress="1200C400"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -2402,6 +2871,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>296</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA1B0" RealAddress="1200C420"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -2409,6 +2879,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>297</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA060" RealAddress="1200C460"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -2416,6 +2887,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>298</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA220" RealAddress="1200C480"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -2423,6 +2895,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>299</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA0C0" RealAddress="1200C4A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -2430,6 +2903,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>300</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA0D0" RealAddress="1200C4B0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -2437,6 +2911,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>301</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA0F0" RealAddress="1200C4C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -2444,6 +2919,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>302</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA110" RealAddress="1200C4E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -2451,6 +2927,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>303</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA130" RealAddress="1200C500"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -2458,6 +2935,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>304</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA150" RealAddress="1200C510"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -2465,12 +2943,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>305</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200C530"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>306</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA360" RealAddress="1200C540"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -2478,6 +2958,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>307</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200C550"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -2485,6 +2966,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>308</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA340" RealAddress="1200C560"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -2495,9 +2977,9 @@ luacall(aobcleanup('SkillsBase'))
             </CheatEntry>
             <CheatEntry>
               <ID>124</ID>
-              <Description>"?"</Description>
+              <Description>"Diplomacy"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFFD80"/>
+              <LastState Value="" Activated="1" RealAddress="1200C570"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
@@ -2506,38 +2988,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>233</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200C530"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>234</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200C550"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>558</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200C570"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>235</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="10800" RealAddress="1200C5D0"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>236</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200C630"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>633</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120CA2E0" RealAddress="1200C650"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>237</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFFD80"/>
+                  <LastState Value="" RealAddress="1200C570"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -2545,6 +3040,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>238</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA360" RealAddress="1200C540"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -2552,6 +3048,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>239</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA340" RealAddress="1200C560"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -2559,6 +3056,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>240</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA1F0" RealAddress="1200C5A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -2566,6 +3064,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>241</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA3B0" RealAddress="1200C5C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -2573,6 +3072,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>242</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA250" RealAddress="1200C5E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -2580,6 +3080,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>243</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA260" RealAddress="1200C5F0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -2587,6 +3088,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>244</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA280" RealAddress="1200C600"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -2594,6 +3096,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>245</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA2A0" RealAddress="1200C620"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -2601,6 +3104,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>246</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA2C0" RealAddress="1200C640"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -2608,6 +3112,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>247</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA2E0" RealAddress="1200C650"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -2615,12 +3120,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>248</ID>
                       <Description>"?"</Description>
+                      <LastState Value="0" RealAddress="1200C670"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>249</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA4F0" RealAddress="1200C680"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -2628,6 +3135,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>250</ID>
                       <Description>"?"</Description>
+                      <LastState Value="0000000000000000" RealAddress="1200C690"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -2635,6 +3143,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>251</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA4D0" RealAddress="1200C6A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -2647,7 +3156,7 @@ luacall(aobcleanup('SkillsBase'))
               <ID>154</ID>
               <Description>"DEV SPRINT"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFFEC0"/>
+              <LastState Value="" Activated="1" RealAddress="1200C6B0"/>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
               <Address>-140</Address>
@@ -2655,38 +3164,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>252</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="0" RealAddress="1200C670"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>253</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="0" RealAddress="1200C690"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>254</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200C6B0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>556</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="180" RealAddress="1200C710"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>255</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="1" RealAddress="1200C770"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>632</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120CA470" RealAddress="1200C790"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>256</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="FFFFFFFFFFFFFEC0"/>
+                  <LastState Value="" RealAddress="1200C6B0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -2694,6 +3216,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>257</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA4F0" RealAddress="1200C680"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -2701,6 +3224,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>258</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA4D0" RealAddress="1200C6A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -2708,6 +3232,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>259</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA380" RealAddress="1200C6E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -2715,6 +3240,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>260</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA540" RealAddress="1200C700"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -2722,6 +3248,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>261</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA3E0" RealAddress="1200C720"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -2729,6 +3256,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>262</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA3F0" RealAddress="1200C730"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -2736,6 +3264,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>263</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA410" RealAddress="1200C740"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -2743,6 +3272,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>264</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA430" RealAddress="1200C760"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -2750,6 +3280,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>265</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA450" RealAddress="1200C780"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
@@ -2757,6 +3288,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>266</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA470" RealAddress="1200C790"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+E0</Address>
@@ -2764,12 +3296,14 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>267</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1" RealAddress="1200C7B0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>268</ID>
                       <Description>"?"</Description>
+                      <LastState Value="0000000012252ED0" RealAddress="1200C7C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -2777,6 +3311,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>269</ID>
                       <Description>"?"</Description>
+                      <LastState Value="4010000000000000" RealAddress="1200C7D0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -2784,6 +3319,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>270</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA4B0" RealAddress="1200C7E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
@@ -2796,7 +3332,7 @@ luacall(aobcleanup('SkillsBase'))
               <ID>193</ID>
               <Description>"SPRINT"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="00000000"/>
+              <LastState Value="" Activated="1" RealAddress="1200C7F0"/>
               <VariableType>Array of byte</VariableType>
               <ByteLength>0</ByteLength>
               <Address>+0</Address>
@@ -2804,38 +3340,51 @@ luacall(aobcleanup('SkillsBase'))
                 <CheatEntry>
                   <ID>209</ID>
                   <Description>"Unlocked/Researched?"</Description>
+                  <LastState Value="1" RealAddress="1200C7B0"/>
                   <VariableType>Double</VariableType>
                   <Address>-40</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>211</ID>
                   <Description>"Upgrade Level (4 Max)"</Description>
+                  <LastState Value="4" RealAddress="1200C7D0"/>
                   <VariableType>Double</VariableType>
                   <Address>-20</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>557</ID>
                   <Description>"Cooldown Timer"</Description>
+                  <LastState Value="0" RealAddress="1200C7F0"/>
                   <VariableType>Double</VariableType>
                   <Address>+0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>218</ID>
                   <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <LastState Value="1200" RealAddress="1200C850"/>
                   <VariableType>Double</VariableType>
                   <Address>+60</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>224</ID>
                   <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <LastState Value="0" RealAddress="1200C8B0"/>
                   <VariableType>Double</VariableType>
                   <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>226</ID>
+                  <Description>"Equip Value"</Description>
+                  <LastState Value="00000000120CA5F0" RealAddress="1200C8D0"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>+E0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>232</ID>
                   <Description>"Pointers"</Description>
                   <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
+                  <LastState Value="" RealAddress="1200C7F0"/>
                   <VariableType>Array of byte</VariableType>
                   <ByteLength>0</ByteLength>
                   <Address>+0</Address>
@@ -2843,6 +3392,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>210</ID>
                       <Description>"?"</Description>
+                      <LastState Value="0000000012252ED0" RealAddress="1200C7C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-30</Address>
@@ -2850,6 +3400,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>212</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA4B0" RealAddress="1200C7E0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>-10</Address>
@@ -2857,6 +3408,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>215</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA510" RealAddress="1200C820"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+30</Address>
@@ -2864,6 +3416,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>217</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA610" RealAddress="1200C840"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+50</Address>
@@ -2871,6 +3424,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>219</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA570" RealAddress="1200C860"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+70</Address>
@@ -2878,6 +3432,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>220</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA580" RealAddress="1200C870"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+80</Address>
@@ -2885,6 +3440,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>221</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA5A0" RealAddress="1200C880"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+90</Address>
@@ -2892,6 +3448,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>223</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA5C0" RealAddress="1200C8A0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+B0</Address>
@@ -2899,26 +3456,22 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>225</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA5E0" RealAddress="1200C8C0"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+D0</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>226</ID>
-                      <Description>"?"</Description>
-                      <ShowAsHex>1</ShowAsHex>
-                      <VariableType>8 Bytes</VariableType>
-                      <Address>+E0</Address>
-                    </CheatEntry>
-                    <CheatEntry>
                       <ID>228</ID>
                       <Description>"?"</Description>
+                      <LastState Value="1.51630999648024E-315" RealAddress="1200C8F0"/>
                       <VariableType>Double</VariableType>
                       <Address>+100</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>229</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA670" RealAddress="1200C900"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+110</Address>
@@ -2926,6 +3479,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>230</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA6D0" RealAddress="1200C910"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+120</Address>
@@ -2933,6 +3487,7 @@ luacall(aobcleanup('SkillsBase'))
                     <CheatEntry>
                       <ID>231</ID>
                       <Description>"?"</Description>
+                      <LastState Value="00000000120CA690" RealAddress="1200C920"/>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>8 Bytes</VariableType>
                       <Address>+130</Address>
