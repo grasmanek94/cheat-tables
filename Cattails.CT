@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"AOBHelper"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>4096</ByteLength>
+      <Address>-800</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"AOBHelper"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>4096</ByteLength>
+      <Address>-800</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>51</ID>
+      <Description>"PlayerBase ? [20 AC 40 07 00 00 00 00] + 3B"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="12954660"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>12954625+3B</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>52</ID>
+          <Description>"Speed Boost Multiplier"</Description>
+          <LastState Value="3" Activated="1" RealAddress="12954660"/>
+          <VariableType>Double</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>53</ID>
+          <Description>"Current Food (MAX 350)"</Description>
+          <LastState Value="154" RealAddress="12954AF0"/>
+          <VariableType>Double</VariableType>
+          <Address>+490</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>54</ID>
+          <Description>"?"</Description>
+          <LastState Value="780" RealAddress="12954D50"/>
+          <VariableType>Double</VariableType>
+          <Address>+6F0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>84</ID>
+          <Description>"Minute [0, 5, 60)"</Description>
+          <LastState Value="45" Activated="1" RealAddress="12954D60"/>
+          <VariableType>Double</VariableType>
+          <Address>+700</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>55</ID>
+          <Description>"Hour [0, 1, 24)"</Description>
+          <LastState Value="12" RealAddress="12954D70"/>
+          <VariableType>Double</VariableType>
+          <Address>+710</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>83</ID>
+          <Description>"Days Total"</Description>
+          <LastState Value="32" RealAddress="12954D80"/>
+          <VariableType>Double</VariableType>
+          <Address>+720</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"Current Day Of Season [1,10]"</Description>
+          <LastState Value="2" RealAddress="12954D90"/>
+          <VariableType>Double</VariableType>
+          <Address>+730</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>85</ID>
+          <Description>"year?"</Description>
+          <LastState Value="2" RealAddress="12954DA0"/>
+          <VariableType>Double</VariableType>
+          <Address>+740</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>56</ID>
+          <Description>"Foraging"</Description>
+          <LastState Value="10" RealAddress="12955290"/>
+          <VariableType>Double</VariableType>
+          <Address>+C30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>57</ID>
+          <Description>"Swimming"</Description>
+          <LastState Value="10" RealAddress="129552A0"/>
+          <VariableType>Double</VariableType>
+          <Address>+C40</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>58</ID>
+          <Description>"Fighting (Dmg)"</Description>
+          <LastState Value="120" RealAddress="129552B0"/>
+          <VariableType>Double</VariableType>
+          <Address>+C50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>59</ID>
+          <Description>"Hunting"</Description>
+          <LastState Value="10" RealAddress="129552C0"/>
+          <VariableType>Double</VariableType>
+          <Address>+C60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>60</ID>
+          <Description>"Miauw Tokens"</Description>
+          <LastState Value="1999988466" RealAddress="129552D0"/>
+          <VariableType>Double</VariableType>
+          <Address>+C70</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>71</ID>
+          <Description>"Quest Tokens Display"</Description>
+          <LastState Value="9999844" RealAddress="129552E0"/>
+          <VariableType>Double</VariableType>
+          <Address>+C80</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72</ID>
+          <Description>"Quest Tokens Has"</Description>
+          <LastState Value="9999844" RealAddress="129552F0"/>
+          <VariableType>Double</VariableType>
+          <Address>+C90</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>61</ID>
+          <Description>"Mole Coins Displayed"</Description>
+          <LastState Value="9987176" RealAddress="12955300"/>
+          <VariableType>Double</VariableType>
+          <Address>+CA0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>62</ID>
+          <Description>"Mole Coins Has"</Description>
+          <LastState Value="9987176" RealAddress="12955310"/>
+          <VariableType>Double</VariableType>
+          <Address>+CB0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88</ID>
+          <Description>"Festival Tokens Display"</Description>
+          <LastState Value="9999868" RealAddress="12955320"/>
+          <VariableType>Double</VariableType>
+          <Address>+CC0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>89</ID>
+          <Description>"Festival Tokens as"</Description>
+          <LastState Value="9999868" RealAddress="12955330"/>
+          <VariableType>Double</VariableType>
+          <Address>+CD0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>63</ID>
+          <Description>"Coins Displayed"</Description>
+          <LastState Value="9995979" RealAddress="12955340"/>
+          <VariableType>Double</VariableType>
+          <Address>+CE0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>64</ID>
+          <Description>"Coins Has"</Description>
+          <LastState Value="9995979" RealAddress="12955350"/>
+          <VariableType>Double</VariableType>
+          <Address>+CF0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>65</ID>
+          <Description>"Current HP"</Description>
+          <LastState Value="200" Activated="1" RealAddress="129553D0"/>
+          <VariableType>Double</VariableType>
+          <Address>+D70</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>66</ID>
+          <Description>"Max HP"</Description>
+          <LastState Value="200" RealAddress="129553E0"/>
+          <VariableType>Double</VariableType>
+          <Address>+D80</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>68</ID>
+          <Description>"Slots"</Description>
+          <LastState Value="60" RealAddress="129557F0"/>
+          <VariableType>Double</VariableType>
+          <Address>+1190</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>90</ID>
+      <Description>"Call Friends Timer"</Description>
+      <LastState Value="0" Activated="1" RealAddress="11E83150"/>
+      <VariableType>Double</VariableType>
+      <Address>11E83150</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>91</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1000" RealAddress="18CE4A50"/>
+      <VariableType>Double</VariableType>
+      <Address>18CE4A50</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Decrease skill timer</Description>
+      <AddressString>cattails.exe+E046E</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>06</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+        <Byte>5D</Byte>
+        <Byte>5B</Byte>
+        <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change Minute</Description>
+      <AddressString>cattails.exe+16DF66</AddressString>
+      <Before>
+        <Byte>C3</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>06</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+        <Byte>5D</Byte>
+        <Byte>5B</Byte>
+        <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Access friend status</Description>
+      <AddressString>cattails.exe+116FE6</AddressString>
+      <Before>
+        <Byte>E9</Byte>
+        <Byte>FA</Byte>
+        <Byte>5A</Byte>
+        <Byte>18</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>40</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>53</Byte>
+        <Byte>57</Byte>
+        <Byte>8B</Byte>
+        <Byte>7C</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
