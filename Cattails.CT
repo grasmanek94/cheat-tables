@@ -10,195 +10,167 @@
       <Address>-800</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>121</ID>
-      <Description>"AOBHelper"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>4096</ByteLength>
-      <Address>-800</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>51</ID>
-      <Description>"PlayerBase ? [20 AC 40 07 00 00 00 00]"</Description>
+      <ID>203</ID>
+      <Description>"Player/World Stats"</Description>
       <Options moHideChildren="1"/>
-      <LastState Value="" Activated="1" RealAddress="12954625"/>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>0</ByteLength>
-      <Address>12954625</Address>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+luacall(aobscanall('PlayerBase', '20 AC 40 07 00 00 00 00'))
+
+[DISABLE]
+luacall(aobcleanup('PlayerBase'))
+</AssemblerScript>
       <CheatEntries>
         <CheatEntry>
           <ID>114</ID>
           <Description>"Correction"</Description>
-          <LastState Value="" RealAddress="12954660"/>
+          <LastState Value="" RealAddress="00000000"/>
           <VariableType>Array of byte</VariableType>
           <ByteLength>0</ByteLength>
-          <Address>+3B</Address>
+          <Address>PlayerBase0+3B</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>52</ID>
               <Description>"Speed Boost Multiplier"</Description>
-              <LastState Value="3" Activated="1" RealAddress="12954660"/>
               <VariableType>Double</VariableType>
               <Address>+0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>53</ID>
               <Description>"Current Food (MAX 350)"</Description>
-              <LastState Value="350" Activated="1" RealAddress="12954AF0"/>
               <VariableType>Double</VariableType>
               <Address>+490</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>54</ID>
               <Description>"?"</Description>
-              <LastState Value="896" RealAddress="12954D50"/>
               <VariableType>Double</VariableType>
               <Address>+6F0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>84</ID>
               <Description>"Minute [0, 5, 60)"</Description>
-              <LastState Value="45" Activated="1" RealAddress="12954D60"/>
               <VariableType>Double</VariableType>
               <Address>+700</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>55</ID>
               <Description>"Hour [0, 1, 24)"</Description>
-              <LastState Value="8" RealAddress="12954D70"/>
               <VariableType>Double</VariableType>
               <Address>+710</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>83</ID>
               <Description>"Days Total"</Description>
-              <LastState Value="37" RealAddress="12954D80"/>
               <VariableType>Double</VariableType>
               <Address>+720</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>82</ID>
               <Description>"Current Day Of Season [1,10]"</Description>
-              <LastState Value="7" RealAddress="12954D90"/>
               <VariableType>Double</VariableType>
               <Address>+730</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>85</ID>
               <Description>"Year"</Description>
-              <LastState Value="2" RealAddress="12954DA0"/>
               <VariableType>Double</VariableType>
               <Address>+740</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>56</ID>
               <Description>"Foraging"</Description>
-              <LastState Value="10" RealAddress="12955290"/>
               <VariableType>Double</VariableType>
               <Address>+C30</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>57</ID>
               <Description>"Swimming"</Description>
-              <LastState Value="10" RealAddress="129552A0"/>
               <VariableType>Double</VariableType>
               <Address>+C40</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>58</ID>
               <Description>"Fighting (Dmg)"</Description>
-              <LastState Value="120" RealAddress="129552B0"/>
               <VariableType>Double</VariableType>
               <Address>+C50</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>59</ID>
               <Description>"Hunting"</Description>
-              <LastState Value="10" RealAddress="129552C0"/>
               <VariableType>Double</VariableType>
               <Address>+C60</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>60</ID>
               <Description>"Miauw Tokens"</Description>
-              <LastState Value="1999988489" RealAddress="129552D0"/>
               <VariableType>Double</VariableType>
               <Address>+C70</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>71</ID>
               <Description>"Quest Tokens Display"</Description>
-              <LastState Value="9999844" RealAddress="129552E0"/>
               <VariableType>Double</VariableType>
               <Address>+C80</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>72</ID>
               <Description>"Quest Tokens Has"</Description>
-              <LastState Value="9999844" RealAddress="129552F0"/>
               <VariableType>Double</VariableType>
               <Address>+C90</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>61</ID>
               <Description>"Mole Coins Displayed"</Description>
-              <LastState Value="9987176" RealAddress="12955300"/>
               <VariableType>Double</VariableType>
               <Address>+CA0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>62</ID>
               <Description>"Mole Coins Has"</Description>
-              <LastState Value="9987176" RealAddress="12955310"/>
               <VariableType>Double</VariableType>
               <Address>+CB0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>88</ID>
               <Description>"Festival Tokens Display"</Description>
-              <LastState Value="9999868" RealAddress="12955320"/>
               <VariableType>Double</VariableType>
               <Address>+CC0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>89</ID>
               <Description>"Festival Tokens as"</Description>
-              <LastState Value="9999868" RealAddress="12955330"/>
               <VariableType>Double</VariableType>
               <Address>+CD0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>63</ID>
               <Description>"Coins Displayed"</Description>
-              <LastState Value="9993671" RealAddress="12955340"/>
               <VariableType>Double</VariableType>
               <Address>+CE0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>64</ID>
               <Description>"Coins Has"</Description>
-              <LastState Value="9993671" RealAddress="12955350"/>
               <VariableType>Double</VariableType>
               <Address>+CF0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>65</ID>
               <Description>"Current HP"</Description>
-              <LastState Value="200" Activated="1" RealAddress="129553D0"/>
               <VariableType>Double</VariableType>
               <Address>+D70</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>66</ID>
               <Description>"Max HP"</Description>
-              <LastState Value="200" RealAddress="129553E0"/>
               <VariableType>Double</VariableType>
               <Address>+D80</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>68</ID>
               <Description>"Slots (60 max?)"</Description>
-              <LastState Value="60" RealAddress="129557F0"/>
               <VariableType>Double</VariableType>
               <Address>+1190</Address>
             </CheatEntry>
@@ -207,49 +179,48 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>107</ID>
-      <Description>"Reputation [8C A0 40 00 00 00 00 00 00 00 00 00 00 00 00 00 94 A0 40] + 1FB"</Description>
+      <ID>600</ID>
+      <Description>"Reputation"</Description>
       <Options moHideChildren="1"/>
-      <LastState Value="" Activated="1" RealAddress="12629285"/>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>0</ByteLength>
-      <Address>12629285</Address>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+luacall(aobscanall('ReputationBase', '8C A0 40 00 00 00 00 00 00 00 00 00 00 00 00 00 94 A0 40'))
+
+[DISABLE]
+luacall(aobcleanup('ReputationBase'))
+</AssemblerScript>
       <CheatEntries>
         <CheatEntry>
           <ID>115</ID>
           <Description>"Correction"</Description>
-          <LastState Value="" RealAddress="12629480"/>
+          <LastState Value="" RealAddress="00000000"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>0</ByteLength>
-          <Address>+1FB</Address>
+          <Address>ReputationBase0+1FB</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>116</ID>
               <Description>"Mountain"</Description>
-              <LastState Value="1000" RealAddress="12629480"/>
               <VariableType>Double</VariableType>
               <Address>+0</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>109</ID>
               <Description>"Forest"</Description>
-              <LastState Value="1000" RealAddress="12629490"/>
               <VariableType>Double</VariableType>
               <Address>+10</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>110</ID>
               <Description>"Mystic"</Description>
-              <LastState Value="1000" RealAddress="126294A0"/>
               <VariableType>Double</VariableType>
               <Address>+20</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>111</ID>
               <Description>"Player Colony? R/O"</Description>
-              <LastState Value="1000" RealAddress="126294B0"/>
               <VariableType>Double</VariableType>
               <Address>+30</Address>
             </CheatEntry>
@@ -258,148 +229,2717 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>118</ID>
-      <Description>"Sprint Skill AOB [07 00 00 00 01 00 00 00 00 00 00 00 00 CC 97 40 00]"</Description>
-      <LastState Value="07 00 00 00 01 00 00 00 00 00 00 00 00 CC 97 40 00" RealAddress="11E832C8"/>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>17</ByteLength>
-      <Address>11E832C8</Address>
+      <ID>573</ID>
+      <Description>"Active Skills"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+luacall(aobscanall('SkillsBase', '07 00 00 00 01 00 00 00 00 00 00 00 00 CC 97 40 00'))
+
+[DISABLE]
+luacall(aobcleanup('SkillsBase'))
+</AssemblerScript>
       <CheatEntries>
         <CheatEntry>
           <ID>119</ID>
           <Description>"Correction"</Description>
-          <LastState Value="" RealAddress="11E83650"/>
+          <LastState Value="" RealAddress="00000000"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Array of byte</VariableType>
           <ByteLength>0</ByteLength>
-          <Address>+388</Address>
+          <Address>SkillsBase0+388</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>126</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82110"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFEAC0"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-1540</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>499</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>500</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>572</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>501</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>502</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>503</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFEAC0"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>504</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>505</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>506</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>507</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>508</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>509</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>510</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>511</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>512</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>513</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>514</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>515</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>516</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>517</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>153</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82250"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFEC00"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-1400</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>537</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>538</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>571</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>539</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>540</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>541</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFEC00"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>542</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>543</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>544</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>545</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>546</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>547</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>548</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>549</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>550</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>551</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>552</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>553</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>554</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>555</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>151</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82390"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFED40"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-12C0</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>518</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>519</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>570</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>520</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>521</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>522</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFED40"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>523</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>524</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>525</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>526</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>527</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>528</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>529</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>530</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>531</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>532</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>533</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>534</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>535</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>536</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>150</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E824D0"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFEE80"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-1180</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>271</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>272</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>569</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>273</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>274</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>275</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFEE80"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>276</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>277</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>278</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>279</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>280</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>281</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>282</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>283</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>284</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>285</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>286</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>287</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>288</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>289</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>149</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82610"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFEFC0"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-1040</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>480</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>481</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>568</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>482</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>483</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>484</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFEFC0"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>485</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>486</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>487</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>488</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>489</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>490</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>491</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>492</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>493</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>494</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>495</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>496</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>497</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>498</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>148</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82750"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF100"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-F00</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>461</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>462</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>567</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>463</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>464</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>465</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFF100"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>466</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>467</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>468</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>469</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>470</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>471</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>472</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>473</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>474</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>475</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>476</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>477</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>478</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>479</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>141</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82890"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF240"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-DC0</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>442</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>443</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>566</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>444</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>445</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>446</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFF240"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>447</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>448</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>449</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>450</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>451</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>452</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>453</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>454</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>455</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>456</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>457</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>458</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>459</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>460</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>143</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E829D0"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF380"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-C80</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>423</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>424</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>565</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>425</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>426</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>427</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFF380"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>428</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>429</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>430</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>431</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>432</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>433</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>434</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>435</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>436</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>437</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>438</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>439</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>440</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>441</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>140</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82B10"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF4C0"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-B40</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>404</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>405</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>564</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>406</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>407</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>408</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFF4C0"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>409</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>410</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>411</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>412</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>413</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>414</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>415</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>416</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>417</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>418</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>419</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>420</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>421</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>422</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>142</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82C50"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF600"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-A00</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>385</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>386</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>563</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>387</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>388</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>389</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFF600"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>390</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>391</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>392</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>393</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>394</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>395</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>396</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>397</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>398</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>399</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>400</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>401</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>402</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>403</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>134</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82D90"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF740"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-8C0</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>366</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>367</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>562</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>368</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>369</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>370</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFF740"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>371</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>372</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>373</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>374</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>375</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>376</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>377</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>378</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>379</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>380</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>381</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>382</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>383</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>384</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>133</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E82ED0"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF880"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-780</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>347</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>348</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>349</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>350</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>351</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFF880"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>352</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>353</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>354</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>355</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>356</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>357</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>358</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>359</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>360</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>361</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>362</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>363</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>364</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>365</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>132</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E83010"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFF9C0"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-640</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>328</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>329</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>561</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>330</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>331</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>332</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFF9C0"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>333</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>334</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>335</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>336</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>337</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>338</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>339</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>340</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>341</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>342</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>343</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>344</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>345</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>346</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>122</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E83150"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFFB00"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-500</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>309</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>310</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>560</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>311</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>312</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>313</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFFB00"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>314</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>315</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>316</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>317</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>318</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>319</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>320</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>321</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>322</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>323</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>324</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>325</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>326</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>327</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>139</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E83290"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFFC40"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-3C0</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>290</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>291</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>559</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>292</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>293</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>294</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFFC40"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>295</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>296</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>297</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>298</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>299</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>300</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>301</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>302</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>303</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>304</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>305</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>306</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>307</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>308</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>124</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E833D0"/>
-              <VariableType>Double</VariableType>
+              <Description>"?"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFFD80"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>-280</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>120</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E83510"/>
-              <VariableType>Double</VariableType>
-              <Address>-140</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>233</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>234</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>558</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>235</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>236</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>237</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFFD80"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>238</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>239</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>240</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>241</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>242</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>243</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>244</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>245</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>246</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>247</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>248</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>249</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>250</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>251</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>154</ID>
-              <Description>"Timer"</Description>
-              <LastState Value="0" RealAddress="11E83650"/>
-              <VariableType>Double</VariableType>
+              <Description>"DEV SPRINT"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="FFFFFFFFFFFFFEC0"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>-140</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>252</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>253</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>254</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>556</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>255</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>256</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="FFFFFFFFFFFFFEC0"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>257</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>258</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>259</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>260</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>261</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>262</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>263</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>264</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>265</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>266</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>267</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>268</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>269</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>270</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>193</ID>
+              <Description>"SPRINT"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
               <Address>+0</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>209</ID>
+                  <Description>"Unlocked/Researched?"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-40</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>211</ID>
+                  <Description>"Upgrade Level (4 Max)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>-20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>557</ID>
+                  <Description>"Cooldown Timer"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>218</ID>
+                  <Description>"Countdown Initial Value (0 = disable countdown)"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+60</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>224</ID>
+                  <Description>"HIDDEN FROM GAME? 1=Y,0=N"</Description>
+                  <VariableType>Double</VariableType>
+                  <Address>+C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>232</ID>
+                  <Description>"Pointers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>0</ByteLength>
+                  <Address>+0</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>210</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>212</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>-10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>215</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+30</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>217</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>219</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+70</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>220</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>221</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>223</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>225</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+D0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>226</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>228</ID>
+                      <Description>"?"</Description>
+                      <VariableType>Double</VariableType>
+                      <Address>+100</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>229</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+110</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>230</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+120</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>231</ID>
+                      <Description>"?"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>+130</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -481,4 +3021,61 @@
     </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
+  <LuaScript>--function _memrec_myCheat_activating(mr,aob,res)
+--  results=AOBScan(aob)
+--  if (results~=nil) then
+--    count=stringlist_getCount(results)
+--    if (count&gt;1) then
+--      address=stringlist_getString(results,res) --counts from 0, so 0 = first, 1=second, etc...
+--      --seems I forgot to add a registersymbol command so use AA for this
+--      script=[[
+--        label(address)
+--        registersymbol(address)
+--        ]]..address..[[:
+--        address:
+--        ]]
+--      autoAssemble(script);
+--    end
+--    object_destroy(results)
+--    results=nil
+--  end
+--end
+function aobscanidx(idx, symbol, aob)
+  results=AOBScan(aob)
+  if (results~=nil) then
+    count=stringlist_getCount(results)
+    if (count&gt;0) then
+      address = stringlist_getString(results,idx)
+      unregisterSymbol(symbol)
+      registerSymbol(symbol, address, true)
+    end
+    object_destroy(results)
+    results=nil
+  end
+end
+
+function aobscanall(symbol, aob)
+  results=AOBScan(aob)
+  if (results~=nil) then
+    count=stringlist_getCount(results)
+    if (count&gt;0) then
+      for i = 0, count - 1 do
+          address = stringlist_getString(results,i)
+          unregisterSymbol(symbol .. i)
+          registerSymbol(symbol .. i, address, true)
+      end
+    end
+    object_destroy(results)
+    results=nil
+  end
+end
+
+function aobcleanup(symbol)
+    for i = 0, 100 do
+        unregisterSymbol(symbol .. i)
+        registerSymbol(symbol .. i, 1, true)
+        unregisterSymbol(symbol .. i)
+    end
+end
+</LuaScript>
 </CheatTable>
