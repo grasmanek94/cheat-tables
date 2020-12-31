@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"AI Backup Enabled"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>GhostRecon.exe+4DDBF0</Address>
+      <Offsets>
+        <Offset>50F</Offset>
+        <Offset>2FC</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Always AI Backup"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [ecx+0000050F],#1
+
+exit:
+jmp returnhere
+
+"GhostRecon.exe"+367F1:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GhostRecon.exe"+367F1:
+mov [ecx+0000050F],al
+//Alt: db 88 81 0F 05 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Always Enable AI Backup Check"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+
+push ecx
+mov ecx, [eax+0000050F]
+mov cl, 1
+mov [eax+0000050F], ecx
+pop ecx
+
+cmp [eax+0000050F],bl
+
+exit:
+jmp returnhere
+
+"GhostRecon.exe"+1BF83F:
+jmp newmem
+nop
+returnhere:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GhostRecon.exe"+1BF83F:
+cmp [eax+0000050F],bl
+//Alt: db 38 98 0F 05 00 00
+
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="80000008">
+      <Description>Write to AI Backup</Description>
+      <AddressString>GhostRecon.exe+367F1</AddressString>
+      <Before>
+        <Byte>8E</Byte>
+        <Byte>04</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>88</Byte>
+        <Byte>81</Byte>
+        <Byte>0F</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C6</Byte>
+        <Byte>86</Byte>
+        <Byte>49</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

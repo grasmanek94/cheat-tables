@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="19">
+<CheatTable CheatEngineTableVersion="27">
   <CheatEntries>
     <CheatEntry>
       <ID>0</ID>
       <Description>"Cash"</Description>
-      <LastState Value="1000000000" Activated="1" RealAddress="014DCC7C"/>
+      <LastState Value="1000000000" RealAddress="014DCC7C"/>
       <VariableType>4 Bytes</VariableType>
       <Address>Mercenaries2.exe+10DCC7C</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>1</ID>
       <Description>"Cash"</Description>
-      <LastState Value="1000000000" Activated="1" RealAddress="01578AB4"/>
+      <LastState Value="1000000000" RealAddress="01578AB4"/>
       <VariableType>4 Bytes</VariableType>
       <Address>Mercenaries2.exe+1178AB4</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>2</ID>
       <Description>"Cash"</Description>
-      <LastState Value="1000000000" Activated="1" RealAddress="0157C01C"/>
+      <LastState Value="0" RealAddress="0157C01C"/>
       <VariableType>4 Bytes</VariableType>
       <Address>Mercenaries2.exe+117C01C</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>3</ID>
       <Description>"Cash"</Description>
-      <LastState Value="1000000000" Activated="1" RealAddress="0157C264"/>
+      <LastState Value="1000000000" RealAddress="0157C264"/>
       <VariableType>4 Bytes</VariableType>
       <Address>Mercenaries2.exe+117C264</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>4</ID>
       <Description>"Oil"</Description>
-      <LastState Value="4000" Activated="1" RealAddress="014DCC80"/>
+      <LastState Value="6100" RealAddress="014DCC80"/>
       <VariableType>4 Bytes</VariableType>
       <Address>Mercenaries2.exe+10DCC80</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>5</ID>
       <Description>"Oil"</Description>
-      <LastState Value="4000" Activated="1" RealAddress="01578AB8"/>
+      <LastState Value="5860" RealAddress="01578AB8"/>
       <VariableType>4 Bytes</VariableType>
       <Address>Mercenaries2.exe+1178AB8</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>6</ID>
       <Description>"Oil"</Description>
-      <LastState Value="4000" Activated="1" RealAddress="0157C268"/>
+      <LastState Value="6100" RealAddress="0157C268"/>
       <VariableType>4 Bytes</VariableType>
       <Address>Mercenaries2.exe+117C268</Address>
     </CheatEntry>
@@ -231,6 +231,62 @@
         <Byte>B9</Byte>
         <Byte>C8</Byte>
         <Byte>EF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Tank Ammo change</Description>
+      <Address>0051E9B3</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>11E9B3</ModuleNameOffset>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>81</Byte>
+        <Byte>46</Byte>
+        <Byte>30</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>4B</Byte>
+        <Byte>54</Byte>
+        <Byte>80</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of add word ptr [esi+30],FFFF</Description>
+      <Address>0051E9B3</Address>
+      <ModuleName>Mercenaries2.exe</ModuleName>
+      <ModuleNameOffset>11E9B3</ModuleNameOffset>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>81</Byte>
+        <Byte>46</Byte>
+        <Byte>30</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>4B</Byte>
+        <Byte>54</Byte>
+        <Byte>80</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

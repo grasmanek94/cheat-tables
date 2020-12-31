@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"HP1000"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT,HyperLightDrifter.exe,F2 0F 11 0F C7 84 24 C0 03 00 00 5D 00 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [edi],0
+  mov [edi+4],40590000
+
+  mov [esp+000003C0],0000005D
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop A
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db F2 0F 11 0F C7 84 24 C0 03 00 00 5D 00 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: HyperLightDrifter.exe+11FE1E
+
+HyperLightDrifter.exe+11FDEE: EB 26                             - jmp HyperLightDrifter.exe+11FE16
+HyperLightDrifter.exe+11FDF0: 8D 84 24 58 03 00 00              - lea eax,[esp+00000358]
+HyperLightDrifter.exe+11FDF7: 89 44 24 08                       - mov [esp+08],eax
+HyperLightDrifter.exe+11FDFB: 89 7C 24 04                       - mov [esp+04],edi
+HyperLightDrifter.exe+11FDFF: C7 04 24 AE 22 B5 01              - mov [esp],HyperLightDrifter.exe+EC22AE
+HyperLightDrifter.exe+11FE06: E8 05 AD EE FF                    - call HyperLightDrifter.exe+AB10
+HyperLightDrifter.exe+11FE0B: EB 15                             - jmp HyperLightDrifter.exe+11FE22
+HyperLightDrifter.exe+11FE0D: F2 0F 10 84 24 58 03 00 00        - movsd xmm0,[esp+00000358]
+HyperLightDrifter.exe+11FE16: F2 0F 10 0F                       - movsd xmm1,[edi]
+HyperLightDrifter.exe+11FE1A: F2 0F 5C C8                       - subsd xmm1,xmm0
+// ---------- INJECTING HERE ----------
+HyperLightDrifter.exe+11FE1E: F2 0F 11 0F                       - movsd [edi],xmm1
+// ---------- DONE INJECTING  ----------
+HyperLightDrifter.exe+11FE22: C7 84 24 C0 03 00 00 5D 00 00 00  - mov [esp+000003C0],0000005D
+HyperLightDrifter.exe+11FE2D: F7 47 0C FF FF FF 00              - test [edi+0C],HyperLightDrifter.exe+36FFFF
+HyperLightDrifter.exe+11FE34: 74 1A                             - je HyperLightDrifter.exe+11FE50
+HyperLightDrifter.exe+11FE36: 89 3C 24                          - mov [esp],edi
+HyperLightDrifter.exe+11FE39: E8 D2 BC B4 00                    - call HyperLightDrifter.exe+C6BB10
+HyperLightDrifter.exe+11FE3E: DD 9C 24 80 00 00 00              - fstp qword ptr [esp+00000080]
+HyperLightDrifter.exe+11FE45: F2 0F 10 84 24 80 00 00 00        - movsd xmm0,[esp+00000080]
+HyperLightDrifter.exe+11FE4E: EB 04                             - jmp HyperLightDrifter.exe+11FE54
+HyperLightDrifter.exe+11FE50: F2 0F 10 07                       - movsd xmm0,[edi]
+HyperLightDrifter.exe+11FE54: F2 0F 58 05 98 29 B5 01           - addsd xmm0,[HyperLightDrifter.exe+EC2998]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Ammo100"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(INJECT,HyperLightDrifter.exe,F2 0F 11 0B 8B 7D 10) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  // ammo
+  mov [ebx],0
+  mov [ebx+4],40590000
+  // hp
+  mov [ebx+1C60],0
+  mov [ebx+1C64],40590000
+  //
+  mov edi,[ebp+10]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db F2 0F 11 0B 8B 7D 10
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: HyperLightDrifter.exe+879D9
+
+HyperLightDrifter.exe+879AD: F2 0F 10 44 24 18                 - movsd xmm0,[esp+18]
+HyperLightDrifter.exe+879B3: EB 1C                             - jmp HyperLightDrifter.exe+879D1
+HyperLightDrifter.exe+879B5: 89 7C 24 08                       - mov [esp+08],edi
+HyperLightDrifter.exe+879B9: 89 5C 24 04                       - mov [esp+04],ebx
+HyperLightDrifter.exe+879BD: C7 04 24 AE 22 B5 01              - mov [esp],HyperLightDrifter.exe+EC22AE
+HyperLightDrifter.exe+879C4: E8 47 31 F8 FF                    - call HyperLightDrifter.exe+AB10
+HyperLightDrifter.exe+879C9: EB 12                             - jmp HyperLightDrifter.exe+879DD
+HyperLightDrifter.exe+879CB: F2 0F 10 44 24 58                 - movsd xmm0,[esp+58]
+HyperLightDrifter.exe+879D1: F2 0F 10 0B                       - movsd xmm1,[ebx]
+HyperLightDrifter.exe+879D5: F2 0F 5C C8                       - subsd xmm1,xmm0
+// ---------- INJECTING HERE ----------
+HyperLightDrifter.exe+879D9: F2 0F 11 0B                       - movsd [ebx],xmm1
+// ---------- DONE INJECTING  ----------
+HyperLightDrifter.exe+879DD: 8B 7D 10                          - mov edi,[ebp+10]
+HyperLightDrifter.exe+879E0: C7 84 24 80 00 00 00 13 00 00 00  - mov [esp+00000080],00000013
+HyperLightDrifter.exe+879EB: B8 FF FF FF 00                    - mov eax,HyperLightDrifter.exe+36FFFF
+HyperLightDrifter.exe+879F0: 03 47 0C                          - add eax,[edi+0C]
+HyperLightDrifter.exe+879F3: F2 0F 10 05 58 1D B5 01           - movsd xmm0,[HyperLightDrifter.exe+EC1D58]
+HyperLightDrifter.exe+879FB: A9 FC FF FF 00                    - test eax,HyperLightDrifter.exe+36FFFC
+HyperLightDrifter.exe+87A00: 75 10                             - jne HyperLightDrifter.exe+87A12
+HyperLightDrifter.exe+87A02: 89 3C 24                          - mov [esp],edi
+HyperLightDrifter.exe+87A05: E8 C6 96 F7 FF                    - call HyperLightDrifter.exe+10D0
+HyperLightDrifter.exe+87A0A: F2 0F 10 05 58 1D B5 01           - movsd xmm0,[HyperLightDrifter.exe+EC1D58]
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="80000008">
+      <Description>Change HP value player</Description>
+      <AddressString>HyperLightDrifter.exe+11FE1E</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>0F</Byte>
+      </Actual>
+      <After>
+        <Byte>C7</Byte>
+        <Byte>84</Byte>
+        <Byte>24</Byte>
+        <Byte>C0</Byte>
+        <Byte>03</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Change stuff but also use life potions</Description>
+      <AddressString>HyperLightDrifter.exe+529C8</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>98</Byte>
+        <Byte>29</Byte>
+        <Byte>B5</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>27</Byte>
+        <Byte>8B</Byte>
+        <Byte>01</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Ammo change for player</Description>
+      <AddressString>HyperLightDrifter.exe+879D9</AddressString>
+      <Before>
+        <Byte>0B</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>0B</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>7D</Byte>
+        <Byte>10</Byte>
+        <Byte>C7</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

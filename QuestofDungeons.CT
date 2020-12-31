@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"HP"</Description>
+      <LastState Value="9242" Activated="1" RealAddress="0CE5A2AC"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>19C</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Mana"</Description>
+      <LastState Value="8838" Activated="1" RealAddress="0CE5A2B0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1A0</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"XP"</Description>
+      <LastState Value="5710" RealAddress="0CE5A2B4"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1A4</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"?"</Description>
+      <LastState Value="13440" RealAddress="0CE5A2B8"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1A8</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"LVL"</Description>
+      <LastState Value="20" RealAddress="0CE5A2BC"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1AC</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Extra Max HP"</Description>
+      <LastState Value="9209" RealAddress="0CE5A2C0"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1B0</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"Extra Max Mana"</Description>
+      <LastState Value="9309" RealAddress="0CE5A2C4"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1B4</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"?"</Description>
+      <LastState Value="228" RealAddress="0CE5A2C8"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1B8</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"?"</Description>
+      <LastState Value="190" RealAddress="0CE5A2CC"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1BC</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"?"</Description>
+      <LastState Value="214" RealAddress="0CE5A2D0"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1C0</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"?"</Description>
+      <LastState Value="65" RealAddress="0CE5A2D4"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1C4</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"?"</Description>
+      <LastState Value="19" RealAddress="0CE5A2D8"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>1C8</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"Spells"</Description>
+      <LastState Value="09E65028" RealAddress="0C9F7140"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"QuestofDungeons.exe"+0022A3B0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>364</Offset>
+        <Offset>0</Offset>
+        <Offset>38</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Spell 0"</Description>
+          <LastState Value="" RealAddress="0C9F7148"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+1*8+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"Type"</Description>
+              <LastState Value="" RealAddress="09E63B60"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>38</ID>
+              <Description>"Cooldown"</Description>
+              <LastState Value="0" Activated="1" RealAddress="0C9F714C"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>42</ID>
+          <Description>"Spell 1"</Description>
+          <LastState Value="" RealAddress="0C9F7150"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+2*8+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"Type"</Description>
+              <LastState Value="" RealAddress="09F0F9D8"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>44</ID>
+              <Description>"Cooldown"</Description>
+              <LastState Value="0" Activated="1" RealAddress="0C9F7154"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"Spell 2"</Description>
+          <LastState Value="" RealAddress="0C9F7158"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+3*8+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>40</ID>
+              <Description>"Type"</Description>
+              <LastState Value="" RealAddress="09F040C8"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41</ID>
+              <Description>"Cooldown"</Description>
+              <LastState Value="0" Activated="1" RealAddress="0C9F715C"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>45</ID>
+          <Description>"Spell 3"</Description>
+          <LastState Value="" RealAddress="0C9F7160"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+4*8+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>46</ID>
+              <Description>"Type"</Description>
+              <LastState Value="" RealAddress="09F0DFD0"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>47</ID>
+              <Description>"Cooldown"</Description>
+              <LastState Value="0" Activated="1" RealAddress="0C9F7164"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"Spell 4"</Description>
+          <LastState Value="" RealAddress="0C9F7168"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+5*8+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>49</ID>
+              <Description>"Type"</Description>
+              <LastState Value="" RealAddress="09F0DE48"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>50</ID>
+              <Description>"Cooldown"</Description>
+              <LastState Value="0" Activated="1" RealAddress="0C9F716C"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>51</ID>
+          <Description>"Spell 5"</Description>
+          <LastState Value="" RealAddress="0C9F7170"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+6*8+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>52</ID>
+              <Description>"Type"</Description>
+              <LastState Value="" RealAddress="09F03740"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>53</ID>
+              <Description>"Cooldown"</Description>
+              <LastState Value="0" RealAddress="0C9F7174"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>54</ID>
+          <Description>"Spell 6"</Description>
+          <LastState Value="" RealAddress="0C9F7178"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+7*8+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>55</ID>
+              <Description>"Type"</Description>
+              <LastState Value="" RealAddress="09F0DCC0"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>56</ID>
+              <Description>"Cooldown"</Description>
+              <LastState Value="0" RealAddress="0C9F717C"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>57</ID>
+          <Description>"Spell 7"</Description>
+          <LastState Value="" RealAddress="0C9F7180"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+8*8+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>58</ID>
+              <Description>"Type"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>0</ByteLength>
+              <Address>+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"Cooldown"</Description>
+              <LastState Value="15" RealAddress="0C9F7184"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>124</ID>
+      <Description>"?"</Description>
+      <LastState Value="3D060000" RealAddress="00BE4050"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"CaveStory+.exe"+C4050</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>173</ID>
+          <Description>"-A0"</Description>
+          <LastState Value="" RealAddress="00BE3FB0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-A0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>174</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FB0"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>175</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FAC"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>176</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FA8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>177</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FA4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>188</ID>
+          <Description>"-90"</Description>
+          <LastState Value="" RealAddress="00BE3FC0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-90</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>189</ID>
+              <Description>"?"</Description>
+              <LastState Value="128" RealAddress="00BE3FC0"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>190</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FBC"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>191</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FB8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>192</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FB4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>183</ID>
+          <Description>"-80"</Description>
+          <LastState Value="" RealAddress="00BE3FD0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-80</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>184</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FD0"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>185</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FCC"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>186</ID>
+              <Description>"?"</Description>
+              <LastState Value="2" RealAddress="00BE3FC8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>187</ID>
+              <Description>"?"</Description>
+              <LastState Value="131112" RealAddress="00BE3FC4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>178</ID>
+          <Description>"-70"</Description>
+          <LastState Value="" RealAddress="00BE3FE0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-70</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>179</ID>
+              <Description>"Y Pos"</Description>
+              <LastState Value="654492" RealAddress="00BE3FE0"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>180</ID>
+              <Description>"X Pos"</Description>
+              <LastState Value="649529" RealAddress="00BE3FDC"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>181</ID>
+              <Description>"?"</Description>
+              <LastState Value="94" RealAddress="00BE3FD8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>182</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FD4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>168</ID>
+          <Description>"-60"</Description>
+          <LastState Value="" RealAddress="00BE3FF0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-60</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>169</ID>
+              <Description>"?"</Description>
+              <LastState Value="512" RealAddress="00BE3FF0"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>170</ID>
+              <Description>"?"</Description>
+              <LastState Value="32768" RealAddress="00BE3FEC"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>171</ID>
+              <Description>"?"</Description>
+              <LastState Value="655004" RealAddress="00BE3FE8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>172</ID>
+              <Description>"?"</Description>
+              <LastState Value="682297" RealAddress="00BE3FE4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>126</ID>
+          <Description>"-50"</Description>
+          <LastState Value="" RealAddress="00BE4000"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-50</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>130</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE4000"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>129</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE3FFC"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>127</ID>
+              <Description>"Velocity Y"</Description>
+              <LastState Value="0" RealAddress="00BE3FF8"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>128</ID>
+              <Description>"Velocity X"</Description>
+              <LastState Value="0" RealAddress="00BE3FF4"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>151</ID>
+          <Description>"-40"</Description>
+          <LastState Value="" RealAddress="00BE4010"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-40</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>152</ID>
+              <Description>"?"</Description>
+              <LastState Value="4096" RealAddress="00BE4010"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>153</ID>
+              <Description>"?"</Description>
+              <LastState Value="2560" RealAddress="00BE400C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>154</ID>
+              <Description>"?"</Description>
+              <LastState Value="4096" RealAddress="00BE4008"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>155</ID>
+              <Description>"?"</Description>
+              <LastState Value="2560" RealAddress="00BE4004"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>146</ID>
+          <Description>"-30"</Description>
+          <LastState Value="" RealAddress="00BE4020"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-30</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>147</ID>
+              <Description>"?"</Description>
+              <LastState Value="4096" RealAddress="00BE4020"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>148</ID>
+              <Description>"?"</Description>
+              <LastState Value="4096" RealAddress="00BE401C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>149</ID>
+              <Description>"?"</Description>
+              <LastState Value="4096" RealAddress="00BE4018"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>150</ID>
+              <Description>"?"</Description>
+              <LastState Value="4096" RealAddress="00BE4014"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>141</ID>
+          <Description>"-20"</Description>
+          <LastState Value="" RealAddress="00BE4030"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-20</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>142</ID>
+              <Description>"?"</Description>
+              <LastState Value="32" RealAddress="00BE4030"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>143</ID>
+              <Description>"?"</Description>
+              <LastState Value="16" RealAddress="00BE402C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>144</ID>
+              <Description>"?"</Description>
+              <LastState Value="16" RealAddress="00BE4028"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>145</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE4024"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>136</ID>
+          <Description>"-10"</Description>
+          <LastState Value="" RealAddress="00BE4040"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-10</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>137</ID>
+              <Description>"?"</Description>
+              <LastState Value="32" RealAddress="00BE4040"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>138</ID>
+              <Description>"?"</Description>
+              <LastState Value="120" RealAddress="00BE403C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>139</ID>
+              <Description>"?"</Description>
+              <LastState Value="16" RealAddress="00BE4038"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>140</ID>
+              <Description>"?"</Description>
+              <LastState Value="96" RealAddress="00BE4034"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>131</ID>
+          <Description>"-0"</Description>
+          <LastState Value="" RealAddress="00BE4050"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>132</ID>
+              <Description>"?"</Description>
+              <LastState Value="1023803392" RealAddress="00BE4050"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>133</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE404C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>134</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE4048"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>135</ID>
+              <Description>"?"</Description>
+              <LastState Value="0" RealAddress="00BE4044"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-C</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>125</ID>
+      <Description>"Character Base"</Description>
+      <LastState Value="" RealAddress="00BE4054"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>"CaveStory+.exe"+C4054</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>0</ID>
+          <Description>"Life"</Description>
+          <LastState Value="49" RealAddress="00BE4054"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Max Life"</Description>
+          <LastState Value="49" RealAddress="00BE4058"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"Life"</Description>
+          <LastState Value="49" RealAddress="00BE405C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"?"</Description>
+          <LastState Value="0" RealAddress="00BE4060"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"Air"</Description>
+          <LastState Value="1000" RealAddress="00BE4064"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"?"</Description>
+          <LastState Value="0" RealAddress="00BE4068"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+14</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Has Boost Jump"</Description>
+          <LastState Value="0" RealAddress="00BE406C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+18</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Max Boost Jump Time"</Description>
+          <LastState Value="0" RealAddress="00BE4070"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"?"</Description>
+          <LastState Value="620596" RealAddress="00BE4074"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+20</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>57</ID>
+      <Description>"Weapons"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00BD4410"/>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>00BD4410</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>58</ID>
+          <Description>"Weapon -2"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00BD43E8"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-14*2</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"Type"</Description>
+              <LastState Value="0" RealAddress="00BD43E8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"Level"</Description>
+              <LastState Value="0" RealAddress="00BD43EC"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>62</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD43F0"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>61</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" RealAddress="00BD43F4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>63</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" RealAddress="00BD43F8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>106</ID>
+          <Description>"Weapon -1"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00BD43FC"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>-14*1</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>107</ID>
+              <Description>"Type"</Description>
+              <LastState Value="0" RealAddress="00BD43FC"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>108</ID>
+              <Description>"Level"</Description>
+              <LastState Value="0" RealAddress="00BD4400"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>109</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD4404"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>110</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" RealAddress="00BD4408"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>111</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="16" RealAddress="00BD440C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>100</ID>
+          <Description>"Weapon 0"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD4410"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>101</ID>
+              <Description>"Type"</Description>
+              <LastState Value="4" RealAddress="00BD4410"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>102</ID>
+              <Description>"Level"</Description>
+              <LastState Value="3" Activated="1" RealAddress="00BD4414"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>103</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD4418"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD441C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>105</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4420"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>64</ID>
+          <Description>"Weapon 1"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD4424"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*1</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>65</ID>
+              <Description>"Type"</Description>
+              <LastState Value="10" RealAddress="00BD4424"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>66</ID>
+              <Description>"Level"</Description>
+              <LastState Value="3" Activated="1" RealAddress="00BD4428"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"XP"</Description>
+              <LastState Value="6" RealAddress="00BD442C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4430"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>69</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4434"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>70</ID>
+          <Description>"Weapon 2"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD4438"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*2</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>71</ID>
+              <Description>"Type"</Description>
+              <LastState Value="3" RealAddress="00BD4438"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72</ID>
+              <Description>"Level"</Description>
+              <LastState Value="3" Activated="1" RealAddress="00BD443C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>73</ID>
+              <Description>"XP"</Description>
+              <LastState Value="8" RealAddress="00BD4440"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>74</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4444"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>75</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4448"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>76</ID>
+          <Description>"Weapon 3"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD444C"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*3</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>77</ID>
+              <Description>"Type"</Description>
+              <LastState Value="9" RealAddress="00BD444C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>78</ID>
+              <Description>"Level"</Description>
+              <LastState Value="3" Activated="1" RealAddress="00BD4450"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>79</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD4454"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>80</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4458"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>81</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD445C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"Weapon 4"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD4460"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*4</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>83</ID>
+              <Description>"Type"</Description>
+              <LastState Value="7" RealAddress="00BD4460"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"Level"</Description>
+              <LastState Value="3" Activated="1" RealAddress="00BD4464"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>85</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD4468"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>86</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD446C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>87</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4470"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88</ID>
+          <Description>"Weapon 5"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD4474"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*5</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>89</ID>
+              <Description>"Type"</Description>
+              <LastState Value="0" RealAddress="00BD4474"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>90</ID>
+              <Description>"Level"</Description>
+              <LastState Value="3" Activated="1" RealAddress="00BD4478"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>91</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD447C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>92</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4480"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4484"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>94</ID>
+          <Description>"Weapon 6"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD4488"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*6</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>95</ID>
+              <Description>"Type"</Description>
+              <LastState Value="0" RealAddress="00BD4488"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>96</ID>
+              <Description>"Level"</Description>
+              <LastState Value="3" Activated="1" RealAddress="00BD448C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>97</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD4490"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>98</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4494"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>99</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD4498"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>112</ID>
+          <Description>"Weapon 7"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD449C"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*7</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>113</ID>
+              <Description>"Type"</Description>
+              <LastState Value="0" RealAddress="00BD449C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>114</ID>
+              <Description>"Level"</Description>
+              <LastState Value="3" Activated="1" RealAddress="00BD44A0"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD44A4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>116</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD44A8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>117</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" Activated="1" RealAddress="00BD44AC"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>118</ID>
+          <Description>"Weapon 8"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD44B0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>119</ID>
+              <Description>"Type"</Description>
+              <LastState Value="1" RealAddress="00BD44B0"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>120</ID>
+              <Description>"Level"</Description>
+              <LastState Value="64" RealAddress="00BD44B4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>121</ID>
+              <Description>"XP"</Description>
+              <LastState Value="64" RealAddress="00BD44B8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>122</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" RealAddress="00BD44BC"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>123</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" RealAddress="00BD44C0"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>156</ID>
+          <Description>"Weapon 9"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD44C4"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*9</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>157</ID>
+              <Description>"Type"</Description>
+              <LastState Value="1" RealAddress="00BD44C4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>158</ID>
+              <Description>"Level"</Description>
+              <LastState Value="154" RealAddress="00BD44C8"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>159</ID>
+              <Description>"XP"</Description>
+              <LastState Value="1966080" RealAddress="00BD44CC"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>160</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="1048576" RealAddress="00BD44D0"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>161</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" RealAddress="00BD44D4"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>162</ID>
+          <Description>"Weapon 10"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00BD4550"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>0</ByteLength>
+          <Address>+14*10</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>163</ID>
+              <Description>"Type"</Description>
+              <LastState Value="0" RealAddress="00BD4550"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>164</ID>
+              <Description>"Level"</Description>
+              <LastState Value="0" RealAddress="00BD4554"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>165</ID>
+              <Description>"XP"</Description>
+              <LastState Value="0" RealAddress="00BD4558"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>166</ID>
+              <Description>"MaxAmmo (0=unlimited)"</Description>
+              <LastState Value="0" RealAddress="00BD455C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>167</ID>
+              <Description>"Current Ammo"</Description>
+              <LastState Value="0" RealAddress="00BD4560"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Weapon Types:
+
+0 - None
+1 - Snake (Shoots through walls?)
+2 - Polar Star / First Gun
+3 - Fireball
+4 - Machine Gun
+5 - Missile Launcher
+6 - ?
+7 - Bubbline
+8 - ?
+9 - Blade
+10 - Super Missile
+11 - ?
+12 - Nemesis
+13 - Spur
+</Comments>
+</CheatTable>
