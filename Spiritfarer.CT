@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>247CD6F4998</Address>
+      <Offsets>
+        <Offset>20</Offset>
+      </Offsets>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>22549</Key>
+            <Key>22535</Key>
+            <Key>22528</Key>
+          </Keys>
+          <Value>99999</Value>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>=====================================================================================
+48 8B 45 F0           - mov rax,[rbp-10]
+48 8B 90 98000000     - mov rdx,[rax+00000098] // [[rax+98]+20] = selected item count
+48 8B C6              - mov rax,rsi
+48 8B C8              - mov rcx,rax
+48 8B 00              - mov rax,[rax]
+=====================================================================================
+48 8B 4D F0           - mov rcx,[rbp-10]
+48 8B C6              - mov rax,rsi
+48 89 45 E8           - mov [rbp-18],rax
+48 89 81 98000000     - mov [rcx+00000098],rax // [[rcx+98]+20] = selected item count
+48 81 C1 98000000     - add rcx,00000098 { 152 }
+=====================================================================================
+48 8B 86 30010000     - mov rax,[rsi+00000130]
+48 8B C8              - mov rcx,rax
+83 39 00              - cmp dword ptr [rcx],00 { 0 }
+48 8B 90 98000000     - mov rdx,[rax+00000098] // rax ^
+48 8B CE              - mov rcx,rsi
+=====================================================================================
+48 8B 45 F0           - mov rax,[rbp-10]
+48 8B 90 98000000     - mov rdx,[rax+00000098] // rax ^
+48 8B C6              - mov rax,rsi
+48 8B C8              - mov rcx,rax
+48 8B 00              - mov rax,[rax]
+=====================================================================================
+48 8D 44 48 14        - lea rax,[rax+rcx*2+14]
+0FB7 08               - movzx ecx,word ptr [rax] // selected recipe name unicode string
+66 66 90              - nop 3
+
+
+
+48 8B 45 F0 48 8B 90 98</Comments>
+</CheatTable>

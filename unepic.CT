@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Compact UI Mode"</Description>
+      <Color>FF0000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+LuaCall(function cycleFullCompact(sender,force) local state = not(compactmenuitem.Caption == 'Compact View Mode'); if force~=nil then state = not force end; compactmenuitem.Caption = state and 'Compact View Mode' or 'Full View Mode'; getMainForm().Splitter1.Visible = state; getMainForm().Panel4.Visible    = state; getMainForm().Panel5.Visible    = state; end; function addCompactMenu() if compactmenualreadyexists then return end; local parent = getMainForm().Menu.Items; compactmenuitem = createMenuItem(parent); parent.add(compactmenuitem); compactmenuitem.Caption = 'Compact View Mode'; compactmenuitem.OnClick = cycleFullCompact; compactmenualreadyexists = 'yes'; end; addCompactMenu(); cycleFullCompact(nil,true))
+
+[DISABLE]
+LuaCall(cycleFullCompact(nil,false))
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"Health points"</Description>
+      <Color>000080</Color>
+      <VariableType>Float</VariableType>
+      <Address>"unepic.exe"+00298608</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"Health points can be used without Anti-cheat"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+          <Address/>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"Health points Se puede usar sin Anti-cheat"</Description>
+          <Color>000080</Color>
+          <GroupHeader>1</GroupHeader>
+          <Address/>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Anti-cheat  (OFF ONLY MAIN MENU)"</Description>
+      <Color>0000FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[enable]
+"unepic.exe"+2D507:
+mov [ecx+00000D18],00000000
+
+
+[disable]
+"unepic.exe"+2D507:
+mov [ecx+00000D18],00000001
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"XP  99k = lvl 10"</Description>
+          <Color>0080FF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>unepic.exe+852D58</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"Skill Points"</Description>
+          <Color>8000FF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>unepic.exe+852D64</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>0</ID>
+          <Description>"COIN   (Minim 2)"</Description>
+          <Color>0A59DE</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>unepic.exe+85400C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"Espa 1 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C54164</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"Espa 2 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C54210</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Espa 3 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C542BC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Espa 4 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C54368</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Espa 5 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C54414</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"Espa 6 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C544C0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"Espa 7 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C5456C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Espa 8 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C54618</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Espa 9 Invent"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C546C4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"Espa 10 Invent"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00C54770</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+29860C</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+298610</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2BB2B8</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2BB2BC</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2BB2C0</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2BB2C4</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2BB2C8</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2BB2CC</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2BB2D0</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2BB2D4</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>34</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+2DDF54</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>35</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>unepic.exe+86AB70</Address>
+      <Offsets>
+        <Offset>474</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Arrastra en tu inventario cualquier articulo apilable a los espacios 1, 2 o 3
+</Comments>
+</CheatTable>

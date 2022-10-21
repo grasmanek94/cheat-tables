@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"Base [["Motherload-Win64-Shipping.exe"+0x041BD240]+0x188]"</Description>
+      <LastState RealAddress="1C6C980D1E8"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>0</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>"Motherload-Win64-Shipping.exe"+041BD240</Address>
+      <Offsets>
+        <Offset>188</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"Score"</Description>
+          <LastState Value="1337069420" RealAddress="1C6CA6897E8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+0</Address>
+          <Offsets>
+            <Offset>+228</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Money"</Description>
+          <LastState Value="1337069420" RealAddress="1C6D0E9372C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>+0</Address>
+          <Offsets>
+            <Offset>58C</Offset>
+            <Offset>220</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"Fuel"</Description>
+          <LastState Value="10" RealAddress="1C6D0E93708"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+0</Address>
+          <Offsets>
+            <Offset>568</Offset>
+            <Offset>220</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Life"</Description>
+          <LastState Value="92" RealAddress="1C6D0E937C8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+0</Address>
+          <Offsets>
+            <Offset>628</Offset>
+            <Offset>220</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

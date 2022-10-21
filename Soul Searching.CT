@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>1</ShowAsSigned>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>121A3850</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"No description"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"No description"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+14</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"No description"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+18</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"No description"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+1C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Structures StructVersion="2">
+    <Structure Name="String" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="8" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000008" Description="Length" DisplayMethod="unsigned integer"/>
+        <Element Offset="12" Vartype="Unicode String" Bytesize="128" OffsetHex="0000000C" Description="Value" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+  </Structures>
+</CheatTable>

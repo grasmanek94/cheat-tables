@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Enable"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{
+	Game	: SOTN.exe
+	Version	: 1.0.0.0
+	Date	: 2021-02-03
+	Author	: aSwedishMagyar
+}
+[ENABLE]
+aobscanmodule(getPlayer,SOTN.exe,8B 46 10 8D 04 88 EB 02 33 C0 5F)
+registersymbol(getPlayer)
+registersymbol(basePlayer)
+alloc(newgetPlayer,100,getPlayer)
+label(codegetPlayer)
+label(returngetPlayer)
+label(basePlayer)
+newgetPlayer:
+  mov eax,[esi+10]
+  cmp ecx,747
+  jne codegetPlayer
+  mov [basePlayer],eax
+codegetPlayer:
+  lea eax,[eax+ecx*4]
+  jmp returngetPlayer
+basePlayer:
+  dd 0
+getPlayer:
+  jmp newgetPlayer
+  nop
+returngetPlayer:
+
+[DISABLE]
+getPlayer:
+  db 8B 46 10 8D 04 88
+
+unregistersymbol(getPlayer)
+unregistersymbol(basePlayer)
+dealloc(newgetPlayer)
+
+{
+// ORIGINAL CODE - INJECTION POINT: SOTN.exe.text+95DA2
+
+SOTN.exe.text+95D60: 85 F6                 - test esi,esi
+SOTN.exe.text+95D62: 74 16                 - je SOTN.exe.text+95D7A
+SOTN.exe.text+95D64: 8B CE                 - mov ecx,esi
+SOTN.exe.text+95D66: C7 46 10 00 00 00 00  - mov [esi+10],00000000
+SOTN.exe.text+95D6D: C7 06 08 00 00 00     - mov [esi],00000008
+SOTN.exe.text+95D73: E8 08 F6 FF FF        - call SOTN.exe.text+95380
+SOTN.exe.text+95D78: EB 02                 - jmp SOTN.exe.text+95D7C
+SOTN.exe.text+95D7A: 33 F6                 - xor esi,esi
+SOTN.exe.text+95D7C: C7 45 FC FF FF FF FF  - mov [ebp-04],FFFFFFFF
+SOTN.exe.text+95D83: 89 77 2C              - mov [edi+2C],esi
+SOTN.exe.text+95D86: 8B 45 08              - mov eax,[ebp+08]
+SOTN.exe.text+95D89: 8B 77 2C              - mov esi,[edi+2C]
+SOTN.exe.text+95D8C: 8B CE                 - mov ecx,esi
+SOTN.exe.text+95D8E: 89 45 08              - mov [ebp+08],eax
+SOTN.exe.text+95D91: 8D 45 08              - lea eax,[ebp+08]
+SOTN.exe.text+95D94: 50                    - push eax
+SOTN.exe.text+95D95: E8 66 49 F7 FF        - call SOTN.exe.text+A700
+SOTN.exe.text+95D9A: 83 F8 FF              - cmp eax,-01
+SOTN.exe.text+95D9D: 74 0B                 - je SOTN.exe.text+95DAA
+SOTN.exe.text+95D9F: 8D 0C 40              - lea ecx,[eax+eax*2]
+// ---------- INJECTING HERE ----------
+SOTN.exe.text+95DA2: 8B 46 10              - mov eax,[esi+10]
+// ---------- DONE INJECTING  ----------
+SOTN.exe.text+95DA5: 8D 04 88              - lea eax,[eax+ecx*4]
+SOTN.exe.text+95DA8: EB 02                 - jmp SOTN.exe.text+95DAC
+SOTN.exe.text+95DAA: 33 C0                 - xor eax,eax
+SOTN.exe.text+95DAC: 5F                    - pop edi
+SOTN.exe.text+95DAD: 5E                    - pop esi
+SOTN.exe.text+95DAE: 85 C0                 - test eax,eax
+SOTN.exe.text+95DB0: 74 12                 - je SOTN.exe.text+95DC4
+SOTN.exe.text+95DB2: 8B 00                 - mov eax,[eax]
+SOTN.exe.text+95DB4: 8B 4D F4              - mov ecx,[ebp-0C]
+SOTN.exe.text+95DB7: 64 89 0D 00 00 00 00  - mov fs:[00000000],ecx
+SOTN.exe.text+95DBE: 8B E5                 - mov esp,ebp
+SOTN.exe.text+95DC0: 5D                    - pop ebp
+SOTN.exe.text+95DC1: C2 04 00              - ret 0004
+SOTN.exe.text+95DC4: 8B 4D F4              - mov ecx,[ebp-0C]
+SOTN.exe.text+95DC7: 33 C0                 - xor eax,eax
+SOTN.exe.text+95DC9: 64 89 0D 00 00 00 00  - mov fs:[00000000],ecx
+SOTN.exe.text+95DD0: 8B E5                 - mov esp,ebp
+SOTN.exe.text+95DD2: 5D                    - pop ebp
+SOTN.exe.text+95DD3: C2 04 00              - ret 0004
+SOTN.exe.text+95DD6: CC                    - int 3 
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"Scripts"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>20</ID>
+              <Description>"Inf Health"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+refillHP = createTimer()
+refillHP.Interval=50
+refillHP.OnTimer = function()
+	local hpAddr = getAddressSafe('[[basePlayer]+48F*4]')
+    local maxHpAddr = getAddressSafe('[[basePlayer]+9A2*4]')
+    if hpAddr and maxHpAddr then writeDouble(hpAddr,readDouble(maxHpAddr)) end
+end
+[DISABLE]
+refillHP.destroy()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>21</ID>
+              <Description>"Inf Ap"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+refillAP = createTimer()
+refillAP.Interval=50
+refillAP.OnTimer = function()
+	local apAddr = getAddressSafe('[[basePlayer]+747*4]')
+    local maxApAddr = getAddressSafe('[[basePlayer]+231*4]')
+    if apAddr and maxApAddr then writeDouble(apAddr,readDouble(maxApAddr)) end
+end
+[DISABLE]
+refillAP.destroy()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>23</ID>
+              <Description>"Easy Level Up"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+refillXP = createTimer()
+refillXP.Interval=500
+refillXP.OnTimer = function()
+	local xpAddr = getAddressSafe('[[basePlayer]+2AC*4]')
+    local maxXpAddr = getAddressSafe('[[basePlayer]+4FE*4]')
+    if xpAddr and maxXpAddr then writeDouble(xpAddr,readDouble(maxXpAddr)) end
+end
+[DISABLE]
+refillXP.destroy()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>22</ID>
+              <Description>"One Hit Kills"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+maxDam = createTimer()
+maxDam.Interval=500
+maxDam.OnTimer = function()
+	local stAddr = getAddressSafe('[[basePlayer]+9FF*4]')
+    local mgAddr = getAddressSafe('[[basePlayer]+5D0*4]')
+    if stAddr then writeDouble(stAddr,1000) end
+    if mgAddr then writeDouble(mgAddr,1000) end
+end
+[DISABLE]
+maxDam.destroy()
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25</ID>
+          <Description>"Pointers"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>3</ID>
+              <Description>"Current AP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>basePlayer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>747*4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5</ID>
+              <Description>"Max AP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>basePlayer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>231*4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6</ID>
+              <Description>"Current Health"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>basePlayer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>48F*4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>7</ID>
+              <Description>"Max Health"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>basePlayer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>9A2*4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9</ID>
+              <Description>"Experience"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>basePlayer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>2AC*4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>10</ID>
+              <Description>"Exp for Next Level"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>basePlayer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>4FE*4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"Strength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>basePlayer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>9FF*4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>19</ID>
+              <Description>"Magic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>basePlayer</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>5D0*4</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

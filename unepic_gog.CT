@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Bypass Anti-Cheat"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>// "unepic.exe"+3BF37 toggles the explosion if cheat value was found
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(cheat)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+
+originalcode:
+//xor eax,[esp+04]
+//xor edx,[esp+08]
+
+
+cheat:
+
+xor eax,[esp+04] // Translate EAX to value - EAX should hold the cheated value
+xor eax,[esp+08] // Encrypt EAX like EDX value
+mov [unepic.exe+271330],eax // Insert the value into memory
+mov eax,[unepic.exe+27132C] // Get the encrypted EAX value back
+mov edx,[unepic.exe+271330] // Get the encrypted EDX value back
+xor eax,[esp+04] // decrypt the value
+xor edx,[esp+08] // decrypt the value
+
+
+exit:
+jmp returnhere
+
+"unepic.exe"+2D45B:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"unepic.exe"+2D45B:
+xor eax,[esp+04]
+xor edx,[esp+08]
+//Alt: db 33 44 24 04 33 54 24 08
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"Scripts"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <Color>FF0000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>8</ID>
+              <Description>"Infinite Health"</Description>
+              <LastState Activated="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(cheat)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov [esi+000001A4],ecx
+
+cheat:
+//mov ecx,[unepic.exe+9A6414] // This is where max health is held
+cvtsi2ss xmm1,ecx // Convert the 4byte max health to float
+movss [eax+00000474],xmm1 // Set the current health to be max health
+
+exit:
+jmp returnhere
+
+"unepic.exe"+25856:
+jmp newmem
+nop
+
+returnhere:
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"unepic.exe"+25856:
+mov [esi+000001A4],ecx
+//Alt: db 8B 88 70 04 00 00 89 8E A4 01 00 00
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6</ID>
+              <Description>"Infinite Item Usage (Also makes consumables infinite pickup) - Do not use while buying"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(cheat)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+cheat:
+cmp edx,0xFFFFFFFF // Check if this a subtruction (-1)
+jne originalcode // if it's not subtruction then let it add the value
+
+// This will undo the substruction
+xor esi,eax
+sub esi,edx
+xor esi,eax
+
+originalcode:
+mov [ecx+04],esi
+mov eax,[unepic.exe+288C88]
+
+exit:
+jmp returnhere
+
+"unepic.exe"+11403:
+jmp newmem
+nop
+nop
+nop
+
+returnhere:
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"unepic.exe"+11403:
+mov [ecx+04],esi
+mov eax,[unepic.exe+288C88]
+//Alt: db 89 71 04 A1 30 13 67 00
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"Infinite Charges - Do not use while buying"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(cheat)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+cheat:
+cmp edx,0xFFFFFFFF // Check if this a subtruction (-1)
+jne originalcode // if it's not subtruction then let it add the value
+
+// This will undo the substruction
+xor esi,eax
+sub esi,edx
+xor esi,eax
+
+originalcode:
+mov [ecx+0C],esi
+mov eax,[unepic.exe+288C88]
+
+exit:
+jmp returnhere
+
+"unepic.exe"+11523:
+jmp newmem
+nop
+nop
+nop
+
+returnhere:
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"unepic.exe"+11523:
+mov [ecx+0C],esi
+mov eax,[unepic.exe+288C88]
+//Alt: db 89 71 04 A1 30 13 67 00
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"Always Max Exp - Kill for level up"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(cheat)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+mov eax,[esi+0000017C]
+
+cheat:
+mov ecx,[esi+00000164]
+mov [esi+00000160],ecx
+
+exit:
+jmp returnhere
+
+"unepic.exe"+26696:
+jmp newmem
+nop
+
+returnhere:
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"unepic.exe"+26696:
+mov eax,[esi+0000017C]
+//Alt: db 8B 88 70 04 00 00 89 8E A4 01 00 00
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"Infinite Unepic points"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(cheat)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+cheat:
+cmp eax,[unepic.exe+DDB24]
+jne originalcode
+mov [esp+04],#1000
+
+originalcode:
+mov eax,[esp+04]
+xor edx,eax
+
+exit:
+jmp returnhere
+
+"unepic.exe"+113D6:
+jmp newmem
+nop
+
+returnhere:
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"unepic.exe"+113D6:
+mov eax,[esp+04]
+xor edx,eax
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"Infinite Pet Energy"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(cheat)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+fst dword ptr [esi+00000580]
+
+cheat:
+cvtsi2ss xmm1,eax // Convert the 4byte max energy to float
+movss [esi+00000580],xmm1 // Set the current energy to be max energy
+
+exit:
+jmp returnhere
+
+"unepic.exe"+39AC9:
+jmp newmem
+nop
+
+returnhere:
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"unepic.exe"+39AC9:
+fst dword ptr [esi+00000580]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"Infinite Pet Health - Toggle off to switch pets"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(cheat)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+fild dword ptr [esp+10]
+fstp dword ptr [esp+14]
+
+cheat:
+cvtsi2ss xmm1,[esi+00000470] // Convert the 4byte max energy to float
+movss [esi+00000474],xmm1 // Set the current energy to be max energy
+
+exit:
+jmp returnhere
+
+"unepic.exe"+39ACF:
+jmp newmem
+nop
+nop
+nop
+
+returnhere:
+
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"unepic.exe"+39ACF:
+fild dword ptr [esp+10]
+fstp dword ptr [esp+14]
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"Stats"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <Color>404080</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>111</ID>
+              <Description>"Gold"</Description>
+              <LastState Value="4294967126" RealAddress="00C53B0C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unepic.exe+853B0C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>112</ID>
+              <Description>"EXP"</Description>
+              <LastState Value="0" RealAddress="00C52858"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unepic.exe+852858</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>113</ID>
+              <Description>"Attribute Points"</Description>
+              <LastState Value="0" RealAddress="00C52864"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unepic.exe+852864</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"Attributes - Numbers are decimal with XOR 0x44 you can use http://xor.pw to calculate the real number"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>83</ID>
+              <Description>"Daggers"</Description>
+              <LastState Value="69" RealAddress="00C526FC"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+8526FC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"Swords"</Description>
+              <LastState Value="69" RealAddress="00C526FD"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+8526FD</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>85</ID>
+              <Description>"Maces"</Description>
+              <LastState Value="69" RealAddress="00C526FE"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+8526FE</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>86</ID>
+              <Description>"Axes"</Description>
+              <LastState Value="69" RealAddress="00C526FF"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+8526FF</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>87</ID>
+              <Description>"Polearms"</Description>
+              <LastState Value="69" RealAddress="00C52700"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852700</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88</ID>
+              <Description>"Bows"</Description>
+              <LastState Value="69" RealAddress="00C52701"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852701</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>89</ID>
+              <Description>"Staves"</Description>
+              <LastState Value="69" RealAddress="00C52702"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852702</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>90</ID>
+              <Description>"Wands"</Description>
+              <LastState Value="69" RealAddress="00C52703"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852703</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>91</ID>
+              <Description>"Constitution"</Description>
+              <LastState Value="69" RealAddress="00C52704"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852704</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>92</ID>
+              <Description>"Poitions"</Description>
+              <LastState Value="69" RealAddress="00C52705"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852705</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"Armor"</Description>
+              <LastState Value="69" RealAddress="00C52706"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852706</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>94</ID>
+              <Description>"Robes"</Description>
+              <LastState Value="69" RealAddress="00C52707"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852707</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>95</ID>
+              <Description>"Fire"</Description>
+              <LastState Value="187" RealAddress="00C52708"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852708</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>96</ID>
+              <Description>"Frost"</Description>
+              <LastState Value="187" RealAddress="00C52709"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852709</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>97</ID>
+              <Description>"Arcane"</Description>
+              <LastState Value="187" RealAddress="00C5270A"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+85270A</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>98</ID>
+              <Description>"Light"</Description>
+              <LastState Value="187" RealAddress="00C5270B"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+85270B</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>99</ID>
+              <Description>"Protection"</Description>
+              <LastState Value="187" RealAddress="00C5270C"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+85270C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"Healing"</Description>
+              <LastState Value="187" RealAddress="00C5270D"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+85270D</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>101</ID>
+              <Description>"Alteration"</Description>
+              <LastState Value="187" RealAddress="00C5270E"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+85270E</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>102</ID>
+              <Description>"Mental"</Description>
+              <LastState Value="187" RealAddress="00C5270F"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+85270F</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>103</ID>
+              <Description>"Not used"</Description>
+              <LastState Value="187" RealAddress="00C52710"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852710</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104</ID>
+              <Description>"Not used"</Description>
+              <LastState Value="187" RealAddress="00C52711"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852711</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>105</ID>
+              <Description>"Not used"</Description>
+              <LastState Value="187" RealAddress="00C52712"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852712</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"Not used"</Description>
+              <LastState Value="187" RealAddress="00C52713"/>
+              <VariableType>Byte</VariableType>
+              <Address>unepic.exe+852713</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

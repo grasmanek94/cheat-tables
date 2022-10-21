@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Player Stats"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Mists of Noyah
+  Version: 
+  Date   : 2020-09-27
+  Author : Astor
+  Updated by: MGGA
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanregion(player,Unit:Update+106,Unit:Update+190,F3 0F 10 81 * * 00 00 F3 0F 5A C0 F2 0F 2C) // should be unique
+alloc(newmem,$1000,player)
+
+label(code)
+label(return)
+label(r_player)
+label(playerstats)
+
+newmem:
+  mov [playerstats],rcx
+
+code:
+  movss xmm0,[rcx+00000178]
+  jmp return
+
+r_player:
+  readmem(player,8)
+
+playerstats:
+  dq 0
+
+player:
+  jmp newmem
+  nop 3
+return:
+registersymbol(player)
+registersymbol(r_player)
+registersymbol(playerstats)
+
+[DISABLE]
+
+player:
+  readmem(r_player,8)
+
+unregistersymbol(player)
+unregistersymbol(r_player)
+unregistersymbol(playerstats)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 22FE45224FE
+
+22FE45224D2: F2 0F 2C D0                    -  cvttsd2si edx,xmm0
+22FE45224D6: 48 8B C8                       -  mov rcx,rax
+22FE45224D9: 83 38 00                       -  cmp dword ptr [rax],00
+22FE45224DC: 66 90                          -  nop 2
+22FE45224DE: 49 BB 60 AF C8 E3 2F 02 00 00  -  mov r11,0000022FE3C8AF60
+22FE45224E8: 41 FF D3                       -  call r11
+22FE45224EB: 48 8B 45 B0                    -  mov rax,[rbp-50]
+22FE45224EF: 48 8B 80 30 01 00 00           -  mov rax,[rax+00000130]
+22FE45224F6: 48 8B 40 20                    -  mov rax,[rax+20]
+22FE45224FA: 48 8B 4D B0                    -  mov rcx,[rbp-50]
+// ---------- INJECTING HERE ----------
+22FE45224FE: F3 0F 10 81 78 01 00 00        -  movss xmm0,[rcx+00000178]
+// ---------- DONE INJECTING  ----------
+22FE4522506: F3 0F 5A C0                    -  cvtss2sd xmm0,xmm0
+22FE452250A: F2 0F 2C D0                    -  cvttsd2si edx,xmm0
+22FE452250E: 48 8B C8                       -  mov rcx,rax
+22FE4522511: 83 38 00                       -  cmp dword ptr [rax],00
+22FE4522514: 66 90                          -  nop 2
+22FE4522516: 49 BB 60 AF C8 E3 2F 02 00 00  -  mov r11,0000022FE3C8AF60
+22FE4522520: 41 FF D3                       -  call r11
+22FE4522523: 48 8B 4D B0                    -  mov rcx,[rbp-50]
+22FE4522527: 48 8D AD 00 00 00 00           -  lea rbp,[rbp+00000000]
+22FE452252E: 49 BB 30 2C 52 E4 2F 02 00 00  -  mov r11,0000022FE4522C30
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"Max HP"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:OFF
+1:ON
+</DropDownList>
+          <LastState Value="2000000000" RealAddress="24F06DB756C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>16c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"Current HP"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:OFF
+1:ON
+</DropDownList>
+          <LastState Value="2000000000" RealAddress="24F06DB7570"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>170</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Max Mana"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:OFF
+1:ON
+</DropDownList>
+          <LastState Value="2000000000" RealAddress="24F06DB7574"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>174</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"Current Mana"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:OFF
+1:ON
+</DropDownList>
+          <LastState Value="2000000000" RealAddress="24F06DB7578"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>178</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Max Armor"</Description>
+          <LastState Value="1000000" RealAddress="24F06DB757C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>17C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"Current Armor"</Description>
+          <LastState Value="1" RealAddress="24F06DB7580"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>180</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>37</ID>
+          <Description>"Max Magic Armor"</Description>
+          <LastState Value="1000000" RealAddress="24F06DB7584"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>184</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"Current Magic Armor"</Description>
+          <LastState Value="0" RealAddress="24F06DB7588"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>188</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"Max Physic Attack"</Description>
+          <LastState Value="1000000" RealAddress="24F06DB758C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>18C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"Current Physic Attack"</Description>
+          <LastState Value="0" RealAddress="24F06DB7590"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>190</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"Max Magic Attack"</Description>
+          <LastState Value="1000000" RealAddress="24F06DB7594"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>194</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>42</ID>
+          <Description>"Max Attack Speed"</Description>
+          <LastState Value="2.400000095" RealAddress="24F06DB759C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>19C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>43</ID>
+          <Description>"Current Attack Speed"</Description>
+          <LastState Value="0" RealAddress="24F06DB75A0"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1A0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>44</ID>
+          <Description>"Max Critical"</Description>
+          <LastState Value="1000000" RealAddress="24F06DB75A4"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1A4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>45</ID>
+          <Description>"Current Critical"</Description>
+          <LastState Value="0" RealAddress="24F06DB75A8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1A8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>46</ID>
+          <Description>"Cooldown Rate"</Description>
+          <LastState Value="1000000" RealAddress="24F06DB75AC"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1AC</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"Immune Time"</Description>
+          <LastState Value="99" RealAddress="24F06DB75B0"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1B0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"Max Move Speed"</Description>
+          <LastState Value="2000" RealAddress="24F06DB75B4"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1B4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>49</ID>
+          <Description>"Current Move Speed"</Description>
+          <LastState Value="0" RealAddress="24F06DB75B8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1B8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>50</ID>
+          <Description>"Max Fishing Power"</Description>
+          <LastState Value="1000000" RealAddress="24F06DB75BC"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1BC</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>51</ID>
+          <Description>"Current Fishing Power"</Description>
+          <LastState Value="0" RealAddress="24F06DB75C0"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1C0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>52</ID>
+          <Description>"Max Gathering Power"</Description>
+          <LastState Value="1000000" RealAddress="24F06DB75C4"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1C4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>53</ID>
+          <Description>"Knockback Resistance"</Description>
+          <LastState Value="1.5" RealAddress="24F06DB75CC"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1CC</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>54</ID>
+          <Description>"Current Gathering Power"</Description>
+          <LastState Value="0" RealAddress="24F06DB75C8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1C8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"Immunity"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:OFF
+1:ON
+</DropDownList>
+          <LastState Value="0" RealAddress="24F06DB75DB"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1DB</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"Invisibility"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:OFF
+1:ON
+</DropDownList>
+          <LastState Value="0" RealAddress="24F06DB75DC"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>playerstats</Address>
+          <Offsets>
+            <Offset>1DC</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>attachlist=getAutoAttachList()
+stringlist_add(attachlist,"Mists of Noyah.exe")
+</LuaScript>
+</CheatTable>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1E583315E64</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1E5C5591B18</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1E5CA1447FC</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov eax,[rbx]</Description>
+      <AddressString>ChasedbyDarkness-Win64-Shipping.exe+27D6895</AddressString>
+      <Before>
+        <Byte>E9</Byte>
+        <Byte>DC</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>03</Byte>
+      </Actual>
+      <After>
+        <Byte>39</Byte>
+        <Byte>07</Byte>
+        <Byte>0F</Byte>
+        <Byte>94</Byte>
+        <Byte>C0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movzx edx,byte ptr [r9+rbp]</Description>
+      <AddressString>ChasedbyDarkness-Win64-Shipping.exe+EAB3FE</AddressString>
+      <Before>
+        <Byte>CA</Byte>
+        <Byte>44</Byte>
+        <Byte>8D</Byte>
+        <Byte>1C</Byte>
+        <Byte>02</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>14</Byte>
+        <Byte>29</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>C1</Byte>
+        <Byte>FB</Byte>
+        <Byte>03</Byte>
+        <Byte>45</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movzx r8d,byte ptr [r9+rbp]</Description>
+      <AddressString>ChasedbyDarkness-Win64-Shipping.exe+EAB470</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>04</Byte>
+        <Byte>29</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>CE</Byte>
+        <Byte>41</Byte>
+        <Byte>D3</Byte>
+        <Byte>E0</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
