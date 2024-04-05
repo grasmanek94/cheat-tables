@@ -1,0 +1,3737 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <Forms>
+    <UDF1 Class="TCEForm" Encoding="Ascii85">b7Ej%2nldAU:MM2b.}cxWeIh0Gi32eO*Ft$Wn{Y6%{mcIVgA6t9Fkwal+AgInNpI$=7,zGoLEqjnV-i7R=ffx00</UDF1>
+  </Forms>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"Enable"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscan(enableAOB6,8B F0 8B 83 A4 01 00 00 83 C4 08 3B C6)
+label(enableAOB6_jmp)
+registersymbol(enableAOB6_jmp)
+aobscan(enableAOB2,8B 40 04 50 E8 ** ** ** ** 85 C0 74 ** 8B 40 04 C2 08 00 CC 8B)
+label(enableAOB2_jmp)
+registersymbol(enableAOB2_jmp)
+aobscan(enableAOB1,8B F0 85 F6 74 ** F3)
+label(enableAOB1_jmp)
+registersymbol(enableAOB1_jmp)
+
+label(pAmmoClip)
+label(pAmmoPouch)
+label(pHero)
+label(vCenterCamera)
+registersymbol(pAmmoClip)
+registersymbol(pAmmoPouch)
+registersymbol(pHero)
+registersymbol(vCenterCamera)
+
+alloc(newmem6,2048) //2kb should be enough
+label(returnhere6)
+label(originalcode6)
+label(exit6)
+
+newmem6: //this is allocated memory, you have read,write,execute access
+//place your code here
+//mov eax,ebx
+//add eax,000001A4
+//mov [pAmmoClip],eax
+//mov [pAmmoClip],ebx
+//cmp [esp+8],0
+cmp [pHero],ebp
+jne originalcode6
+lea eax,[ebx+000001A4]
+mov [pAmmoClip],eax
+
+originalcode6:
+mov eax,[ebx+000001A4]
+
+exit6:
+jmp returnhere6
+
+///
+
+alloc(newmem2,2048) //2kb should be enough
+label(returnhere2)
+label(originalcode2)
+label(exit2)
+
+newmem2: //this is allocated memory, you have read,write,execute access
+//place your code here
+mov [pAmmoPouch],eax
+
+originalcode2:
+mov eax,[eax+04]
+ret 0008
+
+exit2:
+jmp returnhere2
+
+///
+
+alloc(newmem,2048) //2kb should be enough
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+mov [pHero],esi
+
+originalcode:
+movss xmm0,[esi+00001CB8]
+
+exit:
+jmp returnhere
+
+///
+pAmmoClip:
+dd 0
+pAmmoPouch:
+dd 0
+pHero:
+dd 0
+vCenterCamera:
+db 0
+///
+
+enableAOB6+2: //"saintsrowthethird.exe"+5D2BE1:
+enableAOB6_jmp:
+jmp newmem6
+nop
+returnhere6:
+
+enableAOB2+D: //"saintsrowthethird.exe"+76EAF9:
+enableAOB2_jmp:
+jmp newmem2
+nop
+returnhere2:
+
+enableAOB1+6: //"saintsrowthethird.exe"+3B74D4:
+enableAOB1_jmp:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem6)
+enableAOB6_jmp: //"saintsrowthethird.exe"+5D2BE1:
+db 8B 83 A4 01 00 00
+//Alt: mov eax,[ebx+000001A4]
+dealloc(newmem2)
+enableAOB2_jmp: //"saintsrowthethird.exe"+76EAF9:
+db 8B 40 04 C2 08 00
+//Alt: mov eax,[eax+04]
+//Alt: ret 0008
+dealloc(newmem)
+enableAOB1_jmp: //"saintsrowthethird.exe"+3B74D4:
+db F3 0F 10 86 B8 1C 00 00
+//Alt: movss xmm0,[esi+00001CB8]
+unregistersymbol(enableAOB6_jmp)
+unregistersymbol(enableAOB2_jmp)
+unregistersymbol(enableAOB1_jmp)
+unregistersymbol(pAmmoClip)
+unregistersymbol(pAmmoPouch)
+unregistersymbol(pHero)
+unregistersymbol(vCenterCamera)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"Cielos' Hacks"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>39</ID>
+              <Description>"Inf. Throwing Weapons"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscan(infthrowingweaponsAOB1,8B F1 2B CE 89 48 04 8B 48 08)
+label(infthrowingweaponsAOB1_jmp)
+registersymbol(infthrowingweaponsAOB1_jmp)
+
+label(tECX)
+label(pThrowingWeapon)
+registersymbol(tECX)
+registersymbol(pThrowingWeapon)
+
+alloc(newmem,2048) //2kb should be enough
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+//cmp dword ptr [eax+04],ecx
+//jle originalcode
+//mov ecx,[eax+04]
+mov [tECX],ecx
+mov [pThrowingWeapon],eax
+cmp ecx,1
+jge originalcode
+mov ecx,1
+
+originalcode:
+mov [eax+04],ecx
+mov ecx,[eax+08]
+
+exit:
+jmp returnhere
+
+///
+tECX:
+dd 0
+pThrowingWeapon:
+dd 0
+///
+
+infthrowingweaponsAOB1+4: //"saintsrowthethird.exe"+76EF11:
+infthrowingweaponsAOB1_jmp:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+infthrowingweaponsAOB1_jmp: //"saintsrowthethird.exe"+76EF11:
+db 89 48 04 8B 48 08
+//Alt: mov [eax+04],ecx
+//Alt: mov ecx,[eax+08]
+unregistersymbol(infthrowingweaponsAOB1_jmp)
+unregistersymbol(tECX)
+unregistersymbol(pThrowingWeapon)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>29</ID>
+              <Description>"Inf. Health"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscan(healthAOB1,83 C4 08 3C 01 75 ** F3 0F 10 44 24 08 F3)
+label(healthAOB1_jmp)
+registersymbol(healthAOB1_jmp)
+
+alloc(newmem,2048) //2kb should be enough
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+cmp [pHero],esi
+jne originalcode
+
+push eax
+mov eax,[esp+08]
+cmp [esi+00001CB8],eax
+pop eax
+jle originalcode
+movss xmm0,[esi+00001CB8]
+
+originalcode:
+movss [esi+00001CB8],xmm0
+
+exit:
+jmp returnhere
+
+healthAOB1+D: //"saintsrowthethird.exe"+54D059:
+healthAOB1_jmp:
+jmp newmem
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+healthAOB1_jmp: //"saintsrowthethird.exe"+54D059:
+db F3 0F 11 86 B8 1C 00 00
+//Alt: movss [esi+00001CB8],xmm0
+unregistersymbol(healthAOB1_jmp)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>26</ID>
+                  <Description>"Reload Anytime"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscan(reloadanytimeAOB1,57 55 E8 ** ** ** ** 83 C4 08 39 85 A4 01 00 00)
+label(reloadanytimeAOB1_jmp)
+registersymbol(reloadanytimeAOB1_jmp)
+
+alloc(newmem,2048) //2kb should be enough
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+cmp [ebp+000001A4],eax
+jl originalcode
+dec [ebp+000001A4]
+cmp [pAmmoPouch],0
+je originalcode
+push eax
+mov eax,[pAmmoPouch]
+inc [eax+4]
+pop eax
+
+originalcode:
+cmp [ebp+000001A4],eax
+
+exit:
+jmp returnhere
+
+reloadanytimeAOB1+a: //"SaintsRowTheThird.exe"+5AF1FE:
+reloadanytimeAOB1_jmp:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+reloadanytimeAOB1_jmp: //"SaintsRowTheThird.exe"+5AF1FE:
+db 39 85 A4 01 00 00
+//Alt: cmp [ebp+000001A4],eax
+unregistersymbol(reloadanytimeAOB1_jmp)
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>33</ID>
+              <Description>"Inf. Ammo"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscan(infammoAOB2,8B 74 24 48 0F B7 ** ** ** ** ** 8B 44 24 50)
+label(infammoAOB2_jmp)
+registersymbol(infammoAOB2_jmp)
+aobscan(infammoAOB1,8B C2 2B D0 89 56 04 8B 56 08)
+label(infammoAOB1_jmp)
+registersymbol(infammoAOB1_jmp)
+
+globalalloc(mAmmoPouch,4)
+
+mAmmoPouch:
+dd #10
+
+alloc(newmem2,2048) //2kb should be enough
+label(returnhere2)
+label(originalcode2)
+label(exit2)
+
+newmem2: //this is allocated memory, you have read,write,execute access
+//place your code here
+mov eax,[esp+50]
+sub [eax],ecx
+cmp [pAmmoClip],eax
+jne originalcode2
+cmp [eax],1
+jge originalcode2
+mov [eax],1
+
+originalcode2:
+//mov eax,[esp+50]
+//sub [eax],ecx
+
+exit2:
+jmp returnhere2
+
+infammoAOB2+B: //"saintsrowthethird.exe"+5D128B:
+infammoAOB2_jmp:
+jmp newmem2
+nop
+returnhere2:
+
+alloc(newmem,2048) //2kb should be enough
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+cmp [pAmmoPouch],esi
+jne originalcode
+cmp edx,[mAmmoPouch]
+jge originalcode
+mov edx,[esi+04]
+
+originalcode:
+mov [esi+04],edx
+mov edx,[esi+08]
+
+exit:
+jmp returnhere
+
+infammoAOB1+4: //"saintsrowthethird.exe"+76E312:
+infammoAOB1_jmp:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem2)
+infammoAOB2_jmp: //"saintsrowthethird.exe"+5D128B:
+db 8B 44 24 50 29 08
+//Alt: mov eax,[esp+50]
+//Alt: sub [eax],ecx
+dealloc(newmem)
+infammoAOB1_jmp: //"saintsrowthethird.exe"+76E312:
+db 89 56 04 8B 56 08
+//Alt: mov [esi+04],edx
+//Alt: mov edx,[esi+08]
+unregistersymbol(infammoAOB2_jmp)
+unregistersymbol(infammoAOB1_jmp)
+dealloc(mAmmoPouch)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>50</ID>
+              <Description>"Zoom Center (press ~)"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscan(cameratoggleAOB2,8A 4F 30 88 8E C0 00 00 00)
+label(cameratoggleAOB2_jmp)
+registersymbol(cameratoggleAOB2_jmp)
+
+alloc(newmem,2048) //2kb should be enough
+label(returnhere)
+label(originalcode)
+label(exit)
+label(resetCamKeyB)
+label(camKeyBPressed)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+pushad
+push C0      //key ~
+call GetAsyncKeyState
+shr ax,#15
+cmp ax,1
+popad
+jne resetCamKeyB
+cmp byte ptr [camKeyBPressed],00
+jne originalcode
+mov byte ptr [camKeyBPressed],01
+mov dword ptr [edi+04],(float)1.5
+mov dword ptr [edi+34],0
+fld dword ptr [edi+28]
+mov dword ptr [edi+28],(float)1.0
+fsub dword ptr [edi+28]
+fstp dword ptr [edi+28]
+cmp dword ptr [edi+28],(float)1.5
+jge originalcode
+mov dword ptr [edi+28],(float)4.5
+jmp originalcode
+
+resetCamKeyB:
+mov byte ptr [camKeyBPressed],00
+jmp originalcode
+
+originalcode:
+mov cl,[edi+30]
+mov [esi+000000C0],cl
+
+exit:
+jmp returnhere
+
+///
+camKeyBPressed:
+db 01
+///
+
+cameratoggleAOB2: //"saintsrowthethird.exe"+1743C8:
+cameratoggleAOB2_jmp:
+jmp newmem
+nop
+nop
+nop
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+cameratoggleAOB2_jmp: //"saintsrowthethird.exe"+1743C8:
+db 8A 4F 30 88 8E C0 00 00 00
+//Alt: mov cl,[edi+30]
+//Alt: mov [esi+000000C0],cl
+unregistersymbol(camKeyBPressed)
+unregistersymbol(cameratoggleAOB2_jmp)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>135</ID>
+                  <Description>"Stay in Toggled Camera"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+aobscan(cameratogglesubAOB2,0F 28 07 0F 5C C1 0F 29 44 24 20)
+label(cameratogglesubAOB2_jmp)
+registersymbol(cameratogglesubAOB2_jmp)
+aobscan(cameratogglesubAOB1,0F 58 C1 0F 29 06 F3 0F 10 47 34)
+label(cameratogglesubAOB1_jmp)
+registersymbol(cameratogglesubAOB1_jmp)
+
+label(tEAX)
+
+label(fXShift)
+registersymbol(fXShift)
+label(fLookatOffsetY)
+registersymbol(fLookatOffsetY)
+
+
+alloc(newmem2,2048) //2kb should be enough
+label(returnhere2)
+label(originalcode2)
+label(exit2)
+label(setCenterLookatOffsetY)
+label(setCenterStand)
+label(setCenterCrouch)
+label(setNotCenterLookatOffsetY)
+label(setNotCenterStand)
+label(setNotCenterCrouch)
+label(setCameraLookatOffsetY)
+
+newmem2: //this is allocated memory, you have read,write,execute access
+//place your code here
+movaps xmm0,[edi]
+mov [tEAX],eax
+
+cmp byte ptr [vCenterCamera],00
+je setCenterLookatOffsetY
+cmp byte ptr [vCenterCamera],01
+je setNotCenterLookatOffsetY
+cmp byte ptr [vCenterCamera],02
+je setNotCenterLookatOffsetY
+jmp originalcode2
+
+setCenterLookatOffsetY:
+cmp dword ptr [edi+04],(float)1.8
+je setCenterStand
+cmp dword ptr [edi+04],(float)1.6
+je setCenterStand
+cmp dword ptr [edi+04],(float)1.65
+je setCenterStand
+cmp dword ptr [edi+04],(float)1.650000095
+je setCenterStand
+cmp dword ptr [edi+04],(float)1.3
+je setCenterCrouch
+jmp originalcode2
+
+setCenterStand:
+mov dword ptr [fLookatOffsetY],(float)1.95
+jmp setCameraLookatOffsetY
+
+setCenterCrouch:
+mov dword ptr [fLookatOffsetY],(float)1.4
+jmp setCameraLookatOffsetY
+
+setNotCenterLookatOffsetY:
+cmp dword ptr [edi+04],(float)1.95
+je setNotCenterStand
+cmp dword ptr [edi+04],(float)1.4
+je setNotCenterCrouch
+jmp originalcode2
+
+setNotCenterStand:
+mov dword ptr [fLookatOffsetY],(float)1.65
+jmp setCameraLookatOffsetY
+
+setNotCenterCrouch:
+mov dword ptr [fLookatOffsetY],(float)1.3
+jmp setCameraLookatOffsetY
+
+setCameraLookatOffsetY:
+//movss xmm1,[fLookatOffsetY]
+movaps [esp+20],xmm0
+mov eax,[fLookatOffsetY]
+mov dword ptr [esp+24],eax
+movaps xmm0,[esp+20]
+
+jmp originalcode2
+
+originalcode2:
+//movaps xmm0,[edi]
+mov eax,[tEAX]
+subps xmm0,xmm1
+
+exit2:
+jmp returnhere2
+
+///
+
+alloc(newmem,2048) //2kb should be enough
+label(returnhere)
+label(originalcode)
+label(exit)
+label(setCenterXShift)
+label(setRightXShift)
+label(setLeftXShift)
+label(setCameraXShift)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+cmp byte ptr [vCenterCamera],00
+je setCenterXShift
+cmp byte ptr [vCenterCamera],01
+je setRightXShift
+cmp byte ptr [vCenterCamera],02
+je setLeftXShift
+jmp originalcode
+
+setCenterXShift:
+mov dword ptr [fXShift],(float)0.0
+jmp setCameraXShift
+
+setRightXShift:
+mov dword ptr [fXShift],(float)0.6
+jmp setCameraXShift
+
+setLeftXShift:
+mov dword ptr [fXShift],(float)-0.6
+jmp setCameraXShift
+
+setCameraXShift:
+movss xmm0,[fXShift]
+jmp exit
+
+originalcode:
+movss xmm0,[edi+34]
+
+exit:
+jmp returnhere
+
+///
+tEAX:
+dd 0
+fXShift:
+dd 0
+fLookatOffsetY:
+dd 0
+///
+
+cameratogglesubAOB2: //"saintsrowthethird.exe"+16C5D0:
+cameratogglesubAOB2_jmp:
+jmp newmem2
+nop
+returnhere2:
+
+cameratogglesubAOB1+6: //"saintsrowthethird.exe"+16C64B:
+cameratogglesubAOB1_jmp:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem2)
+cameratogglesubAOB2_jmp: //"saintsrowthethird.exe"+16C5D0:
+db 0F 28 07 0F 5C C1
+//Alt: movaps xmm0,[edi]
+//Alt: subps xmm0,xmm1
+dealloc(newmem)
+cameratogglesubAOB1_jmp: //"saintsrowthethird.exe"+16C64B:
+db F3 0F 10 47 34
+//Alt: movss xmm0,[edi+34]
+unregistersymbol(cameratogglesubAOB2_jmp)
+unregistersymbol(cameratogglesubAOB1_jmp)
+unregistersymbol(fXShift)
+unregistersymbol(fLookatOffsetY)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>56</ID>
+                  <Description>"b2CamerasOnly"</Description>
+                  <LastState Value="139" RealAddress="2BCF0172"/>
+                  <VariableType>Byte</VariableType>
+                  <Address>b2CamerasOnly</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>35</ID>
+              <Description>"Ammo"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>pAmmoClip</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>34</ID>
+              <Description>"Ammo That Remains"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>pAmmoPouch</Address>
+              <Offsets>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>28</ID>
+              <Description>"Health"</Description>
+              <VariableType>Float</VariableType>
+              <Address>pHero</Address>
+              <Offsets>
+                <Offset>1CB8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>138</ID>
+          <Description>"Skooma's Hacks"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>137</ID>
+              <Description>"Max Money/Inf. Money"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>//By Skooma :)
+[ENABLE]
+
+aobscanmodule(INJECT,SaintsRowTheThird_DX11.exe,F3 0F 2A 83 A0 1C 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+cvtsi2ss xmm0,[ebx+00001CA0]
+mov [ebx+00001CA0],(int)2000000000
+  jmp return
+code:
+  cvtsi2ss xmm0,[ebx+00001CA0]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db F3 0F 2A 83 A0 1C 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SaintsRowTheThird_DX11.exe"+3F3EE5
+
+"SaintsRowTheThird_DX11.exe"+3F3EBF: 0F 84 DB 01 00 00                 -  je SaintsRowTheThird_DX11.exe+3F40A0
+"SaintsRowTheThird_DX11.exe"+3F3EC5: E8 46 28 07 00                    -  call SaintsRowTheThird_DX11.exe+466710
+"SaintsRowTheThird_DX11.exe"+3F3ECA: 3C 01                             -  cmp al,01
+"SaintsRowTheThird_DX11.exe"+3F3ECC: 75 0A                             -  jne SaintsRowTheThird_DX11.exe+3F3ED8
+"SaintsRowTheThird_DX11.exe"+3F3ECE: C7 44 24 1C 03 00 00 00           -  mov [esp+1C],00000003
+"SaintsRowTheThird_DX11.exe"+3F3ED6: EB 0D                             -  jmp SaintsRowTheThird_DX11.exe+3F3EE5
+"SaintsRowTheThird_DX11.exe"+3F3ED8: 53                                -  push ebx
+"SaintsRowTheThird_DX11.exe"+3F3ED9: E8 62 8C 1E 00                    -  call SaintsRowTheThird_DX11.exe+5DCB40
+"SaintsRowTheThird_DX11.exe"+3F3EDE: 83 C4 04                          -  add esp,04
+"SaintsRowTheThird_DX11.exe"+3F3EE1: 89 44 24 1C                       -  mov [esp+1C],eax
+// ---------- INJECTING HERE ----------
+"SaintsRowTheThird_DX11.exe"+3F3EE5: F3 0F 2A 83 A0 1C 00 00           -  cvtsi2ss xmm0,[ebx+00001CA0]
+// ---------- DONE INJECTING  ----------
+"SaintsRowTheThird_DX11.exe"+3F3EED: F3 0F 5A C0                       -  cvtss2sd xmm0,xmm0
+"SaintsRowTheThird_DX11.exe"+3F3EF1: F2 0F 5E 05 C8 6B 2A 01           -  divsd xmm0,[SaintsRowTheThird_DX11.exe+EA6BC8]
+"SaintsRowTheThird_DX11.exe"+3F3EF9: F2 0F 5A C0                       -  cvtsd2ss xmm0,xmm0
+"SaintsRowTheThird_DX11.exe"+3F3EFD: C7 44 24 54 03 00 00 00           -  mov [esp+54],00000003
+"SaintsRowTheThird_DX11.exe"+3F3F05: F3 0F 11 44 24 5C                 -  movss [esp+5C],xmm0
+"SaintsRowTheThird_DX11.exe"+3F3F0B: 8D 44 24 54                       -  lea eax,[esp+54]
+"SaintsRowTheThird_DX11.exe"+3F3F0F: 50                                -  push eax
+"SaintsRowTheThird_DX11.exe"+3F3F10: 6A 00                             -  push 00
+"SaintsRowTheThird_DX11.exe"+3F3F12: 8B CE                             -  mov ecx,esi
+"SaintsRowTheThird_DX11.exe"+3F3F14: C7 84 24 88 00 00 00 0D 00 00 00  -  mov [esp+00000088],0000000D
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>306</ID>
+              <Description>"Never Die"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : SaintsRowTheThird_DX11.exe
+  Version: 
+  Date   : 2020-03-31
+  Author : Colton
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,SaintsRowTheThird_DX11.exe,F6 86 98 1C 00 00 01 75 0D) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+cmp byte ptr [esi+00001C98],(int)8
+jne @f
+
+mov byte ptr [esi+00001C98],(int)72
+code:
+  test byte ptr [esi+00001C98],01
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db F6 86 98 1C 00 00 01
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "SaintsRowTheThird_DX11.exe"+542E8E
+
+"SaintsRowTheThird_DX11.exe"+542E73: F6 86 B8 02 00 00 10  -  test byte ptr [esi+000002B8],10
+"SaintsRowTheThird_DX11.exe"+542E7A: 75 09                 -  jne SaintsRowTheThird_DX11.exe+542E85
+"SaintsRowTheThird_DX11.exe"+542E7C: F6 86 BB 02 00 00 80  -  test byte ptr [esi+000002BB],-80
+"SaintsRowTheThird_DX11.exe"+542E83: 74 09                 -  je SaintsRowTheThird_DX11.exe+542E8E
+"SaintsRowTheThird_DX11.exe"+542E85: 5F                    -  pop edi
+"SaintsRowTheThird_DX11.exe"+542E86: 32 C0                 -  xor al,al
+"SaintsRowTheThird_DX11.exe"+542E88: 5E                    -  pop esi
+"SaintsRowTheThird_DX11.exe"+542E89: C3                    -  ret 
+"SaintsRowTheThird_DX11.exe"+542E8A: 33 FF                 -  xor edi,edi
+"SaintsRowTheThird_DX11.exe"+542E8C: EB BC                 -  jmp SaintsRowTheThird_DX11.exe+542E4A
+// ---------- INJECTING HERE ----------
+"SaintsRowTheThird_DX11.exe"+542E8E: F6 86 98 1C 00 00 01  -  test byte ptr [esi+00001C98],01
+// ---------- DONE INJECTING  ----------
+"SaintsRowTheThird_DX11.exe"+542E95: 75 0D                 -  jne SaintsRowTheThird_DX11.exe+542EA4
+"SaintsRowTheThird_DX11.exe"+542E97: 56                    -  push esi
+"SaintsRowTheThird_DX11.exe"+542E98: E8 A3 68 07 00        -  call SaintsRowTheThird_DX11.exe+5B9740
+"SaintsRowTheThird_DX11.exe"+542E9D: 83 C4 04              -  add esp,04
+"SaintsRowTheThird_DX11.exe"+542EA0: 84 C0                 -  test al,al
+"SaintsRowTheThird_DX11.exe"+542EA2: 74 05                 -  je SaintsRowTheThird_DX11.exe+542EA9
+"SaintsRowTheThird_DX11.exe"+542EA4: 5F                    -  pop edi
+"SaintsRowTheThird_DX11.exe"+542EA5: B0 01                 -  mov al,01
+"SaintsRowTheThird_DX11.exe"+542EA7: 5E                    -  pop esi
+"SaintsRowTheThird_DX11.exe"+542EA8: C3                    -  ret 
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>227</ID>
+              <Description>"Inf Ammo, Clip, Drunk Peds"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:False
+65:Inf Ammo &amp; Clip
+81:Inf Ammo, Clip, &amp; Drunk Peds
+</DropDownList>
+              <LastState Value="0" RealAddress="048FE789"/>
+              <VariableType>Byte</VariableType>
+              <Address>SaintsRowTheThird_DX11.exe+44FE789</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>228</ID>
+              <Description>"One Hit Kills"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:False
+8:True
+</DropDownList>
+              <LastState Value="0" RealAddress="048FE78A"/>
+              <VariableType>Byte</VariableType>
+              <Address>SaintsRowTheThird_DX11.exe+44FE78A</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>229</ID>
+              <Description>"No Vehicle Damage"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:False
+1:False
+8:True
+16:False
+</DropDownList>
+              <LastState Value="0" RealAddress="048FE788"/>
+              <VariableType>Byte</VariableType>
+              <Address>SaintsRowTheThird_DX11.exe+44FE788</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>265</ID>
+              <Description>"Player Pratfalls"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:False
+1:True
+16:False
+</DropDownList>
+              <LastState Value="0" RealAddress="048FE788"/>
+              <VariableType>Byte</VariableType>
+              <Address>SaintsRowTheThird_DX11.exe+44FE788</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>266</ID>
+              <Description>"Smash Other Vehicles"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:False
+1:False
+16:True
+</DropDownList>
+              <LastState Value="0" RealAddress="048FE788"/>
+              <VariableType>Byte</VariableType>
+              <Address>SaintsRowTheThird_DX11.exe+44FE788</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>267</ID>
+              <Description>"Pimps &amp; Ho's"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:False
+1:False
+2:False
+3:True
+</DropDownList>
+              <LastState Value="0" RealAddress="048FE7B0"/>
+              <VariableType>Byte</VariableType>
+              <Address>SaintsRowTheThird_DX11.exe+44FE7B0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>268</ID>
+              <Description>"All Mascots"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:False
+1:False
+2:True
+3:False
+</DropDownList>
+              <LastState Value="0" RealAddress="048FE7B0"/>
+              <VariableType>Byte</VariableType>
+              <Address>SaintsRowTheThird_DX11.exe+44FE7B0</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys/>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>269</ID>
+              <Description>"All Zombies"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:False
+2:False
+3:False
+1:True
+</DropDownList>
+              <LastState Value="0" RealAddress="048FE7B0"/>
+              <VariableType>Byte</VariableType>
+              <Address>SaintsRowTheThird_DX11.exe+44FE7B0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>187</ID>
+              <Description>"Compact UI"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>//By Skooma :)
+//lua functions help me when im adding lots
+//of things
+[ENABLE]
+
+luacall(function cycleFullCompact(sender,force); local state = not(compactmenuitem.Caption == 'Compact View Mode'); if force~=nil then state = not force end; compactmenuitem.Caption = state and 'Compact View Mode' or 'Full view Mode'; getMainForm().Splitter1.Visible = state; getMainForm().Panel4.Visible = state; getMainForm().Panel5.Visible = state; end; function addCompactMenu(); if compactmenualreadyexists then return end; local parent = getMainForm().Menu.Items; compactmenuitem = createMenuItem(parent); parent.add(compactmenuitem); compactmenuitem.Caption = 'Compact View Mode'; compactmenuitem.OnClick = cycleFullCompact; compactmenualreadyexists = 'yes'; end; addCompactMenu(); cycleFullCompact(nil,true))
+
+[DISABLE]
+
+luacall(cycleFullCompact(nil,false))
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>148</ID>
+              <Description>"Teleport To Places"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>152</ID>
+                  <Description>"Sadly You Can Not Be In A Car Or Running Or This Wont Work"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0000FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>154</ID>
+                  <Description>"Being Idle, Falling, &amp; Walking Works Fine"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0000FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>150</ID>
+                  <Description>"Teleport To Friendly Fire = Press Numpad 0"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>151</ID>
+                  <Description>"Teleport To Rim Jobs = Press Numpad 1"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>153</ID>
+                  <Description>"Teleport To Planet Saints = Press Numpad 2"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>190</ID>
+                  <Description>"Teleport To Zimos Pad = Press Numpad "</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>191</ID>
+                  <Description>"Teleport To Genki Reality Climax = Press Numpad *"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>193</ID>
+                  <Description>"Teleport To Saints HQ = Press Numpad ."</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>194</ID>
+                  <Description>"Teleport To Nyte Blade Room = Press Numpad /"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>195</ID>
+                  <Description>"Teleport To Stag PR Center = Press Numpad +"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>196</ID>
+                  <Description>"Teleport To Elevator HQ Room = Press Numpad 3"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>197</ID>
+                  <Description>"Teleport To Killbane Interview = Press Numpad 4"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>198</ID>
+                  <Description>"Teleport To Mayors Office = Press Page Up"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>199</ID>
+                  <Description>"Teleport To Smiling Jacks = Press Page Down"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>224</ID>
+                  <Description>"Teleport To DLC Genki = Press End"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>225</ID>
+                  <Description>"Teleport To Movie Room Bed = Press Delete"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>226</ID>
+                  <Description>"Teleport To Movie Room = Press Home"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>230</ID>
+                  <Description>"Teleport To Lets Pretend = Press Numpad 5"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>231</ID>
+                  <Description>"Teleport To Nobody Loves Me = Press Numpad 6"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>232</ID>
+                  <Description>"Teleport To Strip Club = Press Numpad 7"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>233</ID>
+                  <Description>"Teleport To Leather &amp; Lace = Press Numpad 8"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>235</ID>
+                  <Description>"Teleport To Airport = Press Numpad 9"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>277</ID>
+                  <Description>"Teleport To Safeword = Press Ctrl + Z"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>278</ID>
+                  <Description>"Teleport To Genki Large Arena = Press Ctrl + X"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>279</ID>
+                  <Description>"Teleport To Brothel = Press Ctrl + `"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>280</ID>
+                  <Description>"Teleport To DLC Genki Medium = Press Alt + Z"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>282</ID>
+                  <Description>"Teleport To 3 Count = Press Alt + X"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>283</ID>
+                  <Description>"Teleport To Brothel Cage = Press Ctrl + Alt"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>308</ID>
+                  <Description>"Teleport To Unnamed Store = Press CTRL + F1"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>309</ID>
+                  <Description>"Teleport To The Broken Shillelagh = Press CTRL + F2"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>159</ID>
+              <Description>"Speedhacks"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>158</ID>
+                  <Description>"Set Speed X2"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>//By Skooma :)
+[ENABLE]
+luacall(speedhack_setSpeed(2))
+
+
+
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>157</ID>
+                  <Description>"Set Speed X5"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>//By Skooma :)
+[ENABLE]
+luacall(speedhack_setSpeed(5))
+
+
+
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>156</ID>
+                  <Description>"Set Speed X250"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>//By Skooma :)
+[ENABLE]
+luacall(speedhack_setSpeed(250))
+
+
+
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>155</ID>
+                  <Description>"Set Speed X500"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>//By Skooma :)
+[ENABLE]
+luacall(speedhack_setSpeed(500))
+
+
+
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>45</Key>
+                      </Keys>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>149</ID>
+              <Description>"Current XYZ Coords"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>145</ID>
+                  <Description>"Z Coord"</Description>
+                  <LastState Value="30.73812675" RealAddress="04BC1364"/>
+                  <VariableType>Float</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+47C1364</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>96</Key>
+                      </Keys>
+                      <Value>25.30132484</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>97</Key>
+                      </Keys>
+                      <Value>13.45607185</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>98</Key>
+                      </Keys>
+                      <Value>14.41643524</Value>
+                      <ID>2</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>109</Key>
+                      </Keys>
+                      <Value>14.20829487</Value>
+                      <ID>3</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>106</Key>
+                      </Keys>
+                      <Value>-299.2044373</Value>
+                      <ID>4</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>111</Key>
+                      </Keys>
+                      <Value>33.99719238</Value>
+                      <ID>5</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>110</Key>
+                      </Keys>
+                      <Value>149.7450104</Value>
+                      <ID>6</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>107</Key>
+                      </Keys>
+                      <Value>20.04703903</Value>
+                      <ID>7</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>99</Key>
+                      </Keys>
+                      <Value>32.13139343</Value>
+                      <ID>8</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>100</Key>
+                      </Keys>
+                      <Value>53.2299118</Value>
+                      <ID>9</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>35</Key>
+                      </Keys>
+                      <Value>-383.5867004</Value>
+                      <ID>10</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>34</Key>
+                      </Keys>
+                      <Value>4.165188313</Value>
+                      <ID>11</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>33</Key>
+                      </Keys>
+                      <Value>243.3061371</Value>
+                      <ID>12</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>36</Key>
+                      </Keys>
+                      <Value>-298.6882935</Value>
+                      <ID>13</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>46</Key>
+                      </Keys>
+                      <Value>-298.5505371</Value>
+                      <ID>14</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>101</Key>
+                      </Keys>
+                      <Value>12.15499973</Value>
+                      <ID>15</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>102</Key>
+                      </Keys>
+                      <Value>11.16622543</Value>
+                      <ID>16</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>103</Key>
+                      </Keys>
+                      <Value>12.52589035</Value>
+                      <ID>17</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>104</Key>
+                      </Keys>
+                      <Value>10.40819454</Value>
+                      <ID>18</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>105</Key>
+                      </Keys>
+                      <Value>18.0120163</Value>
+                      <ID>19</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>90</Key>
+                      </Keys>
+                      <Value>88.30580902</Value>
+                      <ID>20</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>88</Key>
+                      </Keys>
+                      <Value>-323.9585266</Value>
+                      <ID>21</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>192</Key>
+                      </Keys>
+                      <Value>11.95960522</Value>
+                      <ID>22</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>18</Key>
+                        <Key>90</Key>
+                      </Keys>
+                      <Value>-383.552887</Value>
+                      <ID>23</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>18</Key>
+                        <Key>88</Key>
+                      </Keys>
+                      <Value>228.1555634</Value>
+                      <ID>24</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>18</Key>
+                      </Keys>
+                      <Value>13.70605278</Value>
+                      <ID>25</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>112</Key>
+                      </Keys>
+                      <Value>12.16917038</Value>
+                      <ID>26</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>113</Key>
+                      </Keys>
+                      <Value>12.18552399</Value>
+                      <ID>27</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>147</ID>
+                  <Description>"X Coord"</Description>
+                  <LastState Value="1267.545776" RealAddress="04BC1360"/>
+                  <VariableType>Float</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+47C1360</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>96</Key>
+                      </Keys>
+                      <Value>1368.942383</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>97</Key>
+                      </Keys>
+                      <Value>-1014.139648</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>98</Key>
+                      </Keys>
+                      <Value>-527.2850342</Value>
+                      <ID>2</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>109</Key>
+                      </Keys>
+                      <Value>-1242.149414</Value>
+                      <ID>3</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>106</Key>
+                      </Keys>
+                      <Value>-1807.629272</Value>
+                      <ID>4</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>111</Key>
+                      </Keys>
+                      <Value>-419.842804</Value>
+                      <ID>5</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>110</Key>
+                      </Keys>
+                      <Value>96.92552185</Value>
+                      <ID>6</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>107</Key>
+                      </Keys>
+                      <Value>-413.5348816</Value>
+                      <ID>7</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>99</Key>
+                      </Keys>
+                      <Value>98.0040741</Value>
+                      <ID>8</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>100</Key>
+                      </Keys>
+                      <Value>-827.8463135</Value>
+                      <ID>9</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>35</Key>
+                      </Keys>
+                      <Value>-2218.972412</Value>
+                      <ID>10</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>34</Key>
+                      </Keys>
+                      <Value>1742.893188</Value>
+                      <ID>11</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>33</Key>
+                      </Keys>
+                      <Value>73.02893829</Value>
+                      <ID>12</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>36</Key>
+                      </Keys>
+                      <Value>-2546.919678</Value>
+                      <ID>13</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>46</Key>
+                      </Keys>
+                      <Value>-2688.80835</Value>
+                      <ID>14</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>101</Key>
+                      </Keys>
+                      <Value>1223.599609</Value>
+                      <ID>15</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>102</Key>
+                      </Keys>
+                      <Value>1171.28125</Value>
+                      <ID>16</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>103</Key>
+                      </Keys>
+                      <Value>1044.249634</Value>
+                      <ID>17</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>104</Key>
+                      </Keys>
+                      <Value>-1245.463867</Value>
+                      <ID>18</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>105</Key>
+                      </Keys>
+                      <Value>-1417.367676</Value>
+                      <ID>19</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>90</Key>
+                      </Keys>
+                      <Value>-1171.377441</Value>
+                      <ID>20</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>88</Key>
+                      </Keys>
+                      <Value>-2287.843506</Value>
+                      <ID>21</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>192</Key>
+                      </Keys>
+                      <Value>46.29950714</Value>
+                      <ID>22</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>18</Key>
+                        <Key>90</Key>
+                      </Keys>
+                      <Value>-2209.436523</Value>
+                      <ID>23</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>18</Key>
+                        <Key>88</Key>
+                      </Keys>
+                      <Value>1201.36377</Value>
+                      <ID>24</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>18</Key>
+                      </Keys>
+                      <Value>50.84871674</Value>
+                      <ID>25</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>112</Key>
+                      </Keys>
+                      <Value>380.9520264</Value>
+                      <ID>26</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>113</Key>
+                      </Keys>
+                      <Value>-281.064209</Value>
+                      <ID>27</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>146</ID>
+                  <Description>"Y Coord"</Description>
+                  <LastState Value="111.0544968" RealAddress="04BC1368"/>
+                  <VariableType>Float</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+47C1368</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>96</Key>
+                      </Keys>
+                      <Value>228.3593445</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>97</Key>
+                      </Keys>
+                      <Value>-653.4254761</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>98</Key>
+                      </Keys>
+                      <Value>-86.20523071</Value>
+                      <ID>2</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>109</Key>
+                      </Keys>
+                      <Value>148.6395111</Value>
+                      <ID>3</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>106</Key>
+                      </Keys>
+                      <Value>-1116.717407</Value>
+                      <ID>4</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>111</Key>
+                      </Keys>
+                      <Value>-67.75534821</Value>
+                      <ID>5</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>110</Key>
+                      </Keys>
+                      <Value>1087.297363</Value>
+                      <ID>6</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>107</Key>
+                      </Keys>
+                      <Value>-100.0978546</Value>
+                      <ID>7</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>99</Key>
+                      </Keys>
+                      <Value>1041.746338</Value>
+                      <ID>8</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>100</Key>
+                      </Keys>
+                      <Value>-263.5080566</Value>
+                      <ID>9</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>35</Key>
+                      </Keys>
+                      <Value>-173.3451691</Value>
+                      <ID>10</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>34</Key>
+                      </Keys>
+                      <Value>-314.6683044</Value>
+                      <ID>11</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>33</Key>
+                      </Keys>
+                      <Value>279.0498047</Value>
+                      <ID>12</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>36</Key>
+                      </Keys>
+                      <Value>-2618.703613</Value>
+                      <ID>13</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>46</Key>
+                      </Keys>
+                      <Value>-2734.812256</Value>
+                      <ID>14</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>101</Key>
+                      </Keys>
+                      <Value>964.322937</Value>
+                      <ID>15</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>102</Key>
+                      </Keys>
+                      <Value>-536.189209</Value>
+                      <ID>16</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>103</Key>
+                      </Keys>
+                      <Value>-600.9946899</Value>
+                      <ID>17</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>104</Key>
+                      </Keys>
+                      <Value>-806.0006104</Value>
+                      <ID>18</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>105</Key>
+                      </Keys>
+                      <Value>-1214.276245</Value>
+                      <ID>19</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>90</Key>
+                      </Keys>
+                      <Value>-549.0943604</Value>
+                      <ID>20</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>88</Key>
+                      </Keys>
+                      <Value>-1601.671631</Value>
+                      <ID>21</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>192</Key>
+                      </Keys>
+                      <Value>-62.29593277</Value>
+                      <ID>22</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>18</Key>
+                        <Key>90</Key>
+                      </Keys>
+                      <Value>42.00543594</Value>
+                      <ID>23</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>18</Key>
+                        <Key>88</Key>
+                      </Keys>
+                      <Value>1457.709595</Value>
+                      <ID>24</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>18</Key>
+                        <Key>17</Key>
+                      </Keys>
+                      <Value>-44.7950325</Value>
+                      <ID>25</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>112</Key>
+                      </Keys>
+                      <Value>-85.00766754</Value>
+                      <ID>26</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>113</Key>
+                      </Keys>
+                      <Value>348.8248901</Value>
+                      <ID>27</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>312</ID>
+                  <Description>"Save Coords/TP Player 2 Alt F1 = Save Alt F2 = Go"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(tele1,SaintsRowTheThird_DX11.exe,0F 28 40 30 0F 29 81 00 01 00 00)
+alloc(teleport,$1000)
+alloc(store_coords,8)
+
+
+label(xpos)
+label(ypos)
+label(zpos)
+label(enablesave)
+label(enableload)
+label(save)
+label(load)
+label(return)
+label(code)
+registersymbol(enablesave)
+registersymbol(enableload)
+
+store_coords:
+xpos:
+dd 0
+ypos:
+dd 0
+zpos:
+dd 0
+enablesave:
+dd 0
+enableload:
+dd 0
+playerload:
+dd 0
+above:
+dd (float)30
+
+
+
+teleport:
+cmp [enablesave],1
+je save
+cmp [enableload],1
+je load
+jmp code
+
+save:
+mov [enablesave],0
+push rbx
+mov rbx,[SaintsRowTheThird_DX11.exe+47C1360]
+mov [xpos],rbx
+mov rbx,[SaintsRowTheThird_DX11.exe+47C1364]
+mov [zpos],rbx
+mov rbx,[SaintsRowTheThird_DX11.exe+47C1368]
+mov [ypos],rbx
+pop rbx
+jmp code
+
+load:
+mov [enableload],0
+push rbx
+mov rbx,[xpos]
+mov [SaintsRowTheThird_DX11.exe+47C1360],rbx
+mov rbx,[zpos]
+mov [SaintsRowTheThird_DX11.exe+47C1364],rbx
+mov rbx,[ypos]
+mov [SaintsRowTheThird_DX11.exe+47C1368],rbx
+pop rbx
+jmp code
+
+load1:
+mov [playerload],0
+push rbx
+mov rbx,[xpos1]
+mov [SaintsRowTheThird_DX11.exe+4B0C460],rbx
+mov rbx,[zpos1]
+mov [SaintsRowTheThird_DX11.exe+4B0C464],rbx
+call yincrease
+mov rbx,[ypos1]
+mov [SaintsRowTheThird_DX11.exe+4B0C468],rbx
+pop rbx
+jmp code
+
+yincrease:
+fld [ypos1]
+fadd [above]
+fstp [ypos1]
+ret
+
+code:
+  movaps xmm0,[eax+30]
+  movaps [ecx+00000100],xmm0
+  jmp return
+
+  tele1:
+  jmp teleport
+  nop 6
+
+return:
+registersymbol(tele1)
+
+//teleport to player starts here//
+
+aobscanmodule(teleporttoplayer,SaintsRowTheThird_DX11.exe,0F 28 00 0F 29 06 8B 47) // should be unique
+alloc(newmem,$1000)
+alloc(storeplayer,256)
+label(code1)
+label(return1)
+label(xpos1)
+label(ypos1)
+label(zpos1)
+label(save1)
+label(load1)
+label(playersave)
+label(playerload)
+label(yincrease)
+label(above)
+registersymbol(xpos1)
+registersymbol(ypos1)
+registersymbol(zpos1)
+registersymbol(playersave)
+registersymbol(playerload)
+registersymbol(yincrease)
+registersymbol(above)
+
+storeplayer:
+xpos1:
+dd 0
+ypos1:
+dd 0
+zpos1:
+dd 0
+playersave:
+dd 0
+
+
+save1:
+mov [playersave],0
+push rcx
+mov rcx,[SaintsRowTheThird_DX11.exe+4B0C460]
+mov [xpos1],rcx
+mov rcx,[SaintsRowTheThird_DX11.exe+4B0C464]
+mov [zpos1],rcx
+mov rcx,[SaintsRowTheThird_DX11.exe+4B0C468]
+mov [ypos1],rcx
+pop rcx
+jmp code1
+
+newmem:
+cmp [playersave],1
+je save1
+cmp [playerload],1
+je load1
+jmp code1
+
+code1:
+  movaps xmm0,[eax]
+  movaps [esi],xmm0
+  jmp return1
+
+  teleporttoplayer:
+  jmp newmem
+  nop
+return1:
+registersymbol(teleporttoplayer)
+ 
+ 
+[DISABLE]
+unregistersymbol(enablesave)
+unregistersymbol(enableload)
+dealloc(teleport)
+dealloc(store_coords)
+
+tele1:
+  db 0F 28 40 30 0F 29 81 00 01 00 00
+
+unregistersymbol(tele1)
+
+teleporttoplayer:
+  db 0F 28 00 0F 29 06
+
+unregistersymbol(teleporttoplayer)
+dealloc(newmem)
+unregistersymbol(xpos1)
+unregistersymbol(ypos1)
+unregistersymbol(zpos1)
+unregistersymbol(playersave)
+unregistersymbol(playerload)
+unregistersymbol(yincrease)
+unregistersymbol(above)
+dealloc(storeplayer)
+
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>313</ID>
+                      <Description>"Save location"</Description>
+                      <LastState Value="0" RealAddress="06BB100C"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>enablesave</Address>
+                      <Hotkeys>
+                        <Hotkey>
+                          <Action>Set Value</Action>
+                          <Keys>
+                            <Key>18</Key>
+                            <Key>112</Key>
+                          </Keys>
+                          <Value>1</Value>
+                          <ID>0</ID>
+                        </Hotkey>
+                      </Hotkeys>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>314</ID>
+                      <Description>"Go To Saved Location"</Description>
+                      <LastState Value="0" RealAddress="06BB1010"/>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>enableload</Address>
+                      <Hotkeys>
+                        <Hotkey>
+                          <Action>Set Value</Action>
+                          <Keys>
+                            <Key>18</Key>
+                            <Key>113</Key>
+                          </Keys>
+                          <Value>1</Value>
+                          <ID>0</ID>
+                        </Hotkey>
+                      </Hotkeys>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>161</ID>
+              <Description>"Saintsbook Challenges"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>220</ID>
+                  <Description>"Made Sections Because Too Many Addresses"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0000FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>223</ID>
+                  <Description>"Still Need To Use Compact UI"</Description>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>0000FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>221</ID>
+                  <Description>"#1"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>163</ID>
+                      <Description>"Nut Shots"</Description>
+                      <LastState Value="25" RealAddress="048C5768"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5768</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>164</ID>
+                      <Description>"Required Nut Shots "</Description>
+                      <LastState Value="25" RealAddress="048C576C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C576C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>165</ID>
+                      <Description>"Grenade Kills"</Description>
+                      <LastState Value="50" RealAddress="048C57DC"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C57DC</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>166</ID>
+                      <Description>"Required Grenade Kills"</Description>
+                      <LastState Value="50" RealAddress="048C57E0"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C57E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>160</ID>
+                      <Description>"Cars Destroyed"</Description>
+                      <LastState Value="300" RealAddress="048C5850"/>
+                      <VariableType>Float</VariableType>
+                      <Address>SaintsRowTheThird_DX11.exe+44C5850</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>162</ID>
+                      <Description>"Required Cars Destroyed"</Description>
+                      <LastState Value="300" RealAddress="048C5854"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5854</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>167</ID>
+                      <Description>"Helicopters Destroyed"</Description>
+                      <LastState Value="60" RealAddress="048C58C4"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C58C4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>168</ID>
+                      <Description>"Required Helis Destroyed"</Description>
+                      <LastState Value="60" RealAddress="048C58C8"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C58C8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>169</ID>
+                      <Description>"Boats Destroyed"</Description>
+                      <LastState Value="25" RealAddress="048C5938"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5938</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>170</ID>
+                      <Description>"Required Boats Destroyed"</Description>
+                      <LastState Value="25" RealAddress="048C593C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C593C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>171</ID>
+                      <Description>"Tanks Destroyed"</Description>
+                      <LastState Value="25" RealAddress="048C59AC"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C59AC</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>172</ID>
+                      <Description>"Required Tanks Destroyed"</Description>
+                      <LastState Value="25" RealAddress="048C59B0"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C59B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>173</ID>
+                      <Description>"Carjackings"</Description>
+                      <LastState Value="250" RealAddress="048C5A20"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5A20</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>174</ID>
+                      <Description>"Required Carjackings"</Description>
+                      <LastState Value="250" RealAddress="048C5A24"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5A24</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>175</ID>
+                      <Description>"Mascots Killed"</Description>
+                      <LastState Value="200" RealAddress="048C5A94"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5A94</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>176</ID>
+                      <Description>"Required Mascots Killed"</Description>
+                      <LastState Value="200" RealAddress="048C5A98"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5A98</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>177</ID>
+                      <Description>"Hoods Explored"</Description>
+                      <LastState Value="18" RealAddress="048C5B08"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5B08</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>178</ID>
+                      <Description>"Required Hoods Explored"</Description>
+                      <LastState Value="18" RealAddress="048C5B0C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5B0C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>179</ID>
+                      <Description>"Shortcuts Found"</Description>
+                      <LastState Value="50" RealAddress="048C5B7C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5B7C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>180</ID>
+                      <Description>"Required Shortcuts Found"</Description>
+                      <LastState Value="50" RealAddress="048C5B80"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5B80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>181</ID>
+                      <Description>"Hostages Taken"</Description>
+                      <LastState Value="50" RealAddress="048C5BF0"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5BF0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>182</ID>
+                      <Description>"Required Hostages Taken"</Description>
+                      <LastState Value="50" RealAddress="048C5BF4"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5BF4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>183</ID>
+                      <Description>"Stores Robbed"</Description>
+                      <LastState Value="15" RealAddress="048C5C64"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5C64</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>184</ID>
+                      <Description>"Required Stores Robbed"</Description>
+                      <LastState Value="15" RealAddress="048C5C68"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5C68</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>222</ID>
+                  <Description>"#2"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>185</ID>
+                      <Description>"Streaking Time"</Description>
+                      <LastState Value="600" RealAddress="048C5CD8"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5CD8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>186</ID>
+                      <Description>"Required Streaking Time"</Description>
+                      <LastState Value="600" RealAddress="048C5CDC"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5CDC</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>189</ID>
+                      <Description>"Big Air Distance"</Description>
+                      <LastState Value="1524" RealAddress="048C5D4C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5D4C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>188</ID>
+                      <Description>"Required Big Air Distance"</Description>
+                      <LastState Value="1524" RealAddress="048C5D50"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5D50</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>200</ID>
+                      <Description>"Gang Members Taunted"</Description>
+                      <LastState Value="50" RealAddress="048C5DC0"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5DC0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>201</ID>
+                      <Description>"Required Gang Members Taunted"</Description>
+                      <LastState Value="50" RealAddress="048C5DC4"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5DC4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>202</ID>
+                      <Description>"Vehicle Surfing Time"</Description>
+                      <LastState Value="600" RealAddress="048C5E34"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5E34</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>203</ID>
+                      <Description>"Required Vehicle Surfing Time"</Description>
+                      <LastState Value="600" RealAddress="048C5E38"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5E38</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>205</ID>
+                      <Description>"Windshield Cannon Distance"</Description>
+                      <LastState Value="304.8999939" RealAddress="048C5EA8"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5EA8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>204</ID>
+                      <Description>"Required Windshield Cannon Distance"</Description>
+                      <LastState Value="304.8999939" RealAddress="048C5EAC"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5EAC</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>206</ID>
+                      <Description>"People Run Over"</Description>
+                      <LastState Value="500" RealAddress="048C5F1C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5F1C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>207</ID>
+                      <Description>"Required People Run Over"</Description>
+                      <LastState Value="500" RealAddress="048C5F20"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5F20</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>208</ID>
+                      <Description>"Oncoming Lane Distance"</Description>
+                      <LastState Value="30479" RealAddress="048C5F90"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5F90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>209</ID>
+                      <Description>"Required Oncoming Lane Distance"</Description>
+                      <LastState Value="30480" RealAddress="048C5F94"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C5F94</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>210</ID>
+                      <Description>"Wheelie Distance"</Description>
+                      <LastState Value="3048" RealAddress="048C6004"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6004</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>211</ID>
+                      <Description>"Required Wheelie Distance "</Description>
+                      <LastState Value="3048" RealAddress="048C6008"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6008</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>212</ID>
+                      <Description>"Powerslide Time"</Description>
+                      <LastState Value="300" RealAddress="048C6078"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6078</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>213</ID>
+                      <Description>"Required Powerslide Time"</Description>
+                      <LastState Value="300" RealAddress="048C607C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C607C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>214</ID>
+                      <Description>"Decker Specialists Killed"</Description>
+                      <LastState Value="50" RealAddress="048C60EC"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C60EC</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>215</ID>
+                      <Description>"Required Decker Specialists Killed"</Description>
+                      <LastState Value="50" RealAddress="048C60F0"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C60F0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>216</ID>
+                      <Description>"Luchadore Specialists Killed"</Description>
+                      <LastState Value="50" RealAddress="048C6160"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6160</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>217</ID>
+                      <Description>"Required Luchadore Specialists Killed"</Description>
+                      <LastState Value="50" RealAddress="048C6164"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6164</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>218</ID>
+                      <Description>"Morningstar Specialists Killed"</Description>
+                      <LastState Value="50" RealAddress="048C61D4"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C61D4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>219</ID>
+                      <Description>"Required Morningstar Specialists Killed"</Description>
+                      <LastState Value="50" RealAddress="048C61D8"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C61D8</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>290</ID>
+                  <Description>"#3"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>284</ID>
+                      <Description>"Near Misses"</Description>
+                      <LastState Value="500" RealAddress="048C6248"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6248</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>285</ID>
+                      <Description>"Required Near Misses"</Description>
+                      <LastState Value="500" RealAddress="048C624C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C624C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>286</ID>
+                      <Description>"Human Shields Used"</Description>
+                      <LastState Value="150" RealAddress="048C63A4"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C63A4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>287</ID>
+                      <Description>"Required Human Shields Used"</Description>
+                      <LastState Value="150" RealAddress="048C63A8"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C63A8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>288</ID>
+                      <Description>"Multi Kills"</Description>
+                      <LastState Value="500" RealAddress="048C648C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C648C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>289</ID>
+                      <Description>"Required Multi Kills"</Description>
+                      <LastState Value="500" RealAddress="048C6490"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6490</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>291</ID>
+                      <Description>"Basejumps Nailed"</Description>
+                      <LastState Value="15" RealAddress="048C6500"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6500</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>295</ID>
+                      <Description>"Required Basejumps Nailed"</Description>
+                      <LastState Value="15" RealAddress="048C6504"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6504</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>296</ID>
+                      <Description>"Gang Ops Defeated"</Description>
+                      <LastState Value="31" RealAddress="048C67B8"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C67B8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>294</ID>
+                      <Description>"Required Gang Ops Defeated"</Description>
+                      <LastState Value="32" RealAddress="048C67BC"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C67BC</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>297</ID>
+                      <Description>"Survivals Defeated"</Description>
+                      <LastState Value="25" RealAddress="048C682C"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C682C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>298</ID>
+                      <Description>"Required Survivals Defeated"</Description>
+                      <LastState Value="26" RealAddress="048C6830"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C6830</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>301</ID>
+                  <Description>"#4"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>299</ID>
+                      <Description>"Emus Destroyed"</Description>
+                      <LastState Value="50" RealAddress="048C68A0"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C68A0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>302</ID>
+                      <Description>"Required Emus Destroyed"</Description>
+                      <LastState Value="50" RealAddress="048C68A4"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C68A4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>303</ID>
+                      <Description>"Headshots"</Description>
+                      <LastState Value="500" RealAddress="048C56F4"/>
+                      <VariableType>Float</VariableType>
+                      <Address>SaintsRowTheThird_DX11.exe+44C56F4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>304</ID>
+                      <Description>"Required Headshots"</Description>
+                      <LastState Value="500" RealAddress="048C56F8"/>
+                      <VariableType>Float</VariableType>
+                      <Address>048C56F8</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>237</ID>
+              <Description>"Notorieties"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>236</ID>
+                  <Description>"Morningstar Notoriety"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:None
+1:One Star
+2:Two Star
+3:Three Star
+4:Four Star
+5:All
+</DropDownList>
+                  <LastState Value="0" RealAddress="048AC5A8"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+44AC5A8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>238</ID>
+                  <Description>"Cop Notoriety"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:None
+1:One Star
+2:Two Star
+3:Three Star
+4:Four Star
+5:All
+</DropDownList>
+                  <LastState Value="0" RealAddress="048AC5F4"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+44AC5F4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>242</ID>
+                  <Description>"Decker Notoriety"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:None
+1:One Star
+2:Two Star
+3:Three Star
+4:Four Star
+5:All
+</DropDownList>
+                  <LastState Value="0" RealAddress="048AC55C"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+44AC55C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>243</ID>
+                  <Description>"Luchadore Notoriety"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:None
+1:One Star
+2:Two Star
+3:Three Star
+4:Four Star
+5:All
+</DropDownList>
+                  <LastState Value="0" RealAddress="048AC510"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+44AC510</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>258</ID>
+              <Description>"Activities"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>247</ID>
+                  <Description>"Activate Activity Stuff (Must Be In Exact Activity)"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>//By Skooma :)
+//This Barely Works :(
+[ENABLE]
+aobscan(test1,?? ?? 00 00 38 C1 01 00 ?? ?? 00 00 ?? 00 00 00 E0 93 04 00 B0 03 ?? ??)
+label(testone)
+registersymbol(testone)
+
+test1:
+
+testone:
+ 
+ 
+[DISABLE]
+unregistersymbol(testone)
+
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>259</ID>
+                      <Description>"Must Start In Mayhem To Activate Script, Then Can Go To Others"</Description>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <Color>0000FF</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>248</ID>
+                      <Description>"Mayhem Money"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>testone</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>249</ID>
+                      <Description>"Required Mayhem Money"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>testone+4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>250</ID>
+                      <Description>"Insurance Fraud Money (Display)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>testone-8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>252</ID>
+                      <Description>"Required Insurance Fruad Money"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>testone-40</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>253</ID>
+                      <Description>"Proffessor Genki Money"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>testone+1e18</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>257</ID>
+                      <Description>"Required Proffessor Genki Money"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>testone+39e0</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>241</ID>
+              <Description>"Ignore"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>239</ID>
+                  <Description>"cop"</Description>
+                  <LastState Value="0" RealAddress="048AC5A8"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+44AC5A8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>240</ID>
+                  <Description>"morning"</Description>
+                  <LastState Value="0" RealAddress="048AC5F4"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+44AC5F4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>244</ID>
+                  <Description>"decker"</Description>
+                  <LastState Value="0" RealAddress="048AC55C"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+44AC55C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>245</ID>
+                  <Description>"luchadore"</Description>
+                  <LastState Value="0" RealAddress="048AC510"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SaintsRowTheThird_DX11.exe+44AC510</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>264</ID>
+              <Description>"Get Super Powers (Trash, Test)"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>//By Skooma :)
+[ENABLE]
+aobscan(gmode,08 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 00 00 00 00 00 00 00 00 D? 0? 00 00 E? 0? 00 00 0? 00 00 00 ?? ?? ?? 44 00 00 80 3F 00 00 80 3F FF FF FF FF)
+label(godmode)
+registersymbol(godmode)
+
+gmode:
+mov [godmode],#200
+godmode:
+mov [godmode],#200
+
+[DISABLE]
+unregistersymbol(godmode)
+godmode:
+  dd 8
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>276</ID>
+              <Description>"Tour De Farce Run Speed (Gives Effect During Mission)"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : SaintsRowTheThird_DX11.exe
+  Version: 
+  Date   : 2020-03-16
+  Author : Colton
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,SaintsRowTheThird_DX11.exe,C3 8B 8E 9C 1C 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+mov ecx,[esi+00001C9C]
+mov [esi+00001C9C],(int)524288
+  jmp return
+code:
+  mov ecx,[esi+00001C9C]
+  jmp return
+
+INJECT+01:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT+01:
+  db 8B 8E 9C 1C 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+{
+// ORIGINAL CODE - INJECTION POINT: "SaintsRowTheThird_DX11.exe"+556747
+
+"SaintsRowTheThird_DX11.exe"+556734: E8 97 7B B4 FF           -  call SaintsRowTheThird_DX11.exe+9E2D0
+"SaintsRowTheThird_DX11.exe"+556739: 83 C4 08                 -  add esp,08
+"SaintsRowTheThird_DX11.exe"+55673C: 3B F8                    -  cmp edi,eax
+"SaintsRowTheThird_DX11.exe"+55673E: 7E 07                    -  jle SaintsRowTheThird_DX11.exe+556747
+"SaintsRowTheThird_DX11.exe"+556740: 5F                       -  pop edi
+"SaintsRowTheThird_DX11.exe"+556741: 5E                       -  pop esi
+"SaintsRowTheThird_DX11.exe"+556742: 5D                       -  pop ebp
+"SaintsRowTheThird_DX11.exe"+556743: B0 01                    -  mov al,01
+"SaintsRowTheThird_DX11.exe"+556745: 5B                       -  pop ebx
+"SaintsRowTheThird_DX11.exe"+556746: C3                       -  ret 
+// ---------- INJECTING HERE ----------
+"SaintsRowTheThird_DX11.exe"+556747: 8B 8E 9C 1C 00 00        -  mov ecx,[esi+00001C9C]
+// ---------- DONE INJECTING  ----------
+"SaintsRowTheThird_DX11.exe"+55674D: C1 E9 13                 -  shr ecx,13
+"SaintsRowTheThird_DX11.exe"+556750: F6 C1 01                 -  test cl,01
+"SaintsRowTheThird_DX11.exe"+556753: 74 76                    -  je SaintsRowTheThird_DX11.exe+5567CB
+"SaintsRowTheThird_DX11.exe"+556755: 8B 96 24 0D 00 00        -  mov edx,[esi+00000D24]
+"SaintsRowTheThird_DX11.exe"+55675B: 8B 42 10                 -  mov eax,[edx+10]
+"SaintsRowTheThird_DX11.exe"+55675E: 68 7E 1D 00 00           -  push 00001D7E
+"SaintsRowTheThird_DX11.exe"+556763: 50                       -  push eax
+"SaintsRowTheThird_DX11.exe"+556764: E8 F7 9E B4 FF           -  call SaintsRowTheThird_DX11.exe+A0660
+"SaintsRowTheThird_DX11.exe"+556769: 83 C4 08                 -  add esp,08
+"SaintsRowTheThird_DX11.exe"+55676C: 84 C0                    -  test al,al
+}
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>ammo pouch reload - Code :mov [esi+04],edx</Description>
+      <AddressString>SaintsRowTheThird.exe+752F42</AddressString>
+      <Before>
+        <Byte>02</Byte>
+        <Byte>8B</Byte>
+        <Byte>C2</Byte>
+        <Byte>2B</Byte>
+        <Byte>D0</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>56</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>56</Byte>
+        <Byte>08</Byte>
+        <Byte>85</Byte>
+        <Byte>D2</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>ammo - Code :sub [edi],eax</Description>
+      <AddressString>SaintsRowTheThird.exe+5BBB57</AddressString>
+      <Before>
+        <Byte>82</Byte>
+        <Byte>1A</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>FE</Byte>
+        <Byte>E8</Byte>
+        <Byte>30</Byte>
+        <Byte>AB</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>health +- Code :movss [esi+00001CC8],xmm0</Description>
+      <AddressString>SaintsRowTheThird.exe+538C99</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>86</Byte>
+        <Byte>C8</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>86</Byte>
+        <Byte>94</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>health access 1 Code :movss xmm0,[eax+00001CC8]</Description>
+      <AddressString>SaintsRowTheThird.exe+1525FE</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>85</Byte>
+        <Byte>C9</Byte>
+        <Byte>7E</Byte>
+        <Byte>19</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>80</Byte>
+        <Byte>C8</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>2A</Byte>
+        <Byte>C9</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>health access 2 Code :movss xmm0,[ecx+00001CC8]</Description>
+      <AddressString>SaintsRowTheThird.exe+D0BCD</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>7E</Byte>
+        <Byte>29</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>C8</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>2A</Byte>
+        <Byte>C8</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>*health access 3 Code :movss xmm0,[esi+00001CC8]</Description>
+      <AddressString>SaintsRowTheThird.exe+3A7BE4</AddressString>
+      <Before>
+        <Byte>F0</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>74</Byte>
+        <Byte>77</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>86</Byte>
+        <Byte>C8</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>0D</Byte>
+        <Byte>88</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>*health access 4 Code :movss xmm1,[esi+00001CC8]</Description>
+      <AddressString>SaintsRowTheThird.exe+3A7C1D</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>88</Byte>
+        <Byte>B6</Byte>
+        <Byte>24</Byte>
+        <Byte>02</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>8E</Byte>
+        <Byte>C8</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>C0</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>health access 5 (not in combat) Code :movss xmm0,[esi+00001CC8]</Description>
+      <AddressString>SaintsRowTheThird.exe+584881</AddressString>
+      <Before>
+        <Byte>15</Byte>
+        <Byte>64</Byte>
+        <Byte>F6</Byte>
+        <Byte>47</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>86</Byte>
+        <Byte>C8</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>C9</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>$ +- Code :mov [ecx],eax</Description>
+      <AddressString>SaintsRowTheThird.exe+54BA44</AddressString>
+      <Before>
+        <Byte>CA</Byte>
+        <Byte>88</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>$ access Code :cvtsi2ss xmm0,[ebx+00001CB0]</Description>
+      <AddressString>SaintsRowTheThird.exe+3E46C5</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>2A</Byte>
+        <Byte>83</Byte>
+        <Byte>B0</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>C0</Byte>
+        <Byte>F2</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>thorw +- Code :mov [eax+04],ecx</Description>
+      <AddressString>SaintsRowTheThird.exe+753B51</AddressString>
+      <Before>
+        <Byte>02</Byte>
+        <Byte>8B</Byte>
+        <Byte>F1</Byte>
+        <Byte>2B</Byte>
+        <Byte>CE</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>48</Byte>
+        <Byte>08</Byte>
+        <Byte>85</Byte>
+        <Byte>C9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>throw access Code :mov eax,[eax+04]</Description>
+      <AddressString>SaintsRowTheThird.exe+7539C1</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+        <Byte>03</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>C8</Byte>
+        <Byte>84</Byte>
+        <Byte>DB</Byte>
+        <Byte>5B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>CE ammo pouch read Code :mov eax,[eax+04]</Description>
+      <AddressString>saintsrowthethird.exe+76EAF9</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+        <Byte>CF</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>C2</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>CC</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>CE ammo clip read Code :mov eax,[ebx+000001A4]</Description>
+      <AddressString>saintsrowthethird.exe+5D2BE1</AddressString>
+      <Before>
+        <Byte>F0</Byte>
+        <Byte>1A</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>F0</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>83</Byte>
+        <Byte>A4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>08</Byte>
+        <Byte>3B</Byte>
+        <Byte>C6</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>x_shift read Code :fld dword ptr [edi+34]</Description>
+      <AddressString>saintsrowthethird.exe+1743D1</AddressString>
+      <Before>
+        <Byte>8E</Byte>
+        <Byte>C0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>47</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>9E</Byte>
+        <Byte>C4</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>lookat_offset: Y load default Code :movaps xmm0,[edi]</Description>
+      <AddressString>saintsrowthethird.exe+16C5D0</AddressString>
+      <Before>
+        <Byte>56</Byte>
+        <Byte>57</Byte>
+        <Byte>8B</Byte>
+        <Byte>7D</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>C1</Byte>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>x_shift load default Code :movss xmm0,[edi+34]</Description>
+      <AddressString>saintsrowthethird.exe+16C64B</AddressString>
+      <Before>
+        <Byte>58</Byte>
+        <Byte>C1</Byte>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>06</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>47</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>74</Byte>
+        <Byte>07</Byte>
+        <Byte>0F</Byte>
+        <Byte>57</Byte>
+        <Byte>05</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of movss xmm0,[eax+00001CB8]</Description>
+      <AddressString>SaintsRowTheThird_DX11.exe+15330E</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>85</Byte>
+        <Byte>C9</Byte>
+        <Byte>7E</Byte>
+        <Byte>19</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>80</Byte>
+        <Byte>B8</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>2A</Byte>
+        <Byte>C9</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of cvtsi2ss xmm1,ecx</Description>
+      <AddressString>SaintsRowTheThird_DX11.exe+153316</AddressString>
+      <Before>
+        <Byte>80</Byte>
+        <Byte>B8</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>2A</Byte>
+        <Byte>C9</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>C0</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of add [eax],al</Description>
+      <AddressString>SaintsRowTheThird_DX11.exe+44AC5A9</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of add ecx</Description>
+      <AddressString>binkw32.dll+41000</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>49</Byte>
+      </Actual>
+      <After>
+        <Byte>73</Byte>
+        <Byte>44</Byte>
+        <Byte>65</Byte>
+        <Byte>62</Byte>
+        <Byte>75</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>pHeroHealth</Name>
+      <Address>0FFF00B3</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>mAmmoPouch</Name>
+      <Address>08760000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>heyho</Name>
+      <Address>2AF80000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>bCenterCamera</Name>
+      <Address>3C7B101F</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>cameratoggleAOB1_jmp</Name>
+      <Address>005743D1</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>b2CamerasOnly</Name>
+      <Address>2BCF0172</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+  <Structures StructVersion="2">
+    <Structure Name="unnamed structure" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" RLECount="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="20" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="24" Vartype="4 Bytes" Bytesize="4" RLECount="18" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="96" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="100" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="152" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="160" Vartype="Pointer" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="168" Vartype="4 Bytes" Bytesize="4" RLECount="24" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="264" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="268" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="276" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="280" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="332" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="336" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="344" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="348" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="400" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="404" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="412" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="416" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="468" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="472" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="480" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="484" Vartype="4 Bytes" Bytesize="4" RLECount="30" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="604" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="608" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="616" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="620" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="672" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="676" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="684" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="688" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="740" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="744" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="752" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="756" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="808" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="812" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="820" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="824" Vartype="4 Bytes" Bytesize="4" RLECount="30" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="944" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="948" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="956" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="960" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1012" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1016" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1024" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1028" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1080" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1084" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1092" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1096" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1148" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1152" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1160" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1164" Vartype="4 Bytes" Bytesize="4" RLECount="30" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1284" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1288" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1296" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1300" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1308" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1312" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1352" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1356" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1364" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1368" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1420" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1424" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1432" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1436" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1488" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1492" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1500" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1504" Vartype="4 Bytes" Bytesize="4" RLECount="30" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1624" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1628" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1636" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1640" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1648" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1652" Vartype="4 Bytes" Bytesize="4" RLECount="10" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1692" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1696" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1704" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1708" Vartype="4 Bytes" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1760" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1764" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1772" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1776" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1784" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1788" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1796" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1800" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1828" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1832" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1840" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1844" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1880" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1884" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1920" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1924" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1960" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1964" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2000" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2004" Vartype="4 Bytes" Bytesize="4" RLECount="9" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2040" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2044" Vartype="4 Bytes" Bytesize="4" RLECount="11" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2088" Vartype="Float" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2092" Vartype="4 Bytes" Bytesize="4" RLECount="67" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2360" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2376" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Hexadecimal"/>
+        <Element Offset="2384" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2416" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="2420" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2436" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="2440" Vartype="4 Bytes" Bytesize="4" RLECount="40" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2600" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2604" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2616" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2620" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="2624" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2656" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="2660" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2676" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="2680" Vartype="4 Bytes" Bytesize="4" RLECount="44" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2856" Vartype="4 Bytes" Bytesize="4" RLECount="3" DisplayMethod="Hexadecimal"/>
+        <Element Offset="2868" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2916" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="2920" Vartype="4 Bytes" Bytesize="4" RLECount="40" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3080" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3088" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3096" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3100" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3104" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3108" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3136" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3140" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3156" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3160" Vartype="4 Bytes" Bytesize="4" RLECount="44" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3336" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3340" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3344" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3348" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3396" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3400" Vartype="4 Bytes" Bytesize="4" RLECount="44" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3576" Vartype="Pointer" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3584" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3588" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3636" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3640" Vartype="4 Bytes" Bytesize="4" RLECount="40" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3800" Vartype="Double" Bytesize="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3808" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3816" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3820" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3824" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3828" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3856" Vartype="Pointer" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3860" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3876" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="3880" Vartype="4 Bytes" Bytesize="4" RLECount="40" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4040" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4048" Vartype="4 Bytes" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4056" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="4060" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4064" Vartype="4 Bytes" Bytesize="4" DisplayMethod="Hexadecimal"/>
+        <Element Offset="4068" Vartype="4 Bytes" Bytesize="4" RLECount="7" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
+  </Structures>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"SaintsRowTheThird_DX11.exe"+542E8E</Address>
+      <Comment>1
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
+</CheatTable>

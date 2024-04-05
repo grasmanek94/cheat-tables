@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Unlimited Reload"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+9DFF81) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rax+18],#99
+
+originalcode:
+//mov [rax+18],ecx
+sub edi,ebx
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+9DFF81:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GameAssembly.dll"+9DFF81:
+mov [rax+18],ecx
+sub edi,ebx
+//Alt: db 89 48 18 2B FB
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Unlimited Ammo"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+9F6A51) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rbx+40],#9
+
+originalcode:
+//sub [rbx+40],edi
+mov rdx,[GameAssembly.dll+DD6018]
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+9F6A51:
+jmp newmem
+nop 5
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GameAssembly.dll"+9F6A51:
+sub [rbx+40],edi
+mov rdx,[GameAssembly.dll+DD6018]
+//Alt: db 29 7B 40 48 8B 15 BD F5 3D 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Set Ammo on Weapon Select"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+9F6DC6) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rbx+40],#9
+
+originalcode:
+mov byte ptr [rbx+44],00
+add rsp,20
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+9F6DC6:
+jmp newmem
+nop 3
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GameAssembly.dll"+9F6DC6:
+mov byte ptr [rbx+44],00
+add rsp,20
+//Alt: db C6 43 44 00 48 83 C4 20
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Always 100 Vitality"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+980ECA) 
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov [rbx+48],42C80000
+
+originalcode:
+//movss [rbx+48],xmm0
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+980ECA:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GameAssembly.dll"+980ECA:
+movss [rbx+48],xmm0
+//Alt: db F3 0F 11 43 48
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"No Bleed"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+"GameAssembly.dll"+9FE902:
+mov byte ptr [rbx+28],00
+mov rcx,rbx
+ 
+[DISABLE]
+"GameAssembly.dll"+9FE902:
+mov byte ptr [rbx+28],01
+mov rcx,rbx
+//Alt: db C6 43 28 01 48 8B CB
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"Always 100 Health for player"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+968BDE) 
+label(returnhere)
+label(originalcode)
+label(exit)
+label(not_player)
+
+newmem: //this is allocated memory, you have read,write,execute access
+pushfq
+//cmp rdx,0
+//jz not_player
+cmp r15,0
+jnz not_player
+mov [rbx+24],447a0000
+popfq
+jmp exit
+
+not_player:
+popfq
+
+originalcode:
+movss [rbx+24],xmm0
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+968BDE:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GameAssembly.dll"+968BDE:
+movss [rbx+24],xmm0
+//Alt: db F3 0F 11 43 24
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"Always 100 Health for player"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+968D92) 
+label(returnhere)
+label(originalcode)
+label(exit)
+label(not_player)
+
+newmem: //this is allocated memory, you have read,write,execute access
+pushfq
+//cmp rdx,0
+//jz not_player
+cmp r15,0
+jnz not_player
+mov [rbx+24],447a0000
+popfq
+jmp exit
+
+not_player:
+popfq
+
+originalcode:
+movss [rbx+24],xmm0
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+968D92:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GameAssembly.dll"+968D92:
+movss [rbx+24],xmm0
+//Alt: db F3 0F 11 43 24
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"Always 100 Health for player"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048,"GameAssembly.dll"+969360) 
+label(returnhere)
+label(originalcode)
+label(exit)
+label(not_player)
+newmem: //this is allocated memory, you have read,write,execute access
+pushfq
+cmp rsi,0
+jnz not_player
+mov [rcx+24],447a0000
+not_player:
+popfq
+
+originalcode:
+cvttss2si eax,[rcx+24]
+
+exit:
+jmp returnhere
+
+"GameAssembly.dll"+969360:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"GameAssembly.dll"+969360:
+cvttss2si eax,[rcx+24]
+//Alt: db F3 0F 2C 41 24
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov [rax+18],ecx</Description>
+      <AddressString>GameAssembly.dll+9DFF81</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>CB</Byte>
+        <Byte>2B</Byte>
+        <Byte>CF</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>2B</Byte>
+        <Byte>FB</Byte>
+        <Byte>89</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rbx+24],xmm0</Description>
+      <AddressString>GameAssembly.dll+968BDE</AddressString>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>22</Byte>
+        <Byte>68</Byte>
+        <Byte>0B</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>43</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>15</Byte>
+        <Byte>2E</Byte>
+        <Byte>D4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rbx+24],xmm0</Description>
+      <AddressString>GameAssembly.dll+968D92</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>7C</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>43</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>58</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

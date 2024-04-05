@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Minimum Resources (Wood, Stone, Gold, Crowns, Food)"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(gold,Dwarrows-Win64-Shipping.exe,3C 8B 42 48 89 41 48 0F B6 42 4C 88 41 4C 8B 42 50 89 41 50) // should be unique
+alloc(newmem,$1000,"Dwarrows-Win64-Shipping.exe"+6013C9)
+aobscanmodule(stone,Dwarrows-Win64-Shipping.exe,5C 8B 42 68 89 41 68 0F B6 42 6C 88 41 6C 8B 42 70 89 41 70) // should be unique
+alloc(newmem1,$1000,"Dwarrows-Win64-Shipping.exe"+6013EF)
+aobscanmodule(wood,Dwarrows-Win64-Shipping.exe,8B 82 D0 00 00 00 89 81 D0 00 00 00 8B 82 D4 00 00 00 89 81 D4 00 00 00 0F B6 82 D8 00 00 00 88 81 D8 00 00 00 8B 82 DC 00 00 00 89 81 DC 00 00 00 8B 82 E8 00 00 00) // should be unique
+alloc(newmem2,$1000,"Dwarrows-Win64-Shipping.exe"+6014B5)
+aobscanmodule(crowns,Dwarrows-Win64-Shipping.exe,8B 82 B0 01 00 00 89 81 B0 01 00 00 8B 82 B4 01 00 00 89 81 B4 01 00 00 0F B6 82 B8 01 00 00 88 81 B8 01 00 00 8B 82 BC 01 00 00 89 81 BC 01 00 00 48 8B C1 C3 48 8B CA) // should be unique
+alloc(newmem3,$1000,"Dwarrows-Win64-Shipping.exe"+6016BB)
+aobscanmodule(food,Dwarrows-Win64-Shipping.exe,8B 82 10 01 00 00 89 81 10 01 00 00 8B 82 14 01 00 00 89 81 14 01 00 00 0F B6 82 18 01 00 00 88 81 18 01 00 00 8B 82 1C 01 00 00 89 81 1C 01 00 00 8B 82 28 01 00 00) // should be unique
+alloc(newmem4,$1000,"Dwarrows-Win64-Shipping.exe"+601549)
+
+label(code)
+label(return)
+label(code1)
+label(return1)
+label(code2)
+label(return2)
+label(code3)
+label(return3)
+label(code4)
+label(return4)
+alloc(gold_,8)
+registersymbol(gold_)
+
+newmem:
+  mov [rdx+54],#99000
+  pushf
+  mov [gold_],rdx
+  cmp [rdx+50],#10000
+  jge code
+  popf
+  mov [rdx+50],#10000
+  mov eax,[rdx+50]
+  mov [rcx+50],eax
+  jmp return
+
+newmem1:
+  mov [rdx+74],#99000
+  pushf
+  cmp [rdx+70],#10000
+  jge code1
+  popf
+  mov [rdx+70],#10000
+  mov eax,[rdx+70]
+  mov [rcx+70],eax
+  jmp return1
+
+newmem2:
+  mov [rdx+D4],#99000
+  pushf
+  cmp [rdx+D0],#10000
+  jge code2
+  popf
+  mov [rdx+D0],#10000
+  mov eax,[rdx+000000D0]
+  jmp return2
+
+newmem3:
+  mov [rdx+1B4],#99000
+  pushf
+  cmp [rdx+1B0],#10000
+  jge code3
+  popf
+  mov [rdx+1B0],#10000
+  mov eax,[rdx+000001B0]
+  jmp return3
+
+newmem4:
+  mov [rdx+114],#500000
+  pushf
+  cmp [rdx+110],#100000
+  jge code4
+  popf
+  mov [rdx+110],#100000
+  mov eax,[rdx+00000110]
+  jmp return4
+
+code:
+  popf
+  mov eax,[rdx+50]
+  mov [rcx+50],eax
+  jmp return
+
+code1:
+  popf
+  mov eax,[rdx+70]
+  mov [rcx+70],eax
+  jmp return1
+
+code2:
+  popf
+  mov eax,[rdx+000000D0]
+  jmp return2
+
+code3:
+  popf
+  mov eax,[rdx+000001B0]
+  jmp return3
+
+code4:
+  popf
+  mov eax,[rdx+00000110]
+  jmp return4
+
+gold+0E:
+  jmp newmem
+  nop
+return:
+registersymbol(gold)
+
+stone+0E:
+  jmp newmem1
+  nop
+return1:
+registersymbol(stone)
+
+wood:
+  jmp newmem2
+  nop
+return2:
+registersymbol(wood)
+
+crowns:
+  jmp newmem3
+  nop
+return3:
+registersymbol(crowns)
+
+food:
+  jmp newmem4
+  nop
+return4:
+registersymbol(food)
+
+[DISABLE]
+
+gold+0E:
+  db 8B 42 50 89 41 50
+stone+0E:
+  db 8B 42 70 89 41 70
+wood:
+  db 8B 82 D0 00 00 00
+crowns:
+  db 8B 82 B0 01 00 00
+food:
+  db 8B 82 10 01 00 00
+
+unregistersymbol(gold)
+dealloc(newmem)
+unregistersymbol(stone)
+dealloc(newmem1)
+unregistersymbol(wood)
+dealloc(newmem2)
+unregistersymbol(crowns)
+dealloc(newmem3)
+unregistersymbol(food)
+dealloc(newmem4)
+dealloc(gold_)
+unregistersymbol(gold_)
+{
+// ORIGINAL CODE - INJECTION POINT: "Dwarrows-Win64-Shipping.exe"+6013C9
+
+"Dwarrows-Win64-Shipping.exe"+6013A9: 8B 42 34              -  mov eax,[rdx+34]
+"Dwarrows-Win64-Shipping.exe"+6013AC: 89 41 34              -  mov [rcx+34],eax
+"Dwarrows-Win64-Shipping.exe"+6013AF: 0F B6 42 38           -  movzx eax,byte ptr [rdx+38]
+"Dwarrows-Win64-Shipping.exe"+6013B3: 88 41 38              -  mov [rcx+38],al
+"Dwarrows-Win64-Shipping.exe"+6013B6: 8B 42 3C              -  mov eax,[rdx+3C]
+"Dwarrows-Win64-Shipping.exe"+6013B9: 89 41 3C              -  mov [rcx+3C],eax
+"Dwarrows-Win64-Shipping.exe"+6013BC: 8B 42 48              -  mov eax,[rdx+48]
+"Dwarrows-Win64-Shipping.exe"+6013BF: 89 41 48              -  mov [rcx+48],eax
+"Dwarrows-Win64-Shipping.exe"+6013C2: 0F B6 42 4C           -  movzx eax,byte ptr [rdx+4C]
+"Dwarrows-Win64-Shipping.exe"+6013C6: 88 41 4C              -  mov [rcx+4C],al
+// ---------- INJECTING HERE ----------
+"Dwarrows-Win64-Shipping.exe"+6013C9: 8B 42 50              -  mov eax,[rdx+50]
+"Dwarrows-Win64-Shipping.exe"+6013CC: 89 41 50              -  mov [rcx+50],eax
+// ---------- DONE INJECTING  ----------
+"Dwarrows-Win64-Shipping.exe"+6013CF: 8B 42 54              -  mov eax,[rdx+54]
+"Dwarrows-Win64-Shipping.exe"+6013D2: 89 41 54              -  mov [rcx+54],eax
+"Dwarrows-Win64-Shipping.exe"+6013D5: 0F B6 42 58           -  movzx eax,byte ptr [rdx+58]
+"Dwarrows-Win64-Shipping.exe"+6013D9: 88 41 58              -  mov [rcx+58],al
+"Dwarrows-Win64-Shipping.exe"+6013DC: 8B 42 5C              -  mov eax,[rdx+5C]
+"Dwarrows-Win64-Shipping.exe"+6013DF: 89 41 5C              -  mov [rcx+5C],eax
+"Dwarrows-Win64-Shipping.exe"+6013E2: 8B 42 68              -  mov eax,[rdx+68]
+"Dwarrows-Win64-Shipping.exe"+6013E5: 89 41 68              -  mov [rcx+68],eax
+"Dwarrows-Win64-Shipping.exe"+6013E8: 0F B6 42 6C           -  movzx eax,byte ptr [rdx+6C]
+"Dwarrows-Win64-Shipping.exe"+6013EC: 88 41 6C              -  mov [rcx+6C],al
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"Max Population (view overview menu to populate)"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(max_people,Dwarrows-Win64-Shipping.exe,8B 82 F4 00 00 00 89 81 F4 00 00 00 0F B6 82 F8 00 00 00 88 81 F8 00 00 00 8B 82 FC 00 00 00 89 81 FC 00 00 00 8B 82 08 01 00 00) // should be unique
+alloc(newmem,$1000,"Dwarrows-Win64-Shipping.exe"+60150B)
+
+label(code)
+label(return)
+alloc(people,8)
+registersymbol(people)
+
+newmem:
+  cmp [rdx+14],1
+  jne code
+  mov [people],rdx
+  mov eax,[rdx+000000F4]
+  jmp return
+
+code:
+  mov eax,[rdx+000000F4]
+  jmp return
+
+max_people:
+  jmp newmem
+  nop
+return:
+registersymbol(max_people)
+
+[DISABLE]
+
+max_people:
+  db 8B 82 F4 00 00 00
+
+unregistersymbol(max_people)
+dealloc(newmem)
+dealloc(people)
+unregistersymbol(people)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Dwarrows-Win64-Shipping.exe"+60150B
+
+"Dwarrows-Win64-Shipping.exe"+6014CD: 0F B6 82 D8 00 00 00           -  movzx eax,byte ptr [rdx+000000D8]
+"Dwarrows-Win64-Shipping.exe"+6014D4: 88 81 D8 00 00 00              -  mov [rcx+000000D8],al
+"Dwarrows-Win64-Shipping.exe"+6014DA: 8B 82 DC 00 00 00              -  mov eax,[rdx+000000DC]
+"Dwarrows-Win64-Shipping.exe"+6014E0: 89 81 DC 00 00 00              -  mov [rcx+000000DC],eax
+"Dwarrows-Win64-Shipping.exe"+6014E6: 8B 82 E8 00 00 00              -  mov eax,[rdx+000000E8]
+"Dwarrows-Win64-Shipping.exe"+6014EC: 89 81 E8 00 00 00              -  mov [rcx+000000E8],eax
+"Dwarrows-Win64-Shipping.exe"+6014F2: 0F B6 82 EC 00 00 00           -  movzx eax,byte ptr [rdx+000000EC]
+"Dwarrows-Win64-Shipping.exe"+6014F9: 88 81 EC 00 00 00              -  mov [rcx+000000EC],al
+"Dwarrows-Win64-Shipping.exe"+6014FF: 8B 82 F0 00 00 00              -  mov eax,[rdx+000000F0]
+"Dwarrows-Win64-Shipping.exe"+601505: 89 81 F0 00 00 00              -  mov [rcx+000000F0],eax
+// ---------- INJECTING HERE ----------
+"Dwarrows-Win64-Shipping.exe"+60150B: 8B 82 F4 00 00 00              -  mov eax,[rdx+000000F4]
+// ---------- DONE INJECTING  ----------
+"Dwarrows-Win64-Shipping.exe"+601511: 89 81 F4 00 00 00              -  mov [rcx+000000F4],eax
+"Dwarrows-Win64-Shipping.exe"+601517: 0F B6 82 F8 00 00 00           -  movzx eax,byte ptr [rdx+000000F8]
+"Dwarrows-Win64-Shipping.exe"+60151E: 88 81 F8 00 00 00              -  mov [rcx+000000F8],al
+"Dwarrows-Win64-Shipping.exe"+601524: 8B 82 FC 00 00 00              -  mov eax,[rdx+000000FC]
+"Dwarrows-Win64-Shipping.exe"+60152A: 89 81 FC 00 00 00              -  mov [rcx+000000FC],eax
+"Dwarrows-Win64-Shipping.exe"+601530: 8B 82 08 01 00 00              -  mov eax,[rdx+00000108]
+"Dwarrows-Win64-Shipping.exe"+601536: 89 81 08 01 00 00              -  mov [rcx+00000108],eax
+"Dwarrows-Win64-Shipping.exe"+60153C: 0F B6 82 0C 01 00 00           -  movzx eax,byte ptr [rdx+0000010C]
+"Dwarrows-Win64-Shipping.exe"+601543: 88 81 0C 01 00 00              -  mov [rcx+0000010C],al
+"Dwarrows-Win64-Shipping.exe"+601549: E9 B2 EA 9A FF                 -  jmp 7FF72A310000
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"Max Pop"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>people</Address>
+          <Offsets>
+            <Offset>f4</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"old"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Stone"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(stone,Dwarrows-Win64-Shipping.exe,5C 8B 42 68 89 41 68 0F B6 42 6C 88 41 6C 8B 42 70 89 41 70) // should be unique
+alloc(newmem,$1000,"Dwarrows-Win64-Shipping.exe"+6013EF)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov eax,[rdx+70]
+  mov [rcx+70],eax
+  jmp return
+
+stone+0E:
+  jmp newmem
+  nop
+return:
+registersymbol(stone)
+
+[DISABLE]
+
+stone+0E:
+  db 8B 42 70 89 41 70
+
+unregistersymbol(stone)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Dwarrows-Win64-Shipping.exe"+6013EF
+
+"Dwarrows-Win64-Shipping.exe"+6013CF: 8B 42 54              -  mov eax,[rdx+54]
+"Dwarrows-Win64-Shipping.exe"+6013D2: 89 41 54              -  mov [rcx+54],eax
+"Dwarrows-Win64-Shipping.exe"+6013D5: 0F B6 42 58           -  movzx eax,byte ptr [rdx+58]
+"Dwarrows-Win64-Shipping.exe"+6013D9: 88 41 58              -  mov [rcx+58],al
+"Dwarrows-Win64-Shipping.exe"+6013DC: 8B 42 5C              -  mov eax,[rdx+5C]
+"Dwarrows-Win64-Shipping.exe"+6013DF: 89 41 5C              -  mov [rcx+5C],eax
+"Dwarrows-Win64-Shipping.exe"+6013E2: 8B 42 68              -  mov eax,[rdx+68]
+"Dwarrows-Win64-Shipping.exe"+6013E5: 89 41 68              -  mov [rcx+68],eax
+"Dwarrows-Win64-Shipping.exe"+6013E8: 0F B6 42 6C           -  movzx eax,byte ptr [rdx+6C]
+"Dwarrows-Win64-Shipping.exe"+6013EC: 88 41 6C              -  mov [rcx+6C],al
+// ---------- INJECTING HERE ----------
+"Dwarrows-Win64-Shipping.exe"+6013EF: 8B 42 70              -  mov eax,[rdx+70]
+"Dwarrows-Win64-Shipping.exe"+6013F2: 89 41 70              -  mov [rcx+70],eax
+// ---------- DONE INJECTING  ----------
+"Dwarrows-Win64-Shipping.exe"+6013F5: 8B 42 74              -  mov eax,[rdx+74]
+"Dwarrows-Win64-Shipping.exe"+6013F8: 89 41 74              -  mov [rcx+74],eax
+"Dwarrows-Win64-Shipping.exe"+6013FB: 0F B6 42 78           -  movzx eax,byte ptr [rdx+78]
+"Dwarrows-Win64-Shipping.exe"+6013FF: 88 41 78              -  mov [rcx+78],al
+"Dwarrows-Win64-Shipping.exe"+601402: 8B 42 7C              -  mov eax,[rdx+7C]
+"Dwarrows-Win64-Shipping.exe"+601405: 89 41 7C              -  mov [rcx+7C],eax
+"Dwarrows-Win64-Shipping.exe"+601408: 8B 82 88 00 00 00     -  mov eax,[rdx+00000088]
+"Dwarrows-Win64-Shipping.exe"+60140E: 89 81 88 00 00 00     -  mov [rcx+00000088],eax
+"Dwarrows-Win64-Shipping.exe"+601414: 0F B6 82 8C 00 00 00  -  movzx eax,byte ptr [rdx+0000008C]
+"Dwarrows-Win64-Shipping.exe"+60141B: 88 81 8C 00 00 00     -  mov [rcx+0000008C],al
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"Wood"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Dwarrows-Win64-Shipping.exe
+  Version: 
+  Date   : 2020-03-02
+  Author : Cole
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(wood,Dwarrows-Win64-Shipping.exe,8B 82 D0 00 00 00 89 81 D0 00 00 00 8B 82 D4 00 00 00 89 81 D4 00 00 00 0F B6 82 D8 00 00 00 88 81 D8 00 00 00 8B 82 DC 00 00 00 89 81 DC 00 00 00 8B 82 E8 00 00 00) // should be unique
+alloc(newmem,$1000,"Dwarrows-Win64-Shipping.exe"+6014B5)
+
+label(code)
+label(return)
+
+newmem:
+code:
+  mov eax,[rdx+000000D0]
+  jmp return
+
+wood:
+  jmp newmem
+  nop
+return:
+registersymbol(wood)
+
+[DISABLE]
+
+wood:
+  db 8B 82 D0 00 00 00
+
+unregistersymbol(wood)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Dwarrows-Win64-Shipping.exe"+6014B5
+
+"Dwarrows-Win64-Shipping.exe"+60148B: 81 B8 00 00 00 8B 82 BC 00 00  -  cmp [rax-75000000],0000BC82
+"Dwarrows-Win64-Shipping.exe"+601495: 00 89 81 BC 00 00              -  add [rcx+0000BC81],cl
+"Dwarrows-Win64-Shipping.exe"+60149B: 00 8B 82 C8 00 00              -  add [rbx+0000C882],cl
+"Dwarrows-Win64-Shipping.exe"+6014A1: 00 89 81 C8 00 00              -  add [rcx+0000C881],cl
+"Dwarrows-Win64-Shipping.exe"+6014A7: 00 0F                          -  add [rdi],cl
+"Dwarrows-Win64-Shipping.exe"+6014A9: B6 82                          -  mov dh,-7E
+"Dwarrows-Win64-Shipping.exe"+6014AB: CC                             -  int 3 
+"Dwarrows-Win64-Shipping.exe"+6014AC: 00 00                          -  add [rax],al
+"Dwarrows-Win64-Shipping.exe"+6014AE: 00 88 81 CC 00 00              -  add [rax+0000CC81],cl
+"Dwarrows-Win64-Shipping.exe"+6014B4: 00 8B 82 D0 00                 - db 00 8B 82 D0 00  // SHORTENED TO HIT INJECTION FROM:  add [rbx+0000D082],cl
+// ---------- INJECTING HERE ----------
+"Dwarrows-Win64-Shipping.exe"+6014B9: 00 00                          -  add [rax],al
+// ---------- DONE INJECTING  ----------
+"Dwarrows-Win64-Shipping.exe"+6014BB: 89 81 D0 00 00 00              -  mov [rcx+000000D0],eax
+"Dwarrows-Win64-Shipping.exe"+6014C1: 8B 82 D4 00 00 00              -  mov eax,[rdx+000000D4]
+"Dwarrows-Win64-Shipping.exe"+6014C7: 89 81 D4 00 00 00              -  mov [rcx+000000D4],eax
+"Dwarrows-Win64-Shipping.exe"+6014CD: 0F B6 82 D8 00 00 00           -  movzx eax,byte ptr [rdx+000000D8]
+"Dwarrows-Win64-Shipping.exe"+6014D4: 88 81 D8 00 00 00              -  mov [rcx+000000D8],al
+"Dwarrows-Win64-Shipping.exe"+6014DA: 8B 82 DC 00 00 00              -  mov eax,[rdx+000000DC]
+"Dwarrows-Win64-Shipping.exe"+6014E0: 89 81 DC 00 00 00              -  mov [rcx+000000DC],eax
+"Dwarrows-Win64-Shipping.exe"+6014E6: 8B 82 E8 00 00 00              -  mov eax,[rdx+000000E8]
+"Dwarrows-Win64-Shipping.exe"+6014EC: 89 81 E8 00 00 00              -  mov [rcx+000000E8],eax
+"Dwarrows-Win64-Shipping.exe"+6014F2: 0F B6 82 EC 00 00 00           -  movzx eax,byte ptr [rdx+000000EC]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"crowns"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Dwarrows-Win64-Shipping.exe
+  Version: 
+  Date   : 2020-03-02
+  Author : Cole
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(crowns,Dwarrows-Win64-Shipping.exe,8B 82 B0 01 00 00 89 81 B0 01 00 00 8B 82 B4 01 00 00 89 81 B4 01 00 00 0F B6 82 B8 01 00 00 88 81 B8 01 00 00 8B 82 BC 01 00 00 89 81 BC 01 00 00 48 8B C1 C3 48 8B CA) // should be unique
+alloc(newmem,$1000,"Dwarrows-Win64-Shipping.exe"+6016BB)
+
+label(code)
+label(return)
+
+newmem:
+code:
+  mov eax,[rdx+000001B0]
+  jmp return
+
+crowns:
+  jmp newmem
+  nop
+return:
+registersymbol(crowns)
+
+[DISABLE]
+
+crowns:
+  db 8B 82 B0 01 00 00
+
+unregistersymbol(crowns)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Dwarrows-Win64-Shipping.exe"+6016BB
+
+"Dwarrows-Win64-Shipping.exe"+60167D: 8B 82 94 01 00 00     -  mov eax,[rdx+00000194]
+"Dwarrows-Win64-Shipping.exe"+601683: 89 81 94 01 00 00     -  mov [rcx+00000194],eax
+"Dwarrows-Win64-Shipping.exe"+601689: 0F B6 82 98 01 00 00  -  movzx eax,byte ptr [rdx+00000198]
+"Dwarrows-Win64-Shipping.exe"+601690: 88 81 98 01 00 00     -  mov [rcx+00000198],al
+"Dwarrows-Win64-Shipping.exe"+601696: 8B 82 9C 01 00 00     -  mov eax,[rdx+0000019C]
+"Dwarrows-Win64-Shipping.exe"+60169C: 89 81 9C 01 00 00     -  mov [rcx+0000019C],eax
+"Dwarrows-Win64-Shipping.exe"+6016A2: 8B 82 A8 01 00 00     -  mov eax,[rdx+000001A8]
+"Dwarrows-Win64-Shipping.exe"+6016A8: 89 81 A8 01 00 00     -  mov [rcx+000001A8],eax
+"Dwarrows-Win64-Shipping.exe"+6016AE: 0F B6 82 AC 01 00 00  -  movzx eax,byte ptr [rdx+000001AC]
+"Dwarrows-Win64-Shipping.exe"+6016B5: 88 81 AC 01 00 00     -  mov [rcx+000001AC],al
+// ---------- INJECTING HERE ----------
+"Dwarrows-Win64-Shipping.exe"+6016BB: 8B 82 B0 01 00 00     -  mov eax,[rdx+000001B0]
+// ---------- DONE INJECTING  ----------
+"Dwarrows-Win64-Shipping.exe"+6016C1: 89 81 B0 01 00 00     -  mov [rcx+000001B0],eax
+"Dwarrows-Win64-Shipping.exe"+6016C7: 8B 82 B4 01 00 00     -  mov eax,[rdx+000001B4]
+"Dwarrows-Win64-Shipping.exe"+6016CD: 89 81 B4 01 00 00     -  mov [rcx+000001B4],eax
+"Dwarrows-Win64-Shipping.exe"+6016D3: 0F B6 82 B8 01 00 00  -  movzx eax,byte ptr [rdx+000001B8]
+"Dwarrows-Win64-Shipping.exe"+6016DA: 88 81 B8 01 00 00     -  mov [rcx+000001B8],al
+"Dwarrows-Win64-Shipping.exe"+6016E0: 8B 82 BC 01 00 00     -  mov eax,[rdx+000001BC]
+"Dwarrows-Win64-Shipping.exe"+6016E6: 89 81 BC 01 00 00     -  mov [rcx+000001BC],eax
+"Dwarrows-Win64-Shipping.exe"+6016EC: 48 8B C1              -  mov rax,rcx
+"Dwarrows-Win64-Shipping.exe"+6016EF: C3                    -  ret 
+"Dwarrows-Win64-Shipping.exe"+6016F0: 48 8B CA              -  mov rcx,rdx
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"food"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Dwarrows-Win64-Shipping.exe
+  Version: 
+  Date   : 2020-03-02
+  Author : Cole
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(food,Dwarrows-Win64-Shipping.exe,8B 82 10 01 00 00 89 81 10 01 00 00 8B 82 14 01 00 00 89 81 14 01 00 00 0F B6 82 18 01 00 00 88 81 18 01 00 00 8B 82 1C 01 00 00 89 81 1C 01 00 00 8B 82 28 01 00 00) // should be unique
+alloc(newmem,$1000,"Dwarrows-Win64-Shipping.exe"+601549)
+
+label(code)
+label(return)
+
+newmem:
+code:
+  mov eax,[rdx+00000110]
+  jmp return
+
+food:
+  jmp newmem
+  nop
+return:
+registersymbol(food)
+
+[DISABLE]
+
+food:
+  db 8B 82 10 01 00 00
+
+unregistersymbol(food)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Dwarrows-Win64-Shipping.exe"+601549
+
+"Dwarrows-Win64-Shipping.exe"+60150B: 8B 82 F4 00 00 00     -  mov eax,[rdx+000000F4]
+"Dwarrows-Win64-Shipping.exe"+601511: 89 81 F4 00 00 00     -  mov [rcx+000000F4],eax
+"Dwarrows-Win64-Shipping.exe"+601517: 0F B6 82 F8 00 00 00  -  movzx eax,byte ptr [rdx+000000F8]
+"Dwarrows-Win64-Shipping.exe"+60151E: 88 81 F8 00 00 00     -  mov [rcx+000000F8],al
+"Dwarrows-Win64-Shipping.exe"+601524: 8B 82 FC 00 00 00     -  mov eax,[rdx+000000FC]
+"Dwarrows-Win64-Shipping.exe"+60152A: 89 81 FC 00 00 00     -  mov [rcx+000000FC],eax
+"Dwarrows-Win64-Shipping.exe"+601530: 8B 82 08 01 00 00     -  mov eax,[rdx+00000108]
+"Dwarrows-Win64-Shipping.exe"+601536: 89 81 08 01 00 00     -  mov [rcx+00000108],eax
+"Dwarrows-Win64-Shipping.exe"+60153C: 0F B6 82 0C 01 00 00  -  movzx eax,byte ptr [rdx+0000010C]
+"Dwarrows-Win64-Shipping.exe"+601543: 88 81 0C 01 00 00     -  mov [rcx+0000010C],al
+// ---------- INJECTING HERE ----------
+"Dwarrows-Win64-Shipping.exe"+601549: 8B 82 10 01 00 00     -  mov eax,[rdx+00000110]
+// ---------- DONE INJECTING  ----------
+"Dwarrows-Win64-Shipping.exe"+60154F: 89 81 10 01 00 00     -  mov [rcx+00000110],eax
+"Dwarrows-Win64-Shipping.exe"+601555: 8B 82 14 01 00 00     -  mov eax,[rdx+00000114]
+"Dwarrows-Win64-Shipping.exe"+60155B: 89 81 14 01 00 00     -  mov [rcx+00000114],eax
+"Dwarrows-Win64-Shipping.exe"+601561: 0F B6 82 18 01 00 00  -  movzx eax,byte ptr [rdx+00000118]
+"Dwarrows-Win64-Shipping.exe"+601568: 88 81 18 01 00 00     -  mov [rcx+00000118],al
+"Dwarrows-Win64-Shipping.exe"+60156E: 8B 82 1C 01 00 00     -  mov eax,[rdx+0000011C]
+"Dwarrows-Win64-Shipping.exe"+601574: 89 81 1C 01 00 00     -  mov [rcx+0000011C],eax
+"Dwarrows-Win64-Shipping.exe"+60157A: 8B 82 28 01 00 00     -  mov eax,[rdx+00000128]
+"Dwarrows-Win64-Shipping.exe"+601580: 89 81 28 01 00 00     -  mov [rcx+00000128],eax
+"Dwarrows-Win64-Shipping.exe"+601586: 0F B6 82 2C 01 00 00  -  movzx eax,byte ptr [rdx+0000012C]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"Trial Flowers"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(trial_flowers,Dwarrows-Win64-Shipping.exe,ERROR: Could not find unique AOB, tried code "8B 40 08 48 8B 5C 24 38") // should be unique
+alloc(newmem,$1000,"Dwarrows-Win64-Shipping.exe"+58048C)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov eax,[rax+08]
+  mov rbx,[rsp+38]
+  jmp return
+
+trial_flowers:
+  jmp newmem
+  nop 3
+return:
+registersymbol(trial_flowers)
+
+[DISABLE]
+
+trial_flowers:
+  db 8B 40 08 48 8B 5C 24 38
+
+unregistersymbol(trial_flowers)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Dwarrows-Win64-Shipping.exe"+58048C
+
+"Dwarrows-Win64-Shipping.exe"+58046D: 48 8B C8                 -  mov rcx,rax
+"Dwarrows-Win64-Shipping.exe"+580470: 48 C1 E1 05              -  shl rcx,05
+"Dwarrows-Win64-Shipping.exe"+580474: 48 03 0B                 -  add rcx,[rbx]
+"Dwarrows-Win64-Shipping.exe"+580477: EB 03                    -  jmp Dwarrows-Win64-Shipping.exe+58047C
+"Dwarrows-Win64-Shipping.exe"+580479: 48 8B CF                 -  mov rcx,rdi
+"Dwarrows-Win64-Shipping.exe"+58047C: 48 85 C9                 -  test rcx,rcx
+"Dwarrows-Win64-Shipping.exe"+58047F: 48 8D 41 08              -  lea rax,[rcx+08]
+"Dwarrows-Win64-Shipping.exe"+580483: 48 0F 44 C7              -  cmove rax,rdi
+"Dwarrows-Win64-Shipping.exe"+580487: 48 85 C0                 -  test rax,rax
+"Dwarrows-Win64-Shipping.exe"+58048A: 74 0E                    -  je Dwarrows-Win64-Shipping.exe+58049A
+// ---------- INJECTING HERE ----------
+"Dwarrows-Win64-Shipping.exe"+58048C: 8B 40 08                 -  mov eax,[rax+08]
+"Dwarrows-Win64-Shipping.exe"+58048F: 48 8B 5C 24 38           -  mov rbx,[rsp+38]
+// ---------- DONE INJECTING  ----------
+"Dwarrows-Win64-Shipping.exe"+580494: 48 83 C4 20              -  add rsp,20
+"Dwarrows-Win64-Shipping.exe"+580498: 5F                       -  pop rdi
+"Dwarrows-Win64-Shipping.exe"+580499: C3                       -  ret 
+"Dwarrows-Win64-Shipping.exe"+58049A: 48 8B 5C 24 38           -  mov rbx,[rsp+38]
+"Dwarrows-Win64-Shipping.exe"+58049F: 8B C7                    -  mov eax,edi
+"Dwarrows-Win64-Shipping.exe"+5804A1: 48 83 C4 20              -  add rsp,20
+"Dwarrows-Win64-Shipping.exe"+5804A5: 5F                       -  pop rdi
+"Dwarrows-Win64-Shipping.exe"+5804A6: C3                       -  ret 
+"Dwarrows-Win64-Shipping.exe"+5804A7: CC                       -  int 3 
+"Dwarrows-Win64-Shipping.exe"+5804A8: CC                       -  int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Use item</Description>
+      <AddressString>Dwarrows-Win64-Shipping.exe+59C3EC</AddressString>
+      <Before>
+        <Byte>12</Byte>
+        <Byte>49</Byte>
+        <Byte>8D</Byte>
+        <Byte>48</Byte>
+        <Byte>50</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>89</Byte>
+        <Byte>40</Byte>
+        <Byte>60</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>D2</Byte>
+        <Byte>E8</Byte>
+        <Byte>E9</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :add ebp,[rcx+60]</Description>
+      <AddressString>Dwarrows-Win64-Shipping.exe+59B789</AddressString>
+      <Before>
+        <Byte>07</Byte>
+        <Byte>4A</Byte>
+        <Byte>8B</Byte>
+        <Byte>0C</Byte>
+        <Byte>37</Byte>
+      </Before>
+      <Actual>
+        <Byte>03</Byte>
+        <Byte>69</Byte>
+        <Byte>60</Byte>
+      </Actual>
+      <After>
+        <Byte>FF</Byte>
+        <Byte>C6</Byte>
+        <Byte>49</Byte>
+        <Byte>83</Byte>
+        <Byte>C6</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

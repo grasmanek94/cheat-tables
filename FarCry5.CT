@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Infinite Ammo"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">[ENABLE]
+aobscanmodule(AmmoLocation,FC_m64.dll,75 0D 8B 57 4C) // should be unique
+registersymbol(AmmoLocation)
+
+AmmoLocation:
+db EB
+
+[DISABLE]
+unregistersymbol(AmmoLocation)
+
+AmmoLocation:
+db 75
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"Infinite Armor"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : FarCry5.exe
+  Version: 1.5.0
+  Date   : 2018-05-01
+  Author : gir489
+
+  Infinite Armor }
+[ENABLE]
+aobscanmodule(Armor,FC_m64.dll,F3 0F 11 7D ? E8 ? ? ? ? 48 8B 97) // should be unique
+alloc(newmem,$1000,"FC_m64.dll")
+registersymbol(Armor)
+label(return)
+
+newmem:
+mov [rcx+18],(float)100
+movss [rbp+20],xmm7
+jmp return
+
+Armor:
+jmp newmem
+return:
+
+[DISABLE]
+unregistersymbol(Armor)
+dealloc(newmem)
+
+Armor:
+movss [rbp+20],xmm7
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"Infinite Fishing Rod Health"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{ Game   : FarCry5.exe
+  Version: 1.2.0
+  Date   : 2018-03-31
+  Author : gir489
+
+  Infinite Fishing Rod Health}
+[ENABLE]
+aobscanmodule(FishingHook,FC_m64.dll,F3 41 0F 5C C0 44 0F 28 44 24 50) // should be unique
+aobscanmodule(FishingHookDamage,FC_m64.dll,F3 0F 5C C8 41 0F 2F CA F3 0F 11 8B) // should be unique
+registersymbol(FishingHook)
+registersymbol(FishingHookDamage)
+
+FishingHook:
+db 90 90 90 90 90
+
+FishingHookDamage:
+db 90 90 90 90
+
+FishingHookDamage2:
+db 90 90 90 90
+
+[DISABLE]
+unregistersymbol(FishingHook)
+unregistersymbol(FishingHookDamage)
+unregistersymbol(FishingHookDamage2)
+
+FishingHook:
+db F3 41 0F 5C C0 44 0F 28 44 24 50
+
+FishingHookDamage:
+db F3 0F 5C C8 41 0F 2F CA F3 0F 11 8B
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"Infinite Stamina"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{ Game   : FarCry5.exe
+  Version: 1.2.0
+  Date   : 2018-04-01
+  Author : gir489
+
+  Infinite Stamina}
+
+[ENABLE]
+aobscanmodule(Stamina,FC_m64.dll, 48 8B 74 24 ? 74 32 48 8B 8B ) // should be unique
+registersymbol(Stamina)
+
+Stamina+2:
+db EB
+
+[DISABLE]
+unregistersymbol(Stamina)
+
+Stamina+2:
+db 74
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"No Fall Damage"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{ Game   : FarCry5.exe
+  Version: 1.5.0
+  Date   : 2018-05-01
+  Author : gir489
+
+  No Fall Damage }
+
+[ENABLE]
+aobscanmodule(FallDamage,FC_m64.dll,0F B6 80 78 08 00 00) // should be unique
+aobscanmodule(OOF,FC_m64.dll,80 BF ? ? ? ? ? 75 09 48 8D 4F F0) // should be unique
+
+registersymbol(FallDamage)
+registersymbol(OOF)
+
+FallDamage:
+mov eax,0
+ret
+
+OOF+7:
+db EB
+
+[DISABLE]
+unregistersymbol(FallDamage)
+unregistersymbol(OOF)
+
+FallDamage:
+movzx eax,byte ptr [rax+00000878]
+
+OOF+7:
+db 75
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"No Recoil"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{ Game   : FarCry5.exe
+  Version: 1.2.0
+  Date   : 2018-03-29
+  Author : gir489
+
+  No Recoil }
+
+[ENABLE]
+aobscanmodule(NoRecoil,FC_m64.dll,74 58 F3 0F 10 47 0C) // should be unique
+registersymbol(NoRecoil)
+
+NoRecoil:
+db EB
+
+[DISABLE]
+unregistersymbol(NoRecoil)
+
+NoRecoil:
+db 74
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No Spread"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{ Game   : FarCry5.exe
+  Version: 1.2.0
+  Date   : 2018-05-01
+  Author : gir489
+
+  No Spread}
+
+[ENABLE]
+aobscanmodule(NoSpread,FC_m64.dll,F3 0F 11 90 ? ? ? ? 0F 28 B4 24) // should be unique
+registersymbol(NoSpread)
+
+NoSpread-5:
+db 80
+
+[DISABLE]
+unregistersymbol(NoSpread)
+
+NoSpread-5:
+db B0
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"No Sway"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{ Game   : FarCry5.exe
+  Version: 1.2.0
+  Date   : 2018-03-31
+  Author : gir489
+
+  No Sway}
+
+[ENABLE]
+aobscanmodule(NoSway,FC_m64.dll,0F 85 D7 00 00 00 BA) // should be unique
+registersymbol(NoSway)
+
+NoSway:
+db 0F 86
+
+[DISABLE]
+unregistersymbol(NoSway)
+
+NoSway:
+db 0F 85
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"Unlock All Store Items"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{ Game   : FarCry5.exe
+  Version: 1.2.0
+  Date   : 2018-04-02
+  Author : FLiNG
+  Fix by : gir489
+
+  This script unlocks all items in the store.
+}
+
+[ENABLE]
+aobscanmodule(UnlockAllStuff,FC_m64.dll,48 8B 47 50 48 39 43 50 0F) // should be unique
+alloc(newmem,$1000,"FC_m64.dll")
+registersymbol(UnlockAllStuff)
+label(return)
+
+newmem:
+mov rax,[rdi+50]
+cmp [rbx+50],rax
+db 75 0A
+cmp byte ptr [rdi+3C],01
+db 7D 04
+mov byte ptr [rdi+3C],02
+cmp [rbx+50],rax
+jmp return
+
+//cmp [rdi+70], 1 //Price
+//jge @f
+//mov rax, [rdi+70]
+//@@:
+
+UnlockAllStuff:
+jmp newmem
+nop
+nop
+nop
+return:
+
+[DISABLE]
+unregistersymbol(UnlockAllStuff)
+dealloc(newmem)
+
+UnlockAllStuff:
+db 48 8B 47 50 48 39 43 50 0F
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"Infinite Gravity Belt"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">{ Game   : FarCry5.exe
+  Version: 1.8.0
+  Date   : 2018-07-18
+  Author : BigEndian
+
+  No Recoil }
+[ENABLE]
+aobscanmodule(GravBeltA,FC_m64.dll,F3 0F 11 43 48 F3 0F 10 53) // should be unique
+registersymbol(GravBeltA)
+
+aobscanmodule(GravBeltB,FC_m64.dll,F3 0F 11 51 48 48 8B 49 40) // should be unique
+registersymbol(GravBeltB)
+
+GravBeltA:
+movss [rbx+48],xmm6
+
+GravBeltB:
+movss [rcx+48],xmm6
+
+[DISABLE]
+unregistersymbol(GravBeltA)
+unregistersymbol(GravBeltB)
+
+GravBeltA:
+movss [rbx+48],xmm0
+
+GravBeltB:
+movss [rcx+48],xmm2
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

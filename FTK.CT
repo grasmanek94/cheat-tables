@@ -1,0 +1,2169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1772</ID>
+      <Description>"For The King v1.1.0.11257"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <Color>0000FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{======================
+Author   : aanpsx
+Date     : 2020-05-14
+Game     : FTK.exe
+Version  : 2017.2.2.48228
+======================}
+
+[ENABLE]
+{$lua}
+if syntaxcheck then return end
+-----------------------
+memrec.Color=0x000000ff
+-------------- A.B.G.R
+LaunchMonoDataCollector()
+--reinitializeDotNetSymbolhandler()
+if(getCEVersion() &lt; 7.1) then
+   ShowMessage('Warning. CE version should be 7.0 or above')
+end
+if(process == nil) then
+   ShowMessage('No process was selected')
+elseif (string.upper(process) ~= string.upper("FTK.exe")) then
+   ShowMessage('Warning. Expected Process = FTK.exe')
+end
+{$asm}
+LuaCall(function cycleFullCompact(sender,force) local state = not(compactmenuitem.Caption == 'Compact View Mode'); if force~=nil then state = not force end; compactmenuitem.Caption = state and 'Compact View Mode' or 'Full View Mode'; getMainForm().Splitter1.Visible = state; getMainForm().Panel4.Visible    = state; getMainForm().Panel5.Visible    = state; end; function addCompactMenu() if compactmenualreadyexists then return end; local parent = getMainForm().Menu.Items; compactmenuitem = createMenuItem(parent); parent.add(compactmenuitem); compactmenuitem.Caption = 'Compact View Mode'; compactmenuitem.OnClick = cycleFullCompact; compactmenualreadyexists = 'yes'; end; addCompactMenu(); cycleFullCompact(nil,true))
+
+[DISABLE]
+LuaCall(cycleFullCompact(nil,false))
+{$lua}
+if syntaxcheck then return end
+-----------------------
+memrec.Color=0x00808000
+-------------- A.B.G.R 
+{$asm}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1830</ID>
+          <Description>"enable"</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+          <Color>FF0000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{======================
+Author   : aanpsx
+Date     : 2020-05-14
+Game     : FTK.exe
+Version  : 2017.2.2.48228
+======================}
+
+define(address_Char,"CharacterStats:GetHealthDisplayString")
+define(bytes_Char,db 55 48 8B EC 56)
+define(address_Move,"CharacterOverworld:UpdatePlayerAction")
+define(bytes_Move,db 55 48 8B EC 57)
+define(address_Enemy,"EnemyInfo:GetCurrentHealth")
+define(bytes_Enemy,db 48 83 EC 08 48 89 0C 24)
+define(address_CS,"CharacterStats:Update")
+define(bytes_CS,db 55 48 8B EC 56)
+define(8b,dq 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)
+[ENABLE]
+{$lua}
+if syntaxcheck then return end
+LaunchMonoDataCollector()
+-----------------------
+memrec.Color=0x00ff0000
+-------------- A.B.G.R
+{$asm}
+aobscanregion(PSX_Char,CharacterStats:GetHealthDisplayString,CharacterStats:GetHealthDisplayString+1,55)
+alloc(newmem_Char,$1000,PSX_Char)
+label(_Char)
+label(code_Char)
+registersymbol(_Char)
+registersymbol(PSX_Char)
+registersymbol(code_Char)
+newmem_Char:
+  mov [_Char],rcx
+code_Char:
+  readmem(PSX_Char,5)
+  jmp return_Char
+_Char:
+  8b
+PSX_Char:
+  jmp newmem_Char
+return_Char:
+
+aobscanregion(PSX_Move,CharacterOverworld:UpdatePlayerAction,CharacterOverworld:UpdatePlayerAction+1,55)
+alloc(newmem_Move,$1000,PSX_Move)
+label(_Move)
+label(code_Move)
+registersymbol(_Move)
+registersymbol(PSX_Move)
+registersymbol(code_Move)
+newmem_Move:
+  mov [_Move],rcx
+code_Move:
+  readmem(PSX_Move,5)
+  jmp return_Move
+_Move:
+  8b
+PSX_Move:
+  jmp newmem_Move
+return_Move:
+
+aobscanregion(PSX_Enemy,EnemyInfo:GetCurrentHealth,EnemyInfo:GetCurrentHealth+1,48)
+alloc(newmem_Enemy,$1000,PSX_Enemy)
+label(_Enemy)
+label(code_Enemy)
+registersymbol(_Enemy)
+registersymbol(PSX_Enemy)
+registersymbol(code_Enemy)
+newmem_Enemy:
+  mov [_Enemy],rcx
+  cmp [rcx+158],0
+  je no1
+  cmp [rcx+158],1
+  je no2
+  cmp [rcx+158],2
+  je no3
+no1:
+  mov [_Enemy+8],rcx
+  jmp code_Enemy
+no2:
+  mov [_Enemy+10],rcx
+  jmp code_Enemy
+no3:
+  mov [_Enemy+18],rcx
+code_Enemy:
+  readmem(PSX_Enemy,8)
+  jmp return_Enemy
+_Enemy:
+  8b
+PSX_Enemy:
+  jmp newmem_Enemy
+  nop 3
+return_Enemy:
+
+aobscanregion(PSX_CS,CharacterStats:Update,CharacterStats:Update+1,55)
+alloc(newmem_CS,$1000,PSX_CS)
+label(_CS)
+label(code_CS)
+registersymbol(_CS)
+registersymbol(PSX_CS)
+registersymbol(code_CS)
+newmem_CS:
+  mov [_CS],rcx
+@@://hp
+  cmp byte ptr [_CS+40],0
+  je @f
+  fild [rcx+228]
+  fistp [rcx+174]
+@@://focus
+  cmp byte ptr [_CS+41],0
+  je @f
+  fild [rcx+224]
+  fistp [rcx+170]
+@@://gold
+  cmp byte ptr [_CS+42],0
+  je @f
+  mov [rcx+180],#99999
+@@://ap
+  cmp byte ptr [_CS+43],0
+  je @f
+  mov [rcx+16c],#9
+@@://pipe
+  cmp byte ptr [_CS+44],0
+  je @f
+  mov [rcx+188],#99
+@@://ghost points
+  cmp byte ptr [_CS+45],0
+  je @f
+  mov [rcx+18c],#99
+@@://resist death points
+  cmp byte ptr [_CS+46],0
+  je @f
+  mov [rcx+190],#99
+@@://max armor
+  cmp byte ptr [_CS+47],0
+  je @f
+  mov [rcx+218],#99
+@@://max res
+  cmp byte ptr [_CS+48],0
+  je @f
+  mov [rcx+21c],#99
+@@://max evade
+  cmp byte ptr [_CS+49],0
+  je @f
+  mov [rcx+220],(float)1
+@@://max possible base stats
+  cmp byte ptr [_CS+4a],0
+  je @f
+  mov [rcx+22c],(float)1
+  mov [rcx+230],(float)1
+  mov [rcx+234],(float)1
+  mov [rcx+238],(float)1
+  mov [rcx+23c],(float)1
+  mov [rcx+240],(float)1
+@@://Immune to Ambush
+  cmp byte ptr [_CS+4b],0
+  je @f
+  mov byte ptr [rcx+1e8],1
+code_CS:
+  readmem(PSX_CS,5)
+  jmp return_CS
+_CS:
+  8b
+PSX_CS:
+  jmp newmem_CS
+return_CS:
+
+[DISABLE]
+unregistersymbol(_Char)
+unregistersymbol(PSX_Char)
+unregistersymbol(code_Char)
+dealloc(newmem_Char)
+PSX_Char:
+  readmem(code_Char,5)
+//Alt: push rbp
+//Alt: mov rbp,rsp
+//Alt: push rsi
+
+unregistersymbol(_Move)
+unregistersymbol(PSX_Move)
+unregistersymbol(code_Move)
+dealloc(newmem_Move)
+PSX_Move:
+  readmem(code_Move,5)
+//Alt: push rbp
+//Alt: mov rbp,rsp
+//Alt: push rdi
+
+unregistersymbol(_Enemy)
+unregistersymbol(PSX_Enemy)
+unregistersymbol(code_Enemy)
+dealloc(newmem_Enemy)
+PSX_Enemy:
+  readmem(code_Enemy,8)
+//Alt: sub rsp,08
+//Alt: mov [rsp],rcx
+
+unregistersymbol(_CS)
+unregistersymbol(PSX_CS)
+unregistersymbol(code_CS)
+dealloc(newmem_CS)
+PSX_CS:
+  readmem(code_CS,5)
+//Alt: push rbp
+//Alt: mov rbp,rsp
+//Alt: push rsi
+{$lua}
+if syntaxcheck then return end
+-----------------------
+memrec.Color=0x00808000
+-------------- A.B.G.R 
+{$asm}
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1783</ID>
+              <Description>"Ignore Gold"</Description>
+              <Color>0080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{======================
+Author   : aanpsx
+Date     : 2020-05-14
+Game     : FTK.exe
+Version  : 2017.2.2.48228
+======================}
+
+[ENABLE]
+{$lua}
+if syntaxcheck then return end
+LaunchMonoDataCollector()
+-----------------------
+memrec.Color=0x000080ff
+-------------- A.B.G.R
+{$asm}
+CharacterStats:CanAfford:
+ret
+ 
+[DISABLE]
+CharacterStats:CanAfford:
+db 48
+{$lua}
+if syntaxcheck then return end
+-----------------------
+memrec.Color=0x00008000
+-------------- A.B.G.R
+{$asm}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1790</ID>
+              <Description>"Infinite Item"</Description>
+              <Color>0080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{======================
+Author   : aanpsx
+Date     : 2020-05-14
+Game     : FTK.exe
+Version  : 2017.2.2.48228
+======================}
+
+[ENABLE]
+{$lua}
+if syntaxcheck then return end
+LaunchMonoDataCollector()
+-----------------------
+memrec.Color=0x000080ff
+-------------- A.B.G.R
+{$asm}
+ItemContainer:Remove:
+ret
+
+[DISABLE]
+ItemContainer:Remove:
+db 55
+{$lua}
+if syntaxcheck then return end
+-----------------------
+memrec.Color=0x00008000
+-------------- A.B.G.R
+{$asm}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>187</Key>
+                  </Keys>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1769</ID>
+              <Description>"Pointer"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1770</ID>
+                  <Description>"Character Status"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>6</ID>
+                      <Description>"Base"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>_Char</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>126</ID>
+                      <Description>"Name"</Description>
+                      <VariableType>String</VariableType>
+                      <Length>128</Length>
+                      <Unicode>1</Unicode>
+                      <CodePage>0</CodePage>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>_Char</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>70</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1880</ID>
+                      <Description>"Char Stat"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1881</ID>
+                          <Description>"CharacterStats"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>String</VariableType>
+                          <Length>0</Length>
+                          <Unicode>0</Unicode>
+                          <CodePage>0</CodePage>
+                          <ZeroTerminate>1</ZeroTerminate>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                          </Offsets>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>1882</ID>
+                              <Description>"m_FocusPoints"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+170</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1883</ID>
+                              <Description>"m_Gold"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+180</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1884</ID>
+                              <Description>"m_Pipe"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+188</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1885</ID>
+                              <Description>"m_GhostPoints"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+18C</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1886</ID>
+                              <Description>"m_ResistDeathPoints"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+190</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1887</ID>
+                              <Description>"m_PlayerLevel"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+17c</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1888</ID>
+                              <Description>"m_PlayerXP"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+178</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1889</ID>
+                              <Description>"m_HealthCurrent"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+174</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1890</ID>
+                              <Description>"m_ActionPoints"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+16c</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1891</ID>
+                              <Description>"m_CharacterOverworld"</Description>
+                              <ShowAsSigned>0</ShowAsSigned>
+                              <VariableType>String</VariableType>
+                              <Length>0</Length>
+                              <Unicode>0</Unicode>
+                              <CodePage>0</CodePage>
+                              <ZeroTerminate>1</ZeroTerminate>
+                              <Address>+78</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1892</ID>
+                                  <Description>"m_PlayerInventory"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>String</VariableType>
+                                  <Length>0</Length>
+                                  <Unicode>0</Unicode>
+                                  <CodePage>0</CodePage>
+                                  <ZeroTerminate>1</ZeroTerminate>
+                                  <Address>+108</Address>
+                                  <Offsets>
+                                    <Offset>0</Offset>
+                                  </Offsets>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1893</ID>
+                              <Description>"Mods"</Description>
+                              <Options moHideChildren="1"/>
+                              <GroupHeader>1</GroupHeader>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1894</ID>
+                                  <Description>"m_ModDefensePhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1a0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1895</ID>
+                                  <Description>"m_ModDefenseMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1a4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1896</ID>
+                                  <Description>"m_ModEvadeRating"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1a8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1897</ID>
+                                  <Description>"m_ModAttackPhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1ac</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1898</ID>
+                                  <Description>"m_ModAttackMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1b0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1899</ID>
+                                  <Description>"m_ModAttackAll"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1b4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1900</ID>
+                                  <Description>"m_PartyCombatArmor"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1b8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1901</ID>
+                                  <Description>"m_PartyCombatResist"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1bc</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1902</ID>
+                                  <Description>"m_PartyCombatEvade"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1c0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1903</ID>
+                                  <Description>"m_ReflectDamage"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1c4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1904</ID>
+                                  <Description>"m_ModCritChance"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1c8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1905</ID>
+                                  <Description>"m_ModToughness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1cc</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1906</ID>
+                                  <Description>"m_ModFortitude"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1d0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1907</ID>
+                                  <Description>"m_ModAwareness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1d4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1908</ID>
+                                  <Description>"m_ModQuickness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1d8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1909</ID>
+                                  <Description>"m_ModTalent"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1dc</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1910</ID>
+                                  <Description>"m_ModVitality"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1e0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1911</ID>
+                                  <Description>"m_ModLuck"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1e4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1912</ID>
+                                  <Description>"m_ImmuneAmbush"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Binary</VariableType>
+                                  <BitStart>0</BitStart>
+                                  <BitLength>1</BitLength>
+                                  <ShowAsBinary>0</ShowAsBinary>
+                                  <Address>+1e8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1913</ID>
+                                  <Description>"m_ModFindRadius"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1ec</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1914</ID>
+                                  <Description>"m_ModShopPrice"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1f0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1915</ID>
+                                  <Description>"m_ModExtraActions"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1f4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1916</ID>
+                                  <Description>"m_ModMaxFocus"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1f8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1917</ID>
+                                  <Description>"m_ModMaxHealth"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1fc</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1918</ID>
+                                  <Description>"m_ModHealthRegen"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+200</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1919</ID>
+                                  <Description>"m_ModXP"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+204</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1920</ID>
+                                  <Description>"m_ModGold"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+208</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1921</ID>
+                              <Description>"Overrides"</Description>
+                              <Options moHideChildren="1"/>
+                              <GroupHeader>1</GroupHeader>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1922</ID>
+                                  <Description>"m_MaxHealthOverride"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+20c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1923</ID>
+                                  <Description>"m_MaxActionsOverride"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+210</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1924</ID>
+                              <Description>"BaseSkills"</Description>
+                              <Options moHideChildren="1"/>
+                              <GroupHeader>1</GroupHeader>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1925</ID>
+                                  <Description>"m_BaseDefensePhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+218</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1926</ID>
+                                  <Description>"m_BaseDefenseMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+21c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1927</ID>
+                                  <Description>"m_BaseEvadeRating"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+220</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1928</ID>
+                                  <Description>"m_BaseMaxFocus"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+224</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1929</ID>
+                                  <Description>"m_BaseMaxHealth"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+228</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1930</ID>
+                                  <Description>"m_BaseToughness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+22c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1931</ID>
+                                  <Description>"m_BaseAwareness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+230</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1932</ID>
+                                  <Description>"m_BaseFortitude"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+234</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1933</ID>
+                                  <Description>"m_BaseQuickness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+238</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1934</ID>
+                                  <Description>"m_BaseVitality"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+23c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1935</ID>
+                                  <Description>"m_BaseTalent"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+240</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1936</ID>
+                              <Description>"AugmentedSkills"</Description>
+                              <Options moHideChildren="1"/>
+                              <GroupHeader>1</GroupHeader>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1937</ID>
+                                  <Description>"m_AugmentedAwareness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+14c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1938</ID>
+                                  <Description>"m_AugmentedEvadeRating"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+144</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1939</ID>
+                                  <Description>"m_AugmentedFortitude"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+150</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1940</ID>
+                                  <Description>"m_AugmentedLuck"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+160</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1941</ID>
+                                  <Description>"m_AugmentedQuickness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+154</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1942</ID>
+                                  <Description>"m_AugmentedTalent"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+15c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1943</ID>
+                                  <Description>"m_AugmentedToughness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+148</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1944</ID>
+                                  <Description>"m_AugmentedVitality"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+158</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1945</ID>
+                                  <Description>"m_AugmentedDamageMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+138</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1946</ID>
+                                  <Description>"m_AugmentedDamagePhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+134</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1947</ID>
+                                  <Description>"m_AugmentedDefenseMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+140</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1948</ID>
+                                  <Description>"m_AugmentedDefensePhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+13c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1949</ID>
+                                  <Description>"m_AugmentedMaxFocus"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+164</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1950</ID>
+                                  <Description>"m_AugmentedMaxHealth"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+168</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>127</ID>
+                      <Description>"Skill"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>129</ID>
+                          <Description>"m_SteadFast"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>10</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>152</ID>
+                          <Description>"m_PartyHeal"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>11</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>154</ID>
+                          <Description>"m_Sneak"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>12</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>153</ID>
+                          <Description>"m_Ambush"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>13</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>156</ID>
+                          <Description>"m_Flee"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>14</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>155</ID>
+                          <Description>"m_DoorBash"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>15</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>158</ID>
+                          <Description>"m_TrapDisarm"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>16</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>157</ID>
+                          <Description>"m_TrapProceed"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>17</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>160</ID>
+                          <Description>"m_CounterAttack"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>18</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>159</ID>
+                          <Description>"m_EnergyBoost"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>19</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>161</ID>
+                          <Description>"m_Refocus"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>1a</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>162</ID>
+                          <Description>"m_FindHerb"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>1b</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>163</ID>
+                          <Description>"m_Entertain"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>1C</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>164</ID>
+                          <Description>"m_Encourage"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>1D</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>165</ID>
+                          <Description>"m_Inspire"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>1E</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>166</ID>
+                          <Description>"m_Justice"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>1F</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>167</ID>
+                          <Description>"m_Distract"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>20</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>168</ID>
+                          <Description>"m_CalledShot"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>21</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>169</ID>
+                          <Description>"m_Discipline"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>22</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>170</ID>
+                          <Description>"m_SupportRange"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>23</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>171</ID>
+                          <Description>"m_Taunt"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>24</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>172</ID>
+                          <Description>"m_MimicWhisper"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>25</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>173</ID>
+                          <Description>"m_FindTreasure"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Char</Address>
+                          <Offsets>
+                            <Offset>26</Offset>
+                            <Offset>C0</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1771</ID>
+                  <Description>"Current Character"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1623</ID>
+                      <Description>"Base"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>_Move</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1767</ID>
+                      <Description>"Name"</Description>
+                      <VariableType>String</VariableType>
+                      <Length>128</Length>
+                      <Unicode>1</Unicode>
+                      <CodePage>0</CodePage>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>_Move</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>70</Offset>
+                        <Offset>f8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1626</ID>
+                      <Description>"Char Stat"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1627</ID>
+                          <Description>"CharacterStats"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>String</VariableType>
+                          <Length>0</Length>
+                          <Unicode>0</Unicode>
+                          <CodePage>0</CodePage>
+                          <ZeroTerminate>1</ZeroTerminate>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>51</ID>
+                              <Description>"m_FocusPoints"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+170</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1834</ID>
+                              <Description>"m_Gold"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+180</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1877</ID>
+                              <Description>"m_Pipe"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+188</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1878</ID>
+                              <Description>"m_GhostPoints"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+18C</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1879</ID>
+                              <Description>"m_ResistDeathPoints"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+190</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>3</ID>
+                              <Description>"m_PlayerLevel"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+17c</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2</ID>
+                              <Description>"m_PlayerXP"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+178</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>49</ID>
+                              <Description>"m_HealthCurrent"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+174</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>50</ID>
+                              <Description>"m_ActionPoints"</Description>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>+16c</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>48</ID>
+                              <Description>"m_CharacterOverworld"</Description>
+                              <ShowAsSigned>0</ShowAsSigned>
+                              <VariableType>String</VariableType>
+                              <Length>0</Length>
+                              <Unicode>0</Unicode>
+                              <CodePage>0</CodePage>
+                              <ZeroTerminate>1</ZeroTerminate>
+                              <Address>+78</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>78</ID>
+                                  <Description>"m_PlayerInventory"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>String</VariableType>
+                                  <Length>0</Length>
+                                  <Unicode>0</Unicode>
+                                  <CodePage>0</CodePage>
+                                  <ZeroTerminate>1</ZeroTerminate>
+                                  <Address>+108</Address>
+                                  <Offsets>
+                                    <Offset>0</Offset>
+                                  </Offsets>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1835</ID>
+                              <Description>"Mods"</Description>
+                              <Options moHideChildren="1"/>
+                              <GroupHeader>1</GroupHeader>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>5</ID>
+                                  <Description>"m_ModDefensePhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1a0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1836</ID>
+                                  <Description>"m_ModDefenseMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1a4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1837</ID>
+                                  <Description>"m_ModEvadeRating"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1a8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1838</ID>
+                                  <Description>"m_ModAttackPhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1ac</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1839</ID>
+                                  <Description>"m_ModAttackMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1b0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1840</ID>
+                                  <Description>"m_ModAttackAll"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1b4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1841</ID>
+                                  <Description>"m_PartyCombatArmor"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1b8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1842</ID>
+                                  <Description>"m_PartyCombatResist"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1bc</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1843</ID>
+                                  <Description>"m_PartyCombatEvade"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1c0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1844</ID>
+                                  <Description>"m_ReflectDamage"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1c4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1845</ID>
+                                  <Description>"m_ModCritChance"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1c8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1846</ID>
+                                  <Description>"m_ModToughness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1cc</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1847</ID>
+                                  <Description>"m_ModFortitude"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1d0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1848</ID>
+                                  <Description>"m_ModAwareness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1d4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1849</ID>
+                                  <Description>"m_ModQuickness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1d8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1850</ID>
+                                  <Description>"m_ModTalent"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1dc</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1851</ID>
+                                  <Description>"m_ModVitality"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1e0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1852</ID>
+                                  <Description>"m_ModLuck"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1e4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1853</ID>
+                                  <Description>"m_ImmuneAmbush"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Binary</VariableType>
+                                  <BitStart>0</BitStart>
+                                  <BitLength>1</BitLength>
+                                  <ShowAsBinary>0</ShowAsBinary>
+                                  <Address>+1e8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1854</ID>
+                                  <Description>"m_ModFindRadius"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1ec</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1855</ID>
+                                  <Description>"m_ModShopPrice"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+1f0</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1856</ID>
+                                  <Description>"m_ModExtraActions"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1f4</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1857</ID>
+                                  <Description>"m_ModMaxFocus"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1f8</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1858</ID>
+                                  <Description>"m_ModMaxHealth"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+1fc</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1859</ID>
+                                  <Description>"m_ModHealthRegen"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+200</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1860</ID>
+                                  <Description>"m_ModXP"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+204</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1861</ID>
+                                  <Description>"m_ModGold"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+208</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1862</ID>
+                              <Description>"Overrides"</Description>
+                              <Options moHideChildren="1"/>
+                              <GroupHeader>1</GroupHeader>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1863</ID>
+                                  <Description>"m_MaxHealthOverride"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+20c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1864</ID>
+                                  <Description>"m_MaxActionsOverride"</Description>
+                                  <ShowAsSigned>0</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+210</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1865</ID>
+                              <Description>"BaseSkills"</Description>
+                              <Options moHideChildren="1"/>
+                              <GroupHeader>1</GroupHeader>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>1866</ID>
+                                  <Description>"m_BaseDefensePhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+218</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1867</ID>
+                                  <Description>"m_BaseDefenseMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+21c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1868</ID>
+                                  <Description>"m_BaseEvadeRating"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+220</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1869</ID>
+                                  <Description>"m_BaseMaxFocus"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+224</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1870</ID>
+                                  <Description>"m_BaseMaxHealth"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+228</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1871</ID>
+                                  <Description>"m_BaseToughness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+22c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1872</ID>
+                                  <Description>"m_BaseAwareness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+230</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1873</ID>
+                                  <Description>"m_BaseFortitude"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+234</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1874</ID>
+                                  <Description>"m_BaseQuickness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+238</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1875</ID>
+                                  <Description>"m_BaseVitality"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+23c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1876</ID>
+                                  <Description>"m_BaseTalent"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+240</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>52</ID>
+                              <Description>"AugmentedSkills"</Description>
+                              <Options moHideChildren="1"/>
+                              <GroupHeader>1</GroupHeader>
+                              <CheatEntries>
+                                <CheatEntry>
+                                  <ID>70</ID>
+                                  <Description>"m_AugmentedAwareness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+14c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>68</ID>
+                                  <Description>"m_AugmentedEvadeRating"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+144</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>71</ID>
+                                  <Description>"m_AugmentedFortitude"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+150</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>75</ID>
+                                  <Description>"m_AugmentedLuck"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+160</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>72</ID>
+                                  <Description>"m_AugmentedQuickness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+154</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>74</ID>
+                                  <Description>"m_AugmentedTalent"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+15c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>69</ID>
+                                  <Description>"m_AugmentedToughness"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+148</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>73</ID>
+                                  <Description>"m_AugmentedVitality"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>Float</VariableType>
+                                  <Address>+158</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>65</ID>
+                                  <Description>"m_AugmentedDamageMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+138</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>64</ID>
+                                  <Description>"m_AugmentedDamagePhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+134</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>67</ID>
+                                  <Description>"m_AugmentedDefenseMagic"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+140</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>66</ID>
+                                  <Description>"m_AugmentedDefensePhysical"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+13c</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>76</ID>
+                                  <Description>"m_AugmentedMaxFocus"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+164</Address>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>77</ID>
+                                  <Description>"m_AugmentedMaxHealth"</Description>
+                                  <ShowAsSigned>1</ShowAsSigned>
+                                  <VariableType>4 Bytes</VariableType>
+                                  <Address>+168</Address>
+                                </CheatEntry>
+                              </CheatEntries>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1740</ID>
+                      <Description>"Skill"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1741</ID>
+                          <Description>"m_SteadFast"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>10</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1742</ID>
+                          <Description>"m_PartyHeal"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>11</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1743</ID>
+                          <Description>"m_Sneak"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>12</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1744</ID>
+                          <Description>"m_Ambush"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>13</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1745</ID>
+                          <Description>"m_Flee"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>14</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1746</ID>
+                          <Description>"m_DoorBash"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>15</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1747</ID>
+                          <Description>"m_TrapDisarm"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>16</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1748</ID>
+                          <Description>"m_TrapProceed"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>17</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1749</ID>
+                          <Description>"m_CounterAttack"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>18</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1750</ID>
+                          <Description>"m_EnergyBoost"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>19</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1751</ID>
+                          <Description>"m_Refocus"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>1a</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1752</ID>
+                          <Description>"m_FindHerb"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>1b</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1753</ID>
+                          <Description>"m_Entertain"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>1C</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1754</ID>
+                          <Description>"m_Encourage"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>1D</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1755</ID>
+                          <Description>"m_Inspire"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>1E</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1756</ID>
+                          <Description>"m_Justice"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>1F</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1757</ID>
+                          <Description>"m_Distract"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>20</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1758</ID>
+                          <Description>"m_CalledShot"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>21</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1759</ID>
+                          <Description>"m_Discipline"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>22</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1760</ID>
+                          <Description>"m_SupportRange"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>23</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1761</ID>
+                          <Description>"m_Taunt"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>24</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1762</ID>
+                          <Description>"m_MimicWhisper"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>25</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1763</ID>
+                          <Description>"m_FindTreasure"</Description>
+                          <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:Don't Have
+1:Learned
+</DropDownList>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>Byte</VariableType>
+                          <Address>_Move</Address>
+                          <Offsets>
+                            <Offset>26</Offset>
+                            <Offset>C0</Offset>
+                            <Offset>f8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1832</ID>
+                  <Description>"Base 1"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>_CS</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

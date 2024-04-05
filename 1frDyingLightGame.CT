@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="40">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Infinite Health"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(health,gamedll_x64_rwdi.dll,0F 2F F7 73 05 0F 28 C7 EB 08)
+registersymbol(health)
+
+health:
+  db 90 90 90 EB 0D
+
+[DISABLE]
+health:
+  db 0F 2F F7 73 05
+unregistersymbol(health)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Infinite Durability"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(durability,gamedll_x64_rwdi.dll,0F 2F F0 76 11 48 8B 47 18 48 8D 4F 18)
+registersymbol(durability)
+
+durability:
+  db 90 90 90
+
+[DISABLE]
+durability:
+  db 0F 2F F0
+
+unregistersymbol(durability)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No Reload"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(reload,gamedll_x64_rwdi.dll,48 8D 48 40 FF CA ?? ?? ?? ?? ?? 4D 8B 5D 00)
+aobscanmodule(arrows,gamedll_x64_rwdi.dll,48 03 C0 45 89 44 C2 04)
+alloc(newmem,1024,gamedll_x64_rwdi.dll)
+
+label(code)
+label(return)
+
+registersymbol(arrows)
+registersymbol(reload)
+
+newmem:
+  pushfq
+  cmp r8d,[r10+rax*8+04]
+  ja code
+  mov r8d,[r10+rax*8+04]
+
+code:
+  popfq
+  mov [r10+rax*8+04],r8d
+  jmp return
+
+reload+4:
+  db 90 90
+
+arrows+3:
+  jmp newmem
+return:
+
+[DISABLE]
+reload+4:
+  db FF CA
+arrows+3:
+  db 45 89 44 C2 04
+unregistersymbol(arrows)
+unregistersymbol(reload)
+dealloc(newmem)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Easy Kills"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(ohk,gamedll_x64_rwdi.dll,F3 0F 5C CE F3 41 0F 11)
+registersymbol(ohk)
+
+ohk:
+  db F3 0F 5C C9 F3 41 0F 11 4F 78
+  // subss xmm1,xmm1
+  // movss [r15+78],xmm1
+
+
+[DISABLE]
+ohk:
+  db F3 0F 5C CE F3 41 0F 11 4F 7C
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Ammo Modification"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(ammo0,gamedll_x64_rwdi.dll,41 8B 4C C0 04 85 C9 78 E3)
+alloc(newmem,1024,gamedll_x64_rwdi.dll)
+label(ammoo)
+registersymbol(ammoo)
+label(code)
+label(return)
+
+newmem:
+  pushfq
+  cmp byte ptr [ammo],00
+  je code
+  add [r8+rax*8+04],82
+  mov byte ptr [ammo],00
+
+code:
+  popfq
+  mov ecx,[r8+rax*8+04]
+  jmp return
+
+ammo:
+dd 0
+
+ammo0:
+ammoo:
+  jmp newmem
+return:
+
+[DISABLE]
+ammoo:
+  db 41 8B 4C C0 04
+unregistersymbol(ammoo)
+dealloc(newmem)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Add Ammo (1/0)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>ammo</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Arrows Modification"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(arrow0,gamedll_x64_rwdi.dll,41 8B 4C C2 04)
+alloc(newmem,1024,arrow0)
+
+label(code)
+label(return)
+
+registersymbol(arrow0)
+
+newmem:
+  pushfq
+  cmp [arrow],00
+  je code
+  add [r10+rax*8+04], A
+  mov [arrow],00
+
+code:
+  popfq
+  mov ecx,[r10+rax*8+04]
+  jmp return
+
+arrow:
+  dq 0
+
+arrow0:
+  jmp newmem
+return:
+
+[DISABLE]
+arrow0:
+  db 41 8B 4C C2 04
+unregistersymbol(arrow0)
+dealloc(newmem)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Add Arrows (0/1)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>arrow</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Crossbows Modification"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(crossbow0,gamedll_x64_rwdi.dll,41 8B 4C C0 04 85 C9 78 0C)
+alloc(newmem,1024,"gamedll_x64_rwdi.dll"+ECBC0E)
+label(crossboww)
+registersymbol(crossboww)
+label(code)
+label(return)
+
+newmem:
+  pushfq
+  cmp byte ptr [crossbow],00
+  je code
+  add [r8+rax*8+04], A
+  mov byte ptr [crossbow],00
+
+code:
+  popfq
+  mov ecx,[r8+rax*8+04]
+  jmp return
+
+crossbow:
+dd 0
+
+crossbow0:
+crossboww:
+  jmp newmem
+return:
+
+[DISABLE]
+crossboww:
+  db 41 8B 4C C0 04
+unregistersymbol(crossboww)
+dealloc(newmem)
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"Add Crossbows Bolt (0/1)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>crossbow</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Infinite Stamina"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(staminaa,gamedll_x64_rwdi.dll,F3 41 0F 5C C8 0F 2F CF)
+aobscanmodule(staminab,gamedll_x64_rwdi.dll,F3 0F 5C C7 F3 0F 11 43 10)
+label(staminaaa)
+registersymbol(staminaaa)
+label(staminabb)
+registersymbol(staminabb)
+
+
+staminaa:
+staminaaa:
+  db 90 90 90 90 90
+
+staminab:
+staminabb:
+  db 90 90 90 90
+
+
+[DISABLE]
+staminaaa:
+  db F3 41 0F 5C C8
+
+staminabb:
+  db F3 0F 5C C7
+unregistersymbol(staminaaa)
+unregistersymbol(staminabb)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"Easy Lockpicking"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(easylp,gamedll_x64_rwdi.dll,F3 0F 5C D1 0F 2F D3 73)
+registersymbol(easylp)
+
+easylp:
+  subss xmm2,xmm2
+
+[DISABLE]
+easylp:
+  db F3 0F 5C D1
+
+unregistersymbol(easylp)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"Infinite Throwables"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(thrownables,gamedll_x64_rwdi.dll,83 39 01 7E 39)
+registersymbol(thrownables)
+
+thrownables+7:
+  db 90 90
+thrownables+3:
+  db 7C
+
+[DISABLE]
+thrownables+7:
+  db FF CA
+thrownables+3:
+  db 7E
+
+unregistersymbol(thrownables)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Infinite UV Flashlight"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(lighta,gamedll_x64_rwdi.dll,F3 0F 5C C2 89 41 28)
+aobscanmodule(lightb,gamedll_x64_rwdi.dll,F3 0F 5C 47 08 0F 2F C7)
+label(lightta)
+registersymbol(lightta)
+label(lighttb)
+registersymbol(lighttb)
+
+lighta:
+lightta:
+  db 90 90 90 90
+
+lightb:
+lighttb:
+  db 90 90 90 90 90
+
+
+[DISABLE]
+lightta:
+  db F3 0F 5C C2
+lighttb:
+  db F3 0F 5C 47 08
+unregistersymbol(lightta)
+unregistersymbol(lighttb)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"Day Time Modification"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(daynight,gamedll_x64_rwdi.dll,F3 0F 58 B7 A4 00 00 00 F3 0F 11 B7 A4 00 00 00)
+alloc(newmem,1024,gamedll_x64_rwdi.dll)
+label(daynightt)
+registersymbol(daynightt)
+label(is_day)
+label(is_night)
+label(code)
+label(return)
+
+newmem:
+is_day:
+  cmp [day],00
+  je is_night
+  xorps xmm6,xmm6
+  mov [rdi+000000A4],(float)0.5
+  mov [day],00
+is_night:
+  cmp [night],00
+  je code
+  xorps xmm6,xmm6
+  mov [rdi+000000A4],(float)0.9
+  mov [night],00
+
+code:
+  addss xmm6,[rdi+000000A4]
+  jmp return
+
+day:
+dq 00
+
+night:
+dq 00
+
+daynight:
+daynightt:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+
+[DISABLE]
+daynightt:
+  db F3 0F 58 B7 A4 00 00 00
+unregistersymbol(daynightt)
+dealloc(newmem)
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"Set Day (0/1)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>day</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"Set Night (0/1)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>night</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>40</ID>
+      <Description>"Money Modification"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+alloc(newmem,1024,gamedll_x64_rwdi.dll)
+label(return)
+label(original)
+
+newmem:
+  je gamedll_x64_rwdi.dll+7406AC
+  cmp [money],00
+  je original
+  add [rax+40],1388
+  mov [money],00
+
+original:
+  mov ecx,[rax+40]
+  jmp return
+
+money:
+  dq 00
+
+"gamedll_x64_rwdi.dll"+7406A7:
+  jmp newmem
+return:
+
+[DISABLE]
+"gamedll_x64_rwdi.dll"+7406A7:
+  db 74 03 8B 48 40
+dealloc(newmem)
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Add Money (0/1)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>7FF9FDA1002C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"Teleport"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(teleport,engine_x64_rwdi.dll,C7 F3 0F 58 83 BC 00 00 00)
+aobscanmodule(waypoint,gamedll_x64_rwdi.dll,F3 0F 10 83 BC 08 00 00 F3 0F 10 8B C0 08 00 00 48 8D 55 A8) // should be unique
+//F3 0F 10 83 BC 08 00 00 F3 0F 10 8B C0 08 00 00 48 8D 55 A8 F3 0F 11 45 A8 F3 0F 10 83 C4 08 00 00 F3 0F 11 4D AC F3 0F 11 45 B0 FF 15 4B A0 FB 00
+alloc(newmemA,1024,engine_x64_rwdi.dll)
+alloc(newmemB,1024,gamedll_x64_rwdi.dll)
+label(wX)
+label(wY)
+label(wZ)
+label(sX)
+label(sY)
+label(sZ)
+label(codeA)
+label(codeB)
+label(returnA)
+label(returnB)
+registersymbol(wX)
+registersymbol(wY)
+registersymbol(wZ)
+registersymbol(sX)
+registersymbol(sY)
+registersymbol(sZ)
+registersymbol(waypoint)
+registersymbol(teleport)
+newmemB:
+  fld [rbx+000008C0]
+  fld [rbx+000008C4]
+  fld [rbx+000008BC]
+  fstp [wX]
+  fstp [wY]
+  fstp [wZ]
+codeB:
+  movss xmm0,[rbx+000008BC]
+  jmp returnB
+
+newmemA:
+  cmp [towaypoint],0
+  je @f
+  fld [wX]
+  fld [wY]
+  fld [wZ]
+  fstp [rbx+C0]
+  fstp [rbx+C4]
+  fstp [rbx+BC]
+  mov [rbx+C0],(float)200
+  mov [towaypoint],0
+@@:
+  cmp [save],0
+  je @f
+  fld [rbx+BC]
+  fld [rbx+C4]
+  fld [rbx+C0]
+  fstp [sZ]
+  fstp [sY]
+  fstp [sX]
+  mov [save],0
+@@:
+  cmp [load],0
+  je codeA
+  fld [sZ]
+  fld [sY]
+  fld [sX]
+  fstp [rbx+BC]
+  fstp [rbx+C4]
+  fstp [rbx+C0]
+  mov [load],0
+codeA:
+  addss xmm0,[rbx+000000BC]
+  jmp returnA
+wX:
+  dd 0
+wY:
+  dd 0
+wZ:
+  dd 0
+sZ:
+  dd 0
+sY:
+  dd 0
+sX:
+  dd 0
+load:
+  dq 0
+save:
+  dq 0
+towaypoint:
+  dq 0
+teleport+01:
+  jmp newmemA
+  nop
+  nop
+  nop
+returnA:
+waypoint:
+  jmp newmemB
+  nop
+  nop
+  nop
+returnB:
+[DISABLE]
+teleport+01:
+  db F3 0F 58 83 BC 00 00 00
+waypoint:
+  db F3 0F 10 83 BC 08 00 00
+unregistersymbol(waypoint)
+unregistersymbol(teleport)
+dealloc(newmemA)
+dealloc(newmemB)
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>28</ID>
+          <Description>"Teleport To Way Point (0/1)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>towaypoint</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"Save Position (0/1)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>save</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"Load Position (0/1)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>load</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"Infinite Grappling Hook"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(ghook,gamedll_x64_rwdi.dll,F3 0F 11 43 40 77 07)
+label(ghookk)
+registersymbol(ghookk)
+
+ghook:
+ghookk:
+  db 90 90 90 90 90
+
+
+[DISABLE]
+ghookk:
+  db F3 0F 11 43 40
+unregistersymbol(ghookk)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"Easy Craft"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(crafting,gamedll_x64_rwdi.dll,3B C3 0F 4C D8 8B C3)
+aobscanmodule(crafting2,gamedll_x64_rwdi.dll,3B C6 0F 4C F0 48)
+alloc(newmem,1024,gamedll_x64_rwdi.dll)
+alloc(newmem2,1024,gamedll_x64_rwdi.dll)
+label(craftingg)
+registersymbol(craftingg)
+label(craftingg2)
+registersymbol(craftingg2)
+label(return)
+label(return2)
+
+newmem:
+  //cmp eax,ebx
+  //cmovl ebx,eax
+  mov ebx,1869F
+  jmp return
+
+newmem2:
+  //cmp eax,esi
+  //cmovl esi,eax
+  mov esi,1869F
+  jmp return2
+
+crafting:
+craftingg:
+  jmp newmem
+return:
+
+crafting2:
+craftingg2:
+  jmp newmem2
+return2:
+
+[DISABLE]
+craftingg:
+  db 3B C3 0F 4C D8
+craftingg2:
+  db 3B C6 0F 4C F0
+unregistersymbol(craftingg)
+unregistersymbol(craftingg2)
+dealloc(newmem)
+dealloc(newmem2)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"Infinite Repairing"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(carrepair1,gamedll_x64_rwdi.dll,7C 1A B8 05 00 00 00)
+aobscanmodule(carrepair2,gamedll_x64_rwdi.dll,FF C7 78 07 3B F8)
+aobscanmodule(weaponrepair4,gamedll_x64_rwdi.dll,8D 47 01 89 43 08 0F 57 F6)
+aobscanmodule(weaponrepair3,gamedll_x64_rwdi.dll,7D 79 0F 29 74 24 30)
+aobscanmodule(weaponrepair2,gamedll_x64_rwdi.dll,7D 08 B0 01 48 83 C4 20 5B C3 32)
+aobscanmodule(weaponrepair1,gamedll_x64_rwdi.dll,7D 21 48 8B D3)
+label(carrepairr1)
+registersymbol(carrepairr1)
+label(carrepairr2)
+registersymbol(carrepairr2)
+label(weaponrepairr1)
+registersymbol(weaponrepairr1)
+label(weaponrepairr2)
+registersymbol(weaponrepairr2)
+label(weaponrepairr3)
+registersymbol(weaponrepairr3)
+label(weaponrepairr4)
+registersymbol(weaponrepairr4)
+
+carrepair1:
+carrepairr1:
+  db 7E
+
+carrepair2:
+carrepairr2:
+  db 90 90
+
+weaponrepair4:
+weaponrepairr4:
+  lea eax,[rdi]
+  nop
+
+weaponrepair3:
+weaponrepairr3:
+  db 7F
+
+weaponrepair2:
+weaponrepairr2:
+  db 7F
+
+weaponrepair1:
+weaponrepairr1:
+  db 7F
+
+
+[DISABLE]
+carrepairr1:
+  db 7C
+carrepairr2:
+  db FF C7
+weaponrepairr4:
+  db 8D 47 01
+weaponrepairr3:
+  db 7D
+weaponrepairr2:
+  db 7D
+weaponrepairr1:
+  db 7D
+unregistersymbol(carrepairr1)
+unregistersymbol(carrepairr2)
+unregistersymbol(weaponrepairr1)
+unregistersymbol(weaponrepairr2)
+unregistersymbol(weaponrepairr3)
+unregistersymbol(weaponrepairr4)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>34</ID>
+      <Description>"Weapon Cloning"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(Wcloner,gamedll_x64_rwdi.dll,7E 1A 8B 55 7F)
+registersymbol(Wcloner)
+
+Wcloner:
+  db 90 90
+
+[DISABLE]
+Wcloner:
+  db 7E 1A
+
+unregistersymbol(Wcloner)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>39</ID>
+      <Description>"Unlimited Fuel"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(fuelcd,gamedll_x64_rwdi.dll,F3 0F 58 89 50 03 00 00 0F 2F CA 72 03 0F 28 D1 48 85 C0 74 26 48 8B 43 18 F3 0F 11 90 50 03 00 00 C7 43 38 00 00 00 3F 89 7B 34) // should be unique
+alloc(newmem,$1000,"gamedll_x64_rwdi.dll"+FD785C)
+
+label(code)
+label(return)
+
+newmem:
+code:
+  movss xmm2, [rbx+30]
+  movss [rcx+00000350], xmm2
+  xorps xmm2, xmm2
+  addss xmm1, dword ptr [rcx+00000350]
+  jmp return
+
+fuelcd:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(fuelcd)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+fuelcd:
+  db F3 0F 58 89 50 03 00 00
+
+unregistersymbol(fuelcd)
+dealloc(newmem)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"Infinite Items"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(items,gamedll_x64_rwdi.dll,83 CF FF 83 39 01)
+alloc(newmem,1024,gamedll_x64_rwdi.dll)
+label(itemss)
+registersymbol(itemss)
+label(code)
+label(return)
+
+newmem:
+  pushfq
+  cmp dword ptr [rcx],63
+  jae code
+  mov dword ptr [rcx],63
+
+code:
+  popfq
+  or edi,-01
+  cmp dword ptr [rcx],01
+  jmp return
+
+items:
+itemss:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+itemss:
+  db 83 CF FF 83 39 01
+unregistersymbol(itemss)
+dealloc(newmem)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"Freeze Timers"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(timerA,gamedll_x64_rwdi.dll,0F 28 C2 F3 0F 58 40 D8)
+aobscanmodule(timerB,gamedll_x64_rwdi.dll,F3 0F 58 83 F0 00 00 00 F3)
+
+registersymbol(timerA)
+registersymbol(timerB)
+
+timerA:
+  xorps xmm0,xmm0
+
+timerB:
+  db F3 0F 10 83 F0 00 00 00
+
+[DISABLE]
+timerA:
+  db 0F 28 C2
+
+timerB:
+  db F3 0F 58 83 F0 00 00 00
+
+unregistersymbol(timerA)
+unregistersymbol(timerB)
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"Weapons/Looting in Safe Zone"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(wsafezone,gamedll_x64_rwdi.dll,45 8B 8A A8 09 00 00) // should be unique
+alloc(newmem,$1000,"gamedll_x64_rwdi.dll"+EB7216)
+
+label(code)
+label(return)
+
+newmem:
+code:
+  mov [r10+000009A8], 0
+  mov r9d, 1
+  jmp return
+
+wsafezone:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(wsafezone)
+
+[DISABLE]
+
+wsafezone:
+  db 45 8B 8A A8 09 00 00
+
+unregistersymbol(wsafezone)
+dealloc(newmem)
+
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

@@ -9,7 +9,7 @@
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
-//vng21092's aobscan lua script
+//vng21092's aobscan lua scriptuhu
 {$lua}
 
 function lua_aobscan(name,module,bytes,index)
@@ -51,7 +51,11 @@ end
 {$asm}
 
 //////////////////////////
-aobscanmodule(invisibleFlagChk12AOB,ACOdyssey.exe,74 09 80 ** ** ** ** ** ** 75 ** B0 01)
+// last C3 could be:
+// "C3 32 C0"
+// "48 8B 5C"
+// "48 83 C4"
+aobscanmodule(invisibleFlagChk12AOB,ACOdyssey.exe,74 09 80 ** ** ** ** ** ** 75 ** B0 01 C3)
 registersymbol(invisibleFlagChk12AOB)
 //////////////////////////
 
@@ -63,7 +67,7 @@ registersymbol(bStealthMod)
 label(pPlayer)
 registersymbol(pPlayer)
 
-alloc(newmem,2048,playerFetchAOB)
+alloc(newmem,256,playerFetchAOB)
 label(originalcode_enable)
 registersymbol(originalcode_enable)
 label(exit)
@@ -128,7 +132,7 @@ registersymbol(playerShipBase1ReadAOB)
 label(pPlayerShipBase1)
 registersymbol(pPlayerShipBase1)
 
-alloc(newmem2,2048,playerShipBase1ReadAOB) //"ACOdyssey.exe"+2761780)
+alloc(newmem2,256,playerShipBase1ReadAOB) //"ACOdyssey.exe"+2761780)
 label(originalcode2_enable)
 registersymbol(originalcode2_enable)
 label(exit2)
@@ -165,7 +169,7 @@ registersymbol(playerShipBase2ReadAOB)
 label(pPlayerShipHealthBase)
 registersymbol(pPlayerShipHealthBase)
 
-alloc(newmem3,2048,playerShipBase2ReadAOB+5) //"ACOdyssey.exe"+2DC5553)
+alloc(newmem3,256,playerShipBase2ReadAOB+5) //"ACOdyssey.exe"+2DC5553)
 label(originalcode3_enable)
 registersymbol(originalcode3_enable)
 label(exit3)
@@ -203,7 +207,7 @@ jmp newmem3
 aobscanmodule(playerShipBase2Read2aAOB,ACOdyssey.exe,48 ** ** ** 49 ** ** 48 ** ** 48 ** ** FF ** ** ** ** ** 84 C0 74 ** 32 C0)
 registersymbol(playerShipBase2Read2aAOB)
 
-alloc(newmem10,2048,playerShipBase2Read2aAOB+7) //"ACOdyssey.exe"+2E07781)
+alloc(newmem10,256,playerShipBase2Read2aAOB+7) //"ACOdyssey.exe"+2E07781)
 label(originalcode10_enable)
 registersymbol(originalcode10_enable)
 label(exit10)
@@ -232,7 +236,7 @@ jmp newmem10
 aobscanmodule(playerShipBase2Read2bAOB,ACOdyssey.exe,74 ** 48 ** ** 48 ** ** FF 92 ** ** ** ** 84 C0 0F 94 C0)
 registersymbol(playerShipBase2Read2bAOB)
 
-alloc(newmem11,2048,playerShipBase2Read2bAOB+2) //"ACOdyssey.exe"+2E7C4E9)
+alloc(newmem11,256,playerShipBase2Read2bAOB+2) //"ACOdyssey.exe"+2E7C4E9)
 label(originalcode11_enable)
 registersymbol(originalcode11_enable)
 label(exit11)
@@ -266,7 +270,7 @@ registersymbol(bHavePet)
 label(pPet)
 registersymbol(pPet)
 
-alloc(newmem17,2048,petHealthRegenCallerAOB+5) //"ACOdyssey.exe"+239845B)
+alloc(newmem17,256,petHealthRegenCallerAOB+5) //"ACOdyssey.exe"+239845B)
 label(originalcode17_enable)
 registersymbol(originalcode17_enable)
 label(exit17)
@@ -311,7 +315,7 @@ jmp newmem17
 aobscanmodule(havePetFlagChkForPetHealthRegenAOB,ACOdyssey.exe,40 ** 48 ** ** ** 80 ** 38 00 48 ** ** 74 ** 48 ** ** ** ** E8 ** ** ** ** 48 ** ** E8)
 registersymbol(havePetFlagChkForPetHealthRegenAOB)
 
-alloc(newmem17b,2048,havePetFlagChkForPetHealthRegenAOB) //"ACOdyssey.exe"+23CE6F0)
+alloc(newmem17b,256,havePetFlagChkForPetHealthRegenAOB) //"ACOdyssey.exe"+23CE6F0)
 label(originalcode17b_enable)
 registersymbol(originalcode17b_enable)
 label(exit17b)
@@ -374,7 +378,7 @@ registersymbol(bPetUndead)
 label(bOneHitKill)
 registersymbol(bOneHitKill)
 
-alloc(newmem18,2048,healthCalOnHitAOB) //"ACOdyssey.exe"+22F5C35)
+alloc(newmem18,256,healthCalOnHitAOB) //"ACOdyssey.exe"+22F5C35)
 label(originalcode18_healthCalOnHitAOB)
 registersymbol(originalcode18_healthCalOnHitAOB)
 label(exit18)
@@ -3894,7 +3898,6 @@ ACOdyssey.exe+1E3DC9F - 48 85 C0              - test rax,rax
             <CheatEntry>
               <ID>4377</ID>
               <Description>"[player]"</Description>
-              <Options moHideChildren="1"/>
               <ShowAsHex>1</ShowAsHex>
               <Color>000080</Color>
               <VariableType>Array of byte</VariableType>
@@ -3989,7 +3992,6 @@ ACOdyssey.exe+1E3DC9F - 48 85 C0              - test rax,rax
             <CheatEntry>
               <ID>4384</ID>
               <Description>"[ship]"</Description>
-              <Options moHideChildren="1"/>
               <Color>000080</Color>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
@@ -20936,169 +20938,6 @@ dealloc(*)
           <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
           <Color>000000</Color>
           <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>25380</ID>
-              <Description>"+Adrestia"</Description>
-              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
-              <Color>0000FF</Color>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
-{$lua}
-if not syntaxcheck then memrec.color = 0x008000; end;
-{$asm}
-
-aobScanModule( INJECT_shipdmg,   ACOdyssey.exe, 66410F6E8E???????? 0F5BC9 F30F59C8 0F57C0 0F2FC8 )
-aobScanModule( GetRideableActor, ACOdyssey.exe, 4883EC28 4885C9 744B E8???????? 4885C0 7441 48895C2420 488B58?? 4885DB 7424 488B03 488BCB FF50?? 488B15???????? 0FB74A?? 663948?? 720A 0FB74A?? 663948?? 7602 33DB 488BC3 488B5C2420 4883C428 C3 33C0 4883C428 C3 )
-aobScanModule( err_stub,         ACOdyssey.exe, 488D4F50 8887301E0000 488B01 FF5030 )
-
-alloc(newmem_shipdmg, 0x1000 )
-
-registerSymbol( fDmgMult,ShipDamageMultiplier,INJECT_shipdmg )
-
-newmem_shipdmg:
-  ShipDamageMultiplier:
-  //origial code
-    readmem( INJECT_shipdmg, 9 )
-  //injected code
-    mov rax, [r14+50]
-    mov rcx, [rax+8]
-    shl rcx, 20
-    sar rcx, 3F
-    and rcx, [rax]
-    jz short @f
-      mov rax, GetRideableActor
-      call rax
-      test rax, rax
-    jz short @f
-      lea rcx, [rax+50]
-      mov rax, [rcx]
-      call qword ptr [rax+30]
-      test al, al
-    jz short @f
-      mov rax, fDmgMult
-      movss xmm0, [rax]
-  @@:
-    //original code
-    cvtdq2ps xmm1, xmm1
-    mulss xmm1, xmm0
-    jmp far return_shipdmg
-    align 10 CC
-
-   fDmgMult:
-     dd (float)35.0
-     align 10 CC
-
-
-INJECT_shipdmg:
-    jmp far ShipDamageMultiplier  //#14 bytes
-    db 90 90
-    return_shipdmg:
-
-[DISABLE]
-{$lua}
-if not syntaxcheck then memrec.color = 0x0000ff; end;
-{$asm}
-
-INJECT_shipdmg:
-  readmem( ShipDamageMultiplier, 9 )
-  db 0F 5B C9 F3 0F 59 C8
-
-unregisterSymbol(*)
-dealloc(*)
-</AssemblerScript>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>25381</ID>
-                  <Description>"DamageMultiplier"</Description>
-                  <VariableType>Float</VariableType>
-                  <Address>fDmgMult</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>24370</ID>
-              <Description>"+Player"</Description>
-              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
-              <Color>0000FF</Color>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
-{$lua}
-if not syntaxcheck then memrec.color = 0x008000; end;
-{$asm}
-
-aobScanModule( INJECT_DmgMultWarHunt, ACOdyssey.exe, 488D542438 488BCE C74424500000803F )
-aobScanModule( INJECT_DmgMultAss,     ACOdyssey.exe, 8B8194010000 C3 CCCCCCCCCCCCCC )
-
-alloc( newmem_dmg, 0x1000 )
-
-registerSymbol( INJECT_DmgMultWarHunt,INJECT_DmgMultAss,dMultAss,fMultWarHunt )
-
-newmem_dmg:
-  DmgMultWarHunt:
-    //inject
-    mov rcx, [fMultWarHunt]
-    mov [rsp+50],rcx
-    //code
-    lea rdx,[rsp+38]
-    mov rcx,rsi
-    //mov [rsp+50],3F800000
-    jmp back_A
-    align 10 CC
-
-  DmgMultAss:
-    mov eax,[rcx+00000194]
-    imul eax, [dMultAss]
-    ret
-    align 10 CC
-
-  dMultAss:
-    dd #10
-    align 10 CC
-
-  fMultWarHunt:
-    dd (float)30.0
-    align 10 CC
-
-
-INJECT_DmgMultWarHunt:
-  jmp far DmgMultWarHunt //#14 bytes
-  db 90 90
-  back_A:
-
-INJECT_DmgMultAss:
-  jmp far DmgMultAss //#14 bytes
-
-[DISABLE]
-{$lua}
-if not syntaxcheck then memrec.color = 0x0000ff; end;
-{$asm}
-
-INJECT_DmgMultWarHunt:
-  db 48 8D 54 24 38 48 8B CE C7 44 24 50 00 00 80 3F
-
-INJECT_DmgMultAss:
-  db 8B 81 94 01 00 00 C3 CC CC CC CC CC CC CC
-
-unregisterSymbol(*)
-dealloc(*)
-</AssemblerScript>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>24372</ID>
-                  <Description>"Assassin"</Description>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>dMultAss</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>24371</ID>
-                  <Description>"WarriorHunter"</Description>
-                  <VariableType>Float</VariableType>
-                  <Address>fMultWarHunt</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>24502</ID>
@@ -21342,43 +21181,6 @@ dealloc(*)
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>25138</ID>
-          <Description>"+Remove Horse Speed Limit"</Description>
-          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
-          <Color>0000FF</Color>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-{$lua}
-if not syntaxcheck then memrec.color = 0x008000; end;
-{$asm}
-
-aobScanModule( INJECT_horse_speed_limit, ACOdyssey.exe, 483BDD 0F84???????? 660F1F840000000000 0F1003 )
-
-registerSymbol( INJECT_horse_speed_limit)
-
-INJECT_horse_speed_limit:
-  xor rax, rax
-
-[DISABLE]
-{$lua}
-if not syntaxcheck then memrec.color = 0x0000ff; end;
-{$asm}
-
-INJECT_horse_speed_limit:
-  db 48 3B DD
-
-unregisterSymbol(*)
-</AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>25142</ID>
-              <Description>"== Done! You may need to leave restricted area once for the cheat to take effect."</Description>
-              <Color>FF0000</Color>
-              <GroupHeader>1</GroupHeader>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
           <ID>25382</ID>
           <Description>"+Infinite Health: Felucca Small Boat"</Description>
           <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
@@ -21448,13 +21250,213 @@ dealloc(*)
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25380</ID>
+      <Description>"+DMG Adrestia"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <Color>008000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+if not syntaxcheck then memrec.color = 0x008000; end;
+{$asm}
+
+aobScanModule( INJECT_shipdmg,   ACOdyssey.exe, 66410F6E8E???????? 0F5BC9 F30F59C8 0F57C0 0F2FC8 )
+aobScanModule( GetRideableActor, ACOdyssey.exe, 4883EC28 4885C9 744B E8???????? 4885C0 7441 48895C2420 488B58?? 4885DB 7424 488B03 488BCB FF50?? 488B15???????? 0FB74A?? 663948?? 720A 0FB74A?? 663948?? 7602 33DB 488BC3 488B5C2420 4883C428 C3 33C0 4883C428 C3 )
+aobScanModule( err_stub,         ACOdyssey.exe, 488D4F50 8887301E0000 488B01 FF5030 )
+
+alloc(newmem_shipdmg, 0x1000 )
+
+registerSymbol( fDmgMult,ShipDamageMultiplier,INJECT_shipdmg )
+
+newmem_shipdmg:
+  ShipDamageMultiplier:
+  //origial code
+    readmem( INJECT_shipdmg, 9 )
+  //injected code
+    mov rax, [r14+50]
+    mov rcx, [rax+8]
+    shl rcx, 20
+    sar rcx, 3F
+    and rcx, [rax]
+    jz short @f
+      mov rax, GetRideableActor
+      call rax
+      test rax, rax
+    jz short @f
+      lea rcx, [rax+50]
+      mov rax, [rcx]
+      call qword ptr [rax+30]
+      test al, al
+    jz short @f
+      mov rax, fDmgMult
+      movss xmm0, [rax]
+  @@:
+    //original code
+    cvtdq2ps xmm1, xmm1
+    mulss xmm1, xmm0
+    jmp far return_shipdmg
+    align 10 CC
+
+   fDmgMult:
+     dd (float)333.0
+     align 10 CC
+
+
+INJECT_shipdmg:
+    jmp far ShipDamageMultiplier  //#14 bytes
+    db 90 90
+    return_shipdmg:
+
+[DISABLE]
+{$lua}
+if not syntaxcheck then memrec.color = 0x0000ff; end;
+{$asm}
+
+INJECT_shipdmg:
+  readmem( ShipDamageMultiplier, 9 )
+  db 0F 5B C9 F3 0F 59 C8
+
+unregisterSymbol(*)
+dealloc(*)
+</AssemblerScript>
+      <CheatEntries>
         <CheatEntry>
-          <ID>25330</ID>
-          <Description>"+Set Level Scaling Delta"</Description>
-          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
-          <Color>0000FF</Color>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
+          <ID>25381</ID>
+          <Description>"DamageMultiplier"</Description>
+          <VariableType>Float</VariableType>
+          <Address>fDmgMult</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24370</ID>
+      <Description>"+DMG Player"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <Color>008000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+if not syntaxcheck then memrec.color = 0x008000; end;
+{$asm}
+
+aobScanModule( INJECT_DmgMultWarHunt, ACOdyssey.exe, 488D542438 488BCE C74424500000803F )
+aobScanModule( INJECT_DmgMultAss,     ACOdyssey.exe, 8B8194010000 C3 CCCCCCCCCCCCCC )
+
+alloc( newmem_dmg, 0x1000 )
+
+registerSymbol( INJECT_DmgMultWarHunt,INJECT_DmgMultAss,dMultAss,fMultWarHunt )
+
+newmem_dmg:
+  DmgMultWarHunt:
+    //inject
+    mov rcx, [fMultWarHunt]
+    mov [rsp+50],rcx
+    //code
+    lea rdx,[rsp+38]
+    mov rcx,rsi
+    //mov [rsp+50],3F800000
+    jmp back_A
+    align 10 CC
+
+  DmgMultAss:
+    mov eax,[rcx+00000194]
+    imul eax, [dMultAss]
+    ret
+    align 10 CC
+
+  dMultAss:
+    dd #333
+    align 10 CC
+
+  fMultWarHunt:
+    dd (float)333.0
+    align 10 CC
+
+
+INJECT_DmgMultWarHunt:
+  jmp far DmgMultWarHunt //#14 bytes
+  db 90 90
+  back_A:
+
+INJECT_DmgMultAss:
+  jmp far DmgMultAss //#14 bytes
+
+[DISABLE]
+{$lua}
+if not syntaxcheck then memrec.color = 0x0000ff; end;
+{$asm}
+
+INJECT_DmgMultWarHunt:
+  db 48 8D 54 24 38 48 8B CE C7 44 24 50 00 00 80 3F
+
+INJECT_DmgMultAss:
+  db 8B 81 94 01 00 00 C3 CC CC CC CC CC CC CC
+
+unregisterSymbol(*)
+dealloc(*)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>24372</ID>
+          <Description>"Assassin"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>dMultAss</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24371</ID>
+          <Description>"WarriorHunter"</Description>
+          <VariableType>Float</VariableType>
+          <Address>fMultWarHunt</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25138</ID>
+      <Description>"+Remove Horse Speed Limit"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <Color>008000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+if not syntaxcheck then memrec.color = 0x008000; end;
+{$asm}
+
+aobScanModule( INJECT_horse_speed_limit, ACOdyssey.exe, 483BDD 0F84???????? 660F1F840000000000 0F1003 )
+
+registerSymbol( INJECT_horse_speed_limit)
+
+INJECT_horse_speed_limit:
+  xor rax, rax
+
+[DISABLE]
+{$lua}
+if not syntaxcheck then memrec.color = 0x0000ff; end;
+{$asm}
+
+INJECT_horse_speed_limit:
+  db 48 3B DD
+
+unregisterSymbol(*)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>25142</ID>
+          <Description>"== Done! You may need to leave restricted area once for the cheat to take effect."</Description>
+          <Color>FF0000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25330</ID>
+      <Description>"+Set Level Scaling Delta"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <Color>008000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
 {$lua}
 if not syntaxcheck then memrec.color = 0x008000; end;
 {$asm}
@@ -21467,7 +21469,7 @@ registerSymbol(INJECT_delta,LevelScalingDelta)
 
 newmem_delta:
   LevelScalingDelta:
-    dd #10
+    dd #80
     align 10 CC
 
 INJECT_delta:
@@ -21485,659 +21487,525 @@ INJECT_delta:
 unregisterSymbol(*)
 dealloc(*)
 </AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>25332</ID>
-              <Description>"==Now content can fall up to {...} levels behind your level. Mercenaries and Civilians are not affected."</Description>
-              <Color>FF0000</Color>
-              <GroupHeader>1</GroupHeader>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>25331</ID>
-              <Description>"LevelScalingDelta"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>LevelScalingDelta</Address>
-            </CheatEntry>
-          </CheatEntries>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>25332</ID>
+          <Description>"==Now content can fall up to {...} levels behind your level. Mercenaries and Civilians are not affected."</Description>
+          <Color>FF0000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25331</ID>
+          <Description>"LevelScalingDelta"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>LevelScalingDelta</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25460</ID>
+      <Description>"Unlimited Arrows"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+"ACOdyssey.exe"+2609511:
+nop 3
+
+[DISABLE]
+"ACOdyssey.exe"+2609511:
+sub r8d,eax
+//Alt: db 44 2B C0
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26143</ID>
+      <Description>"Teleport Script"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+alloc(teleport_boolean,4)
+registersymbol(teleport_boolean)
+label(returnhere)
+label(dont_teleport)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push rax
+
+// this section is protection against invalid teleport to 1E10 location
+cmp [rbx+00000100],501502F9
+jz dont_teleport
+
+cmp [rbx+00000104],501502F9
+jz dont_teleport
+
+cmp [rbx+00000108],501502F9
+jz dont_teleport
+
+// now we check if we want to teleport
+mov rax, [teleport_boolean]
+test rax, rax
+jz dont_teleport
+
+// if we want to teleport, set this var to 0
+mov [teleport_boolean], 0
+
+// access player X Y Z coordinates
+mov rax, ["ACOdyssey.exe"+059A28F0]
+mov rax, [rax+8]
+
+// set player X coordinate [rax+50] and get map X coordinate [rbx+00000100]
+push rcx
+mov rcx, [rbx+00000100]
+mov [rax+50],rcx
+pop rcx
+
+// Y coordinate
+push rcx
+mov rcx, [rbx+00000104]
+mov [rax+54],rcx
+pop rcx
+
+// Z coordinate
+push rcx
+mov rcx, [rbx+00000108]
+mov [rax+58],rcx
+pop rcx
+
+// cleanup
+dont_teleport:
+
+pop rax
+
+movaps xmm0,xmm6
+andps xmm0,[ACOdyssey.exe+4041DB0]
+comiss xmm0,[ACOdyssey.exe+404DEC4]
+
+jmp returnhere
+
+"ACOdyssey.exe"+2F207BB:
+jmp newmem
+nop 7
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+unregistersymbol(teleport_boolean)
+dealloc(teleport_boolean)
+dealloc(newmem)
+
+// this is "what accesses this address" on the Z location when clicking on map,
+// it's the one opcode that does not access other addresses
+// (there are around 8 or so, others do access other addresses)
+"ACOdyssey.exe"+2F207BB:
+movaps xmm0,xmm6
+andps xmm0,[ACOdyssey.exe+4041DB0]
+comiss xmm0,[ACOdyssey.exe+404DEC4]
+
+//Alt: db 0F28 C6 0F54 05 EB151201 0F2F 05 F8D61201
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>26142</ID>
+          <Description>"Teleport On Select"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>teleport_boolean</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>18</Key>
+                <Key>222</Key>
+              </Keys>
+              <Value>1-(Teleport On Select)</Value>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26148</ID>
+      <Description>"Unlimited Adrenaline (crashes)"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+mov edi, (int)800
+mov [rbx+000002A8],edi
+mov eax,edi
+div [rbx+000001CC]
+
+exit:
+jmp returnhere
+
+"ACOdyssey.exe"+22CA839:
+jmp newmem
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"ACOdyssey.exe"+22CA839:
+mov [rbx+000002A8],edi
+mov eax,edi
+div [rbx+000001CC]
+
+//Alt: db 89 BB A8 02 00 00 8B C7 F7 B3 CC 01 00 00
+
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26152</ID>
+      <Description>"Huge max health on Max Health Change"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+"ACOdyssey.exe"+228BE5E:
+mov [rcx+00000134],ecx
+
+
+ 
+ 
+[DISABLE]
+"ACOdyssey.exe"+228BE5E:
+mov [rcx+00000134],edx
+//Alt: db 89 91 34 01 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26131</ID>
+      <Description>"Player Ptr"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>"ACOdyssey.exe"+059A28F0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>26132</ID>
+          <Description>"X (left minus, right plus)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25782</ID>
+          <Description>"Y (down minus, up plus)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+54</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25780</ID>
+          <Description>"Z (lower minus, higher plus, sea level = 200)"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+58</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26134</ID>
+      <Description>"Map Target"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>0</ByteLength>
+      <Address>"ACOdyssey.exe"+059A6AD8</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>90</Offset>
+        <Offset>2B8</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>26135</ID>
+          <Description>"Map X"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+E0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26136</ID>
+          <Description>"Map Y"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+E4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26137</ID>
+          <Description>"Map Z"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+E8</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
-      <Description>Code :mov edx,[rdi+000000B4]</Description>
-      <AddressString>ACOdyssey.exe+26E6B88</AddressString>
+      <Description>decrease arrow</Description>
+      <AddressString>ACOdyssey.exe+2609511</AddressString>
       <Before>
-        <Byte>8F</Byte>
-        <Byte>B0</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>8B</Byte>
-        <Byte>97</Byte>
-        <Byte>B4</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>0D</Byte>
-        <Byte>63</Byte>
-        <Byte>CE</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :call ACOdyssey.exe+2E54C70</Description>
-      <AddressString>ACOdyssey.exe+2EACD79</AddressString>
-      <Before>
-        <Byte>75</Byte>
-        <Byte>19</Byte>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>CF</Byte>
-      </Before>
-      <Actual>
-        <Byte>E8</Byte>
-        <Byte>F2</Byte>
-        <Byte>7E</Byte>
-        <Byte>FA</Byte>
-        <Byte>FF</Byte>
-      </Actual>
-      <After>
-        <Byte>84</Byte>
         <Byte>C0</Byte>
-        <Byte>74</Byte>
-        <Byte>0D</Byte>
-        <Byte>80</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :or eax,28B0190</Description>
-      <AddressString>ACOdyssey.exe+952B10F</AddressString>
-      <Before>
-        <Byte>25</Byte>
-        <Byte>D4</Byte>
-        <Byte>A2</Byte>
-        <Byte>A8</Byte>
-        <Byte>B5</Byte>
-      </Before>
-      <Actual>
-        <Byte>0D</Byte>
-        <Byte>90</Byte>
-        <Byte>01</Byte>
-        <Byte>8B</Byte>
-        <Byte>02</Byte>
-      </Actual>
-      <After>
-        <Byte>B9</Byte>
-        <Byte>20</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov r8d,[rcx+0000050C]</Description>
-      <AddressString>ACOdyssey.exe+2EC6900</AddressString>
-      <Before>
-        <Byte>FE</Byte>
-        <Byte>C3</Byte>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
-      </Before>
-      <Actual>
-        <Byte>44</Byte>
-        <Byte>8B</Byte>
-        <Byte>81</Byte>
-        <Byte>0C</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>41</Byte>
-        <Byte>8B</Byte>
-        <Byte>C0</Byte>
-        <Byte>C1</Byte>
-        <Byte>E8</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov eax,[rbx+0000050C]</Description>
-      <AddressString>ACOdyssey.exe+2EB0249</AddressString>
-      <Before>
-        <Byte>E8</Byte>
-        <Byte>D7</Byte>
-        <Byte>A0</Byte>
-        <Byte>95</Byte>
-        <Byte>FE</Byte>
-      </Before>
-      <Actual>
-        <Byte>8B</Byte>
-        <Byte>83</Byte>
-        <Byte>0C</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8D</Byte>
-        <Byte>54</Byte>
-        <Byte>24</Byte>
-        <Byte>20</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov eax,[rbx+0000050C]</Description>
-      <AddressString>ACOdyssey.exe+2EB02D9</AddressString>
-      <Before>
-        <Byte>E8</Byte>
-        <Byte>47</Byte>
-        <Byte>A0</Byte>
-        <Byte>95</Byte>
-        <Byte>FE</Byte>
-      </Before>
-      <Actual>
-        <Byte>8B</Byte>
-        <Byte>83</Byte>
-        <Byte>0C</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8D</Byte>
-        <Byte>54</Byte>
-        <Byte>24</Byte>
-        <Byte>20</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :test byte ptr [rsi+0000050C],01</Description>
-      <AddressString>ACOdyssey.exe+2EB3390</AddressString>
-      <Before>
-        <Byte>84</Byte>
-        <Byte>1B</Byte>
-        <Byte>01</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>F6</Byte>
-        <Byte>86</Byte>
-        <Byte>0C</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>01</Byte>
-      </Actual>
-      <After>
-        <Byte>0F</Byte>
-        <Byte>85</Byte>
-        <Byte>0E</Byte>
-        <Byte>01</Byte>
-        <Byte>00</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov edx,[rdi+0000050C]</Description>
-      <AddressString>ACOdyssey.exe+2EB4596</AddressString>
-      <Before>
-        <Byte>01</Byte>
-        <Byte>EB</Byte>
-        <Byte>02</Byte>
-        <Byte>32</Byte>
-        <Byte>C9</Byte>
-      </Before>
-      <Actual>
-        <Byte>8B</Byte>
-        <Byte>97</Byte>
-        <Byte>0C</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>8B</Byte>
-        <Byte>C2</Byte>
-        <Byte>C1</Byte>
-        <Byte>E8</Byte>
-        <Byte>0E</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov [rdi+0000050C],eax</Description>
-      <AddressString>ACOdyssey.exe+2EB45BC</AddressString>
-      <Before>
-        <Byte>BA</Byte>
-        <Byte>C2</Byte>
-        <Byte>D0</Byte>
-        <Byte>5E</Byte>
-        <Byte>17</Byte>
-      </Before>
-      <Actual>
-        <Byte>89</Byte>
-        <Byte>87</Byte>
-        <Byte>0C</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>E8</Byte>
-        <Byte>D9</Byte>
-        <Byte>20</Byte>
-        <Byte>93</Byte>
-        <Byte>FE</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov ecx,[rdi+0000050C]</Description>
-      <AddressString>ACOdyssey.exe+2EB45C7</AddressString>
-      <Before>
-        <Byte>E8</Byte>
-        <Byte>D9</Byte>
-        <Byte>20</Byte>
-        <Byte>93</Byte>
-        <Byte>FE</Byte>
-      </Before>
-      <Actual>
-        <Byte>8B</Byte>
-        <Byte>8F</Byte>
-        <Byte>0C</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>8B</Byte>
-        <Byte>C1</Byte>
-        <Byte>C1</Byte>
-        <Byte>E8</Byte>
-        <Byte>06</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov edx,[rbx+0000050C]</Description>
-      <AddressString>ACOdyssey.exe+2EAF940</AddressString>
-      <Before>
-        <Byte>01</Byte>
-        <Byte>EB</Byte>
-        <Byte>02</Byte>
-        <Byte>32</Byte>
-        <Byte>C9</Byte>
-      </Before>
-      <Actual>
-        <Byte>8B</Byte>
-        <Byte>93</Byte>
-        <Byte>0C</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>8B</Byte>
-        <Byte>C2</Byte>
-        <Byte>C1</Byte>
-        <Byte>E8</Byte>
-        <Byte>06</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov r14,[rsp+40]</Description>
-      <AddressString>ACOdyssey.exe+2405F66</AddressString>
-      <Before>
-        <Byte>E8</Byte>
-        <Byte>DA</Byte>
-        <Byte>5E</Byte>
-        <Byte>FD</Byte>
-        <Byte>FF</Byte>
-      </Before>
-      <Actual>
-        <Byte>4C</Byte>
-        <Byte>8B</Byte>
-        <Byte>74</Byte>
-        <Byte>24</Byte>
-        <Byte>40</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>74</Byte>
-        <Byte>24</Byte>
-        <Byte>38</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :movd xmm1,[r14]</Description>
-      <AddressString>ACOdyssey.exe+2DFB8C0</AddressString>
-      <Before>
-        <Byte>04</Byte>
-        <Byte>85</Byte>
-        <Byte>C0</Byte>
-        <Byte>7E</Byte>
-        <Byte>1E</Byte>
-      </Before>
-      <Actual>
-        <Byte>66</Byte>
         <Byte>41</Byte>
         <Byte>0F</Byte>
-        <Byte>6E</Byte>
-        <Byte>0E</Byte>
-      </Actual>
-      <After>
-        <Byte>66</Byte>
-        <Byte>0F</Byte>
-        <Byte>6E</Byte>
-        <Byte>C0</Byte>
-        <Byte>0F</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :movd xmm0,[rcx]</Description>
-      <AddressString>ACOdyssey.exe+2DFC057</AddressString>
-      <Before>
-        <Byte>04</Byte>
-        <Byte>85</Byte>
-        <Byte>C0</Byte>
-        <Byte>7E</Byte>
-        <Byte>13</Byte>
-      </Before>
-      <Actual>
-        <Byte>66</Byte>
-        <Byte>0F</Byte>
-        <Byte>6E</Byte>
-        <Byte>01</Byte>
-      </Actual>
-      <After>
-        <Byte>66</Byte>
-        <Byte>0F</Byte>
-        <Byte>6E</Byte>
-        <Byte>C8</Byte>
-        <Byte>0F</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :sub r12d,[rbp+7C]</Description>
-      <AddressString>ACOdyssey.exe+2E5F826</AddressString>
-      <Before>
-        <Byte>00</Byte>
-        <Byte>44</Byte>
-        <Byte>8B</Byte>
-        <Byte>65</Byte>
-        <Byte>68</Byte>
+        <Byte>46</Byte>
+        <Byte>C4</Byte>
       </Before>
       <Actual>
         <Byte>44</Byte>
         <Byte>2B</Byte>
-        <Byte>65</Byte>
-        <Byte>7C</Byte>
-      </Actual>
-      <After>
-        <Byte>41</Byte>
-        <Byte>8B</Byte>
-        <Byte>86</Byte>
-        <Byte>90</Byte>
-        <Byte>00</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :movss xmm6,[rdi+000002B0]</Description>
-      <AddressString>ACOdyssey.exe+340F8FE</AddressString>
-      <Before>
-        <Byte>E8</Byte>
-        <Byte>E2</Byte>
-        <Byte>BA</Byte>
-        <Byte>FF</Byte>
-        <Byte>FF</Byte>
-      </Before>
-      <Actual>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>10</Byte>
-        <Byte>B7</Byte>
-        <Byte>B0</Byte>
-        <Byte>02</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>45</Byte>
-        <Byte>0F</Byte>
-        <Byte>57</Byte>
         <Byte>C0</Byte>
-        <Byte>F3</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>03</Byte>
+        <Byte>75</Byte>
+        <Byte>0B</Byte>
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :mov eax,[rcx+0000018C]</Description>
-      <AddressString>ACOdyssey.exe+27738E0</AddressString>
+      <Description>move Z</Description>
+      <AddressString>ACOdyssey.exe+B08E90E</AddressString>
       <Before>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
+        <Byte>40</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>48</Byte>
+        <Byte>30</Byte>
       </Before>
       <Actual>
-        <Byte>8B</Byte>
-        <Byte>81</Byte>
-        <Byte>8C</Byte>
-        <Byte>01</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>49</Byte>
+        <Byte>50</Byte>
       </Actual>
       <After>
         <Byte>C3</Byte>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
-        <Byte>CC</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov [rsp+28],edi</Description>
-      <AddressString>ACOdyssey.exe+2744F58</AddressString>
-      <Before>
-        <Byte>30</Byte>
-        <Byte>01</Byte>
-        <Byte>44</Byte>
+        <Byte>4C</Byte>
         <Byte>8B</Byte>
-        <Byte>CB</Byte>
-      </Before>
-      <Actual>
-        <Byte>89</Byte>
-        <Byte>7C</Byte>
+        <Byte>0C</Byte>
         <Byte>24</Byte>
-        <Byte>28</Byte>
-      </Actual>
-      <After>
-        <Byte>45</Byte>
-        <Byte>33</Byte>
-        <Byte>C0</Byte>
-        <Byte>49</Byte>
-        <Byte>8B</Byte>
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>lvl of last eq on change tmp Code :mov r9d,[rbx+10]</Description>
-      <AddressString>ACOdyssey.exe+273020E</AddressString>
-      <Before>
-        <Byte>E8</Byte>
-        <Byte>82</Byte>
-        <Byte>7B</Byte>
-        <Byte>27</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>44</Byte>
-        <Byte>8B</Byte>
-        <Byte>4B</Byte>
-        <Byte>10</Byte>
-      </Actual>
-      <After>
-        <Byte>44</Byte>
-        <Byte>8B</Byte>
-        <Byte>43</Byte>
-        <Byte>14</Byte>
-        <Byte>41</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :movaps [rdi+60],xmm0</Description>
-      <AddressString>ACOdyssey.exe+2CF18FF</AddressString>
+      <Description>Change target location</Description>
+      <AddressString>ACOdyssey.exe+2EFE16C</AddressString>
       <Before>
         <Byte>05</Byte>
-        <Byte>01</Byte>
-        <Byte>67</Byte>
-        <Byte>61</Byte>
+        <Byte>14</Byte>
+        <Byte>A3</Byte>
+        <Byte>77</Byte>
         <Byte>02</Byte>
       </Before>
       <Actual>
         <Byte>0F</Byte>
         <Byte>29</Byte>
-        <Byte>47</Byte>
-        <Byte>60</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>C7</Byte>
-        <Byte>47</Byte>
-        <Byte>70</Byte>
+        <Byte>83</Byte>
         <Byte>00</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :movss xmm0,[r8+000003C0]</Description>
-      <AddressString>ACOdyssey.exe+1E3C475</AddressString>
-      <Before>
-        <Byte>C1</Byte>
-        <Byte>49</Byte>
-        <Byte>8B</Byte>
-        <Byte>40</Byte>
-        <Byte>38</Byte>
-      </Before>
-      <Actual>
-        <Byte>F3</Byte>
-        <Byte>41</Byte>
-        <Byte>0F</Byte>
-        <Byte>10</Byte>
-        <Byte>80</Byte>
-        <Byte>C0</Byte>
-        <Byte>03</Byte>
+        <Byte>01</Byte>
         <Byte>00</Byte>
         <Byte>00</Byte>
       </Actual>
       <After>
         <Byte>48</Byte>
         <Byte>8B</Byte>
-        <Byte>48</Byte>
-        <Byte>10</Byte>
-        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>18</Byte>
+        <Byte>01</Byte>
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :mulss xmm0,[rsp+30]</Description>
-      <AddressString>ACOdyssey.exe+1E3DCF7</AddressString>
+      <Description>Change target location</Description>
+      <AddressString>ACOdyssey.exe+2EB0BA0</AddressString>
       <Before>
-        <Byte>E8</Byte>
-        <Byte>69</Byte>
-        <Byte>D9</Byte>
-        <Byte>9B</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>59</Byte>
-        <Byte>44</Byte>
         <Byte>24</Byte>
         <Byte>30</Byte>
-      </Actual>
-      <After>
         <Byte>48</Byte>
         <Byte>8B</Byte>
-        <Byte>4F</Byte>
-        <Byte>38</Byte>
-        <Byte>F3</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov edx,[rbp+7F]</Description>
-      <AddressString>ACOdyssey.exe+2FDE269</AddressString>
-      <Before>
-        <Byte>E8</Byte>
-        <Byte>87</Byte>
-        <Byte>F0</Byte>
-        <Byte>85</Byte>
-        <Byte>FE</Byte>
+        <Byte>CF</Byte>
       </Before>
       <Actual>
-        <Byte>8B</Byte>
-        <Byte>55</Byte>
-        <Byte>7F</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>CB</Byte>
-        <Byte>E8</Byte>
-        <Byte>9C</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :cmp edx,[rcx+00000378]</Description>
-      <AddressString>ACOdyssey.exe+3003816</AddressString>
-      <Before>
-        <Byte>53</Byte>
-        <Byte>48</Byte>
-        <Byte>83</Byte>
-        <Byte>EC</Byte>
-        <Byte>40</Byte>
-      </Before>
-      <Actual>
-        <Byte>3B</Byte>
-        <Byte>91</Byte>
-        <Byte>78</Byte>
-        <Byte>03</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>D9</Byte>
+        <Byte>66</Byte>
         <Byte>0F</Byte>
-        <Byte>93</Byte>
+        <Byte>7F</Byte>
+        <Byte>03</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>37</Byte>
+        <Byte>56</Byte>
+        <Byte>7B</Byte>
+        <Byte>FE</Byte>
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :mov eax,ebp</Description>
-      <AddressString>ACOdyssey.exe+22F5C35</AddressString>
+      <Description>Player X movement?</Description>
+      <AddressString>ACOdyssey.exe+BBA67B7</AddressString>
       <Before>
-        <Byte>FF</Byte>
-        <Byte>8B</Byte>
-        <Byte>54</Byte>
+        <Byte>4C</Byte>
+        <Byte>8D</Byte>
+        <Byte>44</Byte>
         <Byte>24</Byte>
         <Byte>20</Byte>
       </Before>
       <Actual>
-        <Byte>8B</Byte>
-        <Byte>C5</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>60</Byte>
+        <Byte>30</Byte>
       </Actual>
       <After>
-        <Byte>2B</Byte>
-        <Byte>C2</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>map target select change z</Description>
+      <AddressString>ACOdyssey.exe+B4A2162</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>80</Byte>
+        <Byte>7F</Byte>
+        <Byte>74</Byte>
+        <Byte>53</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
         <Byte>41</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>49</Byte>
+        <Byte>8D</Byte>
+        <Byte>43</Byte>
+        <Byte>10</Byte>
+        <Byte>49</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Target Map Z change</Description>
+      <AddressString>ACOdyssey.exe+2F207AD</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>B3</Byte>
+        <Byte>08</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm2,[rax+30]</Description>
+      <AddressString>ACOdyssey.exe+BB93983</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>C0</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>50</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C3</Byte>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>HP decrease Code :mov [rbx+00000130],edi</Description>
+      <AddressString>ACOdyssey.exe+22CA0E1</AddressString>
+      <Before>
+        <Byte>3B</Byte>
+        <Byte>C7</Byte>
+        <Byte>0F</Byte>
+        <Byte>4E</Byte>
+        <Byte>F8</Byte>
+      </Before>
+      <Actual>
         <Byte>89</Byte>
-        <Byte>06</Byte>
+        <Byte>BB</Byte>
+        <Byte>30</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change max HP: Code :mov [rcx+00000134],edx</Description>
+      <AddressString>ACOdyssey.exe+228BE5E</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>45</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>91</Byte>
+        <Byte>34</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>15</Byte>
+        <Byte>B2</Byte>
+        <Byte>B4</Byte>
+        <Byte>81</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
@@ -22159,10 +22027,6 @@ dealloc(*)
       <Address>1408C60AA</Address>
     </SymbolEntry>
     <SymbolEntry>
-      <Name>adrenalineWrite2OnChangeAOB</Name>
-      <Address>141D18152</Address>
-    </SymbolEntry>
-    <SymbolEntry>
       <Name>damageBarsVisualCalAOB</Name>
       <Address>1423B0668</Address>
     </SymbolEntry>
@@ -22176,11 +22040,15 @@ dealloc(*)
     </SymbolEntry>
     <SymbolEntry>
       <Name>newmem_GetItem</Name>
-      <Address>23231220000</Address>
+      <Address>0ACE0000</Address>
     </SymbolEntry>
     <SymbolEntry>
       <Name>newmem_inv</Name>
       <Address>2E24C848000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>adrenalineWrite2OnChangeAOB</Name>
+      <Address>1422CA832</Address>
     </SymbolEntry>
   </UserdefinedSymbols>
   <Comments>Game Title    : Assassin’s Creed® Odyssey

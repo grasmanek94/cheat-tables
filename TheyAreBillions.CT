@@ -1,0 +1,3171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>115724</ID>
+      <Description>"&lt;=== Auto attach to process"</Description>
+      <Options moDeactivateChildrenAsWell="1"/>
+      <Color>0000FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+  if(getCEVersion() &lt; 7.4) then
+    ShowMessage('Warning! CE version should be 7.4 or above')
+  end
+local pr1 = 'TheyAreBillions.exe'
+OpenProcess("TheyAreBillions.exe")
+  if process ~= pr1 then
+    ShowMessage('The process TheyAreBillions.exe is NOT found!')
+    error()
+  end
+
+{$asm}
+//LuaCall(function cycleFullCompact(sender,force) local state = not(compactmenuitem.Caption == 'Compact View Mode'); if force~=nil then state = not force end; compactmenuitem.Caption = state and 'Compact View Mode' or 'Full View Mode'; getMainForm().Splitter1.Visible = state; getMainForm().Panel4.Visible    = state; getMainForm().Panel5.Visible    = state; end; function addCompactMenu() if compactmenualreadyexists then return end; local parent = getMainForm().Menu.Items; compactmenuitem = createMenuItem(parent); parent.add(compactmenuitem); compactmenuitem.Caption = 'Compact View Mode'; compactmenuitem.OnClick = cycleFullCompact; compactmenualreadyexists = 'yes'; end; addCompactMenu(); cycleFullCompact(nil,true))
+[DISABLE]
+ 
+ //LuaCall(cycleFullCompact(nil,false))
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>115940</ID>
+          <Description>"It takes some time to activate a script/ find the AOB!!"</Description>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>773</ID>
+          <Description>"instant Build soldier  (start training, then activate) v2"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-10
+}
+[ENABLE]
+aobscan(unitbuild,76 0B C4 E1 ?? ?? ?? ?? ?? ?? ?? EB 00 C4 E1 7A 11 46 30 C4 E1 ?? ?? ?? ?? ?? 48 83 C4 38 5E)
+registersymbol(unitbuild unitbuildbkp)
+alloc(unitbuildbkp,2,unitbuild)
+
+unitbuildbkp:
+readmem(unitbuild,2)
+
+unitbuild:
+nop 2
+
+[DISABLE]
+unitbuild:
+ // db 76 0B
+readmem(unitbuildbkp,2)
+unregistersymbol(*)
+dealloc(*)
+
+{ 76 0B C4 E1 ?? ?? ?? ?? ?? ?? ?? EB 00 C4 E1 ?? ?? ?? ?? C4 E1 ?? ?? ?? ?? ?? 48 83 C4 38
+// ORIGINAL CODE - INJECTION POINT: 7FF7E6BD7F36
+
+7FF7E6BD7EB1: 5F                             - pop rdi
+7FF7E6BD7EB2: C3                             - ret 
+7FF7E6BD7EB3: 48 8B CE                       - mov rcx,rsi
+7FF7E6BD7EB6: 48 BA 80 EE DB E6 F7 7F 00 00  - mov rdx,00007FF7E6DBEE80
+7FF7E6BD7EC0: E8 CB 3D 76 FF                 - call 7FF7E633BC90
+7FF7E6BD7EC5: 48 8B F0                       - mov rsi,rax
+7FF7E6BD7EC8: 48 85 F6                       - test rsi,rsi
+7FF7E6BD7ECB: 75 0E                          - jne 7FF7E6BD7EDB
+7FF7E6BD7ECD: C4 E1 78 28 74 24 20           - vmovaps xmm6,[rsp+20]
+7FF7E6BD7ED4: 48 83 C4 38                    - add rsp,38
+7FF7E6BD7ED8: 5E                             - pop rsi
+7FF7E6BD7ED9: 5F                             - pop rdi
+7FF7E6BD7EDA: C3                             - ret 
+7FF7E6BD7EDB: C4 E1 7A 10 76 30              - vmovss xmm6,[rsi+30]
+7FF7E6BD7EE1: 48 8B 8F 48 01 00 00           - mov rcx,[rdi+00000148]
+7FF7E6BD7EE8: 39 09                          - cmp [rcx],ecx
+7FF7E6BD7EEA: E8 51 B1 FE FF                 - call 7FF7E6BC3040
+7FF7E6BD7EEF: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+7FF7E6BD7EF4: C4 E1 7A 2A C0                 - vcvtsi2ss xmm0,eax,eax
+7FF7E6BD7EF9: C4 E1 7A 59 05 56 00 00 00     - vmulss xmm0,xmm0,[7FF7E6BD7F58]
+7FF7E6BD7F02: C4 E1 7A 10 0D 51 00 00 00     - vmovss xmm1,[7FF7E6BD7F5C]
+7FF7E6BD7F0B: C4 E1 72 5E C8                 - vdivss xmm1,xmm1,xmm0
+7FF7E6BD7F10: C4 E1 78 28 C1                 - vmovaps xmm0,xmm1
+7FF7E6BD7F15: C4 E1 7A 58 C6                 - vaddss xmm0,xmm0,xmm6
+7FF7E6BD7F1A: C4 E1 70 57 C9                 - vxorps xmm1,xmm1,xmm1
+7FF7E6BD7F1F: C4 E1 78 2E C8                 - vucomiss xmm1,xmm0
+7FF7E6BD7F24: 76 07                          - jna 7FF7E6BD7F2D
+7FF7E6BD7F26: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+7FF7E6BD7F2B: EB 16                          - jmp 7FF7E6BD7F43
+7FF7E6BD7F2D: C4 E1 78 2E 05 2A 00 00 00     - vucomiss xmm0,[7FF7E6BD7F60]
+// ---------- INJECTING HERE ----------
+7FF7E6BD7F36: 76 0B                          - jna 7FF7E6BD7F43
+// ---------- DONE INJECTING  ----------
+7FF7E6BD7F38: C4 E1 7A 10 05 23 00 00 00     - vmovss xmm0,[7FF7E6BD7F64]
+7FF7E6BD7F41: EB 00                          - jmp 7FF7E6BD7F43
+7FF7E6BD7F43: C4 E1 7A 11 46 30              - vmovss [rsi+30],xmm0
+7FF7E6BD7F49: C4 E1 78 28 74 24 20           - vmovaps xmm6,[rsp+20]
+7FF7E6BD7F50: 48 83 C4 38                    - add rsp,38
+7FF7E6BD7F54: 5E                             - pop rsi
+7FF7E6BD7F55: 5F                             - pop rdi
+7FF7E6BD7F56: C3                             - ret 
+7FF7E6BD7F57: 00 00                          - add [rax],al
+7FF7E6BD7F59: 00 7A 44                       - add [rdx+44],bh
+7FF7E6BD7F5C: 55                             - push rbp
+7FF7E6BD7F5D: 55                             - push rbp
+7FF7E6BD7F5E: 05 42 00 00 80                 - add eax,80000042
+7FF7E6BD7F63: 3F                             - db 3F
+7FF7E6BD7F64: 00 00                          - add [rax],al
+7FF7E6BD7F66: 80 3F 19                       - cmp byte ptr [rdi],19
+7FF7E6BD7F69: 10 05 00 10 68 02              - adc [7FF7E9258F6F],al
+7FF7E6BD7F6F: 00 06                          - add [rsi],al
+7FF7E6BD7F71: 62 02                          - bound eax,[rdx]
+7FF7E6BD7F73: 60                             - pushad (invalid) 
+7FF7E6BD7F74: 01 70 00                       - add [rax+00],esi
+7FF7E6BD7F77: 00 40 00                       - add [rax+00],al
+7FF7E6BD7F7A: 00 00                          - add [rax],al
+7FF7E6BD7F7C: 00 00                          - add [rax],al
+7FF7E6BD7F7E: 00 00                          - add [rax],al
+7FF7E6BD7F80: 00 00                          - add [rax],al
+7FF7E6BD7F82: 00 00                          - add [rax],al
+7FF7E6BD7F84: 00 00                          - add [rax],al
+7FF7E6BD7F86: 00 00                          - add [rax],al
+7FF7E6BD7F88: 90                             - nop 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>861</ID>
+          <Description>"Instant Build building (start building, then activate) v3 "</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-10
+}
+[ENABLE]
+aobscan(buildtest,76 0B C4 E1 7A 10 05 02 01 00 00 EB 00 C4 E1 7A 11 46 28)
+registersymbol(buildtest buildtestbkp)
+alloc(newmem,128,buildtest)
+label(return)
+label(buildtestbkp)
+newmem:
+
+push rax
+push rbx
+mov rax,[rsi+18]
+mov rax,[rax+148]
+mov rax,[rax+128]
+mov rbx,[rsi+18]
+mov rbx,[rbx+118]
+mov [rbx+30], rax
+pop rbx
+pop rax
+reassemble(buildtest+2,9)// vmovss xmm0,[7FF7E6BAEB6C]
+jmp return
+  
+buildtestbkp:
+readmem(buildtest,11)
+
+buildtest:
+  jmp newmem
+  nop 6
+return:
+
+[DISABLE]
+buildtest:
+ // db 76 0B C4 E1 7A 10 05 02 01 00 00
+readmem(buildtestbkp,11)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.Components.CBuildable::#=zgfA0nWUn4HTF+12F
+
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+8C: 48 B9 78 81 FD E5 F7 7F 00 00  - mov rcx,00007FF7E5FD8178
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+96: E8 B5 52 52 5E                 - call clr.dll.text+2C80
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+9B: 48 8B 80 48 01 00 00           - mov rax,[rax+00000148]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+A2: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+A7: C4 E1 7A 2A 80 28 01 00 00     - vcvtsi2ss xmm0,eax,[rax+00000128]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+B0: C4 E1 7A 59 05 73 01 00 00     - vmulss xmm0,xmm0,[7FF7E6BAEB5C]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+B9: C4 E1 7A 5A C0                 - vcvtss2sd xmm0,xmm0,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+BE: E8 DD 6D 58 5E                 - call clr.dll.text+647D0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+C3: C4 E1 7B 2C D0                 - vcvttsd2si edx,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+C8: 48 8B CF                       - mov rcx,rdi
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+CB: E8 B0 B0 F6 FF                 - call ZX.Components.CLife::set_Life
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+D0: 48 8B CE                       - mov rcx,rsi
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+D3: E8 58 18 F3 FF                 - call ZX.Components.ZXComponent::get_Params
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+D8: 48 8B C8                       - mov rcx,rax
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+DB: 39 09                          - cmp [rcx],ecx
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+DD: E8 3E 97 04 FF                 - call 7FF7E5BF8150
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+E2: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+E7: C4 E1 7A 2A C0                 - vcvtsi2ss xmm0,eax,eax
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+EC: C4 E1 7A 59 05 3B 01 00 00     - vmulss xmm0,xmm0,[7FF7E6BAEB60]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+F5: C4 E1 7A 10 0D 36 01 00 00     - vmovss xmm1,[7FF7E6BAEB64]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+FE: C4 E1 78 28 F1                 - vmovaps xmm6,xmm1
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+103: C4 E1 4A 5E F0                 - vdivss xmm6,xmm6,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+108: C4 E1 78 28 C6                 - vmovaps xmm0,xmm6
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+10D: C4 E1 7A 58 46 28              - vaddss xmm0,xmm0,[rsi+28]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+113: C4 E1 70 57 C9                 - vxorps xmm1,xmm1,xmm1
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+118: C4 E1 78 2E C8                 - vucomiss xmm1,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+11D: 76 07                          - jna ZX.Components.CBuildable::#=zgfA0nWUn4HTF+126
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+11F: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+124: EB 16                          - jmp ZX.Components.CBuildable::#=zgfA0nWUn4HTF+13C
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+126: C4 E1 78 2E 05 09 01 00 00     - vucomiss xmm0,[7FF7E6BAEB68]
+// ---------- INJECTING HERE ----------
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+12F: 76 0B                          - jna ZX.Components.CBuildable::#=zgfA0nWUn4HTF+13C
+// ---------- DONE INJECTING  ----------
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+131: C4 E1 7A 10 05 02 01 00 00     - vmovss xmm0,[7FF7E6BAEB6C]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+13A: EB 00                          - jmp ZX.Components.CBuildable::#=zgfA0nWUn4HTF+13C
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+13C: C4 E1 7A 11 46 28              - vmovss [rsi+28],xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+142: 80 7E 34 00                    - cmp byte ptr [rsi+34],00
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+146: 0F 85 BE 00 00 00              - jne ZX.Components.CBuildable::#=zgfA0nWUn4HTF+20A
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+14C: 48 8B 4E 18                    - mov rcx,[rsi+18]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+150: 48 BA 50 03 D1 E6 F7 7F 00 00  - mov rdx,00007FF7E6D10350
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+15A: 39 09                          - cmp [rcx],ecx
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+15C: E8 2F D9 75 FF                 - call 7FF7E630C3C0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+161: 48 8B F8                       - mov rdi,rax
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+164: 48 85 FF                       - test rdi,rdi
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+167: 0F 84 9D 00 00 00              - je ZX.Components.CBuildable::#=zgfA0nWUn4HTF+20A
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+16D: C4 E1 7A 10 7E 2C              - vmovss xmm7,[rsi+2C]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+173: 48 8B 56 18                    - mov rdx,[rsi+18]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+177: 48 B9 78 81 FD E5 F7 7F 00 00  - mov rcx,00007FF7E5FD8178
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+181: E8 CA 51 52 5E                 - call clr.dll.text+2C80
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+186: 48 8B 80 48 01 00 00           - mov rax,[rax+00000148]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+18D: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+192: C4 E1 7A 2A 80 28 01 00 00     - vcvtsi2ss xmm0,eax,[rax+00000128]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+19B: C4 E1 4A 59 35 9C 00 00 00     - vmulss xmm6,xmm6,[7FF7E6BAEB70]
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1A4: C4 E1 7A 59 C6                 - vmulss xmm0,xmm0,xmm6
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1A9: C4 E1 7A 58 C7                 - vaddss xmm0,xmm0,xmm7
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1AE: C4 E1 7A 11 46 2C              - vmovss [rsi+2C],xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1B4: C4 E1 7A 5A C0                 - vcvtss2sd xmm0,xmm0,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1B9: E8 E2 6C 58 5E                 - call clr.dll.text+647D0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1BE: C4 E1 7B 2C D8                 - vcvttsd2si ebx,xmm0
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1C3: 85 DB                          - test ebx,ebx
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1C5: 7E 43                          - jle ZX.Components.CBuildable::#=zgfA0nWUn4HTF+20A
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1C7: 48 8B CF                       - mov rcx,rdi
+ZX.Components.CBuildable::#=zgfA0nWUn4HTF+1CA: 8B D3                          - mov edx,ebx
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115761</ID>
+          <Description>"Fast research (start research, then activate)"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-11
+}
+[ENABLE]
+aobscan(fastresearch2,76 0B C4 E1 7A 10 05 27 00 00 00 EB 00 C4 E1 7A 11 43 30 C4 E1 78 28 74 24 20 48 83 C4 30 5B 5E 5F)
+registersymbol(fastresearch2 fastresearch2bkp)
+alloc(fastresearch2bkp,2,fastresearch2)
+
+fastresearch2bkp:
+readmem(fastresearch2,2)
+
+fastresearch2:
+nop 2
+ // db 90 90
+
+[DISABLE]
+fastresearch2:
+ // db 76 0B C4 E1 7A 10 05 27 00 00 00
+readmem(fastresearch2bkp,2)
+unregistersymbol(*)
+dealloc(*)
+
+{db 76 0B C4 E1 7A 10 05 27 00 00 00
+// ORIGINAL CODE - INJECTION POINT: ZX.Commands.ZXCommand::#=zGja_Peo=+BA
+
+ZX.Commands.ZXCommand::#=zGja_Peo=+45: 5B                          - pop rbx
+ZX.Commands.ZXCommand::#=zGja_Peo=+46: 5E                          - pop rsi
+ZX.Commands.ZXCommand::#=zGja_Peo=+47: 5F                          - pop rdi
+ZX.Commands.ZXCommand::#=zGja_Peo=+48: C3                          - ret 
+ZX.Commands.ZXCommand::#=zGja_Peo=+49: 48 8B CF                    - mov rcx,rdi
+ZX.Commands.ZXCommand::#=zGja_Peo=+4C: 48 8B D6                    - mov rdx,rsi
+ZX.Commands.ZXCommand::#=zGja_Peo=+4F: 48 8B 07                    - mov rax,[rdi]
+ZX.Commands.ZXCommand::#=zGja_Peo=+52: 48 8B 40 50                 - mov rax,[rax+50]
+ZX.Commands.ZXCommand::#=zGja_Peo=+56: FF 50 28                    - call qword ptr [rax+28]
+ZX.Commands.ZXCommand::#=zGja_Peo=+59: 85 C0                       - test eax,eax
+ZX.Commands.ZXCommand::#=zGja_Peo=+5B: 7E 70                       - jle ZX.Commands.ZXCommand::#=zGja_Peo=+CD
+ZX.Commands.ZXCommand::#=zGja_Peo=+5D: C4 E1 7A 10 73 30           - vmovss xmm6,[rbx+30]
+ZX.Commands.ZXCommand::#=zGja_Peo=+63: 48 8B CF                    - mov rcx,rdi
+ZX.Commands.ZXCommand::#=zGja_Peo=+66: 48 8B D6                    - mov rdx,rsi
+ZX.Commands.ZXCommand::#=zGja_Peo=+69: 48 8B 07                    - mov rax,[rdi]
+ZX.Commands.ZXCommand::#=zGja_Peo=+6C: 48 8B 40 50                 - mov rax,[rax+50]
+ZX.Commands.ZXCommand::#=zGja_Peo=+70: FF 50 28                    - call qword ptr [rax+28]
+ZX.Commands.ZXCommand::#=zGja_Peo=+73: C4 E1 78 57 C0              - vxorps xmm0,xmm0,xmm0
+ZX.Commands.ZXCommand::#=zGja_Peo=+78: C4 E1 7A 2A C0              - vcvtsi2ss xmm0,eax,eax
+ZX.Commands.ZXCommand::#=zGja_Peo=+7D: C4 E1 7A 59 05 5A 00 00 00  - vmulss xmm0,xmm0,[7FFE65240060]
+ZX.Commands.ZXCommand::#=zGja_Peo=+86: C4 E1 7A 10 0D 55 00 00 00  - vmovss xmm1,[7FFE65240064]
+ZX.Commands.ZXCommand::#=zGja_Peo=+8F: C4 E1 72 5E C8              - vdivss xmm1,xmm1,xmm0
+ZX.Commands.ZXCommand::#=zGja_Peo=+94: C4 E1 78 28 C1              - vmovaps xmm0,xmm1
+ZX.Commands.ZXCommand::#=zGja_Peo=+99: C4 E1 7A 58 C6              - vaddss xmm0,xmm0,xmm6
+ZX.Commands.ZXCommand::#=zGja_Peo=+9E: C4 E1 70 57 C9              - vxorps xmm1,xmm1,xmm1
+ZX.Commands.ZXCommand::#=zGja_Peo=+A3: C4 E1 78 2E C8              - vucomiss xmm1,xmm0
+ZX.Commands.ZXCommand::#=zGja_Peo=+A8: 76 07                       - jna ZX.Commands.ZXCommand::#=zGja_Peo=+B1
+ZX.Commands.ZXCommand::#=zGja_Peo=+AA: C4 E1 78 57 C0              - vxorps xmm0,xmm0,xmm0
+ZX.Commands.ZXCommand::#=zGja_Peo=+AF: EB 16                       - jmp ZX.Commands.ZXCommand::#=zGja_Peo=+C7
+ZX.Commands.ZXCommand::#=zGja_Peo=+B1: C4 E1 78 2E 05 2E 00 00 00  - vucomiss xmm0,[7FFE65240068]
+// ---------- INJECTING HERE ----------
+ZX.Commands.ZXCommand::#=zGja_Peo=+BA: 76 0B                       - jna ZX.Commands.ZXCommand::#=zGja_Peo=+C7
+// ---------- DONE INJECTING  ----------
+ZX.Commands.ZXCommand::#=zGja_Peo=+BC: C4 E1 7A 10 05 27 00 00 00  - vmovss xmm0,[7FFE6524006C]
+ZX.Commands.ZXCommand::#=zGja_Peo=+C5: EB 00                       - jmp ZX.Commands.ZXCommand::#=zGja_Peo=+C7
+ZX.Commands.ZXCommand::#=zGja_Peo=+C7: C4 E1 7A 11 43 30           - vmovss [rbx+30],xmm0
+ZX.Commands.ZXCommand::#=zGja_Peo=+CD: C4 E1 78 28 74 24 20        - vmovaps xmm6,[rsp+20]
+ZX.Commands.ZXCommand::#=zGja_Peo=+D4: 48 83 C4 30                 - add rsp,30
+ZX.Commands.ZXCommand::#=zGja_Peo=+D8: 5B                          - pop rbx
+ZX.Commands.ZXCommand::#=zGja_Peo=+D9: 5E                          - pop rsi
+ZX.Commands.ZXCommand::#=zGja_Peo=+DA: 5F                          - pop rdi
+ZX.Commands.ZXCommand::#=zGja_Peo=+DB: C3                          - ret 
+7FFE6524005C: 00 00                       - add [rax],al
+7FFE6524005E: 00 00                       - add [rax],al
+7FFE65240060: 00 00                       - add [rax],al
+7FFE65240062: 7A 44                       - jp ZX.Commands.ZXCommand::#=zEA2Z_ZZyKFFQ+18
+7FFE65240064: 55                          - push rbp
+7FFE65240065: 55                          - push rbp
+7FFE65240066: 05 42 00 00 80              - add eax,80000042
+7FFE6524006B: 3F                          - db 3F
+7FFE6524006C: 00 00                       - add [rax],al
+7FFE6524006E: 80 3F 19                    - cmp byte ptr [rdi],19
+7FFE65240071: 11 06                       - adc [rsi],eax
+7FFE65240073: 00 11                       - add [rcx],dl
+7FFE65240075: 68 02 00 07 52              - push 52070002
+7FFE6524007A: 03 30                       - add esi,[rax]
+7FFE6524007C: 02 60 01                    - add ah,[rax+01]
+7FFE6524007F: 70 40                       - jo ZX.Commands.ZXCommand::#=zEA2Z_ZZyKFFQ+31
+7FFE65240081: 00 00                       - add [rax],al
+7FFE65240083: 00 00                       - add [rax],al
+7FFE65240085: 00 00                       - add [rax],al
+7FFE65240087: 00 D0                       - add al,dl
+7FFE65240089: 4A 4B                       - dec rbx
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>826</ID>
+          <Description>"Give 999 wood/oil/stone/iron "</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{ Game   : TheyAreBillions.exe
+  Version: 
+  Date   : 2021-07-10
+  Author : Tuuuup!
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscan(INJECT,8B B8 30 01 00 00 E8 ?? ?? ?? ?? 8B 80 38) // should be unique
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+mov [rax+00000120],#999  //wood
+mov [rax+00000124],#999 //stone
+mov [rax+00000128],#999 //iron
+mov [rax+0000012c],#999 //oil
+mov [rax+00000130],#9999 // money
+//mov [rax+00000140],#9999  //total food production
+//mov [rax+00000148],#9999 //energy
+//mov [rax+00000144],#9999 //workers
+//mov [rax+00000134],#9999//colonist
+  mov edi,[rax+00000130]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db 8B B8 30 01 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7F0
+
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7C0: E8 9B 01 DE FF        - call ZX.ZXLevelState::#=z8XSdBFo=
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7C5: 8B B8 2C 01 00 00     - mov edi,[rax+0000012C]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7CB: E8 90 01 DE FF        - call ZX.ZXLevelState::#=z8XSdBFo=
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7D0: 44 8B 88 B4 01 00 00  - mov r9d,[rax+000001B4]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7D7: 48 8B CE              - mov rcx,rsi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7DA: 8B D7                 - mov edx,edi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7DC: 44 8B C5              - mov r8d,ebp
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7DF: E8 64 9B 3E FF        - call 7FFBCB1E3518
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7E4: 48 8B B3 70 01 00 00  - mov rsi,[rbx+00000170]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7EB: E8 70 01 DE FF        - call ZX.ZXLevelState::#=z8XSdBFo=
+// ---------- INJECTING HERE ----------
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7F0: 8B B8 30 01 00 00     - mov edi,[rax+00000130]
+// ---------- DONE INJECTING  ----------
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7F6: E8 65 01 DE FF        - call ZX.ZXLevelState::#=z8XSdBFo=
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+7FB: 8B 80 38 01 00 00     - mov eax,[rax+00000138]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+801: 8D 04 80              - lea eax,[rax+rax*4]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+804: 8B D8                 - mov ebx,eax
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+806: C1 E3 03              - shl ebx,03
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+809: E8 52 01 DE FF        - call ZX.ZXLevelState::#=z8XSdBFo=
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+80E: 44 8B 88 A8 01 00 00  - mov r9d,[rax+000001A8]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+815: 48 8B CE              - mov rcx,rsi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+818: 8B D7                 - mov edx,edi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbSug4eLxFDQC+81A: 44 8B C3              - mov r8d,ebx
+}
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>97</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>334</ID>
+          <Description>"1 kill unit = veteran"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{ Game   : TheyAreBillions.exe
+  Version: 
+  Date   : 2021-07-11
+  Author : Tuuuup!
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscan(INJECTxpvet,48 8B 8F 48 01 00 00 83) // should be unique
+alloc(newmem,$1000,INJECTxpvet)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov rcx,[rdi+00000148]
+  mov [rcx+00000138],1 //set  max XP 1
+  jmp return
+
+INJECTxpvet:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECTxpvet)
+
+[DISABLE]
+
+INJECTxpvet:
+  db 48 8B 8F 48 01 00 00
+
+unregistersymbol(INJECTxpvet)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+48C
+
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+45F: 33 D2                          - xor edx,edx
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+461: E8 32 16 3F FF                 - call 7FFBCB1F2BD8
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+466: 85 DB                          - test ebx,ebx
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+468: 0F 85 B8 00 00 00              - jne ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+526
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+46E: 48 8B D7                       - mov rdx,rdi
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+471: 48 B9 80 B1 35 CB FB 7F 00 00  - mov rcx,00007FFBCB35B180
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+47B: E8 40 27 5F 5E                 - call clr.dll.text+2D00
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+480: 48 8B D8                       - mov rbx,rax
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+483: 48 85 DB                       - test rbx,rbx
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+486: 0F 84 9A 00 00 00              - je ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+526
+// ---------- INJECTING HERE ----------
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+48C: 48 8B 8F 48 01 00 00           - mov rcx,[rdi+00000148]
+// ---------- DONE INJECTING  ----------
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+493: 83 B9 38 01 00 00 00           - cmp dword ptr [rcx+00000138],00
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+49A: 0F 8E 86 00 00 00              - jng ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+526
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4A0: 48 8B CF                       - mov rcx,rdi
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4A3: 48 8B 07                       - mov rax,[rdi]
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4A6: 48 8B 80 98 00 00 00           - mov rax,[rax+00000098]
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4AD: FF 50 08                       - call qword ptr [rax+08]
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4B0: 84 C0                          - test al,al
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4B2: 74 36                          - je ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4EA
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4B4: E8 C7 8D 3D FF                 - call 7FFBCB1DA3C0
+ZX.GUI.ZXFeaturesManager::#=zg9km9wo=+4B9: 48 8B D8                       - mov rbx,rax
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115919</ID>
+          <Description>"inf Building HP + no workers needed?"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-11
+}
+[ENABLE]
+aobscan(plbuildings,48 8B 03 48 8B 40 78 FF 50 18 84)
+registersymbol(plbuildings plbuildingsbkp)
+alloc(newmem,128,plbuildings)
+label(return)
+label(plbuildingsbkp)
+newmem:
+push r14
+push r15
+mov r14,[rbx+118]
+mov [r14+30],#9999
+mov r15,[rbx+148]
+mov [r15+128],#9999
+mov [r15+18c],0 // no workers needed
+pop r15
+pop r14
+  mov rax,[rbx]
+  mov rax,[rax+78]
+  jmp return
+  
+plbuildingsbkp:
+readmem(plbuildings,7)
+
+plbuildings:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+plbuildings:
+ // db 48 8B 03 48 8B 40 78
+readmem(plbuildingsbkp,7)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.ZXLevelState::#=zmfcFiRS_qKuj+322
+
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+281: 80 BB 58 01 00 00 00        - cmp byte ptr [rbx+00000158],00
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+288: 0F 85 ED 03 00 00           - jne ZX.ZXLevelState::#=zmfcFiRS_qKuj+67B
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+28E: 48 8B B3 48 01 00 00        - mov rsi,[rbx+00000148]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+295: 48 85 F6                    - test rsi,rsi
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+298: 0F 84 DD 03 00 00           - je ZX.ZXLevelState::#=zmfcFiRS_qKuj+67B
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+29E: 80 BB F7 01 00 00 00        - cmp byte ptr [rbx+000001F7],00
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2A5: 0F 85 D0 03 00 00           - jne ZX.ZXLevelState::#=zmfcFiRS_qKuj+67B
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2AB: 80 BB F5 01 00 00 00        - cmp byte ptr [rbx+000001F5],00
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2B2: 0F 85 C3 03 00 00           - jne ZX.ZXLevelState::#=zmfcFiRS_qKuj+67B
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2B8: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2BC: 8B B9 4C 01 00 00           - mov edi,[rcx+0000014C]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2C2: 48 8B CB                    - mov rcx,rbx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2C5: E8 F6 91 84 FD              - call 7FFD67FBF3E0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2CA: 03 C7                       - add eax,edi
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2CC: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2D0: 89 81 4C 01 00 00           - mov [rcx+0000014C],eax
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2D6: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2DA: 8B 89 50 01 00 00           - mov ecx,[rcx+00000150]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2E0: 03 8E 8C 01 00 00           - add ecx,[rsi+0000018C]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2E6: 48 8B 45 10                 - mov rax,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2EA: 89 88 50 01 00 00           - mov [rax+00000150],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2F0: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2F4: 8B 89 54 01 00 00           - mov ecx,[rcx+00000154]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+2FA: 03 8E 90 01 00 00           - add ecx,[rsi+00000190]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+300: 48 8B 45 10                 - mov rax,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+304: 89 88 54 01 00 00           - mov [rax+00000154],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+30A: C4 E1 7A 10 45 B4           - vmovss xmm0,[rbp-4C]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+310: C4 E1 7A 58 86 CC 01 00 00  - vaddss xmm0,xmm0,[rsi+000001CC]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+319: C4 E1 7A 11 45 B4           - vmovss [rbp-4C],xmm0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+31F: 48 8B CB                    - mov rcx,rbx
+// ---------- INJECTING HERE ----------
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+322: 48 8B 03                    - mov rax,[rbx]
+// ---------- DONE INJECTING  ----------
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+325: 48 8B 40 78                 - mov rax,[rax+78]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+329: FF 50 18                    - call qword ptr [rax+18]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+32C: 84 C0                       - test al,al
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+32E: 0F 84 8C 02 00 00           - je ZX.ZXLevelState::#=zmfcFiRS_qKuj+5C0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+334: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+338: 8B 89 34 01 00 00           - mov ecx,[rcx+00000134]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+33E: 03 8E 88 01 00 00           - add ecx,[rsi+00000188]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+344: 48 8B 45 10                 - mov rax,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+348: 89 88 34 01 00 00           - mov [rax+00000134],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+34E: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+352: 8B 89 38 01 00 00           - mov ecx,[rcx+00000138]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+358: 03 8E 84 01 00 00           - add ecx,[rsi+00000184]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+35E: 48 8B 45 10                 - mov rax,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+362: 89 88 38 01 00 00           - mov [rax+00000138],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+368: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+36C: 8B B9 40 01 00 00           - mov edi,[rcx+00000140]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+372: 48 8B CB                    - mov rcx,rbx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+375: E8 06 91 84 FD              - call 7FFD67FBF3A0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+37A: 03 C7                       - add eax,edi
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+37C: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+380: 89 81 40 01 00 00           - mov [rcx+00000140],eax
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+386: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+38A: 8B 89 44 01 00 00           - mov ecx,[rcx+00000144]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+390: 48 8D 83 F8 01 00 00        - lea rax,[rbx+000001F8]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+397: 03 08                       - add ecx,[rax]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+399: 48 8B 45 10                 - mov rax,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+39D: 89 88 44 01 00 00           - mov [rax+00000144],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+3A3: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+3A7: 8B 89 48 01 00 00           - mov ecx,[rcx+00000148]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+3AD: 48 8D 83 F8 01 00 00        - lea rax,[rbx+000001F8]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115922</ID>
+          <Description>"inf Wall HP"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-12
+}
+[ENABLE]
+aobscan(infhpwall,33 DB 48 85 DB 74 0C 49)
+registersymbol(infhpwall infhpwallbkp)
+alloc(newmem,128,infhpwall)
+label(return)
+label(infhpwallbkp)
+newmem:
+cmp byte ptr [rbx+158],1
+je @f
+ mov rbx,[rbx+118]
+ mov [rbx+30],#9999
+ @@:
+  xor ebx,ebx
+  test rbx,rbx
+  jmp return
+  
+infhpwallbkp:
+readmem(infhpwall,5)
+
+infhpwall:
+  jmp newmem
+return:
+
+[DISABLE]
+infhpwall:
+ // db 33 DB 48 85 DB
+readmem(infhpwallbkp,5)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: CWallPiece::#=zg9km9wo=+81A
+
+CWallPiece::#=zg9km9wo=+791: 48 8B 56 20                    - mov rdx,[rsi+20]
+CWallPiece::#=zg9km9wo=+795: 48 8D 4F 08                    - lea rcx,[rdi+08]
+CWallPiece::#=zg9km9wo=+799: E8 92 6A 90 5C                 - call clr.dll.text+2F30
+CWallPiece::#=zg9km9wo=+79E: 48 B9 F0 AF 9F BD FD 7F 00 00  - mov rcx,mscorlib.ni.dll.data+A9FF0
+CWallPiece::#=zg9km9wo=+7A8: E8 83 50 90 5C                 - call clr.dll.text+1530
+CWallPiece::#=zg9km9wo=+7AD: 48 8B E8                       - mov rbp,rax
+CWallPiece::#=zg9km9wo=+7B0: 48 BA A8 49 7E 92 57 02 00 00  - mov rdx,00000257927E49A8
+CWallPiece::#=zg9km9wo=+7BA: 4C 8B 3A                       - mov r15,[rdx]
+CWallPiece::#=zg9km9wo=+7BD: 48 8D 4D 08                    - lea rcx,[rbp+08]
+CWallPiece::#=zg9km9wo=+7C1: 48 8B D7                       - mov rdx,rdi
+CWallPiece::#=zg9km9wo=+7C4: E8 67 6A 90 5C                 - call clr.dll.text+2F30
+CWallPiece::#=zg9km9wo=+7C9: 48 B9 20 BF FB 67 FD 7F 00 00  - mov rcx,00007FFD67FBBF20
+CWallPiece::#=zg9km9wo=+7D3: 48 89 4D 18                    - mov [rbp+18],rcx
+CWallPiece::#=zg9km9wo=+7D7: 49 8B 4F 10                    - mov rcx,[r15+10]
+CWallPiece::#=zg9km9wo=+7DB: 48 8B 49 08                    - mov rcx,[rcx+08]
+CWallPiece::#=zg9km9wo=+7DF: 48 8B D5                       - mov rdx,rbp
+CWallPiece::#=zg9km9wo=+7E2: 39 09                          - cmp [rcx],ecx
+CWallPiece::#=zg9km9wo=+7E4: E8 47 D8 04 54                 - call mscorlib.ni.dll.text+9F0D30
+CWallPiece::#=zg9km9wo=+7E9: 33 D2                          - xor edx,edx
+CWallPiece::#=zg9km9wo=+7EB: 48 89 56 20                    - mov [rsi+20],rdx
+CWallPiece::#=zg9km9wo=+7EF: 48 8B D3                       - mov rdx,rbx
+CWallPiece::#=zg9km9wo=+7F2: 48 B9 00 A1 12 68 FD 7F 00 00  - mov rcx,00007FFD6812A100
+CWallPiece::#=zg9km9wo=+7FC: E8 7F 67 90 5C                 - call clr.dll.text+2C80
+CWallPiece::#=zg9km9wo=+801: 48 85 C0                       - test rax,rax
+CWallPiece::#=zg9km9wo=+804: 75 27                          - jne CWallPiece::#=zg9km9wo=+82D
+CWallPiece::#=zg9km9wo=+806: 48 85 DB                       - test rbx,rbx
+CWallPiece::#=zg9km9wo=+809: 74 11                          - je CWallPiece::#=zg9km9wo=+81C
+CWallPiece::#=zg9km9wo=+80B: 48 BA 58 85 13 68 FD 7F 00 00  - mov rdx,00007FFD68138558
+CWallPiece::#=zg9km9wo=+815: 48 39 13                       - cmp [rbx],rdx
+CWallPiece::#=zg9km9wo=+818: 74 02                          - je CWallPiece::#=zg9km9wo=+81C
+// ---------- INJECTING HERE ----------
+CWallPiece::#=zg9km9wo=+81A: 33 DB                          - xor ebx,ebx
+// ---------- DONE INJECTING  ----------
+CWallPiece::#=zg9km9wo=+81C: 48 85 DB                       - test rbx,rbx
+CWallPiece::#=zg9km9wo=+81F: 74 0C                          - je CWallPiece::#=zg9km9wo=+82D
+CWallPiece::#=zg9km9wo=+821: 49 8B 56 10                    - mov rdx,[r14+10]
+CWallPiece::#=zg9km9wo=+825: 48 8B CE                       - mov rcx,rsi
+CWallPiece::#=zg9km9wo=+828: E8 B3 E8 78 FD                 - call 7FFD67FBBDE0
+CWallPiece::#=zg9km9wo=+82D: 90                             - nop 
+CWallPiece::#=zg9km9wo=+82E: 48 83 C4 28                    - add rsp,28
+CWallPiece::#=zg9km9wo=+832: 5B                             - pop rbx
+CWallPiece::#=zg9km9wo=+833: 5D                             - pop rbp
+CWallPiece::#=zg9km9wo=+834: 5E                             - pop rsi
+CWallPiece::#=zg9km9wo=+835: 5F                             - pop rdi
+CWallPiece::#=zg9km9wo=+836: 41 5C                          - pop r12
+CWallPiece::#=zg9km9wo=+838: 41 5D                          - pop r13
+CWallPiece::#=zg9km9wo=+83A: 41 5E                          - pop r14
+CWallPiece::#=zg9km9wo=+83C: 41 5F                          - pop r15
+CWallPiece::#=zg9km9wo=+83E: C3                             - ret 
+CWallPiece::#=zg9km9wo=+83F: E8 6C BD E2 5C                 - call clr.dll.text+5282B0
+CWallPiece::#=zg9km9wo=+844: CC                             - int 3 
+CWallPiece::#=zg9km9wo=+845: 00 00                          - add [rax],al
+7FFD6A82D547: 00 19                          - add [rcx],bl
+7FFD6A82D549: 10 09                          - adc [rcx],cl
+7FFD6A82D54B: 00 10                          - add [rax],dl
+7FFD6A82D54D: 42 0C 30                       - or al,30
+7FFD6A82D550: 0B 50 0A                       - or edx,[rax+0A]
+7FFD6A82D553: 60                             - pushad (invalid) 
+7FFD6A82D554: 09 70 08                       - or [rax+08],esi
+7FFD6A82D557: C0 06 D0                       - rol byte ptr [rsi],-30
+7FFD6A82D55A: 04 E0                          - add al,-20
+7FFD6A82D55C: 02 F0                          - add dh,al
+7FFD6A82D55E: 00 00                          - add [rax],al
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115924</ID>
+          <Description>"inf Gate HP 9999"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-12
+}
+[ENABLE]
+aobscan(gatehp,48 8B 89 C8 01 00 00 48 8B 89 F8 00 00 00 C4)
+registersymbol(gatehp gatehpbkp)
+alloc(newmem,128,gatehp)
+label(return)
+label(gatehpbkp)
+newmem:
+push rdx
+mov rdx,[rcx+148]
+mov [rdx+128],#9999
+mov rdx,[rcx+118]
+mov [rdx+30],#9999
+pop rdx
+  mov rcx,[rcx+000001C8]
+  jmp return
+  
+gatehpbkp:
+readmem(gatehp,7)
+
+gatehp:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+gatehp:
+ // db 48 8B 89 C8 01 00 00
+readmem(gatehpbkp,7)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.Entities.Gate::OnUpdateSceneObjectParallel+34
+
+ZX.Entities.Wall::get_SelectorAreaFactor+D: 00 00                       - add [rax],al
+7FFA35386DDF: 00 00                       - add [rax],al
+7FFA35386DE1: 00 80 3F 19 00 00           - add [rax+0000193F],al
+7FFA35386DE7: 00 40 00                    - add [rax+00],al
+7FFA35386DEA: 00 00                       - add [rax],al
+7FFA35386DEC: 00 00                       - add [rax],al
+7FFA35386DEE: 00 00                       - add [rax],al
+7FFA35386DF0: 00 00                       - add [rax],al
+7FFA35386DF2: 00 00                       - add [rax],al
+7FFA35386DF4: 00 00                       - add [rax],al
+7FFA35386DF6: 00 00                       - add [rax],al
+7FFA35386DF8: 98                          - cwde 
+7FFA35386DF9: C8 61 35 FA                 - enter 3561,-06
+7FFA35386DFD: 7F 00                       - jg 7FFA35386DFF
+7FFA35386DFF: 00 55 57                    - add [rbp+57],dl
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+2: 56                          - push rsi
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+3: 48 81 EC 80 00 00 00        - sub rsp,00000080
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+A: C5 F8 77                    - vzeroupper 
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+D: 48 8D AC 24 90 00 00 00     - lea rbp,[rsp+00000090]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+15: 48 8B F1                    - mov rsi,rcx
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+18: 48 8D 7D B8                 - lea rdi,[rbp-48]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+1C: B9 0E 00 00 00              - mov ecx,0000000E
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+21: 33 C0                       - xor eax,eax
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+23: F3 AB                       - repe stosd 
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+25: 48 8B CE                    - mov rcx,rsi
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+28: 48 89 65 90                 - mov [rbp-70],rsp
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+2C: 48 89 4D 10                 - mov [rbp+10],rcx
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+30: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+34: 48 8B 89 C8 01 00 00        - mov rcx,[rcx+000001C8]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+3B: 48 8B 89 F8 00 00 00        - mov rcx,[rcx+000000F8]
+// ---------- INJECTING HERE ----------
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+42: C4 E1 7A 10 41 30           - vmovss xmm0,[rcx+30]
+// ---------- DONE INJECTING  ----------
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+48: C4 E1 78 2E 05 67 03 00 00  - vucomiss xmm0,[7FFA353871B8]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+51: 7A 02                       - jp ZX.Entities.Gate::OnUpdateSceneObjectParallel+55
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+53: 74 13                       - je ZX.Entities.Gate::OnUpdateSceneObjectParallel+68
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+55: C4 E1 7A 10 05 5E 03 00 00  - vmovss xmm0,[7FFA353871BC]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+5E: C4 E1 7A 11 41 30           - vmovss [rcx+30],xmm0
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+64: 80 49 3C 10                 - or byte ptr [rcx+3C],10
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+68: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+6C: 80 B9 5A 01 00 00 00        - cmp byte ptr [rcx+0000015A],00
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+73: 75 09                       - jne ZX.Entities.Gate::OnUpdateSceneObjectParallel+7E
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+75: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+79: E8 32 F8 FF FF              - call ZX.Entities.Gate::#=zDMPp5ZQ=
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+7E: 48 8D 55 C8                 - lea rdx,[rbp-38]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+82: 48 8B 4D 10                 - mov rcx,[rbp+10]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+86: E8 55 FD EF FF              - call DXVision.DXEntity::get_Area
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+8B: 48 8D 4D C8                 - lea rcx,[rbp-38]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+8F: C4 E1 7A 10 01              - vmovss xmm0,[rcx]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+94: C4 E1 7A 10 49 04           - vmovss xmm1,[rcx+04]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+9A: C4 E1 7A 10 51 08           - vmovss xmm2,[rcx+08]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+A0: C4 E1 7A 10 59 0C           - vmovss xmm3,[rcx+0C]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+A6: C4 E1 7A 10 25 11 03 00 00  - vmovss xmm4,[7FFA353871C0]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+AF: C4 E1 78 2E E2              - vucomiss xmm4,xmm2
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+B4: 72 53                       - jb ZX.Entities.Gate::OnUpdateSceneObjectParallel+109
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+B6: C4 E1 7A 10 25 05 03 00 00  - vmovss xmm4,[7FFA353871C4]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+BF: C4 E1 78 2E E3              - vucomiss xmm4,xmm3
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+C4: 72 43                       - jb ZX.Entities.Gate::OnUpdateSceneObjectParallel+109
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+C6: C4 E1 6A 5E 15 F9 02 00 00  - vdivss xmm2,xmm2,[7FFA353871C8]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+CF: C4 E1 7A 58 C2              - vaddss xmm0,xmm0,xmm2
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+D4: C4 E1 7A 2C C8              - vcvttss2si ecx,xmm0
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+D9: C4 E1 62 5E 1D EA 02 00 00  - vdivss xmm3,xmm3,[7FFA353871CC]
+ZX.Entities.Gate::OnUpdateSceneObjectParallel+E2: C4 E1 72 58 CB              - vaddss xmm1,xmm1,xmm3
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115920</ID>
+          <Description>"Hp units + some boost"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-11
+}
+[ENABLE]
+aobscan(unithppp,48 8B 90 18 01 00 00 48 85 D2 75 07 B9)
+registersymbol(unithppp unithpppbkp)
+alloc(newmem,128,unithppp)
+label(return)
+label(unithpppbkp)
+newmem:
+mov rdx,[rax+00000118]
+test rdx,rdx
+je @f
+push r12
+push r14
+push r15
+mov [rdx+30],#9999 // c hp
+mov r12,[rax+148]
+mov [r12+13c],#30 // v range
+mov [r12+18c],0 // no worker needed
+mov [r12+128],#9999 // max hp
+mov r14,[r12+58] // normal
+mov r14,[r14+8]
+mov [r14+98],(float)30 // range
+mov [r14+c8],#99 // damage
+mov [r14+a8],#300 // at speed
+mov r15,[r12+60] // veteran
+mov r15,[r15+8]
+mov [r15+98],(float)30 // range
+mov [r15+c8],#99 // damage
+mov [r15+a8],#300 // atk speed
+pop r15
+pop r14
+pop r12
+@@:
+  jmp return
+  
+unithpppbkp:
+readmem(unithppp,7)
+
+unithppp:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+unithppp:
+ // db 48 8B 90 18 01 00 00
+readmem(unithpppbkp,7)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.ZXLevelState::#=zmfcFiRS_qKuj+798
+
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+6FE: 48 8B 09                       - mov rcx,[rcx]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+701: 48 BA B0 96 97 6A FD 7F 00 00  - mov rdx,00007FFD6A9796B0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+70B: 39 09                          - cmp [rcx],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+70D: E8 DE A6 E3 FF                 - call 7FFD6A5B0D10
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+712: 4C 8B C0                       - mov r8,rax
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+715: 48 8B D6                       - mov rdx,rsi
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+718: 48 B9 20 97 97 6A FD 7F 00 00  - mov rcx,00007FFD6A979720
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+722: E8 79 92 40 51                 - call System.Core.ni.dll.text+128C0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+727: 48 8B C8                       - mov rcx,rax
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+72A: 49 BB 88 2A B7 67 FD 7F 00 00  - mov r11,00007FFD67B72A88
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+734: 39 09                          - cmp [rcx],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+736: FF 15 2C C4 3F FD              - call qword ptr [7FFD67B72A88]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+73C: 48 89 45 90                    - mov [rbp-70],rax
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+740: 48 8B 4D 90                    - mov rcx,[rbp-70]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+744: 49 BB 90 2A B7 67 FD 7F 00 00  - mov r11,00007FFD67B72A90
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+74E: 39 09                          - cmp [rcx],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+750: FF 15 1A C4 3F FD              - call qword ptr [7FFD67B72A90]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+756: 84 C0                          - test al,al
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+758: 0F 84 51 01 00 00              - je ZX.ZXLevelState::#=zmfcFiRS_qKuj+8AF
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+75E: 48 8B 4D 90                    - mov rcx,[rbp-70]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+762: 49 BB 98 2A B7 67 FD 7F 00 00  - mov r11,00007FFD67B72A98
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+76C: 39 09                          - cmp [rcx],ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+76E: FF 15 04 C4 3F FD              - call qword ptr [7FFD67B72A98]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+774: 90                             - nop 
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+775: 48 85 C0                       - test rax,rax
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+778: 0F 84 13 01 00 00              - je ZX.ZXLevelState::#=zmfcFiRS_qKuj+891
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+77E: F6 80 A0 00 00 00 02           - test byte ptr [rax+000000A0],02
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+785: 0F 85 06 01 00 00              - jne ZX.ZXLevelState::#=zmfcFiRS_qKuj+891
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+78B: 80 B8 58 01 00 00 00           - cmp byte ptr [rax+00000158],00
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+792: 0F 85 F9 00 00 00              - jne ZX.ZXLevelState::#=zmfcFiRS_qKuj+891
+// ---------- INJECTING HERE ----------
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+798: 48 8B 90 18 01 00 00           - mov rdx,[rax+00000118]
+// ---------- DONE INJECTING  ----------
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+79F: 48 85 D2                       - test rdx,rdx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7A2: 75 07                          - jne ZX.ZXLevelState::#=zmfcFiRS_qKuj+7AB
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7A4: B9 01 00 00 00                 - mov ecx,00000001
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7A9: EB 0E                          - jmp ZX.ZXLevelState::#=zmfcFiRS_qKuj+7B9
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7AB: 8B 4A 30                       - mov ecx,[rdx+30]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7AE: 03 4A 34                       - add ecx,[rdx+34]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7B1: 85 C9                          - test ecx,ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7B3: 0F 9E C1                       - setle cl
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7B6: 0F B6 C9                       - movzx ecx,cl
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7B9: 85 C9                          - test ecx,ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7BB: 0F 85 D0 00 00 00              - jne ZX.ZXLevelState::#=zmfcFiRS_qKuj+891
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7C1: 48 8B B0 48 01 00 00           - mov rsi,[rax+00000148]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7C8: 48 85 F6                       - test rsi,rsi
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7CB: 0F 84 C0 00 00 00              - je ZX.ZXLevelState::#=zmfcFiRS_qKuj+891
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7D1: 48 8B 45 10                    - mov rax,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7D5: 8B 80 4C 01 00 00              - mov eax,[rax+0000014C]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7DB: 03 86 94 01 00 00              - add eax,[rsi+00000194]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7E1: 48 8B 55 10                    - mov rdx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7E5: 89 82 4C 01 00 00              - mov [rdx+0000014C],eax
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7EB: 48 8B 55 10                    - mov rdx,[rbp+10]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7EF: 3B 82 40 01 00 00              - cmp eax,[rdx+00000140]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7F5: 7E 28                          - jle ZX.ZXLevelState::#=zmfcFiRS_qKuj+81F
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7F7: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+7FC: C4 E1 7A 2A 86 C8 01 00 00     - vcvtsi2ss xmm0,eax,[rsi+000001C8]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+805: C4 E1 7A 5A C0                 - vcvtss2sd xmm0,xmm0,xmm0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+80A: E8 A1 F0 A1 5C                 - call clr.dll.text+647D0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+80F: C4 E1 7B 2C C8                 - vcvttsd2si ecx,xmm0
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+814: 44 8B 5D B0                    - mov r11d,[rbp-50]
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+818: 44 2B D9                       - sub r11d,ecx
+ZX.ZXLevelState::#=zmfcFiRS_qKuj+81B: 44 89 5D B0                    - mov [rbp-50],r11d
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>843</ID>
+          <Description>"Fast resource (money base,wood, ore etc)"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-10
+}
+[ENABLE]
+aobscan(fastresource,C4 E1 7B 58 05 9C 07 00 00)
+registersymbol(fastresource fastresourcebkp resc)
+alloc(newmem,128,fastresource)
+label(return resc)
+label(fastresourcebkp)
+newmem:
+
+readmem(fastresource,9)// reassemble(fastresource,9) //vaddsd xmm0,xmm0,[7FF7E6BA6B20]
+  addsd xmm0,[resc]
+  jmp return
+  
+fastresourcebkp:
+readmem(fastresource,9)
+resc:
+ dq (double)500
+fastresource:
+  jmp newmem
+  nop 4
+return:
+
+[DISABLE]
+fastresource:
+ // db C4 E1 7B 58 05 9C 07 00 00
+readmem(fastresourcebkp,9)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+4B
+
+7FF7E6BA6323: 00 40 00                       - add [rax+00],al
+7FF7E6BA6326: 00 00                          - add [rax],al
+7FF7E6BA6328: 58                             - pop rax
+7FF7E6BA6329: 54                             - push rsp
+7FF7E6BA632A: DC E6                          - fsubr st(6),st(0)
+7FF7E6BA632C: F7 7F 00                       - idiv [rdi+00]
+7FF7E6BA632F: 00 41 56                       - add [rcx+56],al
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+2: 57                             - push rdi
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+3: 56                             - push rsi
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+4: 55                             - push rbp
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+5: 53                             - push rbx
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+6: 48 83 EC 40                    - sub rsp,40
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+A: C5 F8 77                       - vzeroupper 
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+D: C4 E1 78 29 74 24 30           - vmovaps [rsp+30],xmm6
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+14: 48 8B F1                       - mov rsi,rcx
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+17: 48 8B 56 18                    - mov rdx,[rsi+18]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+1B: 48 B9 78 81 00 E6 F7 7F 00 00  - mov rcx,00007FF7E6008178
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+25: E8 26 D9 52 5E                 - call clr.dll.text+2C80
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+2A: 80 B8 5A 01 00 00 00           - cmp byte ptr [rax+0000015A],00
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+31: 75 12                          - jne ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+45
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+33: C4 E1 78 28 74 24 30           - vmovaps xmm6,[rsp+30]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+3A: 48 83 C4 40                    - add rsp,40
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+3E: 5B                             - pop rbx
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+3F: 5D                             - pop rbp
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+40: 5E                             - pop rsi
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+41: 5F                             - pop rdi
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+42: 41 5E                          - pop r14
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+44: C3                             - ret 
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+45: C4 E1 7B 10 46 40              - vmovsd xmm0,[rsi+40]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+4B: C4 E1 7B 58 05 9C 07 00 00     - vaddsd xmm0,xmm0,[7FF7E6BA6B20]
+// ---------- INJECTING HERE ----------
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+54: C4 E1 7B 11 46 40              - vmovsd [rsi+40],xmm0
+// ---------- DONE INJECTING  ----------
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+5A: 48 8B 56 18                    - mov rdx,[rsi+18]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+5E: 48 B9 68 3E 0B E6 F7 7F 00 00  - mov rcx,00007FF7E60B3E68
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+68: E8 E3 D8 52 5E                 - call clr.dll.text+2C80
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+6D: 48 8B F8                       - mov rdi,rax
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+70: 48 85 FF                       - test rdi,rdi
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+73: 75 12                          - jne ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+87
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+75: C4 E1 78 28 74 24 30           - vmovaps xmm6,[rsp+30]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+7C: 48 83 C4 40                    - add rsp,40
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+80: 5B                             - pop rbx
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+81: 5D                             - pop rbp
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+82: 5E                             - pop rsi
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+83: 5F                             - pop rdi
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+84: 41 5E                          - pop r14
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+86: C3                             - ret 
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+87: 48 8B 46 18                    - mov rax,[rsi+18]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+8B: 8B 10                          - mov edx,[rax]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+8D: 48 BA A8 49 DE B2 71 02 00 00  - mov rdx,00000271B2DE49A8
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+97: 48 8B 12                       - mov rdx,[rdx]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+9A: 8B 92 20 02 00 00              - mov edx,[rdx+00000220]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+A0: 8B CA                          - mov ecx,edx
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+A2: 03 88 B8 00 00 00              - add ecx,[rax+000000B8]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+A8: B8 89 88 88 88                 - mov eax,88888889
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+AD: F7 E9                          - imul ecx
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+AF: 8D 04 0A                       - lea eax,[rdx+rcx]
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+B2: 8B D0                          - mov edx,eax
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+B4: C1 EA 1F                       - shr edx,1F
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+B7: C1 F8 03                       - sar eax,03
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+BA: 03 C2                          - add eax,edx
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+BC: 6B C0 0F                       - imul eax,eax,0F
+ZX.Components.CResourceGenerator::#=zgfA0nWUn4HTF+BF: 2B C8                          - sub ecx,eax
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>844</ID>
+              <Description>"Change value higher if you want faster"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>resc</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>845</ID>
+          <Description>"Empire + Research points (activate @ campaign map)"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-10
+}
+[ENABLE]
+aobscan(researchpoints,8B 86 A8 00 00 00 3B 43)
+registersymbol(researchpoints researchpointsbkp rpoints)
+alloc(newmem,128,researchpoints)
+label(return rpoints)
+label(researchpointsbkp)
+newmem:
+mov [rpoints],rsi
+  mov eax,[rsi+000000A8]
+  jmp return
+  
+researchpointsbkp:
+readmem(researchpoints,6)
+rpoints:
+dq 0
+researchpoints:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+researchpoints:
+ // db 8B 86 A8 00 00 00
+readmem(researchpointsbkp,6)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 7FF7E6C4AAA0
+
+7FF7E6C4AA2A: 48 8B CB                       - mov rcx,rbx
+7FF7E6C4AA2D: 39 09                          - cmp [rcx],ecx
+7FF7E6C4AA2F: E8 F4 D4 30 FF                 - call 7FF7E5F57F28
+7FF7E6C4AA34: 8B 08                          - mov ecx,[rax]
+7FF7E6C4AA36: 33 C9                          - xor ecx,ecx
+7FF7E6C4AA38: 8B 50 1C                       - mov edx,[rax+1C]
+7FF7E6C4AA3B: 45 33 C0                       - xor r8d,r8d
+7FF7E6C4AA3E: 48 89 44 24 28                 - mov [rsp+28],rax
+7FF7E6C4AA43: 4C 89 44 24 30                 - mov [rsp+30],r8
+7FF7E6C4AA48: 89 4C 24 38                    - mov [rsp+38],ecx
+7FF7E6C4AA4C: 89 54 24 3C                    - mov [rsp+3C],edx
+7FF7E6C4AA50: 48 8D 4C 24 28                 - lea rcx,[rsp+28]
+7FF7E6C4AA55: 48 BA 08 C4 E9 E6 F7 7F 00 00  - mov rdx,00007FF7E6E9C408
+7FF7E6C4AA5F: E8 4C 5F 06 57                 - call mscorlib.ni.dll.text+569B0
+7FF7E6C4AA64: 84 C0                          - test al,al
+7FF7E6C4AA66: 74 38                          - je 7FF7E6C4AAA0
+7FF7E6C4AA68: 48 8B 4C 24 30                 - mov rcx,[rsp+30]
+7FF7E6C4AA6D: 48 85 C9                       - test rcx,rcx
+7FF7E6C4AA70: 74 16                          - je 7FF7E6C4AA88
+7FF7E6C4AA72: 48 8B 51 08                    - mov rdx,[rcx+08]
+7FF7E6C4AA76: 48 8B 8E 88 00 00 00           - mov rcx,[rsi+00000088]
+7FF7E6C4AA7D: 39 09                          - cmp [rcx],ecx
+7FF7E6C4AA7F: E8 4C F0 08 57                 - call mscorlib.ni.dll.text+7FAD0
+7FF7E6C4AA84: 84 C0                          - test al,al
+7FF7E6C4AA86: 74 3A                          - je 7FF7E6C4AAC2
+7FF7E6C4AA88: 48 8D 4C 24 28                 - lea rcx,[rsp+28]
+7FF7E6C4AA8D: 48 BA 08 C4 E9 E6 F7 7F 00 00  - mov rdx,00007FF7E6E9C408
+7FF7E6C4AA97: E8 14 5F 06 57                 - call mscorlib.ni.dll.text+569B0
+7FF7E6C4AA9C: 84 C0                          - test al,al
+7FF7E6C4AA9E: 75 C8                          - jne 7FF7E6C4AA68
+// ---------- INJECTING HERE ----------
+7FF7E6C4AAA0: 8B 86 A8 00 00 00              - mov eax,[rsi+000000A8]
+// ---------- DONE INJECTING  ----------
+7FF7E6C4AAA6: 3B 43 7C                       - cmp eax,[rbx+7C]
+7FF7E6C4AAA9: 7D 0A                          - jnl 7FF7E6C4AAB5
+7FF7E6C4AAAB: 33 C0                          - xor eax,eax
+7FF7E6C4AAAD: 48 83 C4 40                    - add rsp,40
+7FF7E6C4AAB1: 5B                             - pop rbx
+7FF7E6C4AAB2: 5E                             - pop rsi
+7FF7E6C4AAB3: 5F                             - pop rdi
+7FF7E6C4AAB4: C3                             - ret 
+7FF7E6C4AAB5: B8 01 00 00 00                 - mov eax,00000001
+7FF7E6C4AABA: 48 83 C4 40                    - add rsp,40
+7FF7E6C4AABE: 5B                             - pop rbx
+7FF7E6C4AABF: 5E                             - pop rsi
+7FF7E6C4AAC0: 5F                             - pop rdi
+7FF7E6C4AAC1: C3                             - ret 
+7FF7E6C4AAC2: 33 C0                          - xor eax,eax
+7FF7E6C4AAC4: 48 83 C4 40                    - add rsp,40
+7FF7E6C4AAC8: 5B                             - pop rbx
+7FF7E6C4AAC9: 5E                             - pop rsi
+7FF7E6C4AACA: 5F                             - pop rdi
+7FF7E6C4AACB: C3                             - ret 
+7FF7E6C4AACC: 19 07                          - sbb [rdi],eax
+7FF7E6C4AACE: 04 00                          - add al,00
+7FF7E6C4AAD0: 07                             - pop es
+7FF7E6C4AAD1: 72 03                          - jb 7FF7E6C4AAD6
+7FF7E6C4AAD3: 30 02                          - xor [rdx],al
+7FF7E6C4AAD5: 60                             - pushad (invalid) 
+7FF7E6C4AAD6: 01 70 40                       - add [rax+40],esi
+7FF7E6C4AAD9: 00 00                          - add [rax],al
+7FF7E6C4AADB: 00 00                          - add [rax],al
+7FF7E6C4AADD: 00 00                          - add [rax],al
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>846</ID>
+              <Description>"base address"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>847</ID>
+              <Description>"Empire points"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>848</ID>
+              <Description>"Research points"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115912</ID>
+              <Description>"Perk points"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>9c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115941</ID>
+              <Description>"Perk points"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>A4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115942</ID>
+              <Description>"Perk points"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>B4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115943</ID>
+              <Description>"Perk points"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>C4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115944</ID>
+              <Description>"Perk points"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115913</ID>
+              <Description>"dif"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>rpoints</Address>
+              <Offsets>
+                <Offset>98</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>802</ID>
+          <Description>"Selected unit/building pointers"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-10
+}
+[ENABLE]
+aobscan(selectedunit,48 8B 00 48 8B 80 98 00 00 00 48 8B 40 08 48 83 C4 28)
+registersymbol(selectedunit selectedunitbkp unit)
+alloc(newmem,128,selectedunit)
+label(return unit)
+label(selectedunitbkp)
+newmem:
+mov [unit],rax
+  mov rax,[rax]
+  mov rax,[rax+00000098]
+  jmp return
+  
+selectedunitbkp:
+readmem(selectedunit,10)
+unit:
+dq 0
+selectedunit:
+  jmp newmem
+  nop 5
+return:
+
+[DISABLE]
+selectedunit:
+ // db 48 8B 00 48 8B 80 98 00 00 00
+readmem(selectedunitbkp,10)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: &lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+1A
+
+ZX.GUI.ZXControlSelectionManager::get_NSlotsUsed+AD: 41 5E                 - pop r14
+ZX.GUI.ZXControlSelectionManager::get_NSlotsUsed+AF: C3                    - ret 
+ZX.GUI.ZXControlSelectionManager::get_NSlotsUsed+B0: E8 5B 2E A9 5E        - call clr.dll.text+5282B0
+ZX.GUI.ZXControlSelectionManager::get_NSlotsUsed+B5: CC                    - int 3 
+ZX.GUI.ZXControlSelectionManager::get_NSlotsUsed+B6: 00 00                 - add [rax],al
+7FF7E6B66458: 19 0A                 - sbb [rdx],ecx
+7FF7E6B6645A: 06                    - push es
+7FF7E6B6645B: 00 0A                 - add [rdx],cl
+7FF7E6B6645D: 32 06                 - xor al,[rsi]
+7FF7E6B6645F: 30 05 50 04 60 03     - xor [7FF7EA1668B5],al
+7FF7E6B66465: 70 02                 - jo 7FF7E6B66469
+7FF7E6B66467: E0 40                 - loopne &lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+29
+7FF7E6B66469: 00 00                 - add [rax],al
+7FF7E6B6646B: 00 00                 - add [rax],al
+7FF7E6B6646D: 00 00                 - add [rax],al
+7FF7E6B6646F: 00 00                 - add [rax],al
+7FF7E6B66471: 00 00                 - add [rax],al
+7FF7E6B66473: 00 00                 - add [rax],al
+7FF7E6B66475: 00 00                 - add [rax],al
+7FF7E6B66477: 00 18                 - add [rax],bl
+7FF7E6B66479: 56                    - push rsi
+7FF7E6B6647A: D7                    - xlatb 
+7FF7E6B6647B: E6 F7                 - out -09,al
+7FF7E6B6647D: 7F 00                 - jg 7FF7E6B6647F
+7FF7E6B6647F: 00 48 83              - add [rax-7D],cl
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+2: EC                    - in al,dx
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+3: 28 48 8B              - sub [rax-75],cl
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+6: 52                    - push rdx
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+7: 18 48 B9              - sbb [rax-47],cl
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+A: 78 81                 - js ZX.GUI.ZXControlSelectionManager::get_NSlotsUsed+6D
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+C: 00 E6                 - add dh,ah
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+E: F7 7F 00              - idiv [rdi+00]
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+11: 00 E8                 - add al,ch
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+13: E9 D7 56 5E 48        - jmp 7FF82F14BB6F
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+18: 8B C8                 - mov ecx,eax
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+1A: 48 8B 00              - mov rax,[rax]
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+1D: 48 8B 80 98 00 00 00  - mov rax,[rax+00000098]
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+24: 48 8B 40 08           - mov rax,[rax+08]
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+28: 48 83 C4 28           - add rsp,28
+&lt;&gt;c::#=zH5ju79gYJPdguAGE3TK7Vuk=+2C: 48 FF E0              - jmp rax
+7FF7E6B664AF: 00 19                 - add [rcx],bl
+7FF7E6B664B1: 04 01                 - add al,01
+7FF7E6B664B3: 00 04 42              - add [rdx+rax*2],al
+7FF7E6B664B6: 00 00                 - add [rax],al
+7FF7E6B664B8: 40 00 00              - add [rax],al
+7FF7E6B664BB: 00 00                 - add [rax],al
+7FF7E6B664BD: 00 00                 - add [rax],al
+7FF7E6B664BF: 00 00                 - add [rax],al
+7FF7E6B664C1: 00 00                 - add [rax],al
+7FF7E6B664C3: 00 00                 - add [rax],al
+7FF7E6B664C5: 00 00                 - add [rax],al
+7FF7E6B664C7: 00 68 56              - add [rax+56],ch
+7FF7E6B664CA: D7                    - xlatb 
+7FF7E6B664CB: E6 F7                 - out -09,al
+7FF7E6B664CD: 7F 00                 - jg 7FF7E6B664CF
+7FF7E6B664CF: 00 48 8B              - add [rax-75],cl
+ZX.Entities.ZXEntity::get_Description+2: 81 48 01 00 00 48 8B  - or [rax+01],8B480000
+ZX.Entities.ZXEntity::get_Description+9: 40 20 C3              - and bl,al
+7FF7E6B664DC: 19 00                 - sbb [rax],eax
+7FF7E6B664DE: 00 00                 - add [rax],al
+7FF7E6B664E0: 40 00 00              - add [rax],al
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>862</ID>
+              <Description>"Don't freeze values!! It goes for all the same buildings!!"</Description>
+              <Color>0000FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>803</ID>
+              <Description>"base address"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>859</ID>
+              <Description>"param address"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>804</ID>
+              <Description>"cur HP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>30</Offset>
+                <Offset>118</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>805</ID>
+              <Description>"Max hp"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>128</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>806</ID>
+              <Description>"Armor"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>12C</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>807</ID>
+              <Description>"Max XP for VET"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>138</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>808</ID>
+              <Description>"Speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>148</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>809</ID>
+              <Description>"Workers needed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>18C</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>835</ID>
+              <Description>"Colonist (building)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>188</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>853</ID>
+              <Description>"Defence barrier"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[unit]+148</Address>
+              <Offsets>
+                <Offset>130</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>854</ID>
+              <Description>"Energy transfer radius"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>180</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>855</ID>
+              <Description>"Storage expanded"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>184</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>856</ID>
+              <Description>"Food supply"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>1B4</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>857</ID>
+              <Description>"Energy supply"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>1B0</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>836</ID>
+              <Description>"Food needed (building)"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>194</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>837</ID>
+              <Description>"Energy needed (building)"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>190</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115759</ID>
+              <Description>"resource generated multiplier?"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>1D8</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>838</ID>
+              <Description>"Workers provided"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>1AC</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>810</ID>
+              <Description>"Gold income/cost?"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>1C8</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>811</ID>
+              <Description>"View range"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>unit</Address>
+              <Offsets>
+                <Offset>13C</Offset>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>812</ID>
+              <Description>"Veteran values"</Description>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>813</ID>
+                  <Description>"Attack range"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>unit</Address>
+                  <Offsets>
+                    <Offset>98</Offset>
+                    <Offset>8</Offset>
+                    <Offset>60</Offset>
+                    <Offset>148</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>824</ID>
+                  <Description>"Attack speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>unit</Address>
+                  <Offsets>
+                    <Offset>a8</Offset>
+                    <Offset>8</Offset>
+                    <Offset>60</Offset>
+                    <Offset>148</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>814</ID>
+                  <Description>"Damage"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>unit</Address>
+                  <Offsets>
+                    <Offset>C8</Offset>
+                    <Offset>8</Offset>
+                    <Offset>60</Offset>
+                    <Offset>148</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>825</ID>
+                  <Description>"Projectile speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>unit</Address>
+                  <Offsets>
+                    <Offset>CC</Offset>
+                    <Offset>8</Offset>
+                    <Offset>60</Offset>
+                    <Offset>148</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>815</ID>
+              <Description>"Normal values"</Description>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>816</ID>
+                  <Description>"Attack range"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>unit</Address>
+                  <Offsets>
+                    <Offset>98</Offset>
+                    <Offset>8</Offset>
+                    <Offset>58</Offset>
+                    <Offset>148</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115949</ID>
+                  <Description>"Attack speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>unit</Address>
+                  <Offsets>
+                    <Offset>a8</Offset>
+                    <Offset>8</Offset>
+                    <Offset>58</Offset>
+                    <Offset>148</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>817</ID>
+                  <Description>"Damage"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>unit</Address>
+                  <Offsets>
+                    <Offset>C8</Offset>
+                    <Offset>8</Offset>
+                    <Offset>58</Offset>
+                    <Offset>148</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115948</ID>
+                  <Description>"Projectile speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>unit</Address>
+                  <Offsets>
+                    <Offset>CC</Offset>
+                    <Offset>8</Offset>
+                    <Offset>58</Offset>
+                    <Offset>148</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115800</ID>
+          <Description>"No empire points loss in Swam missions"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-11
+}
+[ENABLE]
+aobscan(empirepointscontract,03 90 50 02 00 00)
+registersymbol(empirepointscontract empirepointscontractbkp)
+alloc(empirepointscontractbkp,6,empirepointscontract)
+
+empirepointscontractbkp:
+readmem(empirepointscontract,6)
+
+empirepointscontract:
+nop 6
+
+[DISABLE]
+empirepointscontract:
+ // db 03 90 50 02 00 00
+readmem(empirepointscontractbkp,6)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+587
+
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+516: FF 50 20                       - call qword ptr [rax+20]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+519: 48 8B D0                       - mov rdx,rax
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+51C: 48 B9 80 B1 72 64 FE 7F 00 00  - mov rcx,00007FFE6472B180
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+526: E8 05 97 47 5E                 - call clr.dll.text+2C80
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+52B: 48 85 C0                       - test rax,rax
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+52E: 74 2C                          - je ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+55C
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+530: 48 8B C8                       - mov rcx,rax
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+533: 48 8B 00                       - mov rax,[rax]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+536: 48 8B 80 98 00 00 00           - mov rax,[rax+00000098]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+53D: FF 50 28                       - call qword ptr [rax+28]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+540: 0F B6 C8                       - movzx ecx,al
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+543: 85 C9                          - test ecx,ecx
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+545: 74 15                          - je ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+55C
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+547: 48 8B CB                       - mov rcx,rbx
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+54A: BA 01 00 00 00                 - mov edx,00000001
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+54F: 48 8B 03                       - mov rax,[rbx]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+552: 48 8B 80 98 00 00 00           - mov rax,[rax+00000098]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+559: FF 50 10                       - call qword ptr [rax+10]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+55C: 48 8B CB                       - mov rcx,rbx
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+55F: 33 D2                          - xor edx,edx
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+561: E8 9A AC F4 FF                 - call DXVision.DXEntity::InvokeAddToScene
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+566: E8 15 07 EA FF                 - call ZX.ZXMissionState::#=z8XSdBFo=
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+56B: 48 8B F8                       - mov rdi,rax
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+56E: 8B 5F 4C                       - mov ebx,[rdi+4C]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+571: 48 8B CE                       - mov rcx,rsi
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+574: 48 8B 06                       - mov rax,[rsi]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+577: 48 8B 40 70                    - mov rax,[rax+70]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+57B: FF 50 20                       - call qword ptr [rax+20]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+57E: 48 8B 80 48 01 00 00           - mov rax,[rax+00000148]
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+585: 8B D3                          - mov edx,ebx
+// ---------- INJECTING HERE ----------
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+587: 03 90 50 02 00 00              - add edx,[rax+00000250]
+// ---------- DONE INJECTING  ----------
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+58D: 89 57 4C                       - mov [rdi+4C],edx
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+590: 48 81 C4 E8 00 00 00           - add rsp,000000E8
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+597: 5B                             - pop rbx
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+598: 5D                             - pop rbp
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+599: 5E                             - pop rsi
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+59A: 5F                             - pop rdi
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+59B: C3                             - ret 
+ZX.Commands.ContractEmpireResource::#=zDTlyI4E=+59C: 00 00                          - add [rax],al
+7FFE652DA5EE: 00 00                          - add [rax],al
+7FFE652DA5F0: 00 00                          - add [rax],al
+7FFE652DA5F2: 00 3F                          - add [rdi],bh
+7FFE652DA5F4: 00 00                          - add [rax],al
+7FFE652DA5F6: 00 3F                          - add [rdi],bh
+7FFE652DA5F8: 00 00                          - add [rax],al
+7FFE652DA5FA: 00 3F                          - add [rdi],bh
+7FFE652DA5FC: 00 00                          - add [rax],al
+7FFE652DA5FE: 00 3F                          - add [rdi],bh
+7FFE652DA600: 19 0B                          - sbb [rbx],ecx
+7FFE652DA602: 06                             - push es
+7FFE652DA603: 00 0B                          - add [rbx],cl
+7FFE652DA605: 01 1D 00 04 30 03              - add [7FFE685DAA0B],ebx
+7FFE652DA60B: 50                             - push rax
+7FFE652DA60C: 02 60 01                       - add ah,[rax+01]
+7FFE652DA60F: 70 40                          - jo ZX.Commands.ContractEmpireResource::get_MultipleUses+31
+7FFE652DA611: 00 00                          - add [rax],al
+7FFE652DA613: 00 00                          - add [rax],al
+7FFE652DA615: 00 00                          - add [rax],al
+7FFE652DA617: 00 10                          - add [rax],dl
+7FFE652DA619: 2C 5D                          - sub al,5D
+7FFE652DA61B: 65 FE                          - db -02
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115783</ID>
+          <Description>"Empire points mission (Swarm)"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-11
+}
+[ENABLE]
+aobscan(empirehordemission,2B 78 4C 48 8B CE)
+registersymbol(empirehordemission empirehordemissionbkp empp)
+alloc(newmem,128,empirehordemission)
+label(return empp)
+label(empirehordemissionbkp)
+newmem:
+mov [empp],rax
+  sub edi,[rax+4C]
+  mov rcx,rsi
+  jmp return
+  
+empirehordemissionbkp:
+readmem(empirehordemission,6)
+empp:
+dq 0
+empirehordemission:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+empirehordemission:
+ // db 2B 78 4C 48 8B CE
+readmem(empirehordemissionbkp,6)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+41
+
+7FFE652D651E: 00 00                 - add [rax],al
+7FFE652D6520: 00 00                 - add [rax],al
+7FFE652D6522: 00 00                 - add [rax],al
+7FFE652D6524: 00 00                 - add [rax],al
+7FFE652D6526: 00 00                 - add [rax],al
+7FFE652D6528: B8 05 5D 65 FE        - mov eax,FE655D05
+7FFE652D652D: 7F 00                 - jg 7FFE652D652F
+7FFE652D652F: 00 57 56              - add [rdi+56],dl
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+2: 48 83 EC 28           - sub rsp,28
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+6: 48 8B F1              - mov rsi,rcx
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+9: 48 8B CE              - mov rcx,rsi
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+C: E8 17 10 2E FF        - call 7FFE645B7558
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+11: 48 85 C0              - test rax,rax
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+14: 74 12                 - je ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+28
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+16: 48 8B CE              - mov rcx,rsi
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+19: 48 8B 06              - mov rax,[rsi]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+1C: 48 8B 40 70           - mov rax,[rax+70]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+20: FF 50 20              - call qword ptr [rax+20]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+23: 48 85 C0              - test rax,rax
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+26: 75 09                 - jne ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+31
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+28: 33 C0                 - xor eax,eax
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+2A: 48 83 C4 28           - add rsp,28
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+2E: 5E                    - pop rsi
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+2F: 5F                    - pop rdi
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+30: C3                    - ret 
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+31: E8 2A BE A6 FF        - call ZX.ZXCampaignState::#=z8XSdBFo=
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+36: 8B B8 A0 00 00 00     - mov edi,[rax+000000A0]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+3C: E8 5F 47 EA FF        - call ZX.ZXMissionState::#=z8XSdBFo=
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+41: 2B 78 4C              - sub edi,[rax+4C]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+44: 48 8B CE              - mov rcx,rsi
+// ---------- INJECTING HERE ----------
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+47: 48 8B 06              - mov rax,[rsi]
+// ---------- DONE INJECTING  ----------
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+4A: 48 8B 40 70           - mov rax,[rax+70]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+4E: FF 50 20              - call qword ptr [rax+20]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+51: 48 8B 80 48 01 00 00  - mov rax,[rax+00000148]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+58: 3B B8 50 02 00 00     - cmp edi,[rax+00000250]
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+5E: 0F 9D C0              - setge al
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+61: 0F B6 C0              - movzx eax,al
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+64: 48 83 C4 28           - add rsp,28
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+68: 5E                    - pop rsi
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+69: 5F                    - pop rdi
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+6A: C3                    - ret 
+ZX.Commands.ContractEmpireResource::#=zkCj71$9L7LIm+6B: 00 19                 - add [rcx],bl
+7FFE652D659D: 06                    - push es
+7FFE652D659E: 03 00                 - add eax,[rax]
+7FFE652D65A0: 06                    - push es
+7FFE652D65A1: 42 02 60 01           - add spl,[rax+01]
+7FFE652D65A5: 70 00                 - jo 7FFE652D65A7
+7FFE652D65A7: 00 40 00              - add [rax+00],al
+7FFE652D65AA: 00 00                 - add [rax],al
+7FFE652D65AC: 00 00                 - add [rax],al
+7FFE652D65AE: 00 00                 - add [rax],al
+7FFE652D65B0: 00 00                 - add [rax],al
+7FFE652D65B2: 00 00                 - add [rax],al
+7FFE652D65B4: 00 00                 - add [rax],al
+7FFE652D65B6: 00 00                 - add [rax],al
+7FFE652D65B8: 18 06                 - sbb [rsi],al
+7FFE652D65BA: 5D                    - pop rbp
+7FFE652D65BB: 65 FE                 - db -02
+7FFE652D65BD: 7F 00                 - jg 7FFE652D65BF
+7FFE652D65BF: 00 57 56              - add [rdi+56],dl
+ZX.Commands.ContractEmpireResource::get_EntityTemplate+2: 48 83 EC 28           - sub rsp,28
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>115784</ID>
+              <Description>"No description"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>empp</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115785</ID>
+              <Description>"Empire points"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>empp</Address>
+              <Offsets>
+                <Offset>4c</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115926</ID>
+          <Description>"Show full map"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-12
+}
+[ENABLE]
+aobscan(fullmap,0F B6 81 D7 01 00 00)
+registersymbol(fullmap fullmapbkp rmap)
+alloc(newmem,128,fullmap)
+label(return rmap)
+label(fullmapbkp)
+newmem:
+mov [rmap],rcx
+mov byte ptr [rcx+000001D7],1
+  movzx eax,byte ptr [rcx+000001D7]
+  jmp return
+  
+fullmapbkp:
+readmem(fullmap,7)
+rmap:
+dq 0
+fullmap:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+{$lua}
+writeByte('[rmap]+1D7',0)
+{$asm}
+fullmap:
+ // db 0F B6 81 D7 01 00 00
+readmem(fullmapbkp,7)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZX.ZXLevelState::get_ShowFullMap
+
+#=zYV_pc1DX6Ef0vFZ4DeTXv3eeJ6jQ::#=zg9km9wo=+77D: 00 00                          - add [rax],al
+7FFA352EA65F: 00 00                          - add [rax],al
+7FFA352EA661: 00 80 3F 00 00 80              - add [rax-7FFFFFC1],al
+7FFA352EA667: 3F                             - db 3F
+7FFA352EA668: 00 00                          - add [rax],al
+7FFA352EA66A: 80 3F 00                       - cmp byte ptr [rdi],00
+7FFA352EA66D: 00 80 3F 00 00 80              - add [rax-7FFFFFC1],al
+7FFA352EA673: 3F                             - db 3F
+7FFA352EA674: 00 00                          - add [rax],al
+7FFA352EA676: 80 3F 00                       - cmp byte ptr [rdi],00
+7FFA352EA679: 00 80 3F 00 00 80              - add [rax-7FFFFFC1],al
+7FFA352EA67F: 3F                             - db 3F
+7FFA352EA680: 00 00                          - add [rax],al
+7FFA352EA682: 80 3F 00                       - cmp byte ptr [rdi],00
+7FFA352EA685: 00 80 3F 00 00 70              - add [rax+7000003F],al
+7FFA352EA68B: 42 19 13                       - sbb [rbx],edx
+7FFA352EA68E: 0A 00                          - or al,[rax]
+7FFA352EA690: 13 01                          - adc eax,[rcx]
+7FFA352EA692: 37                             - aaa 
+7FFA352EA693: 00 0C 30                       - add [rax+rsi],cl
+7FFA352EA696: 0B 50 0A                       - or edx,[rax+0A]
+7FFA352EA699: 60                             - pushad (invalid) 
+7FFA352EA69A: 09 70 08                       - or [rax+08],esi
+7FFA352EA69D: C0 06 D0                       - rol byte ptr [rsi],-30
+7FFA352EA6A0: 04 E0                          - add al,-20
+7FFA352EA6A2: 02 F0                          - add dh,al
+7FFA352EA6A4: 40 00 00                       - add [rax],al
+7FFA352EA6A7: 00 50 05                       - add [rax+05],dl
+7FFA352EA6AA: 55                             - push rbp
+7FFA352EA6AB: 35 FA 7F 00 00                 - xor eax,00007FFA
+// ---------- INJECTING HERE ----------
+ZX.ZXLevelState::get_ShowFullMap: 0F B6 81 D7 01 00 00           - movzx eax,byte ptr [rcx+000001D7]
+// ---------- DONE INJECTING  ----------
+ZX.ZXLevelState::get_ShowFullMap+7: C3                             - ret 
+7FFA352EA6B8: 19 00                          - sbb [rax],eax
+7FFA352EA6BA: 00 00                          - add [rax],al
+7FFA352EA6BC: 40 00 00                       - add [rax],al
+7FFA352EA6BF: 00 00                          - add [rax],al
+7FFA352EA6C1: 00 00                          - add [rax],al
+7FFA352EA6C3: 00 00                          - add [rax],al
+7FFA352EA6C5: 00 00                          - add [rax],al
+7FFA352EA6C7: 00 A0 05 55 35 FA              - add [rax-05CAAAFB],ah
+7FFA352EA6CD: 7F 00                          - jg 7FFA352EA6CF
+7FFA352EA6CF: 00 80 79 7C 01 0F              - add [rax+0F017C79],al
+ZX.GameSystems.ZXLevelExtension::get_HideMapNotWatched+5: 95                             - xchg eax,ebp
+ZX.GameSystems.ZXLevelExtension::get_HideMapNotWatched+6: C0 0F B6                       - ror byte ptr [rdi],-4A
+ZX.GameSystems.ZXLevelExtension::get_HideMapNotWatched+9: C0 C3 00                       - rol bl,00
+7FFA352EA6DC: 19 00                          - sbb [rax],eax
+7FFA352EA6DE: 00 00                          - add [rax],al
+7FFA352EA6E0: 40 00 00                       - add [rax],al
+7FFA352EA6E3: 00 00                          - add [rax],al
+7FFA352EA6E5: 00 00                          - add [rax],al
+7FFA352EA6E7: 00 F0                          - add al,dh
+7FFA352EA6E9: 05 55 35 FA 7F                 - add eax,7FFA3555
+7FFA352EA6EE: 00 00                          - add [rax],al
+DXVision.DXSystem::get_Scene: 48 B8 A8 49 E2 F6 84 01 00 00  - mov rax,00000184F6E249A8
+DXVision.DXSystem::get_Scene+A: 48 8B 00                       - mov rax,[rax]
+DXVision.DXSystem::get_Scene+D: 48 8B 40 38                    - mov rax,[rax+38]
+DXVision.DXSystem::get_Scene+11: C3                             - ret 
+7FFA352EA702: 00 00                          - add [rax],al
+7FFA352EA704: 19 00                          - sbb [rax],eax
+7FFA352EA706: 00 00                          - add [rax],al
+7FFA352EA708: 40 00 00                       - add [rax],al
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115860</ID>
+          <Description>"Game state pointers"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-11
+}
+[ENABLE]
+aobscan(gamestate,48 8B 41 18 48 8B 88 C8 00 00 00)
+registersymbol(gamestate gamestatebkp gamest)
+alloc(newmem,128,gamestate)
+label(return gamest)
+label(gamestatebkp)
+newmem:
+ push rdi
+ mov rdi,gamest
+ mov [rdi],rcx
+ pop rdi
+  mov rax,[rcx+18]
+  mov rcx,[rax+000000C8]
+  jmp return
+  
+gamestatebkp:
+readmem(gamestate,11)
+gamest:
+dq 0
+gamestate:
+  jmp newmem
+  nop 6
+return:
+
+[DISABLE]
+gamestate:
+ // db 48 8B 41 18 48 8B 88 C8 00 00 00
+readmem(gamestatebkp,11)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2CD
+
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+261: 48 89 4B 18                    - mov [rbx+18],rcx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+265: 48 8B 4D 10                    - mov rcx,[rbp+10]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+269: 48 8B 69 08                    - mov rbp,[rcx+08]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+26D: 8B 4D 00                       - mov ecx,[rbp+00]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+270: 33 C9                          - xor ecx,ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+272: 89 4C 24 28                    - mov [rsp+28],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+276: 89 4C 24 28                    - mov [rsp+28],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+27A: 48 8B 4D 10                    - mov rcx,[rbp+10]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+27E: 48 8B D3                       - mov rdx,rbx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+281: 39 09                          - cmp [rcx],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+283: E8 D8 75 3E 58                 - call mscorlib.ni.dll.text+9F0FB0
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+288: 84 C0                          - test al,al
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+28A: 75 0C                          - jne #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+298
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+28C: 48 8D 4C 24 28                 - lea rcx,[rsp+28]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+291: E8 4A 8E 3E 58                 - call System.Threading.SpinWait::SpinOnce
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+296: EB E2                          - jmp #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+27A
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+298: 49 8B 46 10                    - mov rax,[r14+10]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+29C: 48 8B 40 08                    - mov rax,[rax+08]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2A0: 48 8B C8                       - mov rcx,rax
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2A3: 80 B9 AC 00 00 00 00           - cmp byte ptr [rcx+000000AC],00
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2AA: 75 47                          - jne #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2F3
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2AC: 80 B8 AD 00 00 00 00           - cmp byte ptr [rax+000000AD],00
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2B3: 75 3E                          - jne #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2F3
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2B5: FF C7                          - inc edi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2B7: 48 B9 58 80 0B 48 83 01 00 00  - mov rcx,00000183480B8058
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2C1: 48 8B 09                       - mov rcx,[rcx]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2C4: 48 85 C9                       - test rcx,rcx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2C7: 75 04                          - jne #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2CD
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2C9: 33 C0                          - xor eax,eax
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2CB: EB 04                          - jmp #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2D1
+// ---------- INJECTING HERE ----------
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2CD: 48 8B 41 18                    - mov rax,[rcx+18]
+// ---------- DONE INJECTING  ----------
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2D1: 48 8B 88 C8 00 00 00           - mov rcx,[rax+000000C8]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2D8: 3B 79 18                       - cmp edi,[rcx+18]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2DB: 0F 8C 6B FD FF FF              - jl #=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+4C
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2E1: B8 01 00 00 00                 - mov eax,00000001
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2E6: 48 83 C4 38                    - add rsp,38
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2EA: 5B                             - pop rbx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2EB: 5D                             - pop rbp
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2EC: 5E                             - pop rsi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2ED: 5F                             - pop rdi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2EE: 41 5E                          - pop r14
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2F0: 41 5F                          - pop r15
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2F2: C3                             - ret 
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2F3: 33 C0                          - xor eax,eax
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2F5: 48 83 C4 38                    - add rsp,38
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2F9: 5B                             - pop rbx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2FA: 5D                             - pop rbp
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2FB: 5E                             - pop rsi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2FC: 5F                             - pop rdi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2FD: 41 5E                          - pop r14
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+2FF: 41 5F                          - pop r15
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+301: C3                             - ret 
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+302: 48 8B CB                       - mov rcx,rbx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+305: E8 C6 62 2A 58                 - call System.MulticastDelegate::ThrowNullThisInDelegateToInstance
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+30A: CC                             - int 3 
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+30B: E8 50 58 A9 5E                 - call clr.dll.text+5282B0
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::#=zbiKa8g7rlc2F+310: CC                             - int 3 
+7FFE651E3A61: 00 00                          - add [rax],al
+7FFE651E3A63: 00 19                          - add [rcx],bl
+7FFE651E3A65: 0C 07                          - or al,07
+7FFE651E3A67: 00 0C 62                       - add [rdx],cl
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>115861</ID>
+              <Description>"base address"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>gamest</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115910</ID>
+              <Description>"Reveal map"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1D7</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115862</ID>
+              <Description>"Wood"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115863</ID>
+              <Description>"Stone"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>124</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115864</ID>
+              <Description>"Iron"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>128</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115865</ID>
+              <Description>"Oil"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>12C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115866</ID>
+              <Description>"Gold"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>130</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115867</ID>
+              <Description>"Total colonist"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>134</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115868</ID>
+              <Description>"#=zOapGXhK2G0AK"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>138</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115869</ID>
+              <Description>"#=z1O8oy4benL3A"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>13C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115870</ID>
+              <Description>"Total food production"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>140</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115871</ID>
+              <Description>"Total workers"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>144</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115872</ID>
+              <Description>"Total Energy"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115873</ID>
+              <Description>"Consumed food?"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>14C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115874</ID>
+              <Description>"Working"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>150</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115875</ID>
+              <Description>"Consumed energy"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>154</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115876</ID>
+              <Description>"Gold + /added?"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>158</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115877</ID>
+              <Description>"#=zH70cjqE_0iRkq1S7ea0nSBhIWDp3"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>15C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115878</ID>
+              <Description>"#=zOFUIJkxLeXZg2ZpY8WweMmN5H6Jw"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>160</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115879</ID>
+              <Description>"#=zhgxLkgoz53pGpFws5ll5dZM="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>164</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115880</ID>
+              <Description>"#=zLKjHwrtpynkAcbjdWWQZQlQ="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>168</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115881</ID>
+              <Description>"#=zfFkpM3jPfCsFZ0ms1rghCOk="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>16C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115882</ID>
+              <Description>"#=zxQ_WNALdthQSsPyHrrooVuE_Qwed"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>170</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115883</ID>
+              <Description>"#=z6nz2PCJiGnxWKwuPVIVeFQZt01$p"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>174</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115884</ID>
+              <Description>"#=ztlZRP$lx_wQR4ZG7NJ9uHPEkjWLL"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>178</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115885</ID>
+              <Description>"#=zR3TH5nLry6XgWumceuwgoU7uiRmB"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>17C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115886</ID>
+              <Description>"#=zVKqDHB6IyQ3XU4Yk1m0t58Q="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>180</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115887</ID>
+              <Description>"#=zXgeyhX7k4KZWfl4P_OM85BMHj3u4"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>184</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115888</ID>
+              <Description>"#=znxy2pLeU_ExeNkuZIMfL2nYeqyEy7V4Rzg=="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>188</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115889</ID>
+              <Description>"#=zUPCTEIrFa_L8X$rRKJH7wRrKOHjp"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>18C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115890</ID>
+              <Description>"#=zmlPvleIIXH470YacfJBeF1v3SZ3R5ACnLnIcARg="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>190</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115891</ID>
+              <Description>"#=zS$PQZNf0yfOTvRiWMm2UC_g="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>194</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115892</ID>
+              <Description>"#=zHOMIYAS_qLqII2PetpON6GdTsiWlSBJbkw=="</Description>
+              <VariableType>Float</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>198</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115893</ID>
+              <Description>"#=z2CRRGMoJZLVQMuPDuOGVInlwQd66"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>19C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115894</ID>
+              <Description>"#=zVfzRcHCChSJgJkF1MaZvxaYMTFzstfSligY1cGKz8Kwt"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115895</ID>
+              <Description>"#=zPuoH96OcHsllTlN_z0WqgTY="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1A4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115896</ID>
+              <Description>"#=zFwYqcTWMhQlBanMrgL2$2WI="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115897</ID>
+              <Description>"#=zxdXEtE7kPvccH1MssKYPlik="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1AC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115898</ID>
+              <Description>"#=z0d76dyG0oYPv3ly7lzASdmw="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115899</ID>
+              <Description>"#=zmfvcVdMcRaLjkpbgOJlP4SU="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1B4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115900</ID>
+              <Description>"Killed zombies"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1B8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115901</ID>
+              <Description>"#=zHQrpw77P2SxkqtFLCEN$xW$L_HHfs7gPK_TNNGM="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1BC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115902</ID>
+              <Description>"#=zlnzXg7AICPG36l6xLbiyCbg="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1C0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115903</ID>
+              <Description>"#=zk1IBNSBlZdNSBSxqtRepLm8="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1C4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115904</ID>
+              <Description>"#=zEu7rIQHj9VUvim0YVohtR6PV9V45"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1C8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115905</ID>
+              <Description>"Total colonist"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1CC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115906</ID>
+              <Description>"#=zPMvqrxfO$5KBQzXe8L8b6h8="</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115907</ID>
+              <Description>"#=zHCRVs8GKIf39$npF$hz9g7d3aCOjPcS7QB5Wd6rESZDnAtRIRA=="</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1D4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115908</ID>
+              <Description>"#=zl$e_nsTeSeNd6GMh0w=="</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1D5</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115909</ID>
+              <Description>"#=zRuOTIHLIruFamwyRT4UmpKdZ6Bz$jIztfA=="</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1D6</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115911</ID>
+              <Description>"#=zJJO0qu__X3Hn"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gamest]+18</Address>
+              <Offsets>
+                <Offset>1D8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115927</ID>
+          <Description>"Game speed?(un/pause game to activate - then again to get values)"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{  Game Executable   : TheyAreBillions.exe
+   Author            : Tuuup!
+   Executable Version: 1.1.3.18
+   Script Date       : 2022-09-11
+}
+[ENABLE]
+aobscan(gamespeed,48 8B 19 48 8B 09)
+registersymbol(gamespeed gamespeedbkp gspeed)
+alloc(newmem,128,gamespeed)
+label(return gspeed)
+label(gamespeedbkp)
+newmem:
+
+  mov rbx,[rcx]
+  mov rcx,[rcx]
+  mov [gspeed],rcx
+  jmp return
+  
+gamespeedbkp:
+readmem(gamespeed,6)
+gspeed:
+dq 0
+gamespeed:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+gamespeed:
+ // db 48 8B 19 48 8B 09
+readmem(gamespeedbkp,6)
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: #=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+31A
+
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2AB: 84 C0                          - test al,al
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2AD: 74 10                          - je #=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2BF
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2AF: 48 8B CE                       - mov rcx,rsi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2B2: BA 06 00 00 00                 - mov edx,00000006
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2B7: 45 33 C0                       - xor r8d,r8d
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2BA: E8 B9 61 3D FF                 - call 7FFE645B13A8
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2BF: B9 18 00 00 00                 - mov ecx,00000018
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2C4: E8 3F 5A 3D FF                 - call 7FFE645B0C38
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2C9: 48 8B C8                       - mov rcx,rax
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2CC: 8B D7                          - mov edx,edi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2CE: 39 09                          - cmp [rcx],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2D0: E8 5B D6 FA FF                 - call 7FFE65188860
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2D5: 84 C0                          - test al,al
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2D7: 74 10                          - je #=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2E9
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2D9: 48 8B CE                       - mov rcx,rsi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2DC: BA 07 00 00 00                 - mov edx,00000007
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2E1: 45 33 C0                       - xor r8d,r8d
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2E4: E8 8F 61 3D FF                 - call 7FFE645B13A8
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2E9: B9 0F 00 00 00                 - mov ecx,0000000F
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2EE: E8 15 5A 3D FF                 - call 7FFE645B0C38
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2F3: 48 8B C8                       - mov rcx,rax
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2F6: 8B D7                          - mov edx,edi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2F8: 39 09                          - cmp [rcx],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2FA: E8 31 D6 FA FF                 - call 7FFE65188860
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+2FF: 84 C0                          - test al,al
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+301: 74 59                          - je #=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+35C
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+303: 48 8B 4E 68                    - mov rcx,[rsi+68]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+307: 80 B9 B0 01 00 00 00           - cmp byte ptr [rcx+000001B0],00
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+30E: 74 4C                          - je #=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+35C
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+310: 48 B9 78 5C 0B 48 83 01 00 00  - mov rcx,00000183480B5C78
+// ---------- INJECTING HERE ----------
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+31A: 48 8B 19                       - mov rbx,[rcx]
+// ---------- DONE INJECTING  ----------
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+31D: 48 8B 09                       - mov rcx,[rcx]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+320: 39 09                          - cmp [rcx],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+322: E8 19 0B B9 FF                 - call DXVision.DXGame::get_Paused
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+327: 84 C0                          - test al,al
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+329: 0F 94 C2                       - sete dl
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+32C: 0F B6 D2                       - movzx edx,dl
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+32F: 48 8B CB                       - mov rcx,rbx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+332: 39 09                          - cmp [rcx],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+334: E8 F7 29 E1 FF                 - call DXVision.DXGame::set_Paused
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+339: 48 B9 10 5E 0B 48 83 01 00 00  - mov rcx,00000183480B5E10
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+343: 48 8B 09                       - mov rcx,[rcx]
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+346: 39 09                          - cmp [rcx],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+348: E8 D3 A7 3C FF                 - call 7FFE645A5A50
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+34D: E8 0E F1 DC FF                 - call ZX.ZXLevelState::#=z8XSdBFo=
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+352: 48 8B C8                       - mov rcx,rax
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+355: 39 09                          - cmp [rcx],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+357: E8 24 C4 3E FF                 - call 7FFE645C76B0
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+35C: B9 07 00 00 00                 - mov ecx,00000007
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+361: E8 A2 59 3D FF                 - call 7FFE645B0C38
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+366: 48 8B C8                       - mov rcx,rax
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+369: 8B D7                          - mov edx,edi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+36B: 39 09                          - cmp [rcx],ecx
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+36D: E8 BE D5 FA FF                 - call 7FFE65188860
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+372: 84 C0                          - test al,al
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+374: 74 15                          - je #=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+38B
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+376: 48 8B CE                       - mov rcx,rsi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+379: E8 F2 60 3D FF                 - call 7FFE645B13A0
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+37E: 48 8B CE                       - mov rcx,rsi
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+381: E8 92 61 3D FF                 - call 7FFE645B1448
+#=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+386: E9 C4 01 00 00                 - jmp #=zS8fSyrdcUxJ8jMft0Tv6j$s=::OnKeyDown+54F
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>115928</ID>
+              <Description>"No description"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>gspeed</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115929</ID>
+              <Description>"_GameSpeed"</Description>
+              <VariableType>Double</VariableType>
+              <Address>[gspeed]+1D8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115930</ID>
+              <Description>"_GameTime"</Description>
+              <VariableType>Double</VariableType>
+              <Address>[gspeed]+1E0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115931</ID>
+              <Description>"_MaxGameSpeed"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[gspeed]+224</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115932</ID>
+              <Description>"_GameElapsedTime"</Description>
+              <VariableType>Double</VariableType>
+              <Address>[gspeed]+1E8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115933</ID>
+              <Description>"&lt;GameTimeInt&gt;k__BackingField"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gspeed]+228</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115934</ID>
+              <Description>"&lt;GameElapsedTimeInt&gt;k__BackingField"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gspeed]+22C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115935</ID>
+              <Description>"_DebugValue"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[gspeed]+230</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115936</ID>
+              <Description>"&lt;ShowFrameRate&gt;k__BackingField"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gspeed]+254</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115937</ID>
+              <Description>"&lt;EnableMouseEvents&gt;k__BackingField"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gspeed]+263</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115938</ID>
+              <Description>"&lt;SpecialKeysEnabled&gt;k__BackingField"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gspeed]+264</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115939</ID>
+              <Description>"&lt;AllowMouseChangeCamera&gt;k__BackingField"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>[gspeed]+265</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>115945</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>26D33266DC0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>115946</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>26D32BBF398</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>115947</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>26D2EFB6518</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>126</ID>
+      <Description>"v.1.0.3 (64 bits)"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>199</ID>
+          <Description>"Freeze HP &amp; Fast Build (get hit or build something before activation )"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : TheyAreBillions.exe
+  Version:
+  Date   : 2019-02-24
+  Author : Cake-san
+}
+
+[ENABLE]
+aobscan(_hp,89 4A 30 48 8B 4D 10)
+alloc(newmem,2048,_hp)
+label(returnhere)
+label(_c)
+registersymbol(_c)
+registersymbol(_hp)
+
+newmem:
+cmp byte ptr[_c],0
+je short @f
+cmp dword ptr [rax+50],0
+je short @f
+mov ecx,[rax+128]
+@@:
+cmp byte ptr[_c+1],0
+je short @f
+cmp dword ptr [rax+50],0
+je short @f
+cmp [rax+234],0
+jne short @f
+mov [rax+150],3C924926
+@@:
+cmp byte ptr[_c],0
+je short @f
+cmp dword ptr [rax+198],0
+je short @f
+mov ecx,[rax+128]
+@@:
+mov [rdx+30],ecx
+mov rcx,[rbp+10]
+jmp returnhere
+_c:
+dd 0
+
+_hp:
+jmp newmem
+nop
+nop
+returnhere:
+ 
+[DISABLE]
+dealloc(newmem)
+_hp:
+db 89 4A 30 48 8B 4D 10
+//mov [rdx+30],ecx
+//mov rcx,[rbp+10]
+unregistersymbol(_c)
+unregistersymbol(_hp)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>200</ID>
+              <Description>"HP"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+_c:
+db 01
+[DISABLE]
+_c:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>201</ID>
+              <Description>"Fast Build"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+_c+1:
+db 01
+[DISABLE]
+_c+1:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>125</ID>
+          <Description>"Power Ranger"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : TheyAreBillions.exe
+  Version:
+  Date   : 2019-02-24
+  Author : Cake-san
+
+}
+
+[ENABLE]
+//ranger
+aobscan(ranger,72 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00)
+ranger-108+12c:
+dd (float)1
+[[ranger-108+58]+8]+98:
+dd (float)10
+[[ranger-108+58]+8]+A8:
+dd #1
+[[ranger-108+58]+8]+C8:
+dd #1000 0
+[[ranger-108+60]+8]+98:
+dd (float)10
+[[ranger-108+60]+8]+A8:
+dd #1
+[[ranger-108+60]+8]+C8:
+dd #1000 0
+
+registersymbol(ranger)
+
+[DISABLE]
+//ranger
+ranger-108+12c:
+dd (float)0.05000000075
+[[ranger-108+58]+8]+98:
+dd (float)6
+[[ranger-108+58]+8]+A8:
+dd #1000
+[[ranger-108+58]+8]+C8:
+dd #10 (float)12
+[[ranger-108+60]+8]+98:
+dd (float)6.5
+[[ranger-108+60]+8]+A8:
+dd #500
+[[ranger-108+60]+8]+C8:
+dd #12 (float)12
+unregistersymbol(ranger)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>89</ID>
+          <Description>"Command Centre"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : TheyAreBillions.exe
+  Version:
+  Date   : 2019-02-24
+  Author : Cake-san
+
+}
+
+[ENABLE]
+aobscan(comct,40 40 66 00 00 00 )
+label(_comct)
+comct-106:
+_comct:
+registersymbol(_comct)
+[DISABLE]
+unregistersymbol(_comct)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>78</ID>
+              <Description>"DefensiveBarrier"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+118</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>132</ID>
+              <Description>"Colonist"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+170</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>131</ID>
+              <Description>"Energy Radius"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+168</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>85</ID>
+              <Description>"Storage"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+16C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>81</ID>
+              <Description>"Workers"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+194</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>82</ID>
+              <Description>"EnergySupply"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+198</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>83</ID>
+              <Description>"FoodSupply"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+19C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>127</ID>
+              <Description>"WoodGen"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+1A0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>128</ID>
+              <Description>"StoneGen"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+1A4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>129</ID>
+              <Description>"IronGen"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+1A8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>130</ID>
+              <Description>"OilGen"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+1AC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"GoldGen"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>_comct+1B0</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>185</ID>
+          <Description>"Fast Recruit"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : TheyAreBillions.exe
+  Version:
+  Date   : 2019-02-24
+  Author : Cake-san
+
+}
+
+[ENABLE]
+aobscan(un1,72 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00)
+un1+48:
+dd 0
+registersymbol(un1)
+
+aobscan(un2,73 00 00 00 02 00 00 00 02 00 00 00)
+un2+48:
+dd 0
+registersymbol(un2)
+
+aobscan(un3,74 00 00 00 03 00 00 00 03 00 00 00)
+un3+48:
+dd 0
+registersymbol(un3)
+
+aobscan(un4,75 00 00 00 01 00 00 00 04 00 00 00)
+un4+48:
+dd 0
+registersymbol(un4)
+
+aobscan(un5,76 00 00 00 02 00 00 00 04 00 00 00)
+un5+48:
+dd 0
+registersymbol(un5)
+
+
+aobscan(un6,77 00 00 00 03 00 00 00 05 00 00 00 14 00 00 00)
+un6+48:
+dd 0
+registersymbol(un6)
+
+
+[DISABLE]
+un1+48:
+dd 3F666666
+unregistersymbol(un1)
+
+un2+48:
+dd 3F800000
+unregistersymbol(un2)
+
+un3+48:
+dd 3F8CCCCD
+unregistersymbol(un3)
+
+un4+48:
+dd 3F99999A
+unregistersymbol(un4)
+
+un5+48:
+dd 3FA66666
+unregistersymbol(un5)
+
+un6+48:
+dd 3FC00000
+unregistersymbol(un6)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>207</ID>
+          <Description>"Fast Research (Might not work for everyone)"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : TheyAreBillions.exe
+  Version:
+  Date   : 2019-02-24
+  Author : Cake-san
+
+}
+
+[ENABLE]
+aobscan(research,C4 E1 7A 11 43 30 C4 E1 78 28 74 24 20)
+assert(research-D,76 0B)
+research-D:
+db 90 90
+registersymbol(research)
+[DISABLE]
+research-D:
+db 76 0B
+unregistersymbol(research)
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

@@ -1,0 +1,1730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>9418</ID>
+      <Description>"Ghostrunner 2 p20231028 | Cheat Engine Table v1.0 | 2023-10-28 ColonelRVH"</Description>
+      <Color>B14D00</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9416</ID>
+      <Description>"========== - THE CHEAT SCRIPT -            ==========  [Steam]"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <Color>FF8000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+ShellExecute('https://www.thecheatscript.com/')
+{$asm}
+[ENABLE]
+
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>8848</ID>
+          <Description>"[Stats]   == Activate: Alt+Insert     | Deactivate: Alt+Del              =="</Description>
+          <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <Color>FF8000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9206</ID>
+              <Description>"Toggle Individual Script by Ctrl + Numpad (Numerical)"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9200</ID>
+              <Description>"Multiply Money"</Description>
+              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+
+aobscanmodule(Score_AOB,Ghostrunner2-Win64-Shipping.exe,01 78 50 8B 50 50) // should be unique
+alloc(newmem,$1000,Score_AOB)
+
+label(code)
+label(return)
+alloc(ScoreMult,8)
+registersymbol(ScoreMult)
+
+ScoreMult:
+dd 7
+newmem:
+  imul edi,[ScoreMult]
+code:
+  add [rax+50],edi
+  mov edx,[rax+50]
+  jmp return
+
+Score_AOB:
+  jmp newmem
+  nop
+return:
+registersymbol(Score_AOB)
+
+[DISABLE]
+
+Score_AOB:
+  db 01 78 50 8B 50 50
+
+unregistersymbol(Score_AOB)
+dealloc(newmem)
+unregistersymbol(ScoreMult)
+dealloc(ScoreMult)
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+1C7819E
+
+Ghostrunner2-Win64-Shipping.exe+1C78180: 48 89 5C 24 10  - mov [rsp+10],rbx
+Ghostrunner2-Win64-Shipping.exe+1C78185: 57              - push rdi
+Ghostrunner2-Win64-Shipping.exe+1C78186: 48 83 EC 20     - sub rsp,20
+Ghostrunner2-Win64-Shipping.exe+1C7818A: 8B 79 54        - mov edi,[rcx+54]
+Ghostrunner2-Win64-Shipping.exe+1C7818D: 48 8B D9        - mov rbx,rcx
+Ghostrunner2-Win64-Shipping.exe+1C78190: 85 FF           - test edi,edi
+Ghostrunner2-Win64-Shipping.exe+1C78192: 74 50           - je Ghostrunner2-Win64-Shipping.exe+1C781E4
+Ghostrunner2-Win64-Shipping.exe+1C78194: E8 87 F9 00 00  - call Ghostrunner2-Win64-Shipping.exe+1C87B20
+Ghostrunner2-Win64-Shipping.exe+1C78199: 48 85 C0        - test rax,rax
+Ghostrunner2-Win64-Shipping.exe+1C7819C: 74 34           - je Ghostrunner2-Win64-Shipping.exe+1C781D2
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+1C7819E: 01 78 50        - add [rax+50],edi
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+1C781A1: 8B 50 50        - mov edx,[rax+50]
+Ghostrunner2-Win64-Shipping.exe+1C781A4: 66 0F 6E 40 54  - movd xmm0,[rax+54]
+Ghostrunner2-Win64-Shipping.exe+1C781A9: 48 8B 40 70     - mov rax,[rax+70]
+Ghostrunner2-Win64-Shipping.exe+1C781AD: 0F 5B C0        - cvtdq2ps xmm0,xmm0
+Ghostrunner2-Win64-Shipping.exe+1C781B0: 89 54 24 30     - mov [rsp+30],edx
+Ghostrunner2-Win64-Shipping.exe+1C781B4: 48 8D 54 24 30  - lea rdx,[rsp+30]
+Ghostrunner2-Win64-Shipping.exe+1C781B9: F3 0F 2C C8     - cvttss2si ecx,xmm0
+Ghostrunner2-Win64-Shipping.exe+1C781BD: 89 4C 24 34     - mov [rsp+34],ecx
+Ghostrunner2-Win64-Shipping.exe+1C781C1: 48 8B 48 28     - mov rcx,[rax+28]
+Ghostrunner2-Win64-Shipping.exe+1C781C5: 48 8B 49 30     - mov rcx,[rcx+30]
+}
+
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>45</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>46</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>97</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9633</ID>
+                  <Description>"Money Multiplier"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ScoreMult</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9211</ID>
+              <Description>"Get Player Data"</Description>
+              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(PlayerData_AOB,Ghostrunner2-Win64-Shipping.exe,48 8B 01 41 0F B6 F1 0F) // should be unique
+alloc(newmem,$1000,PlayerData_AOB)
+
+label(code)
+label(return)
+alloc(PlayerData,8)
+registersymbol(PlayerData)
+
+newmem:
+  mov [PlayerData],rcx
+code:
+  mov rax,[rcx]
+  movzx esi,r9b
+  jmp return
+
+PlayerData_AOB:
+  jmp newmem
+  nop 2
+return:
+registersymbol(PlayerData_AOB)
+
+[DISABLE]
+
+PlayerData_AOB:
+  db 48 8B 01 41 0F B6 F1
+
+unregistersymbol(PlayerData_AOB)
+dealloc(newmem)
+unregistersymbol(PlayerData)
+dealloc(PlayerData)
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+3B06F0F
+
+Ghostrunner2-Win64-Shipping.exe+3B06EFA: CC                 - int 3
+Ghostrunner2-Win64-Shipping.exe+3B06EFB: CC                 - int 3
+Ghostrunner2-Win64-Shipping.exe+3B06EFC: CC                 - int 3
+Ghostrunner2-Win64-Shipping.exe+3B06EFD: CC                 - int 3
+Ghostrunner2-Win64-Shipping.exe+3B06EFE: CC                 - int 3
+Ghostrunner2-Win64-Shipping.exe+3B06EFF: CC                 - int 3
+Ghostrunner2-Win64-Shipping.exe+3B06F00: 48 89 5C 24 08     - mov [rsp+08],rbx
+Ghostrunner2-Win64-Shipping.exe+3B06F05: 48 89 74 24 10     - mov [rsp+10],rsi
+Ghostrunner2-Win64-Shipping.exe+3B06F0A: 57                 - push rdi
+Ghostrunner2-Win64-Shipping.exe+3B06F0B: 48 83 EC 60        - sub rsp,60
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+3B06F0F: 48 8B 01           - mov rax,[rcx]
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+3B06F12: 41 0F B6 F1        - movzx esi,r9b
+Ghostrunner2-Win64-Shipping.exe+3B06F16: 0F 29 74 24 50     - movaps [rsp+50],xmm6
+Ghostrunner2-Win64-Shipping.exe+3B06F1B: 48 8B DA           - mov rbx,rdx
+Ghostrunner2-Win64-Shipping.exe+3B06F1E: 0F 29 7C 24 40     - movaps [rsp+40],xmm7
+Ghostrunner2-Win64-Shipping.exe+3B06F23: 0F 28 F2           - movaps xmm6,xmm2
+Ghostrunner2-Win64-Shipping.exe+3B06F26: 44 0F 29 44 24 30  - movaps [rsp+30],xmm8
+Ghostrunner2-Win64-Shipping.exe+3B06F2C: 48 8B F9           - mov rdi,rcx
+Ghostrunner2-Win64-Shipping.exe+3B06F2F: FF 90 38 06 00 00  - call qword ptr [rax+00000638]
+Ghostrunner2-Win64-Shipping.exe+3B06F35: 0F 28 FE           - movaps xmm7,xmm6
+Ghostrunner2-Win64-Shipping.exe+3B06F38: 44 0F 28 C6        - movaps xmm8,xmm6
+}
+
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>45</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>46</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>98</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9640</ID>
+                  <Description>"CurrentSpeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+704</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9641</ID>
+                  <Description>"LeftRightBackwardMaxSpeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+700</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9642</ID>
+                  <Description>"LeftRightBackwardMinSpeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+6FC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9643</ID>
+                  <Description>"ForwardMaxSpeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+6F8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9644</ID>
+                  <Description>"ForwardMinSpeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+6F4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9645</ID>
+                  <Description>"SprintMultiplier"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+6F0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9646</ID>
+                  <Description>"JumpVelocityMultipler"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+8D4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9647</ID>
+                  <Description>"JumpForwardMultipler"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+8D8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9648</ID>
+                  <Description>"JumpGravityMultipler"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+8DC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9649</ID>
+                  <Description>"ExtraJumpCharges"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[PlayerData]+13B0</Address>
+                  <Offsets>
+                    <Offset>B8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9652</ID>
+                  <Description>"WallJumpGravityMultipler"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+5B0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9653</ID>
+                  <Description>"WallJumpForwardMultipler"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+5AC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9654</ID>
+                  <Description>"WallJumpVelocityMultipler"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+5A8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9655</ID>
+                  <Description>"WallJumpHeight"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+5A4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9656</ID>
+                  <Description>"WallJumpNormalStrength"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+5A0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9657</ID>
+                  <Description>"WallJumpForwardStrength"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+59C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9658</ID>
+                  <Description>"PlayerUpwardTransform"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+598</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9659</ID>
+                  <Description>"MaxWallrunSpeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+594</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9660</ID>
+                  <Description>"WallrunSpeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+590</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9661</ID>
+                  <Description>"DashEnergyCost"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+998</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9662</ID>
+                  <Description>"DashMaxCooldown"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+99C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9663</ID>
+                  <Description>"SpeedOnGround"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9A0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9664</ID>
+                  <Description>"DashSlomoDuration"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9A4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9665</ID>
+                  <Description>"DashSlomoEffectDelay"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9A8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9666</ID>
+                  <Description>"DashOnEndForce"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9AC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9667</ID>
+                  <Description>"DashForwardRange"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9B0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9668</ID>
+                  <Description>"DashSideRange"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9B4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9669</ID>
+                  <Description>"DashDegreesIndicatingForward"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9B8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9670</ID>
+                  <Description>"CurrentDashRange"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9BC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9671</ID>
+                  <Description>"DashSlowmoDelay"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9672</ID>
+                  <Description>"DashDelayAfterBlock"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9C4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9673</ID>
+                  <Description>"DashPushForce"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerData]+9E0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9674</ID>
+                  <Description>"DashCharges"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[PlayerData]+A8C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9675</ID>
+                  <Description>"DashChargesMax"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[PlayerData]+A90</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9677</ID>
+                  <Description>"Motherboard Level??"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[PlayerData]+BE0</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110</ID>
+          <Description>"[Battle]   == Activate: Alt+Home    | Deactivate: Alt+End             =="</Description>
+          <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <Color>FF8000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9207</ID>
+              <Description>"Toggle Individual Script by Alt + Numpad (Numerical)"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9213</ID>
+              <Description>"God Mode"</Description>
+              <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(GodMode_AOB,Ghostrunner2-Win64-Shipping.exe,0F 85 * * * * 80 BB * * * * 00 75 09 40 84 F6) // should be unique
+
+GodMode_AOB:
+  db 0F 84
+registersymbol(GodMode_AOB)
+
+[DISABLE]
+
+GodMode_AOB:
+  db 0F 85
+unregistersymbol(GodMode_AOB)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+1C2FD68
+
+Ghostrunner2-Win64-Shipping.exe+1C2FD3B: 48 33 C4                 - xor rax,rsp
+Ghostrunner2-Win64-Shipping.exe+1C2FD3E: 48 89 45 E0              - mov [rbp-20],rax
+Ghostrunner2-Win64-Shipping.exe+1C2FD42: 4D 8B F9                 - mov r15,r9
+Ghostrunner2-Win64-Shipping.exe+1C2FD45: 41 0F B6 F0              - movzx esi,r8b
+Ghostrunner2-Win64-Shipping.exe+1C2FD49: 4C 8B EA                 - mov r13,rdx
+Ghostrunner2-Win64-Shipping.exe+1C2FD4C: 48 8B D9                 - mov rbx,rcx
+Ghostrunner2-Win64-Shipping.exe+1C2FD4F: E8 DC 53 F5 FF           - call Ghostrunner2-Win64-Shipping.exe+1B85130
+Ghostrunner2-Win64-Shipping.exe+1C2FD54: 80 B8 98 00 00 00 00     - cmp byte ptr [rax+00000098],00
+Ghostrunner2-Win64-Shipping.exe+1C2FD5B: 0F 85 D6 0A 00 00        - jne Ghostrunner2-Win64-Shipping.exe+1C30837
+Ghostrunner2-Win64-Shipping.exe+1C2FD61: 80 BB D5 06 00 00 00     - cmp byte ptr [rbx+000006D5],00
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+1C2FD68: 0F 85 C9 0A 00 00        - jne Ghostrunner2-Win64-Shipping.exe+1C30837
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+1C2FD6E: 80 BB D6 06 00 00 00     - cmp byte ptr [rbx+000006D6],00
+Ghostrunner2-Win64-Shipping.exe+1C2FD75: 75 09                    - jne Ghostrunner2-Win64-Shipping.exe+1C2FD80
+Ghostrunner2-Win64-Shipping.exe+1C2FD77: 40 84 F6                 - test sil,sil
+Ghostrunner2-Win64-Shipping.exe+1C2FD7A: 0F 84 B7 0A 00 00        - je Ghostrunner2-Win64-Shipping.exe+1C30837
+Ghostrunner2-Win64-Shipping.exe+1C2FD80: 80 BB D4 06 00 00 00     - cmp byte ptr [rbx+000006D4],00
+Ghostrunner2-Win64-Shipping.exe+1C2FD87: 75 0B                    - jne Ghostrunner2-Win64-Shipping.exe+1C2FD94
+Ghostrunner2-Win64-Shipping.exe+1C2FD89: 8D 46 FC                 - lea eax,[rsi-04]
+Ghostrunner2-Win64-Shipping.exe+1C2FD8C: 3C 01                    - cmp al,01
+Ghostrunner2-Win64-Shipping.exe+1C2FD8E: 0F 87 A3 0A 00 00        - ja Ghostrunner2-Win64-Shipping.exe+1C30837
+Ghostrunner2-Win64-Shipping.exe+1C2FD94: 48 89 BC 24 58 01 00 00  - mov [rsp+00000158],rdi
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>97</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9216</ID>
+              <Description>"Unlimited Stamina"</Description>
+              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(Stamina_AOB,Ghostrunner2-Win64-Shipping.exe,F3 0F 10 40 38 0F 2F) // should be unique
+alloc(newmem,$1000,Stamina_AOB)
+
+label(code)
+label(return)
+
+newmem:
+  mov [rax+38],(float)777
+code:
+  movss xmm0,[rax+38]
+  jmp return
+
+Stamina_AOB:
+  jmp newmem
+return:
+registersymbol(Stamina_AOB)
+
+[DISABLE]
+
+Stamina_AOB:
+  db F3 0F 10 40 38
+
+unregistersymbol(Stamina_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+1C712BF
+
+Ghostrunner2-Win64-Shipping.exe+1C71297: 48 8B C8              - mov rcx,rax
+Ghostrunner2-Win64-Shipping.exe+1C7129A: E8 01 EF F0 FF        - call Ghostrunner2-Win64-Shipping.exe+1B801A0
+Ghostrunner2-Win64-Shipping.exe+1C7129F: 80 B8 7B 09 00 00 00  - cmp byte ptr [rax+0000097B],00
+Ghostrunner2-Win64-Shipping.exe+1C712A6: 75 0A                 - jne Ghostrunner2-Win64-Shipping.exe+1C712B2
+Ghostrunner2-Win64-Shipping.exe+1C712A8: E8 93 87 01 00        - call Ghostrunner2-Win64-Shipping.exe+1C89A40
+Ghostrunner2-Win64-Shipping.exe+1C712AD: F3 44 0F 5E C0        - divss xmm8,xmm0
+Ghostrunner2-Win64-Shipping.exe+1C712B2: E8 C9 19 FF FF        - call Ghostrunner2-Win64-Shipping.exe+1C62C80
+Ghostrunner2-Win64-Shipping.exe+1C712B7: 0F 57 F6              - xorps xmm6,xmm6
+Ghostrunner2-Win64-Shipping.exe+1C712BA: 48 85 C0              - test rax,rax
+Ghostrunner2-Win64-Shipping.exe+1C712BD: 74 11                 - je Ghostrunner2-Win64-Shipping.exe+1C712D0
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+1C712BF: F3 0F 10 40 38        - movss xmm0,[rax+38]
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+1C712C4: 0F 2F C6              - comiss xmm0,xmm6
+Ghostrunner2-Win64-Shipping.exe+1C712C7: 73 07                 - jae Ghostrunner2-Win64-Shipping.exe+1C712D0
+Ghostrunner2-Win64-Shipping.exe+1C712C9: F3 0F 59 7B 18        - mulss xmm7,[rbx+18]
+Ghostrunner2-Win64-Shipping.exe+1C712CE: EB 05                 - jmp Ghostrunner2-Win64-Shipping.exe+1C712D5
+Ghostrunner2-Win64-Shipping.exe+1C712D0: F3 0F 59 7B 14        - mulss xmm7,[rbx+14]
+Ghostrunner2-Win64-Shipping.exe+1C712D5: F3 41 0F 59 F8        - mulss xmm7,xmm8
+Ghostrunner2-Win64-Shipping.exe+1C712DA: E8 A1 19 FF FF        - call Ghostrunner2-Win64-Shipping.exe+1C62C80
+Ghostrunner2-Win64-Shipping.exe+1C712DF: 48 85 C0              - test rax,rax
+Ghostrunner2-Win64-Shipping.exe+1C712E2: 74 05                 - je Ghostrunner2-Win64-Shipping.exe+1C712E9
+Ghostrunner2-Win64-Shipping.exe+1C712E4: F3 0F 10 70 38        - movss xmm6,[rax+38]
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>98</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9215</ID>
+              <Description>"Unlimited Stamina When Blocking"</Description>
+              <Options moHideChildren="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(StaminaBlocking_AOB,Ghostrunner2-Win64-Shipping.exe,F3 0F 10 40 38 48 83) // should be unique
+alloc(newmem,$1000,StaminaBlocking_AOB)
+
+label(code)
+label(return)
+
+newmem:
+  mov [rax+38],(float)777
+code:
+  movss xmm0,[rax+38]
+  jmp return
+
+StaminaBlocking_AOB:
+  jmp newmem
+return:
+registersymbol(StaminaBlocking_AOB)
+
+[DISABLE]
+
+StaminaBlocking_AOB:
+  db F3 0F 10 40 38
+
+unregistersymbol(StaminaBlocking_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+1C62BFE
+
+Ghostrunner2-Win64-Shipping.exe+1C62BEA: CC              - int 3
+Ghostrunner2-Win64-Shipping.exe+1C62BEB: CC              - int 3
+Ghostrunner2-Win64-Shipping.exe+1C62BEC: CC              - int 3
+Ghostrunner2-Win64-Shipping.exe+1C62BED: CC              - int 3
+Ghostrunner2-Win64-Shipping.exe+1C62BEE: CC              - int 3
+Ghostrunner2-Win64-Shipping.exe+1C62BEF: CC              - int 3
+Ghostrunner2-Win64-Shipping.exe+1C62BF0: 48 83 EC 28     - sub rsp,28
+Ghostrunner2-Win64-Shipping.exe+1C62BF4: E8 87 00 00 00  - call Ghostrunner2-Win64-Shipping.exe+1C62C80
+Ghostrunner2-Win64-Shipping.exe+1C62BF9: 48 85 C0        - test rax,rax
+Ghostrunner2-Win64-Shipping.exe+1C62BFC: 74 0A           - je Ghostrunner2-Win64-Shipping.exe+1C62C08
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+1C62BFE: F3 0F 10 40 38  - movss xmm0,[rax+38]
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+1C62C03: 48 83 C4 28     - add rsp,28
+Ghostrunner2-Win64-Shipping.exe+1C62C07: C3              - ret
+Ghostrunner2-Win64-Shipping.exe+1C62C08: 0F 57 C0        - xorps xmm0,xmm0
+Ghostrunner2-Win64-Shipping.exe+1C62C0B: 48 83 C4 28     - add rsp,28
+Ghostrunner2-Win64-Shipping.exe+1C62C0F: C3              - ret
+Ghostrunner2-Win64-Shipping.exe+1C62C10: 40 53           - push rbx
+Ghostrunner2-Win64-Shipping.exe+1C62C12: 48 83 EC 20     - sub rsp,20
+Ghostrunner2-Win64-Shipping.exe+1C62C16: E8 65 00 00 00  - call Ghostrunner2-Win64-Shipping.exe+1C62C80
+Ghostrunner2-Win64-Shipping.exe+1C62C1B: 48 8B D8        - mov rbx,rax
+Ghostrunner2-Win64-Shipping.exe+1C62C1E: 48 85 C0        - test rax,rax
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>99</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9214</ID>
+              <Description>"No Dash Cooldown"</Description>
+              <Options moHideChildren="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(DashCooldown_AOB,Ghostrunner2-Win64-Shipping.exe,0F 82 * * * * 0F 29 7C 24 * E8) // should be unique
+DashCooldown_AOB:
+  db 0F 84
+registersymbol(DashCooldown_AOB)
+
+[DISABLE]
+
+DashCooldown_AOB:
+  db 0F 82
+unregistersymbol(DashCooldown_AOB)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+1C71ADA
+
+Ghostrunner2-Win64-Shipping.exe+1C71AAC: 44 0F 28 C0              - movaps xmm8,xmm0
+Ghostrunner2-Win64-Shipping.exe+1C71AB0: E8 CB 11 FF FF           - call Ghostrunner2-Win64-Shipping.exe+1C62C80
+Ghostrunner2-Win64-Shipping.exe+1C71AB5: 48 8B D8                 - mov rbx,rax
+Ghostrunner2-Win64-Shipping.exe+1C71AB8: 48 85 C0                 - test rax,rax
+Ghostrunner2-Win64-Shipping.exe+1C71ABB: 0F 84 A5 02 00 00        - je Ghostrunner2-Win64-Shipping.exe+1C71D66
+Ghostrunner2-Win64-Shipping.exe+1C71AC1: 48 8B C8                 - mov rcx,rax
+Ghostrunner2-Win64-Shipping.exe+1C71AC4: E8 B7 80 BE FF           - call Ghostrunner2-Win64-Shipping.exe+1859B80
+Ghostrunner2-Win64-Shipping.exe+1C71AC9: F3 0F 10 88 AC 05 00 00  - movss xmm1,[rax+000005AC]
+Ghostrunner2-Win64-Shipping.exe+1C71AD1: F3 0F 5C 4B 60           - subss xmm1,[rbx+60]
+Ghostrunner2-Win64-Shipping.exe+1C71AD6: 0F 2F 4B 58              - comiss xmm1,[rbx+58]
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+1C71ADA: 0F 82 86 02 00 00        - jb Ghostrunner2-Win64-Shipping.exe+1C71D66
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+1C71AE0: 0F 29 7C 24 30           - movaps [rsp+30],xmm7
+Ghostrunner2-Win64-Shipping.exe+1C71AE5: E8 96 11 FF FF           - call Ghostrunner2-Win64-Shipping.exe+1C62C80
+Ghostrunner2-Win64-Shipping.exe+1C71AEA: 48 85 C0                 - test rax,rax
+Ghostrunner2-Win64-Shipping.exe+1C71AED: 0F 84 45 02 00 00        - je Ghostrunner2-Win64-Shipping.exe+1C71D38
+Ghostrunner2-Win64-Shipping.exe+1C71AF3: F3 0F 10 40 38           - movss xmm0,[rax+38]
+Ghostrunner2-Win64-Shipping.exe+1C71AF8: 0F 57 FF                 - xorps xmm7,xmm7
+Ghostrunner2-Win64-Shipping.exe+1C71AFB: 0F 2F C7                 - comiss xmm0,xmm7
+Ghostrunner2-Win64-Shipping.exe+1C71AFE: 0F 86 34 02 00 00        - jbe Ghostrunner2-Win64-Shipping.exe+1C71D38
+Ghostrunner2-Win64-Shipping.exe+1C71B04: 48 8B CB                 - mov rcx,rbx
+Ghostrunner2-Win64-Shipping.exe+1C71B07: 0F 29 74 24 40           - movaps [rsp+40],xmm6
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>100</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9269</ID>
+              <Description>"Unlimited Jump"</Description>
+              <Options moHideChildren="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+[ENABLE]
+
+aobscanmodule(Jump_AOB,Ghostrunner2-Win64-Shipping.exe,4C 8B 03 45 33 C9 F3) // should be unique
+alloc(newmem,$1000,Jump_AOB)
+
+label(code)
+label(return)
+
+newmem:
+  push rax
+  mov rax,[rbx+13B0]
+  mov [rax+B8],#777
+  pop rax
+code:
+  mov r8,[rbx]
+  xor r9d,r9d
+  jmp return
+
+Jump_AOB:
+  jmp newmem
+  nop
+return:
+registersymbol(Jump_AOB)
+
+[DISABLE]
+
+Jump_AOB:
+  db 4C 8B 03 45 33 C9
+
+unregistersymbol(Jump_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+1C32A0D
+
+Ghostrunner2-Win64-Shipping.exe+1C329DD: 80 BB 7A 09 00 00 00     - cmp byte ptr [rbx+0000097A],00
+Ghostrunner2-Win64-Shipping.exe+1C329E4: 75 63                    - jne Ghostrunner2-Win64-Shipping.exe+1C32A49
+Ghostrunner2-Win64-Shipping.exe+1C329E6: 80 BB 80 0C 00 00 00     - cmp byte ptr [rbx+00000C80],00
+Ghostrunner2-Win64-Shipping.exe+1C329ED: 75 5A                    - jne Ghostrunner2-Win64-Shipping.exe+1C32A49
+Ghostrunner2-Win64-Shipping.exe+1C329EF: 80 BB F9 05 00 00 00     - cmp byte ptr [rbx+000005F9],00
+Ghostrunner2-Win64-Shipping.exe+1C329F6: 75 51                    - jne Ghostrunner2-Win64-Shipping.exe+1C32A49
+Ghostrunner2-Win64-Shipping.exe+1C329F8: 80 BB E0 07 00 00 00     - cmp byte ptr [rbx+000007E0],00
+Ghostrunner2-Win64-Shipping.exe+1C329FF: 74 48                    - je Ghostrunner2-Win64-Shipping.exe+1C32A49
+Ghostrunner2-Win64-Shipping.exe+1C32A01: 48 8B 83 A8 07 00 00     - mov rax,[rbx+000007A8]
+Ghostrunner2-Win64-Shipping.exe+1C32A08: 48 8D 54 24 30           - lea rdx,[rsp+30]
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+1C32A0D: 4C 8B 03                 - mov r8,[rbx]
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+1C32A10: 45 33 C9                 - xor r9d,r9d
+Ghostrunner2-Win64-Shipping.exe+1C32A13: F3 0F 11 54 24 38        - movss [rsp+38],xmm2
+Ghostrunner2-Win64-Shipping.exe+1C32A19: 48 8B CB                 - mov rcx,rbx
+Ghostrunner2-Win64-Shipping.exe+1C32A1C: F3 0F 11 44 24 30        - movss [rsp+30],xmm0
+Ghostrunner2-Win64-Shipping.exe+1C32A22: F3 0F 59 30              - mulss xmm6,[rax]
+Ghostrunner2-Win64-Shipping.exe+1C32A26: F3 0F 11 4C 24 34        - movss [rsp+34],xmm1
+Ghostrunner2-Win64-Shipping.exe+1C32A2C: 0F 28 D6                 - movaps xmm2,xmm6
+Ghostrunner2-Win64-Shipping.exe+1C32A2F: 41 FF 90 38 07 00 00     - call qword ptr [r8+00000738]
+Ghostrunner2-Win64-Shipping.exe+1C32A36: B0 01                    - mov al,01
+Ghostrunner2-Win64-Shipping.exe+1C32A38: 0F 28 B4 24 B0 00 00 00  - movaps xmm6,[rsp+000000B0]
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>101</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9273</ID>
+              <Description>"No Skill Cost"</Description>
+              <Options moHideChildren="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+
+[ENABLE]
+
+aobscanmodule(SkillCost_AOB,Ghostrunner2-Win64-Shipping.exe,F3 0F 59 B7 E0 00 00 00 0F 28 CE 48 8B 5C 24 58) // should be unique
+alloc(newmem,$1000,SkillCost_AOB)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mulss xmm6,[rdi+000000E0]
+  xorps xmm6,xmm6
+  jmp return
+
+SkillCost_AOB:
+  jmp newmem
+  nop 3
+return:
+registersymbol(SkillCost_AOB)
+
+[DISABLE]
+
+SkillCost_AOB:
+  db F3 0F 59 B7 E0 00 00 00
+
+unregistersymbol(SkillCost_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+1C62BBD
+
+Ghostrunner2-Win64-Shipping.exe+1C62B8C: E8 4F 0E 05 00           - call Ghostrunner2-Win64-Shipping.exe+1CB39E0
+Ghostrunner2-Win64-Shipping.exe+1C62B91: 84 C0                    - test al,al
+Ghostrunner2-Win64-Shipping.exe+1C62B93: 74 0A                    - je Ghostrunner2-Win64-Shipping.exe+1C62B9F
+Ghostrunner2-Win64-Shipping.exe+1C62B95: F3 0F 10 B3 C0 02 00 00  - movss xmm6,[rbx+000002C0]
+Ghostrunner2-Win64-Shipping.exe+1C62B9D: EB 08                    - jmp Ghostrunner2-Win64-Shipping.exe+1C62BA7
+Ghostrunner2-Win64-Shipping.exe+1C62B9F: F3 0F 10 B3 B8 02 00 00  - movss xmm6,[rbx+000002B8]
+Ghostrunner2-Win64-Shipping.exe+1C62BA7: 0F 57 35 42 C0 B7 02     - xorps xmm6,[Ghostrunner2-Win64-Shipping.exe+47DEBF0]
+Ghostrunner2-Win64-Shipping.exe+1C62BAE: F3 0F 58 35 AA F6 B7 02  - addss xmm6,[Ghostrunner2-Win64-Shipping.exe+47E2260]
+Ghostrunner2-Win64-Shipping.exe+1C62BB6: 41 0F 28 D0              - movaps xmm2,xmm8
+Ghostrunner2-Win64-Shipping.exe+1C62BBA: 48 8B CF                 - mov rcx,rdi
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+1C62BBD: F3 0F 59 B7 E0 00 00 00  - mulss xmm6,[rdi+000000E0]
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+1C62BC5: 0F 28 CE                 - movaps xmm1,xmm6
+Ghostrunner2-Win64-Shipping.exe+1C62BC8: 48 8B 5C 24 58           - mov rbx,[rsp+58]
+Ghostrunner2-Win64-Shipping.exe+1C62BCD: 0F 28 74 24 30           - movaps xmm6,[rsp+30]
+Ghostrunner2-Win64-Shipping.exe+1C62BD2: 44 0F 28 44 24 20        - movaps xmm8,[rsp+20]
+Ghostrunner2-Win64-Shipping.exe+1C62BD8: 48 83 C4 40              - add rsp,40
+Ghostrunner2-Win64-Shipping.exe+1C62BDC: 5F                       - pop rdi
+Ghostrunner2-Win64-Shipping.exe+1C62BDD: E9 3E C4 FB FF           - jmp Ghostrunner2-Win64-Shipping.exe+1C1F020
+Ghostrunner2-Win64-Shipping.exe+1C62BE2: CC                       - int 3
+Ghostrunner2-Win64-Shipping.exe+1C62BE3: CC                       - int 3
+Ghostrunner2-Win64-Shipping.exe+1C62BE4: CC                       - int 3
+}
+
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>102</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9272</ID>
+              <Description>"No Ultimate Cooldown"</Description>
+              <Options moHideChildren="1"/>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*===============================
+Cheat Script by ColonelRVH
+
+Please Support my work at:
+  https://ko-fi.com/ColonelRVH
+
+Visit my website at:
+  https://www.thecheatscript.com
+- For latest content, better index &amp; easy to find game cheat that you need.
+
+● You can alter it as your own discretion, but you must keep my credits.
+● Any distributions of my tables &amp; codes are unadvised.
+
+===============================*/
+
+
+[ENABLE]
+
+aobscanmodule(UltimateCooldown_AOB,Ghostrunner2-Win64-Shipping.exe,0F 57 C0 F3 0F 5C F7 F3) // should be unique
+alloc(newmem,$1000,UltimateCooldown_AOB)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  xorps xmm0,xmm0
+  subss xmm6,xmm7
+  xorps xmm6,xmm6
+  jmp return
+
+UltimateCooldown_AOB:
+  jmp newmem
+  nop 2
+return:
+registersymbol(UltimateCooldown_AOB)
+
+[DISABLE]
+
+UltimateCooldown_AOB:
+  db 0F 57 C0 F3 0F 5C F7
+
+unregistersymbol(UltimateCooldown_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Ghostrunner2-Win64-Shipping.exe+1C713D8
+
+Ghostrunner2-Win64-Shipping.exe+1C713AD: 48 8B 49 30              - mov rcx,[rcx+30]
+Ghostrunner2-Win64-Shipping.exe+1C713B1: 48 83 C1 58              - add rcx,58
+Ghostrunner2-Win64-Shipping.exe+1C713B5: F3 0F 11 74 24 50        - movss [rsp+50],xmm6
+Ghostrunner2-Win64-Shipping.exe+1C713BB: E8 E0 10 D1 FE           - call Ghostrunner2-Win64-Shipping.exe+9824A0
+Ghostrunner2-Win64-Shipping.exe+1C713C0: 0F 28 74 24 30           - movaps xmm6,[rsp+30]
+Ghostrunner2-Win64-Shipping.exe+1C713C5: 0F 28 7C 24 20           - movaps xmm7,[rsp+20]
+Ghostrunner2-Win64-Shipping.exe+1C713CA: 48 83 C4 40              - add rsp,40
+Ghostrunner2-Win64-Shipping.exe+1C713CE: 5B                       - pop rbx
+Ghostrunner2-Win64-Shipping.exe+1C713CF: C3                       - ret
+Ghostrunner2-Win64-Shipping.exe+1C713D0: F3 0F 10 B3 C4 00 00 00  - movss xmm6,[rbx+000000C4]
+// ---------- INJECTING HERE ----------
+Ghostrunner2-Win64-Shipping.exe+1C713D8: 0F 57 C0                 - xorps xmm0,xmm0
+// ---------- DONE INJECTING  ----------
+Ghostrunner2-Win64-Shipping.exe+1C713DB: F3 0F 5C F7              - subss xmm6,xmm7
+Ghostrunner2-Win64-Shipping.exe+1C713DF: F3 0F 11 B3 C4 00 00 00  - movss [rbx+000000C4],xmm6
+Ghostrunner2-Win64-Shipping.exe+1C713E7: 0F B6 8B D7 00 00 00     - movzx ecx,byte ptr [rbx+000000D7]
+Ghostrunner2-Win64-Shipping.exe+1C713EE: 84 C9                    - test cl,cl
+Ghostrunner2-Win64-Shipping.exe+1C713F0: 0F 84 D0 00 00 00        - je Ghostrunner2-Win64-Shipping.exe+1C714C6
+Ghostrunner2-Win64-Shipping.exe+1C713F6: 80 BB D6 00 00 00 00     - cmp byte ptr [rbx+000000D6],00
+Ghostrunner2-Win64-Shipping.exe+1C713FD: 0F 85 C3 00 00 00        - jne Ghostrunner2-Win64-Shipping.exe+1C714C6
+Ghostrunner2-Win64-Shipping.exe+1C71403: 8B 83 B8 00 00 00        - mov eax,[rbx+000000B8]
+Ghostrunner2-Win64-Shipping.exe+1C71409: 39 83 BC 00 00 00        - cmp [rbx+000000BC],eax
+Ghostrunner2-Win64-Shipping.exe+1C7140F: 0F 8C BA 00 00 00        - jl Ghostrunner2-Win64-Shipping.exe+1C714CF
+}
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>36</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>35</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>18</Key>
+                    <Key>103</Key>
+                  </Keys>
+                  <ID>2</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9409</ID>
+          <Description>"[Game Speed]"</Description>
+          <Color>FF8000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9419</ID>
+              <Description>"Force V-Sync Off if speedhack not working"</Description>
+              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+              <Color>0000FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9198</ID>
+              <Description>"Force Pause (Toggle: Pause Break)"</Description>
+              <Color>808080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+luacall(speedhack_setSpeed(0))
+
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>19</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9199</ID>
+              <Description>"Speedhack (Ctrl+/Ctrl-)"</Description>
+              <Color>808080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+luacall(speedhack_setSpeed(2))
+
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Activate</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>107</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound>Activate</ActivateSound>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Deactivate</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>109</Key>
+                  </Keys>
+                  <ID>1</ID>
+                  <DeactivateSound>Deactivate</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>117</ID>
+          <Description>"[Misc.][!]"</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9107</ID>
+              <Description>"Proceed With Cautions! This section is for Advanced User Only"</Description>
+              <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+              <Color>0000FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>8266</ID>
+              <Description>"[Backups][Unused]"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C0C0C0</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>8435</ID>
+              <Description>"[Obsolete][Buggy]"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C0C0C0</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9105</ID>
+          <Description>"&lt;-[HERE] INSTRUCTIONS | Tick the left square □ of this line to view -"</Description>
+          <Options moHideChildren="1"/>
+          <Color>008080</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9110</ID>
+              <Description>"- Basic -"</Description>
+              <Color>008080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9121</ID>
+                  <Description>"Choose Yes on the table opening so it can detect the game automatically"</Description>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9111</ID>
+                  <Description>"- To Activate a Cheat"</Description>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>9114</ID>
+                      <Description>"1. Tick on the square □ next to the group cheat features such as [Stats][Battle][Extra]"</Description>
+                      <Color>008080</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>9113</ID>
+                      <Description>"2. Certain cheat can only be activate after you done a certain action"</Description>
+                      <Color>008080</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>9301</ID>
+                          <Description>"So Follow the Activate instruction written on the cheat feature"</Description>
+                          <Color>008080</Color>
+                          <GroupHeader>1</GroupHeader>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>9300</ID>
+                      <Description>"3. Tick on the square □ next to the cheat features you want"</Description>
+                      <Color>008080</Color>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>9302</ID>
+                          <Description>"Some Cheats will start working only after you have done the action next to Update instruction"</Description>
+                          <Color>008080</Color>
+                          <GroupHeader>1</GroupHeader>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9112</ID>
+              <Description>"- Intermediate - "</Description>
+              <Color>008080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9106</ID>
+                  <Description>"- For cheat tables that have God Mode &amp; Instant Kill you must change the value to "Enabled" unless there's none"</Description>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>9303</ID>
+                      <Description>"Or just press Scroll Lock after you have activate the Get HP Addresses"</Description>
+                      <Color>008080</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9116</ID>
+                  <Description>"- You can find old cheats in [Misc.] for older version, in rare cases"</Description>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9117</ID>
+              <Description>"- Advanced | Master - "</Description>
+              <Options moHideChildren="1"/>
+              <Color>008080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9118</ID>
+                  <Description>"- All my codes are easy to understand and straightforward"</Description>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9119</ID>
+                  <Description>"- You can alter it as your own discretion, but you must keep my credits"</Description>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9120</ID>
+                  <Description>"- Any distributions of my tables &amp; codes are unadvised"</Description>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9115</ID>
+              <Description>"References"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>9082</ID>
+                  <Description>"- [Activate: To Activate this cheat you must do this action first] -"</Description>
+                  <Color>808000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9083</ID>
+                  <Description>"- [Update: To Update/Get the cheat's effects you must do this action first] -"</Description>
+                  <Color>808000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8265</ID>
+      <Description>"========== - SPECIAL THANKS -               =========="</Description>
+      <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <Color>808000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>9236</ID>
+          <Description>"-------                September 2023 Supporters                -------"</Description>
+          <Options moHideChildren="1"/>
+          <Color>0066FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>9248</ID>
+              <Description>"List will be updated every 7th day of the month, or all patrons are charged"</Description>
+              <Color>0066FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9281</ID>
+              <Description>"FHD"</Description>
+              <Color>0FCBF9</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9396</ID>
+              <Description>"Q"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9613</ID>
+              <Description>"Christopher Rockriver"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9608</ID>
+              <Description>"David Lipkeman"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9621</ID>
+              <Description>"Dubnasty"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9402</ID>
+              <Description>"Elite Raccoon"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9589</ID>
+              <Description>"Huamadaze"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9610</ID>
+              <Description>"ImmortalPickle78"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9276</ID>
+              <Description>"Ivan Stoyneshki"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9625</ID>
+              <Description>"Ivy Martin"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9615</ID>
+              <Description>"Juan Negron"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9624</ID>
+              <Description>"K"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9282</ID>
+              <Description>"Katie Serith"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9594</ID>
+              <Description>"Mike Huynh"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9258</ID>
+              <Description>"Morsigni"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9626</ID>
+              <Description>"racoon"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9623</ID>
+              <Description>"samuel dew"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9310</ID>
+              <Description>"Shadowryuu"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9605</ID>
+              <Description>"Stephen Drop"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9309</ID>
+              <Description>"Tac"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9308</ID>
+              <Description>"Terrell Ford"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9627</ID>
+              <Description>"The Second Yatagarasu"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9348</ID>
+              <Description>"Torvald "</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9628</ID>
+              <Description>"william lile"</Description>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9237</ID>
+              <Description>"... and other great Patrons"</Description>
+              <Color>808000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{
+AceBiggi3
+Alex Valderrama
+Alfred Dobradi
+Andrew Kinney says Snoo PINGAS usual I see
+Anthony Dai
+Atmos
+Chi Tran
+Chris
+Devise
+doubled
+Isaac Missingham
+jdoe
+Kareema
+Kenneth Roop
+KenshiRuto
+Leszek Kwaśniewski
+L-P
+michael evans
+mkita139
+Phemto
+Primal Crisis
+RYAN B WILSON
+Shanks aktiv
+Sorin Pancotan
+Steve Smith
+Steven Do
+Steven Williams
+Tuomas
+WarStalkeR
+yuko
+ZeqZion
+Zeta
+}
+[DISABLE]
+
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8908</ID>
+      <Description>"========== - Please support my work at - =========="</Description>
+      <Options moActivateChildrenAsWell="1"/>
+      <Color>808000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>9321</ID>
+          <Description>"https://ko-fi.com/colonelrvh"</Description>
+          <Options moHideChildren="1"/>
+          <Color>808000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+ShellExecute('https://www.thecheatscript.com')
+ShellExecute('https://ko-fi.com/colonelrvh')
+{$asm}
+[ENABLE]
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>If you want to support, Please consider becoming my patron at:
+----------------------
+https://ko-fi.com/ColonelRVH
+----------------------
+It would be a great help for me to cover my living expenses so I can focus on making  &amp; improving cheats for you. 
+----------------------
+© ColonelRVH, 2017
+</Comments>
+  <LuaScript>attachlist=getAutoAttachList()
+stringlist_add(attachlist,"Ghostrunner2-Win64-Shipping.exe");
+
+function cycleFullCompact(sender,force) local state = not(compactmenuitem.Caption == 'Compact View Mode'); if force~=nil then state = not force end; compactmenuitem.Caption = state and 'Compact View Mode' or 'Full View Mode'; getMainForm().Splitter1.Visible = state; getMainForm().Panel5.Visible    = state; end; function addCompactMenu() if compactmenualreadyexists then return end; local parent = getMainForm().Menu.Items; compactmenuitem = createMenuItem(parent); parent.add(compactmenuitem); compactmenuitem.Caption = 'Compact View Mode'; compactmenuitem.OnClick = cycleFullCompact; compactmenualreadyexists = 'yes'; end; addCompactMenu(); cycleFullCompact(nil,true)
+</LuaScript>
+</CheatTable>

@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?><CheatTable CheatEngineTableVersion="38"><CheatEntries><CheatEntry><ID>1</ID><Description>"GM Setup (CScripts|Objects|CCodes|VMBuffers|Instances)"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><VariableType>Auto Assembler Script</VariableType><AssemblerScript Async="1">[ENABLE]
+{$lua}
+if syntaxcheck then return end
+if SetupGMTable() then
+    GMStartRecheckInstancesThread(5000)
+else
+    assert()
+end
+{$asm}
+[DISABLE]
+{$lua}
+if syntaxcheck then return end
+gm.CCodeRecheckInstancesThread.terminate()
+gm = nil
+{$asm}
+</AssemblerScript><CheatEntries><CheatEntry><ID>2</ID><Description>"Global Variables"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><ShowAsSigned>0</ShowAsSigned><GroupHeader>1</GroupHeader><Address>gm.Globals.Address</Address><Offsets><Offset>0</Offset><Offset>10</Offset><Offset>gm.InstanceVarPtrOff</Offset></Offsets><CheatEntries><CheatEntry><ID>3</ID><Description>"Player Resources"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><ShowAsSigned>0</ShowAsSigned><GroupHeader>1</GroupHeader><Address>+gm.Variables.Globals.playerres</Address><Offsets><Offset>0</Offset><Offset>0</Offset></Offsets><CheatEntries><CheatEntry><ID>4</ID><Description>"Count"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>4 Bytes</VariableType><Address>+gm.DynamicArrayOffsets.Count</Address></CheatEntry><CheatEntry><ID>5</ID><Description>"Items"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><ShowAsSigned>0</ShowAsSigned><GroupHeader>1</GroupHeader><Address>+gm.DynamicArrayOffsets.Items</Address><Offsets><Offset>0</Offset></Offsets><CheatEntries><CheatEntry><ID>6</ID><Description>"Resources"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><ShowAsSigned>0</ShowAsSigned><GroupHeader>1</GroupHeader><Address>+0*10</Address><Offsets><Offset>0</Offset></Offsets><CheatEntries><CheatEntry><ID>7</ID><Description>"Count"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>4 Bytes</VariableType><Address>+gm.DynamicArrayOffsets.Count</Address></CheatEntry><CheatEntry><ID>8</ID><Description>"Items"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><ShowAsSigned>0</ShowAsSigned><GroupHeader>1</GroupHeader><Address>+gm.DynamicArrayOffsets.Items</Address><Offsets><Offset>0</Offset></Offsets><CheatEntries><CheatEntry><ID>9</ID><Description>"Gold"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+0*10</Address></CheatEntry><CheatEntry><ID>10</ID><Description>"Ore"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+1*10</Address></CheatEntry><CheatEntry><ID>11</ID><Description>"Wood"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+2*10</Address></CheatEntry><CheatEntry><ID>12</ID><Description>"Mercury"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+3*10</Address></CheatEntry><CheatEntry><ID>13</ID><Description>"Crystal"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+4*10</Address></CheatEntry><CheatEntry><ID>14</ID><Description>"???"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+5*10</Address></CheatEntry><CheatEntry><ID>15</ID><Description>"Sulphur"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+6*10</Address></CheatEntry><CheatEntry><ID>16</ID><Description>"???"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+7*10</Address></CheatEntry><CheatEntry><ID>17</ID><Description>"???"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+8*10</Address></CheatEntry><CheatEntry><ID>18</ID><Description>"???"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+9*10</Address></CheatEntry></CheatEntries></CheatEntry></CheatEntries></CheatEntry></CheatEntries></CheatEntry></CheatEntries></CheatEntry></CheatEntries></CheatEntry><CheatEntry><ID>19</ID><Description>"Object Instances"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><GroupHeader>1</GroupHeader><CheatEntries><CheatEntry><ID>20</ID><Description>"Buried Treasure"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><VariableType>Auto Assembler Script</VariableType><AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+CreateStringInputForm("obj_buriedtreasure_instance_number", "Choose Instance", "Input the Instance Number:", true, false, nil, nil, function(var, varName)
+    if var == 0x0 then
+        formVariables[varName] = 0x1
+    end
+end)
+{$asm}
+[DISABLE]
+{$lua}
+if syntaxcheck then return end
+formVariables.obj_buriedtreasure_instance_number = nil
+{$asm}
+</AssemblerScript><CheatEntries><CheatEntry><ID>21</ID><Description>"Instance"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><ShowAsSigned>0</ShowAsSigned><GroupHeader>1</GroupHeader><Address>gm.ObjTbl.obj_buriedtreasure.Instances[formVariables.obj_buriedtreasure_instance_number]</Address><Offsets><Offset>0</Offset></Offsets><CheatEntries><CheatEntry><ID>22</ID><Description>"Variables"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><ShowAsSigned>0</ShowAsSigned><GroupHeader>1</GroupHeader><Address>+gm.InstanceVarPtrOff</Address><Offsets><Offset>0</Offset><Offset>10</Offset></Offsets><CheatEntries><CheatEntry><ID>23</ID><Description>"From X"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+gm.Variables.obj_buriedtreasure.fromx</Address><Offsets><Offset>0</Offset></Offsets></CheatEntry><CheatEntry><ID>24</ID><Description>"From Y"</Description><ShowAsSigned>0</ShowAsSigned><VariableType>Double</VariableType><Address>+gm.Variables.obj_buriedtreasure.fromy</Address><Offsets><Offset>0</Offset></Offsets></CheatEntry></CheatEntries></CheatEntry></CheatEntries></CheatEntry></CheatEntries></CheatEntry></CheatEntries></CheatEntry><CheatEntry><ID>25</ID><Description>"Tools"</Description><Options moHideChildren="1" moDeactivateChildrenAsWell="1"/><GroupHeader>1</GroupHeader><CheatEntries><CheatEntry><ID>26</ID><Description>"Dump Current Variables"</Description><VariableType>Auto Assembler Script</VariableType><AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+local saveDialog = createSaveDialog(self)
+saveDialog.Options = "[ofOverwritePrompt]"
+saveDialog.Title = "Save file as..."
+saveDialog.DefaultExt = ".gmvardmp"
+saveDialog.Filter = "CCode Dump|*" .. saveDialog.DefaultExt
+if saveDialog.execute() then
+    local f,e = io.open(saveDialog.FileName, 'w+')
+    assert(f,e)
+    local textLines = {}
+    for n,v in pairs(gm.Variables) do
+        table.insert(textLines,"--- " .. n .. " ---")
+        keys = {}
+        for key,_ in pairs(v) do
+            table.insert(keys, key)
+        end
+        table.sort(keys, function(name, off) return v[name] &lt; v[off] end)
+        for i,k in ipairs(keys) do
+            table.insert(textLines,"\t- 0x" .. NumberToHexString(v[k]) .. " | " .. k)
+        end
+    end
+    for i,v in ipairs(textLines) do
+    	f:write(v .. '\n')
+    end
+    f:close()
+end
+assert()
+[DISABLE]
+</AssemblerScript></CheatEntry><CheatEntry><ID>27</ID><Description>"Find Variable by Offset"</Description><VariableType>Auto Assembler Script</VariableType><AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+CreateStringInputForm("tmp", "Enter Offset", "Input the Offset (Hex):", true, true, nil, nil, function(var, varName)
+    local val = var
+    formVariables[varName] = nil
+    for n,v in pairs(gm.Variables) do
+        print(n)
+        keys = {}
+        for n2,v2 in pairs(v) do
+            if v2 == val then
+                table.insert(keys, n2)
+            end
+        end
+        table.sort(keys, function(name, off) return v[name] &lt; v[off] end)
+        for i,k in ipairs(keys) do
+            print("\t0x" .. NumberToHexString(v[k]) .. " | " .. k)
+        end
+    end
+    end)
+assert()
+[DISABLE]
+</AssemblerScript></CheatEntry><CheatEntry><ID>28</ID><Description>"Find Variable by Text"</Description><VariableType>Auto Assembler Script</VariableType><AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+CreateStringInputForm("tmp", "Enter Text", "Input the search Text:", false, false, nil, nil, function(var, varName)
+    local str = var
+    formVariables[varName] = nil
+    for n,v in pairs(gm.Variables) do
+        print(n)
+        keys = {}
+        for n2,v2 in pairs(v) do
+            if n2:find(str) then
+                table.insert(keys, n2)
+            end
+        end
+        table.sort(keys, function(name, off) return v[name] &lt; v[off] end)
+        for i,k in ipairs(keys) do
+            print("\t0x" .. NumberToHexString(v[k]) .. " | " .. k)
+        end
+    end
+    end)
+assert()
+[DISABLE]
+</AssemblerScript></CheatEntry></CheatEntries></CheatEntry></CheatEntries></CheatEntry></CheatEntries><UserdefinedSymbols><SymbolEntry><Name>randomvalue</Name><Address>009D0000</Address></SymbolEntry></UserdefinedSymbols><LuaScript>--- GameMaker Functions ---
+function SetupGMTable()
+    gm = {}
+    gm.Is64Bit = targetIs64Bit()
+    gm.PointerSize = gm.Is64Bit and 0x8 or 0x4
+    gm.Globals = {}
+    gm.Globals.Address = GMFindGlobalsBasePointer()
+    if not gm.Globals.Address or gm.Globals.Address == 0x0 then
+        print("GM Globals Address Retrieval Failed.")
+        return false
+    end
+    local objectTableBasePointer = GMFindObjectTableBasePointer()
+    if not objectTableBasePointer or objectTableBasePointer == 0x0 then
+        print("GM Object List Retrieval Failed.")
+        return false
+    end
+    gm.ObjTbl = GMReadObjectTable(readPointer(objectTableBasePointer))
+    gm.InstanceVarPtrOff = GMFindInstanceVariablePointerOffset()
+    if not gm.InstanceVarPtrOff or gm.InstanceVarPtrOff == 0x0 then
+        print("GM Instance Variable Pointer Offset Retrieval Failed.")
+        return false
+    end
+    gm.VarNameOffBase = GMFindVariableNameOffsetBase()
+    if not gm.VarNameOffBase or gm.VarNameOffBase == 0x0 then
+        print("GM Base Variable Name Offset Retrieval Failed.")
+        return false
+    end
+    local ptr, size = GMFindVariableNameTableBasePointerandSize()
+    if not ptr or ptr == 0x0 or not size then
+        print("GM Variable Name Table Base Pointer and/or Size Retrieval Failed.")
+        return false
+    end
+    gm.VariableNameTable = GMReadVariableNameTable(readPointer(ptr), size)
+    gm.DynamicArrayOffsets = GMFindDynamicArrayOffsets()
+    for n,v in pairs(gm.DynamicArrayOffsets) do
+        if not v then
+            print("GM Dynamic Array Offset, "..n..", Retrieval Failed.")
+            return false
+        end
+    end
+    gm.Variables = {}
+    gm.Variables.Globals = GMReadVariableTable(readPointer(readPointer(gm.Globals.Address)+gm.InstanceVarPtrOff))
+    return true
+end
+function GMFindGlobalsBasePointer()
+    local AoBScanTbl = {}
+    AoBScanTbl.x64 = {{"4C 8B * * * * * 41 * * * 44 * * 41", 0x3, {AoBTools.AoBPointerType.NearAddress}}}
+    AoBScanTbl.x32 = {{"C7 * * * * * C7 * * * * * * 8B * * * * * 8B * * 85", 0xF, {AoBTools.AoBPointerType.FarAddress}}}
+    return AoBTools.ScanAoBTable(gm.Is64Bit and AoBScanTbl.x64 or AoBScanTbl.x32, getAddressSafe(process))
+end
+function GMFindObjectTableBasePointer()
+    local AoBScanTbl = {}
+    AoBScanTbl.x64 = {
+        {"74 * 44 * * * * 45 * * 44 * * * * * * E8", 0x12, {AoBTools.AoBPointerType.NearAddress}},
+        {"48 8B * * * * * 49 * * 48", 0x3, {AoBTools.AoBPointerType.NearAddress}}
+    }
+    AoBScanTbl.x32 = {
+        {"7D * C7 * * * * * * E8 * * * * 83", 0xA, {AoBTools.AoBPointerType.NearAddress}},
+        {"A1 * * * * 8B", 0x1, {AoBTools.AoBPointerType.FarAddress}}
+    }
+    return AoBTools.ScanAoBTable(gm.Is64Bit and AoBScanTbl.x64 or AoBScanTbl.x32, getAddressSafe(process))
+end
+function GMFindInstanceVariablePointerOffset()
+    local AoBScanTbl = {}
+    AoBScanTbl.x64 = {
+        {"74 * 48 * * 48 * * * 48 * * EB * 8B * E8", 0x11, {AoBTools.AoBPointerType.NearAddress}},
+        {"48 * * * 48 * * 75", 0x3, {AoBTools.AoBPointerType.Offset, 0x1, true}}
+    }
+    AoBScanTbl.x32 = {
+        {"C7 * * * * * C7 * * * * * * 8B * * * * * 8B * * 85 * 74", 0x19, {AoBTools.AoBPointerType.CloseJump}},
+        {"E8", 0x1, {AoBTools.AoBPointerType.NearAddress}},
+        {"E8 * * * * 8B * * * 8B", 0xB, {AoBTools.AoBPointerType.Offset, 0x1, true}}
+    }
+    return AoBTools.ScanAoBTable(gm.Is64Bit and AoBScanTbl.x64 or AoBScanTbl.x32, getAddressSafe(process))
+end
+function GMFindVariableNameOffsetBase()
+    local AoBScanTbl = {}
+    AoBScanTbl.x64 = {{"3B * * * * * 0F 8D * * * * 48 * * * * * * 48 * * * 48 * * 74 * 8D", 0x1E, {AoBTools.AoBPointerType.Offset, 0x4, true}}}
+    AoBScanTbl.x32 = {{"3B * * * * * 0F 8D * * * * A1 * * * * 8B * * 85 * 74 * 8D", 0x1A, {AoBTools.AoBPointerType.Offset, 0x4, true}}}
+    return AoBTools.ScanAoBTable(gm.Is64Bit and AoBScanTbl.x64 or AoBScanTbl.x32, getAddressSafe(process))
+end
+function GMFindVariableNameTableBasePointerandSize()
+    local AoBScanTbl = {}
+    AoBScanTbl.x64 = {{"3B * * * * * 0F 8D * * * * 48 * * * * * * 48 * * * 48 * * 74 * 8D", 0x2, {AoBTools.AoBPointerType.NearAddress}}}
+    AoBScanTbl.x32 = {{"3B * * * * * 0F 8D * * * * A1 * * * * 8B * * 85 * 74 * 8D", 0x2, {AoBTools.AoBPointerType.FarAddress}}}
+    local size = readInteger(AoBTools.ScanAoBTable(gm.Is64Bit and AoBScanTbl.x64 or AoBScanTbl.x32, getAddressSafe(process)))
+    AoBScanTbl.x64 = {{"3B * * * * * 0F 8D * * * * 48 * * * * * * 48 * * * 48 * * 74 * 8D", 0xF, {AoBTools.AoBPointerType.NearAddress}}}
+    AoBScanTbl.x32 = {{"3B * * * * * 0F 8D * * * * A1 * * * * 8B * * 85 * 74 * 8D", 0xD, {AoBTools.AoBPointerType.FarAddress}}}
+    local ptr = AoBTools.ScanAoBTable(gm.Is64Bit and AoBScanTbl.x64 or AoBScanTbl.x32, getAddressSafe(process))
+    return ptr, size
+end
+function GMFindDynamicArrayOffsets()
+    local dynArrayOffsets = {}
+    local AoBScanTbl = {}
+    AoBScanTbl.x64 = {{"48 * * * * * * E8 * * * * FF * 3B * * * * * 7C * 40", 0x10, {AoBTools.AoBPointerType.Offset, 0x4, true}}}
+    AoBScanTbl.x32 = {{"3B * * 0F 8D * * * * 8B * C1 * * 03", 0x2, {AoBTools.AoBPointerType.Offset, 0x1, true}}}
+    dynArrayOffsets.Count = AoBTools.ScanAoBTable(gm.Is64Bit and AoBScanTbl.x64 or AoBScanTbl.x32, getAddressSafe(process))
+    AoBScanTbl.x64 = {{"48 * * * * * * E8 * * * * FF * 3B * * * * * 7C * 40", 0x3, {AoBTools.AoBPointerType.Offset, 0x4, true}}}
+    AoBScanTbl.x32 = {{"3B * * 0F 8D * * * * 8B * C1 * * 03", 0x10, {AoBTools.AoBPointerType.Offset, 0x1, true}}}
+    dynArrayOffsets.Items = AoBTools.ScanAoBTable(gm.Is64Bit and AoBScanTbl.x64 or AoBScanTbl.x32, getAddressSafe(process))
+    return dynArrayOffsets
+end
+function GMReadObjectTable(tblAddress)
+    local objTbl = {}
+    local ObjectListtCount = (readInteger(tblAddress + gm.PointerSize) * 0x2) + 0x1
+    local baseAddress = readPointer(tblAddress)
+    for i = 0,ObjectListtCount do
+        local address = readPointer(baseAddress+i*gm.PointerSize)
+        if address and address &gt; 0x0 then
+            local obj, objName = GMReadObject(address)
+            objTbl[objName] = obj
+            local p = obj.Parent
+            while p and not objTbl[p.Name] do
+                objTbl[p.Name] = p
+                p = p.Parent
+            end
+        end
+    end
+    return objTbl
+end
+function GMReadObject(address)
+    local objectData = readPointer(address + (gm.PointerSize * 0x3))
+    local gmObject = {}
+    gmObject.Name = readString(readPointer(objectData),0x100)
+    gmObject.Address = objectData
+    gmObject.Instances = {}
+    local parentObjAddr = readPointer(address + gm.PointerSize)
+    if parentObjAddr ~= 0x0 then
+        local obj, objName = GMReadObject(parentObjAddr)
+        gmObject.Parent = obj
+    end
+    return gmObject, gmObject.Name
+end
+function GMReadVariableNameTable(address, size)
+    local varNameTbl = {}
+    local count = size - 0x1
+    for i=0,count do
+        local stringPtr = readPointer(address+i*gm.PointerSize)
+        varNameTbl[i] = stringPtr ~= 0x0 and readString(stringPtr, 0x100) or ""
+    end
+    return varNameTbl
+end
+function GMReadVariableTable(address)
+    local varTbl = {}
+    local varTableCount = readInteger(address + 0x8)
+    local varTableAddr = readPointer(address + 0x10)
+    for i = 0,varTableCount do
+        local off = i*(0x8+gm.PointerSize)
+        local varName = gm.VariableNameTable[readInteger(varTableAddr+off+gm.PointerSize)-gm.VarNameOffBase]
+        if varName and varName ~= "" then
+            --varTbl[i] = off
+            varTbl[varName] = off
+        end
+    end
+    return varTbl
+end
+function GMRecheckInstances(Thread, delay)
+    while not Thread.Terminated do
+        sleep(delay)
+        if Thread.Terminated then return end
+        gm.Variables.Globals = GMReadVariableTable(readPointer(readPointer(gm.Globals.Address)+gm.InstanceVarPtrOff))
+        for n,obj in pairs(gm.ObjTbl) do
+            if Thread.Terminated then return end
+            local instanceData = readPointer(obj.Address + (gm.Is64Bit and 0x50 or 0x38))
+            local count = 0
+            while instanceData and instanceData &gt; 0x0 do
+                count = count + 1
+                obj.Instances[count] = instanceData + (gm.PointerSize * 0x2)
+                instanceData = readPointer(instanceData)
+            end
+            if count &gt; 0 then
+                local varTblAddr = readPointer(readPointer(obj.Instances[1])+gm.InstanceVarPtrOff)
+                if varTblAddr and varTblAddr &gt; 0x0 then
+                    gm.Variables[n] = GMReadVariableTable(varTblAddr)
+                end
+            end
+        end
+    end
+end
+function GMStartRecheckInstancesThread(delay)
+    gm.CCodeRecheckInstancesThread = createThread(function(Thread)
+        pcall(GMRecheckInstances, Thread, delay)
+    end)
+end
+--- Form Tools ---
+function CreateStringInputForm(varName, formName, labelText, numbersOnly, isHex, width, height, func)
+    width = width or 180
+    height = height or 80
+    if not formVariables then formVariables = {} end
+    formVariables[varName] = nil
+    local form = CreateBaseForm(formName, labelText, width, height)
+    local text_box = createEdit(form)
+    text_box.setTop(form.Height - 60)
+    text_box.Width = form.Width - 20
+    text_box.anchorSideLeft.control=form
+    text_box.anchorSideLeft.side=asrCenter
+    if numbersOnly == true then
+        text_box.Text = 0
+    end
+    local OK_Button = createButton(form)
+    OK_Button.setTop(form.Height - 30)
+    OK_Button.Width = form.Width - 20
+    OK_Button.Caption = 'OK'
+    OK_Button.anchorSideLeft.control=form
+    OK_Button.anchorSideLeft.side=asrCenter
+    local finishFunc = function()
+        if numbersOnly == true then
+            local num = tonumber(text_box.Text, isHex and 0x10 or 10)
+            if num then
+                formVariables[varName] = num
+            else
+                formVariables[varName] = 0
+            end
+        else formVariables[varName] = text_box.Text end
+        if func then func(formVariables[varName], varName) end
+        form.close()
+    end
+    text_box.onKeyDown = function(_, key) if key == 0xD then finishFunc() end end
+    OK_Button.onClick = finishFunc
+    form.showModal()
+end
+function CreateDropdownForm(varName, itemArray, formName, labelText, width, height, func)
+    if not formVariables then formVariables = {} end
+    formVariables[varName] = nil
+    local form = CreateBaseForm(formName, labelText, width, height)
+    local slot_box = createComboBox(form)
+    slot_box.setTop(form.Height - 30)
+    slot_box.Width = form.Width - 20
+    slot_box.anchorSideLeft.control=form
+    slot_box.anchorSideLeft.side=asrCenter
+    for _, item in ipairs(itemArray) do
+        slot_box.items.add(item)
+    end
+    slot_box.onChange = function()
+        formVariables[varName] = slot_box.ItemIndex
+        if func then func(formVariables[varName], varName, itemArray[hexItemIndex]) end
+        form.close()
+    end
+    form.showModal()
+end
+function CreateBaseForm(formName, labelText, width, height)
+    width = width or 180
+    height = height or 50
+    local form = createForm(false)
+    m=getmetatable(form)
+    m.__autodestroy=true
+    local label = createLabel(form)
+    form.centerScreen()
+    form.Width = width
+    form.Height = height
+    label.anchorSideLeft.control=form
+    label.anchorSideLeft.side=asrCenter
+    label.Width = form.Width - 20
+    control_setCaption(form, formName)
+    control_setCaption(label, labelText)
+    return form
+end
+--- AoB Tools ---
+AoBTools = {}
+AoBTools.AoBPointerType = {}
+AoBTools.AoBPointerType.NearAddress = 0x0
+AoBTools.AoBPointerType.FarAddress = 0x1
+AoBTools.AoBPointerType.CloseJump = 0x2
+AoBTools.AoBPointerType.FarJump = 0x3
+AoBTools.AoBPointerType.Offset = 0x4
+function AoBTools.ScanAoBTable(aobTable, address)
+    local addr = address
+    for i,tbl in ipairs(aobTable) do
+        addr = AoBTools.AoBScanRegion(tbl[1], addr)
+        if tbl[2] then addr = addr + tbl[2] end
+        if tbl[3] then
+            addr = AoBTools.ReadAoBPointer(addr, tbl[3][1], tbl[3][2], tbl[3][3])
+        end
+    end
+    return addr
+end
+function AoBTools.ReadAoBPointer(addr, pType, offSize, signed)
+    if not offSize then offSize = 0x1 end
+    if not signed then signed = false end
+    if pType == AoBTools.AoBPointerType.NearAddress or
+    pType == AoBTools.AoBPointerType.FarJump then
+        return addr + readIntegerSigned(addr) + 0x4
+    elseif pType == AoBTools.AoBPointerType.FarAddress then
+        return readPointer(addr)
+    elseif pType == AoBTools.AoBPointerType.CloseJump then
+        return addr + readByteSigned(addr) + 0x1
+    elseif pType == AoBTools.AoBPointerType.Offset then
+        if offSize == 0x1 then
+            return signed and readByteSigned(addr) or readBytes(addr, offSize, false)
+        elseif offSize == 0x2 then
+            return signed and readSmallIntegerSigned(addr) or readSmallInteger(addr)
+        elseif offSize == 0x4 then
+            return signed and readIntegerSigned(addr) or readInteger(addr)
+        elseif offSize == 0x8 then
+            return signed and readQwordSigned(addr) or readQword(addr)
+        elseif offsize == -1 then
+            return readPointer(addr)
+        else
+            return readBytes(addr, offSize, true)
+        end
+    end
+end
+function AoBTools.AoBScanModule(bytes, moduleName)
+    if not moduleName then moduleName = process end
+    return AoBScanRegion(bytes, getAddressSafe(moduleName), getModuleSize(moduleName))
+end
+function AoBTools.AoBScanRegion(bytes, address, range)
+    if not address then address = 0x0 end
+    if not range then range = 0x7FFFFFFFFFFF end
+    math.randomseed(os.clock()*100000000000)
+    math.random(); math.random(); math.random()
+    local randomSymbolName = NumberToHexString(math.random(address, range)).."symbol"
+    unregisterSymbol(randomSymbolName)
+    if autoAssemble("aobscanregion("..randomSymbolName..","..NumberToHexString(address)..","..NumberToHexString(range)..","..bytes..")\nregistersymbol("..randomSymbolName..")") then
+        local addr = getAddressSafe(randomSymbolName)
+        unregisterSymbol(randomSymbolName)
+        return addr
+    end
+	return 0x0
+end
+--- General Functions ---
+function readQwordSigned(addr)
+    local val=readInteger(addr)
+    return readSignedValue(val, 0x8000000000000000)
+end
+function readIntegerSigned(addr)
+    local val=readInteger(addr)
+    return readSignedValue(val, 0x80000000)
+end
+function readSmallIntegerSigned(addr)
+    local val=readInteger(addr)
+    return readSignedValue(val, 0x8000)
+end
+function readByteSigned(addr)
+    local val=readBytes(addr, 1, false)
+    return readSignedValue(val, 0x80)
+end
+function readSignedValue(val, valSize)
+    local sign=bAnd(val,valSize)
+    return sign==0 and val or val-(bShl(valSize, 0x1))
+end
+function NumberToHexString(num)
+    return string.format("%x", num):upper()
+end
+</LuaScript><Signature><SignedHash HashSize="132">0mc9R3z=Fdrg*C#clX-hJz#2ih7iiIbq*n].1P=a8Z@MbVsBPmkQN7n1}1w#kw3Sv*18ebj.-$#*Ix$@bF%/8ZQr$N43jR0yRxF!S!zc@.qK1^zbYS@QBBuJhbY1p)Nb-OwrNv3V$oTNM/WCRL9f*YT2rVF^lc5seJH!T</SignedHash><PublicKey Size="297">3.,NCM]dpycVTlNXk}I]i}s?vMMG0HLI3}(0I#1E+t$1ysg(c=MHOh=ex#Aaz!9:}l5tGL(6tdLGN;GoH%LSK6!og4BPU}eT(KZqU*aN1GP*g3CClGv*;.4q[[t%^[GrJWaC_rJ#+!6IgLz,{$:9lJ?yXndmmIN+nCSjr+QdGP_AGL6[VcYy@d8?=fuX2tc$_m^hK_aF0E7Sl00I8Ea$2BtoIwedcmRP8g$yjVv=483B/ODtHg-^/M1d1JeDFeCP5D[K8JqxBSbm7=5AG2i+/SBUwbTqxn?%zT*@(KC7t@F@/SsEG,,v!qZ;y$@xA#:SpBxu!Z@]0Rcj,()y)MVh-RGsZ$@##Tb.Z;TD?lvH^?Xr.!25CwbN</PublicKey></Signature></CheatTable>

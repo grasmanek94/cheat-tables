@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Among Trees"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+function definemonoallfieldoffset(namespace,classname)
+local strdef =''
+local fields =mono_class_enumFields(mono_find_class(classname),true)
+if not namespace then fields =mono_class_enumFields(mono_find_class(classname),true)
+else fields =mono_class_enumFields(mono_findClass(namespace,classname),true) end
+classname=classname:gsub(':','.')
+for n=1,#fields do strdef =strdef..'define('..classname..'.'..fields[n].name..','..string.format("%x",fields[n].offset)..')\n' end
+return strdef
+end
+
+function findAddress(name,number,AddressOrAOBString,modulename,stopaddress,Nth,aobscanOnly,gethead,nop)
+	local size,address=0x100
+    AddressOrAOBString,address=string.lower(AddressOrAOBString):gsub('banana','')
+	if(address&gt;0)then
+		local f
+		if(modulename==0 or modulename==nil or modulename=='')then f=AOBScan(AddressOrAOBString)
+		else
+			local ms = createMemScan()
+			if(stopaddress==0 or stopaddress==nil or stopaddress=='')then
+				stopaddress=getNameFromAddress(modulename,true,false)
+                if(stopaddress:find("+")~=nil)then stopaddress=stopaddress:sub(0,stopaddress:find("+")-1)end
+				if(getModuleSize(stopaddress)==nil)then error('Module '..modulename..' not found') end
+                modulename=getAddress(stopaddress)
+				stopaddress=modulename+getModuleSize(stopaddress)
+			end
+			ms.firstScan(soExactValue,vtByteArray,rtTruncated,AddressOrAOBString,'',getAddress(modulename),getAddress(stopaddress),'',fsmNotAligned,'',true,false,false,false)
+			ms.waitTillDone()
+			f = createFoundList(ms)
+			f.initialize()
+			ms.destroy()
+		end
+		address={}
+		for i=0,f.Count-1 do address[i+1]=f[i]end
+		f.destroy()
+        if Nth==nil or Nth==0 or Nth=='' then Nth=1 end
+        if gethead then
+           local addresss=GetAddressSafe(address[Nth])
+           if addresss and addresss~=0 then
+           for i=0,0x1000 do
+               addresss=addresss-1
+               if readBytes(addresss,1)==0xCC then break end
+               if nop then local ext, opc, byt, add=splitDisassembledString(disassemble(addresss)) if string.find(opc,'nop') then addresss=addresss+getInstructionSize(addresss)-1 break end end
+           end
+           address[Nth]=addresss+1 end
+        end
+		if number==nil or number==0 or number=='' then
+			if aobscanOnly then return address end
+		else
+            if(#address==0)then error(name..' aob no result found') end
+            if(getAddress(address[Nth])==nil)then error(name..' aob result '..Nth..' doesnt exist') end
+            unregisterSymbol(name)
+            registerSymbol(name,getAddressSafe(address[Nth]),true)
+            if aobscanOnly then return end
+		end
+		AddressOrAOBString=GetAddressSafe(address[Nth])
+	end
+    AddressOrAOBString=getAddressSafe(AddressOrAOBString)
+	if(AddressOrAOBString==nil)then error(name..' still cant be found')end
+	local addr={}
+	local i=0
+	local j=1
+	while(i&lt;size) do
+		local ext, opc, byt, add=splitDisassembledString(disassemble(getAddressSafe(AddressOrAOBString)+i))
+		if(ext~="")then
+			if(opc:find(",")~=nil)then
+				opc=opc:sub(opc:find(",")+1,opc:len())
+			else
+				opc=opc:sub(opc:find(" ")+1,opc:len())
+			end
+			addr[j]=opc:gsub("%[",""):gsub("]","") j=j+1
+		end
+		i=i+getInstructionSize(AddressOrAOBString+i)
+	end
+    --for i=1,#addr do print(addr[i]) end
+	if number==nil or number==0 or number=='' then return addr end
+	local offset
+	if(type(number)==type(''))then
+		offset=string.find(number,',')
+		if(offset==nil)then number=getAddress(number)
+		else offset=getAddress(string.sub(number,offset+1,number:len()))
+			number=getAddress(string.sub(number,1,string.find(number,',')-1))
+		end
+	end
+	if offset==nil then offset=0 end
+	unregisterSymbol(name)
+	registerSymbol(name,getAddressSafe(addr[number])-offset,true)
+end
+
+function getInsForJump(address,registername,destination,allocsize,SharedMemoryName)
+  address = getAddressSafe(address)
+  if not address then error('getInsForJump address nil') return end
+  if not allocsize then allocsize=4096 end
+  destination=getAddressSafe(destination)
+  if not destination then
+	if not SharedMemoryName then destination = allocateMemory(allocsize,address)
+	else destination = allocateSharedMemory(SharedMemoryName,allocsize) end
+  end
+  local size = (address+5-destination&gt;0x7FFFFFFF) and 14 or 5
+  if registername then
+	unregisterSymbol(registername)
+	registerSymbol(registername,destination,true)
+  end
+  local opcodes = {}
+  local i = 0
+  while(i&lt;size) do
+    local ext, opc=splitDisassembledString(disassemble(address+i))
+    opcodes[#opcodes+1] = opc
+    i=i+getInstructionSize(address+i)
+  end
+  local copy = table.concat(opcodes,'\r\n')
+  local readAsTable = true
+  local byt = readBytes(address,i,readAsTable)
+  for j=1,#byt do byt[j] = ('%02X'):format(byt[j]) end
+  local bytes = table.concat(byt, ' ')
+  return i,copy,bytes,size,destination
+end
+
+function enablescript(name,registername,addressname,script,disable)
+	local address=getAddress(addressname)
+	if disable then script=(script):format(address,registername,readBytes(registername,1))
+	else
+		local i,copy,bytes,size =getInsForJump(address,name)
+		script=(script):format(registername, registername, name, copy, registername, i, bytes, address)..string.rep('nop\n',i-size)..'returnhere:'
+	end
+	local success=autoAssemble(script)
+	if disable then
+		if not success then error(name..' autoAssemble failed')
+		else
+			deAlloc(name)
+			unregisterSymbol(name)
+			unregisterSymbol(registername)
+		end
+	else
+		if not success then
+           print(script)
+			deAlloc(name)
+			unregisterSymbol(name)
+			error(name..' autoAssemble failed')
+		end
+	end
+end
+
+function monocreatestruct(namespace,classname)
+--deletestruct(classname)
+--if(isStructExist(classname))then deletestruct(classname) end
+local fields =mono_class_enumFields(mono_findClass(namespace,classname),true)
+local struct=createStructure(classname)
+for n=1,#fields do
+local e=struct.addElement()
+e.Offset=fields[n].offset
+e.Name=fields[n].name
+e.Vartype=monoTypeToVarType(fields[n].monotype)
+end
+struct.addToGlobalStructureList()
+end
+
+
+function mono_findMethods(classname,methodname)
+	local class=mono_find_class(classname)
+	local result,m={},1
+	if class then local methods = mono_class_enumMethods(class,false)
+		for l,v in ipairs(methods) do if v.name==methodname then result[m]=v.method m=m+1 end  end
+	end
+	return result
+end
+
+
+function mono_find_class(classname)
+	local ass=mono_enumAssemblies()
+	local parent
+	if string.find(classname,':') then parent=classname:sub(1,string.find(classname,':')-1) classname=classname:sub(string.find(classname,':')+1,classname:len()) end
+	if ass==nil then return nil end
+	for i=1, #ass do
+		if monopipe==nil then print('mono not active...')return 0 end
+		local c=mono_image_enumClasses(mono_getImageFromAssembly(ass[i]))
+		if c then
+			local j
+			for j=1, #c do
+				if c[j].classname==classname then
+					local cparent
+					if parent then local fields=mono_class_enumFields(c[j].class, true) for l,v in ipairs(fields) do if v.name=='parent' then if parent==v.typename then return c[j].class end end end
+                                        else return c[j].class end
+				end
+			end
+		end
+	end
+    return nil
+end
+
+function cycleFullCompact(sender,force)
+local state = not(compactmenuitem.Caption == 'Compact View Mode')
+if force~=nil
+then state = not force
+end
+compactmenuitem.Caption = state and 'Compact View Mode' or 'Full View Mode'
+getMainForm().Splitter1.Visible = state
+getMainForm().Panel4.Visible = state
+getMainForm().Panel5.Visible = state
+end
+
+function addCompactMenu()
+if compactmenualreadyexists
+then return end
+local parent = getMainForm().Menu.Items
+compactmenuitem = createMenuItem(parent)
+parent.add(compactmenuitem)
+compactmenuitem.Caption = 'Compact View Mode'
+compactmenuitem.OnClick = cycleFullCompact
+compactmenualreadyexists = 'yes'
+end
+
+addCompactMenu()
+if syntaxcheck then return end
+LaunchMonoDataCollector()
+[ENABLE]
+findAddress('_PlayMakerGlobals',2,string.format('%X',mono_compile_method(mono_findMethod('', 'PlayMakerGlobals', 'get_Instance'))))
+monocreatestruct('','PlayMakerGlobals')
+monocreatestruct('','FsmVariables')
+monocreatestruct('','FsmFloat')
+monocreatestruct('','FsmInt')
+
+miMonoActivateClick(sender) 
+[DISABLE]
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"ConvertIntToString 100 (Only activate when needed)"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+LaunchMonoDataCollector()
+[ENABLE]
+enablescript('HutongGamesPlayMakerActionsConvertIntToStringDoConvertIntToString_alloc','HutongGamesPlayMakerActionsConvertIntToStringDoConvertIntToString_save','HutongGames.PlayMaker.Actions:ConvertIntToString:DoConvertIntToString',[[
+label(newmem)
+label(returnhere)
+label(%s)
+registersymbol(%s)
+label(intvalue)
+registersymbol(intvalue)
+]]..definemonoallfieldoffset('HutongGames.PlayMaker.Actions','ConvertIntToString')..[[
+%s:
+newmem:
+test rcx,rcx
+je short @f
+mov rax,[rcx+ConvertIntToString.intVariable]
+push rcx
+mov rcx,intvalue
+mov ecx,[rcx]
+mov [rax+FsmInt.value],ecx
+pop rcx
+@@:
+%s
+jmp returnhere
+intvalue:
+dd #100
+%s:
+db %X %s
+%X:
+jmp newmem
+]])
+
+miMonoActivateClick(sender)
+
+[DISABLE]
+
+enablescript('HutongGamesPlayMakerActionsConvertIntToStringDoConvertIntToString_alloc','HutongGamesPlayMakerActionsConvertIntToStringDoConvertIntToString_save','HutongGames.PlayMaker.Actions:ConvertIntToString:DoConvertIntToString',[[
+%X:
+readmem(%s+1,%u)
+unregistersymbol(intvalue)
+]],true)
+
+miMonoActivateClick(sender)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>136</ID>
+              <Description>"intvalue"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>intvalue</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"floatVariables"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+for i=memrec.Count-1,0,-1 do
+	memoryrecord_delete(memrec.Child[i])
+end
+local name=getAddress('FsmFloat.name')
+local value=getAddress('FsmFloat.value')
+local rec
+local address=getAddressSafe('[[[_PlayMakerGlobals]+PlayMakerGlobals.variables]+FsmVariables.floatVariables]')
+if address then
+for i=0,readInteger(address+0x18)-1 do
+local pointer=readPointer(address+i*8+0x20)
+local str=readString(readPointer(pointer+name)+0x14,readInteger(readPointer(pointer+name)+0x10)*2,true)
+rec = getAddressList().createMemoryRecord()
+rec.setDescription(str)
+rec.DontSave=true
+rec.setAddress(string.format('[[[[_PlayMakerGlobals]+PlayMakerGlobals.variables]+FsmVariables.floatVariables]+%X]+%X',i*8+0x20,value))
+rec.VarType='vtSingle'
+rec.appendToEntry(memrec)
+end
+end
+ 
+[DISABLE]
+for i=memrec.Count-1,0,-1 do
+	memoryrecord_delete(memrec.Child[i])
+end
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"intVariables"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+for i=memrec.Count-1,0,-1 do
+	memoryrecord_delete(memrec.Child[i])
+end
+local name=getAddress('FsmInt.name')
+local value=getAddress('FsmInt.value')
+local rec
+local address=getAddressSafe('[[[_PlayMakerGlobals]+PlayMakerGlobals.variables]+FsmVariables.intVariables]')
+if address then
+for i=0,readInteger(address+0x18)-1 do
+local pointer=readPointer(address+i*8+0x20)
+local str=readString(readPointer(pointer+name)+0x14,readInteger(readPointer(pointer+name)+0x10)*2,true)
+rec = getAddressList().createMemoryRecord()
+rec.setDescription(str)
+rec.DontSave=true
+rec.setAddress(string.format('[[[[_PlayMakerGlobals]+PlayMakerGlobals.variables]+FsmVariables.intVariables]+%X]+%X',i*8+0x20,value))
+rec.VarType='vtDword'
+rec.appendToEntry(memrec)
+end
+end
+ 
+[DISABLE]
+for i=memrec.Count-1,0,-1 do
+	memoryrecord_delete(memrec.Child[i])
+end
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"boolVariables"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+for i=memrec.Count-1,0,-1 do
+	memoryrecord_delete(memrec.Child[i])
+end
+local name=getAddress('FsmInt.name')
+local value=getAddress('FsmInt.value')
+local rec
+local address=getAddressSafe('[[[_PlayMakerGlobals]+PlayMakerGlobals.variables]+FsmVariables.boolVariables]')
+if address then
+for i=0,readInteger(address+0x18)-1 do
+local pointer=readPointer(address+i*8+0x20)
+local str=readString(readPointer(pointer+name)+0x14,readInteger(readPointer(pointer+name)+0x10)*2,true)
+rec = getAddressList().createMemoryRecord()
+rec.setDescription(str)
+rec.DontSave=true
+rec.setAddress(string.format('[[[[_PlayMakerGlobals]+PlayMakerGlobals.variables]+FsmVariables.boolVariables]+%X]+%X',i*8+0x20,value))
+rec.VarType='vtByte'
+rec.appendToEntry(memrec)
+end
+end
+ 
+[DISABLE]
+for i=memrec.Count-1,0,-1 do
+	memoryrecord_delete(memrec.Child[i])
+end
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

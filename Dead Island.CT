@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Campaign/DLC   [Durability]   Flashlight"</Description>
+      <Color>000080</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(flashlight,game_x86_rwdi.dll,D9 56 34 D9 EE)
+alloc(newmem,$100)
+label(return)
+registersymbol(flashlight)
+newmem:
+  fst dword ptr [esi+34]
+  mov dword ptr [esi+34],(float)100
+  fldz 
+  jmp return
+flashlight:
+  jmp newmem
+return:
+[DISABLE]
+dealloc(newmem)
+unregistersymbol(flashlight)
+flashlight:
+  db D9 56 34 D9 EE
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>85</ID>
+      <Description>"Campaign/DLC   [Durability]   Weapon"</Description>
+      <Color>000080</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(weapon,game_x86_rwdi.dll,D9 5F 04 5E C2 04 00 CC)
+alloc(newmem,$100)
+label(return)
+registersymbol(weapon)
+newmem:
+  fstp dword ptr [edi+04]
+  mov dword ptr [edi+04],(float)100
+  pop esi
+  ret 0004
+  jmp return
+weapon:
+  jmp newmem
+  nop 2
+return:
+[DISABLE]
+dealloc(newmem)
+unregistersymbol(weapon)
+weapon:
+  db D9 5F 04 5E C2 04 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>63</ID>
+      <Description>"Campaign/-----   [Experience]"</Description>
+      <Color>808000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(experience,game_x86_rwdi.dll,01 77 3C 8B 47 28 8B 57 3C 85)
+alloc(newmem,$100)
+label(return)
+registersymbol(experience)
+newmem:
+  add [edi+3C],F4240
+  mov eax,[edi+28]
+  jmp return
+experience:
+  jmp newmem
+  nop
+return:
+[DISABLE]
+dealloc(newmem)
+unregistersymbol(experience)
+experience:
+  db 01 77 3C 8B 47 28
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>91</ID>
+      <Description>"Campaign/DLC   [Fury]"</Description>
+      <Color>0080FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(fury_decrease,game_x86_rwdi.dll,D9 9F D4 12 00 00)
+aobscanmodule(fury_increase,game_x86_rwdi.dll,D9 97 D4 12 00 00 83)
+alloc(newmem_x,$100)
+alloc(newmem_y,$100)
+label(return_x)
+label(return_y)
+registersymbol(fury_decrease)
+registersymbol(fury_increase)
+newmem_x:
+  fstp dword ptr [edi+12D4]
+  mov dword ptr [edi+12D4],(float)1
+  jmp return_x
+fury_decrease:
+  jmp newmem_x
+  nop
+return_x:
+newmem_y:
+  fst dword ptr [edi+12D4]
+  mov dword ptr [edi+12D4],(float)1
+  jmp return_y
+fury_increase:
+  jmp newmem_y
+  nop
+return_y:
+[DISABLE]
+dealloc(newmem_x)
+dealloc(newmem_y)
+unregistersymbol(fury_decrease)
+unregistersymbol(fury_increase)
+fury_decrease:
+  db D9 9F D4 12 00 00
+fury_increase:
+  db D9 97 D4 12 00 00
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>16</Key>
+            <Key>81</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>56</ID>
+      <Description>"Campaign/DLC   [Health]"</Description>
+      <Color>0000FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(health,game_x86_rwdi.dll,D9 9E BC 08 00 00 C2 04 00 DD)
+alloc(newmem,$100)
+label(return)
+registersymbol(health)
+newmem:
+  fstp dword ptr [esi+8BC]
+  mov [esi+8BC],(float)99999
+  jmp return
+health:
+  jmp newmem
+  nop
+return:
+[DISABLE]
+dealloc(newmem)
+unregistersymbol(health)
+health:
+  db D9 9E BC 08 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>40</ID>
+      <Description>"Campaign/DLC   [Inventory]   Ammo   [Reload Off]"</Description>
+      <Color>FF8000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+local pReloadOn = getAddressList().getMemoryRecordByDescription("Campaign/DLC   [Inventory]   Ammo   [Reload On]")
+if (pReloadOn.Active) then
+ pReloadOn.Active = false
+end
+{$asm}
+aobscanmodule(inventory_ammo_capacity,game_x86_rwdi.dll,F0 2B C6 89 84 BB 30 0B 00 00)
+aobscanmodule(inventory_ammo_used,game_x86_rwdi.dll,FF 48 20 83 C0 20)
+alloc(deposit,4)
+alloc(newmem_x,$100)
+alloc(newmem_y,$100)
+label(code_y)
+label(return_x)
+label(return_y)
+registersymbol(inventory_ammo_capacity)
+registersymbol(inventory_ammo_used)
+deposit:
+  db 0
+newmem_x:
+  mov [ebx+edi*4+B30],63
+  jmp return_x
+inventory_ammo_capacity+03:
+  jmp newmem_x
+  nop 2
+return_x:
+newmem_y:
+  dec [deposit]
+  add eax,20
+  jmp return_y
+code_y:
+  dec [eax+20]
+  add eax,20
+  jmp return_y
+inventory_ammo_used:
+  jmp newmem_y
+  nop
+return_y:
+[DISABLE]
+dealloc(newmem_x)
+dealloc(newmem_y)
+unregistersymbol(inventory_ammo_capacity)
+unregistersymbol(inventory_ammo_used)
+inventory_ammo_capacity+03:
+  db 89 84 BB 30 0B 00 00
+inventory_ammo_used:
+  db FF 48 20 83 C0 20
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>42</ID>
+      <Description>"Campaign/DLC   [Inventory]   Ammo   [Reload On]"</Description>
+      <Color>FF8000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+local pReloadOff = getAddressList().getMemoryRecordByDescription("Campaign/DLC   [Inventory]   Ammo   [Reload Off]")
+if (pReloadOff.Active) then
+ pReloadOff.Active = false
+end
+{$asm}
+aobscanmodule(inventory_ammo_capacity,game_x86_rwdi.dll,F0 2B C6 89 84 BB 30 0B 00 00)
+alloc(newmem_x,$100)
+label(return_x)
+registersymbol(inventory_ammo_capacity)
+newmem_x:
+  mov [ebx+edi*4+B30],63
+  jmp return_x
+inventory_ammo_capacity+03:
+  jmp newmem_x
+  nop 2
+return_x:
+[DISABLE]
+dealloc(newmem_x)
+unregistersymbol(inventory_ammo_capacity)
+inventory_ammo_capacity+03:
+  db 89 84 BB 30 0B 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>45</ID>
+      <Description>"Campaign/DLC   [Inventory]   Items"</Description>
+      <Color>800080</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(items,game_x86_rwdi.dll,FF 4E 20 56 56)
+alloc(newmem,$100)
+label(return)
+registersymbol(items)
+newmem:
+  mov [esi+20],(int)99
+  push esi
+  push esi
+  jmp return
+items:
+  jmp newmem
+return:
+[DISABLE]
+dealloc(newmem)
+unregistersymbol(items)
+items:
+  db FF 4E 20 56 56
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>61</ID>
+      <Description>"Campaign/DLC   [Inventory]   Money"</Description>
+      <Color>004000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(money_collected,game_x86_rwdi.dll,01 9E 7C 07 00 00)
+aobscanmodule(money_spent,game_x86_rwdi.dll,89 8F 7C 07 00 00 85 C0 74 14 8B 88 A4 00 00 00 85 C9 74 0A 8B 01)
+aobscanmodule(money_trade,game_x86_rwdi.dll,29 BE 7C 07 00 00)
+alloc(newmem_x,$100)
+alloc(newmem_y,$100)
+alloc(newmem_z,$100)
+label(return_x)
+label(return_y)
+label(return_z)
+registersymbol(money_collected)
+registersymbol(money_spent)
+registersymbol(money_trade)
+newmem_x:
+  mov [esi+77C],(int)99999999
+  jmp return_x
+money_collected:
+  jmp newmem_x
+  nop
+return_x:
+newmem_y:
+  mov [edi+77C],(int)99999999
+  jmp return_y
+money_spent:
+  jmp newmem_y
+  nop
+return_y:
+newmem_z:
+  mov [esi+77C],(int)99999999
+  jmp return_z
+money_trade:
+  jmp newmem_z
+  nop
+return_z:
+[DISABLE]
+dealloc(newmem_x)
+dealloc(newmem_y)
+dealloc(newmem_z)
+unregistersymbol(money_collected)
+unregistersymbol(money_spent)
+unregistersymbol(money_trade)
+money_collected:
+  db 01 9E 7C 07 00 00
+money_spent:
+  db 89 8F 7C 07 00 00
+money_trade:
+  db 29 BE 7C 07 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>160</ID>
+      <Description>"Campaign/DLC   [One Hit Kill]  "</Description>
+      <Color>8000FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(one_hit_kill,game_x86_rwdi.dll,D9 9D 98 05 00 00 EB)
+alloc(newmem,$100)
+label(return)
+registersymbol(one_hit_kill)
+newmem:
+  fstp dword ptr [ebp+598]
+  mov dword ptr [ebp+598],(float)0
+  jmp return
+one_hit_kill:
+  jmp newmem
+  nop
+return:
+[DISABLE]
+dealloc(newmem)
+unregistersymbol(one_hit_kill)
+one_hit_kill:
+  db D9 9D 98 05 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"Campaign/DLC   [Stamina]   "</Description>
+      <Color>A00000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(stamina,game_x86_rwdi.dll,D9 93 20 09 00 00)
+alloc(newmem,$100)
+label(return)
+registersymbol(stamina)
+newmem:
+  nop 6
+  jmp return
+stamina:
+  jmp newmem
+  nop
+return:
+[DISABLE]
+dealloc(newmem)
+unregistersymbol(stamina)
+stamina:
+  db D9 93 20 09 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"Game   [Speed]   Fast"</Description>
+      <Color>C08080</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+luacall(speedhack_setSpeed(2.5))
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"Game   [Speed]   Slow "</Description>
+      <Color>C08080</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+luacall(speedhack_setSpeed(0.5))
+[DISABLE]
+luacall(speedhack_setSpeed(1))
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

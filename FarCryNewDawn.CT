@@ -1,0 +1,1901 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>449</ID>
+      <Description>"[ Enable ]"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+      <Color>0000FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( _MainHook, FC_m64.dll, 40555356488D6C24B94881EC????????0F29B424????????488B05????????48 )
+registersymbol( _MainHook )
+alloc( MainHook, 0x1000, FC_m64.dll )
+registersymbol( MainHook )
+label( CPawn )
+registersymbol( CPawn )
+label( CPlayer )
+registersymbol( CPlayer )
+label( MainHook_orig )
+registersymbol( MainHook_orig )
+
+MainHook:
+push rcx
+mov [CPawn],r8
+mov rcx,[r8+2AD0]
+mov [CPlayer],rcx
+pop rcx
+@@:
+MainHook_orig:
+readmem( _MainHook, 9 )
+jmp _MainHook+7
+
+align 10 CC
+
+CPawn:
+dq 0
+
+align 10 CC
+
+CPlayer:
+dq 0
+
+_MainHook:
+jmp MainHook
+db 90 90 90 90
+
+[DISABLE]
+
+_MainHook:
+readmem( MainHook_orig, 9 )
+
+unregistersymbol( MainHook_orig )
+unregistersymbol( CPlayer )
+unregistersymbol( CPawn )
+unregistersymbol( MainHook )
+dealloc( MainHook )
+unregistersymbol( _MainHook )
+
+/*
+FC_m64.dll+FBDD180 - 40 55                 - push rbp
+FC_m64.dll+FBDD182 - 53                    - push rbx
+FC_m64.dll+FBDD183 - 56                    - push rsi
+FC_m64.dll+FBDD184 - 48 8D 6C 24 B9        - lea rbp,[rsp-47]
+FC_m64.dll+FBDD189 - 48 81 EC D0000000     - sub rsp,000000D0 { 208 }
+FC_m64.dll+FBDD190 - 0F29 B4 24 C0000000   - movaps [rsp+000000C0],xmm6
+FC_m64.dll+FBDD198 - 48 8B 05 512C11F5     - mov rax,[FC_m64.dll+4CEFDF0] { (-1837396168) }
+FC_m64.dll+FBDD19F - 48 31 E0              - xor rax,rsp
+FC_m64.dll+FBDD1A2 - 48 89 45 27           - mov [rbp+27],rax
+FC_m64.dll+FBDD1A6 - 48 89 CE              - mov rsi,rcx
+FC_m64.dll+FBDD1A9 - 4C 89 C3              - mov rbx,r8
+FC_m64.dll+FBDD1AC - 4C 89 C1              - mov rcx,r8
+FC_m64.dll+FBDD1AF - 0F28 F1               - movaps xmm6,xmm1
+FC_m64.dll+FBDD1B2 - E8 69AAF2F1           - call FC_m64.dll+1B07C20
+FC_m64.dll+FBDD1B7 - 84 C0                 - test al,al
+FC_m64.dll+FBDD1B9 - 0F85 4D010000         - jne FC_m64.dll+FBDD30C
+FC_m64.dll+FBDD1BF - 48 8B 43 08           - mov rax,[rbx+08]
+FC_m64.dll+FBDD1C3 - 48 8D 0D AEFB08F5     - lea rcx,[FC_m64.dll+4C6CD78] { (-1) }
+FC_m64.dll+FBDD1CA - 48 89 BC 24 F8000000  - mov [rsp+000000F8],rdi
+FC_m64.dll+FBDD1D2 - 48 89 45 A7           - mov [rbp-59],rax
+FC_m64.dll+FBDD1D6 - 48 39 C8              - cmp rax,rcx
+FC_m64.dll+FBDD1D9 - 74 04                 - je FC_m64.dll+FBDD1DF
+FC_m64.dll+FBDD1DB - F0 FF 40 08           - lock inc [rax+08]
+FC_m64.dll+FBDD1DF - 31 D2                 - xor edx,edx
+FC_m64.dll+FBDD1E1 - 48 8D 4D A7           - lea rcx,[rbp-59]
+FC_m64.dll+FBDD1E5 - E8 F607EAF1           - call FC_m64.dll+1A7D9E0
+FC_m64.dll+FBDD1EA - 48 89 C7              - mov rdi,rax
+FC_m64.dll+FBDD1ED - 48 85 C0              - test rax,rax
+*/
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>439</ID>
+          <Description>"God Mode"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( _Health, FC_m64.dll, 488B4B500F28F0E8 )
+registersymbol( _Health )
+alloc( Health, 0x1000, FC_m64.dll )
+label( Health_orig )
+registersymbol( Health_orig )
+
+Health:
+cmp dword ptr [rcx+10],CEDA2313 // Health
+jne short @f
+  movss xmm1,[rcx+1C]
+  movss [rcx+18],xmm1
+Health_orig:
+readmem( _Health, 7 )
+jmp _Health+7
+
+_Health:
+jmp Health
+db 90 90
+
+[DISABLE]
+
+_Health:
+readmem( Health_orig, 7 )
+
+unregistersymbol( Health_orig )
+dealloc( Health )
+unregistersymbol( _Health )
+
+/*
+FC_m64.dll+8CB23A0 - 53                    - push rbx
+FC_m64.dll+8CB23A1 - 48 83 EC 30           - sub rsp,30
+FC_m64.dll+8CB23A5 - 48 89 CB              - mov rbx,rcx
+FC_m64.dll+8CB23A8 - 0F29 74 24 20         - movaps [rsp+20],xmm6
+FC_m64.dll+8CB23AD - 48 8B 49 48           - mov rcx,[rcx+48]
+FC_m64.dll+8CB23B1 - E8 EA732DF9           - call FC_m64.dll+1F897A0
+FC_m64.dll+8CB23B6 - 48 8B 4B 50           - mov rcx,[rbx+50]
+FC_m64.dll+8CB23BA - 0F28 F0               - movaps xmm6,xmm0
+FC_m64.dll+8CB23BD - E8 DE732DF9           - call FC_m64.dll+1F897A0
+FC_m64.dll+8CB23C2 - F3 0F10 0D 9AC02EFB   - movss xmm1,[FC_m64.dll+3F9E464]
+FC_m64.dll+8CB23CA - 0F2F C1               - comiss xmm0,xmm1
+FC_m64.dll+8CB23CD - 77 22                 - ja FC_m64.dll+8CB23F1
+FC_m64.dll+8CB23CF - 0F2F F1               - comiss xmm6,xmm1
+FC_m64.dll+8CB23D2 - 77 1D                 - ja FC_m64.dll+8CB23F1
+FC_m64.dll+8CB23D4 - 48 8B 03              - mov rax,[rbx]
+FC_m64.dll+8CB23D7 - 48 89 D9              - mov rcx,rbx
+FC_m64.dll+8CB23DA - FF 90 28010000        - call qword ptr [rax+00000128]
+FC_m64.dll+8CB23E0 - 84 C0                 - test al,al
+FC_m64.dll+8CB23E2 - 75 0D                 - jne FC_m64.dll+8CB23F1
+FC_m64.dll+8CB23E4 - B0 01                 - mov al,01
+FC_m64.dll+8CB23E6 - 0F28 74 24 20         - movaps xmm6,[rsp+20]
+FC_m64.dll+8CB23EB - 48 83 C4 30           - add rsp,30
+FC_m64.dll+8CB23EF - 5B                    - pop rbx
+FC_m64.dll+8CB23F0 - C3                    - ret
+FC_m64.dll+8CB23F1 - 30 C0                 - xor al,al
+FC_m64.dll+8CB23F3 - 0F28 74 24 20         - movaps xmm6,[rsp+20]
+FC_m64.dll+8CB23F8 - 48 83 C4 30           - add rsp,30
+FC_m64.dll+8CB23FC - 5B                    - pop rbx
+FC_m64.dll+8CB23FD - C3                    - ret
+*/
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>468</ID>
+          <Description>"Infinite Stamina"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( _Stamina, FC_m64.dll, F30F105918F30F5D )
+registersymbol( _Stamina )
+alloc( Stamina, 0x1000, FC_m64.dll )
+label( Stamina_orig )
+registersymbol( Stamina_orig )
+
+Stamina:
+push rcx
+mov rcx,[rsp+128]
+cmp rcx,[CPawn]
+pop rcx
+jne short @f
+  movss xmm1,[rcx+1C]
+  movss [rcx+18],xmm1
+Stamina_orig:
+readmem( _Stamina, 5 )
+jmp _Stamina+5
+
+_Stamina:
+jmp Stamina
+
+[DISABLE]
+
+_Stamina:
+readmem( Stamina_orig, 5 )
+
+unregistersymbol( Stamina_orig )
+dealloc( Stamina )
+unregistersymbol( _Stamina )
+
+/*
+FC_m64.dll+C454FA5 - F3 0F10 59 18         - movss xmm3,[rcx+18]
+FC_m64.dll+C454FAA - F3 0F5D C1            - minss xmm0,xmm1
+FC_m64.dll+C454FAE - 0F2E C3               - ucomiss xmm0,xmm3
+FC_m64.dll+C454FB1 - 0F84 B5010000         - je FC_m64.dll+C45516C
+FC_m64.dll+C454FB7 - F3 0F11 41 18         - movss [rcx+18],xmm0
+FC_m64.dll+C454FBC - 45 84 C9              - test r9l,r9l
+FC_m64.dll+C454FBF - 0F85 A7010000         - jne FC_m64.dll+C45516C
+FC_m64.dll+C454FC5 - 48 8B 41 08           - mov rax,[rcx+08]
+FC_m64.dll+C454FC9 - 48 85 C0              - test rax,rax
+FC_m64.dll+C454FCC - 0F84 9A010000         - je FC_m64.dll+C45516C
+FC_m64.dll+C454FD2 - 44 38 49 14           - cmp [rcx+14],r9l
+FC_m64.dll+C454FD6 - 0F84 90010000         - je FC_m64.dll+C45516C
+FC_m64.dll+C454FDC - 48 8B 40 08           - mov rax,[rax+08]
+FC_m64.dll+C454FE0 - 49 89 5B 10           - mov [r11+10],rbx
+FC_m64.dll+C454FE4 - 49 89 6B 20           - mov [r11+20],rbp
+FC_m64.dll+C454FE8 - 48 8D 2D 897D81F8     - lea rbp,[FC_m64.dll+4C6CD78] { (-1) }
+FC_m64.dll+C454FEF - 49 89 73 F0           - mov [r11-10],rsi
+FC_m64.dll+C454FF3 - 48 89 44 24 30        - mov [rsp+30],rax
+FC_m64.dll+C454FF8 - 48 39 E8              - cmp rax,rbp
+FC_m64.dll+C454FFB - 74 04                 - je FC_m64.dll+C455001
+FC_m64.dll+C454FFD - F0 FF 40 08           - lock inc [rax+08]
+FC_m64.dll+C455001 - 48 8B 74 24 30        - mov rsi,[rsp+30]
+FC_m64.dll+C455006 - 83 CB FF              - or ebx,-01 { 255 }
+FC_m64.dll+C455009 - 48 8B 56 10           - mov rdx,[rsi+10]
+FC_m64.dll+C45500D - 48 85 D2              - test rdx,rdx
+*/
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>413</ID>
+          <Description>"Infinite Clip Ammo"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( _ClipAmmo, FC_m64.dll, 48895C2408574883EC??89D74889CB3B91????????74??E8????????39F8C683????????01 )
+registersymbol( _ClipAmmo )
+alloc( ClipAmmo, 0x1000, FC_m64.dll )
+label( ClipAmmo_orig )
+registersymbol( ClipAmmo_orig )
+
+ClipAmmo:
+push rax
+push rbx
+push rcx // psLaunch
+push rdx
+push r8
+mov rax,[rcx+60]
+test rax,rax
+je short @f
+  mov rbx,[rax+10] // CPawnEntity
+  test rbx,rbx
+  je short @f
+    mov rcx,[rbx+C8] // CEntityArchetypeRes
+    test rcx,rcx
+    je short @f
+      lea rdx,[rbx+A8]
+      movsxd r8,dword ptr [rcx+20]
+      mov rax,[rdx]
+      test rax,rax
+      je short @f
+        mov rax,[rax+r8*8]
+        test rax,rax
+        je short @f
+          mov rax,[rax+2AD0]
+          cmp byte ptr [rax+771],0 // IsPlayer
+          jne short @f
+            pop r8 // yes
+            pop rdx
+            pop rcx
+            pop rbx
+            pop rax
+            add edx,edi // add back subtracted ammo
+            jmp short ClipAmmo_orig // exit
+@@:
+pop r8 // no
+pop rdx
+pop rcx
+pop rbx
+pop rax
+ClipAmmo_orig:
+readmem( _ClipAmmo, 5 )
+jmp _ClipAmmo+5
+
+_ClipAmmo:
+jmp ClipAmmo
+
+[DISABLE]
+
+_ClipAmmo:
+readmem( ClipAmmo_orig, 5 )
+
+unregistersymbol( ClipAmmo_orig )
+dealloc( ClipAmmo )
+unregistersymbol( _ClipAmmo )
+
+/*
+FC_m64.dll+106F28E0 - 48 89 5C 24 08        - mov [rsp+08],rbx
+FC_m64.dll+106F28E5 - 57                    - push rdi
+FC_m64.dll+106F28E6 - 48 83 EC 20           - sub rsp,20 { 32 }
+FC_m64.dll+106F28EA - 89 D7                 - mov edi,edx
+FC_m64.dll+106F28EC - 48 89 CB              - mov rbx,rcx
+FC_m64.dll+106F28EF - 3B 91 80010000        - cmp edx,[rcx+00000180]
+FC_m64.dll+106F28F5 - 74 27                 - je FC_m64.dll+106F291E
+FC_m64.dll+106F28F7 - E8 D4F165F1           - call FC_m64.dll+1D51AD0
+FC_m64.dll+106F28FC - 39 F8                 - cmp eax,edi
+FC_m64.dll+106F28FE - C6 83 BC000000 01     - mov byte ptr [rbx+000000BC],01 { 1 }
+FC_m64.dll+106F2905 - 41 89 F8              - mov r8d,edi
+FC_m64.dll+106F2908 - 44 0F4C C0            - cmovl r8d,eax
+FC_m64.dll+106F290C - 44 89 83 80010000     - mov [rbx+00000180],r8d
+FC_m64.dll+106F2913 - 85 FF                 - test edi,edi
+FC_m64.dll+106F2915 - 7E 07                 - jle FC_m64.dll+106F291E
+FC_m64.dll+106F2917 - C6 83 C8010000 00     - mov byte ptr [rbx+000001C8],00 { 0 }
+FC_m64.dll+106F291E - 48 8B 5C 24 30        - mov rbx,[rsp+30]
+FC_m64.dll+106F2923 - 48 83 C4 20           - add rsp,20 { 32 }
+FC_m64.dll+106F2927 - 5F                    - pop rdi
+FC_m64.dll+106F2928 - C3                    - ret
+*/
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>471</ID>
+          <Description>"No Sway"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">// No Sway
+// Credits: gir489
+
+[ENABLE]
+
+aobscanmodule( NoSway, FC_m64.dll, 0F85E8000000BA )
+registersymbol( NoSway )
+
+NoSway:
+db 0F 86
+
+[DISABLE]
+
+NoSway:
+db 0F 85
+
+registersymbol( NoSway )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>472</ID>
+          <Description>"No Spread"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">// No Spread
+// Credits: gir489
+
+[ENABLE]
+
+aobscanmodule( NoSpread, FC_m64.dll, F30F11B000040000F30F1190 )
+registersymbol( NoSpread )
+
+NoSpread:
+movss [rax+00000400],xmm0
+
+[DISABLE]
+
+NoSpread:
+movss [rax+00000400],xmm6
+
+unregistersymbol( NoSpread )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>473</ID>
+          <Description>"No Recoil"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">// No Recoil
+// Credits: gir489
+
+[ENABLE]
+
+aobscanmodule( NoRecoil, FC_m64.dll, 7458F30F10470C )
+registersymbol( NoRecoil )
+
+NoRecoil:
+db EB
+
+[DISABLE]
+
+NoRecoil:
+db 74
+
+unregistersymbol( NoRecoil )
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>474</ID>
+          <Description>"Stealth"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">// No Recoil
+// Credits: russk
+
+[ENABLE]
+
+aobscanmodule( Stealth, FC_m64.dll, F3 0F 59 7B 2C F3 0F 58 7B 10 41 0F 2F FB F3 0F 11 7B 10 )
+registersymbol( Stealth )
+
+Stealth+5:
+xorps xmm7,xmm7
+db 90 90
+
+[DISABLE]
+
+Stealth+5:
+addss xmm7,dword ptr [rbx+10]
+
+unregistersymbol( Stealth )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>492</ID>
+          <Description>"No Turret Heat"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{
+	Process			: FarCryNewDawn.exe  -  (x64)
+	Module			: FC_m64.dll
+	Game Title		: Far Cry: New Dawn
+	Game Version	: 1.0.0.0
+	CE Version		: 6.7
+	Script Version	: 0.0.1
+	Date			: 02/17/19
+	Author			: ShyTwig16
+	Name			: TurretHeatIncHook
+
+	Turret Heat Inc Hook
+}
+
+{$STRICT}
+
+define(address, FC_m64.AK::MemoryMgr::SetPoolName+84AB1D)
+define(oldBytes, F3 0F 58 33) // addss xmm6,[rbx]
+define(newBytes, 0F 57 F6 90) // xorps xmm6,xmm6
+							  // nop
+
+////
+//// ------------------------------ ENABLE ------------------------------
+[ENABLE]
+aobScanModule(aobTurretHeatIncHook, FC_m64.dll, F3xxxxxx0F2FxxxxxxxxxxF3xxxxxx72xx8B)
+define(injTurretHeatIncHook, aobTurretHeatIncHook)
+assert(injTurretHeatIncHook, oldBytes)
+registerSymbol(injTurretHeatIncHook)
+
+
+////
+//// ---------- Injection Point ----------
+injTurretHeatIncHook:
+	db newBytes
+
+
+////
+//// ------------------------------ DISABLE ------------------------------
+[DISABLE]
+////
+//// ---------- Injection Point ----------
+injTurretHeatIncHook:
+	db oldBytes
+
+unregisterSymbol(injTurretHeatIncHook)
+
+{
+//// Injection Point: FC_m64.AK::MemoryMgr::SetPoolName+84AB1D  -  000007FEC8E21CCD
+//// AOB address: 000007FEC8E21CCD  -  FC_m64.AK::MemoryMgr::SetPoolName+84AB1D
+//// Process: FarCryNewDawn.exe  -  000000013F040000
+//// Module: FC_m64.dll  -  000007FEBA030000
+//// Module Size: 000000001AD0E000
+FC_m64.AK::MemoryMgr::SetPoolName+84AAC0:  48 8D 93 A8010000           -  lea rdx,[rbx+000001A8]
+FC_m64.AK::MemoryMgr::SetPoolName+84AAC7:  48 89 C1                    -  mov rcx,rax
+FC_m64.AK::MemoryMgr::SetPoolName+84AACA:  4C 8B 00                    -  mov r8,[rax]
+FC_m64.AK::MemoryMgr::SetPoolName+84AACD:  41 FF 90 60030000           -  call qword ptr [r8+00000360]
+FC_m64.AK::MemoryMgr::SetPoolName+84AAD4:  84 C0                       -  test al,al
+FC_m64.AK::MemoryMgr::SetPoolName+84AAD6:  75 40                       -  jne 7FEC8E21CC8
+FC_m64.AK::MemoryMgr::SetPoolName+84AAD8:  E8 C30997F1                 -  call 7FEBA792650
+FC_m64.AK::MemoryMgr::SetPoolName+84AADD:  48 8B 93 B8010000           -  mov rdx,[rbx+000001B8]
+FC_m64.AK::MemoryMgr::SetPoolName+84AAE4:  48 8D 4B 10                 -  lea rcx,[rbx+10]
+FC_m64.AK::MemoryMgr::SetPoolName+84AAE8:  48 C7 44 24 28 00000000     -  mov [rsp+28],00000000
+FC_m64.AK::MemoryMgr::SetPoolName+84AAF1:  48 89 4C 24 20              -  mov [rsp+20],rcx
+FC_m64.AK::MemoryMgr::SetPoolName+84AAF6:  48 89 C1                    -  mov rcx,rax
+FC_m64.AK::MemoryMgr::SetPoolName+84AAF9:  4C 8B 10                    -  mov r10,[rax]
+FC_m64.AK::MemoryMgr::SetPoolName+84AAFC:  44 8B 4A 18                 -  mov r9d,[rdx+18]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB00:  44 8B 42 10                 -  mov r8d,[rdx+10]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB04:  48 8D 54 24 50              -  lea rdx,[rsp+50]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB09:  41 FF 92 80020000           -  call qword ptr [r10+00000280]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB10:  8B 08                       -  mov ecx,[rax]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB12:  89 8B A8010000              -  mov [rbx+000001A8],ecx
+FC_m64.AK::MemoryMgr::SetPoolName+84AB18:  48 8B 7C 24 58              -  mov rdi,[rsp+58]
+////  INJECTING START  ----------------------------------------------------------
+FC_m64.AK::MemoryMgr::SetPoolName+84AB1D:  F3 0F58 33                  -  addss xmm6,[rbx]                   &lt;&lt;&lt;--- AOB Starts Here
+////  INJECTING END  ----------------------------------------------------------
+FC_m64.AK::MemoryMgr::SetPoolName+84AB21:  0F2F 35 685038F5            -  comiss xmm6,[7FEBE1A6D40]          [(float)100.0000]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB28:  F3 0F11 33                  -  movss [rbx],xmm6
+FC_m64.AK::MemoryMgr::SetPoolName+84AB2C:  72 0D                       -  jb 7FEC8E21CEB
+FC_m64.AK::MemoryMgr::SetPoolName+84AB2E:  8B 53 08                    -  mov edx,[rbx+08]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB31:  48 89 D9                    -  mov rcx,rbx
+FC_m64.AK::MemoryMgr::SetPoolName+84AB34:  FF C2                       -  inc edx
+FC_m64.AK::MemoryMgr::SetPoolName+84AB36:  E8 65FBFBF2                 -  call 7FEBBDE1850
+FC_m64.AK::MemoryMgr::SetPoolName+84AB3B:  48 63 43 08                 -  movsxd  rax,dword ptr [rbx+08]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB3F:  48 6B D0 70                 -  imul rdx,rax,70
+FC_m64.AK::MemoryMgr::SetPoolName+84AB43:  48 8B 83 B8010000           -  mov rax,[rbx+000001B8]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB4A:  48 8B 48 20                 -  mov rcx,[rax+20]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB4E:  8B 44 0A 08                 -  mov eax,[rdx+rcx+08]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB52:  89 43 04                    -  mov [rbx+04],eax
+FC_m64.AK::MemoryMgr::SetPoolName+84AB55:  0F28 74 24 30               -  movaps xmm6,[rsp+30]
+FC_m64.AK::MemoryMgr::SetPoolName+84AB5A:  48 83 C4 40                 -  add rsp,40
+FC_m64.AK::MemoryMgr::SetPoolName+84AB5E:  5B                          -  pop rbx
+FC_m64.AK::MemoryMgr::SetPoolName+84AB5F:  C3                          -  ret
+FC_m64.AK::MemoryMgr::SetPoolName+84AB60:  CC                          -  int 3
+FC_m64.AK::MemoryMgr::SetPoolName+84AB61:  56                          -  push rsi
+FC_m64.AK::MemoryMgr::SetPoolName+84AB62:  81 34 24  B8B8FE67          -  xor [rsp],67FEB8B8                 [64ED2E40]
+//// Template: I2CEA_AOBInjection
+//// Generated with: I2 Cheat Engine Auto Assembler Script Template Generator
+//// Code Happy, Code Freely, Be Awesome.
+}
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>493</ID>
+          <Description>"Instant Lock Cutting"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{
+	Process			: FarCryNewDawn.exe  -  (x64)
+	Module			: FC_m64.dll
+	Game Title		: Far Cry: New Dawn
+	Game Version	: 1.0.0.0
+	CE Version		: 6.7
+	Script Version	: 0.0.1
+	Date			: 02/17/19
+	Author			: ShyTwig16
+	Name			: LockCutDecHook
+
+	Lock Cut Dec Hook
+
+	84xx0F85xxxxxxxxF3xxxxxxxxxxxxxxF3xxxxxx0F57xx0F2FxxF3xxxxxxxxxxxxxx
+	84xx0F85xxxxxxxxF30F10xxxxxxxxxxF30F5CC60F57xx0F2FxxF30F11
+}
+
+{$STRICT}
+
+define(address, FC_m64.FCE_BudgetManager_GetNumCategories+E6DF7A)
+define(oldBytes, F3 0F 5C C6) // subss xmm0,xmm6
+define(newBytes, 0F 57 C0 90) // xorps xmm0,xmm0
+							  // nop
+
+////
+//// ------------------------------ ENABLE ------------------------------
+[ENABLE]
+aobScanModule(aobLockCutDecHook, FC_m64.dll, 84xx0F85xxxxxxxxF30F10xxxxxxxxxxF30F5CC60F57xx0F2FxxF30F11)
+define(injLockCutDecHook, aobLockCutDecHook+10)
+assert(injLockCutDecHook, oldBytes)
+registerSymbol(injLockCutDecHook)
+
+
+////
+//// ---------- Injection Point ----------
+injLockCutDecHook:
+	db newBytes
+
+
+////
+//// ------------------------------ DISABLE ------------------------------
+[DISABLE]
+////
+//// ---------- Injection Point ----------
+injLockCutDecHook:
+	db oldBytes
+
+unregisterSymbol(injLockCutDecHook)
+
+{
+//// Injection Point: FC_m64.FCE_BudgetManager_GetNumCategories+E6DF7A  -  000007FEC7E24FFA
+//// AOB address: 000007FEC7E24FEA  -  FC_m64.FCE_BudgetManager_GetNumCategories+E6DF6A
+//// Process: FarCryNewDawn.exe  -  000000013F920000
+//// Module: FC_m64.dll  -  000007FEBA030000
+//// Module Size: 000000001AD0E000
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF2A:  41 5F                       -  pop r15
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF2C:  5F                          -  pop rdi
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF2D:  0F1F 00                     -  nop [rax]
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF30:  48 89 5C 24 08              -  mov [rsp+08],rbx
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF35:  57                          -  push rdi
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF36:  48 83 EC 30                 -  sub rsp,30
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF3A:  0F29 74 24 20               -  movaps [rsp+20],xmm6
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF3F:  4C 89 C7                    -  mov rdi,r8
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF42:  0F28 F1                     -  movaps xmm6,xmm1
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF45:  48 89 CB                    -  mov rbx,rcx
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF48:  E8 6366A6F3                 -  call 7FEBB88B630
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF4D:  84 C0                       -  test al,al
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF4F:  0F84 D1000000               -  je 7FEC7E250A6
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF55:  83 BB FC000000 01           -  cmp dword ptr [rbx+000000FC],01
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF5C:  0F85 C4000000               -  jne 7FEC7E250A6
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF62:  48 89 D9                    -  mov rcx,rbx
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF65:  E8 D666A6F3                 -  call 7FEBB88B6C0
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF6A:  84 C0                       -  test al,al                         &lt;&lt;&lt;--- AOB Starts Here
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF6C:  0F85 B4000000               -  jne 7FEC7E250A6
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF72:  F3 0F10 83 14030000         -  movss xmm0,[rbx+00000314]
+////  INJECTING START  ----------------------------------------------------------
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF7A:  F3 0F5C C6                  -  subss xmm0,xmm6
+////  INJECTING END  ----------------------------------------------------------
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF7E:  0F57 F6                     -  xorps xmm6,xmm6
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF81:  0F2F C6                     -  comiss xmm0,xmm6
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF84:  F3 0F11 83 14030000         -  movss [rbx+00000314],xmm0
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF8C:  77 10                       -  ja 7FEC7E2501E
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF8E:  49 89 F8                    -  mov r8,rdi
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF91:  BA 05000000                 -  mov edx,00000005
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF96:  48 89 D9                    -  mov rcx,rbx
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF99:  E8 C2BB1BF3                 -  call 7FEBAFE0BE0
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DF9E:  48 8D 8B 30030000           -  lea rcx,[rbx+00000330]
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFA5:  E8 660C46F2                 -  call 7FEBA285C90
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFAA:  84 C0                       -  test al,al
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFAC:  74 49                       -  je 7FEC7E25077
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFAE:  48 83 BB 38030000 00        -  cmp qword ptr [rbx+00000338],00
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFB6:  74 3F                       -  je 7FEC7E25077
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFB8:  48 8B 83 38030000           -  mov rax,[rbx+00000338]
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFBF:  F3 0F10 8B 14030000         -  movss xmm1,[rbx+00000314]
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFC7:  F3 0F10 40 08               -  movss xmm0,[rax+08]
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFCC:  F3 0F5C C1                  -  subss xmm0,xmm1
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFD0:  0F54 05 B98937F6            -  andps xmm0,[7FEBE19DA10]           [7FFFFFFF]
+FC_m64.FCE_BudgetManager_GetNumCategories+E6DFD7:  0F2F 05 528937F6            -  comiss xmm0,[7FEBE19D9B0]          [360637BD]
+//// Template: I2CEA_AOBInjection
+//// Generated with: I2 Cheat Engine Auto Assembler Script Template Generator
+//// Code Happy, Code Freely, Be Awesome.
+}
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>475</ID>
+          <Description>"Free Perk Points"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( FreePerkPoints, FC_m64.dll, 4585C90F84????????48895424??534883EC )
+registersymbol( FreePerkPoints )
+
+FreePerkPoints:
+xor r9d,r9d
+inc r9d
+db 90 90 90
+
+[DISABLE]
+
+FreePerkPoints:
+db 45 85 C9 0F 84 9B 00 00 00
+
+unregistersymbol( FreePerkPoints )
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>476</ID>
+          <Description>"Set Pick-Up Quantity"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( PickUpQty, FC_m64.dll, 4889D989C5E8????????4189C7488B97????????4889F1E8????????488B0E0FAFE8 )
+registersymbol( PickUpQty )
+alloc( Hook, 0x1000, FC_m64.dll )
+label( UnitQuantity )
+registersymbol( UnitQuantity )
+label( StackQuantity )
+registersymbol( StackQuantity )
+
+Hook:
+
+_Unit:
+mov eax,[UnitQuantity]
+db 48 89 D9 89 C5
+jmp PickUpQty+5
+
+_Stack:
+mov eax,[StackQuantity]
+db 48 8B 0E 0F AF E8
+jmp PickUpQty+22
+
+align 10 CC
+
+UnitQuantity:
+dd #100
+
+align 10 CC
+
+StackQuantity:
+dd #1
+
+PickUpQty:
+jmp _Unit
+
+PickUpQty+1C:
+jmp _Stack
+db 90
+
+[DISABLE]
+
+PickUpQty:
+db 48 89 D9 89 C5
+
+PickUpQty+1C:
+db 48 8B 0E 0F AF E8
+
+unregistersymbol( UnitQuantity )
+unregistersymbol( StackQuantity )
+dealloc( Hook )
+unregistersymbol( PickUpQty )
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>477</ID>
+              <Description>"UnitQuantity"</Description>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>UnitQuantity</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>478</ID>
+              <Description>"StackQuantity"</Description>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>StackQuantity</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>481</ID>
+          <Description>"Set Quest Reward Amount / Multiplier"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( ProcessQuestReward, FC_m64.dll, 448B43??4C89F9488B13FF90????????4883C3 )
+registersymbol( ProcessQuestReward )
+alloc( Hook, 0x1000, FC_m64.dll )
+label( RewardQuantity )
+registersymbol( RewardQuantity )
+label( RewardQuantityMultiplier )
+registersymbol( RewardQuantityMultiplier )
+
+Hook:
+mov r8d,[RewardQuantity]
+imul r8d,[RewardQuantityMultiplier]
+mov [rbx+18],r8d
+mov r8d,[rbx+18]
+mov rcx,r15
+jmp ProcessQuestReward+7
+
+align 10 CC
+
+RewardQuantity:
+dd #10000
+
+align 10 CC
+
+RewardQuantityMultiplier:
+dd #1
+
+ProcessQuestReward:
+jmp Hook
+db 90 90
+
+[DISABLE]
+
+ProcessQuestReward:
+db 44 8B 43 18 4C 89 F9
+
+unregistersymbol( RewardQuantityMultiplier )
+unregistersymbol( RewardQuantity )
+dealloc( Hook )
+unregistersymbol( ProcessQuestReward )
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>482</ID>
+              <Description>"RewardQuantity"</Description>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>RewardQuantity</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>483</ID>
+              <Description>"RewardQuantityMultiplier"</Description>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>RewardQuantityMultiplier</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>484</ID>
+          <Description>"Instant Action Hold"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">{
+	Process			: FarCry5.exe  -  (x64)
+	Module			: FC_m64.dll
+	Game Title		: FarCry5
+	Game Version	: 1.0.0.0
+	CE Version		: 6.7
+	Script Version	: 0.0.1
+	Date			: 01/11/19
+	Author			: TheyCallMeTim13
+	Name			: ActionHoldHook
+
+	Action Hold Hook
+}
+
+{$STRICT}
+
+define(address, FC_m64.FCE_Editor_Plugins_Import+11F6C0)
+define(bytes, F3 0F 11 44 9F 08)
+
+////
+//// ------------------------------ ENABLE ------------------------------
+[ENABLE]
+aobScanModule(aobActionHoldHook, FC_m64.dll, 0F2Fxx73xxF3xxxxxxxxF3xxxxxxxxxxEBxx41)
+define(injActionHoldHook, aobActionHoldHook+A)
+assert(injActionHoldHook, bytes)
+registerSymbol(injActionHoldHook)
+
+alloc(memActionHoldHook, 0x400, injActionHoldHook)
+
+label(fltActionHoldHook)
+registerSymbol(fltActionHoldHook)
+
+label(ptrActionHoldHook)
+registerSymbol(ptrActionHoldHook)
+
+label(n_code)
+label(o_code)
+label(exit)
+label(return)
+
+memActionHoldHook:
+	fltActionHoldHook:
+		dd (float)0.075
+	align 10
+	ptrActionHoldHook:
+		dq 0
+	align 10 CC
+	n_code:
+		pushfq
+		cmp r10,400
+		jne short o_code
+			comiss xmm0,[fltActionHoldHook]
+			jb short o_code
+				push rax
+				lea rax,[rdi+rbx*4+08]
+				mov [ptrActionHoldHook],rax
+				pop rax
+				movss [rdi+rbx*4+08],xmm1
+				jmp short exit
+	o_code:
+		movss [rdi+rbx*4+08],xmm0
+	exit:
+		popfq
+		jmp long return
+
+
+////
+//// ---------- Injection Point ----------
+injActionHoldHook:
+	jmp n_code
+	nop
+	return:
+
+
+////
+//// ------------------------------ DISABLE ------------------------------
+[DISABLE]
+////
+//// ---------- Injection Point ----------
+injActionHoldHook:
+	db bytes
+
+unregisterSymbol(injActionHoldHook)
+
+unregisterSymbol(fltActionHoldHook)
+
+unregisterSymbol(ptrActionHoldHook)
+
+dealloc(memActionHoldHook)
+
+{
+//// Injection Point: FC_m64.FCE_Editor_Plugins_Import+11F6C0  -  000007FEB8D41B90
+//// AOB address: 000007FEB8D41B86  -  FC_m64.FCE_Editor_Plugins_Import+11F6B6
+//// Process: FarCry5.exe  -  000000013F0C0000
+//// Module: FC_m64.dll  -  000007FEB7FB0000
+//// Module Size: 000000000EE32000
+FC_m64.FCE_Editor_Plugins_Import+11F666:  E8 354253FF                 -  call 7FEB8275D70
+FC_m64.FCE_Editor_Plugins_Import+11F66B:  45 33 C9                    -  xor r9d,r9d
+FC_m64.FCE_Editor_Plugins_Import+11F66E:  84 C0                       -  test al,al
+FC_m64.FCE_Editor_Plugins_Import+11F670:  0F84 1D010000               -  je 7FEB8D41C63
+FC_m64.FCE_Editor_Plugins_Import+11F676:  41 8B F1                    -  mov esi,r9d
+FC_m64.FCE_Editor_Plugins_Import+11F679:  45 39 4D 70                 -  cmp [r13+70],r9d
+FC_m64.FCE_Editor_Plugins_Import+11F67D:  0F86 DEF9FFFF               -  jbe 7FEB8D41531
+FC_m64.FCE_Editor_Plugins_Import+11F683:  0F1F 40 00                  -  nop [rax+00]
+FC_m64.FCE_Editor_Plugins_Import+11F687:  66 0F1F 84 00 00000000      -  nop [rax+rax+00000000]
+FC_m64.FCE_Editor_Plugins_Import+11F690:  F3 41 0F10 4D 10            -  movss xmm1,[r13+10]
+FC_m64.FCE_Editor_Plugins_Import+11F696:  41 0F2F C9                  -  comiss xmm1,xmm9
+FC_m64.FCE_Editor_Plugins_Import+11F69A:  49 8B 7D 60                 -  mov rdi,[r13+60]
+FC_m64.FCE_Editor_Plugins_Import+11F69E:  8B C6                       -  mov eax,esi
+FC_m64.FCE_Editor_Plugins_Import+11F6A0:  48 8D 1C C0                 -  lea rbx,[rax+rax*8]
+FC_m64.FCE_Editor_Plugins_Import+11F6A4:  77 0A                       -  ja 7FEB8D41B80
+FC_m64.FCE_Editor_Plugins_Import+11F6A6:  F3 41 0F10 8C 24 40160000   -  movss xmm1,[r12+00001640]
+FC_m64.FCE_Editor_Plugins_Import+11F6B0:  F3 0F10 44 9F 08            -  movss xmm0,[rdi+rbx*4+08]
+FC_m64.FCE_Editor_Plugins_Import+11F6B6:  0F2F C1                     -  comiss xmm0,xmm1                   &lt;&lt;&lt;--- AOB Starts Here
+FC_m64.FCE_Editor_Plugins_Import+11F6B9:  73 0D                       -  jae 7FEB8D41B98
+FC_m64.FCE_Editor_Plugins_Import+11F6BB:  F3 41 0F58 C4               -  addss xmm0,xmm12
+////  INJECTING START  ----------------------------------------------------------
+FC_m64.FCE_Editor_Plugins_Import+11F6C0:  F3 0F11 44 9F 08            -  movss [rdi+rbx*4+08],xmm0
+////  INJECTING END  ----------------------------------------------------------
+FC_m64.FCE_Editor_Plugins_Import+11F6C6:  EB 17                       -  jmp 7FEB8D41BAF
+FC_m64.FCE_Editor_Plugins_Import+11F6C8:  41 83 7D 00 03              -  cmp dword ptr [r13+00],03
+FC_m64.FCE_Editor_Plugins_Import+11F6CD:  75 10                       -  jne 7FEB8D41BAF
+FC_m64.FCE_Editor_Plugins_Import+11F6CF:  41 0F28 C4                  -  movaps xmm0,xmm12
+FC_m64.FCE_Editor_Plugins_Import+11F6D3:  F3 0F58 44 9F 0C            -  addss xmm0,[rdi+rbx*4+0C]
+FC_m64.FCE_Editor_Plugins_Import+11F6D9:  F3 0F11 44 9F 0C            -  movss [rdi+rbx*4+0C],xmm0
+FC_m64.FCE_Editor_Plugins_Import+11F6DF:  F3 41 0F10 45 10            -  movss xmm0,[r13+10]
+FC_m64.FCE_Editor_Plugins_Import+11F6E5:  41 0F2F C1                  -  comiss xmm0,xmm9
+FC_m64.FCE_Editor_Plugins_Import+11F6E9:  77 0A                       -  ja 7FEB8D41BC5
+FC_m64.FCE_Editor_Plugins_Import+11F6EB:  F3 41 0F10 84 24 40160000   -  movss xmm0,[r12+00001640]
+FC_m64.FCE_Editor_Plugins_Import+11F6F5:  0F2F 44 9F 08               -  comiss xmm0,[rdi+rbx*4+08]
+FC_m64.FCE_Editor_Plugins_Import+11F6FA:  41 8B 4D 00                 -  mov ecx,[r13+00]
+FC_m64.FCE_Editor_Plugins_Import+11F6FE:  0F96 C0                     -  setbe al
+FC_m64.FCE_Editor_Plugins_Import+11F701:  83 F9 02                    -  cmp ecx,02
+FC_m64.FCE_Editor_Plugins_Import+11F704:  75 08                       -  jne 7FEB8D41BDE
+FC_m64.FCE_Editor_Plugins_Import+11F706:  84 C0                       -  test al,al
+FC_m64.FCE_Editor_Plugins_Import+11F708:  74 04                       -  je 7FEB8D41BDE
+FC_m64.FCE_Editor_Plugins_Import+11F70A:  B2 01                       -  mov dl,01
+FC_m64.FCE_Editor_Plugins_Import+11F70C:  EB 02                       -  jmp 7FEB8D41BE0
+FC_m64.FCE_Editor_Plugins_Import+11F70E:  32 D2                       -  xor dl,dl
+//// Template: I2CEA_AOBFullInjection
+//// Generated with: I2 Cheat Engine Auto Assembler Script Template Generator
+//// Code Happy, Code Freely, Be Awesome.
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>487</ID>
+          <Description>"Disable 'Out Of Bounds' Check"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( OOBCheck, FC_m64.dll, 75??44387B??75??4084F674??488B0D????????4030F6488B01FF50 )
+registersymbol( OOBCheck )
+
+OOBCheck:
+db EB 0B
+
+[DISABLE]
+
+OOBCheck:
+db 75 54
+
+unregistersymbol( OOBCheck )
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>486</ID>
+          <Description>"Super Speed"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+
+aobscanmodule( Speed, FC_m64.dll, 488B83????????0F28C80F28D0F30F59??F30F11??F30F5950 )
+registersymbol( Speed )
+label( Speed_o )
+registersymbol( Speed_o )
+alloc( _Speed, 0x1000, FC_m64.dll )
+label( _IncreaseSpeedValue )
+registersymbol( _IncreaseSpeedValue )
+label( _DecreaseSpeedValue )
+registersymbol( _DecreaseSpeedValue )
+label( _RestoreSpeedValue )
+registersymbol( _RestoreSpeedValue )
+label( _DefaultSpeed )
+label( IncreaseSpeed )
+label( DecreaseSpeed )
+label( RestoreSpeed )
+
+_Speed:
+cmp byte ptr [rax+771],0 // IsPlayer?
+jne short @f
+  cmp byte ptr [_IncreaseSpeedValue],1
+  je short IncreaseSpeed
+  cmp byte ptr [_DecreaseSpeedValue],1
+  je short DecreaseSpeed
+  cmp byte ptr [_RestoreSpeedValue],1
+  je short RestoreSpeed
+  test byte ptr [rax+1A9],4 // if 0, we're grapple-hooked
+  je short Speed_o // else execute normal code
+    movss xmm0,[_DefaultSpeed] // apply default speed
+Speed_o:
+readmem( Speed, 7 )
+jmp Speed+7
+
+align 10 CC
+
+IncreaseSpeed:
+mov byte ptr [_IncreaseSpeedValue],0
+fld [rax+C78]
+fld1
+faddp
+fstp [rax+C78]
+jmp short Speed_o
+
+align 10 CC
+
+DecreaseSpeed:
+mov byte ptr [_DecreaseSpeedValue],0
+fld [rax+C78]
+fld1
+fsubp
+fstp [rax+C78]
+jmp short Speed_o
+
+align 10 CC
+
+RestoreSpeed:
+mov byte ptr [_RestoreSpeedValue],0
+mov [rax+C78],(float)1.0
+jmp short Speed_o
+
+align 10 CC
+
+_IncreaseSpeedValue:
+db 0
+ _DecreaseSpeedValue:
+db 0
+_RestoreSpeedValue:
+db 0
+_GetSpeedBasePtr:
+dq 0
+_DefaultSpeed:
+dd (float)1.0
+
+Speed:
+jmp _Speed
+db 90 90
+
+[DISABLE]
+
+Speed:
+readmem( Speed_o, 7 )
+
+unregistersymbol( Speed_o )
+unregistersymbol( _RestoreSpeedValue )
+unregistersymbol( _DecreaseSpeedValue )
+unregistersymbol( _IncreaseSpeedValue )
+dealloc( _Speed )
+unregistersymbol( Speed )
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>187</ID>
+              <Description>"Decrease by 1.0"</Description>
+              <Color>404080</Color>
+              <VariableType>Byte</VariableType>
+              <Address>_DecreaseSpeedValue</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>100</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>188</ID>
+              <Description>"Restore to default"</Description>
+              <Color>404080</Color>
+              <VariableType>Byte</VariableType>
+              <Address>_RestoreSpeedValue</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>101</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>186</ID>
+              <Description>"Increase by 1.0"</Description>
+              <Color>404080</Color>
+              <VariableType>Byte</VariableType>
+              <Address>_IncreaseSpeedValue</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>102</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>191</ID>
+              <Description>"Debug"</Description>
+              <Options moHideChildren="1"/>
+              <Color>808000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>240</ID>
+                  <Description>"Current Speed"</Description>
+                  <Color>808080</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>CPlayer</Address>
+                  <Offsets>
+                    <Offset>C78</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>455</ID>
+          <Description>"Debug"</Description>
+          <Options moHideChildren="1"/>
+          <Color>0080FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>456</ID>
+              <Description>"CPawn"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>C0C0C0</Color>
+              <VariableType>8 Bytes</VariableType>
+              <Address>CPawn</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>457</ID>
+              <Description>"pCPawnPlayer"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>C0C0C0</Color>
+              <VariableType>8 Bytes</VariableType>
+              <Address>CPlayer</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>458</ID>
+                  <Description>"[000] CPawnPlayer"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>000000</Color>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>CPlayer</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>462</ID>
+                  <Description>"[53C] fAcceleration"</Description>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>CPlayer</Address>
+                  <Offsets>
+                    <Offset>53C</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>1.5</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>470</ID>
+                  <Description>"[771] bPlayerId"</Description>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>CPlayer</Address>
+                  <Offsets>
+                    <Offset>771</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>465</ID>
+                  <Description>"[77C] fNoFallBlur"</Description>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>CPlayer</Address>
+                  <Offsets>
+                    <Offset>77C</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>97</Key>
+                      </Keys>
+                      <Value>-1</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>463</ID>
+                  <Description>"[7F0] fJump"</Description>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>CPlayer</Address>
+                  <Offsets>
+                    <Offset>7F0</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>1.5</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>485</ID>
+                  <Description>"[C70] fJump"</Description>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>CPlayer</Address>
+                  <Offsets>
+                    <Offset>C70</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>1.5</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>466</ID>
+                  <Description>"[C78] fSpeed"</Description>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>CPlayer</Address>
+                  <Offsets>
+                    <Offset>C78</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>17</Key>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>1.5</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>469</ID>
+              <Description>"Notes"</Description>
+              <Color>C0C0C0</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>// notes
+
+[ENABLE]
+
+{
+
+bPlayerId
+
+FC_m64.dll+FE3C040 - 48 8B 91 D02A0000     - mov rdx,[rcx+00002AD0]
+FC_m64.dll+FE3C047 - 31 C0                 - xor eax,eax
+FC_m64.dll+FE3C049 - 38 82 71070000        - cmp [rdx+00000771],al &lt;--
+FC_m64.dll+FE3C04F - 0F95 D0               - setne al
+FC_m64.dll+FE3C052 - FF C0                 - inc eax
+FC_m64.dll+FE3C054 - C3                    - ret
+
+fNoFallBlur
+
+FC_m64.dll+FEE22FD - 48 8B 87 D02A0000     - mov rax,[rdi+00002AD0]
+FC_m64.dll+FEE2304 - 31 C9                 - xor ecx,ecx
+FC_m64.dll+FEE2306 - 48 89 88 7C070000     - mov [rax+0000077C],rcx &lt;--
+FC_m64.dll+FEE230D - 48 8B 5C 24 38        - mov rbx,[rsp+38]
+FC_m64.dll+FEE2312 - 48 83 C4 20           - add rsp,20
+FC_m64.dll+FEE2316 - 5F                    - pop rdi
+FC_m64.dll+FEE2317 - C3                    - ret
+
+
+fSpeed + fJump
+
+FC_m64.dll+FC6F053 - 48 8B 4B 10           - mov rcx,[rbx+10]
+FC_m64.dll+FC6F057 - E8 C445E9F1           - call FC_m64.dll+1B03620 &lt;-- [1]
+FC_m64.dll+FC6F05C - 48 8B 83 C0000000     - mov rax,[rbx+000000C0]
+FC_m64.dll+FC6F063 - 0F28 C8               - movaps xmm1,xmm0
+FC_m64.dll+FC6F066 - 0F28 D0               - movaps xmm2,xmm0
+FC_m64.dll+FC6F069 - F3 0F59 08            - mulss xmm1,[rax]
+FC_m64.dll+FC6F06D - F3 0F11 08            - movss [rax],xmm1
+FC_m64.dll+FC6F071 - F3 0F59 50 04         - mulss xmm2,[rax+04]
+FC_m64.dll+FC6F076 - F3 0F11 50 04         - movss [rax+04],xmm2
+FC_m64.dll+FC6F07B - F3 0F59 40 08         - mulss xmm0,[rax+08]
+FC_m64.dll+FC6F080 - F3 0F11 40 08         - movss [rax+08],xmm0
+FC_m64.dll+FC6F085 - 48 8B 4B 10           - mov rcx,[rbx+10]
+FC_m64.dll+FC6F089 - E8 F244E9F1           - call FC_m64.dll+1B03580
+FC_m64.dll+FC6F08E - 0FB6 48 08            - movzx ecx,byte ptr [rax+08]
+FC_m64.dll+FC6F092 - 48 8B 83 C0000000     - mov rax,[rbx+000000C0]
+FC_m64.dll+FC6F099 - C0 E9 06              - shr cl,06
+FC_m64.dll+FC6F09C - 80 E1 01              - and cl,01
+FC_m64.dll+FC6F09F - 88 48 18              - mov [rax+18],cl
+FC_m64.dll+FC6F0A2 - 48 8B 83 C0000000     - mov rax,[rbx+000000C0]
+FC_m64.dll+FC6F0A9 - 80 78 18 00           - cmp byte ptr [rax+18],00
+FC_m64.dll+FC6F0AD - 0F84 56020000         - je FC_m64.dll+FC6F309
+FC_m64.dll+FC6F0B3 - 48 8B 4B 10           - mov rcx,[rbx+10]
+FC_m64.dll+FC6F0B7 - 48 89 BC 24 C8000000  - mov [rsp+000000C8],rdi
+FC_m64.dll+FC6F0BF - 0F29 B4 24 A0000000   - movaps [rsp+000000A0],xmm6
+FC_m64.dll+FC6F0C7 - E8 5430E9F1           - call FC_m64.dll+1B02120 &lt;-- [2]
+FC_m64.dll+FC6F0CC - 48 8B 4B 10           - mov rcx,[rbx+10]
+
+[1]
+FC_m64.dll+FE6ECF0 - 48 8B 81 D02A0000     - mov rax,[rcx+00002AD0]
+FC_m64.dll+FE6ECF7 - F3 0F10 80 780C0000   - movss xmm0,[rax+00000C78] &lt;--
+FC_m64.dll+FE6ECFF - C3                    - ret
+
+[2]
+FC_m64.dll+FE64EE0 - 48 8B 81 D02A0000     - mov rax,[rcx+00002AD0]
+FC_m64.dll+FE64EE7 - F3 0F10 80 F0070000   - movss xmm0,[rax+000007F0] &lt;--
+FC_m64.dll+FE64EEF - C3                    - ret
+
+//NoSway
+
+-&gt; 0F 28 C6 F3 0F 58 C6 F3 0F 58 C1 F3 0F 5D C3
+
+FC_m64.dll+FBF0500 - 40 53                 - push rbx
+FC_m64.dll+FBF0502 - 48 83 EC 50           - sub rsp,50
+FC_m64.dll+FBF0506 - 0F29 74 24 40         - movaps [rsp+40],xmm6
+FC_m64.dll+FBF050B - 48 89 CB              - mov rbx,rcx
+FC_m64.dll+FBF050E - 48 89 6C 24 68        - mov [rsp+68],rbp
+FC_m64.dll+FBF0513 - 4C 89 C1              - mov rcx,r8
+FC_m64.dll+FBF0516 - 48 89 74 24 70        - mov [rsp+70],rsi
+FC_m64.dll+FBF051B - 0F28 F1               - movaps xmm6,xmm1
+FC_m64.dll+FBF051E - 48 89 7C 24 78        - mov [rsp+78],rdi
+FC_m64.dll+FBF0523 - 4C 89 C6              - mov rsi,r8
+FC_m64.dll+FBF0526 - 44 0F29 44 24 20      - movaps [rsp+20],xmm8
+FC_m64.dll+FBF052C - E8 4F30F1F1           - call FC_m64.dll+1B03580
+FC_m64.dll+FBF0531 - 48 8B 56 08           - mov rdx,[rsi+08]
+FC_m64.dll+FBF0535 - 48 89 C5              - mov rbp,rax
+FC_m64.dll+FBF0538 - 48 8B BE 90000000     - mov rdi,[rsi+00000090]
+FC_m64.dll+FBF053F - 48 8D 05 32C807F5     - lea rax,[FC_m64.dll+4C6CD78]
+FC_m64.dll+FBF0546 - 48 89 54 24 60        - mov [rsp+60],rdx
+FC_m64.dll+FBF054B - 48 39 C2              - cmp rdx,rax
+FC_m64.dll+FBF054E - 74 04                 - je FC_m64.dll+FBF0554
+FC_m64.dll+FBF0550 - F0 FF 42 08           - lock inc [rdx+08]
+FC_m64.dll+FBF0554 - 31 D2                 - xor edx,edx
+FC_m64.dll+FBF0556 - 0F29 7C 24 30         - movaps [rsp+30],xmm7
+FC_m64.dll+FBF055B - 48 8D 4C 24 60        - lea rcx,[rsp+60]
+FC_m64.dll+FBF0560 - E8 7BD4E8F1           - call FC_m64.dll+1A7D9E0
+FC_m64.dll+FBF0565 - 45 0F57 C0            - xorps xmm8,xmm8
+FC_m64.dll+FBF0569 - 48 85 C0              - test rax,rax
+FC_m64.dll+FBF056C - 74 0A                 - je FC_m64.dll+FBF0578
+FC_m64.dll+FBF056E - F3 0F10 B8 58050000   - movss xmm7,[rax+00000558]
+FC_m64.dll+FBF0576 - EB 04                 - jmp FC_m64.dll+FBF057C
+FC_m64.dll+FBF0578 - 41 0F28 F8            - movaps xmm7,xmm8
+FC_m64.dll+FBF057C - BA 02000000           - mov edx,00000002
+FC_m64.dll+FBF0581 - 48 89 F9              - mov rcx,rdi
+FC_m64.dll+FBF0584 - E8 575C29F1           - call FC_m64.dll+E861E0
+FC_m64.dll+FBF0589 - 84 C0                 - test al,al
+FC_m64.dll+FBF058B - 0F85 E8000000         - jne FC_m64.dll+FBF0679 &lt;-- 0F 86
+FC_m64.dll+FBF0591 - BA 36000000           - mov edx,00000036
+FC_m64.dll+FBF0596 - 48 89 F9              - mov rcx,rdi
+FC_m64.dll+FBF0599 - E8 425C29F1           - call FC_m64.dll+E861E0
+FC_m64.dll+FBF059E - 84 C0                 - test al,al
+FC_m64.dll+FBF05A0 - 0F85 D3000000         - jne FC_m64.dll+FBF0679
+FC_m64.dll+FBF05A6 - BA 12000000           - mov edx,00000012
+FC_m64.dll+FBF05AB - 48 89 F9              - mov rcx,rdi
+FC_m64.dll+FBF05AE - E8 2D5C29F1           - call FC_m64.dll+E861E0
+FC_m64.dll+FBF05B3 - 84 C0                 - test al,al
+FC_m64.dll+FBF05B5 - 0F85 BE000000         - jne FC_m64.dll+FBF0679
+FC_m64.dll+FBF05BB - BA 15000000           - mov edx,00000015
+FC_m64.dll+FBF05C0 - 48 89 F9              - mov rcx,rdi
+FC_m64.dll+FBF05C3 - E8 185C29F1           - call FC_m64.dll+E861E0
+FC_m64.dll+FBF05C8 - 84 C0                 - test al,al
+FC_m64.dll+FBF05CA - 0F85 A9000000         - jne FC_m64.dll+FBF0679
+FC_m64.dll+FBF05D0 - BA 56000000           - mov edx,00000056
+FC_m64.dll+FBF05D5 - 48 89 F9              - mov rcx,rdi
+FC_m64.dll+FBF05D8 - E8 035C29F1           - call FC_m64.dll+E861E0
+FC_m64.dll+FBF05DD - 84 C0                 - test al,al
+FC_m64.dll+FBF05DF - 0F85 94000000         - jne FC_m64.dll+FBF0679
+FC_m64.dll+FBF05E5 - 38 85 71010000        - cmp [rbp+00000171],al
+FC_m64.dll+FBF05EB - 74 1A                 - je FC_m64.dll+FBF0607
+FC_m64.dll+FBF05ED - 0F2F 3D 40D457F4      - comiss xmm7,[FC_m64.dll+416DA34]
+FC_m64.dll+FBF05F4 - 72 11                 - jb FC_m64.dll+FBF0607
+FC_m64.dll+FBF05F6 - BA 2B000000           - mov edx,0000002B
+FC_m64.dll+FBF05FB - 48 89 F9              - mov rcx,rdi
+FC_m64.dll+FBF05FE - E8 DD5B29F1           - call FC_m64.dll+E861E0
+FC_m64.dll+FBF0603 - 84 C0                 - test al,al
+FC_m64.dll+FBF0605 - 75 72                 - jne FC_m64.dll+FBF0679
+FC_m64.dll+FBF0607 - 80 BD E0010000 00     - cmp byte ptr [rbp+000001E0],00
+FC_m64.dll+FBF060E - 75 69                 - jne FC_m64.dll+FBF0679
+FC_m64.dll+FBF0610 - 48 89 F1              - mov rcx,rsi
+FC_m64.dll+FBF0613 - E8 1884F1F1           - call FC_m64.dll+1B08A30
+FC_m64.dll+FBF0618 - 84 C0                 - test al,al
+FC_m64.dll+FBF061A - 75 5D                 - jne FC_m64.dll+FBF0679
+FC_m64.dll+FBF061C - BA CE000000           - mov edx,000000CE
+FC_m64.dll+FBF0621 - 48 89 F9              - mov rcx,rdi
+FC_m64.dll+FBF0624 - E8 B75B29F1           - call FC_m64.dll+E861E0
+FC_m64.dll+FBF0629 - 84 C0                 - test al,al
+FC_m64.dll+FBF062B - 75 4C                 - jne FC_m64.dll+FBF0679
+FC_m64.dll+FBF062D - 30 C9                 - xor cl,cl
+FC_m64.dll+FBF062F - 30 C0                 - xor al,al
+FC_m64.dll+FBF0631 - F3 0F10 1D 1FD457F4   - movss xmm3,[FC_m64.dll+416DA58]
+FC_m64.dll+FBF0639 - F3 0F10 63 24         - movss xmm4,[rbx+24]
+FC_m64.dll+FBF063E - 0F28 D3               - movaps xmm2,xmm3
+FC_m64.dll+FBF0641 - 0F28 7C 24 30         - movaps xmm7,[rsp+30]
+FC_m64.dll+FBF0646 - F3 0F5C D4            - subss xmm2,xmm4
+FC_m64.dll+FBF064A - 48 8B 7C 24 78        - mov rdi,[rsp+78]
+FC_m64.dll+FBF064F - 48 8B 74 24 70        - mov rsi,[rsp+70]
+FC_m64.dll+FBF0654 - F3 0F10 4B 1C         - movss xmm1,[rbx+1C]
+FC_m64.dll+FBF0659 - F3 0F5E 53 28         - divss xmm2,[rbx+28]
+FC_m64.dll+FBF065E - 84 C0                 - test al,al
+FC_m64.dll+FBF0660 - 75 27                 - jne FC_m64.dll+FBF0689
+FC_m64.dll+FBF0662 - 0F28 C6               - movaps xmm0,xmm6
+FC_m64.dll+FBF0665 - F3 0F58 C6            - addss xmm0,xmm6
+FC_m64.dll+FBF0669 - F3 0F5C C8            - subss xmm1,xmm0
+FC_m64.dll+FBF066D - F3 41 0F5F C8         - maxss xmm1,xmm8
+FC_m64.dll+FBF0672 - F3 0F11 4B 1C         - movss [rbx+1C],xmm1
+FC_m64.dll+FBF0677 - EB 29                 - jmp FC_m64.dll+FBF06A2
+FC_m64.dll+FBF0679 - 80 BB D4000000 00     - cmp byte ptr [rbx+000000D4],00
+FC_m64.dll+FBF0680 - B1 01                 - mov cl,01
+FC_m64.dll+FBF0682 - 75 AB                 - jne FC_m64.dll+FBF062F
+FC_m64.dll+FBF0684 - 0FB6 C1               - movzx eax,cl
+FC_m64.dll+FBF0687 - EB A8                 - jmp FC_m64.dll+FBF0631
+FC_m64.dll+FBF0689 - 0F2F CB               - comiss xmm1,xmm3
+FC_m64.dll+FBF068C - 73 14                 - jae FC_m64.dll+FBF06A2
+FC_m64.dll+FBF068E - 0F28 C6               - movaps xmm0,xmm6
+FC_m64.dll+FBF0691 - F3 0F58 C6            - addss xmm0,xmm6
+FC_m64.dll+FBF0695 - F3 0F58 C1            - addss xmm0,xmm1
+FC_m64.dll+FBF0699 - F3 0F5D C3            - minss xmm0,xmm3
+FC_m64.dll+FBF069D - F3 0F11 43 1C         - movss [rbx+1C],xmm0
+FC_m64.dll+FBF06A2 - F3 0F10 4B 18         - movss xmm1,[rbx+18]
+FC_m64.dll+FBF06A7 - 84 C9                 - test cl,cl
+FC_m64.dll+FBF06A9 - 75 17                 - jne FC_m64.dll+FBF06C2
+FC_m64.dll+FBF06AB - 0F28 C6               - movaps xmm0,xmm6
+FC_m64.dll+FBF06AE - F3 0F58 C6            - addss xmm0,xmm6
+FC_m64.dll+FBF06B2 - F3 0F5C C8            - subss xmm1,xmm0
+FC_m64.dll+FBF06B6 - F3 41 0F5F C8         - maxss xmm1,xmm8
+FC_m64.dll+FBF06BB - F3 0F11 4B 18         - movss [rbx+18],xmm1
+FC_m64.dll+FBF06C0 - EB 19                 - jmp FC_m64.dll+FBF06DB
+FC_m64.dll+FBF06C2 - 0F2F CB               - comiss xmm1,xmm3
+FC_m64.dll+FBF06C5 - 73 14                 - jae FC_m64.dll+FBF06DB
+FC_m64.dll+FBF06C7 - 0F28 C6               - movaps xmm0,xmm6
+FC_m64.dll+FBF06CA - F3 0F58 C6            - addss xmm0,xmm6
+FC_m64.dll+FBF06CE - F3 0F58 C1            - addss xmm0,xmm1
+FC_m64.dll+FBF06D2 - F3 0F5D C3            - minss xmm0,xmm3
+FC_m64.dll+FBF06D6 - F3 0F11 43 18         - movss [rbx+18],xmm0
+FC_m64.dll+FBF06DB - 80 BD 71010000 00     - cmp byte ptr [rbp+00000171],00
+FC_m64.dll+FBF06E2 - 48 8B 6C 24 68        - mov rbp,[rsp+68]
+FC_m64.dll+FBF06E7 - 44 0F28 44 24 20      - movaps xmm8,[rsp+20]
+FC_m64.dll+FBF06ED - 74 21                 - je FC_m64.dll+FBF0710
+FC_m64.dll+FBF06EF - F3 0F10 43 20         - movss xmm0,[rbx+20]
+FC_m64.dll+FBF06F4 - F3 0F59 D6            - mulss xmm2,xmm6
+FC_m64.dll+FBF06F8 - F3 0F5C C2            - subss xmm0,xmm2
+FC_m64.dll+FBF06FC - F3 0F5F C4            - maxss xmm0,xmm4
+FC_m64.dll+FBF0700 - F3 0F11 43 20         - movss [rbx+20],xmm0
+FC_m64.dll+FBF0705 - 0F28 74 24 40         - movaps xmm6,[rsp+40]
+FC_m64.dll+FBF070A - 48 83 C4 50           - add rsp,50
+FC_m64.dll+FBF070E - 5B                    - pop rbx
+FC_m64.dll+FBF070F - C3                    - ret
+FC_m64.dll+FBF0710 - F3 0F58 F6            - addss xmm6,xmm6
+FC_m64.dll+FBF0714 - F3 0F58 73 20         - addss xmm6,dword ptr [rbx+20]
+FC_m64.dll+FBF0719 - F3 0F5D F3            - minss xmm6,xmm3
+FC_m64.dll+FBF071D - F3 0F11 73 20         - movss [rbx+20],xmm6
+FC_m64.dll+FBF0722 - 0F28 74 24 40         - movaps xmm6,[rsp+40]
+FC_m64.dll+FBF0727 - 48 83 C4 50           - add rsp,50
+FC_m64.dll+FBF072B - 5B                    - pop rbx
+FC_m64.dll+FBF072C - C3                    - ret
+
+//NoSpread
+
+-&gt; F3 0F 58 37 F3 0F 58 33 F3 41 0F 58 36
+
+FC_m64.dll+1DD159C - F3 0F10 88 B0060000   - movss xmm1,[rax+000006B0]
+FC_m64.dll+1DD15A4 - E8 3719C9FF           - call FC_m64.dll+1A62EE0
+FC_m64.dll+1DD15A9 - EB 05                 - jmp FC_m64.dll+1DD15B0
+FC_m64.dll+1DD15AB - E8 4047CAFF           - call FC_m64.dll+1A75CF0
+FC_m64.dll+1DD15B0 - 41 0F28 F0            - movaps xmm6,xmm8
+FC_m64.dll+1DD15B4 - F3 0F5C 75 00         - subss xmm6,[rbp+00]
+FC_m64.dll+1DD15B9 - 48 8B AC 24 E0000000  - mov rbp,[rsp+000000E0]
+FC_m64.dll+1DD15C1 - F3 0F58 B6 EC070000   - addss xmm6,dword ptr [rsi+000007EC]
+FC_m64.dll+1DD15C9 - F3 0F58 37            - addss xmm6,dword ptr [rdi]
+FC_m64.dll+1DD15CD - F3 0F58 33            - addss xmm6,dword ptr [rbx]
+FC_m64.dll+1DD15D1 - F3 41 0F58 36         - addss xmm6,dword ptr [r14]
+FC_m64.dll+1DD15D6 - F3 0F59 B6 40080000   - mulss xmm6,[rsi+00000840]
+FC_m64.dll+1DD15DE - 41 0F2E F4            - ucomiss xmm6,xmm12
+FC_m64.dll+1DD15E2 - 0F84 85000000         - je FC_m64.dll+1DD166D
+FC_m64.dll+1DD15E8 - 48 8B 4E 50           - mov rcx,[rsi+50]
+FC_m64.dll+1DD15EC - 0F28 DE               - movaps xmm3,xmm6
+FC_m64.dll+1DD15EF - 41 B8 01000000        - mov r8d,00000001
+FC_m64.dll+1DD15F5 - C6 44 24 20 01        - mov byte ptr [rsp+20],01
+FC_m64.dll+1DD15FA - 49 8B D7              - mov rdx,r15
+FC_m64.dll+1DD15FD - E8 EE37C7FF           - call FC_m64.dll+1A44DF0
+FC_m64.dll+1DD1602 - 48 8B 4E 50           - mov rcx,[rsi+50]
+FC_m64.dll+1DD1606 - 0F28 DF               - movaps xmm3,xmm7
+FC_m64.dll+1DD1609 - 41 B8 01000000        - mov r8d,00000001
+FC_m64.dll+1DD160F - C6 44 24 20 01        - mov byte ptr [rsp+20],01
+FC_m64.dll+1DD1614 - 49 8B D7              - mov rdx,r15
+FC_m64.dll+1DD1617 - 0F28 F0               - movaps xmm6,xmm0
+FC_m64.dll+1DD161A - E8 D137C7FF           - call FC_m64.dll+1A44DF0
+FC_m64.dll+1DD161F - 48 8B 4E 50           - mov rcx,[rsi+50]
+FC_m64.dll+1DD1623 - 0F28 F8               - movaps xmm7,xmm0
+FC_m64.dll+1DD1626 - F3 0F10 05 BAFC3B02   - movss xmm0,[FC_m64.dll+41912E8]
+FC_m64.dll+1DD162E - 0F2F 81 38050000      - comiss xmm0,[rcx+00000538]
+FC_m64.dll+1DD1635 - 76 36                 - jna FC_m64.dll+1DD166D
+FC_m64.dll+1DD1637 - 0F28 DE               - movaps xmm3,xmm6
+FC_m64.dll+1DD163A - C6 44 24 20 01        - mov byte ptr [rsp+20],01
+FC_m64.dll+1DD163F - 41 B8 13000000        - mov r8d,00000013
+FC_m64.dll+1DD1645 - 49 8B D7              - mov rdx,r15
+FC_m64.dll+1DD1648 - E8 A337C7FF           - call FC_m64.dll+1A44DF0
+FC_m64.dll+1DD164D - 48 8B 4E 50           - mov rcx,[rsi+50]
+FC_m64.dll+1DD1651 - 0F28 DF               - movaps xmm3,xmm7
+FC_m64.dll+1DD1654 - 41 B8 13000000        - mov r8d,00000013
+FC_m64.dll+1DD165A - C6 44 24 20 01        - mov byte ptr [rsp+20],01
+FC_m64.dll+1DD165F - 49 8B D7              - mov rdx,r15
+FC_m64.dll+1DD1662 - 0F28 F0               - movaps xmm6,xmm0
+FC_m64.dll+1DD1665 - E8 8637C7FF           - call FC_m64.dll+1A44DF0
+FC_m64.dll+1DD166A - 0F28 F8               - movaps xmm7,xmm0
+FC_m64.dll+1DD166D - 48 8B 86 E8000000     - mov rax,[rsi+000000E8]
+FC_m64.dll+1DD1674 - 80 B8 3C050000 00     - cmp byte ptr [rax+0000053C],00
+FC_m64.dll+1DD167B - 74 09                 - je FC_m64.dll+1DD1686
+FC_m64.dll+1DD167D - F3 41 0F5F F4         - maxss xmm6,xmm12
+FC_m64.dll+1DD1682 - F3 0F5D F7            - minss xmm6,xmm7
+FC_m64.dll+1DD1686 - 48 8B 05 13D80E03     - mov rax,[FC_m64.dll+4EBEEA0]
+FC_m64.dll+1DD168D - 44 0F28 64 24 50      - movaps xmm12,[rsp+50]
+FC_m64.dll+1DD1693 - 48 85 C0              - test rax,rax
+FC_m64.dll+1DD1696 - 74 05                 - je FC_m64.dll+1DD169D
+FC_m64.dll+1DD1698 - F3 0F59 70 3C         - mulss xmm6,[rax+3C]
+FC_m64.dll+1DD169D - F3 0F10 17            - movss xmm2,[rdi]
+FC_m64.dll+1DD16A1 - F3 0F10 03            - movss xmm0,[rbx]
+FC_m64.dll+1DD16A5 - F3 41 0F10 0E         - movss xmm1,[r14]
+FC_m64.dll+1DD16AA - F3 0F58 D0            - addss xmm2,xmm0
+FC_m64.dll+1DD16AE - 48 8B 46 50           - mov rax,[rsi+50]
+FC_m64.dll+1DD16B2 - 4C 8B B4 24 C0000000  - mov r14,[rsp+000000C0]
+FC_m64.dll+1DD16BA - 48 8B BC 24 D8000000  - mov rdi,[rsp+000000D8]
+FC_m64.dll+1DD16C2 - 48 8B 9C 24 00010000  - mov rbx,[rsp+00000100]
+FC_m64.dll+1DD16CA - F3 0F58 D1            - addss xmm2,xmm1
+FC_m64.dll+1DD16CE - F3 44 0F11 80 08040000  - movss [rax+00000408],xmm8
+FC_m64.dll+1DD16D7 - 44 0F28 84 24 90000000  - movaps xmm8,[rsp+00000090]
+FC_m64.dll+1DD16E0 - F3 0F11 B8 04040000   - movss [rax+00000404],xmm7
+FC_m64.dll+1DD16E8 - 0F28 BC 24 A0000000   - movaps xmm7,[rsp+000000A0]
+FC_m64.dll+1DD16F0 - F3 0F11 B0 00040000   - movss [rax+00000400],xmm6 &lt;-- xmm0
+FC_m64.dll+1DD16F8 - F3 0F11 90 0C040000   - movss [rax+0000040C],xmm2
+FC_m64.dll+1DD1700 - 0F28 B4 24 B0000000   - movaps xmm6,[rsp+000000B0]
+FC_m64.dll+1DD1708 - 48 81 C4 E8000000     - add rsp,000000E8
+FC_m64.dll+1DD170F - 41 5F                 - pop r15
+FC_m64.dll+1DD1711 - 5E                    - pop rsi
+FC_m64.dll+1DD1712 - C3                    - ret
+
+// NoRecoil
+
+-&gt; 4C 89 AB 90 00 00 00 44 89 AB 9C 00 00 00 8B 43 68 89 43 74 8B 43 6C
+
+FC_m64.dll+F9D6F1C - 40 30 ED              - xor bpl,bpl
+FC_m64.dll+F9D6F1F - 45 31 ED              - xor r13d,r13d
+FC_m64.dll+F9D6F22 - 41 B4 01              - mov r12l,01
+FC_m64.dll+F9D6F25 - 40 38 6F 10           - cmp [rdi+10],bpl
+FC_m64.dll+F9D6F29 - 74 58                 - je FC_m64.dll+F9D6F83 &lt;-- EB
+FC_m64.dll+F9D6F2B - F3 0F10 47 0C         - movss xmm0,[rdi+0C]
+FC_m64.dll+F9D6F30 - 44 88 6F 10           - mov [rdi+10],r13l
+FC_m64.dll+F9D6F34 - F3 0F10 94 24 00010000  - movss xmm2,[rsp+00000100]
+FC_m64.dll+F9D6F3D - F3 0F11 93 A0000000   - movss [rbx+000000A0],xmm2
+FC_m64.dll+F9D6F45 - F3 0F11 83 8C000000   - movss [rbx+0000008C],xmm0
+FC_m64.dll+F9D6F4D - F3 0F11 83 88000000   - movss [rbx+00000088],xmm0
+FC_m64.dll+F9D6F55 - 4C 89 AB 90000000     - mov [rbx+00000090],r13
+FC_m64.dll+F9D6F5C - 44 89 AB 9C000000     - mov [rbx+0000009C],r13d
+FC_m64.dll+F9D6F63 - 8B 43 68              - mov eax,[rbx+68]
+FC_m64.dll+F9D6F66 - 89 43 74              - mov [rbx+74],eax
+FC_m64.dll+F9D6F69 - 8B 43 6C              - mov eax,[rbx+6C]
+FC_m64.dll+F9D6F6C - 89 43 78              - mov [rbx+78],eax
+FC_m64.dll+F9D6F6F - 8B 43 70              - mov eax,[rbx+70]
+FC_m64.dll+F9D6F72 - 89 43 7C              - mov [rbx+7C],eax
+FC_m64.dll+F9D6F75 - 8B 83 80000000        - mov eax,[rbx+00000080]
+FC_m64.dll+F9D6F7B - 89 83 84000000        - mov [rbx+00000084],eax
+FC_m64.dll+F9D6F81 - EB 12                 - jmp FC_m64.dll+F9D6F95
+FC_m64.dll+F9D6F83 - 0F2E BB 88000000      - ucomiss xmm7,[rbx+00000088]
+FC_m64.dll+F9D6F8A - F3 0F10 94 24 00010000  - movss xmm2,[rsp+00000100]
+FC_m64.dll+F9D6F93 - 74 61                 - je FC_m64.dll+F9D6FF6
+FC_m64.dll+F9D6F95 - F3 0F10 83 88000000   - movss xmm0,[rbx+00000088]
+FC_m64.dll+F9D6F9D - 41 0F2F C0            - comiss xmm0,xmm8
+FC_m64.dll+F9D6FA1 - 77 40                 - ja FC_m64.dll+F9D6FE3
+FC_m64.dll+F9D6FA3 - F3 0F10 8C 24 18010000  - movss xmm1,[rsp+00000118]
+FC_m64.dll+F9D6FAC - F3 44 0F5C C0         - subss xmm8,xmm0
+FC_m64.dll+F9D6FB1 - F3 0F10 84 24 08010000  - movss xmm0,[rsp+00000108]
+FC_m64.dll+F9D6FBA - F3 0F11 83 9C000000   - movss [rbx+0000009C],xmm0
+FC_m64.dll+F9D6FC2 - F3 0F11 83 90000000   - movss [rbx+00000090],xmm0
+FC_m64.dll+F9D6FCA - F3 0F11 8B 98000000   - movss [rbx+00000098],xmm1
+FC_m64.dll+F9D6FD2 - F3 0F11 8B 94000000   - movss [rbx+00000094],xmm1
+FC_m64.dll+F9D6FDA - 44 89 AB 88000000     - mov [rbx+00000088],r13d
+
+//Stealth
+
+-&gt; C7 43 10 A4 70 7D 3F
+
+FC_m64.dll+15A8FCC3 - 44 8B 4E 08           - mov r9d,[rsi+08]
+FC_m64.dll+15A8FCC7 - 48 89 E9              - mov rcx,rbp
+FC_m64.dll+15A8FCCA - 44 8B 46 10           - mov r8d,[rsi+10]
+FC_m64.dll+15A8FCCE - 0F28 F0               - movaps xmm6,xmm0
+FC_m64.dll+15A8FCD1 - 8B 56 0C              - mov edx,[rsi+0C]
+FC_m64.dll+15A8FCD4 - E8 477923ED           - call FC_m64.dll+2CC7620
+FC_m64.dll+15A8FCD9 - F3 44 0F5C 40 20      - subss xmm8,[rax+20]
+FC_m64.dll+15A8FCDF - F3 0F10 48 24         - movss xmm1,[rax+24]
+FC_m64.dll+15A8FCE4 - F3 0F5C 48 20         - subss xmm1,[rax+20]
+FC_m64.dll+15A8FCE9 - F3 0F10 40 2C         - movss xmm0,[rax+2C]
+FC_m64.dll+15A8FCEE - F3 0F5C 40 28         - subss xmm0,[rax+28]
+FC_m64.dll+15A8FCF3 - F3 44 0F5E C1         - divss xmm8,xmm1
+FC_m64.dll+15A8FCF8 - F3 45 0F5F C2         - maxss xmm8,xmm10
+FC_m64.dll+15A8FCFD - F3 45 0F5D C3         - minss xmm8,xmm11
+FC_m64.dll+15A8FD02 - F3 44 0F59 C0         - mulss xmm8,xmm0
+FC_m64.dll+15A8FD07 - F3 44 0F58 40 28      - addss xmm8,dword ptr [rax+28]
+FC_m64.dll+15A8FD0D - F3 41 0F5E F8         - divss xmm7,xmm8
+FC_m64.dll+15A8FD12 - F3 0F59 FE            - mulss xmm7,xmm6
+FC_m64.dll+15A8FD16 - 0F28 B4 24 80000000   - movaps xmm6,[rsp+00000080]
+FC_m64.dll+15A8FD1E - F3 0F59 7B 2C         - mulss xmm7,[rbx+2C]
+FC_m64.dll+15A8FD23 - F3 0F58 7B 10         - addss xmm7,dword ptr [rbx+10] &lt;-- xorps xmm7,xmm7
+FC_m64.dll+15A8FD28 - 41 0F2F FB            - comiss xmm7,xmm11
+FC_m64.dll+15A8FD2C - F3 0F11 7B 10         - movss [rbx+10],xmm7
+FC_m64.dll+15A8FD31 - 0F82 F4010000         - jb FC_m64.dll+15A8FF2B
+FC_m64.dll+15A8FD37 - 44 38 AC 24 F0000000  - cmp [rsp+000000F0],r13l
+FC_m64.dll+15A8FD3F - 75 0C                 - jne FC_m64.dll+15A8FD4D
+FC_m64.dll+15A8FD41 - C7 43 10 A4707D3F     - mov [rbx+10],3F7D70A4
+
+//FallDamage
+
+-&gt; 0F 28 D6 BA 46 00 00 00
+
+FC_m64.dll+117FF708 - 48 63 48 04           - movsxd  rcx,dword ptr [rax+04]
+FC_m64.dll+117FF70C - 48 8B 4C 31 28        - mov rcx,[rcx+rsi+28]
+FC_m64.dll+117FF711 - E8 BA9230F0           - call FC_m64.dll+1B089D0 &lt;-- [3]
+FC_m64.dll+117FF716 - 84 C0                 - test al,al
+FC_m64.dll+117FF718 - 74 2A                 - je FC_m64.dll+117FF744
+FC_m64.dll+117FF71A - 48 8B 46 20           - mov rax,[rsi+20]
+FC_m64.dll+117FF71E - B3 01                 - mov bl,01
+FC_m64.dll+117FF720 - 44 0FB6 CB            - movzx r9d,bl
+FC_m64.dll+117FF724 - 0F28 D6               - movaps xmm2,xmm6
+FC_m64.dll+117FF727 - BA 46000000           - mov edx,00000046
+FC_m64.dll+117FF72C - 48 63 48 04           - movsxd  rcx,dword ptr [rax+04]
+FC_m64.dll+117FF730 - 48 8B 4C 31 28        - mov rcx,[rcx+rsi+28]
+FC_m64.dll+117FF735 - 48 83 C1 18           - add rcx,18
+FC_m64.dll+117FF739 - E8 A296BBEF           - call FC_m64.dll+13B8DE0
+FC_m64.dll+117FF73E - 44 0F28 C0            - movaps xmm8,xmm0
+
+[3]
+FC_m64.dll+FE83C10 - 48 8B 81 D02A0000     - mov rax,[rcx+00002AD0]
+FC_m64.dll+FE83C17 - 0FB6 80 C0080000      - movzx eax,byte ptr [rax+000008C0]
+FC_m64.dll+FE83C1E - C3                    - ret
+
+}
+
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>479</ID>
+              <Description>"Give Resource Test"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C0C0C0</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript Async="1">[ENABLE]
+
+alloc( KeyHandlerThread, 0x1000, FC_m64.dll )
+registersymbol( KeyHandlerThread )
+CreateThread( KeyHandlerThread )
+label( KeyHandlerOff )
+registersymbol( KeyHandlerOff )
+label( KeyHandlerThread_loop )
+
+label( Test_do )
+registersymbol( Test_do )
+
+label( Hook )
+
+label( pX )
+registersymbol( pX )
+
+label( pStruct )
+label( qStruct )
+
+label( lbl_a )
+
+KeyHandlerThread:
+sub rsp,28
+
+KeyHandlerThread_loop:
+mov rcx,A
+call Sleep
+
+cmp [KeyHandlerOff],1
+jne short @f
+  add rsp,28
+  mov [KeyHandlerOff],2
+  ret
+@@:
+
+  // VK_NUMPAD0
+  mov rcx,60
+  call GetAsyncKeyState
+  test ax,ax
+  je @f
+
+    call short Test_do
+    mov rcx,C8
+    call Sleep
+
+  @@:
+  jmp KeyHandlerThread_loop
+
+align 10 CC
+
+Test_do:
+mov rcx,[pX]
+mov [rsp+20],r9
+mov [rsp+18],r8
+mov [rsp+10],rdx
+push rbp
+push rsi
+push r12
+push r13
+push r14
+lea rbp,[rsp-00000090]
+sub rsp,00000190
+lea r13,[rcx+08]
+mov r12,rcx
+mov rcx,[r13+00]
+lea r9,[pStruct]
+mov r14,r9
+lea rdx,[qStruct]
+mov rsi,rdx
+mov [rsp+48],r13
+mov rcx,[rcx]
+call FC_m64.dll+1B5FBB0
+movzx r10d,al
+mov [rsp+30],al
+neg r10l
+sbb r11d,r11d
+add r11d,02
+test [rsi+74],r11d
+je short lbl_a
+  mov rcx,[r13+00]
+  mov [rsp+00000188],rbx
+  mov [rsp+00000178],r15
+  mov rbx,[rcx+10]
+  mov rcx,[rbx+C8]
+  test rcx,rcx
+  je short @f
+    lea rdx,[rbx+A8]
+    call FC_m64.dll+EDA830
+    mov r15,rax
+    test rax,rax
+    je short @f
+      mov r8d,[rsi]
+      mov [rsp+00000180],rdi
+      or rdi,-01
+      mov byte ptr [rbp+000000C0],00
+      test r8d,r8d
+      jng @f
+      lea rbx,[pStruct]
+      mov rax,[r15]
+      mov r9d,D
+      mov r8d,[rbx+18]
+      mov rcx,r15
+      mov rdx,[rbx]
+      call [rax+150]
+@@:
+mov rbx,[rsp+00000188]
+mov r15,[rsp+00000178]
+lbl_a:
+add rsp,00000190
+pop r14
+pop r13
+pop r12
+pop rsi
+pop rbp
+ret
+
+align 10 CC
+
+Hook:
+mov [pX],rcx
+db 48 89 CF 48 89 70 18
+jmp FC_m64.dll+E01974B
+
+align 10 CC
+
+KeyHandlerOff:
+dd 0
+
+pX:
+dq 0
+
+pStruct:
+dq 2007674A561823
+dq 1
+dq 0
+dq #100
+dq 0
+
+align 100 CC
+
+qStruct:
+dq 1
+dd 0
+dd 3
+dd 0
+dd 133
+dq pStruct
+dd 3
+dd 3
+dq 0
+dd 4
+dd 4
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dq 0
+dd 0
+dd 1
+dd FFFFFFFF
+dd 0
+
+FC_m64.dll+E019744:
+jmp Hook
+db 90 90
+
+[DISABLE]
+
+FC_m64.dll+E019744:
+db 48 89 CF 48 89 70 18
+
+{$lua}
+
+if not syntaxcheck then
+  local starttime = getTickCount()
+
+  if readInteger( "KeyHandlerOff" ) == 0 then --could be 2 already
+    writeInteger( "KeyHandlerOff", 1 ) --tell the thread to kill itself
+  end
+
+  while( getTickCount() &lt; starttime + 1000 ) and ( readInteger( "KeyHandlerOff" ) ~= 2 ) do --wait till it has finished
+    sleep( 20 )
+  end
+
+  if( getTickCount() &gt; starttime + 1000 ) then --could happen when the window is shown
+    showMessage( 'Disabling the thread failed!' )
+    error( 'Thread disabling failed!' )
+  end
+    sleep( 1 )
+  end
+
+{$asm}
+
+unregistersymbol( pX )
+
+unregistersymbol( KeyHandlerOff )
+unregistersymbol( KeyHandlerThread )
+dealloc( KeyHandlerThread )
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>480</ID>
+                  <Description>"pX"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>pX</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

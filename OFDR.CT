@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"No Ammo Lowering in Magazines"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+"OFDR.exe"+B5CE84:
+jmp OFDR.exe+B5CEAE
+
+[DISABLE]
+"OFDR.exe"+B5CE84:
+jne OFDR.exe+B5CEAE
+//Alt: db 75 28 8B 4E 60
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Ammo lower</Description>
+      <AddressString>OFDR.exe+B5CE8F</AddressString>
+      <Before>
+        <Byte>46</Byte>
+        <Byte>5C</Byte>
+        <Byte>8B</Byte>
+        <Byte>55</Byte>
+        <Byte>14</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>54</Byte>
+        <Byte>81</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>8D</Byte>
+        <Byte>44</Byte>
+        <Byte>81</Byte>
+        <Byte>40</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>write to magazine shower hud</Description>
+      <AddressString>OFDR.exe+125354</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>0E</Byte>
+        <Byte>88</Byte>
+        <Byte>48</Byte>
+        <Byte>0F</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+        <Byte>14</Byte>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>write to magazine shower hud</Description>
+      <AddressString>OFDR.exe+C5EEAE</AddressString>
+      <Before>
+        <Byte>74</Byte>
+        <Byte>06</Byte>
+        <Byte>8B</Byte>
+        <Byte>4D</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>79</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>53</Byte>
+        <Byte>20</Byte>
+        <Byte>8B</Byte>
+        <Byte>8A</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
