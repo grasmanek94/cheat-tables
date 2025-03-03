@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"Infinite Health"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.dll+2E05F1A - 29 C1                 - sub ecx,eax
+aobscanregion(infhealth,lib_burst_generated.dll+2D05F1A,lib_burst_generated.dll+2F05F1A,29 C1 89 0B 85 C9) // should be unique
+alloc(newmem,$1000,infhealth)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //sub ecx,eax
+  mov [rbx],ecx
+  test ecx,ecx
+  jmp return
+
+infhealth:
+  jmp newmem
+  nop
+return:
+registersymbol(infhealth)
+
+[DISABLE]
+
+infhealth:
+  db 29 C1 89 0B 85 C9
+
+unregistersymbol(infhealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.dll+2E05F1A
+
+lib_burst_generated.dll+2E05EF1: 83 E1 3F                 - and ecx,3F
+lib_burst_generated.dll+2E05EF4: C1 E1 0E                 - shl ecx,0E
+lib_burst_generated.dll+2E05EF7: 4B 03 0C 08              - add rcx,[r8+r9]
+lib_burst_generated.dll+2E05EFB: 44 0F B7 85 F4 01 00 00  - movzx r8d,word ptr [rbp+000001F4]
+lib_burst_generated.dll+2E05F03: 41 0F AF D0              - imul edx,r8d
+lib_burst_generated.dll+2E05F07: 03 95 F0 01 00 00        - add edx,[rbp+000001F0]
+lib_burst_generated.dll+2E05F0D: 48 63 D2                 - movsxd  rdx,edx
+lib_burst_generated.dll+2E05F10: 48 8D 5C 0A 40           - lea rbx,[rdx+rcx+40]
+lib_burst_generated.dll+2E05F15: 44 89 E6                 - mov esi,r12d
+lib_burst_generated.dll+2E05F18: 8B 0B                    - mov ecx,[rbx]
+// ---------- INJECTING HERE ----------
+lib_burst_generated.dll+2E05F1A: 29 C1                    - sub ecx,eax
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.dll+2E05F1C: 89 0B                    - mov [rbx],ecx
+lib_burst_generated.dll+2E05F1E: 85 C9                    - test ecx,ecx
+lib_burst_generated.dll+2E05F20: 0F 8F 4A 03 00 00        - jg lib_burst_generated.dll+2E06270
+lib_burst_generated.dll+2E05F26: 45 31 F6                 - xor r14d,r14d
+lib_burst_generated.dll+2E05F29: 80 BD 0F 02 00 00 00     - cmp byte ptr [rbp+0000020F],00
+lib_burst_generated.dll+2E05F30: 41 BC 00 00 00 00        - mov r12d,00000000
+lib_burst_generated.dll+2E05F36: 41 BF 00 00 00 00        - mov r15d,00000000
+lib_burst_generated.dll+2E05F3C: 75 72                    - jne lib_burst_generated.dll+2E05FB0
+lib_burst_generated.dll+2E05F3E: 48 8B 85 58 01 00 00     - mov rax,[rbp+00000158]
+lib_burst_generated.dll+2E05F45: 48 8B 48 08              - mov rcx,[rax+08]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"Infinite Food"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+213E - 44 8B 07              - mov r8d,[rdi]
+aobscanmodule(inffood,lib_burst_generated.dll,00 83 38 07 74 4F 48 83 C0 18 48 FF C9 75 F2 44 8B 07 41 83 F8 18) // should be unique
+alloc(newmem,$1000,inffood)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rdi],64
+  mov r8d,[rdi]
+  cmp r8d,18
+  jmp return
+
+inffood+0F:
+  jmp newmem
+  nop 2
+return:
+registersymbol(inffood)
+
+[DISABLE]
+
+inffood+0F:
+  db 44 8B 07 41 83 F8 18
+
+unregistersymbol(inffood)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+213E
+
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2118: 48 83 C0 10                    - add rax,10
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+211C: 48 85 D2                       - test rdx,rdx
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+211F: 48 0F 45 C2                    - cmovne rax,rdx
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2123: 66 2E 0F 1F 84 00 00 00 00 00  - nop word ptr cs:[rax+rax+00000000]
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+212D: 0F 1F 00                       - nop dword ptr [rax]
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2130: 83 38 07                       - cmp dword ptr [rax],07
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2133: 74 4F                          - je lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2184
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2135: 48 83 C0 18                    - add rax,18
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2139: 48 FF C9                       - dec rcx
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+213C: 75 F2                          - jne lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2130
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+213E: 44 8B 07                       - mov r8d,[rdi]
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2141: 41 83 F8 18                    - cmp r8d,18
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2145: 7E 4A                          - jle lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2191
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2147: 48 8B 03                       - mov rax,[rbx]
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+214A: 8B 48 08                       - mov ecx,[rax+08]
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+214D: 85 C9                          - test ecx,ecx
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+214F: 0F 8E A5 00 00 00              - jng lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+21FA
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2155: 48 8B 10                       - mov rdx,[rax]
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+2158: 48 83 C0 10                    - add rax,10
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+215C: 48 85 D2                       - test rdx,rdx
+lib_burst_generated.burst.initialize.statics.e3526798698902d6ce40ddef695fa808_avx2+215F: 48 0F 45 C2                    - cmovne rax,rdx
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>99</ID>
+      <Description>"Infinite Mana"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94FD - 29 C1                 - sub ecx,eax
+aobscanmodule(infmana,lib_burst_generated.dll,41 8B 57 04 29 C1 39 CA 0F 4C CA 89) // should be unique
+infmana+04:
+  db 90 90
+registersymbol(infmana)
+
+aobscanmodule(infmana2,lib_burst_generated.dll,29 C1 39 CA 0F 4C CA 89 C8 C1 F8 1F C4 E2 78 F2 C1 89 07 C6 47 0C 01 49) // should be unique
+infmana2:
+  db 90 90
+registersymbol(infmana2)
+[DISABLE]
+infmana+04:
+  db 29 C1 39 CA 0F 4C CA
+unregistersymbol(infmana)
+infmana2:
+  db 29 C1 39 CA 0F 4C CA
+unregistersymbol(infmana2)
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94FD
+
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94DB: 4C 8D 85 68 08 00 00  - lea r8,[rbp+00000868]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94E2: 4C 8D 4D 28           - lea r9,[rbp+28]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94E6: 89 D9                 - mov ecx,ebx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94E8: 89 FA                 - mov edx,edi
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94EA: C5 F8 77              - vzeroupper 
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94ED: E8 EE 90 FF FF        - call lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+25E0
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94F2: 85 C0                 - test eax,eax
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94F4: 74 20                 - je lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+9516
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94F6: 41 8B 0F              - mov ecx,[r15]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94F9: 41 8B 57 04           - mov edx,[r15+04]
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94FD: 29 C1                 - sub ecx,eax
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+94FF: 39 CA                 - cmp edx,ecx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+9501: 0F 4C CA              - cmovl ecx,edx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+9504: 89 C8                 - mov eax,ecx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+9506: C1 F8 1F              - sar eax,1F
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+9509: C4 E2 78 F2 C1        - andn eax,eax,ecx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+950E: 41 89 07              - mov [r15],eax
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+9511: 41 C6 47 0C 01        - mov byte ptr [r15+0C],01
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+9516: 48 8D 8D A8 04 00 00  - lea rcx,[rbp+000004A8]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+951D: 4C 8D 8D 70 0A 00 00  - lea r9,[rbp+00000A70]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+9524: 89 DA                 - mov edx,ebx
+}
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6071
+
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6048: 48 89 44 24 20        - mov [rsp+20],rax
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+604D: C6 44 24 38 00        - mov byte ptr [rsp+38],00
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6052: 4C 8D 85 E0 03 00 00  - lea r8,[rbp+000003E0]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6059: 4C 8D 8D 08 04 00 00  - lea r9,[rbp+00000408]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6060: C5 F8 77              - vzeroupper
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6063: E8 78 C5 FF FF        - call lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+25E0
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6068: 85 C0                 - test eax,eax
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+606A: 74 1C                 - je lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6088
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+606C: 8B 0F                 - mov ecx,[rdi]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+606E: 8B 57 04              - mov edx,[rdi+04]
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6071: 29 C1                 - sub ecx,eax
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6073: 39 CA                 - cmp edx,ecx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6075: 0F 4C CA              - cmovl ecx,edx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6078: 89 C8                 - mov eax,ecx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+607A: C1 F8 1F              - sar eax,1F
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+607D: C4 E2 78 F2 C1        - andn eax,eax,ecx
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6082: 89 07                 - mov [rdi],eax
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6084: C6 47 0C 01           - mov byte ptr [rdi+0C],01
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6088: 49 63 FE              - movsxd  rdi,r14d
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+608B: 48 8D 8D C0 06 00 00  - lea rcx,[rbp+000006C0]
+lib_burst_generated.burst.initialize.statics.fa3d7fb0d680af28ea795b76ea7aa226_avx2+6092: 4C 8D 8D 20 0B 00 00  - lea r9,[rbp+00000B20]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>39</ID>
+      <Description>"Infinite Tools Durability"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B80 - 48 8D 04 88           - lea rax,[rax+rcx*4]
+aobscanregion(inftooldurability,lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+2B80,lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+4B80,48 8D 04 88 89 70 04) // should be unique
+alloc(newmem,$1000,inftooldurability)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  lea rax,[rax+rcx*4]
+  mov esi,#2000
+  mov [rax+04],esi
+  jmp return
+
+inftooldurability:
+  jmp newmem
+  nop 2
+return:
+registersymbol(inftooldurability)
+
+[DISABLE]
+
+inftooldurability:
+  db 48 8D 04 88 89 70 04
+
+unregistersymbol(inftooldurability)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B80
+
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B55: C5 F8 77                 - vzeroupper
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B58: E8 E3 65 04 FF           - call lib_burst_generated.dll+2E09BF0
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B5D: 48 8B 84 24 B0 02 00 00  - mov rax,[rsp+000002B0]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B65: 48 8B 08                 - mov rcx,[rax]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B68: 48 83 C0 10              - add rax,10
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B6C: 48 85 C9                 - test rcx,rcx
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B6F: 48 0F 45 C1              - cmovne rax,rcx
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B73: 48 8D 0C BF              - lea rcx,[rdi+rdi*4]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B77: 39 1C 88                 - cmp [rax+rcx*4],ebx
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B7A: 0F 85 0D 09 00 00        - jne lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+448D
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B80: 48 8D 04 88              - lea rax,[rax+rcx*4]
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B84: 89 70 04                 - mov [rax+04],esi
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B87: E9 01 09 00 00           - jmp lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+448D
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B8C: 45 8B 4E 0C              - mov r9d,[r14+0C]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B90: 41 8B 46 10              - mov eax,[r14+10]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B94: 89 44 24 20              - mov [rsp+20],eax
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B98: 4C 89 E9                 - mov rcx,r13
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3B9B: 8B 94 24 8C 00 00 00     - mov edx,[rsp+0000008C]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3BA2: 44 8B 84 24 88 00 00 00  - mov r8d,[rsp+00000088]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3BAA: C5 F8 77                 - vzeroupper
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3BAD: E8 FE 4E 00 00           - call lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+8AB0
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>97</ID>
+      <Description>"Split Item Amount"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.dll+3D1B421 - 45 89 74 B0 04        - mov [r8+rsi*4+04],r14d
+aobscanregion(splititem,lib_burst_generated.dll+2D1B3E3,lib_burst_generated.dll+5D1B48F,45 89 74 B0 04 41 89 4C B0 08) // should be unique
+alloc(newmem,$1000,splititem)
+
+label(code)
+label(return)
+label(SplitAmount)
+
+newmem:
+  cmp rsi,FA
+  je Split
+  jmp code
+
+Split:
+  mov r14d,[SplitAmount]
+  mov [r8+rsi*4+04],r14d
+  jmp return
+
+code:
+  mov [r8+rsi*4+04],r14d
+  jmp return
+
+SplitAmount:
+  dd #30
+
+splititem:
+  jmp newmem
+return:
+registersymbol(splititem)
+registersymbol(SplitAmount)
+[DISABLE]
+
+splititem:
+  db 45 89 74 B0 04 41 89 4C B0 08
+
+unregistersymbol(SplitAmount)
+unregistersymbol(splititem)
+dealloc(newmem)
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.dll+3D1B421
+
+lib_burst_generated.dll+3D1B3FD: 41 0F 45 CC           - cmovne ecx,r12d
+lib_burst_generated.dll+3D1B401: C5 F8 57 C0           - vxorps xmm0,xmm0,xmm0
+lib_burst_generated.dll+3D1B405: 74 04                 - je lib_burst_generated.dll+3D1B40B
+lib_burst_generated.dll+3D1B407: C5 F8 28 C6           - vmovaps xmm0,xmm6
+lib_burst_generated.dll+3D1B40B: 48 8B 55 68           - mov rdx,[rbp+68]
+lib_burst_generated.dll+3D1B40F: 48 8B 12              - mov rdx,[rdx]
+lib_burst_generated.dll+3D1B412: 48 85 D2              - test rdx,rdx
+lib_burst_generated.dll+3D1B415: 4C 8B 45 60           - mov r8,[rbp+60]
+lib_burst_generated.dll+3D1B419: 4C 0F 45 C2           - cmovne r8,rdx
+lib_burst_generated.dll+3D1B41D: 41 89 04 B0           - mov [r8+rsi*4],eax
+// ---------- INJECTING HERE ----------
+lib_burst_generated.dll+3D1B421: 45 89 74 B0 04        - mov [r8+rsi*4+04],r14d
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.dll+3D1B426: 41 89 4C B0 08        - mov [r8+rsi*4+08],ecx
+lib_burst_generated.dll+3D1B42B: C4 C1 78 13 44 B0 0C  - vmovlps [r8+rsi*4+0C],xmm0
+lib_burst_generated.dll+3D1B432: 49 8B 07              - mov rax,[r15]
+lib_burst_generated.dll+3D1B435: 49 83 C7 10           - add r15,10
+lib_burst_generated.dll+3D1B439: 48 85 C0              - test rax,rax
+lib_burst_generated.dll+3D1B43C: 4C 0F 45 F8           - cmovne r15,rax
+lib_burst_generated.dll+3D1B440: 48 8B 45 70           - mov rax,[rbp+70]
+lib_burst_generated.dll+3D1B444: 45 89 2C 87           - mov [r15+rax*4],r13d
+lib_burst_generated.dll+3D1B448: 45 89 54 87 04        - mov [r15+rax*4+04],r10d
+lib_burst_generated.dll+3D1B44D: 45 89 64 87 08        - mov [r15+rax*4+08],r12d
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>98</ID>
+          <Description>"Set Split Item Amount"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>SplitAmount</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>102</ID>
+      <Description>"Item Editor (Slot 1/Highlighted)"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F27 - C57A6F14 8A           - vmovdqu xmm10,xmm0,[rdx+rcx*4]
+aobscanregion(ItemEditor,lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+3F27,lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+5F27,C5 7A 6F 14 8A) // should be unique
+alloc(newmem,$1000,ItemEditor)
+
+label(code)
+label(return)
+label(ItemID)
+
+newmem:
+
+code:
+  lea r9,[rdx+rcx*4]
+  cmp [ItemID],r9
+  ja @f
+  mov [ItemID],r9
+  @@:
+  // Exit
+  vmovdqu xmm10,xmm0,[rdx+rcx*4]
+  jmp return
+
+ItemID:
+
+ItemEditor:
+  jmp newmem
+return:
+registersymbol(ItemEditor)
+registersymbol(ItemID)
+[DISABLE]
+ItemEditor:
+  db C5 7A 6F 14 8A
+
+unregistersymbol(ItemID)
+unregistersymbol(ItemEditor)
+dealloc(newmem)
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F27
+
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4EF5: 48 8B 85 40 02 00 00  - mov rax,[rbp+00000240]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4EFC: 48 8D 04 C0           - lea rax,[rax+rax*8]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F00: 48 8B 8D 58 02 00 00  - mov rcx,[rbp+00000258]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F07: 48 63 04 81           - movsxd  rax,dword ptr [rcx+rax*4]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F0B: 48 8B 8D F0 02 00 00  - mov rcx,[rbp+000002F0]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F12: 48 8B 09              - mov rcx,[rcx]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F15: 48 85 C9              - test rcx,rcx
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F18: 48 8B 95 E8 02 00 00  - mov rdx,[rbp+000002E8]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F1F: 48 0F 45 D1           - cmovne rdx,rcx
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F23: 48 8D 0C 80           - lea rcx,[rax+rax*4]
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F27: C5 7A 6F 14 8A        - vmovdqu xmm10,xmm0,[rdx+rcx*4]
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F2C: 48 8B 8D 08 03 00 00  - mov rcx,[rbp+00000308]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F33: 4C 8B 89 58 03 00 00  - mov r9,[rcx+00000358]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F3A: 41 8B 49 04           - mov ecx,[r9+04]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F3E: 45 31 C0              - xor r8d,r8d
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F41: 85 C9                 - test ecx,ecx
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F43: C5 79 7E D2           - vmovd edx,xmm10
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F47: 41 BA 00 00 00 00     - mov r10d,00000000
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F4D: 7E 3E                 - jle lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F8D
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F4F: 4D 63 19              - movsxd  r11,dword ptr [r9]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F52: 4D 01 CB              - add r11,r9
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>101</ID>
+          <Description>"Item ID"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>ItemID</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>366</ID>
+      <Description>"Fast Pet Level Up"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+355F - 01 70 04              - add [rax+04],esi
+aobscanregion(petexp,lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3000,lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+35C7,48 8D 04 88 01 70 04) // should be unique
+alloc(newmem,$1000,petexp)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  lea rax,[rax+rcx*4]
+  //add [rax+04],esi
+  add [rax+04],#99999
+  jmp return
+
+petexp:
+  jmp newmem
+  nop 2
+return:
+registersymbol(petexp)
+
+[DISABLE]
+
+petexp:
+  db 48 8D 04 88 01 70 04
+
+unregistersymbol(petexp)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+355B
+
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3530: C5 F8 77                 - vzeroupper 
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3533: E8 28 6E 04 FF           - call lib_burst_generated.dll+2E09830
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3538: 48 8B 84 24 A0 02 00 00  - mov rax,[rsp+000002A0]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3540: 48 8B 08                 - mov rcx,[rax]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3543: 48 83 C0 10              - add rax,10
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3547: 48 85 C9                 - test rcx,rcx
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+354A: 48 0F 45 C1              - cmovne rax,rcx
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+354E: 48 8D 0C BF              - lea rcx,[rdi+rdi*4]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3552: 39 1C 88                 - cmp [rax+rcx*4],ebx
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3555: 0F 85 32 0F 00 00        - jne lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+448D
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+355B: 48 8D 04 88              - lea rax,[rax+rcx*4]
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+355F: 01 70 04                 - add [rax+04],esi
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3562: E9 26 0F 00 00           - jmp lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+448D
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3567: 49 89 F5                 - mov r13,rsi
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+356A: E9 1E 0F 00 00           - jmp lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+448D
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+356F: 45 0F B6 4E 50           - movzx r9d,byte ptr [r14+50]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3574: 41 80 E1 01              - and r9b,01
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3578: 4C 89 E9                 - mov rcx,r13
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+357B: 8B 94 24 8C 00 00 00     - mov edx,[rsp+0000008C]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+3582: 44 8B 84 24 88 00 00 00  - mov r8d,[rsp+00000088]
+lib_burst_generated.burst.initialize.statics.d955aac4ce3e12722037e6821f29e8fc_avx2+358A: C5 F8 77                 - vzeroupper 
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>752</ID>
+      <Description>"Long Lasting Minions"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2CAC - C5FA2CC0              - vcvttss2si eax,xmm0
+aobscanregion(minionduration,lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2B00,lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2D60,01 C4 E3 79 0A C0 04 C5 FA 2C C0 83 C0) // should be unique
+alloc(newmem,$1000,minionduration)
+
+label(code)
+label(return)
+label(DurationValue)
+
+newmem:
+
+code:
+  vcvttss2si eax,xmm0
+  add eax,[DurationValue]
+  //add eax,1c/3c (dev changed 30 to 60 sec)
+  jmp return
+
+DurationValue:
+  dd #3000
+
+minionduration+07:
+  jmp newmem
+  nop 2
+return:
+registersymbol(minionduration)
+registersymbol(DurationValue)
+[DISABLE]
+minionduration+07:
+  db C5 FA 2C C0 83 C0 3C
+
+unregistersymbol(DurationValue)
+unregistersymbol(minionduration)
+dealloc(newmem)
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C5C
+
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C27: E8 A4 65 D6 FE           - call lib_burst_generated.dll+2E39250
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C2C: 48 8B 45 B8              - mov rax,[rbp-48]
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C30: 48 8B 08                 - mov rcx,[rax]
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C33: 48 83 C0 10              - add rax,10
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C37: 48 85 C9                 - test rcx,rcx
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C3A: 48 0F 45 C1              - cmovne rax,rcx
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C3E: C5 F2 2A 80 9C 01 00 00  - vcvtsi2ss xmm0,ecx,[rax+0000019C]
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C46: C5 FA 5E 05 C2 A7 B6 01  - vdivss xmm0,xmm0,[lib_burst_generated.dll+5C3D490]
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C4E: C5 FA 59 05 4E A3 B6 01  - vmulss xmm0,xmm0,[lib_burst_generated.dll+5C3D024]
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C56: C4 E3 79 0A C0 04        - vroundss xmm0,xmm0,xmm0,04
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C5C: C5 FA 2C C0              - vcvttss2si eax,xmm0
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C60: 83 C0 1E                 - add eax,1E
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C63: C5 F2 2A C0              - vcvtsi2ss xmm0,ecx,eax
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C67: C5 FA 11 43 10           - vmovss [rbx+10],xmm0
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C6C: C5 FA 11 43 0C           - vmovss [rbx+0C],xmm0
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C71: C6 43 08 01              - mov byte ptr [rbx+08],01
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C75: B0 01                    - mov al,01
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C77: C5 FA 10 43 0C           - vmovss xmm0,[rbx+0C]
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C7C: C5 FA 5C 86 18 01 00 00  - vsubss xmm0,xmm0,[rsi+00000118]
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C84: C5 FA 11 43 0C           - vmovss [rbx+0C],xmm0
+lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C89: 84 C0                    - test al,al
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>753</ID>
+          <Description>"Duration in Seconds"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>DurationValue</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>103</ID>
+      <Description>"Do Not Use"</Description>
+      <Options moHideChildren="1"/>
+      <Color>C0C0C0</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>751</ID>
+          <Description>"lib_burst_generated.burst.initialize.statics.626e1787ce3adf57c6857e98358809a4_avx2+2C3E - C5F22A80 9C 010000    - vcvtsi2ss xmm0,ecx,[rax+0000019C]"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Minion time multiplier</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>750</ID>
+      <Description>"Zanzer's Scripts"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>738</ID>
+          <Description>"Experience Multiplier"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript Async="1">[ENABLE]
+{$lua}
+if syntaxcheck then return "define(address,1)" end
+local memscan = createMemScan()
+local found = createFoundList(memscan)
+local bytes = "41 8B 11 45 8B 41 04 4C 8D ?? ?? E8 ?? ?? ?? ?? A8 01"
+local mod = "lib_burst_generated.dll"
+local start = getAddress(mod)
+local stop = getModuleSize(mod) + start
+memscan.firstScan(
+  soExactValue, vtByteArray, rtRounded,
+  bytes, nil, start, stop, "+X-C-W",
+  fsmNotAligned, "1", true, false, false, false)
+memscan.waitTillDone()
+found.initialize()
+local count = found.Count
+local index = 5
+local address = nil
+if count &gt; index then
+  address = found.Address[index]
+end
+memscan.Destroy()
+memscan = nil
+assert(count &gt; index, "Unable to find array of bytes.")
+return "define(address," .. address .. ")"
+{$asm}
+alloc(newmem,$1000,address)
+
+label(xp)
+label(xpMult)
+label(code)
+label(return)
+
+newmem:
+  mov edx,[r9+0C]
+xpMult:
+  mov r8d,#10
+  imul edx,r8d
+  mov [r9+0C],edx
+code:
+  mov edx,[r9]
+  mov r8d,[r9+04]
+  jmp return
+
+address:
+xp:
+  jmp newmem
+  nop 2
+return:
+registersymbol(xp)
+registersymbol(xpMult)
+
+[DISABLE]
+xp:
+  db 41 8B 11 45 8B 41 04
+unregistersymbol(xp)
+unregistersymbol(xpMult)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20BE
+
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+209A: 57                 - push rdi
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+209B: 53                 - push rbx
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+209C: 48 83 EC 78        - sub rsp,78
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20A0: 48 8D 6C 24 70     - lea rbp,[rsp+70]
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20A5: C5 F8 29 7D F0     - vmovaps [rbp-10],xmm7
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20AA: C5 F8 29 75 E0     - vmovaps [rbp-20],xmm6
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20AF: 4C 89 CF           - mov rdi,r9
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20B2: 48 89 CE           - mov rsi,rcx
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20B5: C5 F8 57 C0        - vxorps xmm0,xmm0,xmm0
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20B9: C5 F8 11 45 C0     - vmovups [rbp-40],xmm0
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20BE: 41 8B 11           - mov edx,[r9]
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20C1: 45 8B 41 04        - mov r8d,[r9+04]
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20C5: 4C 8D 4D C0        - lea r9,[rbp-40]
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20C9: E8 02 0A 00 00     - call lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+2AD0
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20CE: A8 01              - test al,01
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20D0: 0F 84 B3 04 00 00  - je lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+2589
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20D6: 48 63 5F 08        - movsxd  rbx,dword ptr [rdi+08]
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20DA: 4C 8B 75 C0        - mov r14,[rbp-40]
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20DE: 49 8B 06           - mov rax,[r14]
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20E1: 49 83 C6 10        - add r14,10
+lib_burst_generated.burst.initialize.statics.9890403cf2b9966f01e12d8b0afbb57e_avx2+20E5: 48 85 C0           - test rax,rax
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>739</ID>
+              <Description>"Multiplier"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>xpMult+2</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>754</ID>
+      <Description>"Alternate Item Editor"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>755</ID>
+          <Description>"Item Editor (Slot 1/Highlighted)"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+//lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F27 - C57A6F14 8A           - vmovdqu xmm10,xmm0,[rdx+rcx*4]
+aobscanregion(ItemEditor,lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+3F27,lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+5F27,C5 7A 6F 14 8A) // should be unique
+alloc(newmem,$1000,ItemEditor)
+
+label(code)
+label(return)
+label(ItemID)
+
+newmem:
+
+code:
+  lea r9,[rdx+rcx*4]
+  cmp [ItemID],r9
+  jb @f
+  mov [ItemID],r9
+  @@:
+  // Exit
+  vmovdqu xmm10,xmm0,[rdx+rcx*4]
+  jmp return
+
+ItemID:
+  dq -1
+
+ItemEditor:
+  jmp newmem
+return:
+registersymbol(ItemEditor)
+registersymbol(ItemID)
+[DISABLE]
+ItemEditor:
+  db C5 7A 6F 14 8A
+
+unregistersymbol(ItemID)
+unregistersymbol(ItemEditor)
+dealloc(newmem)
+{
+// ORIGINAL CODE - INJECTION POINT: lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F27
+
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4EF5: 48 8B 85 40 02 00 00  - mov rax,[rbp+00000240]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4EFC: 48 8D 04 C0           - lea rax,[rax+rax*8]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F00: 48 8B 8D 58 02 00 00  - mov rcx,[rbp+00000258]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F07: 48 63 04 81           - movsxd  rax,dword ptr [rcx+rax*4]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F0B: 48 8B 8D F0 02 00 00  - mov rcx,[rbp+000002F0]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F12: 48 8B 09              - mov rcx,[rcx]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F15: 48 85 C9              - test rcx,rcx
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F18: 48 8B 95 E8 02 00 00  - mov rdx,[rbp+000002E8]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F1F: 48 0F 45 D1           - cmovne rdx,rcx
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F23: 48 8D 0C 80           - lea rcx,[rax+rax*4]
+// ---------- INJECTING HERE ----------
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F27: C5 7A 6F 14 8A        - vmovdqu xmm10,xmm0,[rdx+rcx*4]
+// ---------- DONE INJECTING  ----------
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F2C: 48 8B 8D 08 03 00 00  - mov rcx,[rbp+00000308]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F33: 4C 8B 89 58 03 00 00  - mov r9,[rcx+00000358]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F3A: 41 8B 49 04           - mov ecx,[r9+04]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F3E: 45 31 C0              - xor r8d,r8d
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F41: 85 C9                 - test ecx,ecx
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F43: C5 79 7E D2           - vmovd edx,xmm10
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F47: 41 BA 00 00 00 00     - mov r10d,00000000
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F4D: 7E 3E                 - jle lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F8D
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F4F: 4D 63 19              - movsxd  r11,dword ptr [r9]
+lib_burst_generated.burst.initialize.statics.895658ea7a09fec8b731f5f0858e2584_avx2+4F52: 4D 01 CB              - add r11,r9
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>756</ID>
+              <Description>"Item ID"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>ItemID</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>760</ID>
+                  <Description>"No description"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Structures StructVersion="2">
+    <Structure Name="NaughtyAttributes.Test.ProgressBarTest.Static" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000000" Description="OffsetOfInstanceIDInCPlusPlusObject" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="FullnessAuthoring" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="16" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000010" Description="m_CachedPtr" DisplayMethod="unsigned integer"/>
+        <Element Offset="24" Vartype="Pointer" Bytesize="8" OffsetHex="00000018" Description="m_CancellationTokenSource" DisplayMethod="unsigned integer"/>
+        <Element Offset="32" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000020" Description="maxFullness" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="FullnessAuthoring.Static" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000000" Description="OffsetOfInstanceIDInCPlusPlusObject" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="ScaleHealthByPlayerCountAuthoring" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="16" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000010" Description="m_CachedPtr" DisplayMethod="unsigned integer"/>
+        <Element Offset="24" Vartype="Pointer" Bytesize="8" OffsetHex="00000018" Description="m_CancellationTokenSource" DisplayMethod="unsigned integer"/>
+        <Element Offset="32" Vartype="Float" Bytesize="4" OffsetHex="00000020" Description="scalingFactor" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="ScaleHealthByPlayerCountAuthoring.Static" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000000" Description="OffsetOfInstanceIDInCPlusPlusObject" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="ManaAuthering" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="16" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000010" Description="m_CachedPtr" DisplayMethod="unsigned integer"/>
+        <Element Offset="24" Vartype="Pointer" Bytesize="8" OffsetHex="00000018" Description="m_CancellationTokenSource" DisplayMethod="unsigned integer"/>
+        <Element Offset="32" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000020" Description="startMana" DisplayMethod="unsigned integer"/>
+        <Element Offset="36" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000024" Description="maxMana" DisplayMethod="unsigned integer"/>
+        <Element Offset="40" Vartype="Float" Bytesize="4" OffsetHex="00000028" Description="manaTickRate" DisplayMethod="unsigned integer"/>
+        <Element Offset="44" Vartype="Float" Bytesize="4" OffsetHex="0000002C" Description="startRegenDelay" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+    <Structure Name="ManaAuthering.Static" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000000" Description="OffsetOfInstanceIDInCPlusPlusObject" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+  </Structures>
+</CheatTable>

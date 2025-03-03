@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="34">
+<CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
-      <ID>2</ID>
+      <ID>7</ID>
       <Description>"No description"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>247CD6F4998</Address>
+      <ShowAsSigned>1</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>236557212B8</Address>
       <Offsets>
         <Offset>20</Offset>
       </Offsets>
@@ -14,11 +14,9 @@
         <Hotkey>
           <Action>Set Value</Action>
           <Keys>
-            <Key>22549</Key>
-            <Key>22535</Key>
-            <Key>22528</Key>
+            <Key>22551</Key>
           </Keys>
-          <Value>99999</Value>
+          <Value>9999</Value>
           <ID>0</ID>
         </Hotkey>
       </Hotkeys>
@@ -53,8 +51,6 @@
 48 8D 44 48 14        - lea rax,[rax+rcx*2+14]
 0FB7 08               - movzx ecx,word ptr [rax] // selected recipe name unicode string
 66 66 90              - nop 3
-
-
-
-48 8B 45 F0 48 8B 90 98</Comments>
+48 8B 45 F0 48 8B 90 98
+</Comments>
 </CheatTable>

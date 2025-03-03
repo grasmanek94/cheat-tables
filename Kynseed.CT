@@ -1,0 +1,2493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>974</ID>
+      <Description>"Full View Mode"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+luacall(function cycleFullCompact(sender,force); local state = not(compactmenuitem.Caption == 'Compact View Mode'); if force~=nil then state = not force end; compactmenuitem.Caption = state and 'Compact View Mode' or 'Full view Mode'; getMainForm().Splitter1.Visible = state; getMainForm().Panel4.Visible = state; getMainForm().Panel5.Visible = state; end; function addCompactMenu(); if compactmenualreadyexists then return end; local parent = getMainForm().Menu.Items; compactmenuitem = createMenuItem(parent); parent.add(compactmenuitem); compactmenuitem.Caption = 'Compact View Mode'; compactmenuitem.OnClick = cycleFullCompact; compactmenualreadyexists = 'yes'; end; addCompactMenu(); cycleFullCompact(nil,true))
+
+[DISABLE]
+
+luacall(cycleFullCompact(nil,false))
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>103</ID>
+      <Description>"Before Use Need to: Click Memory View Above -&gt;Press F5 -&gt; Yes -&gt; Press F5 Again"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>71</ID>
+      <Description>"Time"</Description>
+      <Options moHideChildren="1"/>
+      <Color>0080FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanregion(timeINJECT,TopDownEditor.Weather.NaturalLight::GetLUTPair+AE,TopDownEditor.Weather.NaturalLight::GetLUTPair+10D,8B B8 84 01 00 00) // should be unique
+alloc(newmem,$1000,timeINJECT)
+
+//aobscan(timeINJECT,8B B8 84 01 00 00) // should be unique
+//alloc(newmem,$1000,timeINJECT)
+
+label(code)
+label(return)
+
+alloc(timeHour,$1000,timeINJECT)
+registersymbol(timeHour)
+newmem:
+mov [timeHour],rax
+
+code:
+  mov edi,[rax+00000184]
+  jmp return
+
+timeINJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(timeINJECT timeHour)
+
+[DISABLE]
+
+timeINJECT:
+  db 8B B8 84 01 00 00
+
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.Weather.NaturalLight::GetLUTPair+E0
+
+TopDownEditor.Weather.NaturalLight::GetLUTPair+AE: C4 E1 40 57 FF                 - vxorps xmm7,xmm7,xmm7
+TopDownEditor.Weather.NaturalLight::GetLUTPair+B3: 48 8D 0E                       - lea rcx,[rsi]
+TopDownEditor.Weather.NaturalLight::GetLUTPair+B6: E8 A5 79 C2 5E                 - call clr.DllCanUnloadNowInternal+2180
+TopDownEditor.Weather.NaturalLight::GetLUTPair+BB: 48 89 7E 08                    - mov [rsi+08],rdi
+TopDownEditor.Weather.NaturalLight::GetLUTPair+BF: C4 E1 7A 11 7E 10              - vmovss [rsi+10],xmm7
+TopDownEditor.Weather.NaturalLight::GetLUTPair+C5: C4 E1 7A 11 76 14              - vmovss [rsi+14],xmm6
+TopDownEditor.Weather.NaturalLight::GetLUTPair+CB: 48 8B C6                       - mov rax,rsi
+TopDownEditor.Weather.NaturalLight::GetLUTPair+CE: E9 8D 04 00 00                 - jmp TopDownEditor.Weather.NaturalLight::GetLUTPair+560
+TopDownEditor.Weather.NaturalLight::GetLUTPair+D3: 48 B8 B8 7D AA 8B 49 02 00 00  - mov rax,000002498BAA7DB8
+TopDownEditor.Weather.NaturalLight::GetLUTPair+DD: 48 8B 00                       - mov rax,[rax]
+// ---------- INJECTING HERE ----------
+TopDownEditor.Weather.NaturalLight::GetLUTPair+E0: 8B B8 84 01 00 00              - mov edi,[rax+00000184]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.Weather.NaturalLight::GetLUTPair+E6: 8B 05 4C B7 56 FF              - mov eax,[7FFF00D11A08]
+TopDownEditor.Weather.NaturalLight::GetLUTPair+EC: 83 F8 01                       - cmp eax,01
+TopDownEditor.Weather.NaturalLight::GetLUTPair+EF: 75 12                          - jne TopDownEditor.Weather.NaturalLight::GetLUTPair+103
+TopDownEditor.Weather.NaturalLight::GetLUTPair+F1: 48 B8 20 84 AA 8B 49 02 00 00  - mov rax,000002498BAA8420
+TopDownEditor.Weather.NaturalLight::GetLUTPair+FB: 48 8B 18                       - mov rbx,[rax]
+TopDownEditor.Weather.NaturalLight::GetLUTPair+FE: E9 1F 02 00 00                 - jmp TopDownEditor.Weather.NaturalLight::GetLUTPair+322
+TopDownEditor.Weather.NaturalLight::GetLUTPair+103: E8 68 CD 91 FF                 - call TopDownEditor.GameStatePlayGame::GetCurrentMapID
+TopDownEditor.Weather.NaturalLight::GetLUTPair+108: 83 F8 38                       - cmp eax,38
+TopDownEditor.Weather.NaturalLight::GetLUTPair+10B: 75 12                          - jne TopDownEditor.Weather.NaturalLight::GetLUTPair+11F
+TopDownEditor.Weather.NaturalLight::GetLUTPair+10D: 48 B8 10 84 AA 8B 49 02 00 00  - mov rax,000002498BAA8410
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>72</ID>
+          <Description>"Hour"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>timeHour</Address>
+          <Offsets>
+            <Offset>184</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>73</ID>
+          <Description>"CurrentDay"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>timeHour</Address>
+          <Offsets>
+            <Offset>178</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>74</ID>
+          <Description>"CurrentSeason"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>timeHour</Address>
+          <Offsets>
+            <Offset>17C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>75</ID>
+          <Description>"CurrentYear"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>timeHour</Address>
+          <Offsets>
+            <Offset>180</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>135</ID>
+      <Description>"Speed Multiplier [Default Mult. By 3]"</Description>
+      <Options moHideChildren="1"/>
+      <Color>0080FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanregion(spdTestINJECT,TopDownEditor.MovementComponent::PlayerMoveUpdate+A0B,TopDownEditor.MovementComponent::PlayerMoveUpdate+A6D,14 4C 8D 86 44 01 00 00) // should be unique
+alloc(newmem,$1000,spdTestINJECT)
+
+//aobscan(spdTestINJECT,14 4C 8D 86 44 01 00 00) // should be unique
+//alloc(newmem,$1000,spdTestINJECT)
+
+label(code)
+label(return)
+
+alloc(value3,4)
+value3:
+dd (float)3
+registersymbol(value3)
+
+newmem:
+//movss xmm1,[elevation_value]
+movups xmm1,[rsi+00000144]
+movups xmm0,[rsi+00000140]
+mulss xmm1,[value3]
+mulss xmm0,[value3]
+movss [rsi+00000144],xmm1
+movss [rsi+00000140],xmm0
+
+code:
+  lea r8,[rsi+00000144]
+  jmp return
+
+spdTestINJECT+01:
+  jmp newmem
+  nop 2
+return:
+registersymbol(spdTestINJECT value3)
+
+[DISABLE]
+
+spdTestINJECT+01:
+  db 4C 8D 86 44 01 00 00
+
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.MovementComponent::PlayerMoveUpdate+A3D
+
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A0B: 48 8D 8E B0 00 00 00           - lea rcx,[rsi+000000B0]
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A12: C4 E1 7A 6F 01                 - vmovdqu xmm0,xmm0,[rcx]
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A17: C4 E1 7A 7F 44 24 38           - vmovdqu [rsp+38],xmm0
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A1E: 48 8B CE                       - mov rcx,rsi
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A21: 48 8D 54 24 38                 - lea rdx,[rsp+38]
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A26: E8 05 30 A7 FF                 - call 7FFF01380A40
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A2B: 80 3D 32 3B 41 FF 00           - cmp byte ptr [7FFF00D21574],00
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A32: 75 1D                          - jne TopDownEditor.MovementComponent::PlayerMoveUpdate+A51
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A34: 80 3D C5 3A 41 FF 00           - cmp byte ptr [7FFF00D21510],00
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A3B: 75 14                          - jne TopDownEditor.MovementComponent::PlayerMoveUpdate+A51
+// ---------- INJECTING HERE ----------
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A3D: 4C 8D 86 44 01 00 00           - lea r8,[rsi+00000144]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A44: 48 8B D7                       - mov rdx,rdi
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A47: 48 8B CE                       - mov rcx,rsi
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A4A: E8 11 30 A7 FF                 - call 7FFF01380A70
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A4F: EB 12                          - jmp TopDownEditor.MovementComponent::PlayerMoveUpdate+A63
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A51: 4C 8D 86 44 01 00 00           - lea r8,[rsi+00000144]
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A58: 48 8B D7                       - mov rdx,rdi
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A5B: 48 8B CE                       - mov rcx,rsi
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A5E: E8 0D 30 A7 FF                 - call 7FFF01380A80
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A63: 48 B9 D8 7D BD 54 39 02 00 00  - mov rcx,0000023954BD7DD8
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A6D: 48 8B 09                       - mov rcx,[rcx]
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>136</ID>
+          <Description>"Multiplier"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>value3</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>49</ID>
+      <Description>"Set Gold to 999999"</Description>
+      <Color>00B700</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanregion(setBrassINJECT,TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+2A,TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+49,8B 80 F8 02 00 00 48 83) // should be unique
+alloc(newmem,$1000,setBrassINJECT)
+
+//aobscan(setBrassINJECT,8B 80 F8 02 00 00 48 83) // should be unique
+//alloc(newmem,$1000,setBrassINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rax+000002F8],#999999
+
+code:
+  mov eax,[rax+000002F8]
+  jmp return
+
+setBrassINJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(setBrassINJECT)
+
+[DISABLE]
+
+setBrassINJECT:
+  db 8B 80 F8 02 00 00
+
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+31
+
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+1: 48 83 EC 20                    - sub rsp,20
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+5: 48 8D 81 00 02 00 00           - lea rax,[rcx+00000200]
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+C: 80 38 00                       - cmp byte ptr [rax],00
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+F: 75 2C                          - jne TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+3D
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+11: 48 B8 70 A5 DA 86 0A 02 00 00  - mov rax,0000020A86DAA570
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+1B: 48 8B 00                       - mov rax,[rax]
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+1E: 8B 00                          - mov eax,[rax]
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+20: 48 B8 F8 A5 DA 86 0A 02 00 00  - mov rax,0000020A86DAA5F8
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+2A: 48 8B 00                       - mov rax,[rax]
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+2D: 48 8B 40 48                    - mov rax,[rax+48]
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+31: 8B 80 F8 02 00 00              - mov eax,[rax+000002F8]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+37: 48 83 C4 20                    - add rsp,20
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+3B: 5E                             - pop rsi
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+3C: C3                             - ret 
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+3D: 48 8D B1 00 02 00 00           - lea rsi,[rcx+00000200]
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+44: 80 3E 00                       - cmp byte ptr [rsi],00
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+47: 75 0A                          - jne TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+53
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+49: B9 26 00 00 00                 - mov ecx,00000026
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+4E: E8 5D 87 00 5E                 - call System.ThrowHelper::ThrowInvalidOperationException
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+53: 8B 46 04                       - mov eax,[rsi+04]
+TopDownEditor.NewUI.BrassDisplay::CurrentBrassCount+56: 48 83 C4 20                    - add rsp,20
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"Set All Item to 90 [Activate -&gt; Cycle Between Item Category]"</Description>
+      <Color>00B700</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanregion(itemINJECT,TopDownEditor.InventoryItem::get_TotalCount+1,TopDownEditor.InventoryItem::get_TotalCount+23,46 8B 4C 8A 10 41 03) // should be unique
+alloc(newmem,$1000,itemINJECT)
+
+//aobscan(itemINJECT,46 8B 4C 8A 10 41 03) // should be unique
+//alloc(newmem,$1000,itemINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rdx+r9*4+10],#95
+
+code:
+  mov r9d,[rdx+r9*4+10]
+  jmp return
+
+itemINJECT:
+  jmp newmem
+return:
+registersymbol(itemINJECT)
+
+[DISABLE]
+
+itemINJECT:
+  db 46 8B 4C 8A 10
+
+unregistersymbol(itemINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.InventoryItem::get_TotalCount+14
+
+7FFF3614F33C: FF              - db -01
+7FFF3614F33D: 7F 00           - jg 7FFF3614F33F
+7FFF3614F33F: 00 33           - add [rbx],dh
+TopDownEditor.InventoryItem::get_TotalCount+1: C0 48 8B 51     - ror byte ptr [rax-75],51
+TopDownEditor.InventoryItem::get_TotalCount+5: 08 33           - or [rbx],dh
+TopDownEditor.InventoryItem::get_TotalCount+7: C9              - leave 
+TopDownEditor.InventoryItem::get_TotalCount+8: 44 8B 42 08     - mov r8d,[rdx+08]
+TopDownEditor.InventoryItem::get_TotalCount+C: 45 85 C0        - test r8d,r8d
+TopDownEditor.InventoryItem::get_TotalCount+F: 7E 12           - jle TopDownEditor.InventoryItem::get_TotalCount+23
+TopDownEditor.InventoryItem::get_TotalCount+11: 4C 63 C9        - movsxd  r9,ecx
+// ---------- INJECTING HERE ----------
+TopDownEditor.InventoryItem::get_TotalCount+14: 46 8B 4C 8A 10  - mov r9d,[rdx+r9*4+10]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.InventoryItem::get_TotalCount+19: 41 03 C1        - add eax,r9d
+TopDownEditor.InventoryItem::get_TotalCount+1C: FF C1           - inc ecx
+TopDownEditor.InventoryItem::get_TotalCount+1E: 44 3B C1        - cmp r8d,ecx
+TopDownEditor.InventoryItem::get_TotalCount+21: 7F EE           - jg TopDownEditor.InventoryItem::get_TotalCount+11
+TopDownEditor.InventoryItem::get_TotalCount+23: C3              - ret 
+7FFF3614F364: 19 00           - sbb [rax],eax
+7FFF3614F366: 00 00           - add [rax],al
+7FFF3614F368: 40 00 00        - add [rax],al
+7FFF3614F36B: 00 00           - add [rax],al
+7FFF3614F36D: 00 00           - add [rax],al
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>16</Key>
+            <Key>17</Key>
+            <Key>78</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>70</ID>
+      <Description>"Tool Lv to Max [Inventory &gt; Move Cursor to Tool &gt; Activate &gt; Move Cursor to Tool]"</Description>
+      <Color>00B700</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+//aobscanregion(ToolLvINJECT,TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+10F0,TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1147,8B 4D 14 C4 E1 7B 2C 4D 08) // should be unique
+//alloc(newmem,$1000,ToolLvINJECT)
+
+aobscan(ToolLvINJECT,8B 4D 14 C4 E1 7B 2C 4D 08) // should be unique
+alloc(newmem,$1000,ToolLvINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rbp+14],#10
+
+code:
+  mov ecx,[rbp+14]
+  vcvttsd2si ecx,[rbp+08]
+  jmp return
+
+ToolLvINJECT:
+  jmp newmem
+  nop 4
+return:
+registersymbol(ToolLvINJECT)
+
+[DISABLE]
+
+ToolLvINJECT:
+  db 8B 4D 14 C4 E1 7B 2C 4D 08
+
+unregistersymbol(ToolLvINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1118
+
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+10F0: 48 B9 B8 7D 25 48 29 02 00 00  - mov rcx,0000022948257DB8
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+10FA: 48 8B 09                       - mov rcx,[rcx]
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+10FD: 48 8B 69 48                    - mov rbp,[rcx+48]
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1101: 48 8B CF                       - mov rcx,rdi
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1104: E8 D7 E2 A0 FF                 - call TopDownEditor.PickupableObject::GetToolType
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1109: 8B D0                          - mov edx,eax
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+110B: 48 8B CD                       - mov rcx,rbp
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+110E: 39 09                          - cmp [rcx],ecx
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1110: E8 2B E5 A0 FF                 - call TopDownEditor.PlayerSavedData::GetToolLevel
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1115: 48 8B E8                       - mov rbp,rax
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1118: 8B 4D 14                       - mov ecx,[rbp+14]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+111B: C4 E1 7B 2C 4D 08              - vcvttsd2si ecx,[rbp+08]
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1121: C4 E1 48 57 F6                 - vxorps xmm6,xmm6,xmm6
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1126: C4 E1 4A 2A F1                 - vcvtsi2ss xmm6,esi,ecx
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+112B: 8B 4D 10                       - mov ecx,[rbp+10]
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+112E: 8B 55 14                       - mov edx,[rbp+14]
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1131: E8 2A 28 CA FF                 - call TopDownEditor.ToolLevel::GetXPToNextLevel
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1136: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+113B: C4 E1 7A 2A C0                 - vcvtsi2ss xmm0,eax,eax
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1140: 48 8B 8E 38 02 00 00           - mov rcx,[rsi+00000238]
+TopDownEditor.NewUI.Inventory.InfoSheets::SetObject+1147: C6 81 35 01 00 00 01           - mov byte ptr [rcx+00000135],01
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Animal [Talk to Animal -&gt; Click Feed Menu -&gt; Activate]"</Description>
+      <Options moHideChildren="1"/>
+      <Color>009393</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//aobscanregion(animalPetINJECT,TopDownEditor.PlayerOpinion::IsHappyWithPlayer+1E,TopDownEditor.PlayerOpinion::IsHappyWithPlayer+36,83 B8 9C 00 00 00 4B) // should be unique
+//alloc(newmem,$1000,animalPetINJECT)
+
+aobscan(animalPetINJECT,83 B8 9C 00 00 00 4B) // should be unique
+alloc(newmem,$1000,animalPetINJECT)
+
+label(code)
+label(return)
+
+alloc(animalPet,$1000,animalPetINJECT)
+registersymbol(animalPet)
+newmem:
+mov [animalPet],rax
+
+code:
+  cmp dword ptr [rax+0000009C],4B
+  jmp return
+
+animalPetINJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(animalPetINJECT animalPet)
+
+[DISABLE]
+
+animalPetINJECT:
+  db 83 B8 9C 00 00 00 4B
+
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.PlayerOpinion::IsHappyWithPlayer+24
+
+7FFD75765BAF: 00 56 48                       - add [rsi+48],dl
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+2: 83 EC 20                       - sub esp,20
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+5: 48 8B 71 10                    - mov rsi,[rcx+10]
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+9: 48 8B D6                       - mov rdx,rsi
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+C: 48 B9 08 E4 FA 74 FD 7F 00 00  - mov rcx,00007FFD74FAE408
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+16: E8 E5 7D 7C 5E                 - call clr.DllCanUnloadNowInternal+1F00
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+1B: 48 85 C0                       - test rax,rax
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+1E: 74 17                          - je TopDownEditor.PlayerOpinion::IsHappyWithPlayer+37
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+20: 48 8B 46 38                    - mov rax,[rsi+38]
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+24: 83 B8 9C 00 00 00 4B           - cmp dword ptr [rax+0000009C],4B
+// ---------- INJECTING HERE ----------
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+2B: 0F 9F C0                       - setg al
+// ---------- DONE INJECTING  ----------
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+2E: 0F B6 C0                       - movzx eax,al
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+31: 48 83 C4 20                    - add rsp,20
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+35: 5E                             - pop rsi
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+36: C3                             - ret 
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+37: 48 8B 46 38                    - mov rax,[rsi+38]
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+3B: 83 B8 9C 00 00 00 0A           - cmp dword ptr [rax+0000009C],0A
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+42: 0F 9F C0                       - setg al
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+45: 0F B6 C0                       - movzx eax,al
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+48: 48 83 C4 20                    - add rsp,20
+TopDownEditor.PlayerOpinion::IsHappyWithPlayer+4C: 5E                             - pop rsi
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"HappinessCumulative"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>animalPet</Address>
+          <Offsets>
+            <Offset>9C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"InjuredState"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>animalPet</Address>
+          <Offsets>
+            <Offset>98</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"DaysWithoutFood"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>animalPet</Address>
+          <Offsets>
+            <Offset>A0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"giftedThatDay"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>animalPet</Address>
+          <Offsets>
+            <Offset>A4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"Ill"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>animalPet</Address>
+          <Offsets>
+            <Offset>A8</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>78</ID>
+      <Description>"NPC"</Description>
+      <Color>FF8000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"Set Char Stat [NPC and MC] [Activate &gt; Relationship Menu (L) &gt; Click NPC]"</Description>
+          <Color>00B700</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanregion(CharStatINJECT,TopDownEditor.CharacterStats::GetPermanentStat+58,TopDownEditor.CharacterStats::GetPermanentStat+65,48 83 7E 08 00 0F 84 AD) // should be unique
+alloc(newmem,$1000,CharStatINJECT)
+
+//aobscan(CharStatINJECT,48 83 7E 08 00 0F 84 AD) // should be unique
+//alloc(newmem,$1000,CharStatINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rsi+10],#99
+mov [rsi+14],#99
+mov [rsi+18],#99
+mov [rsi+1C],#99
+mov [rsi+20],#99
+mov [rsi+24],#99
+mov [rsi+28],#99
+mov [rsi+2C],#99
+mov [rsi+30],#99
+mov [rsi+34],#99
+mov [rsi+38],#99
+
+code:
+  cmp qword ptr [rsi+08],00
+  jmp return
+
+CharStatINJECT:
+  jmp newmem
+return:
+registersymbol(CharStatINJECT)
+
+[DISABLE]
+
+CharStatINJECT:
+  db 48 83 7E 08 00
+
+unregistersymbol(CharStatINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.CharacterStats::GetPermanentStat+5A
+
+TopDownEditor.CharacterStats::GetPermanentStat+38: 39 09              - cmp [rcx],ecx
+TopDownEditor.CharacterStats::GetPermanentStat+3A: E8 D1 CF AC FF     - call TopDownEditor.ScriptSimBase::GetCurrentAge
+TopDownEditor.CharacterStats::GetPermanentStat+3F: EB 15              - jmp TopDownEditor.CharacterStats::GetPermanentStat+56
+TopDownEditor.CharacterStats::GetPermanentStat+41: 80 7C 24 60 00     - cmp byte ptr [rsp+60],00
+TopDownEditor.CharacterStats::GetPermanentStat+46: 75 0A              - jne TopDownEditor.CharacterStats::GetPermanentStat+52
+TopDownEditor.CharacterStats::GetPermanentStat+48: B9 26 00 00 00     - mov ecx,00000026
+TopDownEditor.CharacterStats::GetPermanentStat+4D: E8 6E 9C E7 5D     - call System.ThrowHelper::ThrowInvalidOperationException
+TopDownEditor.CharacterStats::GetPermanentStat+52: 8B 44 24 64        - mov eax,[rsp+64]
+TopDownEditor.CharacterStats::GetPermanentStat+56: 8B D8              - mov ebx,eax
+TopDownEditor.CharacterStats::GetPermanentStat+58: 33 ED              - xor ebp,ebp
+// ---------- INJECTING HERE ----------
+TopDownEditor.CharacterStats::GetPermanentStat+5A: 48 83 7E 08 00     - cmp qword ptr [rsi+08],00
+// ---------- DONE INJECTING  ----------
+TopDownEditor.CharacterStats::GetPermanentStat+5F: 0F 84 AD 01 00 00  - je TopDownEditor.CharacterStats::GetPermanentStat+212
+TopDownEditor.CharacterStats::GetPermanentStat+65: 48 8B 4E 08        - mov rcx,[rsi+08]
+TopDownEditor.CharacterStats::GetPermanentStat+69: 48 8B 01           - mov rax,[rcx]
+TopDownEditor.CharacterStats::GetPermanentStat+6C: 48 8B 40 40        - mov rax,[rax+40]
+TopDownEditor.CharacterStats::GetPermanentStat+70: FF 50 38           - call qword ptr [rax+38]
+TopDownEditor.CharacterStats::GetPermanentStat+73: 84 C0              - test al,al
+TopDownEditor.CharacterStats::GetPermanentStat+75: 0F 85 97 01 00 00  - jne TopDownEditor.CharacterStats::GetPermanentStat+212
+TopDownEditor.CharacterStats::GetPermanentStat+7B: 83 FF 09           - cmp edi,09
+TopDownEditor.CharacterStats::GetPermanentStat+7E: 0F 87 E4 01 00 00  - ja TopDownEditor.CharacterStats::GetPermanentStat+268
+TopDownEditor.CharacterStats::GetPermanentStat+84: 8B C7              - mov eax,edi
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>122</ID>
+              <Description>"Only MC Stat is permanent"</Description>
+              <Color>00A6A6</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"NPC DATA [Relationship Menu (L) &gt; Click NPC &gt; Activate]"</Description>
+          <Options moHideChildren="1"/>
+          <Color>0080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+//aobscanregion(NPCInfoINJECT,Info::SetSim+A,Info::SetSim+5D,41 8B D8 44 8B 87 F8 00 00 00) // should be unique
+//alloc(newmem,$1000,NPCInfoINJECT)
+
+aobscan(NPCInfoINJECT,41 8B D8 44 8B 87 F8 00 00 00) // should be unique
+alloc(newmem,$1000,NPCInfoINJECT)
+
+label(code)
+label(return)
+
+alloc(NPCDATA,4,NPCInfoINJECT)
+registersymbol(NPCDATA)
+newmem:
+mov [NPCDATA],rdi
+
+code:
+  mov r8d,[rdi+000000F8]
+  jmp return
+
+NPCInfoINJECT+03:
+  jmp newmem
+  nop 2
+return:
+registersymbol(NPCInfoINJECT NPCDATA)
+
+[DISABLE]
+
+NPCInfoINJECT+03:
+  db 44 8B 87 F8 00 00 00
+
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: Info::SetSim+2E
+
+Info::SetSim+A: 48 81 EC 80 00 00 00           - sub rsp,00000080
+Info::SetSim+11: 48 8B F1                       - mov rsi,rcx
+Info::SetSim+14: 48 8D 7C 24 50                 - lea rdi,[rsp+50]
+Info::SetSim+19: B9 0C 00 00 00                 - mov ecx,0000000C
+Info::SetSim+1E: 33 C0                          - xor eax,eax
+Info::SetSim+20: F3 AB                          - repe stosd 
+Info::SetSim+22: 48 8B CE                       - mov rcx,rsi
+Info::SetSim+25: 48 8B F1                       - mov rsi,rcx
+Info::SetSim+28: 48 8B FA                       - mov rdi,rdx
+Info::SetSim+2B: 41 8B D8                       - mov ebx,r8d
+// ---------- INJECTING HERE ----------
+Info::SetSim+2E: 44 8B 87 F8 00 00 00           - mov r8d,[rdi+000000F8]
+// ---------- DONE INJECTING  ----------
+Info::SetSim+35: 48 B9 70 A5 DA 86 0A 02 00 00  - mov rcx,0000020A86DAA570
+Info::SetSim+3F: 48 8B 09                       - mov rcx,[rcx]
+Info::SetSim+42: BA 01 00 00 00                 - mov edx,00000001
+Info::SetSim+47: 39 09                          - cmp [rcx],ecx
+Info::SetSim+49: E8 92 8B CA FF                 - call TopDownEditor.PlayerEntity::KnowsInfo
+Info::SetSim+4E: 40 0F B6 E8                    - movzx ebp,al
+Info::SetSim+52: 48 8B 8E 08 02 00 00           - mov rcx,[rsi+00000208]
+Info::SetSim+59: 8B 11                          - mov edx,[rcx]
+Info::SetSim+5B: 33 D2                          - xor edx,edx
+Info::SetSim+5D: 8B 41 1C                       - mov eax,[rcx+1C]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>109</ID>
+              <Description>"Name"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>20</Length>
+              <Unicode>1</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>C</Offset>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>31</ID>
+              <Description>"Unique ID"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>38</ID>
+              <Description>"Age"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>150</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>39</ID>
+              <Description>"Health"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>154</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>79</ID>
+              <Description>"RiseTime"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>14C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>80</ID>
+              <Description>"SleepTime"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>148</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>81</ID>
+              <Description>"InjuredState"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>98</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>82</ID>
+              <Description>"HappinessCumulative"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>9C</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>83</ID>
+              <Description>"DaysWithoutFood"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>A0</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"giftedThatDay"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>A4</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>85</ID>
+              <Description>"Ill"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>NPCDATA</Address>
+              <Offsets>
+                <Offset>A8</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>86</ID>
+              <Description>"WorkerSetup"</Description>
+              <Color>0080FF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>87</ID>
+                  <Description>"CurrentStamina"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88</ID>
+                  <Description>"WorkerXP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>89</ID>
+                  <Description>"ShopSkillLevel"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>14</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>90</ID>
+                  <Description>"Bmith"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>91</ID>
+                  <Description>"Bcraft"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>1C</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>92</ID>
+                  <Description>"Goods"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>20</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>93</ID>
+                  <Description>"Inn"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>24</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>94</ID>
+                  <Description>"Apoth"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>28</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>95</ID>
+                  <Description>"Mood"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>2C</Offset>
+                    <Offset>20</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>105</ID>
+              <Description>"Talent"</Description>
+              <Color>4080FF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>104</ID>
+                  <Description>"Talent Amount"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>68</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106</ID>
+                  <Description>"Talent 1 ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>68</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>107</ID>
+                  <Description>"Talent 2 ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>14</Offset>
+                    <Offset>8</Offset>
+                    <Offset>68</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>108</ID>
+                  <Description>"Talent 3 ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>8</Offset>
+                    <Offset>68</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>96</ID>
+              <Description>"Buff / Temp Traits [Atleast Have 1 Buff to add more Buff]"</Description>
+              <Color>0080FF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>97</ID>
+                  <Description>"Number of Buff"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>8</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>102</ID>
+                  <Description>"Star Rating"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>28</Offset>
+                    <Offset>30</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>101</ID>
+                  <Description>"Buff 1 ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>8</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>98</ID>
+                  <Description>"Buff 2 ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>14</Offset>
+                    <Offset>8</Offset>
+                    <Offset>8</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>99</ID>
+                  <Description>"Buff 3 ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>8</Offset>
+                    <Offset>8</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>100</ID>
+                  <Description>"Buff 4 ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>NPCDATA</Address>
+                  <Offsets>
+                    <Offset>1C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>8</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110</ID>
+          <Description>"Show Like and Dislike [Not Permanent]"</Description>
+          <Color>008C8C</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(showLikeDislikeINJECT,41 80 B9 35 01 00 00 00 41) // should be unique
+alloc(newmem,$1000,showLikeDislikeINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [r9+00000135],#1
+
+code:
+  cmp byte ptr [r9+00000135],00
+  jmp return
+
+showLikeDislikeINJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(showLikeDislikeINJECT)
+
+[DISABLE]
+
+showLikeDislikeINJECT:
+  db 41 80 B9 35 01 00 00 00
+
+unregistersymbol(showLikeDislikeINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+53B
+
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+519: 4C 8B C1                 - mov r8,rcx
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+51C: 41 3B 40 08              - cmp eax,[r8+08]
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+520: 73 60                    - jae TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+582
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+522: 4C 63 C8                 - movsxd  r9,eax
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+525: 4F 8B 44 C8 10           - mov r8,[r8+r9*8+10]
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+52A: 4C 8B CA                 - mov r9,rdx
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+52D: 41 3B 41 08              - cmp eax,[r9+08]
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+531: 73 4F                    - jae TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+582
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+533: 4C 63 D0                 - movsxd  r10,eax
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+536: 4F 8B 4C D1 10           - mov r9,[r9+r10*8+10]
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+53B: 41 80 B9 35 01 00 00 00  - cmp byte ptr [r9+00000135],00
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+543: 41 0F 94 C1              - sete r9b
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+547: 45 0F B6 C9              - movzx r9d,r9b
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+54B: 45 88 88 35 01 00 00     - mov [r8+00000135],r9b
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+552: 41 80 B8 35 01 00 00 00  - cmp byte ptr [r8+00000135],00
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+55A: 75 0A                    - jne TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+566
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+55C: 45 33 C9                 - xor r9d,r9d
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+55F: 45 89 88 C8 00 00 00     - mov [r8+000000C8],r9d
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+566: FF C0                    - inc eax
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+568: 39 42 08                 - cmp [rdx+08],eax
+TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+56B: 7F AC                    - jg TopDownEditor.NewUI.LikesDislikesDisplay::SetSim+519
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>43</ID>
+      <Description>"Task Quest Objective [Need to Open Task from NPC first]"</Description>
+      <Color>FF8000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>42</ID>
+          <Description>"Task Quest Object Need 0 Item [Activate &gt; Quest / Task Give &gt; Back]"</Description>
+          <Color>00A800</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(questObjectINJECT,44 8B 61 10 3B 5E 18) // should be unique
+alloc(newmem,$1000,questObjectINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rcx+10],#0
+
+code:
+  mov r12d,[rcx+10]
+  cmp ebx,[rsi+18]
+  jmp return
+
+questObjectINJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(questObjectINJECT)
+
+[DISABLE]
+
+questObjectINJECT:
+  db 44 8B 61 10 3B 5E 18
+
+unregistersymbol(questObjectINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 7FFE57D696A1
+
+7FFE57D6967C: 3B 5E 18        - cmp ebx,[rsi+18]
+7FFE57D6967F: 72 0F           - jb 7FFE57D69690
+7FFE57D69681: B9 0D 00 00 00  - mov ecx,0000000D
+7FFE57D69686: BA 16 00 00 00  - mov edx,00000016
+7FFE57D6968B: E8 10 AD AA 5D  - call System.ThrowHelper::ThrowArgumentOutOfRangeException
+7FFE57D69690: 48 8B 4E 08     - mov rcx,[rsi+08]
+7FFE57D69694: 3B 59 08        - cmp ebx,[rcx+08]
+7FFE57D69697: 73 5E           - jae 7FFE57D696F7
+7FFE57D69699: 48 63 D3        - movsxd  rdx,ebx
+7FFE57D6969C: 48 8B 4C D1 10  - mov rcx,[rcx+rdx*8+10]
+// ---------- INJECTING HERE ----------
+7FFE57D696A1: 44 8B 61 10     - mov r12d,[rcx+10]
+// ---------- DONE INJECTING  ----------
+7FFE57D696A5: 3B 5E 18        - cmp ebx,[rsi+18]
+7FFE57D696A8: 72 0F           - jb 7FFE57D696B9
+7FFE57D696AA: B9 0D 00 00 00  - mov ecx,0000000D
+7FFE57D696AF: BA 16 00 00 00  - mov edx,00000016
+7FFE57D696B4: E8 E7 AC AA 5D  - call System.ThrowHelper::ThrowArgumentOutOfRangeException
+7FFE57D696B9: 48 8B 46 08     - mov rax,[rsi+08]
+7FFE57D696BD: 3B 58 08        - cmp ebx,[rax+08]
+7FFE57D696C0: 73 35           - jae 7FFE57D696F7
+7FFE57D696C2: 48 63 D3        - movsxd  rdx,ebx
+7FFE57D696C5: 48 8B 44 D0 10  - mov rax,[rax+rdx*8+10]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"Task Quest Item Add High Number"</Description>
+          <Color>00A800</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(questINJECT,41 01 6F 14 B8 01 00 00 00) // should be unique
+alloc(newmem,$1000,questINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov ebp,#99
+
+code:
+  add [r15+14],ebp
+  mov eax,00000001
+  jmp return
+
+questINJECT:
+  jmp newmem
+  nop 4
+return:
+registersymbol(questINJECT)
+
+[DISABLE]
+
+questINJECT:
+  db 41 01 6F 14 B8 01 00 00 00
+
+unregistersymbol(questINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 7FFE57D6D65E
+
+7FFE57D6D636: 5F                             - pop rdi
+7FFE57D6D637: 41 5E                          - pop r14
+7FFE57D6D639: 41 5F                          - pop r15
+7FFE57D6D63B: C3                             - ret 
+7FFE57D6D63C: 89 5F 68                       - mov [rdi+68],ebx
+7FFE57D6D63F: 89 77 6C                       - mov [rdi+6C],esi
+7FFE57D6D642: C7 05 5C 3B 07 FF FF FF FF FF  - mov [7FFE56DE11A8],FFFFFFFF
+7FFE57D6D64C: C7 05 56 3B 07 FF FF FF FF FF  - mov [7FFE56DE11AC],FFFFFFFF
+7FFE57D6D656: 41 89 77 24                    - mov [r15+24],esi
+7FFE57D6D65A: 41 89 5F 20                    - mov [r15+20],ebx
+// ---------- INJECTING HERE ----------
+7FFE57D6D65E: 41 01 6F 14                    - add [r15+14],ebp
+// ---------- DONE INJECTING  ----------
+7FFE57D6D662: B8 01 00 00 00                 - mov eax,00000001
+7FFE57D6D667: 48 83 C4 38                    - add rsp,38
+7FFE57D6D66B: 5B                             - pop rbx
+7FFE57D6D66C: 5D                             - pop rbp
+7FFE57D6D66D: 5E                             - pop rsi
+7FFE57D6D66E: 5F                             - pop rdi
+7FFE57D6D66F: 41 5E                          - pop r14
+7FFE57D6D671: 41 5F                          - pop r15
+7FFE57D6D673: C3                             - ret 
+7FFE57D6D674: 19 0C 07                       - sbb [rdi+rax],ecx
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>37</ID>
+      <Description>"Relationship"</Description>
+      <Color>FF8000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Unlimited Gift"</Description>
+          <Color>00A800</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanregion(UnlimitedGiftINJECT,TopDownEditor.NewUI.Screens.Chat::AddChatOptions+24E,TopDownEditor.NewUI.Screens.Chat::AddChatOptions+29E,80 BA A4 00 00 00 00 74) // should be unique
+alloc(newmem,$1000,UnlimitedGiftINJECT)
+
+//aobscan(UnlimitedGiftINJECT,80 BA A4 00 00 00 00 74) // should be unique
+//alloc(newmem,$1000,UnlimitedGiftINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rdx+000000A4],#0
+
+code:
+  cmp byte ptr [rdx+000000A4],00
+  jmp return
+
+UnlimitedGiftINJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(UnlimitedGiftINJECT)
+
+[DISABLE]
+
+UnlimitedGiftINJECT:
+  db 80 BA A4 00 00 00 00
+
+unregistersymbol(UnlimitedGiftINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.Screens.Chat::AddChatOptions+276
+
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+24E: 89 4C 24 30           - mov [rsp+30],ecx
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+252: 48 8B CD              - mov rcx,rbp
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+255: 48 8B D7              - mov rdx,rdi
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+258: 4C 8B C3              - mov r8,rbx
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+25B: 41 B9 02 00 00 00     - mov r9d,00000002
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+261: 39 09                 - cmp [rcx],ecx
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+263: E8 B0 FE C1 FF        - call 7FFE578D4CC8
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+268: 48 8B 8E B8 01 00 00  - mov rcx,[rsi+000001B8]
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+26F: 48 8B D1              - mov rdx,rcx
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+272: 48 8B 52 38           - mov rdx,[rdx+38]
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+276: 80 BA A4 00 00 00 00  - cmp byte ptr [rdx+000000A4],00
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+27D: 74 60                 - je TopDownEditor.NewUI.Screens.Chat::AddChatOptions+2DF
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+27F: 33 D2                 - xor edx,edx
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+281: 41 B8 01 00 00 00     - mov r8d,00000001
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+287: 45 33 C9              - xor r9d,r9d
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+28A: E8 D1 B3 FD FF        - call TopDownEditor.ScriptSim_NPC::GetItemsWantedList
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+28F: 83 78 18 00           - cmp dword ptr [rax+18],00
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+293: 75 4A                 - jne TopDownEditor.NewUI.Screens.Chat::AddChatOptions+2DF
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+295: 48 8B 96 B0 01 00 00  - mov rdx,[rsi+000001B0]
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+29C: 33 C9                 - xor ecx,ecx
+TopDownEditor.NewUI.Screens.Chat::AddChatOptions+29E: 48 89 4C 24 68        - mov [rsp+68],rcx
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Relationship Set [Activate -&gt; Relation Menu (L) -&gt; Click NPC]"</Description>
+          <Color>00A800</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanregion(relationshipINJECT,TopDownEditor.NewUI.HeartBar::UpdateSprites+B,TopDownEditor.NewUI.HeartBar::UpdateSprites+62,8B 89 9C 00 00 00 03 8E D0 01 00 00 EB 02 33 C9 E8) // should be unique
+alloc(newmem,$1000,relationshipINJECT)
+
+//aobscan(relationshipINJECT,8B 89 9C 00 00 00 03 8E D0 01 00 00 EB 02 33 C9 E8) // should be unique
+//alloc(newmem,$1000,relationshipINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rcx+0000009C],#1000
+
+code:
+  mov ecx,[rcx+0000009C]
+  jmp return
+
+relationshipINJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(relationshipINJECT)
+
+[DISABLE]
+
+relationshipINJECT:
+  db 8B 89 9C 00 00 00
+
+unregistersymbol(relationshipINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.HeartBar::UpdateSprites+35
+
+TopDownEditor.NewUI.HeartBar::UpdateSprites+B: 53                             - push rbx
+TopDownEditor.NewUI.HeartBar::UpdateSprites+C: 48 83 EC 78                    - sub rsp,78
+TopDownEditor.NewUI.HeartBar::UpdateSprites+10: C5 F8 77                       - vzeroupper 
+TopDownEditor.NewUI.HeartBar::UpdateSprites+13: 48 8D AC 24 B0 00 00 00        - lea rbp,[rsp+000000B0]
+TopDownEditor.NewUI.HeartBar::UpdateSprites+1B: 48 8B F1                       - mov rsi,rcx
+TopDownEditor.NewUI.HeartBar::UpdateSprites+1E: 8B FA                          - mov edi,edx
+TopDownEditor.NewUI.HeartBar::UpdateSprites+20: 48 83 BE C0 01 00 00 00        - cmp qword ptr [rsi+000001C0],00
+TopDownEditor.NewUI.HeartBar::UpdateSprites+28: 74 19                          - je TopDownEditor.NewUI.HeartBar::UpdateSprites+43
+TopDownEditor.NewUI.HeartBar::UpdateSprites+2A: 48 8B 8E C0 01 00 00           - mov rcx,[rsi+000001C0]
+TopDownEditor.NewUI.HeartBar::UpdateSprites+31: 48 8B 49 38                    - mov rcx,[rcx+38]
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.HeartBar::UpdateSprites+35: 8B 89 9C 00 00 00              - mov ecx,[rcx+0000009C]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.HeartBar::UpdateSprites+3B: 03 8E D0 01 00 00              - add ecx,[rsi+000001D0]
+TopDownEditor.NewUI.HeartBar::UpdateSprites+41: EB 02                          - jmp TopDownEditor.NewUI.HeartBar::UpdateSprites+45
+TopDownEditor.NewUI.HeartBar::UpdateSprites+43: 33 C9                          - xor ecx,ecx
+TopDownEditor.NewUI.HeartBar::UpdateSprites+45: E8 C6 C8 7B FF                 - call TopDownEditor.PlayerOpinion::RatingFromCumulative
+TopDownEditor.NewUI.HeartBar::UpdateSprites+4A: 8B D8                          - mov ebx,eax
+TopDownEditor.NewUI.HeartBar::UpdateSprites+4C: 83 FB 03                       - cmp ebx,03
+TopDownEditor.NewUI.HeartBar::UpdateSprites+4F: 7D 45                          - jnl TopDownEditor.NewUI.HeartBar::UpdateSprites+96
+TopDownEditor.NewUI.HeartBar::UpdateSprites+51: 48 8B 8E A8 01 00 00           - mov rcx,[rsi+000001A8]
+TopDownEditor.NewUI.HeartBar::UpdateSprites+58: 48 BA 08 49 12 E8 0A 02 00 00  - mov rdx,0000020AE8124908
+TopDownEditor.NewUI.HeartBar::UpdateSprites+62: 48 8B 12                       - mov rdx,[rdx]
+}
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>16</Key>
+                <Key>82</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"Gift Maxed Relationship"</Description>
+          <Color>00A800</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+//aobscanregion(GiftMaxedRelaINJECT,TopDownEditor.NewUI.Screens.Chat::GiftAccept+4B,TopDownEditor.NewUI.Screens.Chat::GiftAccept+B2,8B 99 9C 00 00 00) // should be unique
+//alloc(newmem,$1000,GiftMaxedRelaINJECT)
+
+aobscan(GiftMaxedRelaINJECT,8B 99 9C 00 00 00) // should be unique
+alloc(newmem,$1000,GiftMaxedRelaINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rcx+0000009C],#1000
+
+code:
+  mov ebx,[rcx+0000009C]
+  jmp return
+
+GiftMaxedRelaINJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(GiftMaxedRelaINJECT)
+
+[DISABLE]
+
+GiftMaxedRelaINJECT:
+  db 8B 99 9C 00 00 00
+
+unregistersymbol(GiftMaxedRelaINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.Screens.Chat::GiftAccept+76
+
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+4B: 49 8B D7                       - mov rdx,r15
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+4E: E8 0D C8 7C 5E                 - call clr.DllCanUnloadNowInternal+21B0
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+53: 49 8D 4C 24 10                 - lea rcx,[r12+10]
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+58: 48 8B D3                       - mov rdx,rbx
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+5B: E8 00 C8 7C 5E                 - call clr.DllCanUnloadNowInternal+21B0
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+60: 49 8D 4C 24 18                 - lea rcx,[r12+18]
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+65: 48 8B D7                       - mov rdx,rdi
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+68: E8 F3 C7 7C 5E                 - call clr.DllCanUnloadNowInternal+21B0
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+6D: 49 8B 7C 24 18                 - mov rdi,[r12+18]
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+72: 48 8B 4F 38                    - mov rcx,[rdi+38]
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+76: 8B 99 9C 00 00 00              - mov ebx,[rcx+0000009C]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+7C: 44 0F B6 B9 A4 00 00 00        - movzx r15d,byte ptr [rcx+000000A4]
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+84: 48 8B 49 08                    - mov rcx,[rcx+08]
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+88: 48 8B 49 08                    - mov rcx,[rcx+08]
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+8C: 44 8B 69 18                    - mov r13d,[rcx+18]
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+90: 48 B9 80 8F BD 57 FE 7F 00 00  - mov rcx,00007FFE57BD8F80
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+9A: E8 11 EB 7C 5E                 - call clr.DllCanUnloadNowInternal+4500
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+9F: 48 89 45 B0                    - mov [rbp-50],rax
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+A3: 48 B9 20 96 BD 57 FE 7F 00 00  - mov rcx,00007FFE57BD9620
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+AD: E8 FE EA 7C 5E                 - call clr.DllCanUnloadNowInternal+4500
+TopDownEditor.NewUI.Screens.Chat::GiftAccept+B2: 48 BA A0 08 EC 18 0B 02 00 00  - mov rdx,0000020B18EC08A0
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>58</ID>
+      <Description>"Zero Skill Requirement"</Description>
+      <Color>FF8000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>113</ID>
+          <Description>"Skill Req. to Zero"</Description>
+          <Color>008C8C</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(skillReqItemCountINJECT,8B 40 18 C3 33 C0 C3 00) // should be unique
+alloc(newmem,$1000,skillReqItemCountINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rax+18],#0
+
+code:
+  mov eax,[rax+18]
+  ret 
+  xor eax,eax
+  jmp return
+
+skillReqItemCountINJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(skillReqItemCountINJECT)
+
+[DISABLE]
+
+skillReqItemCountINJECT:
+  db 8B 40 18 C3 33 C0
+
+unregistersymbol(skillReqItemCountINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 7FFF01BF3A40
+
+7FFF01BF3A25: 00 00                          - add [rax],al
+7FFF01BF3A27: 00 60 16                       - add [rax+16],ah
+7FFF01BF3A2A: E0 01                          - loopne 7FFF01BF3A2D
+7FFF01BF3A2C: FF                             - db -01
+7FFF01BF3A2D: 7F 00                          - jg 7FFF01BF3A2F
+7FFF01BF3A2F: 00 48 8B                       - add [rax-75],cl
+7FFF01BF3A32: 81 A8 01 00 00 48 85 C0 74 08  - sub [rax+48000001],0874C085
+7FFF01BF3A3C: 48 8B 40 08                    - mov rax,[rax+08]
+7FFF01BF3A40: 8B 40 18                       - mov eax,[rax+18]
+7FFF01BF3A43: C3                             - ret 
+// ---------- INJECTING HERE ----------
+7FFF01BF3A44: 33 C0                          - xor eax,eax
+// ---------- DONE INJECTING  ----------
+7FFF01BF3A46: C3                             - ret 
+7FFF01BF3A47: 00 19                          - add [rcx],bl
+7FFF01BF3A49: 00 00                          - add [rax],al
+7FFF01BF3A4B: 00 40 00                       - add [rax+00],al
+7FFF01BF3A4E: 00 00                          - add [rax],al
+7FFF01BF3A50: 00 00                          - add [rax],al
+7FFF01BF3A52: 00 00                          - add [rax],al
+7FFF01BF3A54: 00 00                          - add [rax],al
+7FFF01BF3A56: 00 00                          - add [rax],al
+7FFF01BF3A58: B0 16                          - mov al,16
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>137</ID>
+              <Description>"[Go to Skill Menu -&gt; Click Random Skill Until See Requirement-&gt; Activate]"</Description>
+              <Color>008C8C</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>62</ID>
+          <Description>"other"</Description>
+          <Options moHideChildren="1"/>
+          <Color>000000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>52</ID>
+              <Description>"Skill Req"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+
+aobscan(skillReqINJECT,3B 5E 18 72 0F B9 0D 00 00 00 BA 16 00 00 00 E8 87) // should be unique
+alloc(newmem,$1000,skillReqINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rsi+18],#0
+
+code:
+  cmp ebx,[rsi+18]
+  jb TopDownEditor.SkillLine::GetItemRequiredQuantity+69
+  jmp return
+
+skillReqINJECT:
+  jmp newmem
+return:
+registersymbol(skillReqINJECT)
+
+[DISABLE]
+
+skillReqINJECT:
+  db 3B 5E 18 72 0F
+
+unregistersymbol(skillReqINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.SkillLine::GetItemRequiredQuantity+55
+
+TopDownEditor.SkillLine::GetItemRequiredQuantity+41: 3B 59 18        - cmp ebx,[rcx+18]
+TopDownEditor.SkillLine::GetItemRequiredQuantity+44: 7C CB           - jl TopDownEditor.SkillLine::GetItemRequiredQuantity+11
+TopDownEditor.SkillLine::GetItemRequiredQuantity+46: 33 C0           - xor eax,eax
+TopDownEditor.SkillLine::GetItemRequiredQuantity+48: 48 83 C4 28     - add rsp,28
+TopDownEditor.SkillLine::GetItemRequiredQuantity+4C: 5B              - pop rbx
+TopDownEditor.SkillLine::GetItemRequiredQuantity+4D: 5D              - pop rbp
+TopDownEditor.SkillLine::GetItemRequiredQuantity+4E: 5E              - pop rsi
+TopDownEditor.SkillLine::GetItemRequiredQuantity+4F: 5F              - pop rdi
+TopDownEditor.SkillLine::GetItemRequiredQuantity+50: C3              - ret 
+TopDownEditor.SkillLine::GetItemRequiredQuantity+51: 48 8B 76 10     - mov rsi,[rsi+10]
+// ---------- INJECTING HERE ----------
+TopDownEditor.SkillLine::GetItemRequiredQuantity+55: 3B 5E 18        - cmp ebx,[rsi+18]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.SkillLine::GetItemRequiredQuantity+58: 72 0F           - jb TopDownEditor.SkillLine::GetItemRequiredQuantity+69
+TopDownEditor.SkillLine::GetItemRequiredQuantity+5A: B9 0D 00 00 00  - mov ecx,0000000D
+TopDownEditor.SkillLine::GetItemRequiredQuantity+5F: BA 16 00 00 00  - mov edx,00000016
+TopDownEditor.SkillLine::GetItemRequiredQuantity+64: E8 87 24 7B 5C  - call System.ThrowHelper::ThrowArgumentOutOfRangeException
+TopDownEditor.SkillLine::GetItemRequiredQuantity+69: 48 8B 46 08     - mov rax,[rsi+08]
+TopDownEditor.SkillLine::GetItemRequiredQuantity+6D: 3B 58 08        - cmp ebx,[rax+08]
+TopDownEditor.SkillLine::GetItemRequiredQuantity+70: 73 10           - jae TopDownEditor.SkillLine::GetItemRequiredQuantity+82
+TopDownEditor.SkillLine::GetItemRequiredQuantity+72: 48 63 D3        - movsxd  rdx,ebx
+TopDownEditor.SkillLine::GetItemRequiredQuantity+75: 8B 44 90 10     - mov eax,[rax+rdx*4+10]
+TopDownEditor.SkillLine::GetItemRequiredQuantity+79: 48 83 C4 28     - add rsp,28
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>53</ID>
+              <Description>"Skill Req 2"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+
+aobscan(skillrequINJECT,10 45 3B 6C 24 18) // should be unique
+alloc(newmem,$1000,skillrequINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [r12+18],#0
+
+code:
+  cmp r13d,[r12+18]
+  jmp return
+
+skillrequINJECT+01:
+  jmp newmem
+return:
+registersymbol(skillrequINJECT)
+
+[DISABLE]
+
+skillrequINJECT+01:
+  db 45 3B 6C 24 18
+
+unregistersymbol(skillrequINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+41E
+
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+3F1: E8 EA 2F 7B 5C     - call System.ThrowHelper::ThrowArgumentOutOfRangeException
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+3F6: 48 8B 45 90        - mov rax,[rbp-70]
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+3FA: 48 8B 48 08        - mov rcx,[rax+08]
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+3FE: 44 3B 69 08        - cmp r13d,[rcx+08]
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+402: 0F 83 9C 00 00 00  - jae TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+4A4
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+408: 49 63 D5           - movsxd  rdx,r13d
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+40B: 8B 4C 91 10        - mov ecx,[rcx+rdx*4+10]
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+40F: 48 8B 45 C0        - mov rax,[rbp-40]
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+413: 89 88 B0 01 00 00  - mov [rax+000001B0],ecx
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+419: 4D 8B 64 24 10     - mov r12,[r12+10]
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+41E: 45 3B 6C 24 18     - cmp r13d,[r12+18]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+423: 72 0F              - jb TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+434
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+425: B9 0D 00 00 00     - mov ecx,0000000D
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+42A: BA 16 00 00 00     - mov edx,00000016
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+42F: E8 AC 2F 7B 5C     - call System.ThrowHelper::ThrowArgumentOutOfRangeException
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+434: 49 8B 4C 24 08     - mov rcx,[r12+08]
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+439: 44 3B 69 08        - cmp r13d,[rcx+08]
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+43D: 73 65              - jae TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+4A4
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+43F: 49 63 D5           - movsxd  rdx,r13d
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+442: 8B 4C 91 10        - mov ecx,[rcx+rdx*4+10]
+TopDownEditor.NewUI.Screens.SkillCase::DisplaySkillInfo+446: 48 8B 45 C0        - mov rax,[rbp-40]
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>55</ID>
+              <Description>"Skill Req 3"</Description>
+              <Color>00FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+
+aobscanregion(skillrequeINJECT,TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+2,TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+16,8B 40 18 C3 33 C0 C3 00) // should be unique
+alloc(newmem,$1000,skillrequeINJECT)
+
+//aobscan(skillrequeINJECT,8B 40 18 C3 33 C0 C3 00) // should be unique
+//alloc(newmem,$1000,skillrequeINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rax+18],#0
+
+code:
+  mov eax,[rax+18]
+  ret 
+  xor eax,eax
+  jmp return
+
+skillrequeINJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(skillrequeINJECT)
+
+[DISABLE]
+
+skillrequeINJECT:
+  db 8B 40 18 C3 33 C0
+
+unregistersymbol(skillrequeINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+10
+
+7FF7D3C71490: 40 00 00                       - add [rax],al
+7FF7D3C71493: 00 00                          - add [rax],al
+7FF7D3C71495: 00 00                          - add [rax],al
+7FF7D3C71497: 00 B8 18 E5 D3 F7              - add [rax-082C1AE8],bh
+7FF7D3C7149D: 7F 00                          - jg 7FF7D3C7149F
+7FF7D3C7149F: 00 48 8B                       - add [rax-75],cl
+TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+2: 81 A8 01 00 00 48 85 C0 74 08  - sub [rax+48000001],0874C085
+TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+C: 48 8B 40 08                    - mov rax,[rax+08]
+TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+10: 8B 40 18                       - mov eax,[rax+18]
+TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+13: C3                             - ret 
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+14: 33 C0                          - xor eax,eax
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.Screens.SkillSlot::get_itemCount+16: C3                             - ret 
+7FF7D3C714B7: 00 19                          - add [rcx],bl
+7FF7D3C714B9: 00 00                          - add [rax],al
+7FF7D3C714BB: 00 40 00                       - add [rax+00],al
+7FF7D3C714BE: 00 00                          - add [rax],al
+7FF7D3C714C0: 00 00                          - add [rax],al
+7FF7D3C714C2: 00 00                          - add [rax],al
+7FF7D3C714C4: 00 00                          - add [rax],al
+7FF7D3C714C6: 00 00                          - add [rax],al
+7FF7D3C714C8: 08 19                          - or [rcx],bl
+}
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"OTHER"</Description>
+      <Options moHideChildren="1"/>
+      <Color>000000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Set All Item"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanregion(setAllItemINJECT,TopDownEditor.InventoryItem::GetHighestRating+15,TopDownEditor.InventoryItem::GetHighestRating+26,42 83 7C 81 10 00 7F) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+mov [rcx+r8*4+10],#95
+
+code:
+  cmp dword ptr [rcx+r8*4+10],00
+  jmp return
+
+setAllItemINJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(setAllItemINJECT)
+
+[DISABLE]
+
+setAllItemINJECT:
+  db 42 83 7C 81 10 00
+
+unregistersymbol(setAllItemINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.InventoryItem::GetHighestRating+18
+
+7FFD7543E4DB: 75 FD              - jne 7FFD7543E4DA
+7FFD7543E4DD: 7F 00              - jg 7FFD7543E4DF
+7FFD7543E4DF: 00 48 83           - add [rax-7D],cl
+TopDownEditor.InventoryItem::GetHighestRating+2: EC                 - in al,dx
+TopDownEditor.InventoryItem::GetHighestRating+3: 28 BA 04 00 00 00  - sub [rdx+00000004],bh
+TopDownEditor.InventoryItem::GetHighestRating+9: 48 8B 41 08        - mov rax,[rcx+08]
+TopDownEditor.InventoryItem::GetHighestRating+D: 48 8B C8           - mov rcx,rax
+TopDownEditor.InventoryItem::GetHighestRating+10: 3B 51 08           - cmp edx,[rcx+08]
+TopDownEditor.InventoryItem::GetHighestRating+13: 73 20              - jae TopDownEditor.InventoryItem::GetHighestRating+35
+TopDownEditor.InventoryItem::GetHighestRating+15: 4C 63 C2           - movsxd  r8,edx
+// ---------- INJECTING HERE ----------
+TopDownEditor.InventoryItem::GetHighestRating+18: 42 83 7C 81 10 00  - cmp dword ptr [rcx+r8*4+10],00
+// ---------- DONE INJECTING  ----------
+TopDownEditor.InventoryItem::GetHighestRating+1E: 7F 0D              - jg TopDownEditor.InventoryItem::GetHighestRating+2D
+TopDownEditor.InventoryItem::GetHighestRating+20: FF CA              - dec edx
+TopDownEditor.InventoryItem::GetHighestRating+22: 85 D2              - test edx,edx
+TopDownEditor.InventoryItem::GetHighestRating+24: 7D E7              - jnl TopDownEditor.InventoryItem::GetHighestRating+D
+TopDownEditor.InventoryItem::GetHighestRating+26: 33 C0              - xor eax,eax
+TopDownEditor.InventoryItem::GetHighestRating+28: 48 83 C4 28        - add rsp,28
+TopDownEditor.InventoryItem::GetHighestRating+2C: C3                 - ret 
+TopDownEditor.InventoryItem::GetHighestRating+2D: 8D 42 01           - lea eax,[rdx+01]
+TopDownEditor.InventoryItem::GetHighestRating+30: 48 83 C4 28        - add rsp,28
+TopDownEditor.InventoryItem::GetHighestRating+34: C3                 - ret 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"Item 2"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(itemtwoINJECT,8B 44 90 10 48 83 C4 28 C3 33 C0 48 83 C4 28 C3 E8 90) // should be unique
+alloc(newmem,$1000,itemtwoINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rax+rdx*4+10],#9
+
+code:
+  mov eax,[rax+rdx*4+10]
+  add rsp,28
+  jmp return
+
+itemtwoINJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(itemtwoINJECT)
+
+[DISABLE]
+
+itemtwoINJECT:
+  db 8B 44 90 10 48 83 C4 28
+
+unregistersymbol(itemtwoINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.InventoryItem::GetRatingCount+1B
+
+TopDownEditor.InventoryItem::GetRatingCount: 48 83 EC 28     - sub rsp,28
+TopDownEditor.InventoryItem::GetRatingCount+4: FF CA           - dec edx
+TopDownEditor.InventoryItem::GetRatingCount+6: 85 D2           - test edx,edx
+TopDownEditor.InventoryItem::GetRatingCount+8: 7C 1A           - jl TopDownEditor.InventoryItem::GetRatingCount+24
+TopDownEditor.InventoryItem::GetRatingCount+A: 83 FA 05        - cmp edx,05
+TopDownEditor.InventoryItem::GetRatingCount+D: 7D 15           - jnl TopDownEditor.InventoryItem::GetRatingCount+24
+TopDownEditor.InventoryItem::GetRatingCount+F: 48 8B 41 08     - mov rax,[rcx+08]
+TopDownEditor.InventoryItem::GetRatingCount+13: 3B 50 08        - cmp edx,[rax+08]
+TopDownEditor.InventoryItem::GetRatingCount+16: 73 13           - jae TopDownEditor.InventoryItem::GetRatingCount+2B
+TopDownEditor.InventoryItem::GetRatingCount+18: 48 63 D2        - movsxd  rdx,edx
+// ---------- INJECTING HERE ----------
+TopDownEditor.InventoryItem::GetRatingCount+1B: 8B 44 90 10     - mov eax,[rax+rdx*4+10]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.InventoryItem::GetRatingCount+1F: 48 83 C4 28     - add rsp,28
+TopDownEditor.InventoryItem::GetRatingCount+23: C3              - ret 
+TopDownEditor.InventoryItem::GetRatingCount+24: 33 C0           - xor eax,eax
+TopDownEditor.InventoryItem::GetRatingCount+26: 48 83 C4 28     - add rsp,28
+TopDownEditor.InventoryItem::GetRatingCount+2A: C3              - ret 
+TopDownEditor.InventoryItem::GetRatingCount+2B: E8 90 49 B2 5E  - call clr.dll+4862E0
+TopDownEditor.InventoryItem::GetRatingCount+30: CC              - int 3 
+7FFF364D1951: 00 00           - add [rax],al
+7FFF364D1953: 00 19           - add [rcx],bl
+7FFF364D1955: 04 01           - add al,01
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Set All Item"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(itemINJECT,46 8B 4C 8A 10 41 03) // should be unique
+alloc(newmem,$1000,itemINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rdx+r9*4+10],#90
+
+code:
+  mov r9d,[rdx+r9*4+10]
+  jmp return
+
+itemINJECT:
+  jmp newmem
+return:
+registersymbol(itemINJECT)
+
+[DISABLE]
+
+itemINJECT:
+  db 46 8B 4C 8A 10
+
+unregistersymbol(itemINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.InventoryItem::get_TotalCount+14
+
+7FFF3614F33C: FF              - db -01
+7FFF3614F33D: 7F 00           - jg 7FFF3614F33F
+7FFF3614F33F: 00 33           - add [rbx],dh
+TopDownEditor.InventoryItem::get_TotalCount+1: C0 48 8B 51     - ror byte ptr [rax-75],51
+TopDownEditor.InventoryItem::get_TotalCount+5: 08 33           - or [rbx],dh
+TopDownEditor.InventoryItem::get_TotalCount+7: C9              - leave 
+TopDownEditor.InventoryItem::get_TotalCount+8: 44 8B 42 08     - mov r8d,[rdx+08]
+TopDownEditor.InventoryItem::get_TotalCount+C: 45 85 C0        - test r8d,r8d
+TopDownEditor.InventoryItem::get_TotalCount+F: 7E 12           - jle TopDownEditor.InventoryItem::get_TotalCount+23
+TopDownEditor.InventoryItem::get_TotalCount+11: 4C 63 C9        - movsxd  r9,ecx
+// ---------- INJECTING HERE ----------
+TopDownEditor.InventoryItem::get_TotalCount+14: 46 8B 4C 8A 10  - mov r9d,[rdx+r9*4+10]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.InventoryItem::get_TotalCount+19: 41 03 C1        - add eax,r9d
+TopDownEditor.InventoryItem::get_TotalCount+1C: FF C1           - inc ecx
+TopDownEditor.InventoryItem::get_TotalCount+1E: 44 3B C1        - cmp r8d,ecx
+TopDownEditor.InventoryItem::get_TotalCount+21: 7F EE           - jg TopDownEditor.InventoryItem::get_TotalCount+11
+TopDownEditor.InventoryItem::get_TotalCount+23: C3              - ret 
+7FFF3614F364: 19 00           - sbb [rax],eax
+7FFF3614F366: 00 00           - add [rax],al
+7FFF3614F368: 40 00 00        - add [rax],al
+7FFF3614F36B: 00 00           - add [rax],al
+7FFF3614F36D: 00 00           - add [rax],al
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"GameSave"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(GameSaveDataINJECT,48 8B 49 48 48 8B 49 18 39 09 E8 F1) // should be unique
+alloc(newmem,$1000,GameSaveDataINJECT)
+
+label(code)
+label(return)
+
+alloc(GameSave,$1000,GameSaveDataINJECT)
+registersymbol(GameSave)
+
+newmem:
+mov [GameSave],rcx
+
+code:
+  mov rcx,[rcx+48]
+  mov rcx,[rcx+18]
+  jmp return
+
+GameSaveDataINJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(GameSaveDataINJECT GameSave)
+
+[DISABLE]
+
+GameSaveDataINJECT:
+  db 48 8B 49 48 48 8B 49 18
+
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.PlayerEntity::GetSprintSpeed+38
+
+TopDownEditor.PlayerEntity::GetSprintSpeed+1: 48 83 EC 40                    - sub rsp,40
+TopDownEditor.PlayerEntity::GetSprintSpeed+5: C5 F8 77                       - vzeroupper 
+TopDownEditor.PlayerEntity::GetSprintSpeed+8: C4 E1 78 29 74 24 30           - vmovaps [rsp+30],xmm6
+TopDownEditor.PlayerEntity::GetSprintSpeed+F: C4 E1 7A 10 35 F8 BF 44 FF     - vmovss xmm6,[7FFF35661170]
+TopDownEditor.PlayerEntity::GetSprintSpeed+18: 48 B9 20 AA 2E FA 0F 02 00 00  - mov rcx,0000020FFA2EAA20
+TopDownEditor.PlayerEntity::GetSprintSpeed+22: 48 8B 09                       - mov rcx,[rcx]
+TopDownEditor.PlayerEntity::GetSprintSpeed+25: 48 8B 71 08                    - mov rsi,[rcx+08]
+TopDownEditor.PlayerEntity::GetSprintSpeed+29: 8B 0E                          - mov ecx,[rsi]
+TopDownEditor.PlayerEntity::GetSprintSpeed+2B: 48 B9 30 AA 2E FA 0F 02 00 00  - mov rcx,0000020FFA2EAA30
+TopDownEditor.PlayerEntity::GetSprintSpeed+35: 48 8B 09                       - mov rcx,[rcx]
+// ---------- INJECTING HERE ----------
+TopDownEditor.PlayerEntity::GetSprintSpeed+38: 48 8B 49 48                    - mov rcx,[rcx+48]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.PlayerEntity::GetSprintSpeed+3C: 48 8B 49 18                    - mov rcx,[rcx+18]
+TopDownEditor.PlayerEntity::GetSprintSpeed+40: 39 09                          - cmp [rcx],ecx
+TopDownEditor.PlayerEntity::GetSprintSpeed+42: E8 F1 31 96 FF                 - call 7FFF35B78398
+TopDownEditor.PlayerEntity::GetSprintSpeed+47: 8B D0                          - mov edx,eax
+TopDownEditor.PlayerEntity::GetSprintSpeed+49: 48 8B CE                       - mov rcx,rsi
+TopDownEditor.PlayerEntity::GetSprintSpeed+4C: E8 57 53 34 FF                 - call 7FFF3555A508
+TopDownEditor.PlayerEntity::GetSprintSpeed+51: C4 E1 78 28 C6                 - vmovaps xmm0,xmm6
+TopDownEditor.PlayerEntity::GetSprintSpeed+56: C4 E1 7A 58 40 08              - vaddss xmm0,xmm0,[rax+08]
+TopDownEditor.PlayerEntity::GetSprintSpeed+5C: C4 E1 7A 11 44 24 2C           - vmovss [rsp+2C],xmm0
+TopDownEditor.PlayerEntity::GetSprintSpeed+63: 48 BA A8 A9 2E FA 0F 02 00 00  - mov rdx,0000020FFA2EA9A8
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16</ID>
+              <Description>"TimeOfDay"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>GameSave</Address>
+              <Offsets>
+                <Offset>184</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>68</ID>
+          <Description>"Challange Count"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(currentChallangeINJECT,mscorlib.ni.dll,8B 44 02 1C 48 83 C4 20 5E C3 90) // should be unique
+alloc(newmem,$1000,currentChallangeINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rdx+rax+1C],#10
+
+code:
+  mov eax,[rdx+rax+1C]
+  add rsp,20
+  jmp return
+
+currentChallangeINJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(currentChallangeINJECT)
+
+[DISABLE]
+
+currentChallangeINJECT:
+  db 8B 44 02 1C 48 83 C4 20
+
+unregistersymbol(currentChallangeINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: mscorlib.ni.dll+DACC75
+
+mscorlib.ni.dll+DACC58: 48 8B CE        - mov rcx,rsi
+mscorlib.ni.dll+DACC5B: 90              - nop 
+mscorlib.ni.dll+DACC5C: E8 2F 74 81 FF  - call mscorlib.ni.dll+5C4090
+mscorlib.ni.dll+DACC61: 85 C0           - test eax,eax
+mscorlib.ni.dll+DACC63: 7C 1A           - jl mscorlib.ni.dll+DACC7F
+mscorlib.ni.dll+DACC65: 48 8B 56 10     - mov rdx,[rsi+10]
+mscorlib.ni.dll+DACC69: 3B 42 08        - cmp eax,[rdx+08]
+mscorlib.ni.dll+DACC6C: 73 18           - jae mscorlib.ni.dll+DACC86
+mscorlib.ni.dll+DACC6E: 48 63 C0        - movsxd  rax,eax
+mscorlib.ni.dll+DACC71: 48 C1 E0 04     - shl rax,04
+// ---------- INJECTING HERE ----------
+mscorlib.ni.dll+DACC75: 8B 44 02 1C     - mov eax,[rdx+rax+1C]
+// ---------- DONE INJECTING  ----------
+mscorlib.ni.dll+DACC79: 48 83 C4 20     - add rsp,20
+mscorlib.ni.dll+DACC7D: 5E              - pop rsi
+mscorlib.ni.dll+DACC7E: C3              - ret 
+mscorlib.ni.dll+DACC7F: 90              - nop 
+mscorlib.ni.dll+DACC80: E8 DB 75 F8 FF  - call System.ThrowHelper::ThrowKeyNotFoundException
+mscorlib.ni.dll+DACC85: CC              - int 3 
+mscorlib.ni.dll+DACC86: E8 F1 8A 75 FF  - call mscorlib.ni.dll+50577C
+mscorlib.ni.dll+DACC8B: CC              - int 3 
+mscorlib.ni.dll+DACC8C: CC              - int 3 
+mscorlib.ni.dll+DACC8D: CC              - int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>69</ID>
+          <Description>"Challange Count 2"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(challangeToMaxINJECT,mscorlib.ni.dll,89 5C 01 1C FF 46 3C) // should be unique
+alloc(newmem,$1000,challangeToMaxINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov ebx,#99999
+
+code:
+  mov [rcx+rax+1C],ebx
+  inc [rsi+3C]
+  jmp return
+
+challangeToMaxINJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(challangeToMaxINJECT)
+
+[DISABLE]
+
+challangeToMaxINJECT:
+  db 89 5C 01 1C FF 46 3C
+
+unregistersymbol(challangeToMaxINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: mscorlib.ni.dll+DAC58F
+
+mscorlib.ni.dll+DAC567: 39 09              - cmp [rcx],ecx
+mscorlib.ni.dll+DAC569: FF 15 59 9F 41 FF  - call qword ptr [mscorlib.ni.dll+1C64C8]
+mscorlib.ni.dll+DAC56F: 84 C0              - test al,al
+mscorlib.ni.dll+DAC571: 48 8B 44 24 30     - mov rax,[rsp+30]
+mscorlib.ni.dll+DAC576: 74 A4              - je mscorlib.ni.dll+DAC51C
+mscorlib.ni.dll+DAC578: 40 84 ED           - test bpl,bpl
+mscorlib.ni.dll+DAC57B: 0F 85 C3 32 5D 00  - jne mscorlib.ni.dll+137F844
+mscorlib.ni.dll+DAC581: 48 8B 4E 10        - mov rcx,[rsi+10]
+mscorlib.ni.dll+DAC585: 44 3B 69 08        - cmp r13d,[rcx+08]
+mscorlib.ni.dll+DAC589: 0F 83 23 33 5D 00  - jae mscorlib.ni.dll+137F8B2
+// ---------- INJECTING HERE ----------
+mscorlib.ni.dll+DAC58F: 89 5C 01 1C        - mov [rcx+rax+1C],ebx
+// ---------- DONE INJECTING  ----------
+mscorlib.ni.dll+DAC593: FF 46 3C           - inc [rsi+3C]
+mscorlib.ni.dll+DAC596: 48 83 C4 38        - add rsp,38
+mscorlib.ni.dll+DAC59A: 5B                 - pop rbx
+mscorlib.ni.dll+DAC59B: 5D                 - pop rbp
+mscorlib.ni.dll+DAC59C: 5E                 - pop rsi
+mscorlib.ni.dll+DAC59D: 5F                 - pop rdi
+mscorlib.ni.dll+DAC59E: 41 5C              - pop r12
+mscorlib.ni.dll+DAC5A0: 41 5D              - pop r13
+mscorlib.ni.dll+DAC5A2: 41 5E              - pop r14
+mscorlib.ni.dll+DAC5A4: 41 5F              - pop r15
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>76</ID>
+          <Description>"MCData"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(mainCharINJECT,48 8D 86 10 01 00 00 8B) // should be unique
+alloc(newmem,$1000,mainCharINJECT)
+
+label(code)
+label(return)
+
+alloc(MCData,4,mainCharINJECT)
+registersymbol(MCData)
+newmem:
+mov [MCData],rsi
+
+code:
+  lea rax,[rsi+00000110]
+  jmp return
+
+mainCharINJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(mainCharINJECT MCData)
+
+[DISABLE]
+
+mainCharINJECT:
+  db 48 8D 86 10 01 00 00
+
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.MovementComponent::GetCameraTargetPosition+3F
+
+TopDownEditor.MovementComponent::GetCameraTargetPosition+18: 33 C0                 - xor eax,eax
+TopDownEditor.MovementComponent::GetCameraTargetPosition+1A: 89 44 24 28           - mov [rsp+28],eax
+TopDownEditor.MovementComponent::GetCameraTargetPosition+1E: 89 44 24 2C           - mov [rsp+2C],eax
+TopDownEditor.MovementComponent::GetCameraTargetPosition+22: 8B 44 24 38           - mov eax,[rsp+38]
+TopDownEditor.MovementComponent::GetCameraTargetPosition+26: 8B 54 24 3C           - mov edx,[rsp+3C]
+TopDownEditor.MovementComponent::GetCameraTargetPosition+2A: 83 C2 14              - add edx,14
+TopDownEditor.MovementComponent::GetCameraTargetPosition+2D: 89 44 24 28           - mov [rsp+28],eax
+TopDownEditor.MovementComponent::GetCameraTargetPosition+31: 89 54 24 2C           - mov [rsp+2C],edx
+TopDownEditor.MovementComponent::GetCameraTargetPosition+35: 48 8B 44 24 28        - mov rax,[rsp+28]
+TopDownEditor.MovementComponent::GetCameraTargetPosition+3A: 48 89 44 24 30        - mov [rsp+30],rax
+// ---------- INJECTING HERE ----------
+TopDownEditor.MovementComponent::GetCameraTargetPosition+3F: 48 8D 86 10 01 00 00  - lea rax,[rsi+00000110]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.MovementComponent::GetCameraTargetPosition+46: 8B 10                 - mov edx,[rax]
+TopDownEditor.MovementComponent::GetCameraTargetPosition+48: 8B 40 04              - mov eax,[rax+04]
+TopDownEditor.MovementComponent::GetCameraTargetPosition+4B: 33 C9                 - xor ecx,ecx
+TopDownEditor.MovementComponent::GetCameraTargetPosition+4D: 89 4C 24 20           - mov [rsp+20],ecx
+TopDownEditor.MovementComponent::GetCameraTargetPosition+51: 89 4C 24 24           - mov [rsp+24],ecx
+TopDownEditor.MovementComponent::GetCameraTargetPosition+55: 03 54 24 30           - add edx,[rsp+30]
+TopDownEditor.MovementComponent::GetCameraTargetPosition+59: 03 44 24 34           - add eax,[rsp+34]
+TopDownEditor.MovementComponent::GetCameraTargetPosition+5D: 89 54 24 20           - mov [rsp+20],edx
+TopDownEditor.MovementComponent::GetCameraTargetPosition+61: 89 44 24 24           - mov [rsp+24],eax
+TopDownEditor.MovementComponent::GetCameraTargetPosition+65: 48 8B 44 24 20        - mov rax,[rsp+20]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>77</ID>
+              <Description>"No description"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>MCData</Address>
+              <Offsets>
+                <Offset>110</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"Gift Point"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(giftPointINJECT,E2 8B 8E D8 01 00 00) // should be unique
+alloc(newmem,$1000,giftPointINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rsi+000001D8],#1000
+
+code:
+  mov ecx,[rsi+000001D8]
+  jmp return
+
+giftPointINJECT+01:
+  jmp newmem
+  nop
+return:
+registersymbol(giftPointINJECT)
+
+[DISABLE]
+
+giftPointINJECT+01:
+  db 8B 8E D8 01 00 00
+
+unregistersymbol(giftPointINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: FriendshipSection::Action+80
+
+FriendshipSection::Action+58: C3                    - ret 
+FriendshipSection::Action+59: 8B 8E D0 01 00 00     - mov ecx,[rsi+000001D0]
+FriendshipSection::Action+5F: 83 F9 02              - cmp ecx,02
+FriendshipSection::Action+62: 0F 87 D3 02 00 00     - ja FriendshipSection::Action+33B
+FriendshipSection::Action+68: 8B C9                 - mov ecx,ecx
+FriendshipSection::Action+6A: 48 8D 15 37 05 00 00  - lea rdx,[7FFE57CB1778]
+FriendshipSection::Action+71: 8B 14 8A              - mov edx,[rdx+rcx*4]
+FriendshipSection::Action+74: 48 8D 05 B9 FF FF FF  - lea rax,[FriendshipSection::Action+34]
+FriendshipSection::Action+7B: 48 03 D0              - add rdx,rax
+FriendshipSection::Action+7E: FF E2                 - jmp rdx
+// ---------- INJECTING HERE ----------
+FriendshipSection::Action+80: 8B 8E D8 01 00 00     - mov ecx,[rsi+000001D8]
+// ---------- DONE INJECTING  ----------
+FriendshipSection::Action+86: 3B 8E EC 01 00 00     - cmp ecx,[rsi+000001EC]
+FriendshipSection::Action+8C: 0F 85 A9 02 00 00     - jne FriendshipSection::Action+33B
+FriendshipSection::Action+92: 33 FF                 - xor edi,edi
+FriendshipSection::Action+94: 8B 9E E8 01 00 00     - mov ebx,[rsi+000001E8]
+FriendshipSection::Action+9A: E9 C5 00 00 00        - jmp FriendshipSection::Action+164
+FriendshipSection::Action+9F: 4C 8B F1              - mov r14,rcx
+FriendshipSection::Action+A2: 41 3B 5E 18           - cmp ebx,[r14+18]
+FriendshipSection::Action+A6: 72 0F                 - jb FriendshipSection::Action+B7
+FriendshipSection::Action+A8: B9 0D 00 00 00        - mov ecx,0000000D
+FriendshipSection::Action+AD: BA 16 00 00 00        - mov edx,00000016
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>124</ID>
+          <Description>"speedMult"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(playerSpeedINJECT,C4 E1 7A 11 86 40 01 00 00 C4 E1 7A 11) // should be unique
+alloc(newmem,$1000,playerSpeedINJECT)
+
+label(code)
+label(return)
+
+alloc(speedMult,4,playerSpeedINJECT)
+speedMult:
+dd (float)10
+registersymbol(speedMult)
+
+newmem:
+
+code:
+  mulss xmm0,[speedMult]
+  vmovss [rsi+00000140],xmm0
+  mulps xmm0,[speedMult]
+  vmovss [rsi+00000144],xmm0
+  jmp return
+
+playerSpeedINJECT:
+  jmp newmem
+  nop 4
+return:
+registersymbol(playerSpeedINJECT speedMult)
+
+[DISABLE]
+
+playerSpeedINJECT:
+  db C4 E1 7A 11 86 40 01 00 00
+
+unregistersymbol(*)
+dealloc(*)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.MovementComponent::PlayerMoveUpdate+7A
+
+TopDownEditor.MovementComponent::PlayerMoveUpdate+3F: C4 61 78 29 9C 24 F0 00 00 00  - vmovaps [rsp+000000F0],xmm11
+TopDownEditor.MovementComponent::PlayerMoveUpdate+49: 33 C0                          - xor eax,eax
+TopDownEditor.MovementComponent::PlayerMoveUpdate+4B: 48 89 84 24 E8 00 00 00        - mov [rsp+000000E8],rax
+TopDownEditor.MovementComponent::PlayerMoveUpdate+53: 48 8B F1                       - mov rsi,rcx
+TopDownEditor.MovementComponent::PlayerMoveUpdate+56: C4 E1 7A 11 8C 24 78 01 00 00  - vmovss [rsp+00000178],xmm1
+TopDownEditor.MovementComponent::PlayerMoveUpdate+60: 48 8D BE 40 01 00 00           - lea rdi,[rsi+00000140]
+TopDownEditor.MovementComponent::PlayerMoveUpdate+67: 48 8B D7                       - mov rdx,rdi
+TopDownEditor.MovementComponent::PlayerMoveUpdate+6A: C4 E1 7A 10 32                 - vmovss xmm6,[rdx]
+TopDownEditor.MovementComponent::PlayerMoveUpdate+6F: C4 E1 7A 10 7A 04              - vmovss xmm7,[rdx+04]
+TopDownEditor.MovementComponent::PlayerMoveUpdate+75: C4 E1 78 57 C0                 - vxorps xmm0,xmm0,xmm0
+// ---------- INJECTING HERE ----------
+TopDownEditor.MovementComponent::PlayerMoveUpdate+7A: C4 E1 7A 11 86 40 01 00 00     - vmovss [rsi+00000140],xmm0
+// ---------- DONE INJECTING  ----------
+TopDownEditor.MovementComponent::PlayerMoveUpdate+83: C4 E1 7A 11 86 44 01 00 00     - vmovss [rsi+00000144],xmm0
+TopDownEditor.MovementComponent::PlayerMoveUpdate+8C: 33 D2                          - xor edx,edx
+TopDownEditor.MovementComponent::PlayerMoveUpdate+8E: 89 94 24 E8 00 00 00           - mov [rsp+000000E8],edx
+TopDownEditor.MovementComponent::PlayerMoveUpdate+95: 80 3D 64 44 41 FF 00           - cmp byte ptr [7FFF00D21510],00
+TopDownEditor.MovementComponent::PlayerMoveUpdate+9C: 74 15                          - je TopDownEditor.MovementComponent::PlayerMoveUpdate+B3
+TopDownEditor.MovementComponent::PlayerMoveUpdate+9E: 48 8D 94 24 E8 00 00 00        - lea rdx,[rsp+000000E8]
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A6: 48 8B CE                       - mov rcx,rsi
+TopDownEditor.MovementComponent::PlayerMoveUpdate+A9: E8 72 39 A7 FF                 - call 7FFF01380A30
+TopDownEditor.MovementComponent::PlayerMoveUpdate+AE: E9 E4 05 00 00                 - jmp TopDownEditor.MovementComponent::PlayerMoveUpdate+697
+TopDownEditor.MovementComponent::PlayerMoveUpdate+B3: 80 3D CF 77 41 FF 00           - cmp byte ptr [7FFF00D24899],00
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>120</ID>
+          <Description>"Change Challenge ID [Can Claim All Challenge Reward (Accept All in one go)]"</Description>
+          <Color>00FFFF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscan(changeChallangeIDINJECT,8B 69 24 48 8B 8B 90 01 00 00) // should be unique
+alloc(newmem,$1000,changeChallangeIDINJECT)
+
+label(code)
+label(return)
+
+newmem:
+mov [rcx+24],#261
+
+code:
+  mov ebp,[rcx+24]
+  mov rcx,[rbx+00000190]
+  jmp return
+
+changeChallangeIDINJECT:
+  jmp newmem
+  nop 5
+return:
+registersymbol(changeChallangeIDINJECT)
+
+[DISABLE]
+
+changeChallangeIDINJECT:
+  db 8B 69 24 48 8B 8B 90 01 00 00
+
+unregistersymbol(changeChallangeIDINJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+52
+
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+25: E8 B6 87 86 5C                 - call System.ThrowHelper::ThrowArgumentOutOfRangeException
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+2A: 48 8B 4D 08                    - mov rcx,[rbp+08]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+2E: 3B 79 08                       - cmp edi,[rcx+08]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+31: 0F 83 A4 00 00 00              - jae TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+DB
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+37: 48 63 D7                       - movsxd  rdx,edi
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+3A: 48 8B 4C D1 10                 - mov rcx,[rcx+rdx*8+10]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+3F: 8B 11                          - mov edx,[rcx]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+41: 48 BA 30 AA 7B 9C 56 02 00 00  - mov rdx,000002569C7BAA30
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+4B: 48 8B 12                       - mov rdx,[rdx]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+4E: 48 8B 5A 48                    - mov rbx,[rdx+48]
+// ---------- INJECTING HERE ----------
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+52: 8B 69 24                       - mov ebp,[rcx+24]
+// ---------- DONE INJECTING  ----------
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+55: 48 8B 8B 90 01 00 00           - mov rcx,[rbx+00000190]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+5C: 8B 11                          - mov edx,[rcx]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+5E: 8B D5                          - mov edx,ebp
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+60: E8 6B 84 0F 5C                 - call mscorlib.ni.dll+5C4090
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+65: 85 C0                          - test eax,eax
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+67: 7D 19                          - jnl TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+82
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+69: 48 8B 8B 90 01 00 00           - mov rcx,[rbx+00000190]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+70: 8B 11                          - mov edx,[rcx]
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+72: 8B D5                          - mov edx,ebp
+TopDownEditor.NewUI.Screens.Progress.Challenges::Completion+74: 45 33 C0                       - xor r8d,r8d
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>123</ID>
+              <Description>"Challenge Will Revert to Not Complete After Exit Game"</Description>
+              <Color>00FFFF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>138</ID>
+              <Description>"I change all Challenge ID into Complete an NPC Story Challenge, If you already claim then u cannot use it"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Game Save Data = TopDownEditor.PlayerEntity::GetSprintSpeed+38 
+NPC STAT = TopDownEditor.CharacterStats::GetPermanentStat+5A 
+NPC DATA = Info::SetSim+2E 
+CHALLANGE TopDownEditor.NewUI.Screens.Progress.Challenges::CountUnclaimed+5D 
+1C = Type
+58 = Reward Type
+28 = Complete or Not
+40 = Requirement Amount
+PLAYER SPEED = TopDownEditor.MovementComponent::PlayerMoveUpdate+6A 
+</Comments>
+</CheatTable>
