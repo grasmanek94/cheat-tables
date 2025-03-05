@@ -60,142 +60,6 @@ returnhere:
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>155</ID>
-      <Description>"Invincible units--"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-alloc(newmem,2048)
-label(returnhere)
-label(originalcode)
-label(exit)
-
-newmem: //this is allocated memory, you have read,write,execute access
-mov eax,[EMPIRESX.EXE+2A6858]//place your code here
-mov ecx,[eax+40]
-mov eax,[ecx+04]
-cmp [esi+0C],eax
-je exit
-jmp originalcode
-
-originalcode:
-fst dword ptr [esi+30]
-je EMPIRESX.EXE+26FD5
-jmp returnhere
-
-exit:
-nop
-nop
-nop
-je EMPIRESX.EXE+26FD5
-jmp returnhere
-
-"EMPIRESX.EXE"+26FAA:
-jmp newmem
-returnhere:
-
-alloc(newmem1,2048)
-label(returnhere1)
-label(originalcode1)
-label(exit1)
-
-newmem1: //this is allocated memory, you have read,write,execute access
-//place your code here
-
-originalcode1:
-jmp EMPIRESX.EXE+AF3A5
-fld dword ptr [esp+0C]
-
-exit1:
-jmp returnhere1
-
-"EMPIRESX.EXE"+AF376:
-jmp newmem1
-nop
-returnhere1:
-
-alloc(newmem2,2048)
-label(returnhere2)
-label(originalcode2)
-label(exit2)
-
-newmem2: //this is allocated memory, you have read,write,execute access
-//place your code here
-
-originalcode2:
-jmp EMPIRESX.EXE+B0397
-fld dword ptr [esp+10]
-
-exit2:
-jmp returnhere2
-
-"EMPIRESX.EXE"+B0388:
-jmp newmem2
-nop
-returnhere2:
-
-[DISABLE]
-alloc(newmem,2048)
-label(returnhere)
-label(originalcode)
-label(exit)
-
-newmem: //this is allocated memory, you have read,write,execute access
-//place your code here
-
-originalcode:
-fst dword ptr [esi+30]
-je EMPIRESX.EXE+26FD5
-
-exit:
-jmp returnhere
-
-"EMPIRESX.EXE"+26FAA:
-jmp newmem
-returnhere:
-
-alloc(newmem1,2048)
-label(returnhere1)
-label(originalcode1)
-label(exit1)
-
-newmem1: //this is allocated memory, you have read,write,execute access
-//place your code here
-
-originalcode1:
-je EMPIRESX.EXE+AF3A5
-fld dword ptr [esp+0C]
-
-exit1:
-jmp returnhere1
-
-"EMPIRESX.EXE"+AF376:
-jmp newmem1
-nop
-returnhere1:
-
-alloc(newmem2,2048)
-label(returnhere2)
-label(originalcode2)
-label(exit2)
-
-newmem2: //this is allocated memory, you have read,write,execute access
-//place your code here
-
-originalcode2:
-je EMPIRESX.EXE+B0397
-fld dword ptr [esp+10]
-
-exit2:
-jmp returnhere2
-
-"EMPIRESX.EXE"+B0388:
-jmp newmem2
-nop
-returnhere2:
-
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
       <ID>143</ID>
       <Description>"Never excess population limit"</Description>
       <VariableType>Auto Assembler Script</VariableType>
@@ -294,6 +158,16 @@ jmp newmem1
 returnhere1:
 
 </AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>80</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
     <CheatEntry>
       <ID>498</ID>
@@ -389,10 +263,20 @@ nop
 returnhere1:
 
 </AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>84</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
     <CheatEntry>
       <ID>502</ID>
-      <Description>"pointerscan result"</Description>
+      <Description>"Food"</Description>
       <VariableType>Float</VariableType>
       <Address>"EMPIRESX.EXE"+002A1808</Address>
       <Offsets>
@@ -965,6 +849,208 @@ empiresx.exe+B3CC0: F6 C4 41           - test ah,41
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>726</ID>
+      <Description>"All Player Units&amp;Buildings 1000 HP"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : EMPIRESX.EXE
+  Version: 
+  Date   : 2025-03-05
+  Author : Rafal
+
+  This script does blah blah blah
+}
+
+define(address,"EMPIRESX.EXE"+A90A5)
+define(bytes,D9 46 30 D8 1D 34 25 54 00)
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  push eax
+  push edi
+  mov eax, [esi+18]
+  mov eax, [eax+8]
+  mov eax, [eax+C]
+  mov eax, [eax+4]
+  mov edi, esi
+  add edi, 30
+
+  test eax,eax
+  jnz cleanup
+// here we know it's the unit of the player
+  mov [edi],(float)1000.0
+
+cleanup:
+  pop edi
+  pop eax
+
+code:
+  fld dword ptr [esi+30]
+  fcomp dword ptr [EMPIRESX.EXE+142534]
+  jmp return
+
+address:
+  jmp newmem
+  nop 4
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+address:
+  db bytes
+  // fld dword ptr [esi+30]
+  // fcomp dword ptr [EMPIRESX.EXE+142534]
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: EMPIRESX.EXE+A90A5
+
+EMPIRESX.EXE+A9080: 8B 46 20              - mov eax,[esi+20]
+EMPIRESX.EXE+A9083: 85 C0                 - test eax,eax
+EMPIRESX.EXE+A9085: 0F 85 6F 01 00 00     - jne EMPIRESX.EXE+A91FA
+EMPIRESX.EXE+A908B: 8A 46 48              - mov al,[esi+48]
+EMPIRESX.EXE+A908E: 83 F8 08              - cmp eax,08
+EMPIRESX.EXE+A9091: 0F 87 72 01 00 00     - ja EMPIRESX.EXE+A9209
+EMPIRESX.EXE+A9097: FF 24 85 14 92 4A 00  - jmp dword ptr [eax*4+EMPIRESX.EXE+A9214]
+EMPIRESX.EXE+A909E: 8B 16                 - mov edx,[esi]
+EMPIRESX.EXE+A90A0: 8B CE                 - mov ecx,esi
+EMPIRESX.EXE+A90A2: FF 52 28              - call dword ptr [edx+28]
+// ---------- INJECTING HERE ----------
+EMPIRESX.EXE+A90A5: D9 46 30              - fld dword ptr [esi+30]
+// ---------- DONE INJECTING  ----------
+EMPIRESX.EXE+A90A8: D8 1D 34 25 54 00     - fcomp dword ptr [EMPIRESX.EXE+142534]
+EMPIRESX.EXE+A90AE: DF E0                 - fnstsw ax
+EMPIRESX.EXE+A90B0: F6 C4 01              - test ah,01
+EMPIRESX.EXE+A90B3: 0F 84 50 01 00 00     - je EMPIRESX.EXE+A9209
+EMPIRESX.EXE+A90B9: 8B 06                 - mov eax,[esi]
+EMPIRESX.EXE+A90BB: 6A 03                 - push 03
+EMPIRESX.EXE+A90BD: 8B CE                 - mov ecx,esi
+EMPIRESX.EXE+A90BF: FF 50 5C              - call dword ptr [eax+5C]
+EMPIRESX.EXE+A90C2: 8B 46 08              - mov eax,[esi+08]
+EMPIRESX.EXE+A90C5: 8B 16                 - mov edx,[esi]
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>17</Key>
+            <Key>74</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>727</ID>
+      <Description>"Kill Selected Non-Player Entities"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : EMPIRESX.EXE
+  Version: 
+  Date   : 2025-03-05
+  Author : Rafal
+
+  This script does blah blah blah
+}
+
+define(address,"EMPIRESX.EXE"+A794B)
+define(bytes,D9 45 30 E8 D9 E6 07 00)
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  push eax
+  push edi
+  mov eax, [ebp+18]
+  mov eax, [eax+8]
+  mov eax, [eax+C]
+  mov eax, [eax+4]
+  mov edi, ebp
+  add edi, 30
+
+  test eax,eax
+  jz cleanup
+// here we know it's not the unit of the player
+  mov [edi],(float)0.0
+
+cleanup:
+  pop edi
+  pop eax
+
+code:
+  fld dword ptr [ebp+30]
+  call EMPIRESX.EXE+12602C
+  jmp return
+
+address:
+  jmp newmem
+  nop 3
+return:
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+address:
+  db bytes
+  // fld dword ptr [ebp+30]
+  // call EMPIRESX.EXE+12602C
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: EMPIRESX.EXE+A794B
+
+EMPIRESX.EXE+A7920: 8B 0D 60 04 7C 00     - mov ecx,[EMPIRESX.EXE+3C0460]
+EMPIRESX.EXE+A7926: 50                    - push eax
+EMPIRESX.EXE+A7927: E8 64 EA 06 00        - call EMPIRESX.EXE+116390
+EMPIRESX.EXE+A792C: 8A 55 36              - mov dl,[ebp+36]
+EMPIRESX.EXE+A792F: 80 E2 01              - and dl,01
+EMPIRESX.EXE+A7932: 80 FA 01              - cmp dl,01
+EMPIRESX.EXE+A7935: 0F 85 3F 01 00 00     - jne EMPIRESX.EXE+A7A7A
+EMPIRESX.EXE+A793B: 8B 45 08              - mov eax,[ebp+08]
+EMPIRESX.EXE+A793E: F6 80 A8 00 00 00 02  - test byte ptr [eax+000000A8],02
+EMPIRESX.EXE+A7945: 0F 85 2F 01 00 00     - jne EMPIRESX.EXE+A7A7A
+// ---------- INJECTING HERE ----------
+EMPIRESX.EXE+A794B: D9 45 30              - fld dword ptr [ebp+30]
+// ---------- DONE INJECTING  ----------
+EMPIRESX.EXE+A794E: E8 D9 E6 07 00        - call EMPIRESX.EXE+12602C
+EMPIRESX.EXE+A7953: 85 C0                 - test eax,eax
+EMPIRESX.EXE+A7955: 89 44 24 28           - mov [esp+28],eax
+EMPIRESX.EXE+A7959: 0F 8E 1B 01 00 00     - jng EMPIRESX.EXE+A7A7A
+EMPIRESX.EXE+A795F: 8B 4C 24 38           - mov ecx,[esp+38]
+EMPIRESX.EXE+A7963: 8B 54 24 2C           - mov edx,[esp+2C]
+EMPIRESX.EXE+A7967: 8B 44 24 14           - mov eax,[esp+14]
+EMPIRESX.EXE+A796B: 56                    - push esi
+EMPIRESX.EXE+A796C: 57                    - push edi
+EMPIRESX.EXE+A796D: 51                    - push ecx
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey OnlyWhileDown="1">
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>35</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
       <ID>689</ID>
       <Description>"Other"</Description>
       <Options moHideChildren="1"/>
@@ -980,7 +1066,7 @@ empiresx.exe+B3CC0: F6 C4 41           - test ah,41
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>1C428E10</Address>
+          <Address>02DF1B90-30</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>522</ID>
@@ -2632,6 +2718,75 @@ empiresx.exe+B3CC0: F6 C4 41           - test ah,41
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Access HP</Description>
+      <AddressString>empiresx.exe+A90A5</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>CE</Byte>
+        <Byte>FF</Byte>
+        <Byte>52</Byte>
+        <Byte>28</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>46</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>1D</Byte>
+        <Byte>34</Byte>
+        <Byte>25</Byte>
+        <Byte>54</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Access HP when in selection</Description>
+      <AddressString>empiresx.exe+A794B</AddressString>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>2F</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>45</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>D9</Byte>
+        <Byte>E6</Byte>
+        <Byte>07</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Access HP when in view window</Description>
+      <AddressString>empiresx.exe+F9F71</AddressString>
+      <Before>
+        <Byte>86</Byte>
+        <Byte>30</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>51</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>96</Byte>
+        <Byte>4C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols>
     <SymbolEntry>
@@ -3730,14 +3885,12 @@ Don't change the player/unit type from Gaia units! If you do it, the game will c
 1: Damages trees also
 2: Damages nearby unit
 3: Damages only targeted unit
-
 --
-
 Units:
 Player - EDX==005488C4
 Comp1  - EDX==005488A8
-
 Buildings: 
 B1AB6: ESI==which villager helped build, EDI also, EDI points to 005488C4/005488A8
-[[[EDI+4]+C]+4], 0 = player, other number is non-player</Comments>
+[[[EDI+4]+C]+4], 0 = player, other number is non-player
+</Comments>
 </CheatTable>
